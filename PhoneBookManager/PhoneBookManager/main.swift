@@ -6,3 +6,6 @@
 //
 
 import Foundation
+
+let pbManager = PhoneBookManager()
+pbManager.run()
