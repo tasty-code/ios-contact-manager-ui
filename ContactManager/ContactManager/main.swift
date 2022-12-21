@@ -7,24 +7,24 @@
 
 import Foundation
 
-struct ContactInfo {
-    let name: String
-    let age: String
-    let phoneNumber: String
-}
-
 class ContactManager {
     var contactInfo: [ContactInfo] = []
     
-    func contactManager() {
-        var isRun: Bool = true
+    func processStart() {
+        var identifier = ""
         
         repeat {
-            print("연락처 정보를 입력해주세요:")
-            guard let userInput: String? = readLine() else {
-                continue
-            }
-            print(userInput)
-        } while isRun
+            print(PrintMessage.startComment)
+            let receiveUserInputValues = getUserInputValues()
+        } while identifier == ""
+    }
+    
+    func getUserInputValues() -> String {
+        guard let userInput = readLine() else {
+            return "F"
+        }
+        return userInput
     }
 }
+
+ContactManager().processStart()
