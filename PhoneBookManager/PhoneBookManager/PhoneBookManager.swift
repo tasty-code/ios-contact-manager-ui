@@ -14,13 +14,13 @@ struct PhoneBookManager {
         
         let inputArray = InputManager.splitInput(from: userInput)
         
-        guard inputArray.count == 3 else { return print("입력이 올바르지 않습니다.")}
+        guard inputArray.count == 3 else { return ErrorMessage.invalidInput.printError() }
         
-        guard let name = InputManager.getName(from: inputArray) else { return print("이름 오류")}
+        guard let name = InputManager.getName(from: inputArray) else { return }
         
-        guard let age = InputManager.getAge(from: inputArray) else { return print("입력한 나이정보가 잘못되었습니다. 입력 형식을 확인해주세요")}
+        guard let age = InputManager.getAge(from: inputArray) else { return ErrorMessage.invalidAge.printError() }
         
-        guard let phoneNumber = InputManager.getPhoneNumber(from: inputArray) else { return print("입력한 연락처정보가 잘못되었습니다. 입력 형식을 확인해 주세요")}
+        guard let phoneNumber = InputManager.getPhoneNumber(from: inputArray) else { return ErrorMessage.invalidPhoneNumber.printError() }
         
         ConsoleView.printInitialInputInfo(name: name, age: age, phoneNumber: phoneNumber)
         

@@ -9,6 +9,8 @@ import Foundation
 
 struct ConsoleView {
     
+    
+    
     static func userInput() -> String {
         return readLine() ?? ""
     }
