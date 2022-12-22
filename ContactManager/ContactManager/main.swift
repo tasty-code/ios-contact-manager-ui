@@ -18,8 +18,7 @@ class ContactManager {
             let receiveUserInputValues = getUserInputValues()
             let convertedUserInputValues = convertToCharacter(this: receiveUserInputValues)
             let removedBlankUserInputValues = excludeSpaceWord(convertedUserInputValues)
-            let userInputValuesDividerIndexes = findDividerIndexes(of: removedBlankUserInputValues)
-            print(userInputValuesDividerIndexes)
+            let slashIndexArray = extractIndexWithSlash(from: removedBlankUserInputValues)
         } while identifier == ""
     }
     
@@ -50,11 +49,12 @@ class ContactManager {
         return filteredData
     }
     
-    func findDividerIndexes(of originInputData: [Character]) -> [Int] {
-        var indexCounter = 0
+    func extractIndexWithSlash(from originInputData: [Character]) -> [Int] {
         var dividerIndexesArray = [Int]()
         
         for element in originInputData {
+            var indexCounter = 0
+            
             if element == "/" {
                 dividerIndexesArray.append(indexCounter)
             }
