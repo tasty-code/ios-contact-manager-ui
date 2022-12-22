@@ -16,7 +16,7 @@ class ContactManager {
         repeat {
             print(PrintMessage.startComment)
             let receiveUserInputValues = getUserInputValues()
-            let computedUserInputValues = convertToCharacter(this: receiveUserInputValues)
+            let convertedUserInputValues = convertToCharacter(this: receiveUserInputValues)
         } while identifier == ""
     }
     
