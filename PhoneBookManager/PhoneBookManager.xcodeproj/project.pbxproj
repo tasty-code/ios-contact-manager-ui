@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4CA5ACC2952ECA200D7C823 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACB2952ECA200D7C823 /* InputManager.swift */; };
 		E7975F752952E57200B37E3E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F742952E57200B37E3E /* main.swift */; };
 		E7975F7C2952E6F800B37E3E /* PhoneBookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F7B2952E6F800B37E3E /* PhoneBookManager.swift */; };
 		E7975F7E2952E7ED00B37E3E /* IOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F7D2952E7ED00B37E3E /* IOManager.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B4CA5ACB2952ECA200D7C823 /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
 		E7975F712952E57200B37E3E /* PhoneBookManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PhoneBookManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7975F742952E57200B37E3E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E7975F7B2952E6F800B37E3E /* PhoneBookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneBookManager.swift; sourceTree = "<group>"; };
@@ -62,8 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				E7975F7B2952E6F800B37E3E /* PhoneBookManager.swift */,
-				E7975F742952E57200B37E3E /* main.swift */,
 				E7975F7D2952E7ED00B37E3E /* IOManager.swift */,
+				E7975F742952E57200B37E3E /* main.swift */,
+				B4CA5ACB2952ECA200D7C823 /* InputManager.swift */,
 			);
 			path = PhoneBookManager;
 			sourceTree = "<group>";
@@ -127,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7975F752952E57200B37E3E /* main.swift in Sources */,
+				B4CA5ACC2952ECA200D7C823 /* InputManager.swift in Sources */,
 				E7975F7E2952E7ED00B37E3E /* IOManager.swift in Sources */,
 				E7975F7C2952E6F800B37E3E /* PhoneBookManager.swift in Sources */,
 			);
@@ -252,6 +256,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -261,6 +266,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};

@@ -10,6 +10,15 @@ import Foundation
 struct PhoneBookManager {
     func run() {
         IOManager.printInputMessage()
-        IOManager.userInput()
+        let userInput = IOManager.userInput()
+        
+        let returnArray = InputManager.returnArray(userInput: userInput)
+        let name = InputManager.returnName(returnArray: returnArray)
+        let age = InputManager.returnAge(returnArray: returnArray)
+        let phoneNumber = InputManager.returnPhoneNumber(returnArray: returnArray)
+        print(name!)
+        print(age!)
+        print(phoneNumber!)
+        
     }
 }
