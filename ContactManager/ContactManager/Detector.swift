@@ -8,8 +8,6 @@
 import Foundation
 
 class Detector {
-
-    
     func excludeSpaceWord(_ originInputData: [Character]) -> [Character] {
         var filteredData = [Character]()
         
@@ -22,10 +20,10 @@ class Detector {
     }
     
     func extractIndexWithSlash(from originInputData: [Character]) -> [Int] {
+        var indexCounter = 0
         var dividerIndexesArray = [Int]()
         
         for element in originInputData {
-            var indexCounter = 0
             
             if element == "/" {
                 dividerIndexesArray.append(indexCounter)
