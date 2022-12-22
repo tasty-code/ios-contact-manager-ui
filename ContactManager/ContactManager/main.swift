@@ -9,6 +9,7 @@ import Foundation
 
 class ContactManager {
     var contactInfo: [ContactInfo] = []
+    let detector = Detector()
     
     func processStart() {
         var identifier = ""
@@ -17,8 +18,9 @@ class ContactManager {
             print(PrintMessage.startComment)
             let receiveUserInputValues = getUserInputValues()
             let convertedUserInputValues = convertToCharacter(this: receiveUserInputValues)
-            let removedBlankUserInputValues = excludeSpaceWord(convertedUserInputValues)
-            let slashIndexArray = extractIndexWithSlash(from: removedBlankUserInputValues)
+            
+            let removedBlankUserInputValues = detector.excludeSpaceWord(convertedUserInputValues)
+            let slashIndexArray = detector.extractIndexWithSlash(from: removedBlankUserInputValues)
         } while identifier == ""
     }
     
@@ -36,31 +38,6 @@ class ContactManager {
             characterArray.append(index)
         }
         return characterArray
-    }
-    
-    func excludeSpaceWord(_ originInputData: [Character]) -> [Character] {
-        var filteredData = [Character]()
-        
-        for element in originInputData {
-            if element != " " {
-                filteredData.append(element)
-            }
-        }
-        return filteredData
-    }
-    
-    func extractIndexWithSlash(from originInputData: [Character]) -> [Int] {
-        var dividerIndexesArray = [Int]()
-        
-        for element in originInputData {
-            var indexCounter = 0
-            
-            if element == "/" {
-                dividerIndexesArray.append(indexCounter)
-            }
-            indexCounter += 1
-        }
-        return dividerIndexesArray
     }
 }
 
