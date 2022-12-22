@@ -17,7 +17,8 @@ class ContactManager {
             print(PrintMessage.startComment)
             let receiveUserInputValues = getUserInputValues()
             let convertedUserInputValues = convertToCharacter(this: receiveUserInputValues)
-            let removeBlankUserInputValues = removeBlank(from: convertedUserInputValues)
+            let removedBlankUserInputValues = excludeSpaceWord(convertedUserInputValues)
+            print(removedBlankUserInputValues)
         } while identifier == ""
     }
     
@@ -37,17 +38,15 @@ class ContactManager {
         return characterArray
     }
     
-    func removeBlank(from characterArray:[Character]) -> [Character] {
-        var removeBlankCharacterArray = [Character]()
+    func excludeSpaceWord(_ originInputData: [Character]) -> [Character] {
+        var filteredData = [Character]()
         
-        for character in characterArray {
-            if character == " " {
-                continue
-            } else {
-                removeBlankCharacterArray.append(character)
+        for element in originInputData {
+            if element != " " {
+                filteredData.append(element)
             }
         }
-        return removeBlankCharacterArray
+        return filteredData
     }
     
 }
