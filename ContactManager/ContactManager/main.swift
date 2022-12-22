@@ -10,6 +10,7 @@ import Foundation
 class ContactManager {
     var contactInfo: [ContactInfo] = []
     let detector = Detector()
+    let convertor = Converter()
     
     func processStart() {
         var identifier = ""
@@ -21,6 +22,8 @@ class ContactManager {
             
             let removedBlankUserInputValues = detector.excludeSpaceWord(convertedUserInputValues)
             let slashIndexArray = detector.extractIndexWithSlash(from: removedBlankUserInputValues)
+            let extractedName = detector.extractNameCharacter(from: removedBlankUserInputValues, range: slashIndexArray)
+            let convertedName = convertor.convertToString(extractedName)
         } while identifier == ""
     }
     
