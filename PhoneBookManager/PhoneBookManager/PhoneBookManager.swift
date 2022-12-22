@@ -10,19 +10,24 @@ import Foundation
 struct PhoneBookManager {
     func run() {
         ConsoleView.printInputMessage()
-        let userInput = ConsoleView.userInput()
         
+        let userInput = ConsoleView.userInput()
         let inputArray = InputManager.splitInput(from: userInput)
         
-        guard inputArray.count == 3 else { return ErrorMessage.invalidInput.printError() }
+        guard inputArray.count == 3 else {
+            return InputError.invalidInput.printConsole()
+        }
         
-        guard let name = InputManager.getName(from: inputArray) else { return }
-        
-        guard let age = InputManager.getAge(from: inputArray) else { return ErrorMessage.invalidAge.printError() }
-        
-        guard let phoneNumber = InputManager.getPhoneNumber(from: inputArray) else { return ErrorMessage.invalidPhoneNumber.printError() }
-        
-        ConsoleView.printInitialInputInfo(name: name, age: age, phoneNumber: phoneNumber)
-        
+        do {
+            let name = InputManager.getName(from: inputArray)
+            let age = try InputManager.getAge(from: inputArray)
+            let phoneNumber = try InputManager.getPhoneNumber(from: inputArray)
+            
+            ConsoleView.printInitialInputInfo(name: name, age: age, phoneNumber: phoneNumber)
+        } catch let error as InputError {
+            error.printConsole()
+        } catch {
+            
+        }
     }
 }

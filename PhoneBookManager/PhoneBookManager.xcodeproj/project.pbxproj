@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B4CA5ACC2952ECA200D7C823 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACB2952ECA200D7C823 /* InputManager.swift */; };
-		B4CA5AD02953FC1400D7C823 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACF2953FC1400D7C823 /* ErrorMessage.swift */; };
+		B4CA5AD02953FC1400D7C823 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACF2953FC1400D7C823 /* InputError.swift */; };
 		E7975F752952E57200B37E3E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F742952E57200B37E3E /* main.swift */; };
 		E7975F7C2952E6F800B37E3E /* PhoneBookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F7B2952E6F800B37E3E /* PhoneBookManager.swift */; };
 		E7975F7E2952E7ED00B37E3E /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F7D2952E7ED00B37E3E /* ConsoleView.swift */; };
@@ -28,7 +28,7 @@
 
 /* Begin PBXFileReference section */
 		B4CA5ACB2952ECA200D7C823 /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
-		B4CA5ACF2953FC1400D7C823 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		B4CA5ACF2953FC1400D7C823 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		E7975F712952E57200B37E3E /* PhoneBookManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PhoneBookManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7975F742952E57200B37E3E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E7975F7B2952E6F800B37E3E /* PhoneBookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneBookManager.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 				E7975F7D2952E7ED00B37E3E /* ConsoleView.swift */,
 				E7975F742952E57200B37E3E /* main.swift */,
 				B4CA5ACB2952ECA200D7C823 /* InputManager.swift */,
-				B4CA5ACF2953FC1400D7C823 /* ErrorMessage.swift */,
+				B4CA5ACF2953FC1400D7C823 /* InputError.swift */,
 			);
 			path = PhoneBookManager;
 			sourceTree = "<group>";
@@ -134,7 +134,7 @@
 			files = (
 				E7975F752952E57200B37E3E /* main.swift in Sources */,
 				B4CA5ACC2952ECA200D7C823 /* InputManager.swift in Sources */,
-				B4CA5AD02953FC1400D7C823 /* ErrorMessage.swift in Sources */,
+				B4CA5AD02953FC1400D7C823 /* InputError.swift in Sources */,
 				E7975F7E2952E7ED00B37E3E /* ConsoleView.swift in Sources */,
 				E7975F7C2952E6F800B37E3E /* PhoneBookManager.swift in Sources */,
 			);

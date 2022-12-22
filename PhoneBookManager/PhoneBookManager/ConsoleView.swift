@@ -22,5 +22,4 @@ struct ConsoleView {
     static func printInitialInputInfo(name: String, age: Int, phoneNumber: String) {
         print("입력한 정보는 \(age)세 \(name)(\(phoneNumber))입니다.")
     }
-    
 }
