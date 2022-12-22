@@ -16,6 +16,7 @@ class ContactManager {
         repeat {
             print(PrintMessage.startComment)
             let receiveUserInputValues = getUserInputValues()
+            let computedUserInputValues = convertToCharacter(this: receiveUserInputValues)
         } while identifier == ""
     }
     
@@ -24,6 +25,15 @@ class ContactManager {
             return "F"
         }
         return userInput
+    }
+    
+    func convertToCharacter(this sentence: String) -> [Character] {
+        var characterArray = [Character]()
+        
+        for index in sentence {
+            characterArray.append(index)
+        }
+        return characterArray
     }
 }
 
