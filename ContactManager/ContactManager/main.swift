@@ -17,6 +17,7 @@ class ContactManager {
             print(PrintMessage.startComment)
             let receiveUserInputValues = getUserInputValues()
             let convertedUserInputValues = convertToCharacter(this: receiveUserInputValues)
+            let removeBlankUserInputValues = removeBlank(from: convertedUserInputValues)
         } while identifier == ""
     }
     
@@ -35,6 +36,20 @@ class ContactManager {
         }
         return characterArray
     }
+    
+    func removeBlank(from characterArray:[Character]) -> [Character] {
+        var removeBlankCharacterArray = [Character]()
+        
+        for character in characterArray {
+            if character == " " {
+                continue
+            } else {
+                removeBlankCharacterArray.append(character)
+            }
+        }
+        return removeBlankCharacterArray
+    }
+    
 }
 
 ContactManager().processStart()
