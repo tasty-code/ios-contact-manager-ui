@@ -33,12 +33,22 @@ class Detector {
         return dividerIndexesArray
     }
     
-    func extractNameCharacter(from originInputData: [Character], range slashIndexArray: [Int]) -> [Character] {
-        var nameCharacters = [Character]()
-        
-        for index in 0..<slashIndexArray[0] {
-            nameCharacters.append(originInputData[index])
+//    func extractNameCharacter(from originInputData: [Character], range slashIndexArray: [Int]) -> [Character] {
+//        var nameCharacters = [Character]()
+//
+//        for index in 0..<slashIndexArray[0] {
+//            nameCharacters.append(originInputData[index])
+//        }
+//        return nameCharacters
+//    }
+}
+
+extension Detector {
+    func createUsefulValueArray(range index: [Int], this word: [Character]) -> [Character] {
+        var usefulValue = [Character]()
+        for element in word {
+            usefulValue.append(element)
         }
-        return nameCharacters
+        return usefulValue
     }
 }
