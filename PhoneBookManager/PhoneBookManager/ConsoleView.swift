@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ConsoleView {
+enum ConsoleView {
     static func userInput() -> String {
         return readLine() ?? ""
     }
