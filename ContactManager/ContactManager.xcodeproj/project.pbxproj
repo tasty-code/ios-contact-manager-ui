@@ -72,9 +72,9 @@
 			isa = PBXGroup;
 			children = (
 				F042BC122952CC5000722285 /* main.swift */,
-				F0A68C2E29556F1C00815CD6 /* Protocol */,
 				F0A68C2F29556F3D00815CD6 /* Model */,
 				F0A68C2B29556D6400815CD6 /* Storage */,
+				F0A68C2E29556F1C00815CD6 /* Protocol */,
 			);
 			path = ContactManager;
 			sourceTree = "<group>";
@@ -99,9 +99,9 @@
 		F0A68C2F29556F3D00815CD6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F042BC192952DCFA00722285 /* ContactInfo.swift */,
 				F042BC1F29541E3200722285 /* Converter.swift */,
 				F042BC1D29541C2B00722285 /* Detector.swift */,
-				F042BC192952DCFA00722285 /* ContactInfo.swift */,
 				F0A68C2C29556D7D00815CD6 /* Checker.swift */,
 			);
 			path = Model;

@@ -37,19 +37,12 @@ class ContactManager {
             let ageWord = joinWords(first: firstSlashIndex, second: lastSlashIndex, this: removedBlankUserInputValues)
             let phoneNumberWord = joinWords(first: lastSlashIndex, second: inputValuesCount, this: removedBlankUserInputValues)
             
-            // 문자열 정규식 표현 검사
             let nameString = checker.checkCorrectWord(target: convertor.convertToString(nameWord))
             let ageString = checker.checkCorrectWord(target: convertor.convertToString(ageWord))
             let phoneNumberString = checker.checkCorrectWord(target: convertor.convertToString(phoneNumberWord))
-            
-            print(nameString, ageString, phoneNumberString)
-
-//            let extractedName = detector.extractNameCharacter(from: removedBlankUserInputValues, range: slashIndexArray)
-//            let convertedName = convertor.convertToString(extractedName)
         } while identifier == ""
     }
 }
-
 ContactManager().processStart()
 
 extension ContactManager: InputPossible {

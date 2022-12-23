@@ -32,15 +32,6 @@ class Detector {
         }
         return dividerIndexesArray
     }
-    
-//    func extractNameCharacter(from originInputData: [Character], range slashIndexArray: [Int]) -> [Character] {
-//        var nameCharacters = [Character]()
-//
-//        for index in 0..<slashIndexArray[0] {
-//            nameCharacters.append(originInputData[index])
-//        }
-//        return nameCharacters
-//    }
 }
 
 extension Detector {
