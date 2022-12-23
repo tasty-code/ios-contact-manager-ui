@@ -18,7 +18,7 @@ class ContactManager {
         repeat {
             print(PrintMessage.startComment)
             let receiveUserInputValues = getUserInputValues()
-            let convertedUserInputValues = convertToCharacter(this: receiveUserInputValues)
+            let convertedUserInputValues = convertor.convertToCharacter(this: receiveUserInputValues)
             
             let removedBlankUserInputValues = detector.excludeSpaceWord(convertedUserInputValues)
             let slashIndexArray = detector.extractIndexWithSlash(from: removedBlankUserInputValues)
@@ -26,22 +26,15 @@ class ContactManager {
             let convertedName = convertor.convertToString(extractedName)
         } while identifier == ""
     }
-    
+}
+
+ContactManager().processStart()
+
+extension ContactManager: InputPossible {
     func getUserInputValues() -> String {
         guard let userInput = readLine() else {
             return "F"
         }
         return userInput
     }
-    
-    func convertToCharacter(this sentence: String) -> [Character] {
-        var characterArray = [Character]()
-        
-        for index in sentence {
-            characterArray.append(index)
-        }
-        return characterArray
-    }
 }
-
-ContactManager().processStart()
