@@ -13,6 +13,8 @@ struct PhoneBookManager {
         let userInput = ConsoleView.userInput()
         
         do {
+            guard !userInput.isEmpty else { throw InputError.emptyInput }
+            
             let inputArray = try InputManager.splitBySlash(from: userInput)
             
             let name = InputManager.getName(from: inputArray)

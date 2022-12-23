@@ -30,7 +30,7 @@ enum InputManager {
     }
 
     static func getName(from array: [String]) -> String {
-        return array[0]
+        return array[0].removingWhiteSpaces()
     }
 
     static func getAge(from array: [String]) throws -> Int {
