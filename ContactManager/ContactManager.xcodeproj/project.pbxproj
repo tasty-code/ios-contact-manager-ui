@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B63007B2955637200730005 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B63007A2955637200730005 /* RegularExpression.swift */; };
 		F042BC132952CC5000722285 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC122952CC5000722285 /* main.swift */; };
 		F042BC1A2952DCFA00722285 /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC192952DCFA00722285 /* ContactInfo.swift */; };
 		F042BC1C2952DD1700722285 /* PrintMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1B2952DD1700722285 /* PrintMessage.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B63007A2955637200730005 /* RegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
 		F042BC0F2952CC5000722285 /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		F042BC122952CC5000722285 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F042BC192952DCFA00722285 /* ContactInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				F042BC1D29541C2B00722285 /* Detector.swift */,
 				F042BC1B2952DD1700722285 /* PrintMessage.swift */,
 				F042BC192952DCFA00722285 /* ContactInfo.swift */,
+				5B63007A2955637200730005 /* RegularExpression.swift */,
 			);
 			path = ContactManager;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 				F042BC1C2952DD1700722285 /* PrintMessage.swift in Sources */,
 				F042BC132952CC5000722285 /* main.swift in Sources */,
 				F042BC1E29541C2B00722285 /* Detector.swift in Sources */,
+				5B63007B2955637200730005 /* RegularExpression.swift in Sources */,
 				F042BC2029541E3200722285 /* Converter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
