@@ -10,26 +10,18 @@ import Foundation
 struct PhoneBookManager {
     func run() {
         ConsoleView.printInputMessage()
-
         let userInput = ConsoleView.userInput()
-
-        let trimmedInput = userInput.removingWhiteSpaces()
-        let inputArray = trimmedInput.splitBySlash()
-
-        guard inputArray.count == 3 else {
-            return InputError.invalidInput.printConsole()
-        }
-
+        
         do {
+            let inputArray = try InputManager.splitBySlash(from: userInput)
+            
             let name = InputManager.getName(from: inputArray)
             let age = try InputManager.getAge(from: inputArray)
             let phoneNumber = try InputManager.getPhoneNumber(from: inputArray)
 
             ConsoleView.printInitialInputInfo(name: name, age: age, phoneNumber: phoneNumber)
-        } catch let error as InputError {
-            error.printConsole()
         } catch {
-
+            print(error.localizedDescription)
         }
     }
 }

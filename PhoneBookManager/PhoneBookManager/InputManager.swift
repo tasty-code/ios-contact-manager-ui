@@ -8,12 +8,25 @@
 import Foundation
 
 enum InputManager {
-    static func removeWhiteSpaces(from input: String) -> String {
-        return input.filter { $0 != " " }
-    }
-
-    static func splitBySlash(from input: String) -> [String] {
-        return input.split(separator: "/").map { String($0) }
+    static func splitBySlash(from input: String) throws -> [String] {
+        func checkFormat(for inputArray: [String]) -> Bool {
+            return inputArray.count == 3
+                && inputArray[0].hasWhiteSpaceAtStartOrEnd() == false
+                && inputArray[1].hasWhiteSpace() == false
+                && inputArray[2].hasWhiteSpace() == false
+        }
+        
+        var splitedInput = input.split(separator: " / ").map { String($0) }
+        if checkFormat(for: splitedInput) {
+            return splitedInput
+        }
+        
+        splitedInput = input.split(separator: "/").map { String($0) }
+        if checkFormat(for: splitedInput) {
+            return splitedInput
+        }
+        
+        throw InputError.invalidInput
     }
 
     static func getName(from array: [String]) -> String {
