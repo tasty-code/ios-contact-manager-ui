@@ -15,6 +15,6 @@ enum PrintMessage: String, CustomStringConvertible {
     case nothingUserInput = "아무것도 입력되지 않았습니다. 입력 형식을 확인해주세요."
     
     var description: String {
-        return "\(self.rawValue)"
+        return self.rawValue
     }
 }
