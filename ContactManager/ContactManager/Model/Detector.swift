@@ -32,13 +32,3 @@ class Detector {
         return dividerIndexesArray
     }
 }
-
-extension Detector {
-    func createUsefulValueArray(range index: [Int], this word: [Character]) -> [Character] {
-        var usefulValue = [Character]()
-        for element in word {
-            usefulValue.append(element)
-        }
-        return usefulValue
-    }
-}
