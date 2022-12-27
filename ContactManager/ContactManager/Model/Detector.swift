@@ -24,7 +24,6 @@ class Detector {
         var dividerIndexesArray = [Int]()
         
         for element in originInputData {
-            
             if element == "/" {
                 dividerIndexesArray.append(indexCounter)
             }
