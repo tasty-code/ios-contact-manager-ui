@@ -7,4 +7,4 @@
 
 import Foundation
 
-ContactManager().processStart()
+ContactManager().startProcess()

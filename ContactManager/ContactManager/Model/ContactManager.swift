@@ -57,10 +57,11 @@ extension ContactManager {
     func joinWords(first index1: Int, second index2: Int, this word: [Character]) -> [Character] {
         var usefulValue = [Character]()
         for index in index1..<index2 {
-            usefulValue.append(word[index])
-            if word[index] != "/" {
-                break
+            let tempStorage = word[index]
+            if tempStorage == "/" {
+                continue
             }
+            usefulValue.append(tempStorage)
         }
         return usefulValue
     }
