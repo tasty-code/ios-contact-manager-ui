@@ -15,9 +15,9 @@ enum InputManager {
     static func parse(_ input: String) throws -> [String] {
         func isValidFormat(_ inputArray: [String]) -> Bool {
             return inputArray.count == 3
-            && inputArray[safe: 0]?.hasWhiteSpaceAtStartOrEnd() == false
-            && inputArray[safe: 1]?.hasWhiteSpace() == false
-            && inputArray[safe: 2]?.hasWhiteSpace() == false
+                && inputArray[safe: 0]?.hasWhiteSpaceAtStartOrEnd() == false
+                && inputArray[safe: 1]?.hasWhiteSpace() == false
+                && inputArray[safe: 2]?.hasWhiteSpace() == false
         }
         
         var splitedInput = input.components(separatedBy: " / ")
@@ -43,8 +43,7 @@ enum InputManager {
     
     static func getAge(from array: [String]) throws -> Int {
         guard let safeValue = array[safe: 1],
-              let age = Int(safeValue),
-              0..<1000 ~= age else {
+              let age = Int(safeValue), 0..<1000 ~= age else {
             throw InputError.invalidAge
         }
         

@@ -9,21 +9,6 @@ import Foundation
 
 struct PhoneBookManager {
     func run() {
-        OutputManager.printInputMessage()
-        let userInput = InputManager.userInput()
         
-        do {
-            guard !userInput.isEmpty else { throw InputError.emptyInput }
-            
-            let inputArray = try InputManager.parse(userInput)
-            
-            let name = try InputManager.getName(from: inputArray)
-            let age = try InputManager.getAge(from: inputArray)
-            let phoneNumber = try InputManager.getPhoneNumber(from: inputArray)
-
-            OutputManager.printInitialInputInfo(name: name, age: age, phoneNumber: phoneNumber)
-        } catch {
-            print(error.localizedDescription)
-        }
     }
 }

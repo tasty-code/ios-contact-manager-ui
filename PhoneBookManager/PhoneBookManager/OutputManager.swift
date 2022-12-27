@@ -8,8 +8,6 @@
 import Foundation
 
 enum OutputManager {
-
-
     static func printInputMessage() {
         print("연락처 정보를 입력해주세요 : ", terminator: "")
     }
