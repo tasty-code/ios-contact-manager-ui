@@ -8,5 +8,5 @@
 import Foundation
 
 protocol InputPossible {
-    func getUserInputValues() -> String
+    func userInputValue() -> String
 }

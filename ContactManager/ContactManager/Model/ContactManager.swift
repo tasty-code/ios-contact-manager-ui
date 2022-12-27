@@ -18,7 +18,7 @@ final class ContactManager {
         
         repeat {
             print(PrintMessage.startComment)
-            let receiveUserInputValues = getUserInputValues()
+            let receiveUserInputValues = userInputValue()
             let convertedUserInputValues = convertor.convertToCharacter(this: receiveUserInputValues)
             
             let removedBlankUserInputValues = detector.excludeSpaceWord(convertedUserInputValues)
@@ -45,7 +45,7 @@ final class ContactManager {
 }
 
 extension ContactManager: InputPossible {
-    func getUserInputValues() -> String {
+    func userInputValue() -> String {
         guard let userInput = readLine() else {
             return "F"
         }
