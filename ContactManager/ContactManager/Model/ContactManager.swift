@@ -13,7 +13,7 @@ final class ContactManager {
     let convertor = Converter()
     let checker = Checker()
     
-    func processStart() {
+    func startProcess() {
         var identifier = ""
         
         repeat {
