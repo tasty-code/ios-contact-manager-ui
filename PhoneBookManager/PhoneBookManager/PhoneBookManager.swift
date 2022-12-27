@@ -17,7 +17,7 @@ struct PhoneBookManager {
             
             let inputArray = try InputManager.parse(userInput)
             
-            let name = InputManager.getName(from: inputArray)
+            let name = try InputManager.getName(from: inputArray)
             let age = try InputManager.getAge(from: inputArray)
             let phoneNumber = try InputManager.getPhoneNumber(from: inputArray)
 
