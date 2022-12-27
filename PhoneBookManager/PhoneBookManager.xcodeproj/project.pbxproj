@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		B4CA5ACC2952ECA200D7C823 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACB2952ECA200D7C823 /* InputManager.swift */; };
 		B4CA5AD02953FC1400D7C823 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACF2953FC1400D7C823 /* InputError.swift */; };
-		B4CA5AD22954206200D7C823 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5AD12954206200D7C823 /* Extensions.swift */; };
+		B4CA5AD22954206200D7C823 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5AD12954206200D7C823 /* ExtensionString.swift */; };
 		E7975F752952E57200B37E3E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F742952E57200B37E3E /* main.swift */; };
 		E7975F7C2952E6F800B37E3E /* PhoneBookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F7B2952E6F800B37E3E /* PhoneBookManager.swift */; };
-		E7975F7E2952E7ED00B37E3E /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F7D2952E7ED00B37E3E /* ConsoleView.swift */; };
+		E7975F7E2952E7ED00B37E3E /* OutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F7D2952E7ED00B37E3E /* OutputManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,11 +30,11 @@
 /* Begin PBXFileReference section */
 		B4CA5ACB2952ECA200D7C823 /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
 		B4CA5ACF2953FC1400D7C823 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
-		B4CA5AD12954206200D7C823 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B4CA5AD12954206200D7C823 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		E7975F712952E57200B37E3E /* PhoneBookManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PhoneBookManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7975F742952E57200B37E3E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E7975F7B2952E6F800B37E3E /* PhoneBookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneBookManager.swift; sourceTree = "<group>"; };
-		E7975F7D2952E7ED00B37E3E /* ConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
+		E7975F7D2952E7ED00B37E3E /* OutputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,11 +68,11 @@
 			isa = PBXGroup;
 			children = (
 				E7975F7B2952E6F800B37E3E /* PhoneBookManager.swift */,
-				E7975F7D2952E7ED00B37E3E /* ConsoleView.swift */,
+				E7975F7D2952E7ED00B37E3E /* OutputManager.swift */,
 				B4CA5ACB2952ECA200D7C823 /* InputManager.swift */,
 				B4CA5ACF2953FC1400D7C823 /* InputError.swift */,
+				B4CA5AD12954206200D7C823 /* ExtensionString.swift */,
 				E7975F742952E57200B37E3E /* main.swift */,
-				B4CA5AD12954206200D7C823 /* Extensions.swift */,
 			);
 			path = PhoneBookManager;
 			sourceTree = "<group>";
@@ -136,10 +136,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7975F752952E57200B37E3E /* main.swift in Sources */,
-				B4CA5AD22954206200D7C823 /* Extensions.swift in Sources */,
+				B4CA5AD22954206200D7C823 /* ExtensionString.swift in Sources */,
 				B4CA5ACC2952ECA200D7C823 /* InputManager.swift in Sources */,
 				B4CA5AD02953FC1400D7C823 /* InputError.swift in Sources */,
-				E7975F7E2952E7ED00B37E3E /* ConsoleView.swift in Sources */,
+				E7975F7E2952E7ED00B37E3E /* OutputManager.swift in Sources */,
 				E7975F7C2952E6F800B37E3E /* PhoneBookManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,7 +197,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -251,7 +251,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -264,7 +264,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -274,7 +274,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};

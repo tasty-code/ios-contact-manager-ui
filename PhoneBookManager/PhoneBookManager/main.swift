@@ -7,5 +7,5 @@
 
 import Foundation
 
-let pbManager = PhoneBookManager()
-pbManager.run()
+let phoneBookManager = PhoneBookManager()
+phoneBookManager.run()

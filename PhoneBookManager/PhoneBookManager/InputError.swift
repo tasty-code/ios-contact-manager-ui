@@ -1,5 +1,5 @@
 //
-//  ErrorMessage.swift
+//  InputError.swift
 //  PhoneBookManager
 //
 //  Created by Mason Kim on 2022/12/22.

@@ -1,5 +1,5 @@
 //
-//  Extensions.swift
+//  ExtensionString.swift
 //  PhoneBookManager
 //
 //  Created by Mason Kim on 2022/12/22.
@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    func removingWhiteSpaces() -> String {
+    func removeWhiteSpaces() -> String {
         return self.filter { $0 != " " }
     }
     
