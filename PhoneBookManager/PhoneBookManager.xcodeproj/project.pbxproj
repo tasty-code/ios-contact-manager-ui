@@ -10,6 +10,7 @@
 		B4CA5ACC2952ECA200D7C823 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACB2952ECA200D7C823 /* InputManager.swift */; };
 		B4CA5AD02953FC1400D7C823 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACF2953FC1400D7C823 /* InputError.swift */; };
 		B4CA5AD22954206200D7C823 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5AD12954206200D7C823 /* ExtensionString.swift */; };
+		B4F19BF0295BFD6D0021CB9E /* UserMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F19BEF295BFD6D0021CB9E /* UserMenu.swift */; };
 		E73AC77A295AB04800054805 /* ExtensionArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73AC779295AB04700054805 /* ExtensionArray.swift */; };
 		E7975F752952E57200B37E3E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F742952E57200B37E3E /* main.swift */; };
 		E7975F7E2952E7ED00B37E3E /* OutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F7D2952E7ED00B37E3E /* OutputManager.swift */; };
@@ -32,6 +33,7 @@
 		B4CA5ACB2952ECA200D7C823 /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
 		B4CA5ACF2953FC1400D7C823 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		B4CA5AD12954206200D7C823 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
+		B4F19BEF295BFD6D0021CB9E /* UserMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenu.swift; sourceTree = "<group>"; };
 		E73AC779295AB04700054805 /* ExtensionArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionArray.swift; sourceTree = "<group>"; };
 		E7975F712952E57200B37E3E /* PhoneBookManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PhoneBookManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7975F742952E57200B37E3E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -53,8 +55,9 @@
 		B4F19BEC295BFC390021CB9E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B4CA5ACF2953FC1400D7C823 /* InputError.swift */,
 				E7B5D875295BE15D000C5E45 /* Contact.swift */,
+				B4CA5ACF2953FC1400D7C823 /* InputError.swift */,
+				B4F19BEF295BFD6D0021CB9E /* UserMenu.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			files = (
 				E7975F752952E57200B37E3E /* main.swift in Sources */,
 				B4CA5AD22954206200D7C823 /* ExtensionString.swift in Sources */,
+				B4F19BF0295BFD6D0021CB9E /* UserMenu.swift in Sources */,
 				B4CA5ACC2952ECA200D7C823 /* InputManager.swift in Sources */,
 				B4CA5AD02953FC1400D7C823 /* InputError.swift in Sources */,
 				E7975F7E2952E7ED00B37E3E /* OutputManager.swift in Sources */,

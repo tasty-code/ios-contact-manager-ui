@@ -8,6 +8,7 @@
 import Foundation
 
 enum InputError: LocalizedError {
+    case invalidMenu
     case emptyInput
     case invalidName
     case invalidInput
@@ -16,6 +17,8 @@ enum InputError: LocalizedError {
     
     var errorDescription: String? {
         switch self {
+        case .invalidMenu:
+            return "선택이 잘못되었습니다. 확인 후 다시 입력해주세요."
         case .emptyInput:
             return "아무것도 입력되지 않았습니다. 입력 형식을 확인해주세요."
         case .invalidName:

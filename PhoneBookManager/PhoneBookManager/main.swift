@@ -8,6 +8,29 @@
 import Foundation
 
 func execute() {
+    OutputManager.printMenuInputMessage()
+    let userMenuInput = InputManager.userInput()
+    
+    guard let userMenuInput = UserMenu(rawValue: userMenuInput) else {
+        print(InputError.invalidMenu.errorDescription ?? "")
+        execute()
+        return
+    }
+    
+    switch userMenuInput {
+    case .addContact:
+        addContact()
+        execute()
+    case .viewContacts:
+        execute()
+    case .searchContact:
+        execute()
+    case .quitProgram:
+        return
+    }
+}
+
+func addContact() {
     OutputManager.printInputMessage()
     let userInput = InputManager.userInput()
 
@@ -23,7 +46,6 @@ func execute() {
     } catch {
         print(error.localizedDescription)
     }
-
 }
 
 execute()
