@@ -17,7 +17,7 @@ final class ContactManager {
         var identifier: Bool
         
         repeat {
-            print(PrintMessage.startComment)
+            print(PrintMessage.startComment, terminator: "")
             let receiveUserInputValues = userInputValue()
             if receiveUserInputValues == "" {
                 print(PrintMessage.nothingUserInput)
