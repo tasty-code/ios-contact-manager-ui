@@ -33,6 +33,15 @@ enum InputManager {
         throw InputError.invalidInput
     }
     
+    static func getContact(from array: [String]) throws -> Contact {
+        let name = try getName(from: array)
+        let age = try getAge(from: array)
+        let phoneNumber = try getPhoneNumber(from: array)
+        
+        return Contact(name: name, age: age, phoneNumber: phoneNumber)
+        
+    }
+    
     static func getName(from array: [String]) throws -> String {
         guard let name = array[safe: 0] else {
             throw InputError.invalidName

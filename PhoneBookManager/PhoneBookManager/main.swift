@@ -17,12 +17,9 @@ func execute() {
         }
 
         let parsedInput = try InputManager.parse(userInput)
+        let contact = try InputManager.getContact(from: parsedInput)
 
-        let name = try InputManager.getName(from: parsedInput)
-        let age = try InputManager.getAge(from: parsedInput)
-        let phoneNumber = try InputManager.getPhoneNumber(from: parsedInput)
-
-        OutputManager.printInitialInputInfo(name: name, age: age, phoneNumber: phoneNumber)
+        print(contact.description)
     } catch {
         print(error.localizedDescription)
     }
