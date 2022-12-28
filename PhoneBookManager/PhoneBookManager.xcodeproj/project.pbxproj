@@ -50,6 +50,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B4F19BEC295BFC390021CB9E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B4CA5ACF2953FC1400D7C823 /* InputError.swift */,
+				E7B5D875295BE15D000C5E45 /* Contact.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B4F19BED295BFC420021CB9E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B4CA5ACB2952ECA200D7C823 /* InputManager.swift */,
+				E7975F7D2952E7ED00B37E3E /* OutputManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		B4F19BEE295BFC4B0021CB9E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E73AC779295AB04700054805 /* ExtensionArray.swift */,
+				B4CA5AD12954206200D7C823 /* ExtensionString.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E7975F682952E57200B37E3E = {
 			isa = PBXGroup;
 			children = (
@@ -69,13 +96,10 @@
 		E7975F732952E57200B37E3E /* PhoneBookManager */ = {
 			isa = PBXGroup;
 			children = (
-				E7975F7D2952E7ED00B37E3E /* OutputManager.swift */,
-				B4CA5ACB2952ECA200D7C823 /* InputManager.swift */,
-				B4CA5ACF2953FC1400D7C823 /* InputError.swift */,
-				E73AC779295AB04700054805 /* ExtensionArray.swift */,
-				B4CA5AD12954206200D7C823 /* ExtensionString.swift */,
+				B4F19BEC295BFC390021CB9E /* Model */,
+				B4F19BED295BFC420021CB9E /* Manager */,
+				B4F19BEE295BFC4B0021CB9E /* Extensions */,
 				E7975F742952E57200B37E3E /* main.swift */,
-				E7B5D875295BE15D000C5E45 /* Contact.swift */,
 			);
 			path = PhoneBookManager;
 			sourceTree = "<group>";
