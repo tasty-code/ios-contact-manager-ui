@@ -30,13 +30,13 @@ enum PrintMessage: String, CustomStringConvertible {
 
     }
     
-    static func viewContact(list: [ContactInformation]) {
+    static func viewContact(list: Set<ContactInformation>) {
         list.forEach { element in
             print("- \(element.name) / \(element.age) / \(element.phoneNumber)")
         }
     }
     
-    static func searchContact(list: [ContactInformation], word: String) {
+    static func searchContact(list: Set<ContactInformation>, word: String) {
         let confirmContactArray = list.filter{$0.name == word}
         guard !confirmContactArray.isEmpty else {
             print("연락처에 \(word) 이(가) 없습니다.")

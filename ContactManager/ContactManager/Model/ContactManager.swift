@@ -8,7 +8,7 @@
 import Foundation
 
 final class ContactManager {
-    var contactInformationArray = [ContactInformation]()
+    var contactInformationArray: Set<ContactInformation> = []
     let detector = Detector()
     let convertor = Converter()
     let checker = Checker()
@@ -78,16 +78,16 @@ extension ContactManager: SystemMenuWorkable {
         guard let checkUserInputValues = checker.checkCorrectWord(target: splitedUserInputValues) else {
             return
         }
-        contactInformationArray.append(checkUserInputValues)
+        contactInformationArray.insert(checkUserInputValues)
         
         PrintMessage.validUserInput(value: checkUserInputValues)
     }
     
-    func viewContactList(value: [ContactInformation]) {
+    func viewContactList(value: Set<ContactInformation>) {
         PrintMessage.viewContact(list: value)
     }
     
-    func searchByName(value: [ContactInformation]) {
+    func searchByName(value: Set<ContactInformation>) {
         print(PrintMessage.requestToSearchName, terminator: "")
         let searchName = userInputValue()
         PrintMessage.searchContact(list: value, word: searchName)
