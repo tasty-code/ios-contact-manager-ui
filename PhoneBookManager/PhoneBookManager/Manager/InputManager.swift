@@ -47,7 +47,7 @@ enum InputManager {
             throw InputError.invalidName
         }
         
-        return name.removeWhiteSpaces()
+        return name.removingWhiteSpaces()
     }
     
     static func getAge(from array: [String]) throws -> Int {

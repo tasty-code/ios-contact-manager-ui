@@ -25,4 +25,8 @@ struct Contact: Hashable {
         self.age = age
         self.phoneNumber = phoneNumber
     }
+    
+    func isNameContaining(keyword: String) -> Bool {
+        return name.contains(keyword)
+    }
 }

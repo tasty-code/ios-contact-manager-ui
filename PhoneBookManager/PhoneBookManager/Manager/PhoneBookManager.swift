@@ -15,9 +15,9 @@ final class PhoneBookManager {
     
     func execute() {
         print(InfoMessage.menuInput, terminator: "")
-        let input = InputManager.userInput()
+        let userInput = InputManager.userInput()
         
-        guard let userMenuInput = UserMenu(rawValue: input) else {
+        guard let userMenuInput = UserMenu(rawValue: userInput) else {
             print(InputError.invalidMenu.errorDescription ?? "")
             execute()
             return
@@ -26,15 +26,15 @@ final class PhoneBookManager {
         switch userMenuInput {
         case .addContact:
             addContact()
-            execute()
         case .lookUpContacts:
             lookUpContacts()
-            execute()
         case .searchContact:
-            execute()
+            searchContact()
         case .quitProgram:
             return
         }
+
+        execute()
     }
 
     func addContact() {
@@ -68,6 +68,19 @@ final class PhoneBookManager {
         let sortedContacts = contacts.sorted { $0.name < $1.name }
         sortedContacts.forEach { print($0.description) }
     }
-
     
+    func searchContact() {
+        print(InfoMessage.searchContact, terminator: "")
+        let userInput = InputManager.userInput()
+        
+        let searchedContact = contacts.filter {
+            $0.isNameContaining(keyword: userInput)
+        }
+        
+        guard searchedContact.isEmpty == false else {
+            return print(InfoMessage.noSearchedContact(for: userInput))
+        }
+        
+        searchedContact.forEach { print($0.description) }
+    }
 }

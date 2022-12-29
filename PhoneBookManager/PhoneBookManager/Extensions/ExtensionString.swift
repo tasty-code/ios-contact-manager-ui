@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    func removeWhiteSpaces() -> String {
+    func removingWhiteSpaces() -> String {
         return self.filter { $0 != " " }
     }
     

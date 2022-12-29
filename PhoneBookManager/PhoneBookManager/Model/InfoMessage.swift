@@ -12,4 +12,9 @@ enum InfoMessage {
     static let addContact = "연락처 정보를 입력해주세요 : "
     static let contactAlreadyExists = "이미 존재하는 연락처입니다"
     static let emptyContact = "입력된 연락처가 없습니다."
+    static let searchContact = "연락처에서 찾을 이릅을 입력해주세요 : "
+    
+    static func noSearchedContact(for name: String) -> String {
+        return "연락처에 \(name) 이(가) 없습니다."
+    }
 }
