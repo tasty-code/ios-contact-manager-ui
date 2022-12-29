@@ -24,6 +24,7 @@ final class ContactManager {
                 identifier = addContact()
                 break
             case .viewContact:
+                identifier = viewContactList(value: contactInformationArray)
                 break
             case .searchContact:
                 break
@@ -80,6 +81,11 @@ extension ContactManager {
         
         let isCorrect = PrintMessage.validUserInput(value: checkUserInputValues)
         return isCorrect
+    }
+    
+    func viewContactList(value: [ContactInformation]) -> Bool {
+        PrintMessage.viewContact(list: value)
+        return true
     }
     
     func closeProgram() {
