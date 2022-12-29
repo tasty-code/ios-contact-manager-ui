@@ -7,45 +7,4 @@
 
 import Foundation
 
-func execute() {
-    OutputManager.printMenuInputMessage()
-    let userMenuInput = InputManager.userInput()
-    
-    guard let userMenuInput = UserMenu(rawValue: userMenuInput) else {
-        print(InputError.invalidMenu.errorDescription ?? "")
-        execute()
-        return
-    }
-    
-    switch userMenuInput {
-    case .addContact:
-        addContact()
-        execute()
-    case .viewContacts:
-        execute()
-    case .searchContact:
-        execute()
-    case .quitProgram:
-        return
-    }
-}
-
-func addContact() {
-    OutputManager.printInputMessage()
-    let userInput = InputManager.userInput()
-
-    do {
-        guard userInput.isEmpty == false else {
-            throw InputError.emptyInput
-        }
-
-        let parsedInput = try InputManager.parse(userInput)
-        let contact = try InputManager.getContact(from: parsedInput)
-
-        print(contact.description)
-    } catch {
-        print(error.localizedDescription)
-    }
-}
-
-execute()
+PhoneBookManager.shared.execute()
