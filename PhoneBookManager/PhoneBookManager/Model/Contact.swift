@@ -8,11 +8,15 @@
 import Foundation
 
 struct Contact: Hashable {
-    private var name: String
+    private(set) var name: String
     private var age: Int
     private var phoneNumber: String
     
     var description: String {
+        return "- \(name) / \(age) / \(phoneNumber)"
+    }
+    
+    var descriptionForAddContact: String {
         return "입력한 정보는 \(age)세 \(name)(\(phoneNumber))입니다."
     }
     

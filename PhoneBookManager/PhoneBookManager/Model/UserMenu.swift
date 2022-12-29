@@ -9,7 +9,7 @@ import Foundation
 
 enum UserMenu: String {
     case addContact = "1"
-    case viewContacts = "2"
+    case lookUpContacts = "2"
     case searchContact = "3"
     case quitProgram = "x"
 }

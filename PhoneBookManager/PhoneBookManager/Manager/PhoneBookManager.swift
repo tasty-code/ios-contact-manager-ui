@@ -9,15 +9,15 @@ import Foundation
 
 final class PhoneBookManager {
     static let shared = PhoneBookManager()
-    private init() {}
-    
     private var contacts: Set<Contact> = []
+    
+    private init() { }
     
     func execute() {
         print(InfoMessage.menuInput, terminator: "")
-        let userMenuInput = InputManager.userInput()
+        let input = InputManager.userInput()
         
-        guard let userMenuInput = UserMenu(rawValue: userMenuInput) else {
+        guard let userMenuInput = UserMenu(rawValue: input) else {
             print(InputError.invalidMenu.errorDescription ?? "")
             execute()
             return
@@ -27,7 +27,8 @@ final class PhoneBookManager {
         case .addContact:
             addContact()
             execute()
-        case .viewContacts:
+        case .lookUpContacts:
+            lookUpContacts()
             execute()
         case .searchContact:
             execute()
@@ -50,14 +51,18 @@ final class PhoneBookManager {
             
             let isInserted = contacts.insert(contact).inserted
             if isInserted {
-                print(contact.description)
+                print(contact.descriptionForAddContact)
             } else {
                 print(InfoMessage.contactAlreadyExists)
             }
-
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    func lookUpContacts() {
+        let sortedContacts = contacts.sorted { $0.name < $1.name }
+        sortedContacts.forEach { print($0.description) }
     }
 
     
