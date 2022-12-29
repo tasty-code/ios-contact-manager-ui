@@ -10,10 +10,3 @@ import Foundation
 protocol InputPossible {
     func userInputValue() -> String
 }
-
-protocol SystemMenuWorkable {
-    func addContact()
-    func viewContactList(value: [ContactInformation])
-    func searchByName(value: [ContactInformation])
-    func exitProgram() -> Bool
-}
