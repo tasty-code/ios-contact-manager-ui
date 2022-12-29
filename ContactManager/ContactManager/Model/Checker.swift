@@ -8,18 +8,17 @@
 import Foundation
 
 class Checker {
-    func checkCorrectWord(target: [String]) -> [String] {
-        var isValidName: Bool = false
-        var isValidAge: Bool = false
-        var isValidPhoneNumber: Bool = false
-        var passOfRegulationExpressionArray = [String]()
+    func checkCorrectWord(target: [String]) -> ContactInformation? {
+        var nameValue: String = ""
+        var ageValue: String = ""
+        var phoneNumberValue: String = ""
         
         target.indices.forEach{
             switch $0 {
             case 0:
                 let isCorrectName = target[$0].range(of: RegularExpression.namePattern.rawValue, options: .regularExpression) != nil
                 if isCorrectName == true {
-                    isValidName = isCorrectName
+                    nameValue = target[0]          // 값 지정
                 } else {
                     print(PrintMessage.invalidName)
                 }
@@ -27,7 +26,7 @@ class Checker {
             case 1:
                 let isCorrectAge = target[$0].range(of: RegularExpression.agePattern.rawValue, options: .regularExpression) != nil
                 if isCorrectAge == true {
-                    isValidAge = isCorrectAge
+                    ageValue = target[1]
                 } else {
                     print(PrintMessage.invalidAge)
                 }
@@ -35,7 +34,7 @@ class Checker {
             case 2:
                 let isCorrectPhoneNumber = target[$0].range(of: RegularExpression.phoneNumberPattern.rawValue, options: .regularExpression) != nil
                 if isCorrectPhoneNumber == true {
-                    isValidPhoneNumber = isCorrectPhoneNumber
+                    phoneNumberValue = target[2]
                 } else {
                     print(PrintMessage.invalidPhoneNumber)
                 }
@@ -45,9 +44,10 @@ class Checker {
             }
         }
         
-        if isValidName == true && isValidAge == true && isValidPhoneNumber == true {
-            passOfRegulationExpressionArray = target
+        guard nameValue != "" && ageValue != "" && phoneNumberValue != "" else {
+            return nil
         }
-        return passOfRegulationExpressionArray
+        
+        return ContactInformation(name: nameValue, age: ageValue, phoneNumber: phoneNumberValue)
     }
 }
