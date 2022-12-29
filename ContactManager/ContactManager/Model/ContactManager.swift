@@ -62,7 +62,7 @@ extension ContactManager {
     }
 }
 
-extension ContactManager {
+extension ContactManager: SystemMenuWorkable {
     func addContact() {
         print(PrintMessage.requestContactInformation, terminator: "")
         let receiveUserInputValues = userInputValue()
@@ -93,7 +93,7 @@ extension ContactManager {
         PrintMessage.searchContact(list: value, word: searchName)
     }
     
-    func exitProgram() -> Bool{
+    func exitProgram() -> Bool {
         print(PrintMessage.exitProgram)
         return false
     }
