@@ -21,16 +21,17 @@ final class ContactManager {
             let receiveUserInputValues = userInputValue()
             switch MenuStart(rawValue: receiveUserInputValues) {
             case .addContact:
-                identifier = addContact()
+                addContact()
                 break
             case .viewContact:
-                identifier = viewContactList(value: contactInformationArray)
+                viewContactList(value: contactInformationArray)
                 break
             case .searchContact:
-                identifier = searchByName(value: contactInformationArray)
+                searchByName(value: contactInformationArray)
                 break
-            case .close:
-                closeProgram()
+            case .exit:
+                identifier = exitProgram()
+                exit(1)
                 break
             default:
                 print(PrintMessage.choiceWrorngMenu)
@@ -53,7 +54,7 @@ extension ContactManager {
         case addContact = "1"
         case viewContact = "2"
         case searchContact = "3"
-        case close = "x"
+        case exit = "x"
         
         var description: String {
             return self.rawValue
@@ -62,12 +63,12 @@ extension ContactManager {
 }
 
 extension ContactManager {
-    func addContact() -> Bool {
-        print(PrintMessage.requestContactInfo, terminator: "")
+    func addContact() {
+        print(PrintMessage.requestContactInformation, terminator: "")
         let receiveUserInputValues = userInputValue()
         if receiveUserInputValues == "" {
             print(PrintMessage.nothingUserInput)
-            return false
+            return
         }
         let convertedUserInputValues = convertor.convertToCharacter(this: receiveUserInputValues)
         let removedBlankUserInputValues = detector.excludeSpaceWord(convertedUserInputValues)
@@ -75,29 +76,25 @@ extension ContactManager {
         let splitedUserInputValues = combinedUserInputValues.split(separator: "/").map{ String($0) }
         
         guard let checkUserInputValues = checker.checkCorrectWord(target: splitedUserInputValues) else {
-            return false
+            return
         }
         contactInformationArray.append(checkUserInputValues)
-        print(contactInformationArray)
         
-        let isCorrect = PrintMessage.validUserInput(value: checkUserInputValues)
-        return isCorrect
+        PrintMessage.validUserInput(value: checkUserInputValues)
     }
     
-    func viewContactList(value: [ContactInformation]) -> Bool {
+    func viewContactList(value: [ContactInformation]) {
         PrintMessage.viewContact(list: value)
-        return true
     }
     
-    func searchByName(value: [ContactInformation]) -> Bool {
-        print(PrintMessage.searchContactFromName)
+    func searchByName(value: [ContactInformation]) {
+        print(PrintMessage.requestToSearchName, terminator: "")
         let searchName = userInputValue()
         PrintMessage.searchContact(list: value, word: searchName)
-        return true
     }
     
-    func closeProgram() {
+    func exitProgram() -> Bool{
         print(PrintMessage.exitProgram)
-        exit(1)
+        return false
     }
 }
