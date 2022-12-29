@@ -30,6 +30,12 @@ enum PrintMessage: String, CustomStringConvertible {
         return true
     }
     
+    static func viewContact(list: [ContactInformation]) {
+        list.forEach { element in
+            print("- \(element.name) / \(element.age) / \(element.phoneNumber)")
+        }
+    }
+    
     var description: String {
         return self.rawValue
     }
