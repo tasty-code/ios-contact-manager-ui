@@ -27,6 +27,7 @@ final class ContactManager {
                 identifier = viewContactList(value: contactInformationArray)
                 break
             case .searchContact:
+                identifier = searchByName(value: contactInformationArray)
                 break
             case .close:
                 closeProgram()
@@ -85,6 +86,13 @@ extension ContactManager {
     
     func viewContactList(value: [ContactInformation]) -> Bool {
         PrintMessage.viewContact(list: value)
+        return true
+    }
+    
+    func searchByName(value: [ContactInformation]) -> Bool {
+        print(PrintMessage.searchContactFromName)
+        let searchName = userInputValue()
+        PrintMessage.searchContact(list: value, word: searchName)
         return true
     }
     
