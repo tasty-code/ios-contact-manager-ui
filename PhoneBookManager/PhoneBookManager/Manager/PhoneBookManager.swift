@@ -61,6 +61,10 @@ final class PhoneBookManager {
     }
     
     func lookUpContacts() {
+        guard contacts.isEmpty == false else {
+            return print(InfoMessage.emptyContact)
+        }
+        
         let sortedContacts = contacts.sorted { $0.name < $1.name }
         sortedContacts.forEach { print($0.description) }
     }
