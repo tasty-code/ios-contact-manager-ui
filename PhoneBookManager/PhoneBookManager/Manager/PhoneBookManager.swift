@@ -13,30 +13,6 @@ final class PhoneBookManager {
     
     private init() { }
     
-    func execute() {
-        print(InfoMessage.menuInput, terminator: "")
-        let userInput = InputManager.userInput()
-        
-        guard let userMenuInput = UserMenu(rawValue: userInput) else {
-            print(InputError.invalidMenu.errorDescription ?? "")
-            execute()
-            return
-        }
-        
-        switch userMenuInput {
-        case .addContact:
-            addContact()
-        case .lookUpContacts:
-            lookUpContacts()
-        case .searchContact:
-            searchContact()
-        case .quitProgram:
-            return
-        }
-
-        execute()
-    }
-
     func addContact() {
         print(InfoMessage.addContact, terminator: "")
         let userInput = InputManager.userInput()

@@ -68,8 +68,8 @@
 		B4F19BED295BFC420021CB9E /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				B4CA5ACB2952ECA200D7C823 /* InputManager.swift */,
 				E78BD333295D262B00A27589 /* PhoneBookManager.swift */,
+				B4CA5ACB2952ECA200D7C823 /* InputManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";

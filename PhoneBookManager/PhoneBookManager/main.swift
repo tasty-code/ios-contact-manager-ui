@@ -7,4 +7,27 @@
 
 import Foundation
 
-PhoneBookManager.shared.execute()
+func execute() {
+    print(InfoMessage.menuInput, terminator: "")
+    let userInput = InputManager.userInput()
+    
+    guard let userMenuInput = UserMenu(rawValue: userInput) else {
+        print(InputError.invalidMenu.errorDescription ?? "")
+        execute()
+        return
+    }
+    
+    switch userMenuInput {
+    case .addContact:
+        PhoneBookManager.shared.addContact()
+    case .lookUpContacts:
+        PhoneBookManager.shared.lookUpContacts()
+    case .searchContact:
+        PhoneBookManager.shared.searchContact()
+    case .quitProgram:
+        return
+    }
+    execute()
+}
+
+execute()
