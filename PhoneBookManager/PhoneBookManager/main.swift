@@ -20,8 +20,8 @@ func execute() {
     switch userMenuInput {
     case .addContact:
         PhoneBookManager.shared.addContact()
-    case .lookUpContacts:
-        PhoneBookManager.shared.lookUpContacts()
+    case .displayContacts:
+        PhoneBookManager.shared.displayContacts()
     case .searchContact:
         PhoneBookManager.shared.searchContact()
     case .quitProgram:

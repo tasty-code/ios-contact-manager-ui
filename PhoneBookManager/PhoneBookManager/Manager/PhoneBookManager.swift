@@ -36,7 +36,7 @@ final class PhoneBookManager {
         }
     }
     
-    func lookUpContacts() {
+    func displayContacts() {
         guard contacts.isEmpty == false else {
             return print(InfoMessage.emptyContact)
         }
