@@ -1,6 +1,6 @@
 //
 //  InputError.swift
-//  PhoneBookManager
+//  ContactManager
 //
 //  Created by Mason Kim on 2022/12/22.
 //

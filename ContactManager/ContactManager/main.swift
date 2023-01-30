@@ -1,6 +1,6 @@
 //
 //  main.swift
-//  PhoneBookManager
+//  ContactManager
 //
 //  Created by 신동오 on 2022/12/21.
 //
@@ -21,7 +21,7 @@ func execute() {
     case .addContact:
         addContact()
     case .displayContacts:
-        PhoneBookManager.shared.displayContacts()
+        ContactManager.shared.displayContacts()
     case .searchContact:
         searchContact()
     case .quitProgram:
@@ -41,7 +41,7 @@ func execute() {
             let parsedInput = try InputManager.parse(userInput)
             let contact = try InputManager.contact(from: parsedInput)
 
-            PhoneBookManager.shared.add(contact: contact)
+            ContactManager.shared.add(contact: contact)
         } catch {
             print(error.localizedDescription)
         }
@@ -51,7 +51,7 @@ func execute() {
         print(InfoMessage.requestSearchContact, terminator: "")
         let userInput = InputManager.userInput()
 
-        let searchedContact = PhoneBookManager.shared.searchContact(by: userInput)
+        let searchedContact = ContactManager.shared.searchContact(by: userInput)
         searchedContact?.forEach { print($0.description) }
     }
 }

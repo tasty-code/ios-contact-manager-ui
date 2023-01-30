@@ -22,11 +22,11 @@
 		E76B5B6A2987A60A002E2C99 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACF2953FC1400D7C823 /* InputError.swift */; };
 		E76B5B6B2987A60D002E2C99 /* UserMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F19BEF295BFD6D0021CB9E /* UserMenu.swift */; };
 		E76B5B6C2987A60F002E2C99 /* InfoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78BD335295D27A200A27589 /* InfoMessage.swift */; };
-		E76B5B6D2987A611002E2C99 /* PhoneBookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78BD333295D262B00A27589 /* PhoneBookManager.swift */; };
+		E76B5B6D2987A611002E2C99 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78BD333295D262B00A27589 /* ContactManager.swift */; };
 		E76B5B6E2987A614002E2C99 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACB2952ECA200D7C823 /* InputManager.swift */; };
 		E76B5B6F2987A619002E2C99 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5AD12954206200D7C823 /* ExtensionString.swift */; };
 		E76B5B702987A61A002E2C99 /* ExtensionArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73AC779295AB04700054805 /* ExtensionArray.swift */; };
-		E78BD334295D262B00A27589 /* PhoneBookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78BD333295D262B00A27589 /* PhoneBookManager.swift */; };
+		E78BD334295D262B00A27589 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78BD333295D262B00A27589 /* ContactManager.swift */; };
 		E78BD336295D27A200A27589 /* InfoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78BD335295D27A200A27589 /* InfoMessage.swift */; };
 		E7975F752952E57200B37E3E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F742952E57200B37E3E /* main.swift */; };
 		E7B5D876295BE15D000C5E45 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B5D875295BE15D000C5E45 /* Contact.swift */; };
@@ -58,9 +58,9 @@
 		E76B5B602987A5EF002E2C99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E76B5B632987A5EF002E2C99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E76B5B652987A5EF002E2C99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E78BD333295D262B00A27589 /* PhoneBookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneBookManager.swift; sourceTree = "<group>"; };
+		E78BD333295D262B00A27589 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		E78BD335295D27A200A27589 /* InfoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessage.swift; sourceTree = "<group>"; };
-		E7975F712952E57200B37E3E /* PhoneBookManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PhoneBookManager; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7975F712952E57200B37E3E /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7975F742952E57200B37E3E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E7B5D875295BE15D000C5E45 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,7 +97,7 @@
 		B4F19BED295BFC420021CB9E /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				E78BD333295D262B00A27589 /* PhoneBookManager.swift */,
+				E78BD333295D262B00A27589 /* ContactManager.swift */,
 				B4CA5ACB2952ECA200D7C823 /* InputManager.swift */,
 			);
 			path = Manager;
@@ -129,7 +129,7 @@
 		E7975F682952E57200B37E3E = {
 			isa = PBXGroup;
 			children = (
-				E7975F732952E57200B37E3E /* PhoneBookManager */,
+				E7975F732952E57200B37E3E /* ContactManager */,
 				E76B5B562987A5ED002E2C99 /* ContactManagerUI */,
 				E7975F722952E57200B37E3E /* Products */,
 			);
@@ -138,13 +138,13 @@
 		E7975F722952E57200B37E3E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E7975F712952E57200B37E3E /* PhoneBookManager */,
+				E7975F712952E57200B37E3E /* ContactManager */,
 				E76B5B552987A5ED002E2C99 /* ContactManagerUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E7975F732952E57200B37E3E /* PhoneBookManager */ = {
+		E7975F732952E57200B37E3E /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
 				B4F19BEC295BFC390021CB9E /* Model */,
@@ -152,7 +152,7 @@
 				B4F19BEE295BFC4B0021CB9E /* Extensions */,
 				E7975F742952E57200B37E3E /* main.swift */,
 			);
-			path = PhoneBookManager;
+			path = ContactManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,9 +175,9 @@
 			productReference = E76B5B552987A5ED002E2C99 /* ContactManagerUI.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E7975F702952E57200B37E3E /* PhoneBookManager */ = {
+		E7975F702952E57200B37E3E /* ContactManager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E7975F782952E57200B37E3E /* Build configuration list for PBXNativeTarget "PhoneBookManager" */;
+			buildConfigurationList = E7975F782952E57200B37E3E /* Build configuration list for PBXNativeTarget "ContactManager" */;
 			buildPhases = (
 				E7975F6D2952E57200B37E3E /* Sources */,
 				E7975F6E2952E57200B37E3E /* Frameworks */,
@@ -187,9 +187,9 @@
 			);
 			dependencies = (
 			);
-			name = PhoneBookManager;
+			name = ContactManager;
 			productName = PhoneBookManager;
-			productReference = E7975F712952E57200B37E3E /* PhoneBookManager */;
+			productReference = E7975F712952E57200B37E3E /* ContactManager */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -210,7 +210,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E7975F6C2952E57200B37E3E /* Build configuration list for PBXProject "PhoneBookManager" */;
+			buildConfigurationList = E7975F6C2952E57200B37E3E /* Build configuration list for PBXProject "ContactManager" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -223,7 +223,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E7975F702952E57200B37E3E /* PhoneBookManager */,
+				E7975F702952E57200B37E3E /* ContactManager */,
 				E76B5B542987A5ED002E2C99 /* ContactManagerUI */,
 			);
 		};
@@ -250,7 +250,7 @@
 				E76B5B6F2987A619002E2C99 /* ExtensionString.swift in Sources */,
 				E76B5B692987A607002E2C99 /* Contact.swift in Sources */,
 				E76B5B702987A61A002E2C99 /* ExtensionArray.swift in Sources */,
-				E76B5B6D2987A611002E2C99 /* PhoneBookManager.swift in Sources */,
+				E76B5B6D2987A611002E2C99 /* ContactManager.swift in Sources */,
 				E76B5B6C2987A60F002E2C99 /* InfoMessage.swift in Sources */,
 				E76B5B5C2987A5ED002E2C99 /* ViewController.swift in Sources */,
 				E76B5B582987A5ED002E2C99 /* AppDelegate.swift in Sources */,
@@ -267,7 +267,7 @@
 			files = (
 				E7975F752952E57200B37E3E /* main.swift in Sources */,
 				B4CA5AD22954206200D7C823 /* ExtensionString.swift in Sources */,
-				E78BD334295D262B00A27589 /* PhoneBookManager.swift in Sources */,
+				E78BD334295D262B00A27589 /* ContactManager.swift in Sources */,
 				B4F19BF0295BFD6D0021CB9E /* UserMenu.swift in Sources */,
 				B4CA5ACC2952ECA200D7C823 /* InputManager.swift in Sources */,
 				E78BD336295D27A200A27589 /* InfoMessage.swift in Sources */,
@@ -503,7 +503,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E7975F6C2952E57200B37E3E /* Build configuration list for PBXProject "PhoneBookManager" */ = {
+		E7975F6C2952E57200B37E3E /* Build configuration list for PBXProject "ContactManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E7975F762952E57200B37E3E /* Debug */,
@@ -512,7 +512,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E7975F782952E57200B37E3E /* Build configuration list for PBXNativeTarget "PhoneBookManager" */ = {
+		E7975F782952E57200B37E3E /* Build configuration list for PBXNativeTarget "ContactManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E7975F792952E57200B37E3E /* Debug */,

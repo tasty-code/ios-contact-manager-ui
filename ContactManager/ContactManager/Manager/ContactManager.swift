@@ -1,14 +1,14 @@
 //
-//  PhoneBookManager.swift
-//  PhoneBookManager
+//  ContactManager.swift
+//  ContactManager
 //
 //  Created by 신동오 on 2022/12/29.
 //
 
 import Foundation
 
-final class PhoneBookManager {
-    static let shared = PhoneBookManager()
+final class ContactManager {
+    static let shared = ContactManager()
     private var contacts: Set<Contact> = []
     
     private init() { }
