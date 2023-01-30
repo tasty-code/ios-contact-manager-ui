@@ -19,7 +19,7 @@ func execute() {
     
     switch userMenuInput {
     case .addContact:
-        PhoneBookManager.shared.addContact()
+        addContact()
     case .displayContacts:
         PhoneBookManager.shared.displayContacts()
     case .searchContact:
@@ -28,6 +28,23 @@ func execute() {
         return
     }
     execute()
+    
+    func addContact() {
+        print(InfoMessage.requestAddContact, terminator: "")
+        let userInput = InputManager.userInput()
+
+        do {
+            guard userInput.isEmpty == false else {
+                throw InputError.emptyInput
+            }
+
+            let parsedInput = try InputManager.parse(userInput)
+            let contact = try InputManager.contact(from: parsedInput)
+            PhoneBookManager.shared.add(contact: contact)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }
 
 execute()

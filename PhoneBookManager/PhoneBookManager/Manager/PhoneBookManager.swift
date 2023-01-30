@@ -13,26 +13,12 @@ final class PhoneBookManager {
     
     private init() { }
     
-    func addContact() {
-        print(InfoMessage.requestAddContact, terminator: "")
-        let userInput = InputManager.userInput()
-
-        do {
-            guard userInput.isEmpty == false else {
-                throw InputError.emptyInput
-            }
-
-            let parsedInput = try InputManager.parse(userInput)
-            let contact = try InputManager.contact(from: parsedInput)
-            
-            let isInserted = contacts.insert(contact).inserted
-            if isInserted {
-                print(contact.descriptionForAddContact)
-            } else {
-                print(InfoMessage.contactAlreadyExists)
-            }
-        } catch {
-            print(error.localizedDescription)
+    func add(contact: Contact) {
+        let isInserted = contacts.insert(contact).inserted
+        if isInserted {
+            print(contact.descriptionForAddContact)
+        } else {
+            print(InfoMessage.contactAlreadyExists)
         }
     }
     
