@@ -8,7 +8,7 @@
 import Foundation
 
 func execute() {
-    print(InfoMessage.menuInput, terminator: "")
+    print(InfoMessage.requestMenuInput, terminator: "")
     let userInput = InputManager.userInput()
     
     guard let userMenuInput = UserMenu(rawValue: userInput) else {
@@ -19,15 +19,41 @@ func execute() {
     
     switch userMenuInput {
     case .addContact:
-        PhoneBookManager.shared.addContact()
-    case .lookUpContacts:
-        PhoneBookManager.shared.lookUpContacts()
+        addContact()
+    case .displayContacts:
+        PhoneBookManager.shared.displayContacts()
     case .searchContact:
-        PhoneBookManager.shared.searchContact()
+        searchContact()
     case .quitProgram:
         return
     }
     execute()
+    
+    func addContact() {
+        print(InfoMessage.requestAddContact, terminator: "")
+        let userInput = InputManager.userInput()
+
+        do {
+            guard userInput.isEmpty == false else {
+                throw InputError.emptyInput
+            }
+
+            let parsedInput = try InputManager.parse(userInput)
+            let contact = try InputManager.contact(from: parsedInput)
+
+            PhoneBookManager.shared.add(contact: contact)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    func searchContact() {
+        print(InfoMessage.requestSearchContact, terminator: "")
+        let userInput = InputManager.userInput()
+
+        let searchedContact = PhoneBookManager.shared.searchContact(by: userInput)
+        searchedContact?.forEach { print($0.description) }
+    }
 }
 
 execute()

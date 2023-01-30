@@ -13,30 +13,16 @@ final class PhoneBookManager {
     
     private init() { }
     
-    func addContact() {
-        print(InfoMessage.addContact, terminator: "")
-        let userInput = InputManager.userInput()
-
-        do {
-            guard userInput.isEmpty == false else {
-                throw InputError.emptyInput
-            }
-
-            let parsedInput = try InputManager.parse(userInput)
-            let contact = try InputManager.getContact(from: parsedInput)
-            
-            let isInserted = contacts.insert(contact).inserted
-            if isInserted {
-                print(contact.descriptionForAddContact)
-            } else {
-                print(InfoMessage.contactAlreadyExists)
-            }
-        } catch {
-            print(error.localizedDescription)
+    func add(contact: Contact) {
+        let isInserted = contacts.insert(contact).inserted
+        if isInserted {
+            print(contact.descriptionForAddContact)
+        } else {
+            print(InfoMessage.contactAlreadyExists)
         }
     }
     
-    func lookUpContacts() {
+    func displayContacts() {
         guard contacts.isEmpty == false else {
             return print(InfoMessage.emptyContact)
         }
@@ -44,19 +30,17 @@ final class PhoneBookManager {
         let sortedContacts = contacts.sorted { $0.name < $1.name }
         sortedContacts.forEach { print($0.description) }
     }
-    
-    func searchContact() {
-        print(InfoMessage.searchContact, terminator: "")
-        let userInput = InputManager.userInput()
-        
+
+    func searchContact(by name: String) -> Set<Contact>? {
         let searchedContact = contacts.filter {
-            $0.isNameContaining(keyword: userInput)
+            $0.isNameContaining(keyword: name)
         }
-        
+
         guard searchedContact.isEmpty == false else {
-            return print(InfoMessage.noSearchedContact(for: userInput))
+            print(InfoMessage.noSearchedContact(for: name))
+            return nil
         }
-        
-        searchedContact.forEach { print($0.description) }
+
+        return searchedContact
     }
 }
