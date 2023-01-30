@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E0FC6A929875DEF00CF0DA1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6A829875DEF00CF0DA1 /* Menu.swift */; };
+		8E0FC6AB29875DFB00CF0DA1 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6AA29875DFB00CF0DA1 /* Messages.swift */; };
+		8E0FC6AD29875E0500CF0DA1 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6AC29875E0500CF0DA1 /* Errors.swift */; };
+		8E0FC6AF29875E1200CF0DA1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6AE29875E1200CF0DA1 /* Constants.swift */; };
+		8E0FC6B229875E2500CF0DA1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B129875E2500CF0DA1 /* Person.swift */; };
+		8E0FC6B529875E3E00CF0DA1 /* UserInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B429875E3E00CF0DA1 /* UserInputModel.swift */; };
+		8E0FC6B829875E5E00CF0DA1 /* ProgramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B729875E5E00CF0DA1 /* ProgramManager.swift */; };
+		8E0FC6BA2987600600CF0DA1 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B92987600600CF0DA1 /* Validator.swift */; };
+		8E0FC6BC2987601500CF0DA1 /* InputEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BB2987601500CF0DA1 /* InputEditor.swift */; };
+		8E0FC6BE2987602B00CF0DA1 /* OutputEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BD2987602B00CF0DA1 /* OutputEditor.swift */; };
+		8E0FC6C02987603A00CF0DA1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BF2987603A00CF0DA1 /* DataManager.swift */; };
 		F1C1CC1B29875D9800572F80 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C1CC1A29875D9800572F80 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +34,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8E0FC6A829875DEF00CF0DA1 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		8E0FC6AA29875DFB00CF0DA1 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		8E0FC6AC29875E0500CF0DA1 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		8E0FC6AE29875E1200CF0DA1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8E0FC6B129875E2500CF0DA1 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		8E0FC6B429875E3E00CF0DA1 /* UserInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputModel.swift; sourceTree = "<group>"; };
+		8E0FC6B729875E5E00CF0DA1 /* ProgramManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramManager.swift; sourceTree = "<group>"; };
+		8E0FC6B92987600600CF0DA1 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		8E0FC6BB2987601500CF0DA1 /* InputEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputEditor.swift; sourceTree = "<group>"; };
+		8E0FC6BD2987602B00CF0DA1 /* OutputEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputEditor.swift; sourceTree = "<group>"; };
+		8E0FC6BF2987603A00CF0DA1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F1C1CC1729875D9800572F80 /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C1CC1A29875D9800572F80 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -38,6 +60,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E0FC6A729875DE500CF0DA1 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				8E0FC6A829875DEF00CF0DA1 /* Menu.swift */,
+				8E0FC6AA29875DFB00CF0DA1 /* Messages.swift */,
+				8E0FC6AC29875E0500CF0DA1 /* Errors.swift */,
+				8E0FC6AE29875E1200CF0DA1 /* Constants.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		8E0FC6B029875E1C00CF0DA1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8E0FC6B129875E2500CF0DA1 /* Person.swift */,
+				8E0FC6B429875E3E00CF0DA1 /* UserInputModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8E0FC6B629875E4C00CF0DA1 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				8E0FC6B729875E5E00CF0DA1 /* ProgramManager.swift */,
+				8E0FC6B92987600600CF0DA1 /* Validator.swift */,
+				8E0FC6BB2987601500CF0DA1 /* InputEditor.swift */,
+				8E0FC6BD2987602B00CF0DA1 /* OutputEditor.swift */,
+				8E0FC6BF2987603A00CF0DA1 /* DataManager.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
 		F1C1CC0E29875D9800572F80 = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +111,9 @@
 		F1C1CC1929875D9800572F80 /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
+				8E0FC6A729875DE500CF0DA1 /* Enum */,
+				8E0FC6B029875E1C00CF0DA1 /* Model */,
+				8E0FC6B629875E4C00CF0DA1 /* Module */,
 				F1C1CC1A29875D9800572F80 /* main.swift */,
 			);
 			path = ContactManager;
@@ -120,6 +177,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E0FC6B529875E3E00CF0DA1 /* UserInputModel.swift in Sources */,
+				8E0FC6C02987603A00CF0DA1 /* DataManager.swift in Sources */,
+				8E0FC6BA2987600600CF0DA1 /* Validator.swift in Sources */,
+				8E0FC6B229875E2500CF0DA1 /* Person.swift in Sources */,
+				8E0FC6BC2987601500CF0DA1 /* InputEditor.swift in Sources */,
+				8E0FC6BE2987602B00CF0DA1 /* OutputEditor.swift in Sources */,
+				8E0FC6B829875E5E00CF0DA1 /* ProgramManager.swift in Sources */,
+				8E0FC6AF29875E1200CF0DA1 /* Constants.swift in Sources */,
+				8E0FC6AD29875E0500CF0DA1 /* Errors.swift in Sources */,
+				8E0FC6A929875DEF00CF0DA1 /* Menu.swift in Sources */,
+				8E0FC6AB29875DFB00CF0DA1 /* Messages.swift in Sources */,
 				F1C1CC1B29875D9800572F80 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,7 +312,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VZQ7AWT6Y5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -255,7 +323,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VZQ7AWT6Y5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

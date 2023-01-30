@@ -7,5 +7,9 @@
 
 import Foundation
 
-print("Hello, World!")
+func main() {
+    let programManager = ProgramManager()
+    programManager.runProgram()
+}
 
+main()
