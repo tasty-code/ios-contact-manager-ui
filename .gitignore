@@ -8,6 +8,8 @@
 ## User settings
 xcuserdata/
 
+*.DS_Store
+
 ## Xcode 8 and earlier
 *.xcscmblueprint
 *.xccheckout
