@@ -8,7 +8,7 @@
 import Foundation
 
 func execute() {
-    print(InfoMessage.menuInput, terminator: "")
+    print(InfoMessage.requestMenuInput, terminator: "")
     let userInput = InputManager.userInput()
     
     guard let userMenuInput = UserMenu(rawValue: userInput) else {

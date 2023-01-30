@@ -14,7 +14,7 @@ final class PhoneBookManager {
     private init() { }
     
     func addContact() {
-        print(InfoMessage.addContact, terminator: "")
+        print(InfoMessage.requestAddContact, terminator: "")
         let userInput = InputManager.userInput()
 
         do {
@@ -46,7 +46,7 @@ final class PhoneBookManager {
     }
     
     func searchContact() {
-        print(InfoMessage.searchContact, terminator: "")
+        print(InfoMessage.requestSearchContact, terminator: "")
         let userInput = InputManager.userInput()
         
         let searchedContact = contacts.filter {
