@@ -30,19 +30,17 @@ final class PhoneBookManager {
         let sortedContacts = contacts.sorted { $0.name < $1.name }
         sortedContacts.forEach { print($0.description) }
     }
-    
-    func searchContact() {
-        print(InfoMessage.requestSearchContact, terminator: "")
-        let userInput = InputManager.userInput()
-        
+
+    func searchContact(by name: String) -> Set<Contact>? {
         let searchedContact = contacts.filter {
-            $0.isNameContaining(keyword: userInput)
+            $0.isNameContaining(keyword: name)
         }
-        
+
         guard searchedContact.isEmpty == false else {
-            return print(InfoMessage.noSearchedContact(for: userInput))
+            print(InfoMessage.noSearchedContact(for: name))
+            return nil
         }
-        
-        searchedContact.forEach { print($0.description) }
+
+        return searchedContact
     }
 }

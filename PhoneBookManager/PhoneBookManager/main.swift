@@ -23,7 +23,7 @@ func execute() {
     case .displayContacts:
         PhoneBookManager.shared.displayContacts()
     case .searchContact:
-        PhoneBookManager.shared.searchContact()
+        searchContact()
     case .quitProgram:
         return
     }
@@ -40,10 +40,19 @@ func execute() {
 
             let parsedInput = try InputManager.parse(userInput)
             let contact = try InputManager.contact(from: parsedInput)
+
             PhoneBookManager.shared.add(contact: contact)
         } catch {
             print(error.localizedDescription)
         }
+    }
+
+    func searchContact() {
+        print(InfoMessage.requestSearchContact, terminator: "")
+        let userInput = InputManager.userInput()
+
+        let searchedContact = PhoneBookManager.shared.searchContact(by: userInput)
+        searchedContact?.forEach { print($0.description) }
     }
 }
 
