@@ -23,7 +23,7 @@ final class PhoneBookManager {
             }
 
             let parsedInput = try InputManager.parse(userInput)
-            let contact = try InputManager.getContact(from: parsedInput)
+            let contact = try InputManager.contact(from: parsedInput)
             
             let isInserted = contacts.insert(contact).inserted
             if isInserted {
