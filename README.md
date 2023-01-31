@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# ios-contact-manager-ui
-=======
 # ios-cantact-manager
-
 ----
 
 <a href ="#1-Step1---사용자 입력 수신 및 검증">Step1 - 사용자 입력 수신 및 검증</a>
@@ -106,4 +102,3 @@ ContactManager를 업데이트 하였으며 검색을 원하는 이름값을 사
 
 ### 연락처 검색 출력 화면
 <img src="https://user-images.githubusercontent.com/92699723/210034464-de2babaa-e26f-4f5f-b5e2-5b25a5917475.png" width="422">
->>>>>>> expositon/main
