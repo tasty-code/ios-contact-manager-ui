@@ -16,8 +16,6 @@
 		F00F751B2988A76800612BF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00F751A2988A76800612BF3 /* Assets.xcassets */; };
 		F00F751E2988A76800612BF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00F751C2988A76800612BF3 /* LaunchScreen.storyboard */; };
 		F00F75292988A76800612BF3 /* ContactManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75282988A76800612BF3 /* ContactManagerUITests.swift */; };
-		F00F75332988A76800612BF3 /* ContactManagerUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75322988A76800612BF3 /* ContactManagerUIUITests.swift */; };
-		F00F75352988A76800612BF3 /* ContactManagerUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75342988A76800612BF3 /* ContactManagerUIUITestsLaunchTests.swift */; };
 		F042BC132952CC5000722285 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC122952CC5000722285 /* main.swift */; };
 		F042BC1A2952DCFA00722285 /* ContactInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC192952DCFA00722285 /* ContactInformation.swift */; };
 		F042BC1C2952DD1700722285 /* PrintMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1B2952DD1700722285 /* PrintMessage.swift */; };
@@ -71,8 +69,6 @@
 		F00F75242988A76800612BF3 /* ContactManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00F75282988A76800612BF3 /* ContactManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerUITests.swift; sourceTree = "<group>"; };
 		F00F752E2988A76800612BF3 /* ContactManagerUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactManagerUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F00F75322988A76800612BF3 /* ContactManagerUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerUIUITests.swift; sourceTree = "<group>"; };
-		F00F75342988A76800612BF3 /* ContactManagerUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F042BC0F2952CC5000722285 /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		F042BC122952CC5000722285 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F042BC192952DCFA00722285 /* ContactInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInformation.swift; sourceTree = "<group>"; };
@@ -138,22 +134,12 @@
 			path = ContactManagerUITests;
 			sourceTree = "<group>";
 		};
-		F00F75312988A76800612BF3 /* ContactManagerUIUITests */ = {
-			isa = PBXGroup;
-			children = (
-				F00F75322988A76800612BF3 /* ContactManagerUIUITests.swift */,
-				F00F75342988A76800612BF3 /* ContactManagerUIUITestsLaunchTests.swift */,
-			);
-			path = ContactManagerUIUITests;
-			sourceTree = "<group>";
-		};
 		F042BC062952CC5000722285 = {
 			isa = PBXGroup;
 			children = (
 				F042BC112952CC5000722285 /* ContactManager */,
 				F00F75102988A76700612BF3 /* ContactManagerUI */,
 				F00F75272988A76800612BF3 /* ContactManagerUITests */,
-				F00F75312988A76800612BF3 /* ContactManagerUIUITests */,
 				F042BC102952CC5000722285 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -380,8 +366,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F00F75332988A76800612BF3 /* ContactManagerUIUITests.swift in Sources */,
-				F00F75352988A76800612BF3 /* ContactManagerUIUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
