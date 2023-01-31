@@ -25,6 +25,7 @@
 		F00F751B2988A76800612BF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00F751A2988A76800612BF3 /* Assets.xcassets */; };
 		F00F751E2988A76800612BF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00F751C2988A76800612BF3 /* LaunchScreen.storyboard */; };
 		F00F75292988A76800612BF3 /* ContactManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75282988A76800612BF3 /* ContactManagerUITests.swift */; };
+		F02309322988F44E000D5B30 /* Dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = F0FA763C2988D54100441637 /* Dummy.json */; };
 		F042BC132952CC5000722285 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC122952CC5000722285 /* main.swift */; };
 		F042BC1A2952DCFA00722285 /* ContactInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC192952DCFA00722285 /* ContactInformation.swift */; };
 		F042BC1C2952DD1700722285 /* PrintMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1B2952DD1700722285 /* PrintMessage.swift */; };
@@ -311,6 +312,7 @@
 			files = (
 				F00F751E2988A76800612BF3 /* LaunchScreen.storyboard in Resources */,
 				F00F751B2988A76800612BF3 /* Assets.xcassets in Resources */,
+				F02309322988F44E000D5B30 /* Dummy.json in Resources */,
 				F00F75192988A76700612BF3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

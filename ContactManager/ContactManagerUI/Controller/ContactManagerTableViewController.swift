@@ -30,18 +30,18 @@ class ContactManagerTableViewController: UITableViewController {
     }
     
     private func testJSON() {
-        let fullPath = "/Users/kh_lee/Desktop/SeSac/ios-contact-manager-ui/ContactManager/ContactManager/Storage/Dummy.json"
+        guard let filePath = Bundle.main.url(forResource: "Dummy", withExtension: "json") else { return }
         
-        if let data = try? String(contentsOfFile: fullPath).data(using: .utf8) {
+        if let data = try? Data(contentsOf: filePath) {
             let json =  try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
             contactInfomation = json
         }
         
         if let contactInfo = contactInfomation["Dummy"] as? [[String: Any]] {
-            for contactInfoIndex in contactInfo {
-                nameArr.append(contactInfoIndex["name"] as! String)
-                ageArr.append(contactInfoIndex["age"] as! String)
-                phoneNumberArr.append(contactInfoIndex["phoneNumber"] as! String)
+            contactInfo.forEach { contactData in
+                nameArr.append(contactData["name"] as! String)
+                ageArr.append(contactData["age"] as! String)
+                phoneNumberArr.append(contactData["phoneNumber"] as! String)
             }
         }
     }
