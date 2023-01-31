@@ -1,3 +1,19 @@
+enum ErrorType{
+    case name
+    case age
+    case phoneNumber
+}
+
+func errorTextOutput(with type: ErrorType){
+    let errorText: String
+    switch type {
+    case .name: errorText = "이름"
+    case .age: errorText = "나이"
+    case .phoneNumber: errorText = "연락처"
+    }
+    print("입력한 \(errorText)정보가 잘못되었습니다. 입력 형식을 확인해주세요.")
+}
+
 func checkNameError(name: String) -> Bool{
     guard name.range(of: regex, options: .regularExpression) != nil else {
         errorTextOutput(with: .name)
@@ -5,7 +21,6 @@ func checkNameError(name: String) -> Bool{
     }
     return true
 }
-
 
 func checkAgeError(age: String) -> Bool{
     guard age.allSatisfy({ $0.isNumber}) else {

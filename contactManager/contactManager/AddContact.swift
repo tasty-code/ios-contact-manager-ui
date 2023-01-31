@@ -1,3 +1,15 @@
+var contacts : Set<Contact> = []
+
+struct Contact : Hashable {
+    let name : String
+    let age : String
+    let phoneNumber : String
+    
+    var description: String {
+          "- \(self.name) / \(self.age) / \(self.phoneNumber)"
+       }
+}
+
 func addContact(){
     var isAddContactError: Bool = false
     
