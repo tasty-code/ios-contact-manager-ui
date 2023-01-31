@@ -34,13 +34,6 @@
 			remoteGlobalIDString = F00F750E2988A76700612BF3;
 			remoteInfo = ContactManagerUI;
 		};
-		F00F752F2988A76800612BF3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F042BC072952CC5000722285 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F00F750E2988A76700612BF3;
-			remoteInfo = ContactManagerUI;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,7 +61,6 @@
 		F00F751F2988A76800612BF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F00F75242988A76800612BF3 /* ContactManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00F75282988A76800612BF3 /* ContactManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerUITests.swift; sourceTree = "<group>"; };
-		F00F752E2988A76800612BF3 /* ContactManagerUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactManagerUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F042BC0F2952CC5000722285 /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		F042BC122952CC5000722285 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F042BC192952DCFA00722285 /* ContactInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInformation.swift; sourceTree = "<group>"; };
@@ -89,13 +81,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F00F75212988A76800612BF3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F00F752B2988A76800612BF3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -150,7 +135,6 @@
 				F042BC0F2952CC5000722285 /* ContactManager */,
 				F00F750F2988A76700612BF3 /* ContactManagerUI.app */,
 				F00F75242988A76800612BF3 /* ContactManagerUITests.xctest */,
-				F00F752E2988A76800612BF3 /* ContactManagerUIUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,24 +218,6 @@
 			productReference = F00F75242988A76800612BF3 /* ContactManagerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F00F752D2988A76800612BF3 /* ContactManagerUIUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F00F753E2988A76800612BF3 /* Build configuration list for PBXNativeTarget "ContactManagerUIUITests" */;
-			buildPhases = (
-				F00F752A2988A76800612BF3 /* Sources */,
-				F00F752B2988A76800612BF3 /* Frameworks */,
-				F00F752C2988A76800612BF3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F00F75302988A76800612BF3 /* PBXTargetDependency */,
-			);
-			name = ContactManagerUIUITests;
-			productName = ContactManagerUIUITests;
-			productReference = F00F752E2988A76800612BF3 /* ContactManagerUIUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		F042BC0E2952CC5000722285 /* ContactManager */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F042BC162952CC5000722285 /* Build configuration list for PBXNativeTarget "ContactManager" */;
@@ -286,10 +252,6 @@
 						CreatedOnToolsVersion = 14.1;
 						TestTargetID = F00F750E2988A76700612BF3;
 					};
-					F00F752D2988A76800612BF3 = {
-						CreatedOnToolsVersion = 14.1;
-						TestTargetID = F00F750E2988A76700612BF3;
-					};
 					F042BC0E2952CC5000722285 = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -311,7 +273,6 @@
 				F042BC0E2952CC5000722285 /* ContactManager */,
 				F00F750E2988A76700612BF3 /* ContactManagerUI */,
 				F00F75232988A76800612BF3 /* ContactManagerUITests */,
-				F00F752D2988A76800612BF3 /* ContactManagerUIUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -328,13 +289,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F00F75222988A76800612BF3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F00F752C2988A76800612BF3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -362,13 +316,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F00F752A2988A76800612BF3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F042BC0B2952CC5000722285 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,11 +340,6 @@
 			isa = PBXTargetDependency;
 			target = F00F750E2988A76700612BF3 /* ContactManagerUI */;
 			targetProxy = F00F75252988A76800612BF3 /* PBXContainerItemProxy */;
-		};
-		F00F75302988A76800612BF3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F00F750E2988A76700612BF3 /* ContactManagerUI */;
-			targetProxy = F00F752F2988A76800612BF3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -435,7 +377,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -464,7 +406,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -521,45 +463,6 @@
 			};
 			name = Release;
 		};
-		F00F753A2988A76800612BF3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.blu.ContactManagerUIUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ContactManagerUI;
-			};
-			name = Debug;
-		};
-		F00F753B2988A76800612BF3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.blu.ContactManagerUIUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ContactManagerUI;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		F042BC142952CC5000722285 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -611,6 +514,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -666,6 +570,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -714,15 +619,6 @@
 			buildConfigurations = (
 				F00F75382988A76800612BF3 /* Debug */,
 				F00F75392988A76800612BF3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F00F753E2988A76800612BF3 /* Build configuration list for PBXNativeTarget "ContactManagerUIUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F00F753A2988A76800612BF3 /* Debug */,
-				F00F753B2988A76800612BF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
