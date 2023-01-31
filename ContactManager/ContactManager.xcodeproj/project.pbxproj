@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90A26EB02988D5D200A9C749 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A26EAE2988D5D200A9C749 /* ContactTableViewCell.swift */; };
+		90A26EB12988D5D200A9C749 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90A26EAF2988D5D200A9C749 /* ContactTableViewCell.xib */; };
 		BF8B21D92988ACA9009776F1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21D82988ACA9009776F1 /* main.swift */; };
 		BF8B21E02988ACDE009776F1 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21DF2988ACDE009776F1 /* Contact.swift */; };
 		BF8B21E22988ACE7009776F1 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21E12988ACE7009776F1 /* ContactManager.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		90A26EAE2988D5D200A9C749 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		90A26EAF2988D5D200A9C749 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		BF8B21D52988ACA9009776F1 /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8B21D82988ACA9009776F1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		BF8B21DF2988ACDE009776F1 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
@@ -74,6 +78,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90A26EB22988DA8900A9C749 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF8B21F52988B121009776F1 /* Main.storyboard */,
+				90A26EAE2988D5D200A9C749 /* ContactTableViewCell.swift */,
+				90A26EAF2988D5D200A9C749 /* ContactTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		90A26EB32988DAAA00A9C749 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF8B21F32988B121009776F1 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		BF8B21CC2988ACA9009776F1 = {
 			isa = PBXGroup;
 			children = (
@@ -108,10 +130,10 @@
 		BF8B21EE2988B121009776F1 /* ContactManagerUI */ = {
 			isa = PBXGroup;
 			children = (
+				90A26EB32988DAAA00A9C749 /* Controller */,
+				90A26EB22988DA8900A9C749 /* View */,
 				BF8B21EF2988B121009776F1 /* AppDelegate.swift */,
 				BF8B21F12988B121009776F1 /* SceneDelegate.swift */,
-				BF8B21F32988B121009776F1 /* ViewController.swift */,
-				BF8B21F52988B121009776F1 /* Main.storyboard */,
 				BF8B21F82988B123009776F1 /* Assets.xcassets */,
 				BF8B21FA2988B123009776F1 /* LaunchScreen.storyboard */,
 				BF8B21FD2988B123009776F1 /* Info.plist */,
@@ -164,7 +186,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					BF8B21D42988ACA9009776F1 = {
 						CreatedOnToolsVersion = 14.0.1;
@@ -198,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A26EB12988D5D200A9C749 /* ContactTableViewCell.xib in Resources */,
 				BF8B21FC2988B123009776F1 /* LaunchScreen.storyboard in Resources */,
 				BF8B21F92988B123009776F1 /* Assets.xcassets in Resources */,
 				BF8B21F72988B121009776F1 /* Main.storyboard in Resources */,
@@ -230,6 +253,7 @@
 				BF8B21F02988B121009776F1 /* AppDelegate.swift in Sources */,
 				BF8B22032988B132009776F1 /* CreateContact.swift in Sources */,
 				BF8B22052988B138009776F1 /* Message.swift in Sources */,
+				90A26EB02988D5D200A9C749 /* ContactTableViewCell.swift in Sources */,
 				BF8B22042988B135009776F1 /* Error.swift in Sources */,
 				BF8B21F22988B121009776F1 /* SceneDelegate.swift in Sources */,
 			);
@@ -290,6 +314,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -350,6 +375,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -373,7 +399,9 @@
 		BF8B21DD2988ACA9009776F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = DD8VYBJ73D;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -384,7 +412,9 @@
 		BF8B21DE2988ACA9009776F1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = DD8VYBJ73D;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
