@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5B0ABEEF295D334C005B674C /* SystemMenuWorkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0ABEEE295D334C005B674C /* SystemMenuWorkable.swift */; };
+		5B1859F82988AA8800EFC383 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0873C52295A8AC00097B804 /* ContactManager.swift */; };
+		5B1859F92988AA8B00EFC383 /* ContactInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC192952DCFA00722285 /* ContactInformation.swift */; };
+		5B1859FA2988AA8D00EFC383 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1F29541E3200722285 /* Converter.swift */; };
+		5B1859FB2988AA8F00EFC383 /* Detector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1D29541C2B00722285 /* Detector.swift */; };
+		5B1859FC2988AA9100EFC383 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68C2C29556D7D00815CD6 /* Checker.swift */; };
+		5B1859FD2988AA9400EFC383 /* PrintMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1B2952DD1700722285 /* PrintMessage.swift */; };
+		5B1859FE2988AA9700EFC383 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B63007A2955637200730005 /* RegularExpression.swift */; };
+		5B1859FF2988AA9A00EFC383 /* InputPossible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68C2929555F6C00815CD6 /* InputPossible.swift */; };
+		5B185A002988AA9C00EFC383 /* SystemMenuWorkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0ABEEE295D334C005B674C /* SystemMenuWorkable.swift */; };
 		5B63007B2955637200730005 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B63007A2955637200730005 /* RegularExpression.swift */; };
 		F00F75122988A76700612BF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75112988A76700612BF3 /* AppDelegate.swift */; };
 		F00F75142988A76700612BF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75132988A76700612BF3 /* SceneDelegate.swift */; };
@@ -318,8 +327,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B1859FE2988AA9700EFC383 /* RegularExpression.swift in Sources */,
 				F00F75162988A76700612BF3 /* ViewController.swift in Sources */,
+				5B1859FD2988AA9400EFC383 /* PrintMessage.swift in Sources */,
+				5B1859FB2988AA8F00EFC383 /* Detector.swift in Sources */,
+				5B185A002988AA9C00EFC383 /* SystemMenuWorkable.swift in Sources */,
+				5B1859FF2988AA9A00EFC383 /* InputPossible.swift in Sources */,
+				5B1859F92988AA8B00EFC383 /* ContactInformation.swift in Sources */,
 				F00F75122988A76700612BF3 /* AppDelegate.swift in Sources */,
+				5B1859F82988AA8800EFC383 /* ContactManager.swift in Sources */,
+				5B1859FC2988AA9100EFC383 /* Checker.swift in Sources */,
+				5B1859FA2988AA8D00EFC383 /* Converter.swift in Sources */,
 				F00F75142988A76700612BF3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
