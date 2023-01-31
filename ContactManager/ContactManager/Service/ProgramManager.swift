@@ -41,7 +41,7 @@ final class ProgramManager: ProgramManagerProtocol {
                     searchProgram()
                 case .exit:
                     outputEditor.printTerminateProgram()
-                    shouldRun = false
+                    terminateProgram()
                 }
             } catch {
                 print(error.localizedDescription)
