@@ -1,4 +1,4 @@
-var contacts : Set<Contact> = []
+var contacts : [Contact] = []
 
 struct Contact : Hashable {
     let name : String
@@ -48,7 +48,7 @@ func addContact(){
         
         let contact = Contact(name: zeroBlankName, age: trimAge, phoneNumber: trimNum)
         
-        contacts.insert(contact)
+        contacts.append(contact)
     }
 
 }

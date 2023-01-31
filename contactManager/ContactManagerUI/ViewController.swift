@@ -15,13 +15,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
-        makeRandomContact(count: 10)
+        makeRandomContact(count: 1000)
     }
 
     func makeRandomContact(count: Int) {
         for _ in 0..<count {
             var contact = Contact(name: ContactInfo.name.random, age: ContactInfo.age.random, phoneNumber: ContactInfo.phoneNumber.random)
-            contacts.insert(contact)
+            contacts.append(contact)
         }
     }
 }
@@ -38,9 +38,20 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIndentifier = "ContactCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIndentifier, for: indexPath)
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIndentifier, for: indexPath)
+        cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIndentifier)
         cell.accessoryType = .disclosureIndicator
+        cell.contentConfiguration = configure(cell: cell, at: indexPath)
         return cell
+    }
+    
+    func configure(cell: UITableViewCell, at indexPath: IndexPath) -> UIListContentConfiguration {
+        var content = cell.defaultContentConfiguration()
+        content.text = "\(contacts[indexPath.row].name)(\(contacts[indexPath.row].age))"
+        content.secondaryText = "\(contacts[indexPath.row].phoneNumber)"
+        content.textProperties.font = .systemFont(ofSize: 16)
+        content.secondaryTextProperties.font = .systemFont(ofSize: 16)
+        return content
     }
 }
 

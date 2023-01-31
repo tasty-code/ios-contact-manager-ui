@@ -20,8 +20,7 @@ enum ContactInfo {
     var random: String {
         switch self {
         case .name:
-            guard let randomLetter = letters.randomElement() else { return "" }
-            return String(nameRange.map { _ in randomLetter })
+            return String(nameRange.map { _ in letters.randomElement() ?? Character("") })
         case .age:
             return "\(Int.random(in: ageRange))"
         case .phoneNumber:
