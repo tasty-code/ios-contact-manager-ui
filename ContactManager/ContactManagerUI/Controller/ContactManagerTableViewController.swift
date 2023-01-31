@@ -31,12 +31,13 @@ class ContactDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "infoCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        
+
         cell.configurationUpdateHandler = { cell, state in
             var infoContent = cell.defaultContentConfiguration().updated(for: state)
-            infoContent.text = "Name(age)"
+            infoContent.text = "name(age)"
             infoContent.secondaryText = "contact-number"
-            
+
+            cell.accessoryType = .disclosureIndicator
             cell.contentConfiguration = infoContent
         }
         return cell
