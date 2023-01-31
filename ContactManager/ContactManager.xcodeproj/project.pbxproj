@@ -97,15 +97,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B1859F62988AA1100EFC383 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F00F75172988A76700612BF3 /* Main.storyboard */,
+				F00F751C2988A76800612BF3 /* LaunchScreen.storyboard */,
+				F00F751A2988A76800612BF3 /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5B1859F72988AA3100EFC383 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F00F75132988A76700612BF3 /* SceneDelegate.swift */,
+				F00F75112988A76700612BF3 /* AppDelegate.swift */,
+				F00F75152988A76700612BF3 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		F00F75102988A76700612BF3 /* ContactManagerUI */ = {
 			isa = PBXGroup;
 			children = (
-				F00F75112988A76700612BF3 /* AppDelegate.swift */,
-				F00F75132988A76700612BF3 /* SceneDelegate.swift */,
-				F00F75152988A76700612BF3 /* ViewController.swift */,
-				F00F75172988A76700612BF3 /* Main.storyboard */,
-				F00F751A2988A76800612BF3 /* Assets.xcassets */,
-				F00F751C2988A76800612BF3 /* LaunchScreen.storyboard */,
+				5B1859F72988AA3100EFC383 /* Controller */,
+				5B1859F62988AA1100EFC383 /* View */,
 				F00F751F2988A76800612BF3 /* Info.plist */,
 			);
 			path = ContactManagerUI;
