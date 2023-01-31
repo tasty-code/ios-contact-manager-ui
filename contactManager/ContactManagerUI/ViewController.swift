@@ -18,9 +18,9 @@ class ViewController: UIViewController {
         makeRandomContact(count: 1000)
     }
 
-    func makeRandomContact(count: Int) {
+    private func makeRandomContact(count: Int) {
         for _ in 0..<count {
-            var contact = Contact(name: ContactInfo.name.random, age: ContactInfo.age.random, phoneNumber: ContactInfo.phoneNumber.random)
+            let contact = Contact(name: ContactInfo.name.random, age: ContactInfo.age.random, phoneNumber: ContactInfo.phoneNumber.random)
             contacts.append(contact)
         }
     }
@@ -45,7 +45,7 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
     
-    func configure(cell: UITableViewCell, at indexPath: IndexPath) -> UIListContentConfiguration {
+    private func configure(cell: UITableViewCell, at indexPath: IndexPath) -> UIListContentConfiguration {
         var content = cell.defaultContentConfiguration()
         content.text = "\(contacts[indexPath.row].name)(\(contacts[indexPath.row].age))"
         content.secondaryText = "\(contacts[indexPath.row].phoneNumber)"
