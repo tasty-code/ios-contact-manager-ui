@@ -29,7 +29,16 @@ class ContactDataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cellIdentifier = "infoCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+
+        var infoContent = cell.defaultContentConfiguration()
+        infoContent.text = "Name(age)"
+        infoContent.secondaryText = "contact-number"
+
+        cell.contentConfiguration = infoContent
+
+        return cell
     }
     
     
