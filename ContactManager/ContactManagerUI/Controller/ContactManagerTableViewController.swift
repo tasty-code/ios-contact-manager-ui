@@ -25,21 +25,20 @@ class ContactManagerTableViewController: UITableViewController {
 
 class ContactDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 17
+        return 34
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "infoCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-
-        var infoContent = cell.defaultContentConfiguration()
-        infoContent.text = "Name(age)"
-        infoContent.secondaryText = "contact-number"
-
-        cell.contentConfiguration = infoContent
-
+        
+        cell.configurationUpdateHandler = { cell, state in
+            var infoContent = cell.defaultContentConfiguration().updated(for: state)
+            infoContent.text = "Name(age)"
+            infoContent.secondaryText = "contact-number"
+            
+            cell.contentConfiguration = infoContent
+        }
         return cell
     }
-    
-    
 }
