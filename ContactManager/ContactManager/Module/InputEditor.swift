@@ -59,8 +59,8 @@ struct InputEditor {
         return splitedString
     }
     
-    private func convertToUserInputModel(with str: [String]) -> UserInputModel {
-        return UserInputModel(name: str[0], age: str[1], phoneNum: str[2])
+    private func convertToUserInputModel(with userInfo: [String]) -> UserInputModel {
+        return UserInputModel(name: userInfo[0], age: userInfo[1], phoneNum: userInfo[2])
     }
     
     private func requestValidation(with model: UserInputModel) throws -> Person {
@@ -74,9 +74,10 @@ struct InputEditor {
     
     private func addProgram() {
         outputEditor.askContactInfo()
+        
         do {
-            let userInput = try getContactInfo()
-            let person = try requestValidation(with: userInput)
+            let contactInfo = try getContactInfo()
+            let person = try requestValidation(with: contactInfo)
             outputEditor.printResult(with: person)
             DataManager.shared.setContact(person)
         } catch {
@@ -86,23 +87,25 @@ struct InputEditor {
     
     private func showListProgram() {
         let contactsList = DataManager.shared.getContactsList()
-        contactsList.forEach { print($0, terminator: "\n") }
-        print("")
+        contactsList.forEach { outputEditor.showContactList($0) }
+        outputEditor.printEmptyString()
     }
     
     private func searchProgram() {
-        var contactList: [Person] = []
-        outputEditor.printAskName()
+        outputEditor.askPersonName()
         
-        guard let userInput = readLine() else { return }
-        let person = DataManager.shared.getContactsData()
-        contactList = person.filter { $0.name == userInput }
-        
-        if contactList.isEmpty {
-            print("연락처에 \(userInput) 이(가) 없습니다.")
-        } else {
-            contactList.forEach{ print("- \($0.name) / \($0.age) / \($0.phoneNum)", terminator: "\n")}
+        do {
+            let userInput = try getUserInput()
+            let contactList = DataManager.shared.getContactsData().filter { $0.name == userInput }
+            
+            if contactList.isEmpty {
+                outputEditor.printEmptyUser(userInput)
+            } else {
+                contactList.forEach{ outputEditor.searchValidUser($0.name, $0.age, $0.phoneNum) }
+            }
+            outputEditor.printEmptyString()
+        } catch {
+            print(error.localizedDescription)
         }
-        print("")
     }
 }

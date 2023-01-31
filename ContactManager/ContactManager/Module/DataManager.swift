@@ -7,14 +7,16 @@
 
 import Foundation
 
-class DataManager {
+final class DataManager {
     
     static let shared = DataManager()
     
-    var contacts: Set<Person> = Set<Person>()
+    private var contacts: Set<Person> = Set<Person>()
     
-    func setContact(_ data: Person) {
-        contacts.insert(data)
+    private init() {}
+    
+    func setContact(_ person: Person) {
+        contacts.insert(person)
     }
     
     func getContactsData() -> Set<Person> {
@@ -22,10 +24,7 @@ class DataManager {
     }
     
     func getContactsList() -> [String] {
-        
-        let contacts = contacts.map{ "- \($0.name) / \($0.age) / \($0.phoneNum)"}
-        
+        let contacts = contacts.map { "- \($0.name) / \($0.age) / \($0.phoneNum)" }
         return contacts
     }
-    private init() {}
 }
