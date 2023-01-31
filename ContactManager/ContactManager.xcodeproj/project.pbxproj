@@ -20,7 +20,7 @@
 		5B63007B2955637200730005 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B63007A2955637200730005 /* RegularExpression.swift */; };
 		F00F75122988A76700612BF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75112988A76700612BF3 /* AppDelegate.swift */; };
 		F00F75142988A76700612BF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75132988A76700612BF3 /* SceneDelegate.swift */; };
-		F00F75162988A76700612BF3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75152988A76700612BF3 /* ViewController.swift */; };
+		F00F75162988A76700612BF3 /* ContactManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75152988A76700612BF3 /* ContactManagerTableViewController.swift */; };
 		F00F75192988A76700612BF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00F75172988A76700612BF3 /* Main.storyboard */; };
 		F00F751B2988A76800612BF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00F751A2988A76800612BF3 /* Assets.xcassets */; };
 		F00F751E2988A76800612BF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00F751C2988A76800612BF3 /* LaunchScreen.storyboard */; };
@@ -63,7 +63,7 @@
 		F00F750F2988A76700612BF3 /* ContactManagerUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManagerUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00F75112988A76700612BF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F00F75132988A76700612BF3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F00F75152988A76700612BF3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F00F75152988A76700612BF3 /* ContactManagerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerTableViewController.swift; sourceTree = "<group>"; };
 		F00F75182988A76700612BF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F00F751A2988A76800612BF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F00F751D2988A76800612BF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 			children = (
 				F00F75132988A76700612BF3 /* SceneDelegate.swift */,
 				F00F75112988A76700612BF3 /* AppDelegate.swift */,
-				F00F75152988A76700612BF3 /* ViewController.swift */,
+				F00F75152988A76700612BF3 /* ContactManagerTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B1859FE2988AA9700EFC383 /* RegularExpression.swift in Sources */,
-				F00F75162988A76700612BF3 /* ViewController.swift in Sources */,
+				F00F75162988A76700612BF3 /* ContactManagerTableViewController.swift in Sources */,
 				5B1859FD2988AA9400EFC383 /* PrintMessage.swift in Sources */,
 				5B1859FB2988AA8F00EFC383 /* Detector.swift in Sources */,
 				5B185A002988AA9C00EFC383 /* SystemMenuWorkable.swift in Sources */,
