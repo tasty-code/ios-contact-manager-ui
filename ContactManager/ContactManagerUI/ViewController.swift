@@ -8,8 +8,8 @@
 import UIKit
 
 final class ViewController: UIViewController {
-
-    private let dummyPerson: Person = Person(name: "알리", age: 10, phoneNum: "010-000-0000")
+    
+    private let dummyContactList = Person.dummyData
 
     @IBOutlet weak private var tableView: UITableView!
     
@@ -26,17 +26,17 @@ final class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return dummyContactList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellIdentifier = "ContactListCell"
+        let cellIdentifier = "ContactTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-
-        cell.textLabel?.text = dummyPerson.name + "(\(dummyPerson.age))"
-        cell.detailTextLabel?.text = dummyPerson.phoneNum
-
+        
+        cell.textLabel?.text = dummyContactList[indexPath.row].name + "(\(dummyContactList[indexPath.row].age))"
+        cell.detailTextLabel?.text = dummyContactList[indexPath.row].phoneNum
+        
         return cell
     }
 }
