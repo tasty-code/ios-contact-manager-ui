@@ -16,6 +16,7 @@ final class ProgramManager: ProgramManagerProtocol {
     
     var inputEditor: InputEditorProtocol
     var outputEditor: OutputEditorProtocol
+    
     private let dataManager = DataManager.shared
     
     private var shouldRun: Bool = true
@@ -47,6 +48,13 @@ final class ProgramManager: ProgramManagerProtocol {
             }
         }
     }
+    
+    private func terminateProgram() {
+        shouldRun = false
+    }
+}
+
+extension ProgramManager {
     
     private func addProgram() {
         outputEditor.askContactInfo()
@@ -81,9 +89,5 @@ final class ProgramManager: ProgramManagerProtocol {
         } catch {
             print(error.localizedDescription)
         }
-    }
-    
-    private func terminateProgram() {
-        shouldRun = false
     }
 }
