@@ -13,6 +13,17 @@
 		BF8B21E42988ACED009776F1 /* CreateContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21E32988ACED009776F1 /* CreateContact.swift */; };
 		BF8B21E62988ACF1009776F1 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21E52988ACF1009776F1 /* Error.swift */; };
 		BF8B21E82988ACFB009776F1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21E72988ACFB009776F1 /* Message.swift */; };
+		BF8B21F02988B121009776F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21EF2988B121009776F1 /* AppDelegate.swift */; };
+		BF8B21F22988B121009776F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21F12988B121009776F1 /* SceneDelegate.swift */; };
+		BF8B21F42988B121009776F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21F32988B121009776F1 /* ViewController.swift */; };
+		BF8B21F72988B121009776F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8B21F52988B121009776F1 /* Main.storyboard */; };
+		BF8B21F92988B123009776F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF8B21F82988B123009776F1 /* Assets.xcassets */; };
+		BF8B21FC2988B123009776F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8B21FA2988B123009776F1 /* LaunchScreen.storyboard */; };
+		BF8B22012988B12B009776F1 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21DF2988ACDE009776F1 /* Contact.swift */; };
+		BF8B22022988B12F009776F1 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21E12988ACE7009776F1 /* ContactManager.swift */; };
+		BF8B22032988B132009776F1 /* CreateContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21E32988ACED009776F1 /* CreateContact.swift */; };
+		BF8B22042988B135009776F1 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21E52988ACF1009776F1 /* Error.swift */; };
+		BF8B22052988B138009776F1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B21E72988ACFB009776F1 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,10 +46,25 @@
 		BF8B21E32988ACED009776F1 /* CreateContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContact.swift; sourceTree = "<group>"; };
 		BF8B21E52988ACF1009776F1 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		BF8B21E72988ACFB009776F1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		BF8B21ED2988B121009776F1 /* ContactManagerUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManagerUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF8B21EF2988B121009776F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BF8B21F12988B121009776F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BF8B21F32988B121009776F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF8B21F62988B121009776F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BF8B21F82988B123009776F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF8B21FB2988B123009776F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BF8B21FD2988B123009776F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BF8B21D22988ACA9009776F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF8B21EA2988B121009776F1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -52,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				BF8B21D72988ACA9009776F1 /* ContactManager */,
+				BF8B21EE2988B121009776F1 /* ContactManagerUI */,
 				BF8B21D62988ACA9009776F1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				BF8B21D52988ACA9009776F1 /* ContactManager */,
+				BF8B21ED2988B121009776F1 /* ContactManagerUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +103,20 @@
 				BF8B21E72988ACFB009776F1 /* Message.swift */,
 			);
 			path = ContactManager;
+			sourceTree = "<group>";
+		};
+		BF8B21EE2988B121009776F1 /* ContactManagerUI */ = {
+			isa = PBXGroup;
+			children = (
+				BF8B21EF2988B121009776F1 /* AppDelegate.swift */,
+				BF8B21F12988B121009776F1 /* SceneDelegate.swift */,
+				BF8B21F32988B121009776F1 /* ViewController.swift */,
+				BF8B21F52988B121009776F1 /* Main.storyboard */,
+				BF8B21F82988B123009776F1 /* Assets.xcassets */,
+				BF8B21FA2988B123009776F1 /* LaunchScreen.storyboard */,
+				BF8B21FD2988B123009776F1 /* Info.plist */,
+			);
+			path = ContactManagerUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,6 +139,23 @@
 			productReference = BF8B21D52988ACA9009776F1 /* ContactManager */;
 			productType = "com.apple.product-type.tool";
 		};
+		BF8B21EC2988B121009776F1 /* ContactManagerUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF8B21FE2988B123009776F1 /* Build configuration list for PBXNativeTarget "ContactManagerUI" */;
+			buildPhases = (
+				BF8B21E92988B121009776F1 /* Sources */,
+				BF8B21EA2988B121009776F1 /* Frameworks */,
+				BF8B21EB2988B121009776F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ContactManagerUI;
+			productName = ContactManagerUI;
+			productReference = BF8B21ED2988B121009776F1 /* ContactManagerUI.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -108,6 +167,9 @@
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					BF8B21D42988ACA9009776F1 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+					BF8B21EC2988B121009776F1 = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
 				};
@@ -126,9 +188,23 @@
 			projectRoot = "";
 			targets = (
 				BF8B21D42988ACA9009776F1 /* ContactManager */,
+				BF8B21EC2988B121009776F1 /* ContactManagerUI */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF8B21EB2988B121009776F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF8B21FC2988B123009776F1 /* LaunchScreen.storyboard in Resources */,
+				BF8B21F92988B123009776F1 /* Assets.xcassets in Resources */,
+				BF8B21F72988B121009776F1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BF8B21D12988ACA9009776F1 /* Sources */ = {
@@ -144,7 +220,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BF8B21E92988B121009776F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF8B22022988B12F009776F1 /* ContactManager.swift in Sources */,
+				BF8B22012988B12B009776F1 /* Contact.swift in Sources */,
+				BF8B21F42988B121009776F1 /* ViewController.swift in Sources */,
+				BF8B21F02988B121009776F1 /* AppDelegate.swift in Sources */,
+				BF8B22032988B132009776F1 /* CreateContact.swift in Sources */,
+				BF8B22052988B138009776F1 /* Message.swift in Sources */,
+				BF8B22042988B135009776F1 /* Error.swift in Sources */,
+				BF8B21F22988B121009776F1 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BF8B21F52988B121009776F1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF8B21F62988B121009776F1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BF8B21FA2988B123009776F1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF8B21FB2988B123009776F1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BF8B21DA2988ACA9009776F1 /* Debug */ = {
@@ -282,6 +392,67 @@
 			};
 			name = Release;
 		};
+		BF8B21FF2988B123009776F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DD8VYBJ73D;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ContactManagerUI/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhunhe.ContactManagerUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF8B22002988B123009776F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DD8VYBJ73D;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ContactManagerUI/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhunhe.ContactManagerUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -299,6 +470,15 @@
 			buildConfigurations = (
 				BF8B21DD2988ACA9009776F1 /* Debug */,
 				BF8B21DE2988ACA9009776F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF8B21FE2988B123009776F1 /* Build configuration list for PBXNativeTarget "ContactManagerUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF8B21FF2988B123009776F1 /* Debug */,
+				BF8B22002988B123009776F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
