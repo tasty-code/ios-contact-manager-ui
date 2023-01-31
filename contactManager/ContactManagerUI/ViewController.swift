@@ -10,13 +10,21 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var contactsTableView: UITableView!
-       
-       override func viewDidLoad() {
-           super.viewDidLoad()
-           contactsTableView.delegate = self
-           contactsTableView.dataSource = self
-       }
-   }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        contactsTableView.delegate = self
+        contactsTableView.dataSource = self
+        makeRandomContact(count: 10)
+    }
+
+    func makeRandomContact(count: Int) {
+        for _ in 0..<count {
+            var contact = Contact(name: ContactInfo.name.random, age: ContactInfo.age.random, phoneNumber: ContactInfo.phoneNumber.random)
+            contacts.insert(contact)
+        }
+    }
+}
 
 extension ViewController: UITableViewDataSource {
     
@@ -39,5 +47,3 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     
 }
-
-

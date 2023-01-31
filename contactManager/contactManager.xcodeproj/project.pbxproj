@@ -22,6 +22,7 @@
 		D91FBE6A2988AB430091F104 /* FindContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3EE1C295D5ABF00A76712 /* FindContact.swift */; };
 		D91FBE6B2988AB450091F104 /* ValidateContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5C8DD2988A9A20074A793 /* ValidateContact.swift */; };
 		D91FBE6C2988AB470091F104 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5C8DF2988A9C50074A793 /* Enums.swift */; };
+		D95FD5562988EEF300E66CEC /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95FD5552988EEF300E66CEC /* ContactInfo.swift */; };
 		D9D3AEFD29597A7B0031A2F2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3AEFC29597A7B0031A2F2 /* main.swift */; };
 		D9E15C03295C312C003FB06D /* AddContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E15C02295C312C003FB06D /* AddContact.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		D91FBE5F2988A67B0091F104 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D91FBE622988A67B0091F104 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D91FBE642988A67B0091F104 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D95FD5552988EEF300E66CEC /* ContactInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
 		D9D3AEF929597A7B0031A2F2 /* contactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = contactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D3AEFC29597A7B0031A2F2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D9E15C02295C312C003FB06D /* AddContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContact.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				D91FBE562988A67B0091F104 /* AppDelegate.swift */,
 				D91FBE582988A67B0091F104 /* SceneDelegate.swift */,
 				D91FBE5A2988A67B0091F104 /* ViewController.swift */,
+				D95FD5552988EEF300E66CEC /* ContactInfo.swift */,
 				D91FBE5C2988A67B0091F104 /* Main.storyboard */,
 				D91FBE5F2988A67B0091F104 /* Assets.xcassets */,
 				D91FBE612988A67B0091F104 /* LaunchScreen.storyboard */,
@@ -217,6 +220,7 @@
 				D91FBE6A2988AB430091F104 /* FindContact.swift in Sources */,
 				D91FBE6B2988AB450091F104 /* ValidateContact.swift in Sources */,
 				D91FBE572988A67B0091F104 /* AppDelegate.swift in Sources */,
+				D95FD5562988EEF300E66CEC /* ContactInfo.swift in Sources */,
 				D91FBE6C2988AB470091F104 /* Enums.swift in Sources */,
 				D91FBE592988A67B0091F104 /* SceneDelegate.swift in Sources */,
 			);
