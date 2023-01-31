@@ -9,22 +9,22 @@ import UIKit
 
 final class ViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    let dummyPerson: Person = Person(name: "알리", age: 10, phoneNum: "010-000-0000")
+    private let dummyPerson: Person = Person(name: "알리", age: 10, phoneNum: "010-000-0000")
+
+    @IBOutlet weak private var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        setDelegate()
+    }
+    
+    private func setDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
     }
 }
 
-extension ViewController: UITableViewDelegate {
-    
-}
-
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
