@@ -8,20 +8,20 @@
 import UIKit
 
 var contactInfomation = [String: Any]()
-var nameArr = [String]()
-var ageArr = [String]()
-var phoneNumberArr = [String]()
+var nameArray = [String]()
+var ageArray = [String]()
+var phoneNumberArray = [String]()
 
-class ContactManagerTableViewController: UITableViewController {
+final class ContactManagerTableViewController: UITableViewController {
     
     @IBOutlet private weak var contactManagerTableView: UITableView!
     private var contactDataSource = ContactDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        testJSON()
+
         self.configureTableView()
+        parseJSON()
     }
     
     private func configureTableView() {
@@ -29,7 +29,7 @@ class ContactManagerTableViewController: UITableViewController {
         tableView.dataSource = self.contactDataSource
     }
     
-    private func testJSON() {
+    private func parseJSON() {
         guard let filePath = Bundle.main.url(forResource: "Dummy", withExtension: "json") else { return }
         
         if let data = try? Data(contentsOf: filePath) {
@@ -39,17 +39,17 @@ class ContactManagerTableViewController: UITableViewController {
         
         if let contactInfo = contactInfomation["Dummy"] as? [[String: Any]] {
             contactInfo.forEach { contactData in
-                nameArr.append(contactData["name"] as! String)
-                ageArr.append(contactData["age"] as! String)
-                phoneNumberArr.append(contactData["phoneNumber"] as! String)
+                nameArray.append(contactData["name"] as! String)
+                ageArray.append(contactData["age"] as! String)
+                phoneNumberArray.append(contactData["phoneNumber"] as! String)
             }
         }
     }
 }
 
-class ContactDataSource: NSObject, UITableViewDataSource {
+final class ContactDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nameArr.count
+        return nameArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,8 +58,8 @@ class ContactDataSource: NSObject, UITableViewDataSource {
         
         cell.configurationUpdateHandler = { cell, state in
             var infoContent = cell.defaultContentConfiguration().updated(for: state)
-            infoContent.text = "\(nameArr[indexPath.row])(\(ageArr[indexPath.row]))"
-            infoContent.secondaryText = phoneNumberArr[indexPath.row]
+            infoContent.text = "\(nameArray[indexPath.row])(\(ageArray[indexPath.row]))"
+            infoContent.secondaryText = phoneNumberArray[indexPath.row]
             
             cell.accessoryType = .disclosureIndicator
             cell.contentConfiguration = infoContent
