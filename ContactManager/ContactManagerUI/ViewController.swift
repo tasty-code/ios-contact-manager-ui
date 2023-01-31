@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     let dummyPerson: Person = Person(name: "알리", age: 10, phoneNum: "010-000-0000")

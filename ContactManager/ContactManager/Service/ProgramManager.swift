@@ -7,16 +7,22 @@
 
 import Foundation
 
-final class ProgramManager {
+protocol ProgramManagerProtocol {
+    var inputEditor: InputEditorProtocol { get }
+}
+
+final class ProgramManager: ProgramManagerProtocol {
     
-    let inputEditor = InputEditor()
-    let outputEditor = OutputEditor()
-    
+    var inputEditor: InputEditorProtocol
     private var shouldRun: Bool = true
+    
+    init(inputEditor: InputEditorProtocol) {
+        self.inputEditor = inputEditor
+    }
     
     func runProgram() {
         while shouldRun {
-            outputEditor.printMenu()
+            inputEditor.outputEditor.printMenu()
             do {
                 shouldRun = try inputEditor.selectMenu()
             } catch {

@@ -7,29 +7,16 @@
 
 import Foundation
 
-struct InputEditor {
+protocol InputEditorProtocol {
+    var validator: ValidatorProtocol { get }
+    var outputEditor: OutputEditorProtocol { get }
+    func selectMenu() throws -> Bool
+}
+
+struct InputEditor: InputEditorProtocol {
     
-    let validator = Validator()
-    let outputEditor = OutputEditor()
-    
-    private func getUserInput() throws -> String {
-        guard let userInput = readLine() else {
-            throw Errors.readFail
-        }
-        return userInput
-    }
-    
-    private func getContactInfo() throws -> UserInputModel {
-        let userInput = try getUserInput()
-        let isEmpty = validator.checkInputEmpty(with: userInput)
-        
-        if isEmpty {
-            throw Errors.noUserInput
-        }
-        
-        let trimmedData = trimming(of: userInput)
-        return convertToUserInputModel(with: trimmedData)
-    }
+    var validator: ValidatorProtocol
+    var outputEditor: OutputEditorProtocol
     
     func selectMenu() throws -> Bool {
         let userInput = try getUserInput()
@@ -51,6 +38,25 @@ struct InputEditor {
         default:
             throw Errors.invalidSelect
         }
+    }
+    
+    private func getUserInput() throws -> String {
+        guard let userInput = readLine() else {
+            throw Errors.readFail
+        }
+        return userInput
+    }
+    
+    private func getContactInfo() throws -> UserInputModel {
+        let userInput = try getUserInput()
+        let isEmpty = validator.checkInputEmpty(with: userInput)
+        
+        if isEmpty {
+            throw Errors.noUserInput
+        }
+        
+        let trimmedData = trimming(of: userInput)
+        return convertToUserInputModel(with: trimmedData)
     }
     
     private func trimming(of str: String) -> [String] {

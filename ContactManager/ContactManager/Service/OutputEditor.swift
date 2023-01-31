@@ -7,7 +7,19 @@
 
 import Foundation
 
-struct OutputEditor {
+protocol OutputEditorProtocol {
+    func printMenu()
+    func askContactInfo()
+    func printResult(with person: Person)
+    func askPersonName()
+    func printTerminateProgram()
+    func showContactList(_ list: String)
+    func printEmptyUser(_ user: String)
+    func searchValidUser(_ name: String, _ age: Int, _ phoneNum: String)
+    func printEmptyString()
+}
+
+struct OutputEditor: OutputEditorProtocol {
     
     func printMenu() {
         print(Menu.greeting, Messages.enterMenu.rawValue, terminator: " ")
