@@ -8,8 +8,7 @@
 import Foundation
 
 protocol ProgramManagerProtocol {
-    var inputEditor: InputEditorProtocol { get }
-    var outputEditor: OutputEditorProtocol { get }
+    func runProgram()
 }
 
 final class ProgramManager: ProgramManagerProtocol {
