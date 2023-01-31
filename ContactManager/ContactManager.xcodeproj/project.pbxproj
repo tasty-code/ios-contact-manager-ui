@@ -112,7 +112,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		8E0FC6B629875E4C00CF0DA1 /* Module */ = {
+		8E0FC6B629875E4C00CF0DA1 /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				8E0FC6B729875E5E00CF0DA1 /* ProgramManager.swift */,
@@ -121,7 +121,7 @@
 				8E0FC6BB2987601500CF0DA1 /* InputEditor.swift */,
 				8E0FC6BD2987602B00CF0DA1 /* OutputEditor.swift */,
 			);
-			path = Module;
+			path = Service;
 			sourceTree = "<group>";
 		};
 		F1A86A7E2987BCBC00A9A867 /* ContactManagerUI */ = {
@@ -161,7 +161,7 @@
 			children = (
 				8E0FC6A729875DE500CF0DA1 /* Enum */,
 				8E0FC6B029875E1C00CF0DA1 /* Model */,
-				8E0FC6B629875E4C00CF0DA1 /* Module */,
+				8E0FC6B629875E4C00CF0DA1 /* Service */,
 				F1C1CC1A29875D9800572F80 /* main.swift */,
 			);
 			path = ContactManager;
