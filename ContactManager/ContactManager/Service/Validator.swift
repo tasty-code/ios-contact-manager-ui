@@ -7,21 +7,28 @@
 
 import Foundation
 
-struct Validator {
+protocol ValidatorProtocol {
+    func checkValidAgeAndNum(input: UserInputModel) throws -> Person
+    func checkInputEmpty(with str: String) -> Bool
+}
+
+struct Validator: ValidatorProtocol {
     
     func checkValidAgeAndNum(input: UserInputModel) throws -> Person {
-        
         let (age, number) = (input.age, input.phoneNum)
-                
+        
         do {
             try validateAge(age)
             try validateNumber(number)
             let person = input.convertToPerson()
-            
             if let person = person { return person } else { throw Errors.defaultError }
         } catch {
             throw error
         }
+    }
+    
+    func checkInputEmpty(with str: String) -> Bool {
+        return str.isEmpty ? true : false
     }
     
     private func validateAge(_ age: String) throws {
@@ -32,9 +39,5 @@ struct Validator {
     private func validateNumber(_ number: String) throws {
         let numberSplit = number.split(separator: "-").map({ String($0) })
         if number.count < 10 || numberSplit.count < 3 { throw Errors.wrongPhoneNumber }
-    }
-    
-    func checkInputEmpty(with str: String) -> Bool {
-        return str.isEmpty ? true : false
     }
 }
