@@ -37,7 +37,7 @@ struct Validator: ValidatorProtocol {
     }
     
     private func validateNumber(_ number: String) throws {
-        let numberSplit = number.split(separator: "-").map({ String($0) })
+        let numberSplit = number.split(separator: "-").map { String($0) }
         if number.count < 10 || numberSplit.count < 3 { throw Errors.wrongPhoneNumber }
     }
 }
