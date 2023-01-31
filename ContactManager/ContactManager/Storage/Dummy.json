@@ -1,0 +1,103 @@
+[
+    {
+        "name": "jason",
+        "age": "30",
+        "phoneNumber": "05-343-2234"
+    },
+    {
+        "name": "blu",
+        "age": "100",
+        "phoneNumber": "047-221-3432"
+    },
+    {
+        "name": "mason",
+        "age": "33",
+        "phoneNumber": "010-3332-0093"
+    },
+    {
+        "name": "avery",
+        "age": "99",
+        "phoneNumber": "0323-33-2232"
+    },
+    {
+        "name": "logan",
+        "age": "45",
+        "phoneNumber": "3-444-19343"
+    },
+    {
+        "name": "sunny",
+        "age": "95",
+        "phoneNumber": "932-39443-23"
+    },
+    {
+        "name": "do",
+        "age": "1",
+        "phoneNumber": "000-232-03333"
+    },
+    {
+        "name": "luster",
+        "age": "30",
+        "phoneNumber": "323-43-3333"
+    },
+    {
+        "name": "june",
+        "age": "65",
+        "phoneNumber": "6894-3-3434"
+    },
+    {
+        "name": "joo",
+        "age": "84",
+        "phoneNumber": "9-32-343323"
+    },
+    {
+        "name": "jenna",
+        "age": "54",
+        "phoneNumber": "895-3432-344"
+    },
+    {
+        "name": "is",
+        "age": "30",
+        "phoneNumber": "05-343-2234"
+    },
+    {
+        "name": "iyeah",
+        "age": "100",
+        "phoneNumber": "047-221-3432"
+    },
+    {
+        "name": "jojo",
+        "age": "33",
+        "phoneNumber": "010-3332-0093"
+    },
+    {
+        "name": "toughie",
+        "age": "99",
+        "phoneNumber": "0323-33-2232"
+    },
+    {
+        "name": "miro",
+        "age": "45",
+        "phoneNumber": "3-444-19343"
+    },
+    {
+        "name": "jamking",
+        "age": "95",
+        "phoneNumber": "932-39443-23"
+    },
+    {
+        "name": "finnn",
+        "age": "29",
+        "phoneNumber": "932-39443-23"
+    },
+    {
+        "name": "tacocat",
+        "age": "18",
+        "phoneNumber": "932-39443-23"
+    },
+    {
+        "name": "yagom",
+        "age": "20",
+        "phoneNumber": "932-39443-23"
+    }
+]
+

@@ -79,6 +79,7 @@
 		F0873C52295A8AC00097B804 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		F0A68C2929555F6C00815CD6 /* InputPossible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPossible.swift; sourceTree = "<group>"; };
 		F0A68C2C29556D7D00815CD6 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
+		F0FA763C2988D54100441637 /* Dummy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Dummy.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +181,7 @@
 			children = (
 				F042BC1B2952DD1700722285 /* PrintMessage.swift */,
 				5B63007A2955637200730005 /* RegularExpression.swift */,
+				F0FA763C2988D54100441637 /* Dummy.json */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
