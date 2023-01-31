@@ -17,6 +17,11 @@
 		D91FBE5E2988A67B0091F104 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D91FBE5C2988A67B0091F104 /* Main.storyboard */; };
 		D91FBE602988A67B0091F104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D91FBE5F2988A67B0091F104 /* Assets.xcassets */; };
 		D91FBE632988A67B0091F104 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D91FBE612988A67B0091F104 /* LaunchScreen.storyboard */; };
+		D91FBE682988AB3C0091F104 /* AddContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E15C02295C312C003FB06D /* AddContact.swift */; };
+		D91FBE692988AB400091F104 /* CheckContactError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8733744E295C3295000EAC23 /* CheckContactError.swift */; };
+		D91FBE6A2988AB430091F104 /* FindContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3EE1C295D5ABF00A76712 /* FindContact.swift */; };
+		D91FBE6B2988AB450091F104 /* ValidateContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5C8DD2988A9A20074A793 /* ValidateContact.swift */; };
+		D91FBE6C2988AB470091F104 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5C8DF2988A9C50074A793 /* Enums.swift */; };
 		D9D3AEFD29597A7B0031A2F2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3AEFC29597A7B0031A2F2 /* main.swift */; };
 		D9E15C03295C312C003FB06D /* AddContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E15C02295C312C003FB06D /* AddContact.swift */; };
 /* End PBXBuildFile section */
@@ -206,8 +211,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D91FBE682988AB3C0091F104 /* AddContact.swift in Sources */,
 				D91FBE5B2988A67B0091F104 /* ViewController.swift in Sources */,
+				D91FBE692988AB400091F104 /* CheckContactError.swift in Sources */,
+				D91FBE6A2988AB430091F104 /* FindContact.swift in Sources */,
+				D91FBE6B2988AB450091F104 /* ValidateContact.swift in Sources */,
 				D91FBE572988A67B0091F104 /* AppDelegate.swift in Sources */,
+				D91FBE6C2988AB470091F104 /* Enums.swift in Sources */,
 				D91FBE592988A67B0091F104 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
