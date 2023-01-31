@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		8733744F295C3295000EAC23 /* CheckErrorFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8733744E295C3295000EAC23 /* CheckErrorFunction.swift */; };
 		87C3EE1D295D5ABF00A76712 /* FindContactFuction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3EE1C295D5ABF00A76712 /* FindContactFuction.swift */; };
+		D91FBE572988A67B0091F104 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FBE562988A67B0091F104 /* AppDelegate.swift */; };
+		D91FBE592988A67B0091F104 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FBE582988A67B0091F104 /* SceneDelegate.swift */; };
+		D91FBE5B2988A67B0091F104 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FBE5A2988A67B0091F104 /* ViewController.swift */; };
+		D91FBE5E2988A67B0091F104 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D91FBE5C2988A67B0091F104 /* Main.storyboard */; };
+		D91FBE602988A67B0091F104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D91FBE5F2988A67B0091F104 /* Assets.xcassets */; };
+		D91FBE632988A67B0091F104 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D91FBE612988A67B0091F104 /* LaunchScreen.storyboard */; };
 		D9D3AEFD29597A7B0031A2F2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3AEFC29597A7B0031A2F2 /* main.swift */; };
 		D9E15C03295C312C003FB06D /* AddContactFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E15C02295C312C003FB06D /* AddContactFunction.swift */; };
 /* End PBXBuildFile section */
@@ -28,12 +34,27 @@
 /* Begin PBXFileReference section */
 		8733744E295C3295000EAC23 /* CheckErrorFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckErrorFunction.swift; sourceTree = "<group>"; };
 		87C3EE1C295D5ABF00A76712 /* FindContactFuction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindContactFuction.swift; sourceTree = "<group>"; };
+		D91FBE542988A67B0091F104 /* ContactManagerUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManagerUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D91FBE562988A67B0091F104 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D91FBE582988A67B0091F104 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D91FBE5A2988A67B0091F104 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D91FBE5D2988A67B0091F104 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D91FBE5F2988A67B0091F104 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D91FBE622988A67B0091F104 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D91FBE642988A67B0091F104 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9D3AEF929597A7B0031A2F2 /* contactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = contactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D3AEFC29597A7B0031A2F2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D9E15C02295C312C003FB06D /* AddContactFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactFunction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D91FBE512988A67B0091F104 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9D3AEF629597A7B0031A2F2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -44,10 +65,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D91FBE552988A67B0091F104 /* ContactManagerUI */ = {
+			isa = PBXGroup;
+			children = (
+				D91FBE562988A67B0091F104 /* AppDelegate.swift */,
+				D91FBE582988A67B0091F104 /* SceneDelegate.swift */,
+				D91FBE5A2988A67B0091F104 /* ViewController.swift */,
+				D91FBE5C2988A67B0091F104 /* Main.storyboard */,
+				D91FBE5F2988A67B0091F104 /* Assets.xcassets */,
+				D91FBE612988A67B0091F104 /* LaunchScreen.storyboard */,
+				D91FBE642988A67B0091F104 /* Info.plist */,
+			);
+			path = ContactManagerUI;
+			sourceTree = "<group>";
+		};
 		D9D3AEF029597A7B0031A2F2 = {
 			isa = PBXGroup;
 			children = (
 				D9D3AEFB29597A7B0031A2F2 /* contactManager */,
+				D91FBE552988A67B0091F104 /* ContactManagerUI */,
 				D9D3AEFA29597A7B0031A2F2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				D9D3AEF929597A7B0031A2F2 /* contactManager */,
+				D91FBE542988A67B0091F104 /* ContactManagerUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,6 +111,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D91FBE532988A67B0091F104 /* ContactManagerUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D91FBE672988A67B0091F104 /* Build configuration list for PBXNativeTarget "ContactManagerUI" */;
+			buildPhases = (
+				D91FBE502988A67B0091F104 /* Sources */,
+				D91FBE512988A67B0091F104 /* Frameworks */,
+				D91FBE522988A67B0091F104 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ContactManagerUI;
+			productName = ContactManagerUI;
+			productReference = D91FBE542988A67B0091F104 /* ContactManagerUI.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D9D3AEF829597A7B0031A2F2 /* contactManager */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9D3AF0029597A7B0031A2F2 /* Build configuration list for PBXNativeTarget "contactManager" */;
@@ -101,6 +155,9 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					D91FBE532988A67B0091F104 = {
+						CreatedOnToolsVersion = 14.2;
+					};
 					D9D3AEF829597A7B0031A2F2 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -120,11 +177,35 @@
 			projectRoot = "";
 			targets = (
 				D9D3AEF829597A7B0031A2F2 /* contactManager */,
+				D91FBE532988A67B0091F104 /* ContactManagerUI */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		D91FBE522988A67B0091F104 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D91FBE632988A67B0091F104 /* LaunchScreen.storyboard in Resources */,
+				D91FBE602988A67B0091F104 /* Assets.xcassets in Resources */,
+				D91FBE5E2988A67B0091F104 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		D91FBE502988A67B0091F104 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D91FBE5B2988A67B0091F104 /* ViewController.swift in Sources */,
+				D91FBE572988A67B0091F104 /* AppDelegate.swift in Sources */,
+				D91FBE592988A67B0091F104 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9D3AEF529597A7B0031A2F2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -138,7 +219,85 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		D91FBE5C2988A67B0091F104 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D91FBE5D2988A67B0091F104 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D91FBE612988A67B0091F104 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D91FBE622988A67B0091F104 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		D91FBE652988A67B0091F104 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ContactManagerUI/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lust3r.ContactManagerUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D91FBE662988A67B0091F104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ContactManagerUI/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lust3r.ContactManagerUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		D9D3AEFE29597A7B0031A2F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -275,6 +434,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D91FBE672988A67B0091F104 /* Build configuration list for PBXNativeTarget "ContactManagerUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D91FBE652988A67B0091F104 /* Debug */,
+				D91FBE662988A67B0091F104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D9D3AEF429597A7B0031A2F2 /* Build configuration list for PBXProject "contactManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
