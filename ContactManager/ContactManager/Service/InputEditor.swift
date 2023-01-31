@@ -8,7 +8,6 @@
 import Foundation
 
 protocol InputEditorProtocol {
-    var validator: ValidatorProtocol { get }
     var outputEditor: OutputEditorProtocol { get }
     func selectMenu() throws -> Bool
 }
