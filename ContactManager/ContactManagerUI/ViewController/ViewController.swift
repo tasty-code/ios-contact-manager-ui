@@ -11,9 +11,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var contactTableView: UITableView!
     
+    private var contacts: [Contact] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        contacts = mockupContacts
     }
     
     private func setupTableView() {
@@ -23,12 +26,12 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mockupContacts.count
+        return contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = contactTableView.dequeueReusableCell(withIdentifier: ContactCell.reuseIdentifier, for: indexPath) as? ContactCell,
-              let contact = mockupContacts[safe: indexPath.row] else {
+              let contact = contacts[safe: indexPath.row] else {
             return UITableViewCell()
         }
         
