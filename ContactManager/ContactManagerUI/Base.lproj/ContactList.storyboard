@@ -57,7 +57,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="연락처" id="Nw3-9H-GqJ">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="QSL-jU-dt8"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="QSL-jU-dt8">
+                            <connections>
+                                <segue destination="GwB-oC-yLS" kind="presentation" id="Cca-ND-4lN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="contactListTableView" destination="sOI-JX-jaY" id="r9e-fi-vzr"/>
@@ -66,6 +70,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1002.2900763358779" y="-2.1126760563380285"/>
+        </scene>
+        <!--AddContactStoryboard-->
+        <scene sceneID="OKv-Vf-4ct">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="AddContactStoryboard" storyboardName="AddContact" referencedIdentifier="AddContactStoryboard" id="GwB-oC-yLS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="g5k-Rf-pRO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8gH-P8-LSA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1807" y="30"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xcu-Ru-U1Z">

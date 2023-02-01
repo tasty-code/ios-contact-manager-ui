@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -8,16 +8,17 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Add Contact View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddContactStoryboard" id="Y6W-OH-hqX" customClass="AddContactViewController" customModule="ContactManagerUI" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vX-ll-SYN">
+                            <navigationBar contentMode="scaleToFill" shadowImage="nil" translatesAutoresizingMaskIntoConstraints="NO" id="8vX-ll-SYN">
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="새 연락처" id="Laz-9j-cIi">
                                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="GZN-nQ-VOi"/>
@@ -25,20 +26,20 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Rp6-2D-6az" userLabel="Input Stack View">
-                                <rect key="frame" x="19.666666666666657" y="123" width="353.66666666666674" height="127.66666666666669"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rp6-2D-6az" userLabel="Input Stack View">
+                                <rect key="frame" x="0.0" y="123" width="378" height="127.66666666666669"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ia1-hX-IRG" userLabel="NameInput Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="353.66666666666669" height="42.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="378" height="37.333333333333336"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kh0-Ny-Pc6" userLabel="Name">
-                                                <rect key="frame" x="0.0" y="0.0" width="70.666666666666671" height="42.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="75.666666666666671" height="37.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eE9-uT-DK9">
-                                                <rect key="frame" x="70.666666666666657" y="0.0" width="283" height="42.666666666666664"/>
+                                                <rect key="frame" x="75.666666666666657" y="0.0" width="302.33333333333337" height="37.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -48,16 +49,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o7j-ak-mUp" userLabel="AgeInput Stack View">
-                                        <rect key="frame" x="0.0" y="42.666666666666657" width="353.66666666666669" height="42.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="45.333333333333343" width="378" height="37.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나이" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSI-Gj-hk2" userLabel="Age">
-                                                <rect key="frame" x="0.0" y="0.0" width="70.666666666666671" height="42.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="75.666666666666671" height="37.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="auo-mQ-ckp">
-                                                <rect key="frame" x="70.666666666666657" y="0.0" width="283" height="42.666666666666664"/>
+                                                <rect key="frame" x="75.666666666666657" y="0.0" width="302.33333333333337" height="37.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -67,16 +68,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2P-aC-1gM" userLabel="PhoneNumInput Stack View">
-                                        <rect key="frame" x="0.0" y="85.333333333333343" width="353.66666666666669" height="42.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="90.666666666666657" width="378" height="37"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연락처" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cej-Cq-n42" userLabel="PhoneNumber">
-                                                <rect key="frame" x="0.0" y="0.0" width="70.666666666666671" height="42.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="75.666666666666671" height="37"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G1y-Ed-zHh">
-                                                <rect key="frame" x="70.666666666666657" y="0.0" width="283" height="42.333333333333336"/>
+                                                <rect key="frame" x="75.666666666666657" y="0.0" width="302.33333333333337" height="37"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
@@ -91,13 +92,13 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Rp6-2D-6az" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="233-uW-Hjv"/>
+                            <constraint firstAttribute="trailing" secondItem="Rp6-2D-6az" secondAttribute="trailing" constant="15" id="FfR-GF-OyH"/>
                             <constraint firstItem="8vX-ll-SYN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Vpf-fV-hfD"/>
-                            <constraint firstItem="Rp6-2D-6az" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.9" id="ahM-c9-civ"/>
                             <constraint firstItem="Rp6-2D-6az" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.15" id="ckw-UE-QZo"/>
                             <constraint firstItem="8vX-ll-SYN" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="nJ9-tJ-8UQ"/>
                             <constraint firstItem="Rp6-2D-6az" firstAttribute="top" secondItem="8vX-ll-SYN" secondAttribute="bottom" constant="20" id="qfA-En-ecF"/>
                             <constraint firstItem="8vX-ll-SYN" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="tRB-Pe-6u3"/>
-                            <constraint firstItem="Rp6-2D-6az" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="xCd-2v-ZV2"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -107,6 +108,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="nil" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
