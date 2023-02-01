@@ -10,8 +10,8 @@ import UIKit
 final class ContactCell: UITableViewCell {
     static let reuseIdentifier = String(describing: ContactCell.self)
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subTitleLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var subTitleLabel: UILabel!
     
     func configure(with contact: Contact) {
         titleLabel.text = "\(contact.name)(\(contact.age))"

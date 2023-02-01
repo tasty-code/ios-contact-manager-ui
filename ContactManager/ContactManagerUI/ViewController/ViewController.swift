@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
-    @IBOutlet weak var contactTableView: UITableView!
+    @IBOutlet private weak var contactTableView: UITableView!
     
     private var contacts: [Contact] = []
     
