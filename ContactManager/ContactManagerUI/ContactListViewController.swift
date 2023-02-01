@@ -34,8 +34,10 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
         let cellIdentifier = "ContactTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
-        cell.textLabel?.text = dummyContactList[indexPath.row].name + "(\(dummyContactList[indexPath.row].age))"
-        cell.detailTextLabel?.text = dummyContactList[indexPath.row].phoneNum
+        guard let cellData = dummyContactList[safe: indexPath.row] else { return UITableViewCell() }
+        
+        cell.textLabel?.text = cellData.name + "(\(cellData.age))"
+        cell.detailTextLabel?.text = cellData.phoneNum
         return cell
     }
 }
