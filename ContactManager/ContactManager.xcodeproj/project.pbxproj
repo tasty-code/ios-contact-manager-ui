@@ -38,6 +38,8 @@
 		F1C1CC1B29875D9800572F80 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C1CC1A29875D9800572F80 /* main.swift */; };
 		F1F0B290298A895700C4A5C7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B28F298A895700C4A5C7 /* ArrayExtension.swift */; };
 		F1F0B291298A895700C4A5C7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B28F298A895700C4A5C7 /* ArrayExtension.swift */; };
+		F1F0B293298AAF6600C4A5C7 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B292298AAF6600C4A5C7 /* AddContactViewController.swift */; };
+		F1F0B295298AAF9000C4A5C7 /* AddContact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1F0B294298AAF9000C4A5C7 /* AddContact.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -75,6 +77,8 @@
 		F1C1CC1729875D9800572F80 /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C1CC1A29875D9800572F80 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F1F0B28F298A895700C4A5C7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		F1F0B292298AAF6600C4A5C7 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
+		F1F0B294298AAF9000C4A5C7 /* AddContact.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddContact.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +138,8 @@
 				F1A86A812987BCBC00A9A867 /* SceneDelegate.swift */,
 				F1A86A832987BCBC00A9A867 /* ContactListViewController.swift */,
 				F1A86A852987BCBC00A9A867 /* ContactList.storyboard */,
+				F1F0B292298AAF6600C4A5C7 /* AddContactViewController.swift */,
+				F1F0B294298AAF9000C4A5C7 /* AddContact.storyboard */,
 				F1A86A882987BCBD00A9A867 /* Assets.xcassets */,
 				F1A86A8A2987BCBD00A9A867 /* LaunchScreen.storyboard */,
 				F1A86A8D2987BCBD00A9A867 /* Info.plist */,
@@ -259,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1A86A8C2987BCBD00A9A867 /* LaunchScreen.storyboard in Resources */,
+				F1F0B295298AAF9000C4A5C7 /* AddContact.storyboard in Resources */,
 				F1A86A892987BCBD00A9A867 /* Assets.xcassets in Resources */,
 				F1A86A872987BCBC00A9A867 /* ContactList.storyboard in Resources */,
 			);
@@ -284,6 +291,7 @@
 				8E0FC73E29889D5D00CF0DA1 /* Menu.swift in Sources */,
 				8E0FC74129889D6400CF0DA1 /* Constants.swift in Sources */,
 				8E0FC74029889D6200CF0DA1 /* Errors.swift in Sources */,
+				F1F0B293298AAF6600C4A5C7 /* AddContactViewController.swift in Sources */,
 				8E0FC74229889D6600CF0DA1 /* Person.swift in Sources */,
 				F1A86A822987BCBC00A9A867 /* SceneDelegate.swift in Sources */,
 			);
