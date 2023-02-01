@@ -52,7 +52,7 @@
 		B4CA5AD12954206200D7C823 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		B4F19BEF295BFD6D0021CB9E /* UserMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenu.swift; sourceTree = "<group>"; };
 		B4FFAAD62989F7EA00A3E490 /* ContactMockupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMockupData.swift; sourceTree = "<group>"; };
-		E700DC0A2989F5CC00A090E1 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = SOURCE_ROOT; };
+		E700DC0A2989F5CC00A090E1 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactCell.swift; path = ContactManagerUI/View/ContactCell.swift; sourceTree = SOURCE_ROOT; };
 		E73AC779295AB04700054805 /* ExtensionArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionArray.swift; sourceTree = "<group>"; };
 		E76B5B552987A5ED002E2C99 /* ContactManagerUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManagerUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76B5B572987A5ED002E2C99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,17 +116,41 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		B4FFAAD82989FD0400A3E490 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E76B5B5D2987A5ED002E2C99 /* Main.storyboard */,
+				E700DC0A2989F5CC00A090E1 /* ContactCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B4FFAAD92989FD0D00A3E490 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E76B5B5B2987A5ED002E2C99 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B4FFAADA2989FD6100A3E490 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B4FFAAD62989F7EA00A3E490 /* ContactMockupData.swift */,
+				E76B5B602987A5EF002E2C99 /* Assets.xcassets */,
+				E76B5B622987A5EF002E2C99 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E76B5B562987A5ED002E2C99 /* ContactManagerUI */ = {
 			isa = PBXGroup;
 			children = (
 				E76B5B572987A5ED002E2C99 /* AppDelegate.swift */,
 				E76B5B592987A5ED002E2C99 /* SceneDelegate.swift */,
-				E76B5B5B2987A5ED002E2C99 /* ViewController.swift */,
-				E700DC0A2989F5CC00A090E1 /* ContactCell.swift */,
-				B4FFAAD62989F7EA00A3E490 /* ContactMockupData.swift */,
-				E76B5B5D2987A5ED002E2C99 /* Main.storyboard */,
-				E76B5B602987A5EF002E2C99 /* Assets.xcassets */,
-				E76B5B622987A5EF002E2C99 /* LaunchScreen.storyboard */,
+				B4FFAAD82989FD0400A3E490 /* View */,
+				B4FFAAD92989FD0D00A3E490 /* ViewController */,
+				B4FFAADA2989FD6100A3E490 /* Resources */,
 				E76B5B652987A5EF002E2C99 /* Info.plist */,
 			);
 			path = ContactManagerUI;
