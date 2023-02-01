@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class ContactViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    let dataSource = TableViewDataSource()
+    @IBOutlet private weak var tableView: UITableView!
+    private let dataSource = TableViewDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,6 @@ final class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension ContactViewController: UITableViewDelegate {
 
 }

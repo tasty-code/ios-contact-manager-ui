@@ -8,27 +8,28 @@
 import Foundation
 
 final class ModelData {
-    var contacts: [UserInfo] = load("contacts.json") ?? []
+    // TODO: Error 처리하기
+    var contacts: [UserInfo] = (try? load("contacts.json")) ?? []
 }
 
-func load<T: Decodable>(_ fileName: String) -> T? {
+func load<T: Decodable>(_ fileName: String) throws -> T {
     let data: Data
     
     guard let file = Bundle.main.url(forResource: fileName, withExtension: nil) else {
-        return nil
+        throw ContactError.FileNotFound
     }
     
     do {
         data = try Data(contentsOf: file)
     } catch {
-        return nil
+        throw ContactError.FileNotLoad
     }
     
     do {
         let decoder = JSONDecoder()
         return try decoder.decode(T.self, from: data)
     } catch {
-        return nil
+        throw ContactError.FileNotParse
     }
 }
     

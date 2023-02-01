@@ -8,7 +8,7 @@
 import UIKit
 
 final class TableViewDataSource: NSObject, UITableViewDataSource {
-    let contactsData = ModelData().contacts
+    private let contactsData = ModelData().contacts
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactsData.count
