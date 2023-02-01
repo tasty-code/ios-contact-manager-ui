@@ -12,4 +12,9 @@ final class ContactCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
+    
+    func configure(with contact: Contact) {
+        titleLabel.text = "\(contact.name)(\(contact.age))"
+        subTitleLabel.text = contact.phoneNumber
+    }
 }

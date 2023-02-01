@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var contactTableView: UITableView!
     
     override func viewDidLoad() {
@@ -27,15 +27,13 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = contactTableView.dequeueReusableCell(withIdentifier: ContactCell.reuseIdentifier, for: indexPath) as? ContactCell else {
+        guard let cell = contactTableView.dequeueReusableCell(withIdentifier: ContactCell.reuseIdentifier, for: indexPath) as? ContactCell,
+              let contact = mockupContacts[safe: indexPath.row] else {
             return UITableViewCell()
         }
-        let name = mockupContacts[indexPath.row].name
-        let age = mockupContacts[indexPath.row].age
-        let phoneNumber = mockupContacts[indexPath.row].phoneNumber
-        cell.titleLabel.text = "\(name)(\(age))"
-        cell.subTitleLabel.text = phoneNumber
-
+        
+        cell.configure(with: contact)
+        
         return cell
     }
     
