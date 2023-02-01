@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4062671E2954226900A2CBE4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4062671D2954226900A2CBE4 /* UserInfo.swift */; };
 		40F965542952ED4200ACCA0C /* StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F965532952ED4200ACCA0C /* StringLiteral.swift */; };
+		4FAE8E88298A4E60006DCD46 /* Extension+UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE8E87298A4E60006DCD46 /* Extension+UserInfo.swift */; };
 		4FCF4FFD2952A4AE00CA262F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCF4FFC2952A4AE00CA262F /* main.swift */; };
 		4FCF50082953F79200CA262F /* IOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCF50072953F79200CA262F /* IOManager.swift */; };
 		4FCF500A2953F7B200CA262F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCF50092953F7B200CA262F /* Error.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		4062671D2954226900A2CBE4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		40F965532952ED4200ACCA0C /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
+		4FAE8E87298A4E60006DCD46 /* Extension+UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UserInfo.swift"; sourceTree = "<group>"; };
 		4FCF4FF92952A4AE00CA262F /* ios-contact-manager-ui */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ios-contact-manager-ui"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FCF4FFC2952A4AE00CA262F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4FCF50072953F79200CA262F /* IOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOManager.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				4FEEF66A29879DE200FF6A89 /* Assets.xcassets */,
 				4FEEF66C29879DE200FF6A89 /* LaunchScreen.storyboard */,
 				4FEEF66F29879DE200FF6A89 /* Info.plist */,
+				4FAE8E87298A4E60006DCD46 /* Extension+UserInfo.swift */,
 			);
 			path = ContactManagerUI;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				4FEEF67329879E0300FF6A89 /* Extension.swift in Sources */,
 				4FEEF67929879E2B00FF6A89 /* Phonebook.swift in Sources */,
 				4FEEF67629879E2200FF6A89 /* Error.swift in Sources */,
+				4FAE8E88298A4E60006DCD46 /* Extension+UserInfo.swift in Sources */,
 				4FEEF67729879E2500FF6A89 /* ContactManager.swift in Sources */,
 				4FEEF67829879E2800FF6A89 /* UserInfo.swift in Sources */,
 				4FEEF67429879E1900FF6A89 /* StringLiteral.swift in Sources */,

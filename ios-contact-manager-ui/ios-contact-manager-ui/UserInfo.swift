@@ -28,7 +28,7 @@ enum UserInfoParameters: String {
     }
 }
 
-struct UserInfo {
+struct UserInfo: Codable {
     let name: String
     let age: Int
     let phone: String
