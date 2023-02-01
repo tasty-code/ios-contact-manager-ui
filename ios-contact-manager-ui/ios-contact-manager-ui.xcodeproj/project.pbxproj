@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4000CC39298A50F3003C8B95 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000CC38298A50F3003C8B95 /* TableViewDataSource.swift */; };
 		4062671E2954226900A2CBE4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4062671D2954226900A2CBE4 /* UserInfo.swift */; };
 		40F965542952ED4200ACCA0C /* StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F965532952ED4200ACCA0C /* StringLiteral.swift */; };
 		4FAE8E88298A4E60006DCD46 /* Extension+UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE8E87298A4E60006DCD46 /* Extension+UserInfo.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4000CC38298A50F3003C8B95 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		4062671D2954226900A2CBE4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		40F965532952ED4200ACCA0C /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
 		4FAE8E87298A4E60006DCD46 /* Extension+UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UserInfo.swift"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				4FEEF66129879DE000FF6A89 /* AppDelegate.swift */,
 				4FEEF66329879DE000FF6A89 /* SceneDelegate.swift */,
 				4FEEF66529879DE000FF6A89 /* ViewController.swift */,
+				4000CC38298A50F3003C8B95 /* TableViewDataSource.swift */,
 				4FAE8E8B298A4F90006DCD46 /* Resources */,
 				4FAE8E87298A4E60006DCD46 /* Extension+UserInfo.swift */,
 				4FEEF66729879DE000FF6A89 /* Main.storyboard */,
@@ -256,6 +259,7 @@
 				4FEEF66429879DE000FF6A89 /* SceneDelegate.swift in Sources */,
 				4FEEF67329879E0300FF6A89 /* Extension.swift in Sources */,
 				4FEEF67929879E2B00FF6A89 /* Phonebook.swift in Sources */,
+				4000CC39298A50F3003C8B95 /* TableViewDataSource.swift in Sources */,
 				4FEEF67629879E2200FF6A89 /* Error.swift in Sources */,
 				4FAE8E88298A4E60006DCD46 /* Extension+UserInfo.swift in Sources */,
 				4FEEF67729879E2500FF6A89 /* ContactManager.swift in Sources */,

@@ -7,13 +7,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
+
+    @IBOutlet weak var tableView: UITableView!
+    let dataSource = TableViewDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setupTableView()
     }
 
-
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = dataSource
+    }
 }
 
+extension ViewController: UITableViewDelegate {
+
+}
