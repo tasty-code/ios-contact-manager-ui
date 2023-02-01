@@ -17,18 +17,25 @@ class ViewController: UIViewController {
     }
     
     private func setupTableView() {
-//        contactTableView.delegate = self
         contactTableView.dataSource = self
     }
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return mockupContacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = contactTableView.dequeueReusableCell(withIdentifier: ContactCell.reuseIdentifier, for: indexPath)
+        guard let cell = contactTableView.dequeueReusableCell(withIdentifier: ContactCell.reuseIdentifier, for: indexPath) as? ContactCell else {
+            return UITableViewCell()
+        }
+        let name = mockupContacts[indexPath.row].name
+        let age = mockupContacts[indexPath.row].age
+        let phoneNumber = mockupContacts[indexPath.row].phoneNumber
+        cell.titleLabel.text = "\(name)(\(age))"
+        cell.subTitleLabel.text = phoneNumber
+
         return cell
     }
     

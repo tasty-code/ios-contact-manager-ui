@@ -7,7 +7,7 @@
 
 import Foundation
 
-let contacts = [
+let mockupContacts = [
     Contact(name: "james", age: 30, phoneNumber: "05-343-2234"),
     Contact(name: "steven", age: 100, phoneNumber: "047-221-3432"),
     Contact(name: "hajin", age: 33, phoneNumber: "010-3332-0093"),

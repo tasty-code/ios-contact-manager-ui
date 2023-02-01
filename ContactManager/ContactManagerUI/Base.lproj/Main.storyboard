@@ -43,6 +43,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="subTitleLabel" destination="1rv-u0-3XS" id="Fhe-M6-Rsn"/>
+                                            <outlet property="titleLabel" destination="lz7-Zh-S2c" id="Zzj-GF-jh8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
