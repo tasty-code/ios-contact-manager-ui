@@ -8,22 +8,25 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    
+    // MARK: - Properties
     @IBOutlet private weak var contactTableView: UITableView!
     
     private var contacts: [Contact] = []
-    
+
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         contacts = mockupContacts
     }
-    
+
+    // MARK: - Helpers
     private func setupTableView() {
         contactTableView.dataSource = self
     }
 }
 
+// MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count
