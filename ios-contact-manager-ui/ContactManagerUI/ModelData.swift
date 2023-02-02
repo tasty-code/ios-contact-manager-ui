@@ -9,7 +9,7 @@ import Foundation
 
 final class ModelData {
     // TODO: Error 처리하기
-    var contacts: [UserInfo] = (try? load("contacts.json")) ?? []
+    private(set) var contacts: [UserInfo] = (try? load("contacts.json")) ?? []
 }
 
 func load<T: Decodable>(_ fileName: String) throws -> T {
