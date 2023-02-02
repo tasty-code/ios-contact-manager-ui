@@ -11,7 +11,7 @@ protocol InputEditorProtocol {
     func selectMenu() throws -> Menu
     func getUserInput() throws -> String
     func getContactInfo() throws -> UserInputModel
-    func requestValidation(with model: UserInputModel) throws -> Person
+    func requestValidation(with inputtedModel: UserInputModel) throws -> Person
 }
 
 struct InputEditor: InputEditorProtocol {
@@ -45,9 +45,9 @@ struct InputEditor: InputEditorProtocol {
         return convertToUserInputModel(with: trimmedData)
     }
     
-    func requestValidation(with model: UserInputModel) throws -> Person {
+    func requestValidation(with inputtedModel: UserInputModel) throws -> Person {
         do {
-            let person = try validator.checkValidAgeAndNum(input: model)
+            let person = try validator.checkValidAgeAndNum(input: inputtedModel)
             return person
         } catch {
             throw error

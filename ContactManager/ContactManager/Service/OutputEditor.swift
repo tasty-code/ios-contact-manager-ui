@@ -15,7 +15,7 @@ protocol OutputEditorProtocol {
     func printTerminateProgram()
     func showContactList(_ list: String)
     func printEmptyUser(_ user: String)
-    func searchValidUser(_ name: String, _ age: Int, _ phoneNum: String)
+    func printSearchedUser(_ name: String, _ age: Int, _ phoneNum: String)
     func printEmptyString()
 }
 
@@ -49,7 +49,7 @@ struct OutputEditor: OutputEditorProtocol {
         print("연락처에 \(user) 이(가) 없습니다.")
     }
     
-    func searchValidUser(_ name: String, _ age: Int, _ phoneNum: String) {
+    func printSearchedUser(_ name: String, _ age: Int, _ phoneNum: String) {
         print("- \(name) / \(age) / \(phoneNum)", terminator: "\n")
     }
     
