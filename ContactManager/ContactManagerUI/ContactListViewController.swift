@@ -9,20 +9,30 @@ import UIKit
 
 final class ContactListViewController: UIViewController {
     
+    // MARK: - Properties
+
     private let dummyContactList = Person.dummyData
 
-    @IBOutlet weak var contactListTableView: UITableView!
+    // MARK: - @IBOutlet Properties
+
+    @IBOutlet weak private var contactListTableView: UITableView!
     
+    // MARK: - View Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegate()
     }
     
+    // MARK: - Methods
+
     private func setDelegate() {
         contactListTableView.delegate = self
         contactListTableView.dataSource = self
     }
 }
+
+// MARK: - Extensions: UITableViewDelegate, UITableViewDataSource
 
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
     

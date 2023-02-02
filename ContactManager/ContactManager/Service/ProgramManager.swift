@@ -53,9 +53,9 @@ final class ProgramManager: ProgramManagerProtocol {
     }
 }
 
-extension ProgramManager {
+private extension ProgramManager {
     
-    private func addProgram() {
+    func addProgram() {
         outputEditor.askContactInfo()
         do {
             let contactInfo = try inputEditor.getContactInfo()
@@ -67,13 +67,13 @@ extension ProgramManager {
         }
     }
     
-    private func showListProgram() {
+    func showListProgram() {
         let contactsList = dataManager.getContactsList()
         contactsList.forEach { outputEditor.showContactList($0) }
         outputEditor.printEmptyString()
     }
     
-    private func searchProgram() {
+    func searchProgram() {
         outputEditor.askPersonName()
         do {
             let userInput = try inputEditor.getUserInput()
