@@ -7,7 +7,7 @@
 
 import Foundation
 
-func main() {
+private func main() {
     let programManager: ProgramManagerProtocol = ProgramManager(inputEditor: InputEditor(validator: Validator()),
                                                                 outputEditor: OutputEditor())
     programManager.runProgram()
