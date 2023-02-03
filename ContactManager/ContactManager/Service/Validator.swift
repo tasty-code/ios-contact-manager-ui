@@ -41,9 +41,12 @@ struct Validator: ValidatorProtocol {
         if number.count < 10 || numberSplit.count < 3 { throw Errors.wrongPhoneNumber }
     }
     
-    func formmatingPhoneNumber(with number: String) throws -> String {
+    func formmatingPhoneNumber(with number: String) -> String {
         let stringCount = number.count
         var phoneNumber = number.map{ String($0) }
+        if stringCount < 9 {
+            return "Should be Error"
+        }
         if stringCount >= 10 {
             phoneNumber.insert("-", at: 3)
             phoneNumber.insert("-", at: 7)

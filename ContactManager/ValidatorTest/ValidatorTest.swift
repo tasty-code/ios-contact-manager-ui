@@ -9,28 +9,40 @@ import XCTest
 @testable import ContactManager
 
 final class ValidatorTest: XCTestCase {
-
+    var sut: Validator!
+    
     override func setUpWithError() throws {
-        
+        sut = Validator()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_formmatingPhoneNumber메서드가_10자리이상_였을때_잘_작동하는지() {
+        let userInput = "12345678901"
+        let expectation = "123-456-78901"
+        
+        let result = sut.formmatingPhoneNumber(with: userInput)
+        
+        XCTAssertEqual(expectation, result)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_formmatingPhoneNumber메서드가_9자리였을때_잘_작동하는지() {
+        let userInput = "123456789"
+        let expectation = "12-345-6789"
+        
+        let result = sut.formmatingPhoneNumber(with: userInput)
+        
+        XCTAssertEqual(expectation, result)
     }
-
+    
+    func test_formmatingPhoneNumber메서드가_9자리이하였을때_잘_작동하는지() {
+        let userInput = "123456"
+        let expectation = "Should be Error"
+        
+        let result = sut.formmatingPhoneNumber(with: userInput)
+        
+        XCTAssertEqual(expectation, result)
+    }
 }

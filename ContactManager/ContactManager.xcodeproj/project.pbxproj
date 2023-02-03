@@ -31,6 +31,17 @@
 		8E0FC74829889D7400CF0DA1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BF2987603A00CF0DA1 /* DataManager.swift */; };
 		F16CE050298CEDE4006B59E2 /* ValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16CE04F298CEDE4006B59E2 /* ValidatorTest.swift */; };
 		F16CE054298CEE4D006B59E2 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B92987600600CF0DA1 /* Validator.swift */; };
+		F16CE055298CF2BB006B59E2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B129875E2500CF0DA1 /* Person.swift */; };
+		F16CE056298CF2D1006B59E2 /* UserInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B429875E3E00CF0DA1 /* UserInputModel.swift */; };
+		F16CE057298CF2F0006B59E2 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6AC29875E0500CF0DA1 /* Errors.swift */; };
+		F16CE058298CF2F9006B59E2 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B28F298A895700C4A5C7 /* ArrayExtension.swift */; };
+		F16CE059298CF2FB006B59E2 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6A829875DEF00CF0DA1 /* Menu.swift */; };
+		F16CE05A298CF303006B59E2 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6AA29875DFB00CF0DA1 /* Messages.swift */; };
+		F16CE05B298CF306006B59E2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6AE29875E1200CF0DA1 /* Constants.swift */; };
+		F16CE05C298CF312006B59E2 /* ProgramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B729875E5E00CF0DA1 /* ProgramManager.swift */; };
+		F16CE05D298CF312006B59E2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BF2987603A00CF0DA1 /* DataManager.swift */; };
+		F16CE05E298CF318006B59E2 /* InputEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BB2987601500CF0DA1 /* InputEditor.swift */; };
+		F16CE05F298CF318006B59E2 /* OutputEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BD2987602B00CF0DA1 /* OutputEditor.swift */; };
 		F1A86A802987BCBC00A9A867 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A86A7F2987BCBC00A9A867 /* AppDelegate.swift */; };
 		F1A86A822987BCBC00A9A867 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A86A812987BCBC00A9A867 /* SceneDelegate.swift */; };
 		F1A86A842987BCBC00A9A867 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A86A832987BCBC00A9A867 /* ContactListViewController.swift */; };
@@ -327,8 +338,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F16CE05C298CF312006B59E2 /* ProgramManager.swift in Sources */,
+				F16CE055298CF2BB006B59E2 /* Person.swift in Sources */,
+				F16CE05F298CF318006B59E2 /* OutputEditor.swift in Sources */,
+				F16CE05A298CF303006B59E2 /* Messages.swift in Sources */,
+				F16CE05E298CF318006B59E2 /* InputEditor.swift in Sources */,
+				F16CE057298CF2F0006B59E2 /* Errors.swift in Sources */,
+				F16CE059298CF2FB006B59E2 /* Menu.swift in Sources */,
 				F16CE054298CEE4D006B59E2 /* Validator.swift in Sources */,
+				F16CE058298CF2F9006B59E2 /* ArrayExtension.swift in Sources */,
 				F16CE050298CEDE4006B59E2 /* ValidatorTest.swift in Sources */,
+				F16CE05D298CF312006B59E2 /* DataManager.swift in Sources */,
+				F16CE056298CF2D1006B59E2 /* UserInputModel.swift in Sources */,
+				F16CE05B298CF306006B59E2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
