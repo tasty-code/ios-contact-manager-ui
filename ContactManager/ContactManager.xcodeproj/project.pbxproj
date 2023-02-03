@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4563890298CA7E100C42861 /* ContactDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456388F298CA7E100C42861 /* ContactDataSource.swift */; };
 		B4CA5ACC2952ECA200D7C823 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACB2952ECA200D7C823 /* InputManager.swift */; };
 		B4CA5AD02953FC1400D7C823 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACF2953FC1400D7C823 /* InputError.swift */; };
 		B4CA5AD22954206200D7C823 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5AD12954206200D7C823 /* ExtensionString.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B456388F298CA7E100C42861 /* ContactDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDataSource.swift; sourceTree = "<group>"; };
 		B4CA5ACB2952ECA200D7C823 /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
 		B4CA5ACF2953FC1400D7C823 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		B4CA5AD12954206200D7C823 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				E76B5B5B2987A5ED002E2C99 /* ContactViewController.swift */,
+				B456388F298CA7E100C42861 /* ContactDataSource.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				E76B5B6D2987A611002E2C99 /* ContactManager.swift in Sources */,
 				E76B5B6C2987A60F002E2C99 /* InfoMessage.swift in Sources */,
 				E76B5B5C2987A5ED002E2C99 /* ContactViewController.swift in Sources */,
+				B4563890298CA7E100C42861 /* ContactDataSource.swift in Sources */,
 				E76B5B582987A5ED002E2C99 /* AppDelegate.swift in Sources */,
 				E76B5B6B2987A60D002E2C99 /* UserMenu.swift in Sources */,
 				E76B5B6E2987A614002E2C99 /* InputManager.swift in Sources */,
