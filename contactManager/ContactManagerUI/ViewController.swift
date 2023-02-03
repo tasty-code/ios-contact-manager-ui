@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 
     private func makeRandomContact(count: Int) {
         for _ in 0..<count {
-            let contact = Contact(name: ContactInfo.name.random, age: ContactInfo.age.random, phoneNumber: ContactInfo.phoneNumber.random)
+            let contact = Contact(name: DummyContactInfo.name.random, age: DummyContactInfo.age.random, phoneNumber: DummyContactInfo.phoneNumber.random)
             contacts.append(contact)
         }
     }
