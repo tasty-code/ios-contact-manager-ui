@@ -10,6 +10,7 @@ import UIKit
 final class ContactListViewController: UIViewController {
     
     private let dummyContactList = Person.dummyData
+    private let dataManager = DataManager.shared
 
     @IBOutlet weak var contactListTableView: UITableView!
     
