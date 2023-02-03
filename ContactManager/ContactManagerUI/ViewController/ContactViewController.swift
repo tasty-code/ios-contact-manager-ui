@@ -33,12 +33,11 @@ extension ContactViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = contactTableView.dequeueReusableCell(withIdentifier: ContactCell.reuseIdentifier, for: indexPath) as? ContactCell,
-              let contact = contacts[safe: indexPath.row] else {
-            return UITableViewCell()
-        }
+        let cell = tableView.dequeueReusableCell(cellClass: ContactCell.self, for: indexPath)
         
-        cell.configure(with: contact)
+        if let contact = contacts[safe: indexPath.row] {
+            cell.configure(with: contact)
+        }
         
         return cell
     }

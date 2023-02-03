@@ -9,8 +9,6 @@ import UIKit
 
 final class ContactCell: UITableViewCell {
     // MARK: - Properties
-    static let reuseIdentifier = String(describing: ContactCell.self)
-
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subTitleLabel: UILabel!
 
