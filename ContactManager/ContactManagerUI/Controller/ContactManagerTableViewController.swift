@@ -15,7 +15,6 @@ var phoneNumberArray = [String]()
 final class ContactManagerTableViewController: UITableViewController {
     
     @IBOutlet private weak var contactManagerTableView: UITableView!
-    private var contactDataSource = ContactDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,7 @@ final class ContactManagerTableViewController: UITableViewController {
     
     private func configureTableView() {
         tableView.delegate = self
-        tableView.dataSource = self.contactDataSource
+        tableView.dataSource = self
     }
     
     private func parseJSON() {
@@ -47,12 +46,12 @@ final class ContactManagerTableViewController: UITableViewController {
     }
 }
 
-final class ContactDataSource: NSObject, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension ContactManagerTableViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return nameArray.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "infoCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
