@@ -8,9 +8,9 @@
 import Foundation
 
 struct Contact: Hashable {
-    private(set) var name: String
-    private(set) var age: Int
-    private(set) var phoneNumber: String
+    var name: String
+    var age: Int
+    var phoneNumber: String
     
     var description: String {
         return "- \(name) / \(age) / \(phoneNumber)"
