@@ -52,8 +52,7 @@ extension ContactManagerTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "infoCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(cellClass: UITableViewCell.self, for: indexPath)
         
         cell.configurationUpdateHandler = { cell, state in
             var infoContent = cell.defaultContentConfiguration().updated(for: state)
