@@ -9,16 +9,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var contactsTableView: UITableView!
+    @IBOutlet private weak var contactsTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
-        makeRandomContact(count: 1000)
+        makeRandomContact(with: 1000)
     }
 
-    private func makeRandomContact(count: Int) {
+    private func makeRandomContact(with count: Int) {
         for _ in 0..<count {
             let contact = Contact(name: DummyContactInfo.name.random, age: DummyContactInfo.age.random, phoneNumber: DummyContactInfo.phoneNumber.random)
             contacts.append(contact)
