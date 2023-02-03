@@ -17,10 +17,19 @@ final class ContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        fetchContactData()
     }
 
     // MARK: - Helpers
     private func setupTableView() {
         contactTableView.dataSource = contactDataSource
+    }
+
+    private func fetchContactData() {
+        // 임시 연락처 데이터
+        mockupContacts.forEach {
+            ContactManager.shared.add(contact: $0)
+        }
+        contactTableView.reloadData()
     }
 }

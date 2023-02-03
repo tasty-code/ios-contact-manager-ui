@@ -9,11 +9,8 @@ import UIKit
 
 final class ContactDataSource: NSObject, UITableViewDataSource {
 
-    private var contacts: [Contact] = []
-
-    override init() {
-        super.init()
-        contacts = mockupContacts
+    private var contacts: [Contact] {
+        ContactManager.shared.fetchContacts()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

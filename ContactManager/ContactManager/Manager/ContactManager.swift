@@ -31,6 +31,11 @@ final class ContactManager {
         sortedContacts.forEach { print($0.description) }
     }
 
+    func fetchContacts() -> [Contact] {
+        return contacts.sorted { $0.name < $1.name }
+    }
+
+
     func searchContact(by name: String) -> Set<Contact>? {
         let searchedContact = contacts.filter {
             $0.isNameContaining(keyword: name)
