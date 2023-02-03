@@ -132,11 +132,18 @@
 		5B1859F72988AA3100EFC383 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F00F75132988A76700612BF3 /* SceneDelegate.swift */,
-				F00F75112988A76700612BF3 /* AppDelegate.swift */,
 				F00F75152988A76700612BF3 /* ContactManagerTableViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		5B855192298CF65A009A0CE0 /* AppConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				F00F75132988A76700612BF3 /* SceneDelegate.swift */,
+				F00F75112988A76700612BF3 /* AppDelegate.swift */,
+			);
+			path = AppConfiguration;
 			sourceTree = "<group>";
 		};
 		F00F75102988A76700612BF3 /* ContactManagerUI */ = {
@@ -144,6 +151,7 @@
 			children = (
 				5B1859F72988AA3100EFC383 /* Controller */,
 				5B1859F62988AA1100EFC383 /* View */,
+				5B855192298CF65A009A0CE0 /* AppConfiguration */,
 				F00F751F2988A76800612BF3 /* Info.plist */,
 			);
 			path = ContactManagerUI;
