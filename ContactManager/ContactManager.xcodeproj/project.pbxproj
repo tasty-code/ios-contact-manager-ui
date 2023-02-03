@@ -18,6 +18,12 @@
 		5B1859FF2988AA9A00EFC383 /* InputPossible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68C2929555F6C00815CD6 /* InputPossible.swift */; };
 		5B185A002988AA9C00EFC383 /* SystemMenuWorkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0ABEEE295D334C005B674C /* SystemMenuWorkable.swift */; };
 		5B63007B2955637200730005 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B63007A2955637200730005 /* RegularExpression.swift */; };
+		F00E9EAC298CEF6500260920 /* ReusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */; };
+		F00E9EAD298CEF6500260920 /* ReusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */; };
+		F00E9EAF298CF01100260920 /* Extension+UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAE298CF01100260920 /* Extension+UITableViewCell.swift */; };
+		F00E9EB0298CF01100260920 /* Extension+UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAE298CF01100260920 /* Extension+UITableViewCell.swift */; };
+		F00E9EB2298CF01D00260920 /* Extension+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EB1298CF01D00260920 /* Extension+UITableView.swift */; };
+		F00E9EB3298CF01D00260920 /* Extension+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EB1298CF01D00260920 /* Extension+UITableView.swift */; };
 		F00F75122988A76700612BF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75112988A76700612BF3 /* AppDelegate.swift */; };
 		F00F75142988A76700612BF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75132988A76700612BF3 /* SceneDelegate.swift */; };
 		F00F75162988A76700612BF3 /* ContactManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75152988A76700612BF3 /* ContactManagerTableViewController.swift */; };
@@ -61,6 +67,9 @@
 /* Begin PBXFileReference section */
 		5B0ABEEE295D334C005B674C /* SystemMenuWorkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMenuWorkable.swift; sourceTree = "<group>"; };
 		5B63007A2955637200730005 /* RegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
+		F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTableViewCell.swift; sourceTree = "<group>"; };
+		F00E9EAE298CF01100260920 /* Extension+UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableViewCell.swift"; sourceTree = "<group>"; };
+		F00E9EB1298CF01D00260920 /* Extension+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableView.swift"; sourceTree = "<group>"; };
 		F00F750F2988A76700612BF3 /* ContactManagerUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManagerUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00F75112988A76700612BF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F00F75132988A76700612BF3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +123,8 @@
 				F00F75172988A76700612BF3 /* Main.storyboard */,
 				F00F751C2988A76800612BF3 /* LaunchScreen.storyboard */,
 				F00F751A2988A76800612BF3 /* Assets.xcassets */,
+				F00E9EAE298CF01100260920 /* Extension+UITableViewCell.swift */,
+				F00E9EB1298CF01D00260920 /* Extension+UITableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +203,7 @@
 			children = (
 				F0A68C2929555F6C00815CD6 /* InputPossible.swift */,
 				5B0ABEEE295D334C005B674C /* SystemMenuWorkable.swift */,
+				F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -332,8 +344,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B1859FE2988AA9700EFC383 /* RegularExpression.swift in Sources */,
+				F00E9EB3298CF01D00260920 /* Extension+UITableView.swift in Sources */,
 				F00F75162988A76700612BF3 /* ContactManagerTableViewController.swift in Sources */,
 				5B1859FD2988AA9400EFC383 /* PrintMessage.swift in Sources */,
+				F00E9EB0298CF01100260920 /* Extension+UITableViewCell.swift in Sources */,
+				F00E9EAD298CEF6500260920 /* ReusableTableViewCell.swift in Sources */,
 				5B1859FB2988AA8F00EFC383 /* Detector.swift in Sources */,
 				5B185A002988AA9C00EFC383 /* SystemMenuWorkable.swift in Sources */,
 				5B1859FF2988AA9A00EFC383 /* InputPossible.swift in Sources */,
@@ -358,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F00E9EB2298CF01D00260920 /* Extension+UITableView.swift in Sources */,
 				F042BC1A2952DCFA00722285 /* ContactInformation.swift in Sources */,
 				F0A68C2A29555F6C00815CD6 /* InputPossible.swift in Sources */,
 				F042BC1C2952DD1700722285 /* PrintMessage.swift in Sources */,
@@ -368,6 +384,8 @@
 				5B63007B2955637200730005 /* RegularExpression.swift in Sources */,
 				F0873C53295A8AC00097B804 /* ContactManager.swift in Sources */,
 				F042BC2029541E3200722285 /* Converter.swift in Sources */,
+				F00E9EAC298CEF6500260920 /* ReusableTableViewCell.swift in Sources */,
+				F00E9EAF298CF01100260920 /* Extension+UITableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
