@@ -19,7 +19,7 @@ final class ContactManagerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.configureTableView()
+        configureTableView()
         parseJSON()
     }
     
