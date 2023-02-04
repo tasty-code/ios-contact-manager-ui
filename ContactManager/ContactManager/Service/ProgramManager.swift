@@ -82,7 +82,7 @@ extension ProgramManager {
             if contactList.isEmpty {
                 outputEditor.printEmptyUser(userInput)
             } else {
-                contactList.forEach{ outputEditor.searchValidUser($0.name, $0.age, $0.phoneNum) }
+                contactList.forEach{ outputEditor.printSearchedUser($0.name, $0.age, $0.phoneNum) }
             }
             outputEditor.printEmptyString()
         } catch {
