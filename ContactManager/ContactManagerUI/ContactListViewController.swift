@@ -23,8 +23,11 @@ final class ContactListViewController: UIViewController {
         super.viewDidLoad()
         setDelegate()
     }
-    
-    // MARK: - Methods
+}
+
+// MARK: - Methods
+
+extension ContactListViewController {
 
     private func setDelegate() {
         contactListTableView.delegate = self
@@ -32,7 +35,7 @@ final class ContactListViewController: UIViewController {
     }
 }
 
-// MARK: - Extensions: UITableViewDelegate, UITableViewDataSource
+// MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
     
