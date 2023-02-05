@@ -16,13 +16,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" shadowImage="nil" translatesAutoresizingMaskIntoConstraints="NO" id="8vX-ll-SYN">
+                            <navigationBar contentMode="scaleToFill" shadowImage=" " translatesAutoresizingMaskIntoConstraints="NO" id="8vX-ll-SYN">
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="새 연락처" id="Laz-9j-cIi">
-                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="GZN-nQ-VOi"/>
-                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="pNX-NX-ETc"/>
+                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="GZN-nQ-VOi">
+                                            <connections>
+                                                <action selector="tappedCancelButton:" destination="Y6W-OH-hqX" id="9zK-Sz-t9V"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="pNX-NX-ETc">
+                                            <connections>
+                                                <action selector="tappedSaveButton:" destination="Y6W-OH-hqX" id="VE4-Xb-hrI"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -101,6 +109,11 @@
                             <constraint firstItem="8vX-ll-SYN" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="tRB-Pe-6u3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ageTextField" destination="auo-mQ-ckp" id="L1h-f9-1Eh"/>
+                        <outlet property="nameTextField" destination="eE9-uT-DK9" id="C8q-S2-12W"/>
+                        <outlet property="phoneNumberTextField" destination="G1y-Ed-zHh" id="y6i-1w-FUf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,7 +121,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="nil" width="128" height="128"/>
+        <image name=" " width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
