@@ -10,7 +10,6 @@ import UIKit
 final class ViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-    let contactTableViewCell = "ContactTableViewCell"
 
     private let contacts = [
         Contact(name: "james", age: 30, phoneNumber: "05-343-2234"),
@@ -37,8 +36,8 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let nibName = UINib(nibName: contactTableViewCell, bundle: nil)
-        tableView.register(nibName, forCellReuseIdentifier: contactTableViewCell)
+        let nibName = UINib(nibName: ContactTableViewCell.className, bundle: nil)
+        tableView.register(nibName, forCellReuseIdentifier: ContactTableViewCell.className)
     }
 }
 
@@ -48,7 +47,7 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: contactTableViewCell, for: indexPath) as! ContactTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.className, for: indexPath) as! ContactTableViewCell
 
         let contact = contacts[indexPath.row]
         cell.title.text = "\(contact.name)(\(contact.age))"

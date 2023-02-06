@@ -12,6 +12,10 @@ class ContactTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subtitle: UILabel!
 
+    static var className: String {
+        return String(describing: self)
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
