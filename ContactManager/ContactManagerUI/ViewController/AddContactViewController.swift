@@ -15,10 +15,10 @@ final class AddContactViewController: UIViewController {
     // MARK: - Properties
     var delegate: AddContactViewControllerDelegate?
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var ageTextField: UITextField!
+    @IBOutlet private weak var phoneNumberTextField: UITextField!
+    @IBOutlet private weak var navigationBar: UINavigationBar!
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ final class AddContactViewController: UIViewController {
     }
 
     // MARK: - Actions
-    @IBAction func tappedCancelButton(_ sender: UIBarButtonItem) {
+    @IBAction private func tappedCancelButton(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "정말로 취소하시겠습니까?", message: nil, preferredStyle: .alert)
         let noAction = UIAlertAction(title: "아니오", style: .cancel)
         let yesAction = UIAlertAction(title: "예", style: .destructive) { _ in self.dismiss(animated: true)
@@ -42,7 +42,7 @@ final class AddContactViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    @IBAction func tappedSaveButton(_ sender: UIBarButtonItem) {
+    @IBAction private func tappedSaveButton(_ sender: UIBarButtonItem) {
         guard let name = nameTextField.text ,
               let age = Int(ageTextField.text ?? ""),
               let phoneNumber = phoneNumberTextField.text else { return }
@@ -67,7 +67,9 @@ extension AddContactViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == self.ageTextField {
-            guard let _ = Int(string) else { return false }
+            guard let _ = Int(string) else {
+                return false
+            }
         }
         
         return true
