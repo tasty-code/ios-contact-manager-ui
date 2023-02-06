@@ -49,8 +49,7 @@
 		F1A86A892987BCBD00A9A867 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A86A882987BCBD00A9A867 /* Assets.xcassets */; };
 		F1A86A8C2987BCBD00A9A867 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A86A8A2987BCBD00A9A867 /* LaunchScreen.storyboard */; };
 		F1C1CC1B29875D9800572F80 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C1CC1A29875D9800572F80 /* main.swift */; };
-		F1F0B290298A895700C4A5C7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B28F298A895700C4A5C7 /* ArrayExtension.swift */; };
-		F1F0B291298A895700C4A5C7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B28F298A895700C4A5C7 /* ArrayExtension.swift */; };
+		F1F0B290298A895700C4A5C7 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B28F298A895700C4A5C7 /* Array+.swift */; };
 		F1F0B293298AAF6600C4A5C7 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B292298AAF6600C4A5C7 /* AddContactViewController.swift */; };
 		F1F0B295298AAF9000C4A5C7 /* AddContact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1F0B294298AAF9000C4A5C7 /* AddContact.storyboard */; };
 /* End PBXBuildFile section */
@@ -91,7 +90,7 @@
 		F1A86A8D2987BCBD00A9A867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1C1CC1729875D9800572F80 /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C1CC1A29875D9800572F80 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		F1F0B28F298A895700C4A5C7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		F1F0B28F298A895700C4A5C7 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		F1F0B292298AAF6600C4A5C7 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		F1F0B294298AAF9000C4A5C7 /* AddContact.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddContact.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,8 +199,8 @@
 		F1C1CC1929875D9800572F80 /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
-				F1F0B28E298A885C00C4A5C7 /* Extensions */,
 				8E0FC6A729875DE500CF0DA1 /* Enum */,
+				F1F0B28E298A885C00C4A5C7 /* Extension */,
 				8E0FC6B029875E1C00CF0DA1 /* Model */,
 				8E0FC6B629875E4C00CF0DA1 /* Service */,
 				F1C1CC1A29875D9800572F80 /* main.swift */,
@@ -209,12 +208,12 @@
 			path = ContactManager;
 			sourceTree = "<group>";
 		};
-		F1F0B28E298A885C00C4A5C7 /* Extensions */ = {
+		F1F0B28E298A885C00C4A5C7 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				F1F0B28F298A895700C4A5C7 /* ArrayExtension.swift */,
+				F1F0B28F298A895700C4A5C7 /* Array+.swift */,
 			);
-			path = Extensions;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,7 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1F0B291298A895700C4A5C7 /* ArrayExtension.swift in Sources */,
+				F1F0B291298A895700C4A5C7 /* Array+.swift in Sources */,
 				8E0FC74429889D6B00CF0DA1 /* ProgramManager.swift in Sources */,
 				F1A86A842987BCBC00A9A867 /* ContactListViewController.swift in Sources */,
 				8E0FC74729889D7200CF0DA1 /* OutputEditor.swift in Sources */,
@@ -393,7 +392,7 @@
 				8E0FC6A929875DEF00CF0DA1 /* Menu.swift in Sources */,
 				8E0FC6AB29875DFB00CF0DA1 /* Messages.swift in Sources */,
 				F1C1CC1B29875D9800572F80 /* main.swift in Sources */,
-				F1F0B290298A895700C4A5C7 /* ArrayExtension.swift in Sources */,
+				F1F0B290298A895700C4A5C7 /* Array+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +463,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = ContactList;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -473,9 +472,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.slowook.ContactManagerUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -494,7 +496,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = ContactList;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -503,9 +505,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.slowook.ContactManagerUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -560,7 +565,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -614,7 +620,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;

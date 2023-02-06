@@ -1,5 +1,5 @@
 //
-//  ArrayExtension.swift
+//  Array+.swift
 //  ContactManager
 //
 //  Created by DONGWOOK SEO on 2023/02/01.
@@ -12,4 +12,3 @@ extension Array {
         return indices ~= index ? self[index] : nil
     }
 }
-
