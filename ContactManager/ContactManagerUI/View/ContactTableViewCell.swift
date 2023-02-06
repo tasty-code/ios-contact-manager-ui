@@ -7,10 +7,10 @@
 
 import UIKit
 
-class ContactTableViewCell: UITableViewCell {
+final class ContactTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameAndAge: UILabel!
-    @IBOutlet weak var phoneNumber: UILabel!
+    @IBOutlet private weak var nameAndAge: UILabel!
+    @IBOutlet private weak var phoneNumber: UILabel!
 
     static var className: String {
         return String(describing: self)
