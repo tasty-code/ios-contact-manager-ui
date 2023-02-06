@@ -47,10 +47,13 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.className, for: indexPath) as! ContactTableViewCell
-
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: ContactTableViewCell.className,
+            for: indexPath
+        ) as? ContactTableViewCell else {
+            return UITableViewCell()
+        }
         cell.configure(contact: contacts[indexPath.row])
-
         return cell
     }
 
