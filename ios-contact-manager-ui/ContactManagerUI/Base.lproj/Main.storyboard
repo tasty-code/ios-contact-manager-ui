@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="116.79389312977099" y="-2.1126760563380285"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Contact View Controller-->
         <scene sceneID="EGM-1T-mfW">
             <objects>
-                <viewController id="ScH-T0-eiD" sceneMemberID="viewController">
+                <viewController id="ScH-T0-eiD" customClass="AddContactViewController" customModule="ContactManagerUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Aw-aW-kPh">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,6 +163,9 @@
                             <constraint firstItem="qtt-mn-TqH" firstAttribute="leading" secondItem="4Aw-aW-kPh" secondAttribute="leading" id="uCc-p2-xxA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contactTextField" destination="JgN-bY-Sxl" id="7Gv-kB-fVd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6CN-99-eFt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
