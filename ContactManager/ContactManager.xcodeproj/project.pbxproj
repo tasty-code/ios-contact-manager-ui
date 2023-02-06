@@ -32,6 +32,7 @@
 		F00F751E2988A76800612BF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00F751C2988A76800612BF3 /* LaunchScreen.storyboard */; };
 		F00F75292988A76800612BF3 /* ContactManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75282988A76800612BF3 /* ContactManagerUITests.swift */; };
 		F01AEAAB2990DEDF00CEB882 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AEAAA2990DEDF00CEB882 /* Errors.swift */; };
+		F01AEAAC2990E4BD00CEB882 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AEAAA2990DEDF00CEB882 /* Errors.swift */; };
 		F042BC132952CC5000722285 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC122952CC5000722285 /* main.swift */; };
 		F042BC1A2952DCFA00722285 /* ContactInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC192952DCFA00722285 /* ContactInformation.swift */; };
 		F042BC1C2952DD1700722285 /* PrintMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1B2952DD1700722285 /* PrintMessage.swift */; };
@@ -358,6 +359,7 @@
 				F00E9EB3298CF01D00260920 /* Extension+UITableView.swift in Sources */,
 				F00F75162988A76700612BF3 /* ContactManagerTableViewController.swift in Sources */,
 				5B1859FD2988AA9400EFC383 /* PrintMessage.swift in Sources */,
+				F01AEAAC2990E4BD00CEB882 /* Errors.swift in Sources */,
 				F00E9EB0298CF01100260920 /* Extension+UITableViewCell.swift in Sources */,
 				F00E9EAD298CEF6500260920 /* ReusableTableViewCell.swift in Sources */,
 				5B1859FB2988AA8F00EFC383 /* Detector.swift in Sources */,

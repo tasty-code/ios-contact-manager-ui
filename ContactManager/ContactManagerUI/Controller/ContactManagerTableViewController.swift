@@ -16,7 +16,7 @@ final class ContactManagerTableViewController: UITableViewController {
         super.viewDidLoad()
 
         configureTableView()
-        contactInfomation = loadJSON("Dummy.json")
+        assignLoadJSONData()
     }
     
     private func configureTableView() {
@@ -24,25 +24,33 @@ final class ContactManagerTableViewController: UITableViewController {
         tableView.dataSource = self
     }
     
-    private func loadJSON<T: Decodable>(_ filename: String) -> T {
+    private func loadJSON<T: Decodable>(_ filename: String) throws -> T {
         let data: Data
         
         guard let filePath = Bundle.main.url(forResource: filename, withExtension: nil) else {
-            fatalError("\(filename) not found.")
+            print("\(filename) not found.")
+            throw Errors.notFoundJsonFile
         }
         
         do {
             data = try Data(contentsOf: filePath)
         } catch {
-            fatalError("Could not load \(filename): (error)")
+            print("Could not load \(filename): (error)")
+            throw Errors.notLoadData
         }
         
         do {
             let jsonDecoder = JSONDecoder()
             return try jsonDecoder.decode(T.self, from: data)
         } catch {
-            fatalError("Unable to parse \(filename): (error)")
+            print("Unable to parse \(filename): (error)")
+            throw Errors.unableToParse
         }
+    }
+
+    private func assignLoadJSONData() {
+        guard let parsedInformation: [ContactInformation] = try? loadJSON("Dummy.json") else { return }
+        contactInfomation = parsedInformation
     }
 }
 
