@@ -8,6 +8,8 @@
 import Foundation
 
 final class ModelData: JSONCodable {
+    static let shared = ModelData()
+    
     var fileName: String = "contacts.json"
     private(set) lazy var contacts: [UserInfo] = decoding()
 }
@@ -17,6 +19,7 @@ extension ModelData {
         do {
             return try decoder()
         } catch {
+            print(error.localizedDescription)
             return []
         }
     }

@@ -13,8 +13,8 @@ enum JSONError: Error {
     case FileNotLoad
 }
 
-extension JSONError {
-    var description: String {
+extension JSONError: LocalizedError {
+    var errorDescription: String? {
         switch self {
         case .FileNotParse:
             return "JSONFile Parsing 실패"

@@ -13,7 +13,7 @@ final class ContactViewController: UIViewController {
     }
     private let modelData = ModelData()
     @IBOutlet private weak var tableView: UITableView!
-    private var dataSource: UITableViewDiffableDataSource<Section, UserInfo>?
+    private var dataSource: DataSource?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,22 +33,42 @@ extension ContactViewController {
     private func setupDataSource() {
         dataSource = UITableViewDiffableDataSource<Section, UserInfo>(tableView: tableView) { tableView, indexPath, itemIdentifier in
             let identifier = "ContactCell"
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? ContactCell else {
-                fatalError("cannot provide cell..")
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
             cell.content = itemIdentifier
             return cell
         }
 
-        let contacts = modelData.contacts
-        var snapshot = NSDiffableDataSourceSnapshot<Section, UserInfo>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(contacts)
-        dataSource?.apply(snapshot, animatingDifferences: false)
+        dataSource?.update(animatingDifferences: false)
     }
 }
 
 
 extension ContactViewController: UITableViewDelegate {
 
+}
+
+extension ContactViewController {
+    final class DataSource: UITableViewDiffableDataSource<Section, UserInfo> {
+        typealias Snapshot = NSDiffableDataSourceSnapshot<Section, UserInfo>
+
+        func update(animatingDifferences: Bool) {
+            var snapshot = Snapshot()
+            snapshot.appendSections([.main])
+            snapshot.appendItems(ModelData.shared.contacts)
+            apply(snapshot, animatingDifferences: animatingDifferences)
+        }
+
+        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+        }
+
+        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                if itemIdentifier(for: indexPath) != nil {
+                    ModelData.shared.remove(index: indexPath.row)
+                    update(animatingDifferences: true)
+                }
+            }
+        }
+    }
 }
