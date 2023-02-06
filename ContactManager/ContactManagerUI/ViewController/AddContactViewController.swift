@@ -7,8 +7,11 @@
 
 import UIKit
 
-class AddContactViewController: UIViewController {
+final class AddContactViewController: UIViewController {
     
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
     override func viewDidLoad() {
@@ -27,5 +30,16 @@ class AddContactViewController: UIViewController {
 
         present(alert, animated: true)
     }
+    
+    @IBAction func tappedSaveButton(_ sender: UIBarButtonItem) {
+        guard let name = nameTextField.text ,
+              let age = Int(ageTextField.text ?? ""),
+              let phoneNumber = phoneNumberTextField.text else { return }
+        let contact = Contact(name: name, age: age, phoneNumber: phoneNumber)
+        ContactManager.shared.add(contact: contact)
+        
+        dismiss(animated: true)
+    }
+    
 
 }

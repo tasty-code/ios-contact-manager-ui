@@ -94,7 +94,11 @@
                                                 <action selector="tappedCancelButton:" destination="BN6-2y-CMg" id="beA-Gh-L1n"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="Utl-HD-7WM"/>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="Utl-HD-7WM">
+                                            <connections>
+                                                <action selector="tappedSaveButton:" destination="BN6-2y-CMg" id="VY8-pF-5tH"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -129,7 +133,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Scs-gt-1rX">
                                                 <rect key="frame" x="72" y="0.0" width="305" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -148,7 +152,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXe-XP-f0z">
                                                 <rect key="frame" x="72" y="0.0" width="305" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -171,7 +175,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ageTextField" destination="Scs-gt-1rX" id="oZI-qd-Ifd"/>
+                        <outlet property="nameTextField" destination="86A-72-tcU" id="stq-Ax-YuI"/>
                         <outlet property="navigationBar" destination="o3U-BI-K9e" id="SC1-il-gSM"/>
+                        <outlet property="phoneNumberTextField" destination="fXe-XP-f0z" id="Rbk-dD-kCU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRQ-VL-lsv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
