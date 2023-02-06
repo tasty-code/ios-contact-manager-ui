@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ev2-Cp-WQN">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -59,7 +60,7 @@
                     <navigationItem key="navigationItem" title="연락처" id="Nw3-9H-GqJ">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="QSL-jU-dt8">
                             <connections>
-                                <segue destination="GwB-oC-yLS" kind="presentation" id="Cca-ND-4lN"/>
+                                <segue destination="GwB-oC-yLS" kind="presentation" identifier="toAddContactView" id="Cca-ND-4lN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
