@@ -18,6 +18,7 @@ final class ContactViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         fetchContactData()
+
     }
 
     // MARK: - Helpers

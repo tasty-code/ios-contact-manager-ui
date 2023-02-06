@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2Nz-uW-7j5">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Contact View Controller-->
+        <!--연락처-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ContactViewController" customModule="ContactManagerUI" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,15 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2j-Tt-LZ2">
-                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <navigationItem title="연락처" id="ufa-ed-Sqf">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="k48-uS-su5"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6El-rO-USO">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -64,22 +55,40 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="U2j-Tt-LZ2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Cw2-Ao-lGi"/>
-                            <constraint firstItem="6El-rO-USO" firstAttribute="top" secondItem="U2j-Tt-LZ2" secondAttribute="bottom" id="LmX-2V-O4B"/>
+                            <constraint firstItem="6El-rO-USO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1gY-U6-MjJ"/>
                             <constraint firstItem="6El-rO-USO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MoE-zj-oPN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6El-rO-USO" secondAttribute="trailing" id="SRA-Lk-7gA"/>
-                            <constraint firstItem="U2j-Tt-LZ2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YZz-Mi-uKV"/>
-                            <constraint firstItem="U2j-Tt-LZ2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="khW-re-KcV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6El-rO-USO" secondAttribute="bottom" id="mhk-tQ-WLp"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="연락처" id="bek-V5-Nmc">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="U8g-hh-X57"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="contactTableView" destination="6El-rO-USO" id="rBy-th-fcN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="78" y="-34"/>
+            <point key="canvasLocation" x="1003.8167938931298" y="-34.507042253521128"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SOv-Ab-ESu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Nz-uW-7j5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GbH-4I-FO8">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zEW-ZB-nIl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u55-gU-kPv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="77.099236641221367" y="-34.507042253521128"/>
         </scene>
     </scenes>
     <resources>
