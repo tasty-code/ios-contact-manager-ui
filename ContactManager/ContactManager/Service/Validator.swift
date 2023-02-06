@@ -7,12 +7,16 @@
 
 import Foundation
 
+protocol ValidateUIProtocol {
+    func formmatingPhoneNumber(with number: String) -> String
+}
+
 protocol ValidatorProtocol {
     func checkValidAgeAndNum(input: UserInputModel) throws -> Person
     func checkInputEmpty(with str: String) -> Bool
 }
 
-struct Validator: ValidatorProtocol {
+struct Validator: ValidatorProtocol, ValidateUIProtocol {
     
     func checkValidAgeAndNum(input: UserInputModel) throws -> Person {
         let (age, number) = (input.age, input.phoneNum)

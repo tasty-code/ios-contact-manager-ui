@@ -29,6 +29,7 @@
 		8E0FC74629889D7000CF0DA1 /* InputEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BB2987601500CF0DA1 /* InputEditor.swift */; };
 		8E0FC74729889D7200CF0DA1 /* OutputEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BD2987602B00CF0DA1 /* OutputEditor.swift */; };
 		8E0FC74829889D7400CF0DA1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BF2987603A00CF0DA1 /* DataManager.swift */; };
+		8ED8BB1E2990E9D8002B8782 /* ContactUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8BB1D2990E9D8002B8782 /* ContactUIManager.swift */; };
 		F15E44B529909D3800D80A09 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B28F298A895700C4A5C7 /* Array+.swift */; };
 		F16CE050298CEDE4006B59E2 /* ValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16CE04F298CEDE4006B59E2 /* ValidatorTest.swift */; };
 		F16CE054298CEE4D006B59E2 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B92987600600CF0DA1 /* Validator.swift */; };
@@ -79,6 +80,7 @@
 		8E0FC6BB2987601500CF0DA1 /* InputEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputEditor.swift; sourceTree = "<group>"; };
 		8E0FC6BD2987602B00CF0DA1 /* OutputEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputEditor.swift; sourceTree = "<group>"; };
 		8E0FC6BF2987603A00CF0DA1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		8ED8BB1D2990E9D8002B8782 /* ContactUIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUIManager.swift; sourceTree = "<group>"; };
 		F16CE04D298CEDE4006B59E2 /* ValidatorTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValidatorTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16CE04F298CEDE4006B59E2 /* ValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorTest.swift; sourceTree = "<group>"; };
 		F1A86A7D2987BCBC00A9A867 /* ContactManagerUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManagerUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +168,7 @@
 			children = (
 				F1A86A7F2987BCBC00A9A867 /* AppDelegate.swift */,
 				F1A86A812987BCBC00A9A867 /* SceneDelegate.swift */,
+				8ED8BB1D2990E9D8002B8782 /* ContactUIManager.swift */,
 				F1A86A832987BCBC00A9A867 /* ContactListViewController.swift */,
 				F1A86A852987BCBC00A9A867 /* ContactList.storyboard */,
 				F1F0B292298AAF6600C4A5C7 /* AddContactViewController.swift */,
@@ -362,6 +365,7 @@
 				F15E44B529909D3800D80A09 /* Array+.swift in Sources */,
 				F1A86A842987BCBC00A9A867 /* ContactListViewController.swift in Sources */,
 				8E0FC74729889D7200CF0DA1 /* OutputEditor.swift in Sources */,
+				8ED8BB1E2990E9D8002B8782 /* ContactUIManager.swift in Sources */,
 				8E0FC74829889D7400CF0DA1 /* DataManager.swift in Sources */,
 				F1A86A802987BCBC00A9A867 /* AppDelegate.swift in Sources */,
 				8E0FC74629889D7000CF0DA1 /* InputEditor.swift in Sources */,
