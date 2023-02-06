@@ -18,7 +18,12 @@ final class ContactViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         fetchContactData()
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? AddContactViewController {
+            viewController.delegate = self
+        }
     }
 
     // MARK: - Helpers
@@ -31,6 +36,12 @@ final class ContactViewController: UIViewController {
         mockupContacts.forEach {
             ContactManager.shared.add(contact: $0)
         }
+        contactTableView.reloadData()
+    }
+}
+
+extension ContactViewController: AddContactViewControllerDelegate {
+    func didContactChanged() {
         contactTableView.reloadData()
     }
 }
