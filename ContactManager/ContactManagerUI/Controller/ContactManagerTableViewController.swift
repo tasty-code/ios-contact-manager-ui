@@ -7,20 +7,16 @@
 
 import UIKit
 
-var contactInfomation = [String: Any]()
-var nameArray = [String]()
-var ageArray = [String]()
-var phoneNumberArray = [String]()
-
 final class ContactManagerTableViewController: UITableViewController {
     
     @IBOutlet private weak var contactManagerTableView: UITableView!
+    var contactInfomation = [ContactInformation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureTableView()
-        parseJSON()
+        contactInfomation = loadJSON("Dummy.json")
     }
     
     private func configureTableView() {
@@ -28,27 +24,31 @@ final class ContactManagerTableViewController: UITableViewController {
         tableView.dataSource = self
     }
     
-    private func parseJSON() {
-        guard let filePath = Bundle.main.url(forResource: "Dummy", withExtension: "json") else { return }
+    private func loadJSON<T: Decodable>(_ filename: String) -> T {
+        let data: Data
         
-        if let data = try? Data(contentsOf: filePath) {
-            let json =  try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-            contactInfomation = json
+        guard let filePath = Bundle.main.url(forResource: filename, withExtension: nil) else {
+            fatalError("\(filename) not found.")
         }
         
-        if let contactInfo = contactInfomation["Dummy"] as? [[String: Any]] {
-            contactInfo.forEach { contactData in
-                nameArray.append(contactData["name"] as! String)
-                ageArray.append(contactData["age"] as! String)
-                phoneNumberArray.append(contactData["phoneNumber"] as! String)
-            }
+        do {
+            data = try Data(contentsOf: filePath)
+        } catch {
+            fatalError("Could not load \(filename): (error)")
+        }
+        
+        do {
+            let jsonDecoder = JSONDecoder()
+            return try jsonDecoder.decode(T.self, from: data)
+        } catch {
+            fatalError("Unable to parse \(filename): (error)")
         }
     }
 }
 
 extension ContactManagerTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nameArray.count
+        return contactInfomation.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,8 +56,8 @@ extension ContactManagerTableViewController {
         
         cell.configurationUpdateHandler = { cell, state in
             var infoContent = cell.defaultContentConfiguration().updated(for: state)
-            infoContent.text = "\(nameArray[indexPath.row])(\(ageArray[indexPath.row]))"
-            infoContent.secondaryText = phoneNumberArray[indexPath.row]
+            infoContent.text = "\(self.contactInfomation[indexPath.row].name)(\(self.contactInfomation[indexPath.row].age))"
+            infoContent.secondaryText = self.contactInfomation[indexPath.row].phoneNumber
             
             cell.accessoryType = .disclosureIndicator
             cell.contentConfiguration = infoContent
