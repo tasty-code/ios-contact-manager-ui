@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -16,8 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2j-Tt-LZ2">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem title="연락처" id="ufa-ed-Sqf">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="k48-uS-su5"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6El-rO-USO">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ContactCell" textLabel="lz7-Zh-S2c" detailTextLabel="1rv-u0-3XS" style="IBUITableViewCellStyleSubtitle" id="iDM-cZ-219" customClass="ContactCell" customModule="ContactManagerUI" customModuleProvider="target">
@@ -54,9 +64,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6El-rO-USO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LmX-2V-O4B"/>
+                            <constraint firstItem="U2j-Tt-LZ2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Cw2-Ao-lGi"/>
+                            <constraint firstItem="6El-rO-USO" firstAttribute="top" secondItem="U2j-Tt-LZ2" secondAttribute="bottom" id="LmX-2V-O4B"/>
                             <constraint firstItem="6El-rO-USO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MoE-zj-oPN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6El-rO-USO" secondAttribute="trailing" id="SRA-Lk-7gA"/>
+                            <constraint firstItem="U2j-Tt-LZ2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YZz-Mi-uKV"/>
+                            <constraint firstItem="U2j-Tt-LZ2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="khW-re-KcV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6El-rO-USO" secondAttribute="bottom" id="mhk-tQ-WLp"/>
                         </constraints>
                     </view>
