@@ -10,7 +10,7 @@ import UIKit
 final class ContactManagerTableViewController: UITableViewController {
     
     @IBOutlet private weak var contactManagerTableView: UITableView!
-    var contactInfomation = [ContactInformation]()
+    private var contactInfomation = [ContactInformation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
