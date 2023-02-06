@@ -21,7 +21,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
-        makeRandomContact(with: 1000)
     }
 
     private func makeRandomContact(with count: Int) {

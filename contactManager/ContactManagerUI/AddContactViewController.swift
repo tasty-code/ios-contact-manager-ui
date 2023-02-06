@@ -31,6 +31,20 @@ class AddContactViewController: UIViewController {
     }
     
     @objc func saveButtonTapped() {
+        guard let inputName = nameTextField.text else {
+            return
+        }
+        
+        guard let inputAge = ageTextField.text else {
+            return
+        }
+        guard let inputPhoneNumber = phoneNumberTextField.text else {
+            return
+        }
+        
+        let contact = Contact(name: inputName, age: inputAge, phoneNumber: inputPhoneNumber)
+
+        contacts.append(contact)
         delegate?.reloadTableView()
         dismiss(animated: true)
     }
