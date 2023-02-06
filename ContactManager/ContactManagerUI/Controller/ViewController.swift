@@ -9,7 +9,7 @@ import UIKit
 
 final class ViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     let contactTableViewCell = "ContactTableViewCell"
 
     private let contacts = [
