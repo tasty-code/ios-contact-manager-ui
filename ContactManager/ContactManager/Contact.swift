@@ -8,7 +8,7 @@
 import Foundation
 
 struct Contact: Hashable {
-    var name: String
-    var age: UInt
-    var phoneNumber: String
+    let name: String
+    let age: UInt
+    let phoneNumber: String
 }
