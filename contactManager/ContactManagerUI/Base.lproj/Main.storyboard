@@ -50,7 +50,11 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="6pv-ow-36v">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aNp-Zt-kpL"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aNp-Zt-kpL">
+                                            <connections>
+                                                <action selector="addContact:" destination="BYZ-38-t0r" id="eKy-cC-ZeP"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

@@ -11,6 +11,11 @@ class ViewController: UIViewController {
 
     @IBOutlet private weak var contactsTableView: UITableView!
 
+    @IBAction func addContact(_ sender: UIBarButtonItem) {
+        let addContactViewController = AddContactViewController()
+        present(addContactViewController, animated: true)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         contactsTableView.delegate = self
