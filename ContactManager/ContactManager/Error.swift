@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ContactManagerError: Error {
+enum ContactManagerError {
     case invalidCommand
     case invalidInput
     case emptyInput
