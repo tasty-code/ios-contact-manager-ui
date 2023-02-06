@@ -12,13 +12,21 @@ class AddContactViewController: UIViewController {
     var newContactNavigationBar: UINavigationBar = {
         let navigationBar = UINavigationBar()
         let navigationItem = UINavigationItem(title: "새 연락처")
-        let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
-        let saveItem = UIBarButtonItem(barButtonSystemItem: .save, target: nil, action: nil)
+        let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(cancelButtonTapped))
+        let saveItem = UIBarButtonItem(barButtonSystemItem: .save, target: nil, action: #selector(saveButtonTapped))
         navigationItem.leftBarButtonItem = cancelItem
         navigationItem.rightBarButtonItem = saveItem
         navigationBar.setItems([navigationItem], animated: false)
         return navigationBar
     }()
+    
+    @objc func cancelButtonTapped() {
+        dismiss(animated: true)
+    }
+    
+    @objc func saveButtonTapped() {
+        dismiss(animated: true)
+    }
     
     var nameLabel: UILabel = {
         let label = UILabel()
