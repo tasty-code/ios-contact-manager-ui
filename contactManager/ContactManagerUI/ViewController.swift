@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     @IBAction func addContact(_ sender: UIBarButtonItem) {
         let addContactViewController = AddContactViewController()
+        addContactViewController.delegate = self
         present(addContactViewController, animated: true)
     }
 
@@ -62,4 +63,10 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     
+}
+
+extension ViewController: AddContactViewDelegate {
+    func reloadTableView() {
+        contactsTableView.reloadData()
+    }
 }

@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol AddContactViewDelegate {
+    func reloadTableView()
+}
+
 class AddContactViewController: UIViewController {
+
+    var delegate: AddContactViewDelegate?
     
     var newContactNavigationBar: UINavigationBar = {
         let navigationBar = UINavigationBar()
@@ -25,6 +31,7 @@ class AddContactViewController: UIViewController {
     }
     
     @objc func saveButtonTapped() {
+        delegate?.reloadTableView()
         dismiss(animated: true)
     }
     
