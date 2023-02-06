@@ -24,6 +24,9 @@ final class AddContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.shadowImage = UIImage()
+        nameTextField.delegate = self
+        ageTextField.delegate = self
+        phoneNumberTextField.delegate = self
     }
 
     // MARK: - Actions
@@ -48,5 +51,25 @@ final class AddContactViewController: UIViewController {
         
         dismiss(animated: true)
         delegate?.didContactChanged()
+    }
+}
+
+extension AddContactViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == self.nameTextField {
+            print("이름입력")
+        } else if textField == self.ageTextField {
+            print("나이입력")
+        } else if textField == self.phoneNumberTextField {
+            print("전화번호입력")
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == self.ageTextField {
+            guard let _ = Int(string) else { return false }
+        }
+        
+        return true
     }
 }
