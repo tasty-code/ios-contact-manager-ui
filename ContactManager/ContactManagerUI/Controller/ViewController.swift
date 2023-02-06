@@ -49,9 +49,7 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.className, for: indexPath) as! ContactTableViewCell
 
-        let contact = contacts[indexPath.row]
-        cell.title.text = "\(contact.name)(\(contact.age))"
-        cell.subtitle.text = "\(contact.phoneNumber)"
+        cell.configure(contact: contacts[indexPath.row])
 
         return cell
     }
