@@ -31,6 +31,7 @@
 		F00F751B2988A76800612BF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00F751A2988A76800612BF3 /* Assets.xcassets */; };
 		F00F751E2988A76800612BF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00F751C2988A76800612BF3 /* LaunchScreen.storyboard */; };
 		F00F75292988A76800612BF3 /* ContactManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75282988A76800612BF3 /* ContactManagerUITests.swift */; };
+		F01AEAAB2990DEDF00CEB882 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AEAAA2990DEDF00CEB882 /* Errors.swift */; };
 		F042BC132952CC5000722285 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC122952CC5000722285 /* main.swift */; };
 		F042BC1A2952DCFA00722285 /* ContactInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC192952DCFA00722285 /* ContactInformation.swift */; };
 		F042BC1C2952DD1700722285 /* PrintMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1B2952DD1700722285 /* PrintMessage.swift */; };
@@ -80,6 +81,7 @@
 		F00F751F2988A76800612BF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F00F75242988A76800612BF3 /* ContactManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00F75282988A76800612BF3 /* ContactManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerUITests.swift; sourceTree = "<group>"; };
+		F01AEAAA2990DEDF00CEB882 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		F042BC0F2952CC5000722285 /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		F042BC122952CC5000722285 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F042BC192952DCFA00722285 /* ContactInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInformation.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				F042BC1F29541E3200722285 /* Converter.swift */,
 				F042BC1D29541C2B00722285 /* Detector.swift */,
 				F0A68C2C29556D7D00815CD6 /* Checker.swift */,
+				F01AEAAA2990DEDF00CEB882 /* Errors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				F0873C53295A8AC00097B804 /* ContactManager.swift in Sources */,
 				F042BC2029541E3200722285 /* Converter.swift in Sources */,
 				F00E9EAC298CEF6500260920 /* ReusableTableViewCell.swift in Sources */,
+				F01AEAAB2990DEDF00CEB882 /* Errors.swift in Sources */,
 				F00E9EAF298CF01100260920 /* Extension+UITableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
