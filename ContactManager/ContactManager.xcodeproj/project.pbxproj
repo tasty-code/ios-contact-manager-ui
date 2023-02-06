@@ -29,6 +29,7 @@
 		E76B5B6E2987A614002E2C99 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACB2952ECA200D7C823 /* InputManager.swift */; };
 		E76B5B6F2987A619002E2C99 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5AD12954206200D7C823 /* ExtensionString.swift */; };
 		E76B5B702987A61A002E2C99 /* ExtensionArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73AC779295AB04700054805 /* ExtensionArray.swift */; };
+		E77D6EEA299092070064B7CB /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D6EE9299092070064B7CB /* AddContactViewController.swift */; };
 		E78BD334295D262B00A27589 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78BD333295D262B00A27589 /* ContactManager.swift */; };
 		E78BD336295D27A200A27589 /* InfoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78BD335295D27A200A27589 /* InfoMessage.swift */; };
 		E7975F752952E57200B37E3E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7975F742952E57200B37E3E /* main.swift */; };
@@ -66,6 +67,7 @@
 		E76B5B602987A5EF002E2C99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E76B5B632987A5EF002E2C99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E76B5B652987A5EF002E2C99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E77D6EE9299092070064B7CB /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		E78BD333295D262B00A27589 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		E78BD335295D27A200A27589 /* InfoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessage.swift; sourceTree = "<group>"; };
 		E7975F712952E57200B37E3E /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				E76B5B5B2987A5ED002E2C99 /* ContactViewController.swift */,
+				E77D6EE9299092070064B7CB /* AddContactViewController.swift */,
 				B456388F298CA7E100C42861 /* ContactDataSource.swift */,
 			);
 			path = ViewController;
@@ -302,6 +305,7 @@
 				E76B5B702987A61A002E2C99 /* ExtensionArray.swift in Sources */,
 				E76B5B6D2987A611002E2C99 /* ContactManager.swift in Sources */,
 				E76B5B6C2987A60F002E2C99 /* InfoMessage.swift in Sources */,
+				E77D6EEA299092070064B7CB /* AddContactViewController.swift in Sources */,
 				E76B5B5C2987A5ED002E2C99 /* ContactViewController.swift in Sources */,
 				B4563890298CA7E100C42861 /* ContactDataSource.swift in Sources */,
 				E76B5B582987A5ED002E2C99 /* AppDelegate.swift in Sources */,
