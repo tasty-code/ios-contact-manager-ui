@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4rM-SA-prG">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" textLabel="t9Z-uL-ej1" detailTextLabel="OxX-SD-p2W" style="IBUITableViewCellStyleSubtitle" id="w0N-do-frE">
@@ -46,14 +46,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5j-0T-6Yk">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="6pv-ow-36v">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aNp-Zt-kpL"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4rM-SA-prG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QIl-7Q-9uA"/>
-                            <constraint firstItem="4rM-SA-prG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WtO-Y5-cXO"/>
+                            <constraint firstItem="4rM-SA-prG" firstAttribute="top" secondItem="c5j-0T-6Yk" secondAttribute="bottom" id="WtO-Y5-cXO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4rM-SA-prG" secondAttribute="bottom" id="XN2-Hg-zp0"/>
+                            <constraint firstItem="c5j-0T-6Yk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YzI-rL-AWC"/>
+                            <constraint firstItem="c5j-0T-6Yk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fof-gU-7Tp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4rM-SA-prG" secondAttribute="trailing" id="ifZ-5U-ExI"/>
+                            <constraint firstItem="c5j-0T-6Yk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kb0-y3-Bmv"/>
                         </constraints>
                     </view>
                     <connections>
