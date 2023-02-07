@@ -41,6 +41,7 @@
 		F0873C53295A8AC00097B804 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0873C52295A8AC00097B804 /* ContactManager.swift */; };
 		F0A68C2A29555F6C00815CD6 /* InputPossible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68C2929555F6C00815CD6 /* InputPossible.swift */; };
 		F0A68C2D29556D7D00815CD6 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68C2C29556D7D00815CD6 /* Checker.swift */; };
+		F0B3823C2991DF2500136EE7 /* AddNewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B3823B2991DF2500136EE7 /* AddNewContactViewController.swift */; };
 		F0CF96482989F03E003183C7 /* Dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = F0CF96472989F03E003183C7 /* Dummy.json */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		F0873C52295A8AC00097B804 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		F0A68C2929555F6C00815CD6 /* InputPossible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPossible.swift; sourceTree = "<group>"; };
 		F0A68C2C29556D7D00815CD6 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
+		F0B3823B2991DF2500136EE7 /* AddNewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewContactViewController.swift; sourceTree = "<group>"; };
 		F0CF96472989F03E003183C7 /* Dummy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Dummy.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				F00F75152988A76700612BF3 /* ContactManagerTableViewController.swift */,
+				F0B3823B2991DF2500136EE7 /* AddNewContactViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				F00E9EB3298CF01D00260920 /* Extension+UITableView.swift in Sources */,
 				F00F75162988A76700612BF3 /* ContactManagerTableViewController.swift in Sources */,
 				5B1859FD2988AA9400EFC383 /* PrintMessage.swift in Sources */,
+				F0B3823C2991DF2500136EE7 /* AddNewContactViewController.swift in Sources */,
 				F01AEAAC2990E4BD00CEB882 /* Errors.swift in Sources */,
 				F00E9EB0298CF01100260920 /* Extension+UITableViewCell.swift in Sources */,
 				F00E9EAD298CEF6500260920 /* ReusableTableViewCell.swift in Sources */,
