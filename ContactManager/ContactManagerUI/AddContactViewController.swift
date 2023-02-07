@@ -22,6 +22,7 @@ final class AddContactViewController: UIViewController {
     
     func setConfigure() {
         phoneNumberTextField.delegate = self
+        nameTextField.delegate = self
     }
     
     @IBAction private func tappedCancelButton(_ sender: UIBarButtonItem) {
@@ -44,7 +45,9 @@ final class AddContactViewController: UIViewController {
             guard let name = nameTextField.text else { throw Errors.wrongName }
             guard let age = ageTextField.text else { throw Errors.wrongAge }
             guard let phoneNumber = phoneNumberTextField.text else { throw Errors.wrongPhoneNumber }
-            let userInputModel = UserInputModel(name: name, age: age, phoneNum: phoneNumber)
+            
+            let trimmedName = name.split(separator: " ").joined()
+            let userInputModel = UserInputModel(name: trimmedName, age: age, phoneNum: phoneNumber)
             
             try contactUIManager.runProgram(menu: .add, userInputModel: userInputModel)
         } catch {
@@ -64,11 +67,23 @@ final class AddContactViewController: UIViewController {
 
 extension AddContactViewController: UITextFieldDelegate {
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        if textField == phoneNumberTextField {
+            if text.count >= 14 {
+                return true
+            }
+        }
+        return true
+    }
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let contactUIManager else { return }
-        let number = textField.text
+        guard let text = textField.text else { return }
         
-        guard let formattedPhoneNumber = contactUIManager.formmatingPhoneNumber(with: number) else { return }
-        textField.text = formattedPhoneNumber
+        if textField == phoneNumberTextField{
+            guard let formattedPhoneNumber = contactUIManager.formmatingPhoneNumber(with: text) else { return }
+            textField.text = formattedPhoneNumber
+        }
     }
 }

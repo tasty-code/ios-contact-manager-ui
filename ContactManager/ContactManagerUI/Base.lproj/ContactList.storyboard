@@ -60,7 +60,7 @@
                     <navigationItem key="navigationItem" title="연락처" id="Nw3-9H-GqJ">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="QSL-jU-dt8">
                             <connections>
-                                <segue destination="GwB-oC-yLS" kind="presentation" identifier="toAddContactView" id="Cca-ND-4lN"/>
+                                <segue destination="GwB-oC-yLS" kind="modal" identifier="toAddContactView" id="Cca-ND-4lN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
