@@ -8,12 +8,59 @@
 import UIKit
 
 final class AddContactViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var contactTextField: UITextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         contactTextField.delegate = self
+    }
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        guard let name = nameTextField.text, let age = ageTextField.text, let contact = contactTextField.text else { return }
+        do {
+            // TODO: 새로운 연락처 Contacts.json에 추가하기
+            let newContact = try UserInfo(name: name, age: age, phone: contact)
+            self.dismiss(animated: true)
+        } catch {
+            makeErrorAlert(description: error.localizedDescription)
+        }
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        makeCancelAlert()
+    }
+}
+
+extension AddContactViewController {
+    func makeErrorAlert(description: String) {
+        let alert = UIAlertController(
+            title: description,
+            message: nil,
+            preferredStyle: .alert
+        )
+        let checkAction = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(checkAction)
+        self.present(alert, animated: true)
+    }
+    
+    func makeCancelAlert() {
+        let alert = UIAlertController(
+            title: "정말로 취소하시겠습니까?",
+            message: nil,
+            preferredStyle: .alert
+        )
+        let noAction = UIAlertAction(title: "아니오", style: .default)
+        let yesAction = UIAlertAction(title: "예", style: .destructive) { _ in
+            self.dismiss(animated: true)
+        }
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        alert.preferredAction = yesAction
+        self.present(alert, animated: true)
     }
 }
 
@@ -25,13 +72,13 @@ extension AddContactViewController: UITextFieldDelegate {
         }
         return false
     }
-
+    
     private enum LocationsOfHyphen {
         static let forTwoFourFour = [2, 7]
         static let forTwoThreeFour = [2, 6]
         static let forThreeFourFour = [3, 8]
     }
-
+    
     private func parse(_ newText: String, using range: NSRange) -> String {
         switch (range.location, range.length) {
         case (12, 1...), (11, 0):
@@ -48,14 +95,14 @@ extension AddContactViewController: UITextFieldDelegate {
             return newText
         }
     }
-
+    
     private func removeLastHyphen(from text: String) -> String {
         if text.last == Character.hyphen {
             return String(text.dropLast())
         }
         return text
     }
-
+    
     private func relocateHyphen(of string: String, at indices: [Int]) -> String {
         var relocated = string.replacingOccurrences(of: String.hyphen, with: String.empty)
         for index in indices {
@@ -69,11 +116,11 @@ extension AddContactViewController: UITextFieldDelegate {
 extension String {
     static var hyphen: String { "-" }
     static var empty: String { "" }
-
+    
     mutating func insert(_ newElement: Character, at i: Int) {
         self.insert(newElement, at: self.index(self.startIndex, offsetBy: i))
     }
-
+    
     func inserting(_ newElement: Character, at i: Int) -> String {
         var newString = self
         newString.insert(newElement, at: self.index(self.startIndex, offsetBy: i))

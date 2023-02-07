@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ScH-T0-eiD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sag-uE-EVQ">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -83,8 +83,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
                                 <items>
                                     <navigationItem title="새 연락처" id="SAi-yp-vYX">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="K7W-vF-54V"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="J7s-ly-ThN"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="K7W-vF-54V">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="ScH-T0-eiD" id="3EA-WG-Jv4"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="J7s-ly-ThN">
+                                            <connections>
+                                                <action selector="saveButtonTapped:" destination="ScH-T0-eiD" id="As5-gc-j9j"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -164,7 +172,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ageTextField" destination="4mA-We-aYk" id="3XH-Cf-w9v"/>
                         <outlet property="contactTextField" destination="JgN-bY-Sxl" id="7Gv-kB-fVd"/>
+                        <outlet property="nameTextField" destination="HRD-aI-T2G" id="Oja-FU-7MY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6CN-99-eFt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
