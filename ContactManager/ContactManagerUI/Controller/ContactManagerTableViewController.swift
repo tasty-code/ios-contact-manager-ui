@@ -12,6 +12,16 @@ final class ContactManagerTableViewController: UITableViewController {
     @IBOutlet private weak var contactManagerTableView: UITableView!
     private var contactInfomation = [ContactInformation]()
     
+    @IBAction func tappedAddNewContactAction(_ sender: UIBarButtonItem) {
+        guard let addContactVC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewContactViewController") as? AddNewContactViewController else {
+            return
+        }
+        addContactVC.modalTransitionStyle = .coverVertical
+        addContactVC.modalPresentationStyle = .automatic
+        
+        present(addContactVC, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
