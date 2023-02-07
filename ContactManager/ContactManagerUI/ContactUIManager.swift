@@ -20,6 +20,7 @@ final class ContactUIManager: ContactUIManagerProtocol {
         self.validator = validator
     }
     
+    @discardableResult
     func runProgram(menu: Menu, data: UserInputModel? = nil) throws -> Any? {
         guard let data else { return nil }
         switch menu {
@@ -37,18 +38,13 @@ final class ContactUIManager: ContactUIManagerProtocol {
 extension ContactUIManager {
     
     func addProgram(_ data:UserInputModel) throws {
-        // Save 버튼 눌렀을때 연락처 저장
-        print(#function)
-        print(data)
         try self.validateData(with: data)
         guard let validatedData = data.convertToPerson() else { throw Errors.readFail }
         dataManager.setContact(validatedData)
     }
     
     func showListProgram() -> [Person]  {
-        // 테이블뷰에 저장된 연락처 출력
-        let personSets = dataManager.getContactsData()
-        let persons = personSets.map{$0}
+        let persons = dataManager.getContactsData().map{$0}
         return persons
     }
     
