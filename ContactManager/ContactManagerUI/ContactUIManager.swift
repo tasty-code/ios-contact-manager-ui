@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ContactUIManagerProtocol {
-    func runProgram(menu: Menu, data: UserInputModel?) throws -> Any?
+    func runProgram(menu: Menu, userInputModel: UserInputModel?) throws -> Any?
 }
 
 final class ContactUIManager: ContactUIManagerProtocol {
@@ -21,12 +21,12 @@ final class ContactUIManager: ContactUIManagerProtocol {
     }
     
     @discardableResult
-    func runProgram(menu: Menu, data: UserInputModel?) throws -> Any? {
-        guard let data else { return nil }
+    func runProgram(menu: Menu, userInputModel: UserInputModel?) throws -> Any? {
+        guard let userInputModel else { return nil }
         
         switch menu {
         case .add:
-            try addProgram(data)
+            try addProgram(userInputModel)
         case .showList:
             return showListProgram()
         default:
@@ -39,13 +39,13 @@ final class ContactUIManager: ContactUIManagerProtocol {
 extension ContactUIManager {
     
     func addProgram(_ userInputModel: UserInputModel) throws {
-        let person = try requestValidation(with: userInputModel)
+        _ = try requestValidation(with: userInputModel)
         guard let validatedData = userInputModel.convertToPerson() else { throw Errors.defaultError }
         dataManager.setContact(validatedData)
     }
     
     func showListProgram() -> [Person]  {
-        let persons = dataManager.getContactsData().map{$0}
+        let persons = dataManager.getContactsData().map { $0 }
         return persons
     }
     

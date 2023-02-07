@@ -42,9 +42,20 @@ final class AddContactViewController: UIViewController {
             guard let formattedPhoneNumber = contactUIManager.formmatingPhoneNumber(with: phoneNumber) else { return }
             let userInputModel = UserInputModel(name: name, age: age, phoneNum: formattedPhoneNumber)
             
-            try contactUIManager.runProgram(menu: .add, data: userInputModel)
+            try contactUIManager.runProgram(menu: .add, userInputModel: userInputModel)
+            let a = contactUIManager.showListProgram()
+            print(a)
         } catch {
-            print(error.localizedDescription)
+            presentErrorAlert(with: error.localizedDescription)
         }
+    }
+    
+    private func presentErrorAlert(with message: String) {
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "예", style: .default, handler: nil)
+        
+        alert.addAction(confirm)
+        
+        present(alert, animated: true)
     }
 }
