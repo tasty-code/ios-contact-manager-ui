@@ -70,9 +70,7 @@ extension ContactManager: SystemMenuWorkable {
             print(PrintMessage.nothingUserInput)
             return
         }
-        let convertedUserInputValues = convertor.convertToCharacter(this: receiveUserInputValues)
-        let removedBlankUserInputValues = detector.excludeSpaceWord(convertedUserInputValues)
-        let combinedUserInputValues = convertor.convertToString(removedBlankUserInputValues)
+        let combinedUserInputValues = removeBlankInput(value: receiveUserInputValues)
         let splitedUserInputValues = combinedUserInputValues.split(separator: "/").map{ String($0) }
         
         guard let checkUserInputValues = checker.checkCorrectWord(target: splitedUserInputValues) else {
@@ -81,6 +79,13 @@ extension ContactManager: SystemMenuWorkable {
         contactInformationArray.insert(checkUserInputValues)
         
         PrintMessage.validUserInput(value: checkUserInputValues)
+    }
+    
+    func removeBlankInput(value: String) -> String {
+        let convertedUserInputValues = convertor.convertToCharacter(this: value)
+        let removedBlankUserInputValues = detector.excludeSpaceWord(convertedUserInputValues)
+        let validName = convertor.convertToString(removedBlankUserInputValues)
+        return validName
     }
     
     func viewContactList(value: Set<ContactInformation>) {
