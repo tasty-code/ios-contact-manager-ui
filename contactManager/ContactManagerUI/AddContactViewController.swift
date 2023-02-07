@@ -157,6 +157,19 @@ class AddContactViewController: UIViewController {
         nameTextField.delegate = self
         ageTextField.delegate = self
         phoneNumberTextField.delegate = self
+        
+        ageTextField.addDoneButtonToKeyboard(doneAction: #selector(moveToPhoneNumberTextField))
+        phoneNumberTextField.addHyphenAndDoneButtonToKeyboard(doneAction: #selector(phoneNumberTextField.resignFirstResponder), hyphenAction: #selector(addHyphenPunctuation))
+    }
+    
+    @objc func moveToPhoneNumberTextField() {
+        ageTextField.resignFirstResponder()
+        phoneNumberTextField.becomeFirstResponder()
+    }
+    
+    @objc func addHyphenPunctuation() {
+        guard let inputPhoneNumber = phoneNumberTextField.text else { return }
+        phoneNumberTextField.text = inputPhoneNumber + "-"
     }
     
     private func addSubview() {
