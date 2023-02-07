@@ -27,9 +27,15 @@ final class AddContactViewController: UIViewController {
         nameTextField.delegate = self
         ageTextField.delegate = self
         phoneNumberTextField.delegate = self
+        
+        phoneNumberTextField.addTarget(self, action: #selector(self.didPhoneNumberTextChange), for: .editingChanged)
     }
-
+    
     // MARK: - Actions
+    @objc func didPhoneNumberTextChange() {
+        phoneNumberTextField.text = phoneNumberTextField.text?.formattedPhoneNumber
+    }
+    
     @IBAction private func tappedCancelButton(_ sender: UIBarButtonItem) {
         showCheckCancelAlert()
     }
@@ -38,9 +44,9 @@ final class AddContactViewController: UIViewController {
         guard let name = nameTextField.text ,
               let age = ageTextField.text,
               let phoneNumber = phoneNumberTextField.text else { return }
-
+        
         let inputArray = [name, age, phoneNumber]
-
+        
         do {
             let contact = try InputManager.contact(from: inputArray)
             ContactManager.shared.add(contact: contact)
@@ -48,29 +54,29 @@ final class AddContactViewController: UIViewController {
             showFailAlert(withTitle: error.localizedDescription)
             return
         }
-
+        
         dismiss(animated: true)
         delegate?.didContactChanged()
     }
-
+    
     // MARK: - Helpers
     private func showFailAlert(withTitle title: String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "확인", style: .default)
-
+        
         alert.addAction(confirmAction)
         present(alert, animated: true)
     }
-
+    
     private func showCheckCancelAlert() {
         let alert = UIAlertController(title: "정말로 취소하시겠습니까?", message: nil, preferredStyle: .alert)
         let noAction = UIAlertAction(title: "아니오", style: .cancel)
         let yesAction = UIAlertAction(title: "예", style: .destructive) { _ in self.dismiss(animated: true)
         }
-
+        
         alert.addAction(noAction)
         alert.addAction(yesAction)
-
+        
         present(alert, animated: true)
     }
 }
@@ -86,15 +92,16 @@ extension AddContactViewController: UITextFieldDelegate {
         }
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard !string.isEmpty else {
-            return true
-        }
-
-        if textField == self.ageTextField {
-            guard let _ = Int(string) else {
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        switch textField {
+        case ageTextField, phoneNumberTextField:
+            guard string.isEmpty || Int(string) != nil else {
                 return false
             }
+        default:
+            break
         }
         
         return true
