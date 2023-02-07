@@ -7,10 +7,14 @@
 
 import UIKit
 
-class ContactTableViewCell: UITableViewCell {
+final class ContactTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var subtitle: UILabel!
+    @IBOutlet private weak var nameAndAge: UILabel!
+    @IBOutlet private weak var phoneNumber: UILabel!
+
+    static var className: String {
+        return String(describing: self)
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,5 +25,12 @@ class ContactTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+}
+
+extension ContactTableViewCell {
+    func configure(contact: Contact) {
+        nameAndAge.text = "\(contact.name)(\(contact.age))"
+        phoneNumber.text = contact.phoneNumber
     }
 }
