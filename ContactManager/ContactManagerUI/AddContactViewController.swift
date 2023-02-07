@@ -43,8 +43,6 @@ final class AddContactViewController: UIViewController {
             let userInputModel = UserInputModel(name: name, age: age, phoneNum: formattedPhoneNumber)
             
             try contactUIManager.runProgram(menu: .add, userInputModel: userInputModel)
-            let a = contactUIManager.showListProgram()
-            print(a)
         } catch {
             presentErrorAlert(with: error.localizedDescription)
         }

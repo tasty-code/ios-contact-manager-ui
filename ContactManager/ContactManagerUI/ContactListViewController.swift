@@ -27,7 +27,6 @@ final class ContactListViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("GO to next view")
         if segue.identifier == "toAddContactView"{
             let addContactView = segue.destination as! AddContactViewController
             addContactView.contactUIManager = self.contactUIManager
