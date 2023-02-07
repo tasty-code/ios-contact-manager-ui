@@ -24,11 +24,7 @@ final class AddContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.shadowImage = UIImage()
-        nameTextField.delegate = self
-        ageTextField.delegate = self
-        phoneNumberTextField.delegate = self
-        
-        phoneNumberTextField.addTarget(self, action: #selector(self.didPhoneNumberTextChange), for: .editingChanged)
+        configureTextField()
     }
     
     // MARK: - Actions
@@ -79,19 +75,20 @@ final class AddContactViewController: UIViewController {
         
         present(alert, animated: true)
     }
+
+    private func configureTextField() {
+        nameTextField.delegate = self
+        ageTextField.delegate = self
+        phoneNumberTextField.delegate = self
+
+        phoneNumberTextField
+            .addTarget(self,
+                       action: #selector(self.didPhoneNumberTextChange),
+                       for: .editingChanged)
+    }
 }
 
 extension AddContactViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == self.nameTextField {
-            print("이름입력")
-        } else if textField == self.ageTextField {
-            print("나이입력")
-        } else if textField == self.phoneNumberTextField {
-            print("전화번호입력")
-        }
-    }
-    
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {

@@ -15,7 +15,6 @@ extension String {
             return pureNumbers.applyPatternOnPureNumbers(pattern: pattern, replacementCharacter: "#")
         }
         
-        // 0으로 시작하면서 02가 아니면...
         if pureNumbers.starts(with: "0") && !pureNumbers.starts(with: "02")  {
             if pureNumbers.count <= 10 {
                 pattern = "###-###-####"
