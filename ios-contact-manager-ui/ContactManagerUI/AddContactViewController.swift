@@ -8,6 +8,7 @@
 import UIKit
 
 final class AddContactViewController: UIViewController {
+
     @IBOutlet weak var contactTextField: UITextField!
 
     override func viewDidLoad() {
@@ -19,32 +20,31 @@ final class AddContactViewController: UIViewController {
 extension AddContactViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let oldText = textField.text, let textRange = Range(range, in: oldText) {
-            // newText == 현재 text field에 있는 텍스트. 아직 textField에는 업데이트 되지 않은 상태
             let newText = oldText.replacingCharacters(in: textRange, with: string)
-
-            // range 정보를 갖고 parse한 결과를 textField의 text에 할당
             textField.text = parse(newText, using: range)
         }
         return false
     }
 
+    private enum LocationsOfHyphen {
+        static let forTwoFourFour = [2, 7]
+        static let forTwoThreeFour = [2, 6]
+        static let forThreeFourFour = [3, 8]
+    }
+
     private func parse(_ newText: String, using range: NSRange) -> String {
-        /*
-         range.location == newText.count
-         range.length == 삭제된 character 수
-         */
         switch (range.location, range.length) {
-        case (12, 1...), (11, 0): // 2-4-4로 바뀌어야 하는 경우
-            return relocateHyphen(of: newText, locationsOfHyphen: [2, 7])
-        case (11, 1...): // 2-3-4로 바뀌어야 하는 경우
-            return relocateHyphen(of: newText, locationsOfHyphen: [2, 6])
-        case (12, 0): // 3-4-4로 바뀌어야 하는 경우
-            return relocateHyphen(of: newText, locationsOfHyphen: [3, 8])
-        case (3, 1...), (7, 1...): // 맨 뒤 -를 없애는 경우
+        case (12, 1...), (11, 0):
+            return relocateHyphen(of: newText, at: LocationsOfHyphen.forTwoFourFour)
+        case (11, 1...):
+            return relocateHyphen(of: newText, at: LocationsOfHyphen.forTwoThreeFour)
+        case (12, 0):
+            return relocateHyphen(of: newText, at: LocationsOfHyphen.forThreeFourFour)
+        case (3, 1...), (7, 1...):
             return removeLastHyphen(from: newText)
-        case (2, _), (6, _): // -를 추가해야 하는 경우
+        case (2, _), (6, _):
             return newText.inserting(Character.hyphen, at: range.location)
-        default: // 그 외의 경우
+        default:
             return newText
         }
     }
@@ -56,7 +56,7 @@ extension AddContactViewController: UITextFieldDelegate {
         return text
     }
 
-    private func relocateHyphen(of string: String, locationsOfHyphen indices: [Int]) -> String {
+    private func relocateHyphen(of string: String, at indices: [Int]) -> String {
         var relocated = string.replacingOccurrences(of: String.hyphen, with: String.empty)
         for index in indices {
             relocated.insert(Character.hyphen, at: index)
