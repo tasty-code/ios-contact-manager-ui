@@ -20,21 +20,21 @@ final class AddContactViewController: UIViewController {
     }
 
     @IBAction private func tappedCancelButton(_ sender: UIBarButtonItem) {
-
+        
     }
     
     @IBAction private func tappedSaveButton(_ sender: UIBarButtonItem) {
         guard let contactUIManager else { return }
-        do{
+        
+        do {
             guard let name = nameTextField.text else { throw Errors.wrongName }
             guard let age = ageTextField.text else { throw Errors.wrongAge }
             guard let phoneNumber = phoneNumberTextField.text else { throw Errors.wrongPhoneNumber }
+            guard let formattedPhoneNumber = contactUIManager.formmatingPhoneNumber(with: phoneNumber) else { return }
+            let userInputModel = UserInputModel(name: name, age: age, phoneNum: formattedPhoneNumber)
             
-            let formattedNumber = try contactUIManager.validator.formmatingPhoneNumber(with: phoneNumber)
-            let inputtedData = UserInputModel(name: name, age: age, phoneNum: formattedNumber)
-            
-            try contactUIManager.runProgram(menu: .add, data: inputtedData)
-        }catch {
+            try contactUIManager.runProgram(menu: .add, data: userInputModel)
+        } catch {
             print(error.localizedDescription)
         }
     }

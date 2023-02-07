@@ -7,16 +7,12 @@
 
 import Foundation
 
-protocol ValidateUIProtocol {
-    func formmatingPhoneNumber(with number: String) throws -> String
-}
-
 protocol ValidatorProtocol {
     func checkValidAgeAndNum(input: UserInputModel) throws -> Person
     func checkInputEmpty(with str: String) -> Bool
 }
 
-struct Validator: ValidatorProtocol, ValidateUIProtocol {
+struct Validator: ValidatorProtocol {
     
     
     func checkValidAgeAndNum(input: UserInputModel) throws -> Person {
@@ -44,22 +40,5 @@ struct Validator: ValidatorProtocol, ValidateUIProtocol {
     private func validateNumber(_ number: String) throws {
         let numberSplit = number.split(separator: "-").map { String($0) }
         if number.count < 10 || numberSplit.count < 3 { throw Errors.wrongPhoneNumber }
-    }
-    
-    func formmatingPhoneNumber(with number: String) throws -> String {
-        let stringCount = number.count
-        var phoneNumber = number.map{ String($0) }
-        if stringCount < 9 {
-            throw Errors.wrongPhoneNumber
-        }
-        if stringCount >= 10 {
-            phoneNumber.insert("-", at: 3)
-            phoneNumber.insert("-", at: 7)
-            return phoneNumber.joined()
-        } else {
-            phoneNumber.insert("-", at: 2)
-            phoneNumber.insert("-", at: 6)
-            return phoneNumber.joined()
-        }
     }
 }

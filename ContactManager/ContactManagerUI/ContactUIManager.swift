@@ -13,16 +13,17 @@ protocol ContactUIManagerProtocol {
 
 final class ContactUIManager: ContactUIManagerProtocol {
     
-    var validator: ValidateUIProtocol
+    var validator: ValidatorProtocol
     private let dataManager = DataManager.shared
     
-    init(validator: ValidateUIProtocol) {
+    init(validator: ValidatorProtocol) {
         self.validator = validator
     }
     
     @discardableResult
-    func runProgram(menu: Menu, data: UserInputModel? = nil) throws -> Any? {
+    func runProgram(menu: Menu, data: UserInputModel?) throws -> Any? {
         guard let data else { return nil }
+        
         switch menu {
         case .add:
             try addProgram(data)
@@ -48,8 +49,24 @@ extension ContactUIManager {
         return persons
     }
     
+    func formmatingPhoneNumber(with number: String?) -> String? {
+        guard let number = number else { return nil }
+        var phoneNumber = number.map { String($0) }
+        
+        if number.count == 9 {
+            phoneNumber.insert("-", at: 2)
+            phoneNumber.insert("-", at: 6)
+            return phoneNumber.joined()
+        } else if number.count >= 10 {
+            phoneNumber.insert("-", at: 3)
+            phoneNumber.insert("-", at: 7)
+            return phoneNumber.joined()
+        } else {
+            return phoneNumber.joined()
+        }
+    }
+    
     private func validateData(with:UserInputModel) throws {
         
     }
-    
 }
