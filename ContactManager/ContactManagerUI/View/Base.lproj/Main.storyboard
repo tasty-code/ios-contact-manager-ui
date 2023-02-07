@@ -52,7 +52,7 @@
         <!--새 연락처-->
         <scene sceneID="MYM-ou-eUU">
             <objects>
-                <viewController id="tvG-h4-r7c" sceneMemberID="viewController">
+                <viewController id="tvG-h4-r7c" customClass="NewContactViewController" customModule="ContactManagerUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="efy-Iz-dtr">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,7 +129,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="새 연락처" id="TGv-jY-ef0">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="yNk-H4-Jir"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="yNk-H4-Jir">
+                            <connections>
+                                <action selector="cancelButtonDidTap:" destination="tvG-h4-r7c" id="Kom-Fh-WpE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="lBh-hi-2Qz"/>
                     </navigationItem>
                 </viewController>
