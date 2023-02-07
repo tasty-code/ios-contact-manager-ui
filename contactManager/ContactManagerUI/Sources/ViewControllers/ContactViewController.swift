@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ContactViewController.swift
 //  ContactManagerUI
 //
 //  Created by 이상윤 on 2023/01/31.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ContactViewController: UIViewController {
 
     @IBOutlet private weak var contactsTableView: UITableView!
 
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension ContactViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -60,11 +60,11 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension ContactViewController: UITableViewDelegate {
     
 }
 
-extension ViewController: AddContactViewDelegate {
+extension ContactViewController: AddContactViewDelegate {
     func reloadTableView() {
         contactsTableView.reloadData()
     }
