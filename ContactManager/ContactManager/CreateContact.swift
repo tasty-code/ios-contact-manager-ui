@@ -62,7 +62,7 @@ extension ContactManager {
     }
 
     private func isValidPhoneNumber(_ phoneNumber: String) throws {
-        guard phoneNumber.count > 10 else {
+        guard phoneNumber.filter({ $0.isNumber }).count > 8 else {
             throw ContactManagerError.invalidPhoneNumber
         }
         let digits = phoneNumber.components(separatedBy: ["-"])
