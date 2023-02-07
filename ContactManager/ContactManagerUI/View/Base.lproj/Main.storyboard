@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8DL-Ib-5Vt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeQ-Vu-jQt">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Contact Manager Table View Controller-->
+        <!--연락처-->
         <scene sceneID="XTa-nj-ehz">
             <objects>
                 <tableViewController id="8DL-Ib-5Vt" customClass="ContactManagerTableViewController" customModule="ContactManagerUI" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,13 +47,34 @@
                             <outlet property="delegate" destination="8DL-Ib-5Vt" id="wpH-bd-Ix1"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="연락처" id="euC-8l-uQZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="xdn-0p-cKm"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="contactManagerTableView" destination="3xo-A8-gl5" id="yRc-Dp-vIa"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HEZ-MV-ilx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="-192"/>
+            <point key="canvasLocation" x="991.60305343511448" y="-192.25352112676057"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hlZ-cX-6kT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aeQ-Vu-jQt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wBZ-AZ-U3O">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8DL-Ib-5Vt" kind="relationship" relationship="rootViewController" id="ear-Xr-lnc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ebu-bz-kkn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64.885496183206101" y="-192.25352112676057"/>
         </scene>
     </scenes>
     <resources>
