@@ -93,6 +93,7 @@ class AddContactViewController: UIViewController {
 
         textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 8.0, height: 0.0))
         textField.leftViewMode = .always
+        textField.keyboardType = .numberPad
         return textField
     }()
     
@@ -106,6 +107,7 @@ class AddContactViewController: UIViewController {
 
         textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 8.0, height: 0.0))
         textField.leftViewMode = .always
+        textField.keyboardType = .phonePad
         return textField
     }()
     
@@ -150,6 +152,11 @@ class AddContactViewController: UIViewController {
         view.backgroundColor = .white
         addSubview()
         configureLayout()
+
+        nameTextField.becomeFirstResponder()
+        nameTextField.delegate = self
+        ageTextField.delegate = self
+        phoneNumberTextField.delegate = self
     }
     
     private func addSubview() {
@@ -201,5 +208,20 @@ class AddContactViewController: UIViewController {
         NSLayoutConstraint.activate([
             phoneNumberTextField.widthAnchor.constraint(equalTo: contactInfoStackView.widthAnchor, multiplier: 0.8)
         ])
+    }
+}
+
+extension AddContactViewController: UITextFieldDelegate {
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == nameTextField {
+            ageTextField.becomeFirstResponder()
+        }
+        return true
     }
 }
