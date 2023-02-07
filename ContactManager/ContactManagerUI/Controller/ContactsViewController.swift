@@ -11,7 +11,7 @@ final class ContactsViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
 
-    private let contacts = [
+    private var contacts = [
         Contact(name: "james", age: 30, phoneNumber: "05-343-2234"),
         Contact(name: "steven", age: 100, phoneNumber: "047-221-3432"),
         Contact(name: "hajin", age: 33, phoneNumber: "010-3332-0093"),
@@ -39,6 +39,13 @@ final class ContactsViewController: UIViewController {
         let nibName = UINib(nibName: ContactTableViewCell.className, bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: ContactTableViewCell.className)
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navigationController = segue.destination as? UINavigationController,
+           let newContactViewController = navigationController.viewControllers.first as? NewContactViewController {
+            newContactViewController.delegate = self
+        }
+    }
 }
 
 extension ContactsViewController: UITableViewDataSource {
@@ -56,6 +63,11 @@ extension ContactsViewController: UITableViewDataSource {
         cell.configure(contact: contacts[indexPath.row])
         return cell
     }
+}
 
-
+extension ContactsViewController: NewContactViewControllerDelegate {
+    func sendData(contact: Contact) {
+        contacts.append(contact)
+        tableView.reloadData()
+    }
 }

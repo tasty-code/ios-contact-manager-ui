@@ -9,7 +9,10 @@ import UIKit
 
 final class NewContactViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
+
+    weak var delegate: NewContactViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,16 @@ final class NewContactViewController: UIViewController {
         })
         alert.addAction(yesButton)
         present(alert, animated: true)
+    }
+
+    @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
+        if let name = nameTextField.text,
+           let ageString = ageTextField.text,
+           let age = UInt(ageString),
+           let phoneNumber = phoneNumberTextField.text {
+            delegate?.sendData(contact: Contact(name: name, age: age, phoneNumber: phoneNumber))
+        }
+        dismiss(animated: true)
     }
 }
 
