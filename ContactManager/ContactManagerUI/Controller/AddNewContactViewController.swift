@@ -9,29 +9,37 @@ import UIKit
 
 class AddNewContactViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     @IBAction func tappedCancelButton(_ sender: UIBarButtonItem) {
-        showAlert(message: "정말로 취소하시겠습니까?", handler: "아니오", "예")
-        dismiss(animated: true)
+        failiureAlert()
     }
 
     @IBAction func tappedSaveButton(_ sender: UIBarButtonItem) {
-        //        showAlert(message: "입력한 이름 정보가 잘못되었습니다", handler: "확인")
-        //        showAlert(message: "입력한 나이 정보가 잘못되었습니다", handler: "확인")
-        showAlert(message: "입력한 연락처 정보가 잘못되었습니다", handler: "확인")
+        successAlert()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
 
-    private func showAlert(message: String, handler: String...) {
-        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
-
-        handler.enumerated().forEach {
-            let button = UIAlertAction(title: $1, style: $0 == 1 ? .destructive : .default)
-            alert.addAction(button)
-        }
-
+extension AddNewContactViewController {
+    private func successAlert() {
+        let success = UIAlertAction(title: "확인", style: .default, handler: nil)
+        let alert = UIAlertController(title: nil, message: "Error Case Message 출력", preferredStyle: .alert)
+        
+        alert.addAction(success)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func failiureAlert() {
+        let alert = UIAlertController(title: nil, message: "정말로 취소하시겠습니까?", preferredStyle: .alert)
+        let allowAction = UIAlertAction(title: "예", style: .destructive, handler: { action in
+            self.dismiss(animated: true)
+        })
+        let cancleAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+        
+        alert.addAction(allowAction)
+        alert.addAction(cancleAction)
         present(alert, animated: true, completion: nil)
     }
 }
