@@ -12,12 +12,12 @@ protocol AddContactViewDelegate {
 }
 
 class AddContactViewController: UIViewController {
-
+    
     // MARK: - Properties
-
+    
     var delegate: AddContactViewDelegate?
     
-    var newContactNavigationBar: UINavigationBar = {
+    private var newContactNavigationBar: UINavigationBar = {
         let navigationBar = UINavigationBar()
         let navigationItem = UINavigationItem(title: "새 연락처")
         let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(cancelButtonTapped))
@@ -27,70 +27,70 @@ class AddContactViewController: UIViewController {
         navigationBar.setItems([navigationItem], animated: false)
         return navigationBar
     }()
-
-    var nameLabel: UILabel = {
+    
+    private var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "이름"
         label.textAlignment = .center
         return label
     }()
     
-    var ageLabel: UILabel = {
+    private var ageLabel: UILabel = {
         let label = UILabel()
         label.text = "나이"
         label.textAlignment = .center
         return label
     }()
     
-    var phoneNumberLabel: UILabel = {
+    private var phoneNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "연락처"
         label.textAlignment = .center
         return label
     }()
     
-    var nameTextField: UITextField = {
+    private var nameTextField: UITextField = {
         let textField = UITextField()
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.cornerRadius = 5.0
-
+        
         textField.placeholder = "이름 입력"
-
+        
         textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 8.0, height: 0.0))
         textField.leftViewMode = .always
         return textField
     }()
     
-    var ageTextField: UITextField = {
+    private var ageTextField: UITextField = {
         let textField = UITextField()
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.cornerRadius = 5.0
-
+        
         textField.placeholder = "나이 입력"
-
+        
         textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 8.0, height: 0.0))
         textField.leftViewMode = .always
         textField.keyboardType = .numberPad
         return textField
     }()
     
-    var phoneNumberTextField: UITextField = {
+    private var phoneNumberTextField: UITextField = {
         let textField = UITextField()
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.cornerRadius = 5.0
-
+        
         textField.placeholder = "전화번호 입력"
-
+        
         textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 8.0, height: 0.0))
         textField.leftViewMode = .always
         textField.keyboardType = .phonePad
         return textField
     }()
     
-    var nameStackView: UIStackView = {
+    private var nameStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .fill
         stackView.distribution = .fill
@@ -99,7 +99,7 @@ class AddContactViewController: UIViewController {
         return stackView
     }()
     
-    var ageStackView: UIStackView = {
+    private var ageStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .fill
         stackView.distribution = .fill
@@ -108,7 +108,7 @@ class AddContactViewController: UIViewController {
         return stackView
     }()
     
-    var phoneNumberStackView: UIStackView = {
+    private var phoneNumberStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .fill
         stackView.distribution = .fill
@@ -117,7 +117,7 @@ class AddContactViewController: UIViewController {
         return stackView
     }()
     
-    var contactInfoStackView: UIStackView = {
+    private var contactInfoStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .fill
         stackView.distribution = .fill
@@ -125,15 +125,15 @@ class AddContactViewController: UIViewController {
         stackView.axis = .vertical
         return stackView
     }()
-
+    
     // MARK: - View LifeCycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         addSubview()
         configureLayout()
-
+        
         nameTextField.becomeFirstResponder()
         nameTextField.delegate = self
         ageTextField.delegate = self
@@ -142,7 +142,7 @@ class AddContactViewController: UIViewController {
         ageTextField.addDoneButtonToKeyboard(doneAction: #selector(moveToPhoneNumberTextField))
         phoneNumberTextField.addHyphenAndDoneButtonToKeyboard(doneAction: #selector(phoneNumberTextField.resignFirstResponder), hyphenAction: #selector(addHyphenPunctuation))
     }
-
+    
     // MARK: - Functions(ViewLayout)
     
     private func addSubview() {
@@ -179,50 +179,50 @@ class AddContactViewController: UIViewController {
             contactInfoStackView.leadingAnchor.constraint(equalTo:safeArea.leadingAnchor, constant: 20),
             contactInfoStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
         ])
-
+        
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             nameTextField.widthAnchor.constraint(equalTo: contactInfoStackView.widthAnchor, multiplier: 0.8)
         ])
-
+        
         ageTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             ageTextField.widthAnchor.constraint(equalTo: contactInfoStackView.widthAnchor, multiplier: 0.8)
         ])
-
+        
         phoneNumberTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             phoneNumberTextField.widthAnchor.constraint(equalTo: contactInfoStackView.widthAnchor, multiplier: 0.8)
         ])
     }
-
+    
     // MARK: - Functions(Button Tapped)
-
-    @objc func cancelButtonTapped() {
+    
+    @objc private func cancelButtonTapped() {
         self.view.endEditing(true)
         showCancelAlert()
     }
-
-    @objc func saveButtonTapped() {
-
+    
+    @objc private func saveButtonTapped() {
+        
         guard var inputName = nameTextField.text, let inputAge = ageTextField.text, let inputPhoneNumber = phoneNumberTextField.text else {
             return
         }
-
+        
         inputName = inputName.components(separatedBy: [" "]).joined()
-
+        
         guard validate(nameValue: inputName, ageValue: inputAge, phoneNumberValue: inputPhoneNumber) else { return }
         makeContact(with: inputName, with: inputAge, with: inputPhoneNumber)
-
+        
         delegate?.reloadTableView()
         dismiss(animated: true)
     }
-
-    func validate(nameValue: String, ageValue: String, phoneNumberValue: String) -> Bool {
+    
+    private func validate(nameValue: String, ageValue: String, phoneNumberValue: String) -> Bool {
         let validationResultPair = ["이름" : hasNoNameError(name: nameValue), "나이" : hasNoAgeError(age: ageValue), "연락처" : hasNoPhoneNumberError(number: phoneNumberValue)]
-
+        
         let errorCategories = Array(validationResultPair.filter { $0.value == false }.keys)
-
+        
         if !errorCategories.isEmpty {
             let errorTitle = makeErrorTitle(from: errorCategories)
             showErrorAlert(with: errorTitle)
@@ -230,14 +230,14 @@ class AddContactViewController: UIViewController {
         }
         return true
     }
-
-    func makeContact(with name: String, with age: String, with phoneNumber: String) {
+    
+    private func makeContact(with name: String, with age: String, with phoneNumber: String) {
         guard let age = Int(age) else { return }
         let contact = Contact(name: name, age: String(age), phoneNumber: phoneNumber)
         contacts.append(contact)
     }
-
-    func showCancelAlert() {
+    
+    private func showCancelAlert() {
         let alertTitle: String = "정말로 취소하시겠습니까?"
         let confirmActionTitle: String = "예"
         let cancelActionTitle: String = "아니오"
@@ -255,7 +255,7 @@ class AddContactViewController: UIViewController {
         self.present(alert, animated: true)
     }
 
-    func makeErrorTitle(from categories: [String]) -> String {
+    private func makeErrorTitle(from categories: [String]) -> String {
         var errorKeywords = ""
         for index in categories.indices {
             errorKeywords = errorKeywords + "," + categories[index]
@@ -264,25 +264,39 @@ class AddContactViewController: UIViewController {
         let errorTitle = "입력한 \(errorKeywords) 정보가 잘못되었습니다"
         return errorTitle
     }
-
-    func showErrorAlert(with errorTitle: String) {
+    private func showErrorAlert(with errorTitle: String) {
         let confirmActionTitle: String = "확인"
-
+        
         let alert = UIAlertController(title: errorTitle, message: nil, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: confirmActionTitle, style: .default)
         alert.addAction(confirmAction)
         self.present(alert, animated: true)
     }
-
+    
     // MARK: - Functions(ToolBar)
-
-    @objc func moveToPhoneNumberTextField() {
+    
+    @objc private func moveToPhoneNumberTextField() {
         ageTextField.resignFirstResponder()
         phoneNumberTextField.becomeFirstResponder()
     }
-
-    @objc func addHyphenPunctuation() {
+    
+    @objc private func addHyphenPunctuation() {
         guard let inputPhoneNumber = phoneNumberTextField.text else { return }
         phoneNumberTextField.text = inputPhoneNumber + "-"
+    }
+}
+
+extension AddContactViewController: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == nameTextField {
+            ageTextField.becomeFirstResponder()
+        }
+        return true
     }
 }
