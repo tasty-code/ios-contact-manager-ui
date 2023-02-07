@@ -10,7 +10,7 @@ import UIKit
 class AddNewContactViewController: UIViewController {
 
     @IBOutlet var userInputTextArray: [UITextField]!
-    private var tempArray = [String]()
+    private let contactManager = ContactManager()
     private let checker = Checker()
 
     @IBAction func tappedCancelButton(_ sender: UIBarButtonItem) {
@@ -18,23 +18,48 @@ class AddNewContactViewController: UIViewController {
     }
 
     @IBAction func tappedSaveButton(_ sender: UIBarButtonItem) {
-        userInputTextArray.forEach { element in
-            guard let temp = element.text else { return }
-            tempArray.append(temp)
-        }
-        var checkeUserInput = checker.checkCorrectWord(target: tempArray)
-        successAlert()
+        let errorSentence = decideErrorLocation()
+        successAlert(message: errorSentence)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    private func decideErrorLocation() -> String {
+        var returnSentence = ""
+        let validName = checkUserName()
+        var checkUserInput = checker.checkCorrect(targets: validName)
+        
+        for (index, boolean) in checkUserInput.enumerated() {
+            if !boolean {
+                returnSentence = InputErrorMessage.allCases[index].rawValue
+            }
+        }
+        return returnSentence
+    }
+    
+    private func checkUserName() -> [String] {
+        var inputCollection = [String]()
+        
+        userInputTextArray.forEach { element in
+            if let userInput = element.text {
+                inputCollection.append(userInput)
+            }
+        }
+        
+        if let excludeFirstInput = inputCollection.first {
+            let validName = contactManager.removeBlankInput(value: excludeFirstInput)
+            inputCollection[inputCollection.startIndex] = validName
+        }
+        return inputCollection
+    }
 }
 
 extension AddNewContactViewController {
-    private func successAlert() {
+    private func successAlert(message: String) {
         let success = UIAlertAction(title: "확인", style: .default, handler: nil)
-        let alert = UIAlertController(title: nil, message: "Error Case Message 출력", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         
         alert.addAction(success)
         present(alert, animated: true, completion: nil)
