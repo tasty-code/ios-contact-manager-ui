@@ -16,10 +16,7 @@ final class ContactManagerTableViewController: UITableViewController {
         super.viewDidLoad()
 
         configureTableView()
-
-        guard let parsedInformation = parseJSON() else { return }
-
-        contactInfomation = parsedInformation
+        assignJSONData()
     }
     
     private func configureTableView() {
@@ -56,6 +53,11 @@ final class ContactManagerTableViewController: UITableViewController {
             return nil
         }
         return parsedInformation
+    }
+    
+    private func assignJSONData() {
+        guard let parsedInformation = parseJSON() else { return }
+        contactInfomation = parsedInformation
     }
 }
 
