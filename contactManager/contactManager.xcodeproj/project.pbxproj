@@ -12,6 +12,7 @@
 		87C3EE1D295D5ABF00A76712 /* FindContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3EE1C295D5ABF00A76712 /* FindContact.swift */; };
 		87F5C8DE2988A9A20074A793 /* ValidateContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5C8DD2988A9A20074A793 /* ValidateContact.swift */; };
 		87F5C8E02988A9C50074A793 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5C8DF2988A9C50074A793 /* Enums.swift */; };
+		D91A9C1729922ED100C66910 /* AddContactViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A9C1629922ED100C66910 /* AddContactViewControllerExtensions.swift */; };
 		D91FBE572988A67B0091F104 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FBE562988A67B0091F104 /* AppDelegate.swift */; };
 		D91FBE592988A67B0091F104 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FBE582988A67B0091F104 /* SceneDelegate.swift */; };
 		D91FBE5B2988A67B0091F104 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FBE5A2988A67B0091F104 /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 		87C3EE1C295D5ABF00A76712 /* FindContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindContact.swift; sourceTree = "<group>"; };
 		87F5C8DD2988A9A20074A793 /* ValidateContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateContact.swift; sourceTree = "<group>"; };
 		87F5C8DF2988A9C50074A793 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		D91A9C1629922ED100C66910 /* AddContactViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewControllerExtensions.swift; sourceTree = "<group>"; };
 		D91FBE542988A67B0091F104 /* ContactManagerUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManagerUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91FBE562988A67B0091F104 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D91FBE582988A67B0091F104 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				D950729E29908BBB003E5579 /* AddContactViewController.swift */,
 				D95FD5552988EEF300E66CEC /* DummyContactInfo.swift */,
 				8735C23D2991DC0D00B4F9CD /* UITextFieldExtensions.swift */,
+				D91A9C1629922ED100C66910 /* AddContactViewControllerExtensions.swift */,
 				D91FBE5C2988A67B0091F104 /* Main.storyboard */,
 				D91FBE5F2988A67B0091F104 /* Assets.xcassets */,
 				D91FBE612988A67B0091F104 /* LaunchScreen.storyboard */,
@@ -231,6 +234,7 @@
 				D95FD5562988EEF300E66CEC /* DummyContactInfo.swift in Sources */,
 				D91FBE6C2988AB470091F104 /* Enums.swift in Sources */,
 				D91FBE592988A67B0091F104 /* SceneDelegate.swift in Sources */,
+				D91A9C1729922ED100C66910 /* AddContactViewControllerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

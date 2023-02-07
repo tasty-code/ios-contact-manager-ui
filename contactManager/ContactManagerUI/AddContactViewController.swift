@@ -13,6 +13,8 @@ protocol AddContactViewDelegate {
 
 class AddContactViewController: UIViewController {
 
+    // MARK: - Properties
+
     var delegate: AddContactViewDelegate?
     
     var newContactNavigationBar: UINavigationBar = {
@@ -25,79 +27,6 @@ class AddContactViewController: UIViewController {
         navigationBar.setItems([navigationItem], animated: false)
         return navigationBar
     }()
-    
-    @objc func cancelButtonTapped() {
-        self.view.endEditing(true)
-
-        let alertTitle: String = "정말로 취소하시겠습니까?"
-        let confirmActionTitle: String = "예"
-        let cancelActionTitle: String = "아니오"
-
-        let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: confirmActionTitle, style: .destructive) { _ in
-            self.dismiss(animated: true)
-        }
-        let cancelAction = UIAlertAction(title: cancelActionTitle, style: .default) { _ in
-            self.nameTextField.becomeFirstResponder()
-        }
-
-        alert.addAction(cancelAction)
-        alert.addAction(confirmAction)
-        self.present(alert, animated: true)
-    }
-    
-    @objc func saveButtonTapped() {
-        
-        guard let inputName = nameTextField.text else {
-            return
-        }
-        
-        guard let inputAge = ageTextField.text else {
-            return
-        }
-        
-        guard let inputPhoneNumber = phoneNumberTextField.text else {
-            return
-        }
-        
-        let trimmedInputName = inputName.components(separatedBy: [" "]).joined()
-    
-        let validationResultPair = ["이름" : checkNameError(name: trimmedInputName), "나이" : checkAgeError(age: inputAge), "연락처" : checkPhoneNumberError(number: inputPhoneNumber)]
-        
-        let errorCategories = Array(validationResultPair.filter { $0.value == false }.keys)
-        
-        if !errorCategories.isEmpty {
-            let errorTitle = makeErrorTitle(from: errorCategories)
-            return showErrorAlert(with: errorTitle)
-        }
-        
-        guard let inputAge = Int(inputAge) else { return }
-        
-        let contact = Contact(name: trimmedInputName, age: String(inputAge), phoneNumber: inputPhoneNumber)
-
-        contacts.append(contact)
-        delegate?.reloadTableView()
-        dismiss(animated: true)
-    }
-    
-    func makeErrorTitle(from categories: [String]) -> String {
-        var errorKeywords = ""
-        for i in categories.indices {
-            errorKeywords = errorKeywords + "," + categories[i]
-        }
-        errorKeywords.removeFirst()
-        let errorTitle = "입력한 \(errorKeywords) 정보가 잘못되었습니다"
-        return errorTitle
-    }
-
-    func showErrorAlert(with errorTitle: String) {
-        let confirmActionTitle: String = "확인"
-
-        let alert = UIAlertController(title: errorTitle, message: nil, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: confirmActionTitle, style: .default)
-        alert.addAction(confirmAction)
-        self.present(alert, animated: true)
-    }
 
     var nameLabel: UILabel = {
         let label = UILabel()
@@ -196,7 +125,9 @@ class AddContactViewController: UIViewController {
         stackView.axis = .vertical
         return stackView
     }()
-    
+
+    // MARK: - View LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -211,16 +142,8 @@ class AddContactViewController: UIViewController {
         ageTextField.addDoneButtonToKeyboard(doneAction: #selector(moveToPhoneNumberTextField))
         phoneNumberTextField.addHyphenAndDoneButtonToKeyboard(doneAction: #selector(phoneNumberTextField.resignFirstResponder), hyphenAction: #selector(addHyphenPunctuation))
     }
-    
-    @objc func moveToPhoneNumberTextField() {
-        ageTextField.resignFirstResponder()
-        phoneNumberTextField.becomeFirstResponder()
-    }
-    
-    @objc func addHyphenPunctuation() {
-        guard let inputPhoneNumber = phoneNumberTextField.text else { return }
-        phoneNumberTextField.text = inputPhoneNumber + "-"
-    }
+
+    // MARK: - Functions(ViewLayout)
     
     private func addSubview() {
         view.addSubview(newContactNavigationBar)
@@ -272,19 +195,94 @@ class AddContactViewController: UIViewController {
             phoneNumberTextField.widthAnchor.constraint(equalTo: contactInfoStackView.widthAnchor, multiplier: 0.8)
         ])
     }
-}
 
-extension AddContactViewController: UITextFieldDelegate {
+    // MARK: - Functions(Button Tapped)
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
+    @objc func cancelButtonTapped() {
+        self.view.endEditing(true)
+        showCancelAlert()
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        if textField == nameTextField {
-            ageTextField.becomeFirstResponder()
+    @objc func saveButtonTapped() {
+
+        guard var inputName = nameTextField.text, let inputAge = ageTextField.text, let inputPhoneNumber = phoneNumberTextField.text else {
+            return
+        }
+
+        inputName = inputName.components(separatedBy: [" "]).joined()
+
+        guard validate(nameValue: inputName, ageValue: inputAge, phoneNumberValue: inputPhoneNumber) else { return }
+        makeContact(with: inputName, with: inputAge, with: inputPhoneNumber)
+
+        delegate?.reloadTableView()
+        dismiss(animated: true)
+    }
+
+    func validate(nameValue: String, ageValue: String, phoneNumberValue: String) -> Bool {
+        let validationResultPair = ["이름" : hasNoNameError(name: nameValue), "나이" : hasNoAgeError(age: ageValue), "연락처" : hasNoPhoneNumberError(number: phoneNumberValue)]
+
+        let errorCategories = Array(validationResultPair.filter { $0.value == false }.keys)
+
+        if !errorCategories.isEmpty {
+            let errorTitle = makeErrorTitle(from: errorCategories)
+            showErrorAlert(with: errorTitle)
+            return false
         }
         return true
+    }
+
+    func makeContact(with name: String, with age: String, with phoneNumber: String) {
+        guard let age = Int(age) else { return }
+        let contact = Contact(name: name, age: String(age), phoneNumber: phoneNumber)
+        contacts.append(contact)
+    }
+
+    func showCancelAlert() {
+        let alertTitle: String = "정말로 취소하시겠습니까?"
+        let confirmActionTitle: String = "예"
+        let cancelActionTitle: String = "아니오"
+
+        let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: confirmActionTitle, style: .destructive) { _ in
+            self.dismiss(animated: true)
+        }
+        let cancelAction = UIAlertAction(title: cancelActionTitle, style: .default) { _ in
+            self.nameTextField.becomeFirstResponder()
+        }
+
+        alert.addAction(cancelAction)
+        alert.addAction(confirmAction)
+        self.present(alert, animated: true)
+    }
+
+    func makeErrorTitle(from categories: [String]) -> String {
+        var errorKeywords = ""
+        for index in categories.indices {
+            errorKeywords = errorKeywords + "," + categories[index]
+        }
+        errorKeywords.removeFirst()
+        let errorTitle = "입력한 \(errorKeywords) 정보가 잘못되었습니다"
+        return errorTitle
+    }
+
+    func showErrorAlert(with errorTitle: String) {
+        let confirmActionTitle: String = "확인"
+
+        let alert = UIAlertController(title: errorTitle, message: nil, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: confirmActionTitle, style: .default)
+        alert.addAction(confirmAction)
+        self.present(alert, animated: true)
+    }
+
+    // MARK: - Functions(ToolBar)
+
+    @objc func moveToPhoneNumberTextField() {
+        ageTextField.resignFirstResponder()
+        phoneNumberTextField.becomeFirstResponder()
+    }
+
+    @objc func addHyphenPunctuation() {
+        guard let inputPhoneNumber = phoneNumberTextField.text else { return }
+        phoneNumberTextField.text = inputPhoneNumber + "-"
     }
 }

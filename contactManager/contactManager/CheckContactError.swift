@@ -14,14 +14,14 @@ func errorTextOutput(with type: ErrorType){
     print("입력한 \(errorText)정보가 잘못되었습니다. 입력 형식을 확인해주세요.")
 }
 
-func checkNameError(name: String) -> Bool{
+func hasNoNameError(name: String) -> Bool{
     guard name.range(of: nameRegex, options: .regularExpression) != nil else {
         return false
     }
     return true
 }
 
-func checkAgeError(age: String) -> Bool{
+func hasNoAgeError(age: String) -> Bool{
     guard age.allSatisfy({ $0.isNumber }) else {
         return false
     }
@@ -32,7 +32,7 @@ func checkAgeError(age: String) -> Bool{
     return true
 }
 
-func checkPhoneNumberError(number: String) -> Bool {
+func hasNoPhoneNumberError(number: String) -> Bool {
     guard number.range(of: phoneNumberRegex, options: .regularExpression) != nil else {
         return false
     }
@@ -49,7 +49,7 @@ func checkPhoneNumberError(number: String) -> Bool {
 
 
 func errorCheck(trimName: String, trimAge: String, trimNum: String) -> Bool {
-    guard checkNameError(name: trimName), checkAgeError(age: trimAge), checkPhoneNumberError(number: trimNum) else {
+    guard hasNoNameError(name: trimName), hasNoAgeError(age: trimAge), hasNoPhoneNumberError(number: trimNum) else {
         return false
     }
     return true
