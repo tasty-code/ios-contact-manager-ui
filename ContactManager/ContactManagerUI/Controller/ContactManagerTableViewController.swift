@@ -16,7 +16,10 @@ final class ContactManagerTableViewController: UITableViewController {
         super.viewDidLoad()
 
         configureTableView()
-        assignLoadJSONData()
+
+        guard let parsedInformation = parseJSON() else { return }
+
+        contactInfomation = parsedInformation
     }
     
     private func configureTableView() {
@@ -43,14 +46,16 @@ final class ContactManagerTableViewController: UITableViewController {
             let jsonDecoder = JSONDecoder()
             return try jsonDecoder.decode(T.self, from: data)
         } catch {
-            print("Unable to parse \(filename): (error)")
-            throw Errors.unableToParse
+            print("Unable to decode \(filename): (error)")
+            throw Errors.unableToDecode
         }
     }
 
-    private func assignLoadJSONData() {
-        guard let parsedInformation: [ContactInformation] = try? loadJSON("Dummy.json") else { return }
-        contactInfomation = parsedInformation
+    private func parseJSON() -> [ContactInformation]? {
+        guard let parsedInformation: [ContactInformation] = try? loadJSON("Dummy.json") else {
+            return nil
+        }
+        return parsedInformation
     }
 }
 

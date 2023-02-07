@@ -10,5 +10,6 @@ import Foundation
 enum Errors: Error {
     case notFoundJsonFile
     case notLoadData
+    case unableToDecode
     case unableToParse
 }
