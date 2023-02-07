@@ -34,45 +34,45 @@ extension ContactManager {
         let indexOfPhoneNumber = 2
         return (splitted[indexOfName], splitted[indexOfAge], splitted[indexOfPhoneNumber])
     }
+}
 
-    private func getName(input: String) throws -> String {
-        guard input.isEmpty == false else {
-            throw ContactManagerError.invalidName
-        }
-        guard input.hasPrefix(" ") == false, input.hasSuffix(" ") == false else {
-            throw ContactManagerError.invalidName
-        }
-        guard input.allSatisfy({$0.isLowercase || $0.isUppercase || $0 == " "}) else {
-            throw ContactManagerError.invalidName
-        }
-        return input.components(separatedBy: [" "]).joined()
+func getName(input: String) throws -> String {
+    guard input.isEmpty == false else {
+        throw ContactManagerError.invalidName
     }
-
-    private func getAge(input: String) throws -> UInt {
-        if input == "0" {
-            return 0
-        }
-        guard input.hasPrefix("0") == false else {
-            throw ContactManagerError.invalidAge
-        }
-        guard let age = UInt(input), age < 1000 else {
-            throw ContactManagerError.invalidAge
-        }
-        return age
+    guard input.hasPrefix(" ") == false, input.hasSuffix(" ") == false else {
+        throw ContactManagerError.invalidName
     }
+    guard input.allSatisfy({$0.isLowercase || $0.isUppercase || $0 == " "}) else {
+        throw ContactManagerError.invalidName
+    }
+    return input.components(separatedBy: [" "]).joined()
+}
 
-    private func isValidPhoneNumber(_ phoneNumber: String) throws {
-        guard phoneNumber.filter({ $0.isNumber }).count > 8 else {
+func getAge(input: String) throws -> UInt {
+    if input == "0" {
+        return 0
+    }
+    guard input.hasPrefix("0") == false else {
+        throw ContactManagerError.invalidAge
+    }
+    guard let age = UInt(input), age < 1000 else {
+        throw ContactManagerError.invalidAge
+    }
+    return age
+}
+
+func isValidPhoneNumber(_ phoneNumber: String) throws {
+    guard phoneNumber.filter({ $0.isNumber }).count > 8 else {
+        throw ContactManagerError.invalidPhoneNumber
+    }
+    let digits = phoneNumber.components(separatedBy: ["-"])
+    guard digits.count == 3 else {
+        throw ContactManagerError.invalidPhoneNumber
+    }
+    for digit in digits {
+        guard Int(digit) != nil else {
             throw ContactManagerError.invalidPhoneNumber
-        }
-        let digits = phoneNumber.components(separatedBy: ["-"])
-        guard digits.count == 3 else {
-            throw ContactManagerError.invalidPhoneNumber
-        }
-        for digit in digits {
-            guard Int(digit) != nil else {
-                throw ContactManagerError.invalidPhoneNumber
-            }
         }
     }
 }

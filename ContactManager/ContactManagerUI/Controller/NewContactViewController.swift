@@ -32,13 +32,17 @@ final class NewContactViewController: UIViewController {
     }
 
     @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
-        if let name = nameTextField.text,
-           let ageString = ageTextField.text,
-           let age = UInt(ageString),
-           let phoneNumber = phoneNumberTextField.text {
-            delegate?.sendData(contact: Contact(name: name, age: age, phoneNumber: phoneNumber))
+        do {
+            let name = try getName(input: nameTextField.text ?? "")
+            let age = try getAge(input: ageTextField.text ?? "")
+            try isValidPhoneNumber(phoneNumberTextField.text ?? "")
+            let phoneNumber = phoneNumberTextField.text ?? ""
+            let contact = Contact(name: name, age: age, phoneNumber: phoneNumber)
+            delegate?.sendData(contact: contact)
+            dismiss(animated: true)
+        } catch {
+            print(error.localizedDescription)
         }
-        dismiss(animated: true)
     }
 }
 
