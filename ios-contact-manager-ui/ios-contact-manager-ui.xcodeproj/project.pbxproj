@@ -92,6 +92,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F5075152992304100C0AC18 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				40BC412C2990BB9A00BF62B3 /* AddContactViewController.swift */,
+				4FEEF66529879DE000FF6A89 /* ContactViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4F5075162992306B00C0AC18 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4FAE8E87298A4E60006DCD46 /* Extension+UserInfo.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4F507517299230CA00C0AC18 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4FAE8E8C298A526F006DCD46 /* ModelData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4F507518299230E000C0AC18 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4FEEF66729879DE000FF6A89 /* Main.storyboard */,
+				4FEEF66C29879DE200FF6A89 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4F5075192992318900C0AC18 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4FEEF66129879DE000FF6A89 /* AppDelegate.swift */,
+				4FEEF66329879DE000FF6A89 /* SceneDelegate.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		4FAE8E8B298A4F90006DCD46 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,19 +180,16 @@
 		4FEEF66029879DE000FF6A89 /* ContactManagerUI */ = {
 			isa = PBXGroup;
 			children = (
-				4FEEF66129879DE000FF6A89 /* AppDelegate.swift */,
-				4FEEF66329879DE000FF6A89 /* SceneDelegate.swift */,
-				4FEEF66529879DE000FF6A89 /* ContactViewController.swift */,
+				4F5075192992318900C0AC18 /* Common */,
+				4F5075152992304100C0AC18 /* Controllers */,
 				4000CC38298A50F3003C8B95 /* TableViewDataSource.swift */,
-				4FAE8E8C298A526F006DCD46 /* ModelData.swift */,
-				4FAE8E8B298A4F90006DCD46 /* Resources */,
-				4FAE8E87298A4E60006DCD46 /* Extension+UserInfo.swift */,
-				4FEEF66729879DE000FF6A89 /* Main.storyboard */,
-				40BC412C2990BB9A00BF62B3 /* AddContactViewController.swift */,
-				4FEEF66A29879DE200FF6A89 /* Assets.xcassets */,
-				4FEEF66C29879DE200FF6A89 /* LaunchScreen.storyboard */,
-				4FEEF66F29879DE200FF6A89 /* Info.plist */,
+				4F507517299230CA00C0AC18 /* Model */,
 				4000CC3A298A59DC003C8B95 /* ContactError.swift */,
+				4F5075162992306B00C0AC18 /* Extensions */,
+				4FAE8E8B298A4F90006DCD46 /* Resources */,
+				4F507518299230E000C0AC18 /* Views */,
+				4FEEF66A29879DE200FF6A89 /* Assets.xcassets */,
+				4FEEF66F29879DE200FF6A89 /* Info.plist */,
 			);
 			path = ContactManagerUI;
 			sourceTree = "<group>";
