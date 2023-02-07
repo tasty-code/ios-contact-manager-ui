@@ -61,8 +61,15 @@ class AddContactViewController: UIViewController {
         }
         
         let trimmedInputName = inputName.components(separatedBy: [" "]).joined()
+    
+        let validationResultPair = ["이름" : checkNameError(name: trimmedInputName), "나이" : checkAgeError(age: inputAge), "연락처" : checkPhoneNumberError(number: inputPhoneNumber)]
         
-        guard errorCheck(trimName: trimmedInputName, trimAge: inputAge, trimNum: inputPhoneNumber) else { return }
+        let errorCategories = Array(validationResultPair.filter { $0.value == false }.keys)
+        
+        if !errorCategories.isEmpty {
+            let errorTitle = makeErrorTitle(from: errorCategories)
+            return showErrorAlert(with: errorTitle)
+        }
         
         guard let inputAge = Int(inputAge) else { return }
         
@@ -73,6 +80,25 @@ class AddContactViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    func makeErrorTitle(from categories: [String]) -> String {
+        var errorKeywords = ""
+        for i in categories.indices {
+            errorKeywords = errorKeywords + "," + categories[i]
+        }
+        errorKeywords.removeFirst()
+        let errorTitle = "입력한 \(errorKeywords) 정보가 잘못되었습니다"
+        return errorTitle
+    }
+
+    func showErrorAlert(with errorTitle: String) {
+        let confirmActionTitle: String = "확인"
+
+        let alert = UIAlertController(title: errorTitle, message: nil, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: confirmActionTitle, style: .default)
+        alert.addAction(confirmAction)
+        self.present(alert, animated: true)
+    }
+
     var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "이름"
