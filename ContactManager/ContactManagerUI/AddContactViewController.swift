@@ -44,8 +44,7 @@ final class AddContactViewController: UIViewController {
             guard let name = nameTextField.text else { throw Errors.wrongName }
             guard let age = ageTextField.text else { throw Errors.wrongAge }
             guard let phoneNumber = phoneNumberTextField.text else { throw Errors.wrongPhoneNumber }
-            guard let formattedPhoneNumber = contactUIManager.formmatingPhoneNumber(with: phoneNumber) else { return }
-            let userInputModel = UserInputModel(name: name, age: age, phoneNum: formattedPhoneNumber)
+            let userInputModel = UserInputModel(name: name, age: age, phoneNum: phoneNumber)
             
             try contactUIManager.runProgram(menu: .add, userInputModel: userInputModel)
         } catch {

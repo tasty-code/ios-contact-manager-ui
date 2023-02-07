@@ -39,9 +39,8 @@ final class ContactUIManager: ContactUIManagerProtocol {
 extension ContactUIManager {
     
     func addProgram(_ userInputModel: UserInputModel) throws {
-        _ = try requestValidation(with: userInputModel)
-        guard let validatedData = userInputModel.convertToPerson() else { throw Errors.defaultError }
-        dataManager.setContact(validatedData)
+        let contactData = try requestValidation(with: userInputModel)
+        dataManager.setContact(contactData)
     }
     
     func showListProgram() -> [Person]  {
