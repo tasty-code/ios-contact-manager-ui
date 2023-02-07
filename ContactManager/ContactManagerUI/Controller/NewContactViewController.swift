@@ -41,8 +41,15 @@ final class NewContactViewController: UIViewController {
             delegate?.sendData(contact: contact)
             dismiss(animated: true)
         } catch {
-            print(error.localizedDescription)
+            showErrorAlert(error.localizedDescription)
         }
+    }
+
+    private func showErrorAlert(_ message: String) {
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        let checkButton = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(checkButton)
+        present(alert, animated: true)
     }
 }
 
