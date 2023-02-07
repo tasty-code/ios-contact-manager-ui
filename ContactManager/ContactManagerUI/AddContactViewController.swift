@@ -17,6 +17,11 @@ final class AddContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setConfigure()
+    }
+    
+    func setConfigure() {
+        phoneNumberTextField.delegate = self
     }
     
     @IBAction private func tappedCancelButton(_ sender: UIBarButtonItem) {
@@ -55,5 +60,16 @@ final class AddContactViewController: UIViewController {
         alert.addAction(confirm)
         
         present(alert, animated: true)
+    }
+}
+
+extension AddContactViewController: UITextFieldDelegate {
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let contactUIManager else { return }
+        let number = textField.text
+        
+        guard let formattedPhoneNumber = contactUIManager.formmatingPhoneNumber(with: number) else { return }
+        textField.text = formattedPhoneNumber
     }
 }

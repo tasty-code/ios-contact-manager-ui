@@ -51,17 +51,23 @@ extension ContactUIManager {
     
     func formmatingPhoneNumber(with number: String?) -> String? {
         guard let number = number else { return nil }
-        var phoneNumber = number.map { String($0) }
         
-        if number.count == 9 {
+        let numberWithNoHyphen = number.split(separator: "-").joined()
+        var phoneNumber = numberWithNoHyphen.map { String($0) }
+        
+        switch phoneNumber.count {
+        case 0..<3:
+            return phoneNumber.joined()
+        case 3..<6:
+            phoneNumber.insert("-", at: 2)
+            return phoneNumber.joined()
+        case 6..<10:
             phoneNumber.insert("-", at: 2)
             phoneNumber.insert("-", at: 6)
             return phoneNumber.joined()
-        } else if number.count >= 10 {
+        default:
             phoneNumber.insert("-", at: 3)
-            phoneNumber.insert("-", at: 7)
-            return phoneNumber.joined()
-        } else {
+            phoneNumber.insert("-", at: 8)
             return phoneNumber.joined()
         }
     }
