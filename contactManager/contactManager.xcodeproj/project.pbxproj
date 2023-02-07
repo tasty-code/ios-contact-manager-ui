@@ -80,18 +80,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D91A9C1929923E5800C66910 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D91A9C1A29923E7E00C66910 /* Storyboards */,
+				D91FBE562988A67B0091F104 /* AppDelegate.swift */,
+				D91FBE582988A67B0091F104 /* SceneDelegate.swift */,
+				D91FBE5F2988A67B0091F104 /* Assets.xcassets */,
+				8735C23D2991DC0D00B4F9CD /* UITextFieldExtensions.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D91A9C1A29923E7E00C66910 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D91FBE5C2988A67B0091F104 /* Main.storyboard */,
+				D91FBE612988A67B0091F104 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D91A9C1B29923E9000C66910 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D91A9C2029923ED300C66910 /* Models */,
+				D91A9C1C29923E9A00C66910 /* ViewControllers */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		D91A9C1C29923E9A00C66910 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D91FBE5A2988A67B0091F104 /* ViewController.swift */,
+				D950729E29908BBB003E5579 /* AddContactViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D91A9C2029923ED300C66910 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D95FD5552988EEF300E66CEC /* DummyContactInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D91FBE552988A67B0091F104 /* ContactManagerUI */ = {
 			isa = PBXGroup;
 			children = (
-				D91FBE562988A67B0091F104 /* AppDelegate.swift */,
-				D91FBE582988A67B0091F104 /* SceneDelegate.swift */,
-				D91FBE5A2988A67B0091F104 /* ViewController.swift */,
-				D950729E29908BBB003E5579 /* AddContactViewController.swift */,
-				D95FD5552988EEF300E66CEC /* DummyContactInfo.swift */,
-				8735C23D2991DC0D00B4F9CD /* UITextFieldExtensions.swift */,
-				D91FBE5C2988A67B0091F104 /* Main.storyboard */,
-				D91FBE5F2988A67B0091F104 /* Assets.xcassets */,
-				D91FBE612988A67B0091F104 /* LaunchScreen.storyboard */,
+				D91A9C1B29923E9000C66910 /* Sources */,
+				D91A9C1929923E5800C66910 /* Resources */,
 				D91FBE642988A67B0091F104 /* Info.plist */,
 			);
 			path = ContactManagerUI;
