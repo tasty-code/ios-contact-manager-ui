@@ -28,10 +28,6 @@ final class AddContactViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @objc func didPhoneNumberTextChange() {
-        phoneNumberTextField.text = phoneNumberTextField.text?.formattedPhoneNumber
-    }
-    
     @IBAction private func tappedCancelButton(_ sender: UIBarButtonItem) {
         showCheckCancelAlert()
     }
@@ -79,12 +75,6 @@ final class AddContactViewController: UIViewController {
     private func configureTextField() {
         nameTextField.delegate = self
         ageTextField.delegate = self
-        phoneNumberTextField.delegate = self
-
-        phoneNumberTextField
-            .addTarget(self,
-                       action: #selector(self.didPhoneNumberTextChange),
-                       for: .editingChanged)
     }
 }
 
@@ -92,15 +82,11 @@ extension AddContactViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        switch textField {
-        case ageTextField, phoneNumberTextField:
+        if textField == ageTextField {
             guard string.isEmpty || Int(string) != nil else {
                 return false
             }
-        default:
-            break
         }
-        
         return true
     }
 }
