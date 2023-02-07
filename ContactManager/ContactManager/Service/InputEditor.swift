@@ -47,7 +47,7 @@ struct InputEditor: InputEditorProtocol {
     
     func requestValidation(with userInputModel: UserInputModel) throws -> Person {
         do {
-            let person = try validator.checkValidAgeAndNum(input: userInputModel)
+            let person = try validator.checkValidFormat(input: userInputModel)
             return person
         } catch {
             throw error

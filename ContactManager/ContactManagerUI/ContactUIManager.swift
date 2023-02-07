@@ -38,9 +38,9 @@ final class ContactUIManager: ContactUIManagerProtocol {
 
 extension ContactUIManager {
     
-    func addProgram(_ data:UserInputModel) throws {
-        try self.validateData(with: data)
-        guard let validatedData = data.convertToPerson() else { throw Errors.readFail }
+    func addProgram(_ userInputModel: UserInputModel) throws {
+        let person = try requestValidation(with: userInputModel)
+        guard let validatedData = userInputModel.convertToPerson() else { throw Errors.defaultError }
         dataManager.setContact(validatedData)
     }
     
@@ -66,7 +66,12 @@ extension ContactUIManager {
         }
     }
     
-    private func validateData(with:UserInputModel) throws {
-        
+    private func requestValidation(with userInputModel: UserInputModel) throws -> Person {
+        do {
+            let person = try validator.checkValidFormat(input: userInputModel)
+            return person
+        } catch {
+            throw error
+        }
     }
 }

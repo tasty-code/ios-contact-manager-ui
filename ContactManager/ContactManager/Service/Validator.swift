@@ -8,17 +8,17 @@
 import Foundation
 
 protocol ValidatorProtocol {
-    func checkValidAgeAndNum(input: UserInputModel) throws -> Person
+    func checkValidFormat(input: UserInputModel) throws -> Person
     func checkInputEmpty(with str: String) -> Bool
 }
 
 struct Validator: ValidatorProtocol {
     
-    
-    func checkValidAgeAndNum(input: UserInputModel) throws -> Person {
-        let (age, number) = (input.age, input.phoneNum)
+    func checkValidFormat(input: UserInputModel) throws -> Person {
+        let (name, age, number) = (input.name, input.age, input.phoneNum)
         
         do {
+            try validateName(name)
             try validateAge(age)
             try validateNumber(number)
             let person = input.convertToPerson()
@@ -30,6 +30,10 @@ struct Validator: ValidatorProtocol {
     
     func checkInputEmpty(with str: String) -> Bool {
         return str.isEmpty ? true : false
+    }
+    
+    private func validateName(_ name: String) throws {
+        if name.isEmpty { throw Errors.wrongName }
     }
     
     private func validateAge(_ age: String) throws {
