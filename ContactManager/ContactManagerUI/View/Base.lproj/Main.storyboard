@@ -75,8 +75,16 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <items>
                                     <navigationItem title="새 연락처" id="TwR-m3-5Lg">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="UK3-pO-paj"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="eFC-NR-czs"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="UK3-pO-paj">
+                                            <connections>
+                                                <action selector="tappedCancelButton:" destination="AG8-WF-x5A" id="JHs-jz-bct"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="eFC-NR-czs">
+                                            <connections>
+                                                <action selector="tappedSaveButton:" destination="AG8-WF-x5A" id="nud-QK-ps3"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
