@@ -30,7 +30,7 @@ class Checker {
                 if isCorrectName == true {
                     nameValue = target[0]          // 값 지정
                 } else {
-                    print(PrintMessage.invalidName)
+                    print(InputErrorMessage.invalidName)
                 }
                 break
             case 1:
@@ -38,7 +38,7 @@ class Checker {
                 if isCorrectAge == true {
                     ageValue = target[1]
                 } else {
-                    print(PrintMessage.invalidAge)
+                    print(InputErrorMessage.invalidAge)
                 }
                 break
             case 2:
@@ -46,7 +46,7 @@ class Checker {
                 if isCorrectPhoneNumber == true {
                     phoneNumberValue = target[2]
                 } else {
-                    print(PrintMessage.invalidPhoneNumber)
+                    print(InputErrorMessage.invalidPhoneNumber)
                 }
                 break
             default:
