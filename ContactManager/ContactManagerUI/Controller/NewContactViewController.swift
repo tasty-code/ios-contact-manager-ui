@@ -8,10 +8,12 @@
 import UIKit
 
 final class NewContactViewController: UIViewController {
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameTextField.delegate = self
         phoneNumberTextField.delegate = self
     }
 
@@ -28,11 +30,18 @@ final class NewContactViewController: UIViewController {
 }
 
 extension NewContactViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return false }
-        let newString = (text as NSString).replacingCharacters(in: range, with: string)
-        textField.text = format(phone: newString)
-        return false
+        if textField == phoneNumberTextField, let text = textField.text {
+            let newString = (text as NSString).replacingCharacters(in: range, with: string)
+            textField.text = format(phone: newString)
+            return false
+        }
+        return true
     }
 
     private func format(phone: String) -> String {

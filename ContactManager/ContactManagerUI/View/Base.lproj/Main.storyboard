@@ -61,55 +61,55 @@
                                 <rect key="frame" x="8" y="64" width="377" height="711"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qW7-Y1-rZ5">
-                                        <rect key="frame" x="0.0" y="0.0" width="377" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="377" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Da5-MV-0Wv">
-                                                <rect key="frame" x="0.0" y="0.0" width="52" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="52" height="34"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qcm-HE-ucM">
-                                                <rect key="frame" x="60" y="0.0" width="317" height="24"/>
+                                                <rect key="frame" x="60" y="0.0" width="317" height="34"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eqh-Al-9LK">
-                                        <rect key="frame" x="0.0" y="32" width="377" height="24"/>
+                                        <rect key="frame" x="0.0" y="42" width="377" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="나이" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaL-5f-TKt">
-                                                <rect key="frame" x="0.0" y="0.0" width="52" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="52" height="34"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZkI-gj-YtX">
-                                                <rect key="frame" x="60" y="0.0" width="317" height="24"/>
+                                                <rect key="frame" x="60" y="0.0" width="317" height="34"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ad1-H6-Hq2">
-                                        <rect key="frame" x="0.0" y="64" width="377" height="24"/>
+                                        <rect key="frame" x="0.0" y="84" width="377" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="연락처" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4l-6G-Lj4">
-                                                <rect key="frame" x="0.0" y="0.0" width="52" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="52" height="34"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B6J-bX-Ee4">
-                                                <rect key="frame" x="60" y="0.0" width="317" height="24"/>
+                                                <rect key="frame" x="60" y="0.0" width="317" height="34"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Waj-6n-gJn">
-                                        <rect key="frame" x="0.0" y="96" width="377" height="615"/>
+                                        <rect key="frame" x="0.0" y="126" width="377" height="585"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
@@ -137,6 +137,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="lBh-hi-2Qz"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="nameTextField" destination="qcm-HE-ucM" id="98T-ig-s0d"/>
                         <outlet property="phoneNumberTextField" destination="B6J-bX-Ee4" id="2Ju-KA-yzr"/>
                     </connections>
                 </viewController>
