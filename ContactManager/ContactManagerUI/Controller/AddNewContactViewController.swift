@@ -9,11 +9,20 @@ import UIKit
 
 class AddNewContactViewController: UIViewController {
 
+    @IBOutlet var userInputTextArray: [UITextField]!
+    private var tempArray = [String]()
+    private let checker = Checker()
+
     @IBAction func tappedCancelButton(_ sender: UIBarButtonItem) {
         failiureAlert()
     }
 
     @IBAction func tappedSaveButton(_ sender: UIBarButtonItem) {
+        userInputTextArray.forEach { element in
+            guard let temp = element.text else { return }
+            tempArray.append(temp)
+        }
+        var checkeUserInput = checker.checkCorrectWord(target: tempArray)
         successAlert()
     }
     

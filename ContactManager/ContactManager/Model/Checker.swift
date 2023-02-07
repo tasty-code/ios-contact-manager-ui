@@ -13,7 +13,7 @@ class Checker {
         var ageValue: String = ""
         var phoneNumberValue: String = ""
         
-        target.indices.forEach{
+        target.indices.forEach {
             switch $0 {
             case 0:
                 let isCorrectName = target[$0].range(of: RegularExpression.namePattern.rawValue, options: .regularExpression) != nil

@@ -159,6 +159,11 @@
                             <constraint firstItem="kGn-gz-HwZ" firstAttribute="top" secondItem="opk-Cb-AHi" secondAttribute="top" id="pvS-jw-Q9d"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outletCollection property="userInputTextArray" destination="Qin-1K-jhj" collectionClass="NSMutableArray" id="zfE-Vb-Inl"/>
+                        <outletCollection property="userInputTextArray" destination="iYi-K0-j37" collectionClass="NSMutableArray" id="JDm-XL-PPR"/>
+                        <outletCollection property="userInputTextArray" destination="Yx3-Lw-gu3" collectionClass="NSMutableArray" id="PoM-r1-bh5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qlv-NS-Htg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
