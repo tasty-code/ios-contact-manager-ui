@@ -27,7 +27,23 @@ class AddContactViewController: UIViewController {
     }()
     
     @objc func cancelButtonTapped() {
-        dismiss(animated: true)
+        self.view.endEditing(true)
+
+        let alertTitle: String = "정말로 취소하시겠습니까?"
+        let confirmActionTitle: String = "예"
+        let cancelActionTitle: String = "아니오"
+
+        let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: confirmActionTitle, style: .destructive) { _ in
+            self.dismiss(animated: true)
+        }
+        let cancelAction = UIAlertAction(title: cancelActionTitle, style: .default) { _ in
+            self.nameTextField.becomeFirstResponder()
+        }
+
+        alert.addAction(cancelAction)
+        alert.addAction(confirmAction)
+        self.present(alert, animated: true)
     }
     
     @objc func saveButtonTapped() {
