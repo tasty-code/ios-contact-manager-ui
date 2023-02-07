@@ -31,6 +31,7 @@ class AddContactViewController: UIViewController {
     }
     
     @objc func saveButtonTapped() {
+        
         guard let inputName = nameTextField.text else {
             return
         }
@@ -38,11 +39,18 @@ class AddContactViewController: UIViewController {
         guard let inputAge = ageTextField.text else {
             return
         }
+        
         guard let inputPhoneNumber = phoneNumberTextField.text else {
             return
         }
         
-        let contact = Contact(name: inputName, age: inputAge, phoneNumber: inputPhoneNumber)
+        let trimmedInputName = inputName.components(separatedBy: [" "]).joined()
+        
+        guard errorCheck(trimName: trimmedInputName, trimAge: inputAge, trimNum: inputPhoneNumber) else { return }
+        
+        guard let inputAge = Int(inputAge) else { return }
+        
+        let contact = Contact(name: trimmedInputName, age: String(inputAge), phoneNumber: inputPhoneNumber)
 
         contacts.append(contact)
         delegate?.reloadTableView()
