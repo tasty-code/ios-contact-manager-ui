@@ -81,8 +81,40 @@ class AddNewContactViewController: UIViewController {
         }
         return resultArray
     }
+
+    private func setDelegate() {
+        guard let phoneNumberLabel = userInputTextArray.last else { return }
+        phoneNumberLabel.delegate = self
+    }
 }
 
 extension AddNewContactViewController: UITextFieldDelegate {
-    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text,
+              let formattedPhoneNumber = formattingPhoneNumber(with: text) else { return }
+        textField.text = formattedPhoneNumber
+    }
+
+    func formattingPhoneNumber(with number: String?) -> String? {
+        guard let number = number else { return nil }
+
+        let numberWithoutHyphen = number.split(separator: "-").joined()
+        var phoneNumber = numberWithoutHyphen.map { String($0) }
+
+        switch phoneNumber.count {
+        case 0..<3:
+            return phoneNumber.joined()
+        case 3..<6:
+            phoneNumber.insert("-", at: 2)
+            return phoneNumber.joined()
+        case 6..<10:
+            phoneNumber.insert("-", at: 2)
+            phoneNumber.insert("-", at: 6)
+            return phoneNumber.joined()
+        default:
+            phoneNumber.insert("-", at: 3)
+            phoneNumber.insert("-", at: 8)
+            return phoneNumber.joined()
+        }
+    }
 }
