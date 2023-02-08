@@ -9,28 +9,7 @@ import Foundation
 
 struct ContactManageSystem {
     let inputManager = InputManager()
-    var profiles: Set<Profile> = [
-        Profile(name: "james", age: "30", tel: "010-2222-2222"),
-        Profile(name: "tom", age: "15", tel: "010-2222-3333"),
-        Profile(name: "jams", age: "30", tel: "010-2222-2222"),
-        Profile(name: "toem", age: "15", tel: "010-2222-3333"),
-        Profile(name: "jamses", age: "30", tel: "010-2222-2222"),
-        Profile(name: "toam", age: "15", tel: "010-2222-3333"),
-        Profile(name: "jamhges", age: "30", tel: "010-2222-2222"),
-        Profile(name: "tomsw", age: "15", tel: "010-2222-3333"),
-        Profile(name: "jamhes", age: "30", tel: "010-2222-2222"),
-        Profile(name: "tokm", age: "15", tel: "010-2222-3333"),
-        Profile(name: "jalmes", age: "30", tel: "010-2222-2222"),
-        Profile(name: "tyom", age: "15", tel: "010-2222-3333"),
-        Profile(name: "jawmes", age: "30", tel: "010-2222-2222"),
-        Profile(name: "tomyy", age: "15", tel: "010-2222-3333"),
-        Profile(name: "jamiies", age: "30", tel: "010-2222-2222"),
-        Profile(name: "toddssm", age: "15", tel: "010-2222-3333"),
-        Profile(name: "jes", age: "30", tel: "010-2222-2222"),
-        Profile(name: "ty", age: "15", tel: "010-2222-3333"),
-        Profile(name: "jies", age: "30", tel: "010-2222-2222"),
-        Profile(name: "tod", age: "15", tel: "010-2222-3333")
-    ]
+    var profiles = Set<Profile>()
     var isFinished = false
     
     enum Menu: String {
@@ -66,7 +45,7 @@ struct ContactManageSystem {
         }
         switch input {
         case .addProfile:
-            addProfile()
+            break
         case .listUpProfile:
             listUpProfile()
         case .searchProfile:
@@ -76,24 +55,8 @@ struct ContactManageSystem {
         }
     }
     
-    mutating func addProfile() {
-        do {
-            OutputManager.print(text: .inputInfo)
-            let inputArray = try inputManager.parseUserInput()
-            let (name, age ,tel) = (inputArray[0], inputArray[1], inputArray[2])
-            try inputManager.verifyUserInput(name, age, tel)
-            let profile = Profile(name: name, age: age, tel: tel)
-            profiles.insert(profile)
-            OutputManager.print(profile: profile)
-        } catch InputError.invalidInput {
-            OutputManager.print(text: .invalidInput)
-        } catch InputError.invalidAge {
-            OutputManager.print(text: .invalidAge)
-        } catch InputError.invalidTel {
-            OutputManager.print(text: .invalidTel)
-        } catch {
-            OutputManager.print(text: .invalidInput)
-        }
+    mutating func add(profile: Profile) {
+        profiles.insert(profile)
     }
     
     private func listUpProfile() {
