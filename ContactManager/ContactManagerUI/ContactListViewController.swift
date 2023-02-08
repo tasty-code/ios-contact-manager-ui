@@ -26,11 +26,11 @@ final class ContactListViewController: UIViewController {
         setDelegate()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toAddContactView"{
-            let addContactView = segue.destination as! AddContactViewController
-            addContactView.contactUIManager = self.contactUIManager
-        }
+    // MARK: - @IBAction Properties
+    
+    @IBAction func tappedAddContactButton(_ sender: UIBarButtonItem) {
+        guard let addContactVC = UIStoryboard(name: "AddContact", bundle: nil).instantiateViewController(withIdentifier:"AddContactViewController") as? AddContactViewController else { return }
+        self.present(addContactVC, animated: true)
     }
 }
 
