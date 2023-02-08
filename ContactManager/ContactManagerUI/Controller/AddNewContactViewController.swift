@@ -14,7 +14,7 @@ class AddNewContactViewController: UIViewController {
     private let contactManager = ContactManager()
     private let checker = Checker()
 
-    var delegate: SendContactDataDelegate?
+    weak var delegate: SendContactDataDelegate?
 
     @IBAction func tappedCancelButton(_ sender: UIBarButtonItem) {
         cancelConfirmAlert()

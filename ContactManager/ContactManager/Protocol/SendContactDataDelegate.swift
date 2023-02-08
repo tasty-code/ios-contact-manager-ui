@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol SendContactDataDelegate {
+protocol SendContactDataDelegate: AnyObject {
     func sendData(newData: ContactInformation)
 }
