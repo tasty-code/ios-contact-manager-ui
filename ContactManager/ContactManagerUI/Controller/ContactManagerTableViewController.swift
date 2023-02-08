@@ -9,9 +9,11 @@ import UIKit
 
 final class ContactManagerTableViewController: UITableViewController {
     
+    //MARK: - Property
     @IBOutlet private weak var contactManagerTableView: UITableView!
     private var contactInfomation = [ContactInformation]()
     
+    //MARK: - BarButtonAction
     @IBAction func tappedAddNewContactAction(_ sender: UIBarButtonItem) {
         guard let addContactVC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewContactViewController") as? AddNewContactViewController else { return }
 
@@ -23,6 +25,7 @@ final class ContactManagerTableViewController: UITableViewController {
         present(addContactVC, animated: true)
     }
     
+    //MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +33,7 @@ final class ContactManagerTableViewController: UITableViewController {
         assignJSONData()
     }
 
+    //MARK: - Method
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
