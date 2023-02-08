@@ -92,7 +92,7 @@ extension ContactManagerTableViewController {
     }
 }
 
-extension ContactManagerTableViewController: SendContactData {
+extension ContactManagerTableViewController: SendContactDataDelegate {
     func sendData(newData: ContactInformation) {
         contactInfomation.append(newData)
         contactManagerTableView.reloadData()
