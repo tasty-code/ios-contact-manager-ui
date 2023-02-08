@@ -26,9 +26,9 @@ final class ContactUIManager: ContactUIManagerProtocol {
         
         switch menu {
         case .add:
-            try addProgram(userInputModel)
+            try setContactData(userInputModel)
         case .showList:
-            return showListProgram()
+            return getContactsData()
         default:
             throw Errors.readFail
         }
@@ -38,12 +38,12 @@ final class ContactUIManager: ContactUIManagerProtocol {
 
 extension ContactUIManager {
     
-    func addProgram(_ userInputModel: UserInputModel) throws {
+    func setContactData(_ userInputModel: UserInputModel) throws {
         let contactData = try requestValidation(with: userInputModel)
         dataManager.setContact(contactData)
     }
     
-    func showListProgram() -> [Person]  {
+    func getContactsData() -> [Person]  {
         let persons = dataManager.getContactsData().map { $0 }
         return persons
     }
@@ -69,6 +69,10 @@ extension ContactUIManager {
             phoneNumber.insert("-", at: 8)
             return phoneNumber.joined()
         }
+    }
+    
+    func countContactLists() -> Int {
+        return dataManager.countContactLists()
     }
     
     private func requestValidation(with userInputModel: UserInputModel) throws -> Person {

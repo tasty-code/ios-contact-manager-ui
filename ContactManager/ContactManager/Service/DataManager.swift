@@ -27,4 +27,8 @@ final class DataManager {
         let contacts = contacts.map { "- \($0.name) / \($0.age) / \($0.phoneNum)" }
         return contacts
     }
+    
+    func countContactLists() -> Int {
+        return contacts.count
+    }
 }

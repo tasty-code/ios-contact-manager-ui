@@ -49,13 +49,13 @@ extension ContactListViewController {
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactUIManager.showListProgram().count
+        return contactUIManager.countContactLists()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ContactTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        let contacts = contactUIManager.showListProgram()
+        let contacts = contactUIManager.getContactsData()
         
         guard let cellData = contacts[safe: indexPath.row] else { return UITableViewCell() }
         
