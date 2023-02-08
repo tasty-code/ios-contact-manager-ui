@@ -8,8 +8,7 @@
 import Foundation
 
 private func main() {
-    let programManager: ProgramManagerProtocol = ProgramManager(inputEditor: InputEditor(validator: Validator()),
-                                                                outputEditor: OutputEditor())
+    let programManager: ProgramManagerProtocol = ProgramManager(inputEditor: InputEditor(validator: Validator()), outputEditor: OutputEditor())
     programManager.runProgram()
 }
 
