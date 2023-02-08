@@ -10,15 +10,28 @@ import UIKit
 class AddNewContactViewController: UIViewController {
 
     @IBOutlet var userInputTextArray: [UITextField]!
+    private var newContactData = [String]()
     private let contactManager = ContactManager()
     private let checker = Checker()
 
+    var delegate: SendContactData?
+
     @IBAction func tappedCancelButton(_ sender: UIBarButtonItem) {
-        failiureAlert()
+        cancelConfirmAlert()
     }
 
     @IBAction func tappedSaveButton(_ sender: UIBarButtonItem) {
         let errorSentence = decideErrorLocation()
+
+        if errorSentence.isEmpty {
+            let sendingContactData = ContactInformation(name: newContactData[0], age: newContactData[1], phoneNumber: newContactData[2])
+
+            delegate?.sendData(newData: sendingContactData)
+            
+            dismiss(animated: true)
+            return
+        }
+
         successAlert(message: errorSentence)
     }
     
@@ -28,8 +41,9 @@ class AddNewContactViewController: UIViewController {
     
     private func decideErrorLocation() -> String {
         var returnSentence = ""
-        let validName = checkUserName()
-        var checkUserInput = checker.checkCorrect(targets: validName)
+        let convertedUserInputArray = convertToStringArray()
+        newContactData = removeBlankInputName(inputArray: convertedUserInputArray)
+        let checkUserInput = checker.checkCorrect(targets: newContactData)
         
         for (index, boolean) in checkUserInput.enumerated() {
             if !boolean {
@@ -39,7 +53,7 @@ class AddNewContactViewController: UIViewController {
         return returnSentence
     }
     
-    private func checkUserName() -> [String] {
+    private func convertToStringArray() -> [String] {
         var inputCollection = [String]()
         
         userInputTextArray.forEach { element in
@@ -47,12 +61,16 @@ class AddNewContactViewController: UIViewController {
                 inputCollection.append(userInput)
             }
         }
-        
-        if let excludeFirstInput = inputCollection.first {
-            let validName = contactManager.removeBlankInput(value: excludeFirstInput)
-            inputCollection[inputCollection.startIndex] = validName
-        }
         return inputCollection
+    }
+
+    private func removeBlankInputName(inputArray: [String]) -> [String] {
+        var resultArray = inputArray
+        if let removedBlankInputName = resultArray.first {
+            let joinedName = contactManager.removeBlankInput(value: removedBlankInputName)
+            resultArray[resultArray.startIndex] = joinedName
+        }
+        return resultArray
     }
 }
 
@@ -62,10 +80,11 @@ extension AddNewContactViewController {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         
         alert.addAction(success)
+
         present(alert, animated: true, completion: nil)
     }
     
-    private func failiureAlert() {
+    private func cancelConfirmAlert() {
         let alert = UIAlertController(title: nil, message: "정말로 취소하시겠습니까?", preferredStyle: .alert)
         let allowAction = UIAlertAction(title: "예", style: .destructive, handler: { action in
             self.dismiss(animated: true)
@@ -74,6 +93,11 @@ extension AddNewContactViewController {
         
         alert.addAction(allowAction)
         alert.addAction(cancleAction)
+
         present(alert, animated: true, completion: nil)
     }
+}
+
+protocol SendContactData {
+    func sendData(newData: ContactInformation)
 }

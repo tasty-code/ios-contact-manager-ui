@@ -13,11 +13,12 @@ final class ContactManagerTableViewController: UITableViewController {
     private var contactInfomation = [ContactInformation]()
     
     @IBAction func tappedAddNewContactAction(_ sender: UIBarButtonItem) {
-        guard let addContactVC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewContactViewController") as? AddNewContactViewController else {
-            return
-        }
+        guard let addContactVC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewContactViewController") as? AddNewContactViewController else { return }
+
         addContactVC.modalTransitionStyle = .coverVertical
         addContactVC.modalPresentationStyle = .automatic
+
+        addContactVC.delegate = self
         
         present(addContactVC, animated: true)
     }
@@ -28,7 +29,7 @@ final class ContactManagerTableViewController: UITableViewController {
         configureTableView()
         assignJSONData()
     }
-    
+
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -39,7 +40,7 @@ final class ContactManagerTableViewController: UITableViewController {
         
         guard let filePath = Bundle.main.url(forResource: filename, withExtension: nil) else {
             print("\(filename) not found.")
-            throw Errors.notFoundJsonFile
+            throw Errors.notFoundJSONFile
         }
         
         do {
@@ -50,8 +51,8 @@ final class ContactManagerTableViewController: UITableViewController {
         }
         
         do {
-            let jsonDecoder = JSONDecoder()
-            return try jsonDecoder.decode(T.self, from: data)
+            let JSONDecoder = JSONDecoder()
+            return try JSONDecoder.decode(T.self, from: data)
         } catch {
             print("Unable to decode \(filename): (error)")
             throw Errors.unableToDecode
@@ -88,5 +89,12 @@ extension ContactManagerTableViewController {
             cell.contentConfiguration = infoContent
         }
         return cell
+    }
+}
+
+extension ContactManagerTableViewController: SendContactData {
+    func sendData(newData: ContactInformation) {
+        contactInfomation.append(newData)
+        contactManagerTableView.reloadData()
     }
 }
