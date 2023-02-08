@@ -8,7 +8,7 @@
 import Foundation
 
 enum Errors: Error {
-    case notFoundJsonFile
+    case notFoundJSONFile
     case notLoadData
     case unableToDecode
     case unableToParse
