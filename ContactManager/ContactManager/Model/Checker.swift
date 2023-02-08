@@ -9,13 +9,13 @@ import Foundation
 
 class Checker {
     func checkCorrect(targets: [String]) -> [Bool] {
-        var returnType = [Bool]()
+        var checkResults = [Bool]()
         
         for (target, pattern) in zip(targets, RegularExpression.allCases) {
-            let isCorrect = target.range(of: pattern.rawValue, options: .regularExpression) != nil
-            returnType.append(isCorrect)
+            let isValid = target.range(of: pattern.rawValue, options: .regularExpression) != nil
+            checkResults.append(isValid)
         }
-        return returnType
+        return checkResults
     }
     
     func checkCorrectWord(target: [String]) -> ContactInformation? {
