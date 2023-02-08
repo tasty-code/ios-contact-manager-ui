@@ -48,6 +48,7 @@ class AddNewContactViewController: UIViewController {
         for (index, boolean) in checkUserInput.enumerated() {
             if !boolean {
                 returnSentence = InputErrorMessage.allCases[index].rawValue
+                break
             }
         }
         return returnSentence
