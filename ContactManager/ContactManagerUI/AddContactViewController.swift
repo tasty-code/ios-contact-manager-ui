@@ -9,21 +9,24 @@ import UIKit
 
 final class AddContactViewController: UIViewController {
     
+    // MARK: - Properties
+
     var contactUIManager: ContactUIManager?
+    
+    // MARK: - @IBOutlet Properties
     
     @IBOutlet weak private var nameTextField: UITextField!
     @IBOutlet weak private var ageTextField: UITextField!
     @IBOutlet weak private var phoneNumberTextField: UITextField!
     
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setConfigure()
+        setDelegate()
     }
     
-    func setConfigure() {
-        phoneNumberTextField.delegate = self
-        nameTextField.delegate = self
-    }
+    // MARK: - @IBAction Properties
     
     @IBAction private func tappedCancelButton(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "정말로 취소하시겠습니까?", message: nil, preferredStyle: .alert)
@@ -55,6 +58,20 @@ final class AddContactViewController: UIViewController {
         }
     }
     
+    @IBAction private func phoneNumEditingChanged(_ sender: UITextField) {
+        checkMaxLength(phoneNumberTextField, 13)
+    }
+}
+
+// MARK: - Methods
+
+extension AddContactViewController {
+    
+    private func setDelegate() {
+        phoneNumberTextField.delegate = self
+        nameTextField.delegate = self
+    }
+    
     private func presentErrorAlert(with message: String) {
         let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
         let confirm = UIAlertAction(title: "예", style: .default, handler: nil)
@@ -65,17 +82,9 @@ final class AddContactViewController: UIViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension AddContactViewController: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return true }
-        if textField == phoneNumberTextField {
-            if text.count >= 14 {
-                return true
-            }
-        }
-        return true
-    }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let contactUIManager else { return }
@@ -84,6 +93,12 @@ extension AddContactViewController: UITextFieldDelegate {
         if textField == phoneNumberTextField{
             guard let formattedPhoneNumber = contactUIManager.formmatingPhoneNumber(with: text) else { return }
             textField.text = formattedPhoneNumber
+        }
+    }
+    
+    func checkMaxLength(_ textField: UITextField, _ maxLength: Int) {
+        if textField.text!.count > maxLength {
+            textField.deleteBackward()
         }
     }
 }
