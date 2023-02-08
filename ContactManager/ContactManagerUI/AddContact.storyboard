@@ -89,9 +89,6 @@
                                                 <rect key="frame" x="75.666666666666657" y="0.0" width="302.33333333333337" height="37"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
-                                                <connections>
-                                                    <action selector="phoneNumEditingChanged:" destination="Y6W-OH-hqX" eventType="editingChanged" id="AAl-CA-Whq"/>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -117,6 +114,7 @@
                         <outlet property="ageTextField" destination="auo-mQ-ckp" id="L1h-f9-1Eh"/>
                         <outlet property="nameTextField" destination="eE9-uT-DK9" id="C8q-S2-12W"/>
                         <outlet property="phoneNumberTextField" destination="G1y-Ed-zHh" id="y6i-1w-FUf"/>
+                        <outlet property="saveButton" destination="pNX-NX-ETc" id="Iec-vV-Nir"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

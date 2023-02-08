@@ -19,11 +19,13 @@ final class AddContactViewController: UIViewController {
     @IBOutlet weak private var nameTextField: UITextField!
     @IBOutlet weak private var ageTextField: UITextField!
     @IBOutlet weak private var phoneNumberTextField: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureSaveButton()
         setDelegate()
     }
     
@@ -60,18 +62,19 @@ final class AddContactViewController: UIViewController {
             presentErrorAlert(with: error.localizedDescription)
         }
     }
-    
-    @IBAction private func phoneNumEditingChanged(_ sender: UITextField) {
-        checkMaxLength(phoneNumberTextField, 13)
-    }
 }
 
 // MARK: - Methods
 
 extension AddContactViewController {
     
+    private func configureSaveButton() {
+        saveButton.isEnabled = false
+    }
+    
     private func setDelegate() {
         nameTextField.delegate = self
+        ageTextField.delegate = self
         phoneNumberTextField.delegate = self
     }
     
@@ -82,6 +85,14 @@ extension AddContactViewController {
         alert.addAction(confirm)
         
         present(alert, animated: true)
+    }
+    
+    private func checkSaveButtonState() {
+        guard let name = nameTextField.text,
+              let age = ageTextField.text,
+              let phoneNumber = phoneNumberTextField.text else { return }
+        
+        saveButton.isEnabled = !(name.isEmpty || age.isEmpty || phoneNumber.isEmpty)
     }
 }
 
@@ -97,6 +108,8 @@ extension AddContactViewController: UITextFieldDelegate {
             guard let formattedPhoneNumber = contactUIManager.formmatingPhoneNumber(with: text) else { return }
             textField.text = formattedPhoneNumber
         }
+        checkMaxLength(phoneNumberTextField, 13)
+        checkSaveButtonState()
     }
     
     func checkMaxLength(_ textField: UITextField, _ maxLength: Int) {
