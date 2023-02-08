@@ -31,6 +31,7 @@
 		8E0FC74829889D7400CF0DA1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BF2987603A00CF0DA1 /* DataManager.swift */; };
 		8ED8BB1E2990E9D8002B8782 /* ContactUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8BB1D2990E9D8002B8782 /* ContactUIManager.swift */; };
 		F15E44B529909D3800D80A09 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B28F298A895700C4A5C7 /* Array+.swift */; };
+		F16B792B29933D3500451C6C /* ContactUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8BB1D2990E9D8002B8782 /* ContactUIManager.swift */; };
 		F16CE050298CEDE4006B59E2 /* ValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16CE04F298CEDE4006B59E2 /* ValidatorTest.swift */; };
 		F16CE054298CEE4D006B59E2 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B92987600600CF0DA1 /* Validator.swift */; };
 		F16CE055298CF2BB006B59E2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B129875E2500CF0DA1 /* Person.swift */; };
@@ -343,6 +344,7 @@
 			files = (
 				F16CE05C298CF312006B59E2 /* ProgramManager.swift in Sources */,
 				F16CE055298CF2BB006B59E2 /* Person.swift in Sources */,
+				F16B792B29933D3500451C6C /* ContactUIManager.swift in Sources */,
 				F16CE05F298CF318006B59E2 /* OutputEditor.swift in Sources */,
 				F16CE05A298CF303006B59E2 /* Messages.swift in Sources */,
 				F16CE05E298CF318006B59E2 /* InputEditor.swift in Sources */,

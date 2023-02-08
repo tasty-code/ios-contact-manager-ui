@@ -29,6 +29,7 @@ final class ContactListViewController: UIViewController {
     @IBAction func tappedAddContactButton(_ sender: UIBarButtonItem) {
         guard let addContactVC = UIStoryboard(name: "AddContact", bundle: nil).instantiateViewController(withIdentifier:"AddContactViewController") as? AddContactViewController else { return }
         addContactVC.contactUIManager = contactUIManager
+        addContactVC.contactListTableView = contactListTableView
         self.present(addContactVC, animated: true)
     }
 }

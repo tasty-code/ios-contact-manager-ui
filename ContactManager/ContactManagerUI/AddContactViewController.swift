@@ -12,6 +12,7 @@ final class AddContactViewController: UIViewController {
     // MARK: - Properties
 
     var contactUIManager: ContactUIManager?
+    var contactListTableView: UITableView?
     
     // MARK: - @IBOutlet Properties
     
@@ -53,6 +54,7 @@ final class AddContactViewController: UIViewController {
             let userInputModel = UserInputModel(name: trimmedName, age: age, phoneNum: phoneNumber)
             
             try contactUIManager.runProgram(menu: .add, userInputModel: userInputModel)
+            contactListTableView?.reloadData()
             self.dismiss(animated: true)
         } catch {
             presentErrorAlert(with: error.localizedDescription)
