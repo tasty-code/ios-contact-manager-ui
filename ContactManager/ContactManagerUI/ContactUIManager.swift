@@ -38,13 +38,21 @@ final class ContactUIManager: ContactUIManagerProtocol {
 
 extension ContactUIManager {
     
+    func getStoredContactsData() {
+        dataManager.getStoredContactsData()
+    }
+    
+    func setStoredContactsData() {
+        dataManager.setStoredContactsData()
+    }
+    
     func setContactData(_ userInputModel: UserInputModel) throws {
         let contactData = try requestValidation(with: userInputModel)
         dataManager.setContact(contactData)
     }
     
     func getContactsData() -> [Person]  {
-        let persons = dataManager.getContactsData().map { $0 }
+        let persons = dataManager.getcontactsDataAsPerson()
         return persons
     }
     
@@ -82,5 +90,11 @@ extension ContactUIManager {
         } catch {
             throw error
         }
+    }
+}
+// for test
+extension ContactUIManager {
+    func clearAllStoredDataForTest() {
+        dataManager.clearAllStoredDataForTest()
     }
 }

@@ -31,6 +31,8 @@
 		8E0FC74829889D7400CF0DA1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BF2987603A00CF0DA1 /* DataManager.swift */; };
 		8ED8BB1E2990E9D8002B8782 /* ContactUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8BB1D2990E9D8002B8782 /* ContactUIManager.swift */; };
 		F15E44B529909D3800D80A09 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B28F298A895700C4A5C7 /* Array+.swift */; };
+		F16B792D2993BBD500451C6C /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B792C2993BBD500451C6C /* UserDefaultKey.swift */; };
+		F16B792E2993BBD500451C6C /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16B792C2993BBD500451C6C /* UserDefaultKey.swift */; };
 		F1A86A802987BCBC00A9A867 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A86A7F2987BCBC00A9A867 /* AppDelegate.swift */; };
 		F1A86A822987BCBC00A9A867 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A86A812987BCBC00A9A867 /* SceneDelegate.swift */; };
 		F1A86A842987BCBC00A9A867 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A86A832987BCBC00A9A867 /* ContactListViewController.swift */; };
@@ -68,6 +70,7 @@
 		8E0FC6BD2987602B00CF0DA1 /* OutputEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputEditor.swift; sourceTree = "<group>"; };
 		8E0FC6BF2987603A00CF0DA1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		8ED8BB1D2990E9D8002B8782 /* ContactUIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUIManager.swift; sourceTree = "<group>"; };
+		F16B792C2993BBD500451C6C /* UserDefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKey.swift; sourceTree = "<group>"; };
 		F1A86A7D2987BCBC00A9A867 /* ContactManagerUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManagerUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A86A7F2987BCBC00A9A867 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1A86A812987BCBC00A9A867 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +111,7 @@
 				8E0FC6AA29875DFB00CF0DA1 /* Messages.swift */,
 				8E0FC6AC29875E0500CF0DA1 /* Errors.swift */,
 				8E0FC6AE29875E1200CF0DA1 /* Constants.swift */,
+				F16B792C2993BBD500451C6C /* UserDefaultKey.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -297,6 +301,7 @@
 				8E0FC74029889D6200CF0DA1 /* Errors.swift in Sources */,
 				F1F0B293298AAF6600C4A5C7 /* AddContactViewController.swift in Sources */,
 				8E0FC74229889D6600CF0DA1 /* Person.swift in Sources */,
+				F16B792E2993BBD500451C6C /* UserDefaultKey.swift in Sources */,
 				F1A86A822987BCBC00A9A867 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +318,7 @@
 				8E0FC6BE2987602B00CF0DA1 /* OutputEditor.swift in Sources */,
 				8E0FC6B829875E5E00CF0DA1 /* ProgramManager.swift in Sources */,
 				8E0FC6AF29875E1200CF0DA1 /* Constants.swift in Sources */,
+				F16B792D2993BBD500451C6C /* UserDefaultKey.swift in Sources */,
 				8E0FC6AD29875E0500CF0DA1 /* Errors.swift in Sources */,
 				8E0FC6A929875DEF00CF0DA1 /* Menu.swift in Sources */,
 				8E0FC6AB29875DFB00CF0DA1 /* Messages.swift in Sources */,
