@@ -68,6 +68,9 @@ extension ContactsViewController: UITableViewDataSource {
 extension ContactsViewController: NewContactViewControllerDelegate {
     func sendData(contact: Contact) {
         contacts.append(contact)
-        tableView.reloadData()
+        let lastSectionIndex = tableView.numberOfSections - 1
+        let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex)
+        let indexPath = IndexPath(item: lastRowIndex, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
     }
 }
