@@ -11,10 +11,4 @@ struct ContactInformation: Hashable, Codable {
     private(set) var name: String
     private(set) var age: String
     private(set) var phoneNumber: String
-    
-    enum CondingKeys: String, CodingKey {
-        case name = "name"
-        case age = "age"
-        case phoneNumber = "phoneNumber"
-    }
 }
