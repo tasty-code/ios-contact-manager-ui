@@ -12,6 +12,7 @@ final class ContactManagerTableViewController: UITableViewController {
     //MARK: - Property
     @IBOutlet private weak var contactManagerTableView: UITableView!
     private var contactInfomation = [ContactInformation]()
+    private var jsonManagement: JSONParsable = JSONManangement()
     
     //MARK: - BarButtonAction
     @IBAction func tappedAddNewContactAction(_ sender: UIBarButtonItem) {
@@ -39,39 +40,8 @@ final class ContactManagerTableViewController: UITableViewController {
         tableView.dataSource = self
     }
     
-    private func loadJSON<T: Decodable>(_ filename: String) throws -> T {
-        let data: Data
-        
-        guard let filePath = Bundle.main.url(forResource: filename, withExtension: nil) else {
-            print("\(filename) not found.")
-            throw Errors.notFoundJSONFile
-        }
-        
-        do {
-            data = try Data(contentsOf: filePath)
-        } catch {
-            print("Could not load \(filename): (error)")
-            throw Errors.notLoadData
-        }
-        
-        do {
-            let JSONDecoder = JSONDecoder()
-            return try JSONDecoder.decode(T.self, from: data)
-        } catch {
-            print("Unable to decode \(filename): (error)")
-            throw Errors.unableToDecode
-        }
-    }
-
-    private func parseJSON() -> [ContactInformation]? {
-        guard let parsedInformation: [ContactInformation] = try? loadJSON("Dummy.json") else {
-            return nil
-        }
-        return parsedInformation
-    }
-    
     private func assignJSONData() {
-        guard let parsedInformation = parseJSON() else { return }
+        guard let parsedInformation = jsonManagement.parseJSON() else { return }
         contactInfomation = parsedInformation
     }
 }
