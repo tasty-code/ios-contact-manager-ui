@@ -31,20 +31,6 @@
 		8E0FC74829889D7400CF0DA1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BF2987603A00CF0DA1 /* DataManager.swift */; };
 		8ED8BB1E2990E9D8002B8782 /* ContactUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8BB1D2990E9D8002B8782 /* ContactUIManager.swift */; };
 		F15E44B529909D3800D80A09 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B28F298A895700C4A5C7 /* Array+.swift */; };
-		F16B792B29933D3500451C6C /* ContactUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8BB1D2990E9D8002B8782 /* ContactUIManager.swift */; };
-		F16CE050298CEDE4006B59E2 /* ValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16CE04F298CEDE4006B59E2 /* ValidatorTest.swift */; };
-		F16CE054298CEE4D006B59E2 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B92987600600CF0DA1 /* Validator.swift */; };
-		F16CE055298CF2BB006B59E2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B129875E2500CF0DA1 /* Person.swift */; };
-		F16CE056298CF2D1006B59E2 /* UserInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B429875E3E00CF0DA1 /* UserInputModel.swift */; };
-		F16CE057298CF2F0006B59E2 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6AC29875E0500CF0DA1 /* Errors.swift */; };
-		F16CE058298CF2F9006B59E2 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B28F298A895700C4A5C7 /* Array+.swift */; };
-		F16CE059298CF2FB006B59E2 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6A829875DEF00CF0DA1 /* Menu.swift */; };
-		F16CE05A298CF303006B59E2 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6AA29875DFB00CF0DA1 /* Messages.swift */; };
-		F16CE05B298CF306006B59E2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6AE29875E1200CF0DA1 /* Constants.swift */; };
-		F16CE05C298CF312006B59E2 /* ProgramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6B729875E5E00CF0DA1 /* ProgramManager.swift */; };
-		F16CE05D298CF312006B59E2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BF2987603A00CF0DA1 /* DataManager.swift */; };
-		F16CE05E298CF318006B59E2 /* InputEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BB2987601500CF0DA1 /* InputEditor.swift */; };
-		F16CE05F298CF318006B59E2 /* OutputEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FC6BD2987602B00CF0DA1 /* OutputEditor.swift */; };
 		F1A86A802987BCBC00A9A867 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A86A7F2987BCBC00A9A867 /* AppDelegate.swift */; };
 		F1A86A822987BCBC00A9A867 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A86A812987BCBC00A9A867 /* SceneDelegate.swift */; };
 		F1A86A842987BCBC00A9A867 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A86A832987BCBC00A9A867 /* ContactListViewController.swift */; };
@@ -82,8 +68,6 @@
 		8E0FC6BD2987602B00CF0DA1 /* OutputEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputEditor.swift; sourceTree = "<group>"; };
 		8E0FC6BF2987603A00CF0DA1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		8ED8BB1D2990E9D8002B8782 /* ContactUIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUIManager.swift; sourceTree = "<group>"; };
-		F16CE04D298CEDE4006B59E2 /* ValidatorTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValidatorTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F16CE04F298CEDE4006B59E2 /* ValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorTest.swift; sourceTree = "<group>"; };
 		F1A86A7D2987BCBC00A9A867 /* ContactManagerUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManagerUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A86A7F2987BCBC00A9A867 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1A86A812987BCBC00A9A867 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,13 +84,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F16CE04A298CEDE4006B59E2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F1A86A7A2987BCBC00A9A867 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -156,14 +133,6 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		F16CE04E298CEDE4006B59E2 /* ValidatorTest */ = {
-			isa = PBXGroup;
-			children = (
-				F16CE04F298CEDE4006B59E2 /* ValidatorTest.swift */,
-			);
-			path = ValidatorTest;
-			sourceTree = "<group>";
-		};
 		F1A86A7E2987BCBC00A9A867 /* ContactManagerUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,7 +155,6 @@
 			children = (
 				F1C1CC1929875D9800572F80 /* ContactManager */,
 				F1A86A7E2987BCBC00A9A867 /* ContactManagerUI */,
-				F16CE04E298CEDE4006B59E2 /* ValidatorTest */,
 				F1C1CC1829875D9800572F80 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -196,7 +164,6 @@
 			children = (
 				F1C1CC1729875D9800572F80 /* ContactManager */,
 				F1A86A7D2987BCBC00A9A867 /* ContactManagerUI.app */,
-				F16CE04D298CEDE4006B59E2 /* ValidatorTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -224,23 +191,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F16CE04C298CEDE4006B59E2 /* ValidatorTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F16CE053298CEDE4006B59E2 /* Build configuration list for PBXNativeTarget "ValidatorTest" */;
-			buildPhases = (
-				F16CE049298CEDE4006B59E2 /* Sources */,
-				F16CE04A298CEDE4006B59E2 /* Frameworks */,
-				F16CE04B298CEDE4006B59E2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ValidatorTest;
-			productName = ValidatorTest;
-			productReference = F16CE04D298CEDE4006B59E2 /* ValidatorTest.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		F1A86A7C2987BCBC00A9A867 /* ContactManagerUI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1A86A902987BCBD00A9A867 /* Build configuration list for PBXNativeTarget "ContactManagerUI" */;
@@ -285,9 +235,6 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
-					F16CE04C298CEDE4006B59E2 = {
-						CreatedOnToolsVersion = 14.2;
-					};
 					F1A86A7C2987BCBC00A9A867 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -311,19 +258,11 @@
 			targets = (
 				F1C1CC1629875D9800572F80 /* ContactManager */,
 				F1A86A7C2987BCBC00A9A867 /* ContactManagerUI */,
-				F16CE04C298CEDE4006B59E2 /* ValidatorTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F16CE04B298CEDE4006B59E2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F1A86A7B2987BCBC00A9A867 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -338,27 +277,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F16CE049298CEDE4006B59E2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F16CE05C298CF312006B59E2 /* ProgramManager.swift in Sources */,
-				F16CE055298CF2BB006B59E2 /* Person.swift in Sources */,
-				F16B792B29933D3500451C6C /* ContactUIManager.swift in Sources */,
-				F16CE05F298CF318006B59E2 /* OutputEditor.swift in Sources */,
-				F16CE05A298CF303006B59E2 /* Messages.swift in Sources */,
-				F16CE05E298CF318006B59E2 /* InputEditor.swift in Sources */,
-				F16CE057298CF2F0006B59E2 /* Errors.swift in Sources */,
-				F16CE059298CF2FB006B59E2 /* Menu.swift in Sources */,
-				F16CE054298CEE4D006B59E2 /* Validator.swift in Sources */,
-				F16CE058298CF2F9006B59E2 /* Array+.swift in Sources */,
-				F16CE050298CEDE4006B59E2 /* ValidatorTest.swift in Sources */,
-				F16CE05D298CF312006B59E2 /* DataManager.swift in Sources */,
-				F16CE056298CF2D1006B59E2 /* UserInputModel.swift in Sources */,
-				F16CE05B298CF306006B59E2 /* Constants.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F1A86A792987BCBC00A9A867 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,36 +343,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F16CE051298CEDE4006B59E2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VZQ7AWT6Y5;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.slowook.ValidatorTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		F16CE052298CEDE4006B59E2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VZQ7AWT6Y5;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.slowook.ValidatorTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		F1A86A8E2987BCBD00A9A867 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -662,15 +550,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F16CE053298CEDE4006B59E2 /* Build configuration list for PBXNativeTarget "ValidatorTest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F16CE051298CEDE4006B59E2 /* Debug */,
-				F16CE052298CEDE4006B59E2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		F1A86A902987BCBD00A9A867 /* Build configuration list for PBXNativeTarget "ContactManagerUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
