@@ -37,6 +37,14 @@ class AddNewContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        excludePhoneNumberTextField()
+    }
+    
+    private func excludePhoneNumberTextField() {
+        guard let phoneNumberTextField = userInputTextArray.last else {
+            return
+        }
+        phoneNumberTextField.delegate = self
     }
     
     private func decideErrorLocation() -> String {
@@ -73,4 +81,8 @@ class AddNewContactViewController: UIViewController {
         }
         return resultArray
     }
+}
+
+extension AddNewContactViewController: UITextFieldDelegate {
+    
 }
