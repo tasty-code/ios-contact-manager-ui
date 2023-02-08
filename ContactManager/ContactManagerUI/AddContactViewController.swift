@@ -53,6 +53,7 @@ final class AddContactViewController: UIViewController {
             let userInputModel = UserInputModel(name: trimmedName, age: age, phoneNum: phoneNumber)
             
             try contactUIManager.runProgram(menu: .add, userInputModel: userInputModel)
+            self.dismiss(animated: true)
         } catch {
             presentErrorAlert(with: error.localizedDescription)
         }
@@ -68,8 +69,8 @@ final class AddContactViewController: UIViewController {
 extension AddContactViewController {
     
     private func setDelegate() {
-        phoneNumberTextField.delegate = self
         nameTextField.delegate = self
+        phoneNumberTextField.delegate = self
     }
     
     private func presentErrorAlert(with message: String) {
@@ -90,7 +91,7 @@ extension AddContactViewController: UITextFieldDelegate {
         guard let contactUIManager else { return }
         guard let text = textField.text else { return }
         
-        if textField == phoneNumberTextField{
+        if textField == phoneNumberTextField {
             guard let formattedPhoneNumber = contactUIManager.formmatingPhoneNumber(with: text) else { return }
             textField.text = formattedPhoneNumber
         }

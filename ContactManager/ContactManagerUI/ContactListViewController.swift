@@ -10,11 +10,9 @@ import UIKit
 final class ContactListViewController: UIViewController {
     
     // MARK: - Properties
-
-//    private let dummyContactList = Person.dummyData
+    
     private let contactUIManager = ContactUIManager(validator: Validator())
-    private let dataManager = DataManager.shared
-
+    
     // MARK: - @IBOutlet Properties
 
     @IBOutlet weak private var contactListTableView: UITableView!
@@ -30,6 +28,7 @@ final class ContactListViewController: UIViewController {
     
     @IBAction func tappedAddContactButton(_ sender: UIBarButtonItem) {
         guard let addContactVC = UIStoryboard(name: "AddContact", bundle: nil).instantiateViewController(withIdentifier:"AddContactViewController") as? AddContactViewController else { return }
+        addContactVC.contactUIManager = contactUIManager
         self.present(addContactVC, animated: true)
     }
 }
