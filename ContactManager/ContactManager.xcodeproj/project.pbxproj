@@ -19,6 +19,7 @@
 		5B185A002988AA9C00EFC383 /* SystemMenuWorkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0ABEEE295D334C005B674C /* SystemMenuWorkable.swift */; };
 		5B63007B2955637200730005 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B63007A2955637200730005 /* RegularExpression.swift */; };
 		5BF3C8E929932AE700BC123D /* SendContactDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF3C8E729932A7700BC123D /* SendContactDataDelegate.swift */; };
+		5BF3C8EB299331DC00BC123D /* Extension+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF3C8EA299331DC00BC123D /* Extension+Alert.swift */; };
 		F00E9EAC298CEF6500260920 /* ReusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */; };
 		F00E9EAD298CEF6500260920 /* ReusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */; };
 		F00E9EAF298CF01100260920 /* Extension+UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAE298CF01100260920 /* Extension+UITableViewCell.swift */; };
@@ -72,6 +73,7 @@
 		5B0ABEEE295D334C005B674C /* SystemMenuWorkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMenuWorkable.swift; sourceTree = "<group>"; };
 		5B63007A2955637200730005 /* RegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
 		5BF3C8E729932A7700BC123D /* SendContactDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendContactDataDelegate.swift; sourceTree = "<group>"; };
+		5BF3C8EA299331DC00BC123D /* Extension+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Alert.swift"; sourceTree = "<group>"; };
 		F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTableViewCell.swift; sourceTree = "<group>"; };
 		F00E9EAE298CF01100260920 /* Extension+UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableViewCell.swift"; sourceTree = "<group>"; };
 		F00E9EB1298CF01D00260920 /* Extension+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableView.swift"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				F00F751A2988A76800612BF3 /* Assets.xcassets */,
 				F00E9EAE298CF01100260920 /* Extension+UITableViewCell.swift */,
 				F00E9EB1298CF01D00260920 /* Extension+UITableView.swift */,
+				5BF3C8EA299331DC00BC123D /* Extension+Alert.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				5B1859FB2988AA8F00EFC383 /* Detector.swift in Sources */,
 				5B185A002988AA9C00EFC383 /* SystemMenuWorkable.swift in Sources */,
 				5B1859FF2988AA9A00EFC383 /* InputPossible.swift in Sources */,
+				5BF3C8EB299331DC00BC123D /* Extension+Alert.swift in Sources */,
 				5B1859F92988AA8B00EFC383 /* ContactInformation.swift in Sources */,
 				F00F75122988A76700612BF3 /* AppDelegate.swift in Sources */,
 				5B1859F82988AA8800EFC383 /* ContactManager.swift in Sources */,
