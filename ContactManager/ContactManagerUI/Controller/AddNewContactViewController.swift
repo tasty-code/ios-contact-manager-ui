@@ -31,7 +31,6 @@ class AddNewContactViewController: UIViewController {
             dismiss(animated: true)
             return
         }
-
         successAlert(message: errorSentence)
     }
     
@@ -41,9 +40,7 @@ class AddNewContactViewController: UIViewController {
     }
     
     private func excludePhoneNumberTextField() {
-        guard let phoneNumberTextField = userInputTextArray.last else {
-            return
-        }
+        guard let phoneNumberTextField = userInputTextArray.last else { return }
         phoneNumberTextField.delegate = self
     }
     
@@ -80,11 +77,6 @@ class AddNewContactViewController: UIViewController {
             resultArray[resultArray.startIndex] = joinedName
         }
         return resultArray
-    }
-
-    private func setDelegate() {
-        guard let phoneNumberLabel = userInputTextArray.last else { return }
-        phoneNumberLabel.delegate = self
     }
 }
 
