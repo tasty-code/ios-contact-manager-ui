@@ -54,16 +54,16 @@ final class AddContactViewController: UIViewController {
     // MARK: - Helpers
     private func showFailAlert(withTitle title: String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "확인", style: .default)
+        let confirmAction = UIAlertAction(title: Constants.failAlertActionTitle, style: .default)
         
         alert.addAction(confirmAction)
         present(alert, animated: true)
     }
     
     private func showCheckCancelAlert() {
-        let alert = UIAlertController(title: "정말로 취소하시겠습니까?", message: nil, preferredStyle: .alert)
-        let noAction = UIAlertAction(title: "아니오", style: .cancel)
-        let yesAction = UIAlertAction(title: "예", style: .destructive) { _ in self.dismiss(animated: true)
+        let alert = UIAlertController(title: Constants.checkCancelAlertTitle, message: nil, preferredStyle: .alert)
+        let noAction = UIAlertAction(title: Constants.checkCancelAlertNoActionTitle, style: .cancel)
+        let yesAction = UIAlertAction(title: Constants.checkCancelAlertYesActionTitle, style: .destructive) { _ in self.dismiss(animated: true)
         }
         
         alert.addAction(noAction)
