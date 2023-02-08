@@ -60,5 +60,10 @@ final class DataManager {
 extension DataManager {
     func clearAllStoredDataForTest() {
         dataStore.removeObject(forKey: userDefaultKey.contacts.rawValue)
+        clearLocalContactData()
+    }
+    
+    private func clearLocalContactData() {
+        contacts.removeAll()
     }
 }
