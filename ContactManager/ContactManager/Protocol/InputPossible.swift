@@ -10,3 +10,12 @@ import Foundation
 protocol InputPossible {
     func userInputValue() -> String
 }
+
+extension InputPossible {
+    func userInputValue() -> String {
+        guard let userInput = readLine() else {
+            return "F"
+        }
+        return userInput
+    }
+}

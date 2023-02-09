@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ContactManager {
+final class ContactManager: InputPossible {
     var contactInformationArray: Set<ContactInformation> = []
     let detector = Detector()
     let convertor = Converter()
@@ -37,15 +37,6 @@ final class ContactManager {
                 print(PrintMessage.choiceWrorngMenu)
             }
         } while identifier == true
-    }
-}
-
-extension ContactManager: InputPossible {
-    func userInputValue() -> String {
-        guard let userInput = readLine() else {
-            return "F"
-        }
-        return userInput
     }
 }
 
