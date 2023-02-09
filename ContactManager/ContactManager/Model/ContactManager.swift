@@ -46,19 +46,6 @@ final class ContactManager: InputPossible {
     }
 }
 
-extension ContactManager {
-    enum MenuStart: String, CustomStringConvertible {
-        case addContact = "1"
-        case viewContact = "2"
-        case searchContact = "3"
-        case exit = "x"
-        
-        var description: String {
-            return self.rawValue
-        }
-    }
-}
-
 extension ContactManager: SystemMenuWorkable {
     func addContact() {
         print(PrintMessage.requestContactInformation, terminator: "")
