@@ -11,7 +11,7 @@ extension UITextField {
     
     func addDoneButtonToKeyboard(doneAction: Selector?) {
         let doneToolbar: UIToolbar = UIToolbar()
-        doneToolbar.barStyle = UIBarStyle.default
+        doneToolbar.barStyle = .default
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: nil, action: doneAction)
@@ -24,7 +24,7 @@ extension UITextField {
     
     func addHyphenAndDoneButtonToKeyboard(doneAction: Selector?, hyphenAction: Selector?) {
         let hyphenAndDoneToolbar: UIToolbar = UIToolbar()
-        hyphenAndDoneToolbar.barStyle = UIBarStyle.default
+        hyphenAndDoneToolbar.barStyle = .default
         
         let hyphen = UIBarButtonItem(title: "—", style: .plain, target: nil, action: hyphenAction)
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
