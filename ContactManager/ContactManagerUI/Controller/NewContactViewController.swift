@@ -8,9 +8,9 @@
 import UIKit
 
 final class NewContactViewController: UIViewController {
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var ageTextField: UITextField!
+    @IBOutlet private weak var phoneNumberTextField: UITextField!
 
     weak var delegate: NewContactViewControllerDelegate?
 
@@ -20,7 +20,7 @@ final class NewContactViewController: UIViewController {
         phoneNumberTextField.delegate = self
     }
 
-    @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
+    @IBAction private func cancelButtonDidTap(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "정말로 취소하시겠습니까?", message: nil, preferredStyle: .alert)
         let noButton = UIAlertAction(title: "아니오", style: .default)
         alert.addAction(noButton)
@@ -31,7 +31,7 @@ final class NewContactViewController: UIViewController {
         present(alert, animated: true)
     }
 
-    @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
+    @IBAction private func saveButtonDidTap(_ sender: UIBarButtonItem) {
         do {
             let name = try getName(input: nameTextField.text ?? "")
             let age = try getAge(input: ageTextField.text ?? "")
