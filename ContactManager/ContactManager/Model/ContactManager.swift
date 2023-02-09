@@ -25,14 +25,14 @@ final class ContactManager: InputPossible {
         repeat {
             print(PrintMessage.startComment, terminator: "")
             let receiveUserInputValues = userInputValue()
-            switch MenuStart(rawValue: receiveUserInputValues) {
-            case .addContact:
+            switch WorkList(rawValue: receiveUserInputValues) {
+            case .add:
                 addContact()
                 break
-            case .viewContact:
+            case .view:
                 viewContactList(value: contactInformationArray)
                 break
-            case .searchContact:
+            case .search:
                 searchByName(value: contactInformationArray)
                 break
             case .exit:
