@@ -46,32 +46,30 @@ extension PhoneNumberTextField: UITextFieldDelegate {
 extension PhoneNumberTextField {
     func formattedPhoneNumber(with text: String?) -> String {
         let pureNumbers = text?.filter { $0.isNumber } ?? ""
-        var pattern = ""
-        var result: String {
+        let pattern = createPhoneNumberPattern(with: pureNumbers)
             return applyPatternOn(pureNumbers: pureNumbers, pattern: pattern, replacementCharacter: "#")
-        }
-
+    }
+    
+    private func createPhoneNumberPattern(with pureNumbers: String) -> String {
         if pureNumbers.starts(with: "0") && !pureNumbers.starts(with: "02")  {
             if pureNumbers.count <= 10 {
-                pattern = "###-###-####"
+                return "###-###-####"
             }
+            
             if pureNumbers.count == 11 {
-                pattern = "###-####-####"
+                return "###-####-####"
             }
-            return result
         }
 
         if pureNumbers.count <= 9 {
-            pattern = "##-###-####"
-            return result
+            return "##-###-####"
         }
 
         if pureNumbers.count == 10 {
-            pattern = "##-####-####"
-            return result
+            return "##-####-####"
         }
-
-        return result
+        
+        return ""
     }
 
     private func applyPatternOn(pureNumbers: String,
