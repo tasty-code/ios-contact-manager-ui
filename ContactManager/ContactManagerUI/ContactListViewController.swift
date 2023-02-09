@@ -54,13 +54,16 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ContactTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ContactTableViewCell else { return UITableViewCell()}
+        
         let contacts = contactUIManager.getContactsData()
         
         guard let cellData = contacts[safe: indexPath.row] else { return UITableViewCell() }
         
-        cell.textLabel?.text = cellData.name + "(\(cellData.age))"
-        cell.detailTextLabel?.text = cellData.phoneNum
+        cell.name.text = cellData.name
+        cell.age.text = String(cellData.age)
+        cell.phoneNumber.text = cellData.phoneNum
+        
         return cell
     }
     
