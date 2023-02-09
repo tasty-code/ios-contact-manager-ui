@@ -24,9 +24,7 @@
 		5BF3C8F3299394C400BC123D /* JSONParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF3C8EE2993944C00BC123D /* JSONParsable.swift */; };
 		F00E9EAC298CEF6500260920 /* ReusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */; };
 		F00E9EAD298CEF6500260920 /* ReusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */; };
-		F00E9EAF298CF01100260920 /* Extension+UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAE298CF01100260920 /* Extension+UITableViewCell.swift */; };
 		F00E9EB0298CF01100260920 /* Extension+UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAE298CF01100260920 /* Extension+UITableViewCell.swift */; };
-		F00E9EB2298CF01D00260920 /* Extension+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EB1298CF01D00260920 /* Extension+UITableView.swift */; };
 		F00E9EB3298CF01D00260920 /* Extension+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EB1298CF01D00260920 /* Extension+UITableView.swift */; };
 		F00F75122988A76700612BF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75112988A76700612BF3 /* AppDelegate.swift */; };
 		F00F75142988A76700612BF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75132988A76700612BF3 /* SceneDelegate.swift */; };
@@ -406,7 +404,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F00E9EB2298CF01D00260920 /* Extension+UITableView.swift in Sources */,
 				F042BC1A2952DCFA00722285 /* ContactInformation.swift in Sources */,
 				F0A68C2A29555F6C00815CD6 /* InputPossible.swift in Sources */,
 				F042BC1C2952DD1700722285 /* PrintMessage.swift in Sources */,
@@ -419,7 +416,6 @@
 				F042BC2029541E3200722285 /* Converter.swift in Sources */,
 				F00E9EAC298CEF6500260920 /* ReusableTableViewCell.swift in Sources */,
 				F01AEAAB2990DEDF00CEB882 /* Errors.swift in Sources */,
-				F00E9EAF298CF01100260920 /* Extension+UITableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
