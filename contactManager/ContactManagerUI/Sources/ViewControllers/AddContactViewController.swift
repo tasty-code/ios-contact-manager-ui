@@ -241,7 +241,7 @@ class AddContactViewController: UIViewController {
         let alertTitle: String = "정말로 취소하시겠습니까?"
         let confirmActionTitle: String = "예"
         let cancelActionTitle: String = "아니오"
-
+        
         let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: confirmActionTitle, style: .destructive) { _ in
             self.dismiss(animated: true)
@@ -249,12 +249,12 @@ class AddContactViewController: UIViewController {
         let cancelAction = UIAlertAction(title: cancelActionTitle, style: .default) { _ in
             self.nameTextField.becomeFirstResponder()
         }
-
+        
         alert.addAction(cancelAction)
         alert.addAction(confirmAction)
         self.present(alert, animated: true)
     }
-
+    
     private func makeErrorTitle(from categories: [String]) -> String {
         var errorKeywords = ""
         for index in categories.indices {
@@ -285,7 +285,7 @@ class AddContactViewController: UIViewController {
         phoneNumberTextField.text = inputPhoneNumber + "-"
     }
 }
-
+    
 extension AddContactViewController: UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -294,9 +294,8 @@ extension AddContactViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        if textField == nameTextField {
-            ageTextField.becomeFirstResponder()
-        }
+        ageTextField.becomeFirstResponder()
+        
         return true
     }
 }
