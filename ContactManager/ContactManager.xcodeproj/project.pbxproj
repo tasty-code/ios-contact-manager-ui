@@ -8,12 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B0ABEEF295D334C005B674C /* SystemMenuWorkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0ABEEE295D334C005B674C /* SystemMenuWorkable.swift */; };
-		5B1859F82988AA8800EFC383 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0873C52295A8AC00097B804 /* ContactManager.swift */; };
 		5B1859F92988AA8B00EFC383 /* ContactInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC192952DCFA00722285 /* ContactInformation.swift */; };
-		5B1859FA2988AA8D00EFC383 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1F29541E3200722285 /* Converter.swift */; };
-		5B1859FB2988AA8F00EFC383 /* Detector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1D29541C2B00722285 /* Detector.swift */; };
-		5B1859FC2988AA9100EFC383 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68C2C29556D7D00815CD6 /* Checker.swift */; };
-		5B1859FD2988AA9400EFC383 /* PrintMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1B2952DD1700722285 /* PrintMessage.swift */; };
 		5B1859FE2988AA9700EFC383 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B63007A2955637200730005 /* RegularExpression.swift */; };
 		5B63007B2955637200730005 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B63007A2955637200730005 /* RegularExpression.swift */; };
 		5BDD5486299492320048AD63 /* WorkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD5485299492320048AD63 /* WorkList.swift */; };
@@ -34,6 +29,19 @@
 		F018144729948E34003EF614 /* Convertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144629948E34003EF614 /* Convertable.swift */; };
 		F018144929948EC9003EF614 /* Detectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144829948EC9003EF614 /* Detectable.swift */; };
 		F018144B29948F0C003EF614 /* Checkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144A29948F0C003EF614 /* Checkable.swift */; };
+		F018144E2994D824003EF614 /* InputErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144C2994D7F8003EF614 /* InputErrorMessage.swift */; };
+		F01814502994D878003EF614 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1F29541E3200722285 /* Converter.swift */; };
+		F01814512994D87A003EF614 /* Detector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1D29541C2B00722285 /* Detector.swift */; };
+		F01814522994D87C003EF614 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68C2C29556D7D00815CD6 /* Checker.swift */; };
+		F01814532994D87E003EF614 /* Convertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144629948E34003EF614 /* Convertable.swift */; };
+		F01814542994D881003EF614 /* Detectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144829948EC9003EF614 /* Detectable.swift */; };
+		F01814552994D883003EF614 /* Checkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144A29948F0C003EF614 /* Checkable.swift */; };
+		F01814562994D896003EF614 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0873C52295A8AC00097B804 /* ContactManager.swift */; };
+		F01814572994D8BB003EF614 /* WorkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD5485299492320048AD63 /* WorkList.swift */; };
+		F01814582994D8C1003EF614 /* PrintMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1B2952DD1700722285 /* PrintMessage.swift */; };
+		F018145A2994D8D8003EF614 /* InputPossible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68C2929555F6C00815CD6 /* InputPossible.swift */; };
+		F018145B2994D8DA003EF614 /* SystemMenuWorkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0ABEEE295D334C005B674C /* SystemMenuWorkable.swift */; };
+		F018145C2994DB07003EF614 /* InputErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144C2994D7F8003EF614 /* InputErrorMessage.swift */; };
 		F01AEAAC2990E4BD00CEB882 /* JSONErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AEAAA2990DEDF00CEB882 /* JSONErrors.swift */; };
 		F042BC132952CC5000722285 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC122952CC5000722285 /* main.swift */; };
 		F042BC1A2952DCFA00722285 /* ContactInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC192952DCFA00722285 /* ContactInformation.swift */; };
@@ -93,6 +101,7 @@
 		F018144629948E34003EF614 /* Convertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convertable.swift; sourceTree = "<group>"; };
 		F018144829948EC9003EF614 /* Detectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detectable.swift; sourceTree = "<group>"; };
 		F018144A29948F0C003EF614 /* Checkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkable.swift; sourceTree = "<group>"; };
+		F018144C2994D7F8003EF614 /* InputErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputErrorMessage.swift; sourceTree = "<group>"; };
 		F01AEAAA2990DEDF00CEB882 /* JSONErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONErrors.swift; sourceTree = "<group>"; };
 		F042BC0F2952CC5000722285 /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		F042BC122952CC5000722285 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -275,6 +284,7 @@
 			children = (
 				F042BC1B2952DD1700722285 /* PrintMessage.swift */,
 				5B63007A2955637200730005 /* RegularExpression.swift */,
+				F018144C2994D7F8003EF614 /* InputErrorMessage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -425,22 +435,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B1859FE2988AA9700EFC383 /* RegularExpression.swift in Sources */,
+				F018144E2994D824003EF614 /* InputErrorMessage.swift in Sources */,
+				F01814502994D878003EF614 /* Converter.swift in Sources */,
+				F01814512994D87A003EF614 /* Detector.swift in Sources */,
+				F01814542994D881003EF614 /* Detectable.swift in Sources */,
 				F00E9EB3298CF01D00260920 /* Extension+UITableView.swift in Sources */,
 				5BF3C8F2299394C100BC123D /* JSONManagement.swift in Sources */,
+				F01814582994D8C1003EF614 /* PrintMessage.swift in Sources */,
 				F00F75162988A76700612BF3 /* ContactManagerTableViewController.swift in Sources */,
-				5B1859FD2988AA9400EFC383 /* PrintMessage.swift in Sources */,
+				F01814522994D87C003EF614 /* Checker.swift in Sources */,
 				F0B3823C2991DF2500136EE7 /* AddNewContactViewController.swift in Sources */,
 				F01AEAAC2990E4BD00CEB882 /* JSONErrors.swift in Sources */,
 				F00E9EB0298CF01100260920 /* Extension+UITableViewCell.swift in Sources */,
+				F01814562994D896003EF614 /* ContactManager.swift in Sources */,
+				F018145B2994D8DA003EF614 /* SystemMenuWorkable.swift in Sources */,
+				F01814552994D883003EF614 /* Checkable.swift in Sources */,
 				5BF3C8F3299394C400BC123D /* JSONParsable.swift in Sources */,
 				F00E9EAD298CEF6500260920 /* ReusableTableViewCell.swift in Sources */,
-				5B1859FB2988AA8F00EFC383 /* Detector.swift in Sources */,
 				5BF3C8EB299331DC00BC123D /* Extension+Alert.swift in Sources */,
+				F01814572994D8BB003EF614 /* WorkList.swift in Sources */,
+				F01814532994D87E003EF614 /* Convertable.swift in Sources */,
 				5B1859F92988AA8B00EFC383 /* ContactInformation.swift in Sources */,
 				F00F75122988A76700612BF3 /* AppDelegate.swift in Sources */,
-				5B1859F82988AA8800EFC383 /* ContactManager.swift in Sources */,
-				5B1859FC2988AA9100EFC383 /* Checker.swift in Sources */,
-				5B1859FA2988AA8D00EFC383 /* Converter.swift in Sources */,
+				F018145A2994D8D8003EF614 /* InputPossible.swift in Sources */,
 				F00F75142988A76700612BF3 /* SceneDelegate.swift in Sources */,
 				5BF3C8E929932AE700BC123D /* SendContactDataDelegate.swift in Sources */,
 			);
@@ -464,6 +481,7 @@
 				F042BC132952CC5000722285 /* main.swift in Sources */,
 				5B0ABEEF295D334C005B674C /* SystemMenuWorkable.swift in Sources */,
 				F042BC1E29541C2B00722285 /* Detector.swift in Sources */,
+				F018145C2994DB07003EF614 /* InputErrorMessage.swift in Sources */,
 				F018144B29948F0C003EF614 /* Checkable.swift in Sources */,
 				F0A68C2D29556D7D00815CD6 /* Checker.swift in Sources */,
 				F018144729948E34003EF614 /* Convertable.swift in Sources */,
