@@ -16,14 +16,14 @@ final class ContactManagerTableViewController: UITableViewController {
     
     //MARK: - BarButtonAction
     @IBAction func tappedAddNewContactAction(_ sender: UIBarButtonItem) {
-        guard let addContactVC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewContactViewController") as? AddNewContactViewController else { return }
+        guard let addNewContactVC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewContactViewController") as? AddNewContactViewController else { return }
 
-        addContactVC.modalTransitionStyle = .coverVertical
-        addContactVC.modalPresentationStyle = .automatic
+        addNewContactVC.modalTransitionStyle = .coverVertical
+        addNewContactVC.modalPresentationStyle = .automatic
 
-        addContactVC.delegate = self
+        addNewContactVC.delegate = self
         
-        present(addContactVC, animated: true)
+        present(addNewContactVC, animated: true)
     }
     
     //MARK: - View LifeCycle

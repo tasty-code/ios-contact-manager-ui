@@ -9,7 +9,7 @@ import UIKit
 
 class AddNewContactViewController: UIViewController {
 
-    @IBOutlet var userInputTextArray: [UITextField]!
+    @IBOutlet var userInputData: [UITextField]!
     private var newContactData = [String]()
     private let contactManager = ContactManager()
 
@@ -20,9 +20,9 @@ class AddNewContactViewController: UIViewController {
     }
 
     @IBAction func tappedSaveButton(_ sender: UIBarButtonItem) {
-        let errorSentence = decideErrorLocation()
+        let errorMessage = decideErrorMessage()
 
-        if errorSentence.isEmpty {
+        if errorMessage.isEmpty {
             let sendingContactData = ContactInformation(name: newContactData[0], age: newContactData[1], phoneNumber: newContactData[2])
 
             delegate?.sendData(newData: sendingContactData)
@@ -30,7 +30,7 @@ class AddNewContactViewController: UIViewController {
             dismiss(animated: true)
             return
         }
-        successAlert(message: errorSentence)
+        successAlert(message: errorMessage)
     }
     
     override func viewDidLoad() {
@@ -39,11 +39,11 @@ class AddNewContactViewController: UIViewController {
     }
     
     private func excludePhoneNumberTextField() {
-        guard let phoneNumberTextField = userInputTextArray.last else { return }
+        guard let phoneNumberTextField = userInputData.last else { return }
         phoneNumberTextField.delegate = self
     }
     
-    private func decideErrorLocation() -> String {
+    private func decideErrorMessage() -> String {
         var returnSentence = ""
         let convertedUserInputArray = convertToStringArray()
         newContactData = removeBlankInputName(inputArray: convertedUserInputArray)
@@ -61,7 +61,7 @@ class AddNewContactViewController: UIViewController {
     private func convertToStringArray() -> [String] {
         var inputCollection = [String]()
         
-        userInputTextArray.forEach { element in
+        userInputData.forEach { element in
             if let userInput = element.text {
                 inputCollection.append(userInput)
             }
