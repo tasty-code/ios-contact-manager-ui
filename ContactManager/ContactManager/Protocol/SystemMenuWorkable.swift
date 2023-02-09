@@ -13,3 +13,14 @@ internal protocol SystemMenuWorkable {
     func searchByName(value: Set<ContactInformation>)
     func exitProgram() -> Bool
 }
+
+extension SystemMenuWorkable {
+    func viewContactList(value: Set<ContactInformation>) {
+        PrintMessage.viewContact(list: value)
+    }
+    
+    func exitProgram() -> Bool {
+        print(PrintMessage.exitProgram)
+        return false
+    }
+}

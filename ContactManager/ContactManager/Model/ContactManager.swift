@@ -72,18 +72,9 @@ extension ContactManager: SystemMenuWorkable {
         return validName
     }
     
-    func viewContactList(value: Set<ContactInformation>) {
-        PrintMessage.viewContact(list: value)
-    }
-    
     func searchByName(value: Set<ContactInformation>) {
         print(PrintMessage.requestToSearchName, terminator: "")
         let searchName = userInputValue()
         PrintMessage.searchContact(list: value, word: searchName)
-    }
-    
-    func exitProgram() -> Bool {
-        print(PrintMessage.exitProgram)
-        return false
     }
 }
