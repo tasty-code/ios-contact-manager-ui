@@ -1,5 +1,5 @@
 //
-//  Cell+.swift
+//  UITableViewCell+.swift
 //  ContactManagerUI
 //
 //  Created by DONGWOOK SEO on 2023/02/09.
