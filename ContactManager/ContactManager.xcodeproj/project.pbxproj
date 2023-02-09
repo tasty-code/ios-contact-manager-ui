@@ -15,15 +15,12 @@
 		5B1859FC2988AA9100EFC383 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68C2C29556D7D00815CD6 /* Checker.swift */; };
 		5B1859FD2988AA9400EFC383 /* PrintMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1B2952DD1700722285 /* PrintMessage.swift */; };
 		5B1859FE2988AA9700EFC383 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B63007A2955637200730005 /* RegularExpression.swift */; };
-		5B1859FF2988AA9A00EFC383 /* InputPossible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68C2929555F6C00815CD6 /* InputPossible.swift */; };
-		5B185A002988AA9C00EFC383 /* SystemMenuWorkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0ABEEE295D334C005B674C /* SystemMenuWorkable.swift */; };
 		5B63007B2955637200730005 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B63007A2955637200730005 /* RegularExpression.swift */; };
 		5BDD5486299492320048AD63 /* WorkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD5485299492320048AD63 /* WorkList.swift */; };
 		5BF3C8E929932AE700BC123D /* SendContactDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF3C8E729932A7700BC123D /* SendContactDataDelegate.swift */; };
 		5BF3C8EB299331DC00BC123D /* Extension+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF3C8EA299331DC00BC123D /* Extension+Alert.swift */; };
 		5BF3C8F2299394C100BC123D /* JSONManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF3C8F0299394A300BC123D /* JSONManagement.swift */; };
 		5BF3C8F3299394C400BC123D /* JSONParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF3C8EE2993944C00BC123D /* JSONParsable.swift */; };
-		F00E9EAC298CEF6500260920 /* ReusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */; };
 		F00E9EAD298CEF6500260920 /* ReusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */; };
 		F00E9EB0298CF01100260920 /* Extension+UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EAE298CF01100260920 /* Extension+UITableViewCell.swift */; };
 		F00E9EB3298CF01D00260920 /* Extension+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E9EB1298CF01D00260920 /* Extension+UITableView.swift */; };
@@ -176,6 +173,25 @@
 			path = SubModelProtocol;
 			sourceTree = "<group>";
 		};
+		5BDD54872994D5FF0048AD63 /* OS_Model */ = {
+			isa = PBXGroup;
+			children = (
+				F0A68C2929555F6C00815CD6 /* InputPossible.swift */,
+				5B0ABEEE295D334C005B674C /* SystemMenuWorkable.swift */,
+			);
+			path = OS_Model;
+			sourceTree = "<group>";
+		};
+		5BDD54882994D6290048AD63 /* UI_Model */ = {
+			isa = PBXGroup;
+			children = (
+				F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */,
+				5BF3C8E729932A7700BC123D /* SendContactDataDelegate.swift */,
+				5BF3C8EE2993944C00BC123D /* JSONParsable.swift */,
+			);
+			path = UI_Model;
+			sourceTree = "<group>";
+		};
 		F00F75102988A76700612BF3 /* ContactManagerUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,11 +266,8 @@
 			isa = PBXGroup;
 			children = (
 				5BDD54842994919D0048AD63 /* SubModelProtocol */,
-				F0A68C2929555F6C00815CD6 /* InputPossible.swift */,
-				5B0ABEEE295D334C005B674C /* SystemMenuWorkable.swift */,
-				F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */,
-				5BF3C8E729932A7700BC123D /* SendContactDataDelegate.swift */,
-				5BF3C8EE2993944C00BC123D /* JSONParsable.swift */,
+				5BDD54872994D5FF0048AD63 /* OS_Model */,
+				5BDD54882994D6290048AD63 /* UI_Model */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -406,8 +419,6 @@
 				5BF3C8F3299394C400BC123D /* JSONParsable.swift in Sources */,
 				F00E9EAD298CEF6500260920 /* ReusableTableViewCell.swift in Sources */,
 				5B1859FB2988AA8F00EFC383 /* Detector.swift in Sources */,
-				5B185A002988AA9C00EFC383 /* SystemMenuWorkable.swift in Sources */,
-				5B1859FF2988AA9A00EFC383 /* InputPossible.swift in Sources */,
 				5BF3C8EB299331DC00BC123D /* Extension+Alert.swift in Sources */,
 				5B1859F92988AA8B00EFC383 /* ContactInformation.swift in Sources */,
 				F00F75122988A76700612BF3 /* AppDelegate.swift in Sources */,
@@ -445,7 +456,6 @@
 				F0873C53295A8AC00097B804 /* ContactManager.swift in Sources */,
 				F042BC2029541E3200722285 /* Converter.swift in Sources */,
 				5BDD5486299492320048AD63 /* WorkList.swift in Sources */,
-				F00E9EAC298CEF6500260920 /* ReusableTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
