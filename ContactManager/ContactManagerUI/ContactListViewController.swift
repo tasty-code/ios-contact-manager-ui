@@ -53,7 +53,7 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "ContactTableViewCell"
+        let cellIdentifier = ContactTableViewCell.identifier
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ContactTableViewCell else { return UITableViewCell()}
         
         let contacts = contactUIManager.getContactsData()

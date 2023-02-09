@@ -40,6 +40,7 @@
 		F1A86A892987BCBD00A9A867 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A86A882987BCBD00A9A867 /* Assets.xcassets */; };
 		F1A86A8C2987BCBD00A9A867 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A86A8A2987BCBD00A9A867 /* LaunchScreen.storyboard */; };
 		F1B787502994F5E900AF6533 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B7874F2994F5E900AF6533 /* ContactTableViewCell.swift */; };
+		F1B7875229950AE500AF6533 /* Cell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B7875129950AE500AF6533 /* Cell+.swift */; };
 		F1C1CC1B29875D9800572F80 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C1CC1A29875D9800572F80 /* main.swift */; };
 		F1F0B290298A895700C4A5C7 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B28F298A895700C4A5C7 /* Array+.swift */; };
 		F1F0B293298AAF6600C4A5C7 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0B292298AAF6600C4A5C7 /* AddContactViewController.swift */; };
@@ -81,6 +82,7 @@
 		F1A86A8B2987BCBD00A9A867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1A86A8D2987BCBD00A9A867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1B7874F2994F5E900AF6533 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		F1B7875129950AE500AF6533 /* Cell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+.swift"; sourceTree = "<group>"; };
 		F1C1CC1729875D9800572F80 /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C1CC1A29875D9800572F80 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F1F0B28F298A895700C4A5C7 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				F1F0B28F298A895700C4A5C7 /* Array+.swift */,
+				F1B7875129950AE500AF6533 /* Cell+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				F1A86A802987BCBC00A9A867 /* AppDelegate.swift in Sources */,
 				8E0FC74629889D7000CF0DA1 /* InputEditor.swift in Sources */,
 				8E0FC73F29889D5F00CF0DA1 /* Messages.swift in Sources */,
+				F1B7875229950AE500AF6533 /* Cell+.swift in Sources */,
 				F1B787502994F5E900AF6533 /* ContactTableViewCell.swift in Sources */,
 				8E0FC74329889D6800CF0DA1 /* UserInputModel.swift in Sources */,
 				8E0FC74529889D6D00CF0DA1 /* Validator.swift in Sources */,
