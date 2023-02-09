@@ -12,7 +12,6 @@ class AddNewContactViewController: UIViewController {
     @IBOutlet var userInputTextArray: [UITextField]!
     private var newContactData = [String]()
     private let contactManager = ContactManager()
-    private let checker = Checker()
 
     weak var delegate: SendContactDataDelegate?
 
@@ -48,7 +47,7 @@ class AddNewContactViewController: UIViewController {
         var returnSentence = ""
         let convertedUserInputArray = convertToStringArray()
         newContactData = removeBlankInputName(inputArray: convertedUserInputArray)
-        let checkUserInput = checker.checkCorrect(targets: newContactData)
+        let checkUserInput = contactManager.checker.checkCorrect(targets: newContactData)
         
         for (index, boolean) in checkUserInput.enumerated() {
             if !boolean {

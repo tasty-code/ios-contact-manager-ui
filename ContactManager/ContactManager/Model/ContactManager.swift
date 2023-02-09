@@ -13,7 +13,7 @@ final class ContactManager: InputPossible {
     let convertor: Convertable
     let checker: Checkable
     
-    init(detector: Detectable, convertor: Convertable, checker: Checkable) {
+    init(detector: Detectable = Detector(), convertor: Convertable = Converter(), checker: Checkable = Checker()) {
         self.detector = detector
         self.convertor = convertor
         self.checker = checker
