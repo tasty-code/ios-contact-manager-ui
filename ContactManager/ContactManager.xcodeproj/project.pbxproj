@@ -165,6 +165,16 @@
 			path = AppConfiguration;
 			sourceTree = "<group>";
 		};
+		5BDD54842994919D0048AD63 /* SubModelProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				F018144629948E34003EF614 /* Convertable.swift */,
+				F018144829948EC9003EF614 /* Detectable.swift */,
+				F018144A29948F0C003EF614 /* Checkable.swift */,
+			);
+			path = SubModelProtocol;
+			sourceTree = "<group>";
+		};
 		F00F75102988A76700612BF3 /* ContactManagerUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,14 +248,12 @@
 		F0A68C2E29556F1C00815CD6 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				5BDD54842994919D0048AD63 /* SubModelProtocol */,
 				F0A68C2929555F6C00815CD6 /* InputPossible.swift */,
 				5B0ABEEE295D334C005B674C /* SystemMenuWorkable.swift */,
 				F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */,
 				5BF3C8E729932A7700BC123D /* SendContactDataDelegate.swift */,
 				5BF3C8EE2993944C00BC123D /* JSONParsable.swift */,
-				F018144629948E34003EF614 /* Convertable.swift */,
-				F018144829948EC9003EF614 /* Detectable.swift */,
-				F018144A29948F0C003EF614 /* Checkable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
