@@ -42,13 +42,12 @@ final class AddContactViewController: UIViewController {
         do {
             let contact = try InputManager.contact(from: inputArray)
             ContactManager.shared.add(contact: contact)
+            dismiss(animated: true) {
+                self.delegate?.didContactChanged()
+            }
         } catch {
             showFailAlert(withTitle: error.localizedDescription)
-            return
         }
-        
-        dismiss(animated: true)
-        delegate?.didContactChanged()
     }
 
     @objc func didPhoneNumberTextChange() {
