@@ -21,6 +21,11 @@ final class ContactListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let searchController = UISearchController()
+        self.navigationItem.searchController = searchController
+        searchController.searchBar.placeholder = "Search User"
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.automaticallyShowsCancelButton = false
         setDelegate()
     }
     
