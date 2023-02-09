@@ -44,38 +44,38 @@ class AddNewContactViewController: UIViewController {
     }
     
     private func decideErrorMessage() -> String {
-        var returnSentence = ""
-        let convertedUserInputArray = convertToStringArray()
-        newContactData = removeBlankInputName(inputArray: convertedUserInputArray)
+        var returnMessage = ""
+        let convertedUserInputData = renderToStringArray()
+        newContactData = removeBlank(convertedUserInputData)
         let checkUserInput = contactManager.checker.checkCorrect(targets: newContactData)
         
         for (index, boolean) in checkUserInput.enumerated() {
             if !boolean {
-                returnSentence = InputErrorMessage.allCases[index].rawValue
+                returnMessage = InputErrorMessage.allCases[index].rawValue
                 break
             }
         }
-        return returnSentence
+        return returnMessage
     }
     
-    private func convertToStringArray() -> [String] {
-        var inputCollection = [String]()
+    private func renderToStringArray() -> [String] {
+        var convertedData = [String]()
         
         userInputData.forEach { element in
             if let userInput = element.text {
-                inputCollection.append(userInput)
+                convertedData.append(userInput)
             }
         }
-        return inputCollection
+        return convertedData
     }
 
-    private func removeBlankInputName(inputArray: [String]) -> [String] {
-        var resultArray = inputArray
-        if let removedBlankInputName = resultArray.first {
+    private func removeBlank(_ inputData: [String]) -> [String] {
+        var result = inputData
+        if let removedBlankInputName = result.first {
             let joinedName = contactManager.removeBlankInput(value: removedBlankInputName)
-            resultArray[resultArray.startIndex] = joinedName
+            result[result.startIndex] = joinedName
         }
-        return resultArray
+        return result
     }
 }
 
