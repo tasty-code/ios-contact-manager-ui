@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Checker {
+class Checker: Checkable {
     func checkCorrect(targets: [String]) -> [Bool] {
         var checkResults = [Bool]()
         

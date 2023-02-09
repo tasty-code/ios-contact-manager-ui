@@ -33,6 +33,9 @@
 		F00F751B2988A76800612BF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00F751A2988A76800612BF3 /* Assets.xcassets */; };
 		F00F751E2988A76800612BF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00F751C2988A76800612BF3 /* LaunchScreen.storyboard */; };
 		F00F75292988A76800612BF3 /* ContactManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F75282988A76800612BF3 /* ContactManagerUITests.swift */; };
+		F018144729948E34003EF614 /* Convertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144629948E34003EF614 /* Convertable.swift */; };
+		F018144929948EC9003EF614 /* Detectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144829948EC9003EF614 /* Detectable.swift */; };
+		F018144B29948F0C003EF614 /* Checkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144A29948F0C003EF614 /* Checkable.swift */; };
 		F01AEAAB2990DEDF00CEB882 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AEAAA2990DEDF00CEB882 /* Errors.swift */; };
 		F01AEAAC2990E4BD00CEB882 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AEAAA2990DEDF00CEB882 /* Errors.swift */; };
 		F042BC132952CC5000722285 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC122952CC5000722285 /* main.swift */; };
@@ -89,6 +92,9 @@
 		F00F751F2988A76800612BF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F00F75242988A76800612BF3 /* ContactManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00F75282988A76800612BF3 /* ContactManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerUITests.swift; sourceTree = "<group>"; };
+		F018144629948E34003EF614 /* Convertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convertable.swift; sourceTree = "<group>"; };
+		F018144829948EC9003EF614 /* Detectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detectable.swift; sourceTree = "<group>"; };
+		F018144A29948F0C003EF614 /* Checkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkable.swift; sourceTree = "<group>"; };
 		F01AEAAA2990DEDF00CEB882 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		F042BC0F2952CC5000722285 /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		F042BC122952CC5000722285 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -178,6 +184,16 @@
 			path = ContactManagerUITests;
 			sourceTree = "<group>";
 		};
+		F018144529948E07003EF614 /* SubModel */ = {
+			isa = PBXGroup;
+			children = (
+				F042BC1F29541E3200722285 /* Converter.swift */,
+				F042BC1D29541C2B00722285 /* Detector.swift */,
+				F0A68C2C29556D7D00815CD6 /* Checker.swift */,
+			);
+			path = SubModel;
+			sourceTree = "<group>";
+		};
 		F042BC062952CC5000722285 = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +243,9 @@
 				F00E9EAB298CEF6500260920 /* ReusableTableViewCell.swift */,
 				5BF3C8E729932A7700BC123D /* SendContactDataDelegate.swift */,
 				5BF3C8EE2993944C00BC123D /* JSONParsable.swift */,
+				F018144629948E34003EF614 /* Convertable.swift */,
+				F018144829948EC9003EF614 /* Detectable.swift */,
+				F018144A29948F0C003EF614 /* Checkable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -234,11 +253,9 @@
 		F0A68C2F29556F3D00815CD6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F018144529948E07003EF614 /* SubModel */,
 				F0873C52295A8AC00097B804 /* ContactManager.swift */,
 				F042BC192952DCFA00722285 /* ContactInformation.swift */,
-				F042BC1F29541E3200722285 /* Converter.swift */,
-				F042BC1D29541C2B00722285 /* Detector.swift */,
-				F0A68C2C29556D7D00815CD6 /* Checker.swift */,
 				F01AEAAA2990DEDF00CEB882 /* Errors.swift */,
 				5BF3C8F0299394A300BC123D /* JSONManagement.swift */,
 			);
@@ -410,8 +427,11 @@
 				F042BC132952CC5000722285 /* main.swift in Sources */,
 				5B0ABEEF295D334C005B674C /* SystemMenuWorkable.swift in Sources */,
 				F042BC1E29541C2B00722285 /* Detector.swift in Sources */,
+				F018144B29948F0C003EF614 /* Checkable.swift in Sources */,
 				F0A68C2D29556D7D00815CD6 /* Checker.swift in Sources */,
+				F018144729948E34003EF614 /* Convertable.swift in Sources */,
 				5B63007B2955637200730005 /* RegularExpression.swift in Sources */,
+				F018144929948EC9003EF614 /* Detectable.swift in Sources */,
 				F0873C53295A8AC00097B804 /* ContactManager.swift in Sources */,
 				F042BC2029541E3200722285 /* Converter.swift in Sources */,
 				F00E9EAC298CEF6500260920 /* ReusableTableViewCell.swift in Sources */,
