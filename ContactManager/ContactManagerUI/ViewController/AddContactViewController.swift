@@ -83,6 +83,7 @@ final class AddContactViewController: UIViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension AddContactViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
@@ -101,7 +102,7 @@ extension AddContactViewController {
     private func formattedPhoneNumber(with text: String?) -> String {
         let pureNumbers = text?.filter { $0.isNumber } ?? ""
         let pattern = createPhoneNumberPattern(with: pureNumbers)
-            return applyPatternOn(pureNumbers: pureNumbers, pattern: pattern, replacementCharacter: "#")
+        return applyPatternOn(pureNumbers: pureNumbers, pattern: pattern, replacementCharacter: "#")
     }
 
     private func createPhoneNumberPattern(with pureNumbers: String) -> String {
