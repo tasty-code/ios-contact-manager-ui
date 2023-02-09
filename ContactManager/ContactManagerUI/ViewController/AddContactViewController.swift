@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol AddContactViewControllerDelegate {
-    func didContactChanged()
+protocol AddContactViewControllerDelegate: AnyObject {
+    func addContactViewController(_ addContactViewController: AddContactViewController, didAddContact contact: Contact)
 }
 
 final class AddContactViewController: UIViewController {
     // MARK: - Properties
-    var delegate: AddContactViewControllerDelegate?
+    weak var delegate: AddContactViewControllerDelegate?
     
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var ageTextField: UITextField!
@@ -43,7 +43,7 @@ final class AddContactViewController: UIViewController {
             let contact = try InputManager.contact(from: inputArray)
             ContactManager.shared.add(contact: contact)
             dismiss(animated: true) {
-                self.delegate?.didContactChanged()
+                self.delegate?.addContactViewController(self, didAddContact: contact)
             }
         } catch {
             showFailAlert(withTitle: error.localizedDescription)
