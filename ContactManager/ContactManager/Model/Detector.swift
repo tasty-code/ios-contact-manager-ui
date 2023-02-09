@@ -8,27 +8,14 @@
 import Foundation
 
 class Detector {
-    func excludeSpaceWord(_ originInputData: [Character]) -> [Character] {
-        var filteredData = [Character]()
+    func removeSpace(_ characters: [Character]) -> [Character] {
+        var verifiedCharacters = [Character]()
         
-        for element in originInputData {
-            if element != " " {
-                filteredData.append(element)
+        for character in characters {
+            if character != " " {
+                verifiedCharacters.append(character)
             }
         }
-        return filteredData
-    }
-    
-    func extractIndexWithSlash(from originInputData: [Character]) -> [Int] {
-        var indexCounter = 0
-        var dividerIndexesArray = [Int]()
-        
-        for element in originInputData {
-            if element == "/" {
-                dividerIndexesArray.append(indexCounter)
-            }
-            indexCounter += 1
-        }
-        return dividerIndexesArray
+        return verifiedCharacters
     }
 }
