@@ -14,11 +14,13 @@ class ContactViewController: UIViewController {
     @IBAction func addContact(_ sender: UIBarButtonItem) {
         let addContactViewController = AddContactViewController()
         addContactViewController.delegate = self
+        
         present(addContactViewController, animated: true)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
     }
@@ -43,19 +45,23 @@ extension ContactViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIndentifier = "ContactCell"
+
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIndentifier, for: indexPath)
         cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIndentifier)
         cell.accessoryType = .disclosureIndicator
         cell.contentConfiguration = configure(cell: cell, at: indexPath)
+        
         return cell
     }
     
     private func configure(cell: UITableViewCell, at indexPath: IndexPath) -> UIListContentConfiguration {
         var content = cell.defaultContentConfiguration()
+        
         content.text = "\(contacts[indexPath.row].name)(\(contacts[indexPath.row].age))"
         content.secondaryText = "\(contacts[indexPath.row].phoneNumber)"
         content.textProperties.font = .systemFont(ofSize: 16)
         content.secondaryTextProperties.font = .systemFont(ofSize: 16)
+        
         return content
     }
 }
@@ -65,6 +71,7 @@ extension ContactViewController: UITableViewDelegate {
 }
 
 extension ContactViewController: AddContactViewDelegate {
+    
     func reloadTableView() {
         contactsTableView.reloadData()
     }

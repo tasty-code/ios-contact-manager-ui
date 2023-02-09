@@ -19,38 +19,48 @@ class AddContactViewController: UIViewController {
     
     private var newContactNavigationBar: UINavigationBar = {
         let navigationBar = UINavigationBar()
+        
         let navigationItem = UINavigationItem(title: "새 연락처")
         let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(cancelButtonTapped))
         let saveItem = UIBarButtonItem(barButtonSystemItem: .save, target: nil, action: #selector(saveButtonTapped))
+        
         navigationItem.leftBarButtonItem = cancelItem
         navigationItem.rightBarButtonItem = saveItem
         navigationBar.setItems([navigationItem], animated: false)
+        
         return navigationBar
     }()
     
     private var nameLabel: UILabel = {
         let label = UILabel()
+        
         label.text = "이름"
         label.textAlignment = .center
+        
         return label
     }()
     
     private var ageLabel: UILabel = {
         let label = UILabel()
+        
         label.text = "나이"
         label.textAlignment = .center
+        
         return label
     }()
     
     private var phoneNumberLabel: UILabel = {
         let label = UILabel()
+        
         label.text = "연락처"
         label.textAlignment = .center
+        
         return label
     }()
     
     private var nameTextField: UITextField = {
         let textField = UITextField()
+        
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.cornerRadius = 5.0
@@ -59,11 +69,13 @@ class AddContactViewController: UIViewController {
         
         textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 8.0, height: 0.0))
         textField.leftViewMode = .always
+        
         return textField
     }()
     
     private var ageTextField: UITextField = {
         let textField = UITextField()
+        
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.cornerRadius = 5.0
@@ -73,11 +85,13 @@ class AddContactViewController: UIViewController {
         textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 8.0, height: 0.0))
         textField.leftViewMode = .always
         textField.keyboardType = .numberPad
+        
         return textField
     }()
     
     private var phoneNumberTextField: UITextField = {
         let textField = UITextField()
+        
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.cornerRadius = 5.0
@@ -87,42 +101,51 @@ class AddContactViewController: UIViewController {
         textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 8.0, height: 0.0))
         textField.leftViewMode = .always
         textField.keyboardType = .phonePad
+        
         return textField
     }()
     
     private var nameStackView: UIStackView = {
         let stackView = UIStackView()
+        
         stackView.alignment = .fill
         stackView.distribution = .fill
         stackView.spacing = 8
         stackView.axis = .horizontal
+        
         return stackView
     }()
     
     private var ageStackView: UIStackView = {
         let stackView = UIStackView()
+        
         stackView.alignment = .fill
         stackView.distribution = .fill
         stackView.spacing = 8
         stackView.axis = .horizontal
+        
         return stackView
     }()
     
     private var phoneNumberStackView: UIStackView = {
         let stackView = UIStackView()
+        
         stackView.alignment = .fill
         stackView.distribution = .fill
         stackView.spacing = 8
         stackView.axis = .horizontal
+        
         return stackView
     }()
     
     private var contactInfoStackView: UIStackView = {
         let stackView = UIStackView()
+        
         stackView.alignment = .fill
         stackView.distribution = .fill
         stackView.spacing = 20
         stackView.axis = .vertical
+        
         return stackView
     }()
     
@@ -130,11 +153,12 @@ class AddContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
         addSubview()
         configureLayout()
-        
         nameTextField.becomeFirstResponder()
+        
         nameTextField.delegate = self
         ageTextField.delegate = self
         phoneNumberTextField.delegate = self
@@ -148,6 +172,7 @@ class AddContactViewController: UIViewController {
     private func addSubview() {
         view.addSubview(newContactNavigationBar)
         view.addSubview(contactInfoStackView)
+        
         contactInfoStackView.addArrangedSubview(nameStackView)
         contactInfoStackView.addArrangedSubview(ageStackView)
         contactInfoStackView.addArrangedSubview(phoneNumberStackView)
@@ -170,14 +195,14 @@ class AddContactViewController: UIViewController {
             newContactNavigationBar.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             newContactNavigationBar.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             newContactNavigationBar.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            newContactNavigationBar.widthAnchor.constraint(equalTo: view.widthAnchor),
+            newContactNavigationBar.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
         
         contactInfoStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             contactInfoStackView.topAnchor.constraint(equalTo: newContactNavigationBar.bottomAnchor, constant: 20),
             contactInfoStackView.leadingAnchor.constraint(equalTo:safeArea.leadingAnchor, constant: 20),
-            contactInfoStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
+            contactInfoStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20)
         ])
         
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -204,7 +229,6 @@ class AddContactViewController: UIViewController {
     }
     
     @objc private func saveButtonTapped() {
-        
         guard var inputName = nameTextField.text, let inputAge = ageTextField.text, let inputPhoneNumber = phoneNumberTextField.text else {
             return
         }
@@ -219,7 +243,7 @@ class AddContactViewController: UIViewController {
     }
     
     private func validate(nameValue: String, ageValue: String, phoneNumberValue: String) -> Bool {
-        let validationResultPair = ["이름" : hasNoNameError(name: nameValue), "나이" : hasNoAgeError(age: ageValue), "연락처" : hasNoPhoneNumberError(number: phoneNumberValue)]
+        let validationResultPair = ["이름": hasNoNameError(name: nameValue), "나이": hasNoAgeError(age: ageValue), "연락처": hasNoPhoneNumberError(number: phoneNumberValue)]
         
         let errorCategories = Array(validationResultPair.filter { $0.value == false }.keys)
         
@@ -228,12 +252,14 @@ class AddContactViewController: UIViewController {
             showErrorAlert(with: errorTitle)
             return false
         }
+        
         return true
     }
     
     private func makeContact(with name: String, with age: String, with phoneNumber: String) {
         guard let age = Int(age) else { return }
         let contact = Contact(name: name, age: String(age), phoneNumber: phoneNumber)
+        
         contacts.append(contact)
     }
     
@@ -252,6 +278,7 @@ class AddContactViewController: UIViewController {
         
         alert.addAction(cancelAction)
         alert.addAction(confirmAction)
+        
         self.present(alert, animated: true)
     }
     
@@ -262,14 +289,17 @@ class AddContactViewController: UIViewController {
         }
         errorKeywords.removeFirst()
         let errorTitle = "입력한 \(errorKeywords) 정보가 잘못되었습니다"
+        
         return errorTitle
     }
+    
     private func showErrorAlert(with errorTitle: String) {
         let confirmActionTitle: String = "확인"
         
         let alert = UIAlertController(title: errorTitle, message: nil, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: confirmActionTitle, style: .default)
         alert.addAction(confirmAction)
+        
         self.present(alert, animated: true)
     }
     

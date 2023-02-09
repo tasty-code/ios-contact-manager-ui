@@ -8,7 +8,8 @@
 import UIKit
 
 extension UITextField {
-    func addDoneButtonToKeyboard(doneAction: Selector?){
+    
+    func addDoneButtonToKeyboard(doneAction: Selector?) {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
         doneToolbar.barStyle = UIBarStyle.default
         
@@ -25,7 +26,7 @@ extension UITextField {
         self.inputAccessoryView = doneToolbar
     }
     
-    func addHyphenAndDoneButtonToKeyboard(doneAction: Selector?, hyphenAction: Selector?){
+    func addHyphenAndDoneButtonToKeyboard(doneAction: Selector?, hyphenAction: Selector?) {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
         doneToolbar.barStyle = UIBarStyle.default
         
