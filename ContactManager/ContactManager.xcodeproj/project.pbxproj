@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B41E9C4A29921B50008843F1 /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41E9C4929921B50008843F1 /* PhoneNumberTextField.swift */; };
 		B4563890298CA7E100C42861 /* ContactDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456388F298CA7E100C42861 /* ContactDataSource.swift */; };
 		B4CA5ACC2952ECA200D7C823 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACB2952ECA200D7C823 /* InputManager.swift */; };
 		B4CA5AD02953FC1400D7C823 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA5ACF2953FC1400D7C823 /* InputError.swift */; };
@@ -53,7 +52,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B41E9C4929921B50008843F1 /* PhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTextField.swift; sourceTree = "<group>"; };
 		B456388F298CA7E100C42861 /* ContactDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDataSource.swift; sourceTree = "<group>"; };
 		B4CA5ACB2952ECA200D7C823 /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
 		B4CA5ACF2953FC1400D7C823 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 			children = (
 				E76B5B5D2987A5ED002E2C99 /* Main.storyboard */,
 				E700DC0A2989F5CC00A090E1 /* ContactCell.swift */,
-				B41E9C4929921B50008843F1 /* PhoneNumberTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,7 +305,6 @@
 				E7F41927298C9984007D591D /* Extension+UITableView.swift in Sources */,
 				E76B5B6F2987A619002E2C99 /* ExtensionString.swift in Sources */,
 				E76B5B692987A607002E2C99 /* Contact.swift in Sources */,
-				B41E9C4A29921B50008843F1 /* PhoneNumberTextField.swift in Sources */,
 				E7F41925298C9824007D591D /* Extension+UITableViewCell.swift in Sources */,
 				E76B5B702987A61A002E2C99 /* ExtensionArray.swift in Sources */,
 				E76B5B6D2987A611002E2C99 /* ContactManager.swift in Sources */,
