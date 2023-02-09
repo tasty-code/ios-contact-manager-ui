@@ -13,14 +13,14 @@ class JSONManangement: JSONParsable {
         
         guard let filePath = Bundle.main.url(forResource: filename, withExtension: nil) else {
             print("\(filename) not found.")
-            throw Errors.notFoundJSONFile
+            throw JSONErrors.notFoundJSONFile
         }
         
         do {
             data = try Data(contentsOf: filePath)
         } catch {
             print("Could not load \(filename): (error)")
-            throw Errors.notLoadData
+            throw JSONErrors.notLoadData
         }
         
         do {
@@ -28,7 +28,7 @@ class JSONManangement: JSONParsable {
             return try JSONDecoder.decode(T.self, from: data)
         } catch {
             print("Unable to decode \(filename): (error)")
-            throw Errors.unableToDecode
+            throw JSONErrors.unableToDecode
         }
     }
     

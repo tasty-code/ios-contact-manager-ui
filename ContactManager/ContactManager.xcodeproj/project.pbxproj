@@ -34,7 +34,7 @@
 		F018144729948E34003EF614 /* Convertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144629948E34003EF614 /* Convertable.swift */; };
 		F018144929948EC9003EF614 /* Detectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144829948EC9003EF614 /* Detectable.swift */; };
 		F018144B29948F0C003EF614 /* Checkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018144A29948F0C003EF614 /* Checkable.swift */; };
-		F01AEAAC2990E4BD00CEB882 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AEAAA2990DEDF00CEB882 /* Errors.swift */; };
+		F01AEAAC2990E4BD00CEB882 /* JSONErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AEAAA2990DEDF00CEB882 /* JSONErrors.swift */; };
 		F042BC132952CC5000722285 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC122952CC5000722285 /* main.swift */; };
 		F042BC1A2952DCFA00722285 /* ContactInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC192952DCFA00722285 /* ContactInformation.swift */; };
 		F042BC1C2952DD1700722285 /* PrintMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042BC1B2952DD1700722285 /* PrintMessage.swift */; };
@@ -93,7 +93,7 @@
 		F018144629948E34003EF614 /* Convertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convertable.swift; sourceTree = "<group>"; };
 		F018144829948EC9003EF614 /* Detectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detectable.swift; sourceTree = "<group>"; };
 		F018144A29948F0C003EF614 /* Checkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkable.swift; sourceTree = "<group>"; };
-		F01AEAAA2990DEDF00CEB882 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		F01AEAAA2990DEDF00CEB882 /* JSONErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONErrors.swift; sourceTree = "<group>"; };
 		F042BC0F2952CC5000722285 /* ContactManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		F042BC122952CC5000722285 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F042BC192952DCFA00722285 /* ContactInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInformation.swift; sourceTree = "<group>"; };
@@ -137,7 +137,6 @@
 			children = (
 				F00F75172988A76700612BF3 /* Main.storyboard */,
 				F00F751C2988A76800612BF3 /* LaunchScreen.storyboard */,
-				F00F751A2988A76800612BF3 /* Assets.xcassets */,
 				F00E9EAE298CF01100260920 /* Extension+UITableViewCell.swift */,
 				F00E9EB1298CF01D00260920 /* Extension+UITableView.swift */,
 				5BF3C8EA299331DC00BC123D /* Extension+Alert.swift */,
@@ -192,12 +191,31 @@
 			path = UI_Model;
 			sourceTree = "<group>";
 		};
+		5BDD54892994D6C10048AD63 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				5BF3C8F0299394A300BC123D /* JSONManagement.swift */,
+				F01AEAAA2990DEDF00CEB882 /* JSONErrors.swift */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		5BDD548A2994D7280048AD63 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F0CF96472989F03E003183C7 /* Dummy.json */,
+				F00F751A2988A76800612BF3 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		F00F75102988A76700612BF3 /* ContactManagerUI */ = {
 			isa = PBXGroup;
 			children = (
 				5B1859F72988AA3100EFC383 /* Controller */,
 				5B1859F62988AA1100EFC383 /* View */,
 				5B855192298CF65A009A0CE0 /* AppConfiguration */,
+				5BDD548A2994D7280048AD63 /* Resource */,
 				F00F751F2988A76800612BF3 /* Info.plist */,
 			);
 			path = ContactManagerUI;
@@ -257,7 +275,6 @@
 			children = (
 				F042BC1B2952DD1700722285 /* PrintMessage.swift */,
 				5B63007A2955637200730005 /* RegularExpression.swift */,
-				F0CF96472989F03E003183C7 /* Dummy.json */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -276,10 +293,9 @@
 			isa = PBXGroup;
 			children = (
 				F018144529948E07003EF614 /* SubModel */,
+				5BDD54892994D6C10048AD63 /* JSON */,
 				F0873C52295A8AC00097B804 /* ContactManager.swift */,
 				F042BC192952DCFA00722285 /* ContactInformation.swift */,
-				F01AEAAA2990DEDF00CEB882 /* Errors.swift */,
-				5BF3C8F0299394A300BC123D /* JSONManagement.swift */,
 				5BDD5485299492320048AD63 /* WorkList.swift */,
 			);
 			path = Model;
@@ -414,7 +430,7 @@
 				F00F75162988A76700612BF3 /* ContactManagerTableViewController.swift in Sources */,
 				5B1859FD2988AA9400EFC383 /* PrintMessage.swift in Sources */,
 				F0B3823C2991DF2500136EE7 /* AddNewContactViewController.swift in Sources */,
-				F01AEAAC2990E4BD00CEB882 /* Errors.swift in Sources */,
+				F01AEAAC2990E4BD00CEB882 /* JSONErrors.swift in Sources */,
 				F00E9EB0298CF01100260920 /* Extension+UITableViewCell.swift in Sources */,
 				5BF3C8F3299394C400BC123D /* JSONParsable.swift in Sources */,
 				F00E9EAD298CEF6500260920 /* ReusableTableViewCell.swift in Sources */,
