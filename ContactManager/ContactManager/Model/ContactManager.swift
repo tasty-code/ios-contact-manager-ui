@@ -82,9 +82,9 @@ extension ContactManager: SystemMenuWorkable {
     }
     
     func removeBlankInput(value: String) -> String {
-        let convertedUserInputValues = convertor.convertToCharacter(this: value)
+        let convertedUserInputValues = convertor.renderToCharacter(value)
         let removedBlankUserInputValues = detector.excludeSpaceWord(convertedUserInputValues)
-        let validName = convertor.convertToString(removedBlankUserInputValues)
+        let validName = convertor.renderToString(removedBlankUserInputValues)
         return validName
     }
     

@@ -8,16 +8,16 @@
 import Foundation
 
 class Converter {
-    func convertToCharacter(this sentence: String) -> [Character] {
-        var characterArray = [Character]()
+    func renderToCharacter(_ sentence: String) -> [Character] {
+        var characters = [Character]()
         
-        for index in sentence {
-            characterArray.append(index)
+        for character in sentence {
+            characters.append(character)
         }
-        return characterArray
+        return characters
     }
     
-    func convertToString(_ word: [Character]) -> String {
-        return String(word)
+    func renderToString(_ characters: [Character]) -> String {
+        return String(characters)
     }
 }
