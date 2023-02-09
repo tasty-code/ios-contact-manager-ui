@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SystemMenuWorkable {
+internal protocol SystemMenuWorkable {
     func addContact()
     func viewContactList(value: Set<ContactInformation>)
     func searchByName(value: Set<ContactInformation>)
