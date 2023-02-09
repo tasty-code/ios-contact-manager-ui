@@ -111,4 +111,3 @@ struct ContactManager {
         return command
     }
 }
-

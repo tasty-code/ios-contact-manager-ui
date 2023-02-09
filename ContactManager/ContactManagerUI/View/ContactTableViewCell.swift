@@ -8,23 +8,11 @@
 import UIKit
 
 final class ContactTableViewCell: UITableViewCell {
-
     @IBOutlet private weak var nameAndAge: UILabel!
     @IBOutlet private weak var phoneNumber: UILabel!
 
     static var className: String {
         return String(describing: self)
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 }
 

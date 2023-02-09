@@ -76,4 +76,3 @@ func isValidPhoneNumber(_ phoneNumber: String) throws {
         }
     }
 }
-

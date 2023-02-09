@@ -8,7 +8,6 @@
 import UIKit
 
 final class ContactsViewController: UIViewController {
-
     @IBOutlet private weak var tableView: UITableView!
 
     private var contacts = [
