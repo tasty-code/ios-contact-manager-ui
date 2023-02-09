@@ -12,6 +12,12 @@ final class ContactViewController: UIViewController {
     @IBOutlet private weak var contactTableView: UITableView!
     
     private let contactDataSource = ContactDataSource()
+    private var contacts: [Contact] = [] {
+        didSet {
+            contactDataSource.contacts = contacts
+            contactTableView.reloadData()
+        }
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,12 +42,12 @@ final class ContactViewController: UIViewController {
         mockupContacts.forEach {
             ContactManager.shared.add(contact: $0)
         }
-        contactTableView.reloadData()
+        contacts = ContactManager.shared.fetchContacts()
     }
 }
 
 extension ContactViewController: AddContactViewControllerDelegate {
     func addContactViewController(_ addContactViewController: AddContactViewController, didAddContact contact: Contact) {
-        contactTableView.reloadData()
+        contacts.append(contact)
     }
 }

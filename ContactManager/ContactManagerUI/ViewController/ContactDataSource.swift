@@ -9,9 +9,7 @@ import UIKit
 
 final class ContactDataSource: NSObject, UITableViewDataSource {
 
-    private var contacts: [Contact] {
-        ContactManager.shared.fetchContacts()
-    }
+    var contacts: [Contact] = []
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count
