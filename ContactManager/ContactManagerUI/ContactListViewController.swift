@@ -68,15 +68,17 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
         
         let delete = UIContextualAction(style: .normal, title: "delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             
-            // 여기에 지우는 로직 추가
+            let selectedItem = self.contactUIManager.getContactsData()[indexPath.row]
             
+            self.contactUIManager.deleteContactData(of: selectedItem)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.left)
+            self.contactUIManager.setStoredContactsData()
             success(true)
         }
         delete.backgroundColor = .systemRed
         
         let config = UISwipeActionsConfiguration(actions: [delete])
-        config.performsFirstActionWithFullSwipe = false
-        
+        config.performsFirstActionWithFullSwipe = true
         return config
     }
 }

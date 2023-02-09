@@ -55,15 +55,15 @@ final class DataManager {
     func countContactLists() -> Int {
         return contacts.count
     }
+    
+    func deleteContact(of data: Person) {
+        contacts.remove(data)
+    }
 }
 
 extension DataManager {
     func clearAllStoredDataForTest() {
         dataStore.removeObject(forKey: userDefaultKey.contacts.rawValue)
-        clearLocalContactData()
-    }
-    
-    private func clearLocalContactData() {
         contacts.removeAll()
     }
 }

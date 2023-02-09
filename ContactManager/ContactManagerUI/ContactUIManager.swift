@@ -51,6 +51,10 @@ extension ContactUIManager {
         dataManager.setContact(contactData)
     }
     
+    func deleteContactData(of data:Person) {
+        dataManager.deleteContact(of: data)
+    }
+    
     func getContactsData() -> [Person]  {
         let persons = dataManager.getcontactsDataAsPerson()
         return persons
@@ -92,6 +96,7 @@ extension ContactUIManager {
         }
     }
 }
+
 // for test
 extension ContactUIManager {
     func clearAllStoredDataForTest() {
