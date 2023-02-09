@@ -7,4 +7,9 @@
 
 import Foundation
 
-ContactManager().startProcess()
+let detector = Detector()
+let convertor = Converter()
+let checker = Checker()
+let contactManager = ContactManager(detector: detector, convertor: convertor, checker: checker)
+
+contactManager.startProcess()

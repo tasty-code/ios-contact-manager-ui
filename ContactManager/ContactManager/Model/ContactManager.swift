@@ -9,9 +9,15 @@ import Foundation
 
 final class ContactManager: InputPossible {
     var contactInformationArray: Set<ContactInformation> = []
-    let detector: Detectable = Detector()
-    let convertor: Convertable = Converter()
-    let checker: Checkable = Checker()
+    let detector: Detectable
+    let convertor: Convertable
+    let checker: Checkable
+    
+    init(detector: Detectable, convertor: Convertable, checker: Checkable) {
+        self.detector = detector
+        self.convertor = convertor
+        self.checker = checker
+    }
     
     func startProcess() {
         var identifier: Bool = true
