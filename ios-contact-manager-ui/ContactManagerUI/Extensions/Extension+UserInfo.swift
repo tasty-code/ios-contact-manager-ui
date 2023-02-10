@@ -8,10 +8,10 @@
 import Foundation
 
 extension UserInfo {
-    var title: String {
+    var text: String {
         "\(self.name)(\(self.age))"
     }
-    var subtitle: String {
+    var secondaryText: String {
         self.phone
     }
 }
