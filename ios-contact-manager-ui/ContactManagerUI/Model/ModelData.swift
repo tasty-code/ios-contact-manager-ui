@@ -17,6 +17,7 @@ extension ModelData {
         do {
             return try decoder()
         } catch {
+            print(error.localizedDescription)
             return []
         }
     }
