@@ -98,12 +98,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRD-aI-T2G">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRD-aI-T2G">
                                                 <rect key="frame" x="70.666666666666657" y="0.0" width="282.33333333333337" height="34"/>
                                                 <accessibility key="accessibilityConfiguration" label="이름 입력칸">
                                                     <accessibilityTraits key="traits" none="YES"/>
                                                 </accessibility>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                                             </textField>
                                         </subviews>
@@ -117,10 +117,10 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4mA-We-aYk">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4mA-We-aYk">
                                                 <rect key="frame" x="70.666666666666657" y="0.0" width="282.33333333333337" height="34"/>
                                                 <accessibility key="accessibilityConfiguration" label="나이 입력칸"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
@@ -134,10 +134,10 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JgN-bY-Sxl">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JgN-bY-Sxl">
                                                 <rect key="frame" x="70.666666666666657" y="0.0" width="282.33333333333337" height="34"/>
                                                 <accessibility key="accessibilityConfiguration" label="연락처 입력칸"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                             </textField>
                                         </subviews>
@@ -145,7 +145,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="JgN-bY-Sxl" firstAttribute="width" secondItem="HRD-aI-T2G" secondAttribute="width" id="3Go-2B-zqT"/>
-                                    <constraint firstItem="HRD-aI-T2G" firstAttribute="width" secondItem="zlZ-Xl-cv3" secondAttribute="width" multiplier="80%" id="ZWr-pW-0dX"/>
+                                    <constraint firstItem="HRD-aI-T2G" firstAttribute="width" relation="lessThanOrEqual" secondItem="zlZ-Xl-cv3" secondAttribute="width" multiplier="80%" id="ZWr-pW-0dX"/>
                                     <constraint firstItem="4mA-We-aYk" firstAttribute="width" secondItem="HRD-aI-T2G" secondAttribute="width" id="pnd-W6-8KR"/>
                                 </constraints>
                             </stackView>
