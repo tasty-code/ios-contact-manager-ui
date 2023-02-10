@@ -7,11 +7,11 @@
 
 import Foundation
 
-extension UserInfo {
-    var text: String {
-        "\(self.name)(\(self.age))"
+extension UserInfo: CellFormat {
+    var mainText: String {
+        return "\(name) (\(age))"
     }
-    var secondaryText: String {
-        self.phone
+    var subText: String {
+        return "\(phone)"
     }
 }

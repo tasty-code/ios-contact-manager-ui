@@ -9,29 +9,14 @@ import UIKit
 
 class ContactCell: UITableViewCell {
     
-    var content: cellFormat?
+    var content: CellFormat?
     
     override func updateConfiguration(using state: UICellConfigurationState) {
-        var configuration = defaultContentConfiguration()
+        var configuration = defaultContentConfiguration().updated(for: state)
         configuration.text = content?.mainText
         configuration.textProperties.font = .preferredFont(forTextStyle: .headline)
         configuration.secondaryText = content?.subText
         configuration.secondaryTextProperties.font = .preferredFont(forTextStyle: .body)
         contentConfiguration = configuration
-    }
-}
-
-
-protocol cellFormat {
-    var mainText: String { get }
-    var subText: String { get }
-}
-
-extension UserInfo: cellFormat {
-    var mainText: String {
-        return "\(name)(\(age))"
-    }
-    var subText: String {
-        return "\(phone)"
     }
 }
