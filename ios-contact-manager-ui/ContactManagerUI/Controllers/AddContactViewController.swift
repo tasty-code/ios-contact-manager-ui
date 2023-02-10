@@ -9,9 +9,9 @@ import UIKit
 
 final class AddContactViewController: UIViewController {
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
-    @IBOutlet weak var contactTextField: UITextField!
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var ageTextField: UITextField!
+    @IBOutlet private weak var contactTextField: UITextField!
     
     weak var newContactDelegate: NewContactDelegate?
     
@@ -20,11 +20,16 @@ final class AddContactViewController: UIViewController {
         contactTextField.delegate = self
     }
     
-    @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let name = nameTextField.text, let age = ageTextField.text, let contact = contactTextField.text else { return }
+    @IBAction private func saveButtonTapped(_ sender: Any) {
+        guard let name = nameTextField.text,
+              let age = ageTextField.text,
+              let contact = contactTextField.text else {
+            return
+        }
+
         do {
             let newContact = try UserInfo(name: name, age: age, phone: contact)
-            ModelData.shared.add(user: newContact)
+            ContactsController.shared.add(user: newContact)
             newContactDelegate?.addNewContact()
             self.dismiss(animated: true)
         } catch {
@@ -32,13 +37,13 @@ final class AddContactViewController: UIViewController {
         }
     }
     
-    @IBAction func cancelButtonTapped(_ sender: Any) {
+    @IBAction private func cancelButtonTapped(_ sender: Any) {
         makeCancelAlert()
     }
 }
 
 extension AddContactViewController {
-    func makeErrorAlert(description: String) {
+    private func makeErrorAlert(description: String) {
         let alert = UIAlertController(
             title: description,
             message: nil,
@@ -49,7 +54,7 @@ extension AddContactViewController {
         self.present(alert, animated: true)
     }
     
-    func makeCancelAlert() {
+    private func makeCancelAlert() {
         let alert = UIAlertController(
             title: "정말로 취소하시겠습니까?",
             message: nil,
@@ -112,24 +117,4 @@ extension AddContactViewController: UITextFieldDelegate {
         }
         return relocated
     }
-}
-
-
-extension String {
-    static var hyphen: String { "-" }
-    static var empty: String { "" }
-    
-    mutating func insert(_ newElement: Character, at i: Int) {
-        self.insert(newElement, at: self.index(self.startIndex, offsetBy: i))
-    }
-    
-    func inserting(_ newElement: Character, at i: Int) -> String {
-        var newString = self
-        newString.insert(newElement, at: self.index(self.startIndex, offsetBy: i))
-        return newString
-    }
-}
-
-extension Character {
-    static var hyphen: Character { "-" }
 }

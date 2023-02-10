@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class ContactViewController: UIViewController {
-    enum Section {
+final class ContactViewController: UIViewController, UITableViewDelegate {
+    private enum Section {
         case main
     }
     
@@ -22,43 +22,37 @@ final class ContactViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let addViewController = segue.destination as? AddContactViewController else { return }
+        guard let addViewController = segue.destination as? AddContactViewController else {
+            return
+        }
         addViewController.newContactDelegate = self
     }
 
     private func setupTableView() {
-        tableView.delegate = self
         tableView.dataSource = dataSource
-        
-        tableView.register(ContactCell.self, forCellReuseIdentifier: "ContactCell")
+        tableView.register(ContactCell.self)
     }
 }
 
 extension ContactViewController {
     private func setupDataSource() {
         dataSource = DataSource(tableView: tableView) { tableView, indexPath, itemIdentifier in
-            let cell: ContactCell = tableView.dequeue(cellForRowAt: indexPath)
+            let cell = tableView.dequeue(ContactCell.self, cellForRowAt: indexPath)
             cell.content = itemIdentifier
             return cell
         }
-
         dataSource?.update(animatingDifferences: false)
     }
 }
 
-
-extension ContactViewController: UITableViewDelegate {
-
-}
-
 extension ContactViewController {
-    final class DataSource: UITableViewDiffableDataSource<Section, UserInfo> {
+    private final class DataSource: UITableViewDiffableDataSource<Section, UserInfo> {
         typealias Snapshot = NSDiffableDataSourceSnapshot<Section, UserInfo>
 
         func update(animatingDifferences: Bool) {
             var snapshot = Snapshot()
             snapshot.appendSections([.main])
-            snapshot.appendItems(ModelData.shared.contacts)
+            snapshot.appendItems(ContactsController.shared.contacts)
             apply(snapshot, animatingDifferences: animatingDifferences)
         }
 
@@ -69,7 +63,7 @@ extension ContactViewController {
         override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete {
                 if itemIdentifier(for: indexPath) != nil {
-                    ModelData.shared.remove(index: indexPath.row)
+                    ContactsController.shared.remove(index: indexPath.row)
                     update(animatingDifferences: true)
                 }
             }
@@ -79,7 +73,6 @@ extension ContactViewController {
 
 extension ContactViewController: NewContactDelegate {
     func addNewContact() {
-        print("실행됌")
         dataSource?.update(animatingDifferences: true)
     }
 }

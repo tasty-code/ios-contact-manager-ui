@@ -7,25 +7,6 @@
 
 import Foundation
 
-enum JSONError: Error {
-    case FileNotParse
-    case FileNotFound
-    case FileNotLoad
-}
-
-extension JSONError: LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .FileNotParse:
-            return "JSONFile Parsing 실패"
-        case .FileNotFound:
-            return "JSONFile Found 실패"
-        case .FileNotLoad:
-            return "JSONFile Loading 실패"
-        }
-    }
-}
-
 protocol JSONCodable {
     var fileName: String { get }
     func fileURL() throws -> URL
@@ -34,33 +15,23 @@ protocol JSONCodable {
 }
 
 extension JSONCodable {
-    func fileURL() throws -> URL {
-        guard let result = Bundle.main.url(forResource: self.fileName, withExtension: nil) else {
-            throw JSONError.FileNotFound
+    func fileURL() -> URL {
+        guard let url = Bundle.main.url(forResource: self.fileName, withExtension: nil) else {
+            fatalError("\(fileName) 파일이 없습니다.")
         }
-        return result
+        return url
     }
     
     func encoder<E: Encodable>(data newData: E) throws {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        
-        do {
-            let updatedData = try encoder.encode(newData)
-            try updatedData.write(to: fileURL())
-        } catch {
-            throw JSONError.FileNotParse
-        }
+        let updatedData = try encoder.encode(newData)
+        try updatedData.write(to: fileURL())
     }
     
     func decoder<D: Decodable>() throws -> D {
         let decoder = JSONDecoder()
-        
-        do {
-            let data = try Data(contentsOf: fileURL())
-            return try decoder.decode(D.self, from: data)
-        } catch {
-            throw JSONError.FileNotLoad
-        }
+        let data = try Data(contentsOf: fileURL())
+        return try decoder.decode(D.self, from: data)
     }
 }

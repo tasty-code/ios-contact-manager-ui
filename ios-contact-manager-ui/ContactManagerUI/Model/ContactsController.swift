@@ -1,5 +1,5 @@
 //
-//  ModelData.swift
+//  ContactsController.swift
 //  ContactManagerUI
 //
 //  Created by 송선진 on 2023/02/01.
@@ -7,15 +7,18 @@
 
 import Foundation
 
-final class ModelData: JSONCodable {
-    static let shared = ModelData()
-    
-    var fileName: String = "contacts.json"
+final class ContactsController: JSONCodable {
+    static let shared = ContactsController()
+    private init() { }
+
+    var fileName: String {
+        return "contacts.json"
+    }
     private(set) lazy var contacts: [UserInfo] = decoding()
 }
 
-extension ModelData {
-    func decoding() -> [UserInfo] {
+extension ContactsController {
+    private func decoding() -> [UserInfo] {
         do {
             return try decoder()
         } catch {
@@ -23,10 +26,10 @@ extension ModelData {
             return []
         }
     }
-    
-    func save(data: [UserInfo]) {
+
+    func save() {
         do {
-            try encoder(data: data)
+            try encoder(data: contacts)
         } catch {
             print(error.localizedDescription)
         }
