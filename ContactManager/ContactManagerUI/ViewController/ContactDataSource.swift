@@ -9,8 +9,10 @@ import UIKit
 
 final class ContactDataSource: NSObject, UITableViewDataSource {
 
-    private var contacts: [Contact] {
-        ContactManager.shared.fetchContacts()
+    var contacts: [Contact] = [] {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name.didUpdateContacts, object: nil)
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -13,7 +13,7 @@ protocol ReusableView {
 
 extension ReusableView {
     static var reuseIdentifier: String {
-        String(describing: ContactCell.self)
+        String(describing: self)
     }
 }
 

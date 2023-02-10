@@ -43,7 +43,8 @@ enum InputManager {
     }
     
     private static func name(from array: [String]) throws -> String {
-        guard let name = array[safe: 0] else {
+        guard let name = array[safe: 0],
+                  !name.isEmpty else {
             throw InputError.invalidName
         }
         

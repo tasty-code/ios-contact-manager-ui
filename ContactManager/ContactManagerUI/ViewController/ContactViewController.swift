@@ -10,26 +10,48 @@ import UIKit
 final class ContactViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet private weak var contactTableView: UITableView!
-
+    
     private let contactDataSource = ContactDataSource()
-
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         fetchContactData()
+        setNotification()
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? AddContactViewController {
+            viewController.delegate = self
+        }
+    }
+    
     // MARK: - Helpers
     private func setupTableView() {
         contactTableView.dataSource = contactDataSource
     }
-
+    
     private func fetchContactData() {
         // 임시 연락처 데이터
         mockupContacts.forEach {
             ContactManager.shared.add(contact: $0)
         }
+        contactDataSource.contacts = ContactManager.shared.fetchContacts()
+    }
+
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadContactTableView), name: NSNotification.Name.didUpdateContacts, object: nil)
+    }
+
+    @objc func reloadContactTableView() {
         contactTableView.reloadData()
+    }
+}
+
+// MARK: - AddContactViewControllerDelegate
+extension ContactViewController: AddContactViewControllerDelegate {
+    func addContactViewController(_ addContactViewController: AddContactViewController, didAddContact contact: Contact) {
+        contactDataSource.contacts.append(contact)
     }
 }
