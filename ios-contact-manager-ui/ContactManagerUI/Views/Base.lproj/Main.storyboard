@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sag-uE-EVQ">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Xtd-Xh-bea">
+            <objects>
+                <navigationController id="Sag-uE-EVQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qTM-vr-b2Z">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gUb-bI-9wp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G6l-RP-q14" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-673" y="-2"/>
+        </scene>
+        <!--연락처-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ContactViewController" customModule="ContactManagerUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="le7-Ff-19g">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="le7-Ff-19g" secondAttribute="bottom" id="bZN-ZK-R1M"/>
+                            <constraint firstItem="le7-Ff-19g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bgs-pi-w3i"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="le7-Ff-19g" secondAttribute="trailing" id="e6n-qN-Emg"/>
+                            <constraint firstItem="le7-Ff-19g" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hu6-Ao-Ewr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="연락처" id="7zr-Fg-1SB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LB1-p7-mWF">
+                            <connections>
+                                <segue destination="ScH-T0-eiD" kind="presentation" id="Rmz-Os-qTL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="le7-Ff-19g" id="sq7-pl-I6c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116.79389312977099" y="-2.1126760563380285"/>
+        </scene>
+        <!--Add Contact View Controller-->
+        <scene sceneID="EGM-1T-mfW">
+            <objects>
+                <viewController id="ScH-T0-eiD" customClass="AddContactViewController" customModule="ContactManagerUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Aw-aW-kPh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtt-mn-TqH">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                                <items>
+                                    <navigationItem title="새 연락처" id="SAi-yp-vYX">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="K7W-vF-54V">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="ScH-T0-eiD" id="3EA-WG-Jv4"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="J7s-ly-ThN">
+                                            <connections>
+                                                <action selector="saveButtonTapped:" destination="ScH-T0-eiD" id="As5-gc-j9j"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="zlZ-Xl-cv3" userLabel="Total Stack View">
+                                <rect key="frame" x="20" y="76" width="353" height="116"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gZ3-xt-vCL" userLabel="Name Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kp9-uv-6ep">
+                                                <rect key="frame" x="0.0" y="0.0" width="60.666666666666664" height="34"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRD-aI-T2G">
+                                                <rect key="frame" x="70.666666666666657" y="0.0" width="282.33333333333337" height="34"/>
+                                                <accessibility key="accessibilityConfiguration" label="이름 입력칸">
+                                                    <accessibilityTraits key="traits" none="YES"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="agF-oi-HUQ" userLabel="Age Stack View">
+                                        <rect key="frame" x="0.0" y="41" width="353" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나이" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0w-Vu-rlI">
+                                                <rect key="frame" x="0.0" y="0.0" width="60.666666666666664" height="34"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4mA-We-aYk">
+                                                <rect key="frame" x="70.666666666666657" y="0.0" width="282.33333333333337" height="34"/>
+                                                <accessibility key="accessibilityConfiguration" label="나이 입력칸"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TOe-pu-ejh" userLabel="Contact Stack View">
+                                        <rect key="frame" x="0.0" y="82" width="353" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연락처" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMF-9J-U0r">
+                                                <rect key="frame" x="0.0" y="0.0" width="60.666666666666664" height="34"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JgN-bY-Sxl">
+                                                <rect key="frame" x="70.666666666666657" y="0.0" width="282.33333333333337" height="34"/>
+                                                <accessibility key="accessibilityConfiguration" label="연락처 입력칸"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="JgN-bY-Sxl" firstAttribute="width" secondItem="HRD-aI-T2G" secondAttribute="width" id="3Go-2B-zqT"/>
+                                    <constraint firstItem="HRD-aI-T2G" firstAttribute="width" relation="lessThanOrEqual" secondItem="zlZ-Xl-cv3" secondAttribute="width" multiplier="80%" id="ZWr-pW-0dX"/>
+                                    <constraint firstItem="4mA-We-aYk" firstAttribute="width" secondItem="HRD-aI-T2G" secondAttribute="width" id="pnd-W6-8KR"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Pvc-Ns-IJP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qtt-mn-TqH" firstAttribute="top" secondItem="4Aw-aW-kPh" secondAttribute="top" id="6IH-3R-ler"/>
+                            <constraint firstAttribute="trailing" secondItem="qtt-mn-TqH" secondAttribute="trailing" id="9im-qd-Ulc"/>
+                            <constraint firstItem="Pvc-Ns-IJP" firstAttribute="trailing" secondItem="zlZ-Xl-cv3" secondAttribute="trailing" constant="20" id="JlZ-eV-UxQ"/>
+                            <constraint firstItem="zlZ-Xl-cv3" firstAttribute="top" secondItem="qtt-mn-TqH" secondAttribute="bottom" constant="20" id="YrC-DK-9tp"/>
+                            <constraint firstItem="zlZ-Xl-cv3" firstAttribute="leading" secondItem="Pvc-Ns-IJP" secondAttribute="leading" constant="20" id="gEh-t8-Wi6"/>
+                            <constraint firstItem="qtt-mn-TqH" firstAttribute="leading" secondItem="4Aw-aW-kPh" secondAttribute="leading" id="uCc-p2-xxA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ageTextField" destination="4mA-We-aYk" id="3XH-Cf-w9v"/>
+                        <outlet property="contactTextField" destination="JgN-bY-Sxl" id="7Gv-kB-fVd"/>
+                        <outlet property="nameTextField" destination="HRD-aI-T2G" id="Oja-FU-7MY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6CN-99-eFt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="898" y="-2"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

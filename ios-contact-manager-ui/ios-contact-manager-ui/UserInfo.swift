@@ -28,7 +28,7 @@ enum UserInfoParameters: String {
     }
 }
 
-struct UserInfo: Codable {
+struct UserInfo: Codable, Hashable {
     let name: String
     let age: Int
     let phone: String
@@ -50,22 +50,10 @@ struct UserInfo: Codable {
 
 extension UserInfo: CustomStringConvertible {
     var description: String {
-        return "\(self.name) / \(self.age) / \(self.phone)"
+        return "\(name) / \(age) / \(phone)"
     }
     
     var addedDescription: String {
-        return "\(self.age)세 \(self.name)(\(self.phone))"
-    }
-}
-
-extension UserInfo: Hashable {
-    static func == (lhs: UserInfo, rhs: UserInfo) -> Bool {
-        return lhs.description == rhs.description
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(name)
-        hasher.combine(age)
-        hasher.combine(phone)
+        return "\(age)세 \(name)(\(phone))"
     }
 }
