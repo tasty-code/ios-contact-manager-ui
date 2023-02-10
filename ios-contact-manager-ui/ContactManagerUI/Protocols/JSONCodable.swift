@@ -7,6 +7,17 @@
 
 import Foundation
 
+enum FileError: Error, LocalizedError {
+    case notFound(fileName: String)
+
+    var errorDescription: String? {
+        switch self {
+        case .notFound(let fileName):
+            return "\(fileName) 파일이 존재하지 않습니다."
+        }
+    }
+}
+
 protocol JSONCodable {
     var fileName: String { get }
     func fileURL() throws -> URL
@@ -15,9 +26,9 @@ protocol JSONCodable {
 }
 
 extension JSONCodable {
-    func fileURL() -> URL {
-        guard let url = Bundle.main.url(forResource: self.fileName, withExtension: nil) else {
-            fatalError("\(fileName) 파일이 없습니다.")
+    func fileURL() throws -> URL {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: nil) else {
+            throw FileError.notFound(fileName: fileName)
         }
         return url
     }
