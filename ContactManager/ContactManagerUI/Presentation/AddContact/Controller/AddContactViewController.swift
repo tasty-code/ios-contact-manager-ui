@@ -52,14 +52,6 @@ final class AddContactViewController: UIViewController {
             guard let age = ageTextField.text else { throw Errors.wrongAge }
             guard let phoneNumber = phoneNumberTextField.text else { throw Errors.wrongPhoneNumber }
             
-            // for test
-            if name == "Outsider" {
-                contactUIManager.clearAllStoredDataForTest()
-                contactListTableView?.reloadData()
-                presentErrorAlert(with: "All contact datas has removed")
-                return
-            }
-            
             let trimmedName = name.split(separator: " ").joined()
             let userInputModel = UserInputModel(name: trimmedName, age: age, phoneNum: phoneNumber)
             

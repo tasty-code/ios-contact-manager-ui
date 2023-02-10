@@ -60,7 +60,7 @@ extension ContactUIManager {
         dataManager.setContact(contactData)
     }
     
-    func deleteContactData(of data:Person) {
+    func deleteContactData(of data: Person) {
         dataManager.deleteContact(of: data)
     }
     
@@ -103,10 +103,5 @@ extension ContactUIManager {
         } catch {
             throw error
         }
-    }
-    
-    func clearAllStoredDataForTest() {
-        dataStore.removeObject(forKey: UserDefaults.Keys.contacts)
-        dataManager.contacts.removeAll()
     }
 }

@@ -12,8 +12,7 @@ final class ContactListViewController: UIViewController {
     // MARK: - Properties
     
     private let contactUIManager = ContactUIManager(validator: Validator())
-
-    private var searchedDataSource: [Person] = []
+    private var searchedContacts: [Person] = []
     private var isSearching: Bool {
         let searchController = navigationItem.searchController
         let isActive = searchController?.isActive ?? false
@@ -79,13 +78,13 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isSearching ? searchedDataSource.count : contactUIManager.countContactLists()
+        return isSearching ? searchedContacts.count : contactUIManager.countContactLists()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(type: ContactTableViewCell.self, indexPath: indexPath)
         guard let cellDataInRow = contactUIManager.getContactsData()[safe: indexPath.row] else { return UITableViewCell() }
-        isSearching ? cell.setData(with: searchedDataSource[indexPath.row]) : cell.setData(with: cellDataInRow)
+        isSearching ? cell.setData(with: searchedContacts[indexPath.row]) : cell.setData(with: cellDataInRow)
         return cell
     }
     
@@ -115,7 +114,7 @@ extension ContactListViewController: UISearchResultsUpdating, UISearchBarDelegat
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
-        searchedDataSource = contactUIManager.getContactsData().filter { $0.name.contains(text) }
+        searchedContacts = contactUIManager.getContactsData().filter { $0.name.contains(text) }
         contactListTableView.reloadData()
     }
 }
