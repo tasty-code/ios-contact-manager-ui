@@ -23,7 +23,7 @@ final class AddContactViewController: UIViewController {
         guard let name = nameTextField.text, let age = ageTextField.text, let contact = contactTextField.text else { return }
         do {
             // TODO: 새로운 연락처 Contacts.json에 추가하기
-            let newContact = try UserInfo(name: name, age: age, phone: contact)
+            _ = try UserInfo(name: name, age: age, phone: contact)
             self.dismiss(animated: true)
         } catch {
             makeErrorAlert(description: error.localizedDescription)
