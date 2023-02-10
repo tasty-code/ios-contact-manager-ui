@@ -12,6 +12,8 @@ final class ContactListViewController: UIViewController {
     // MARK: - Properties
     
     private let contactUIManager = ContactUIManager(validator: Validator())
+    var searchResultTableController: SearchResultTableController!
+    var searchController: UISearchController!
     
     // MARK: - @IBOutlet Properties
 
@@ -45,11 +47,15 @@ extension ContactListViewController {
     }
     
     private func setSearchController() {
-        let searchController = UISearchController()
+
+        searchResultTableController = SearchResultTableController()
+        let searchController = UISearchController(searchResultsController: searchResultTableController)
+
         self.navigationItem.searchController = searchController
         searchController.searchBar.placeholder = "Search User"
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.automaticallyShowsCancelButton = false
+        searchController.searchResultsUpdater = self
     }
 }
 
@@ -90,5 +96,31 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
         let config = UISwipeActionsConfiguration(actions: [delete])
         config.performsFirstActionWithFullSwipe = true
         return config
+    }
+}
+
+//MARK: - UISearchResultUpdating
+
+extension ContactListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+//        searchController.showsSearchResultsController = false
+        if let resultTableViewController = searchController.searchResultsController as? SearchResultTableController {
+
+        }
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text!.isEmpty {
+            searchResultTableController.showSuggestedSearches = false
+        } else {
+            searchResultTableController.showSuggestedSearches = true
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchController.dismiss(animated: true)
+        searchBar.text = ""
     }
 }
