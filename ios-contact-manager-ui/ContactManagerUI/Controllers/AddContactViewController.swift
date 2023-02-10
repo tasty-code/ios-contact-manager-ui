@@ -87,19 +87,14 @@ extension AddContactViewController: UITextFieldDelegate {
     }
     
     private func parse(_ newText: String, using range: NSRange) -> String {
-        switch (range.location, range.length) {
-        case (12, 1...), (11, 0):
-            return relocateHyphen(of: newText, at: LocationsOfHyphen.forTwoFourFour)
-        case (11, 1...):
-            return relocateHyphen(of: newText, at: LocationsOfHyphen.forTwoThreeFour)
-        case (12, 0):
-            return relocateHyphen(of: newText, at: LocationsOfHyphen.forThreeFourFour)
-        case (3, 1...), (7, 1...):
-            return removeLastHyphen(from: newText)
-        case (2, _), (6, _):
-            return newText.inserting(Character.hyphen, at: range.location)
+        let digitString = newText.replacingOccurrences(of: String.hyphen, with: String.empty)
+        switch digitString.count {
+        case ..<10:
+            return relocateHyphen(of: digitString, at: LocationsOfHyphen.forTwoThreeFour)
+        case 10:
+            return relocateHyphen(of: digitString, at: LocationsOfHyphen.forTwoFourFour)
         default:
-            return newText
+            return relocateHyphen(of: digitString, at: LocationsOfHyphen.forThreeFourFour)
         }
     }
     
@@ -111,9 +106,9 @@ extension AddContactViewController: UITextFieldDelegate {
     }
     
     private func relocateHyphen(of string: String, at indices: [Int]) -> String {
-        var relocated = string.replacingOccurrences(of: String.hyphen, with: String.empty)
-        for index in indices {
-            relocated.insert(Character.hyphen, at: index)
+        var relocated = string
+        for (index, stringIndex) in indices.enumerated() where stringIndex - index < string.count {
+            relocated.insert(Character.hyphen, at: stringIndex)
         }
         return relocated
     }
