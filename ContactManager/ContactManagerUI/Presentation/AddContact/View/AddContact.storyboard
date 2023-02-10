@@ -17,9 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" shadowImage=" " translatesAutoresizingMaskIntoConstraints="NO" id="8vX-ll-SYN">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vX-ll-SYN">
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="새 연락처" id="Laz-9j-cIi">
                                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="GZN-nQ-VOi">
@@ -123,7 +122,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name=" " width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

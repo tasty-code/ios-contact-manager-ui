@@ -70,8 +70,17 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cellDataInRow = contactUIManager.getContactsData()[safe: indexPath.row] else { return }
         let alert = UIAlertController(title: "\(cellDataInRow.name)님의\n연락처가 복사되었습니다.", message: nil, preferredStyle: .alert)
-        let action = UIAlertAction(title: "확인", style: .default)
+        let cancel = UIAlertAction(title: "닫기", style: .destructive)
+        let action = UIAlertAction(title: "메시지 보내기", style: .default) { _ in
+            let phoneNum = cellDataInRow.phoneNum
+            if let url = URL(string: "sms://\(phoneNum)") {
+                UIApplication.shared.open(url)
+            }
+        }
+
+        alert.addAction(cancel)
         alert.addAction(action)
+
         present(alert, animated: true)
         UIPasteboard.general.string = cellDataInRow.phoneNum
         tableView.deselectRow(at: indexPath, animated: true)
