@@ -31,9 +31,11 @@ final class ContactViewController: UIViewController {
 
 extension ContactViewController {
     private func setupDataSource() {
-        dataSource = UITableViewDiffableDataSource<Section, UserInfo>(tableView: tableView) { tableView, indexPath, itemIdentifier in
+        dataSource = DataSource(tableView: tableView) { tableView, indexPath, itemIdentifier in
             let identifier = "ContactCell"
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? ContactCell else {
+                fatalError("\(identifier) cell is not registered!")
+            }
             cell.content = itemIdentifier
             return cell
         }
