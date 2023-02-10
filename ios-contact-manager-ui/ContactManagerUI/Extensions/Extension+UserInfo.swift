@@ -11,6 +11,7 @@ extension UserInfo: CellFormat {
     var mainText: String {
         return "\(name) (\(age))"
     }
+    
     var subText: String {
         return "\(phone)"
     }

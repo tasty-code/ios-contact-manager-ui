@@ -1,5 +1,5 @@
 //
-//  ContactTableViewCell.swift
+//  ContactCell.swift
 //  ContactManagerUI
 //
 //  Created by 송선진 on 2023/02/10.

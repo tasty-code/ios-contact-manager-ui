@@ -11,17 +11,12 @@ extension String {
     static var hyphen: String {
         return "-"
     }
+    
     static var empty: String {
         return ""
     }
 
     mutating func insert(_ newElement: Character, at i: Int) {
         insert(newElement, at: index(startIndex, offsetBy: i))
-    }
-
-    func inserting(_ newElement: Character, at i: Int) -> String {
-        var newString = self
-        newString.insert(newElement, at: index(startIndex, offsetBy: i))
-        return newString
     }
 }
