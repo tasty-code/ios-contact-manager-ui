@@ -32,10 +32,7 @@ final class ContactViewController: UIViewController {
 extension ContactViewController {
     private func setupDataSource() {
         dataSource = DataSource(tableView: tableView) { tableView, indexPath, itemIdentifier in
-            let identifier = "ContactCell"
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? ContactCell else {
-                fatalError("\(identifier) cell is not registered!")
-            }
+            let cell: ContactCell = tableView.dequeue(cellForRowAt: indexPath)
             cell.content = itemIdentifier
             return cell
         }
