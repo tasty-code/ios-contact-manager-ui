@@ -39,10 +39,7 @@ final class SearchResultTableViewController: UITableViewController {
         let contacts = filteredContacts
         
         guard let cellDataInRow = contacts[safe: indexPath.row] else { return UITableViewCell() }
-        
-        cell.name.text = cellDataInRow.name
-        cell.age.text = String(cellDataInRow.age)
-        cell.phoneNumber.text = cellDataInRow.phoneNum
+        cell.setData(with: cellDataInRow)
         
         return cell
     }

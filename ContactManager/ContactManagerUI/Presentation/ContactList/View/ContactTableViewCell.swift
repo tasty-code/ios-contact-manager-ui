@@ -9,8 +9,13 @@ import UIKit
 
 final class ContactTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var age: UILabel!
-    @IBOutlet weak var phoneNumber: UILabel!
+    @IBOutlet weak private var name: UILabel!
+    @IBOutlet weak private var age: UILabel!
+    @IBOutlet weak private var phoneNumber: UILabel!
     
+    func setData(with person: Person) {
+        name.text = person.name
+        age.text = String(person.age)
+        phoneNumber.text = person.phoneNum
+    }
 }

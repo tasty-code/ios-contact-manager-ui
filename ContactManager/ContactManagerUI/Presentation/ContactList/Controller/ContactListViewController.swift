@@ -12,9 +12,9 @@ final class ContactListViewController: UIViewController {
     // MARK: - Properties
     
     private let contactUIManager = ContactUIManager(validator: Validator())
-    var searchResultTableController: SearchResultTableViewController!
-    var searchController: UISearchController!
-    var willSearchedContacts: [Person]?
+    private var searchResultTableController = SearchResultTableViewController()
+    private var searchController: UISearchController!
+    private var willSearchedContacts: [Person]?
     
     // MARK: - @IBOutlet Properties
     
@@ -48,8 +48,6 @@ extension ContactListViewController {
     }
     
     private func setSearchController() {
-        
-        searchResultTableController = SearchResultTableViewController()
         let searchController = UISearchController(searchResultsController: searchResultTableController)
         willSearchedContacts = contactUIManager.getContactsData()
         
@@ -71,13 +69,8 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(type: ContactTableViewCell.self, indexPath: indexPath)
-        let contacts = contactUIManager.getContactsData()
-        
-        guard let cellDataInRow = contacts[safe: indexPath.row] else { return UITableViewCell() }
-        
-        cell.name.text = cellDataInRow.name
-        cell.age.text = String(cellDataInRow.age)
-        cell.phoneNumber.text = cellDataInRow.phoneNum
+        guard let cellDataInRow = contactUIManager.getContactsData()[safe: indexPath.row] else { return UITableViewCell() }
+        cell.setData(with: cellDataInRow)
         
         return cell
     }
