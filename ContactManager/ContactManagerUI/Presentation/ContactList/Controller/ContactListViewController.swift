@@ -14,13 +14,14 @@ final class ContactListViewController: UIViewController {
     private let contactUIManager = ContactUIManager(validator: Validator())
     var searchResultTableController: SearchResultTableViewController!
     var searchController: UISearchController!
+    var willSearchedContacts: [Person]?
     
     // MARK: - @IBOutlet Properties
-
+    
     @IBOutlet weak private var contactListTableView: UITableView!
     
     // MARK: - View Life Cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegate()
@@ -40,17 +41,18 @@ final class ContactListViewController: UIViewController {
 // MARK: - Methods
 
 extension ContactListViewController {
-
+    
     private func setDelegate() {
         contactListTableView.delegate = self
         contactListTableView.dataSource = self
     }
     
     private func setSearchController() {
-
+        
         searchResultTableController = SearchResultTableViewController()
         let searchController = UISearchController(searchResultsController: searchResultTableController)
-
+        willSearchedContacts = contactUIManager.getContactsData()
+        
         self.navigationItem.searchController = searchController
         searchController.searchBar.placeholder = "Search User"
         searchController.hidesNavigationBarDuringPresentation = false
@@ -104,19 +106,43 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
 extension ContactListViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
-//        searchController.showsSearchResultsController = false
-        if let resultTableViewController = searchController.searchResultsController as? SearchResultTableViewController {
-
-        }
+        guard let willSearchedContacts else { return }
         
+        //        searchController.showsSearchResultsController = false
+        
+//        if let resultTableViewController = searchController.searchResultsController as? SearchResultTableViewController {
+//            let whitespaceCharacterSet = CharacterSet.whitespaces
+//            let strippedString = searchController.searchBar.text!.trimmingCharacters(in: whitespaceCharacterSet).lowercased()
+//            let searchItems = strippedString.components(separatedBy: " ") as [String]
+//
+//            var filterdContacts = willSearchedContacts
+//            var curTerm = searchItems[0]
+//            var index = 0
+//            while curTerm != "" {
+//                filterdContacts = filterdContacts.filter {_ in
+//
+//                    return true
+//                }
+//            }
+//
+//
+//            if let resultTableViewController = searchController.searchResultsController as? SearchResultTableViewController {
+//                resultTableViewController.contactUIManager = self.contactUIManager
+//                resultTableViewController.filteredContacts = filterdContacts
+//            }
+//        }
     }
     
+    
+    
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text!.isEmpty {
-            searchResultTableController.showSuggestedSearches = false
-        } else {
-            searchResultTableController.showSuggestedSearches = true
-        }
+        //        print(searchBar.text)
+        //        if searchBar.text!.isEmpty {
+        //            searchResultTableController.showSuggestedSearches = false
+        //        } else {
+        //            searchResultTableController.showSuggestedSearches = true
+        //        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
