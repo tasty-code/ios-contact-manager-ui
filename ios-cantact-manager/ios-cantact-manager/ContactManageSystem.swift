@@ -49,7 +49,7 @@ struct ContactManageSystem {
         case .listUpProfile:
             listUpProfile()
         case .searchProfile:
-            searchProfile()
+            break
         case .stop:
             stop()
         }
@@ -59,23 +59,19 @@ struct ContactManageSystem {
         profiles.insert(profile)
     }
     
+    mutating func sortProfiles() -> [Profile] {
+        profiles.sorted {
+            let (lhs, rhs) = ($0.name.lowercased(), $1.name.lowercased())
+            return lhs != rhs ? lhs < rhs : $0.age < $1.age
+        }
+    }
+    
     private func listUpProfile() {
         OutputManager.print(profiles: profiles)
     }
     
-    private func searchProfile() {
-        do {
-            OutputManager.print(text: .inputProfileName)
-            let targetName = try inputManager.targetInput()
-            let filteredProfileData = profiles.filter { $0.name == targetName }
-            guard !filteredProfileData.isEmpty else {
-                OutputManager.printNoMatchingData(name: targetName)
-                return
-            }
-            OutputManager.print(profiles: filteredProfileData)
-        } catch {
-            OutputManager.print(text: .invalidInput)
-        }
+    mutating func remove(profile: Profile) {
+        profiles.remove(profile)
     }
     
     mutating func stop() {

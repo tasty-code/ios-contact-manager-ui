@@ -10,14 +10,27 @@ import UIKit
 final class ListProfileViewController: UIViewController, AddProfileViewControllerDelegate {
     private var contactManageSystem = ContactManageSystem()
     private var profiles: [Profile] {
-        contactManageSystem.profiles.sorted(by: { $0.name < $1.name })
+        contactManageSystem.sortProfiles()
     }
+    private lazy var profileSearchResults = [Profile]()
+    private var isSearching: Bool {
+        let searchBarController = self.navigationItem.searchController
+        let isActive = searchBarController?.isActive ?? false
+        let isEmpty = searchBarController?.searchBar.text?.isEmpty ?? true
+        return isActive && !isEmpty
+    }
+    
     private let dummyData = [
-        Profile(name: "james", age: "30", tel: "010-2222-2222"),
-        Profile(name: "tom", age: "15", tel: "010-2222-3333"),
-        Profile(name: "jams", age: "30", tel: "010-2222-2222"),
-        Profile(name: "toem", age: "15", tel: "010-2222-3333"),
-        Profile(name: "jamses", age: "30", tel: "010-2222-2222")
+        Profile(name: "iyeah", age: "1", tel: "010-2222-2222"),
+        Profile(name: "iyeah", age: "2", tel: "010-2222-3333"),
+        Profile(name: "iyeah", age: "3", tel: "010-2222-2222"),
+        Profile(name: "iyeah", age: "4", tel: "010-2222-3333"),
+        Profile(name: "Jenna", age: "5", tel: "010-2222-3333"),
+        Profile(name: "Jenna", age: "6", tel: "010-2222-3333"),
+        Profile(name: "Jenna", age: "7", tel: "010-2222-3333"),
+        Profile(name: "Jenna", age: "8", tel: "010-2222-3333"),
+        Profile(name: "iyeah", age: "9", tel: "010-2222-3333"),
+        Profile(name: "SeSaC", age: "30", tel: "010-2222-2222")
     ]
     
     @IBOutlet private weak var tableView: UITableView!
@@ -28,6 +41,7 @@ final class ListProfileViewController: UIViewController, AddProfileViewControlle
             contactManageSystem.add(profile: $0)
         }
         tableView.dataSource = self
+        makeSearchBar()
     }
 
     @IBAction private func addProfileButtonDidTap(_ sender: UIBarButtonItem) {
@@ -47,11 +61,11 @@ final class ListProfileViewController: UIViewController, AddProfileViewControlle
 
 extension ListProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        profiles.count
+        isSearching ? profileSearchResults.count : profiles.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let profile = profiles[indexPath.row]
+        let profile = isSearching ? profileSearchResults[indexPath.row] : profiles[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
 
@@ -63,5 +77,32 @@ extension ListProfileViewController: UITableViewDataSource {
 
         return cell
     }
+
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        let profile = isSearching ? profileSearchResults[indexPath.row] : profiles[indexPath.row]
+        contactManageSystem.remove(profile: profile)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
 }
 
+extension ListProfileViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        profileSearchResults = profiles.filter {
+            $0.name.lowercased() == text.lowercased()
+        }
+        tableView.reloadData()
+    }
+    
+    private func makeSearchBar() {
+        let searchBar = UISearchController(searchResultsController: nil)
+        searchBar.searchResultsUpdater = self
+        searchBar.searchBar.autocapitalizationType = .none
+        navigationItem.searchController = searchBar
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+}
