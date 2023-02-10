@@ -12,7 +12,7 @@ final class ContactListViewController: UIViewController {
     // MARK: - Properties
     
     private let contactUIManager = ContactUIManager(validator: Validator())
-    var searchResultTableController: SearchResultTableController!
+    var searchResultTableController: SearchResultTableViewController!
     var searchController: UISearchController!
     
     // MARK: - @IBOutlet Properties
@@ -23,9 +23,6 @@ final class ContactListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let r = Person(name: "Avery", age: 2, phoneNum: "000-000-0000")
-        let l = Person(name: "Logan", age: 2, phoneNum: "000-000-0000")
-        
         setDelegate()
         setSearchController()
     }
@@ -51,7 +48,7 @@ extension ContactListViewController {
     
     private func setSearchController() {
 
-        searchResultTableController = SearchResultTableController()
+        searchResultTableController = SearchResultTableViewController()
         let searchController = UISearchController(searchResultsController: searchResultTableController)
 
         self.navigationItem.searchController = searchController
@@ -108,7 +105,7 @@ extension ContactListViewController: UISearchResultsUpdating, UISearchBarDelegat
     
     func updateSearchResults(for searchController: UISearchController) {
 //        searchController.showsSearchResultsController = false
-        if let resultTableViewController = searchController.searchResultsController as? SearchResultTableController {
+        if let resultTableViewController = searchController.searchResultsController as? SearchResultTableViewController {
 
         }
         
