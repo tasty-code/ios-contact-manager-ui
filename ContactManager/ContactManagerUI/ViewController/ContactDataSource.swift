@@ -11,7 +11,7 @@ final class ContactDataSource: NSObject, UITableViewDataSource {
 
     var contacts: [Contact] = [] {
         didSet {
-            NotificationCenter.default.post(name: Notification.Name.didUpdateContacts, object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name.didUpdateContacts, object: nil)
         }
     }
 

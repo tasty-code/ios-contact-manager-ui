@@ -18,12 +18,7 @@ final class ContactViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         fetchContactData()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadContactTableView), name: Notification.Name.didUpdateContacts, object: nil)
-    }
-    
-    @objc func reloadContactTableView() {
-        contactTableView.reloadData()
+        setNotification()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,8 +39,17 @@ final class ContactViewController: UIViewController {
         }
         contactDataSource.contacts = ContactManager.shared.fetchContacts()
     }
+
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadContactTableView), name: NSNotification.Name.didUpdateContacts, object: nil)
+    }
+
+    @objc func reloadContactTableView() {
+        contactTableView.reloadData()
+    }
 }
 
+// MARK: - AddContactViewControllerDelegate
 extension ContactViewController: AddContactViewControllerDelegate {
     func addContactViewController(_ addContactViewController: AddContactViewController, didAddContact contact: Contact) {
         contactDataSource.contacts.append(contact)
