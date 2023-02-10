@@ -14,7 +14,9 @@ final class AddContactViewController: UIViewController {
     @IBOutlet private weak var contactTextField: UITextField!
     
     weak var newContactDelegate: NewContactDelegate?
-    
+
+    private let contactTextHyphenPolicyLength = 10
+
     override func viewDidLoad() {
         super.viewDidLoad()
         contactTextField.delegate = self
@@ -85,13 +87,13 @@ extension AddContactViewController: UITextFieldDelegate {
         static let forTwoThreeFour = [2, 6]
         static let forThreeFourFour = [3, 8]
     }
-    
+
     private func parse(_ newText: String, using range: NSRange) -> String {
         let digitString = newText.replacingOccurrences(of: String.hyphen, with: String.empty)
         switch digitString.count {
-        case ..<10:
+        case ..<contactTextHyphenPolicyLength:
             return relocateHyphen(of: digitString, at: LocationsOfHyphen.forTwoThreeFour)
-        case 10:
+        case contactTextHyphenPolicyLength:
             return relocateHyphen(of: digitString, at: LocationsOfHyphen.forTwoFourFour)
         default:
             return relocateHyphen(of: digitString, at: LocationsOfHyphen.forThreeFourFour)
