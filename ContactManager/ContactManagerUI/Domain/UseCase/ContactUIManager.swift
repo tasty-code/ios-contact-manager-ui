@@ -15,9 +15,11 @@ final class ContactUIManager: ContactUIManagerProtocol {
     
     var validator: ValidatorProtocol
     private let dataManager = DataManager.shared
+    private var dataStore = UserDefaults.standard
     
     init(validator: ValidatorProtocol) {
         self.validator = validator
+        self.getStoredContactsData()
     }
     
     @discardableResult
@@ -38,15 +40,22 @@ final class ContactUIManager: ContactUIManagerProtocol {
 
 extension ContactUIManager {
     
-    func getStoredContactsData() {
-        dataManager.getStoredContactsData()
+    private func getStoredContactsData(){
+        if dataStore.object(forKey: UserDefaults.Keys.contacts) != nil {
+            if let data = dataStore.value(forKey: UserDefaults.Keys.contacts) as? Data {
+                guard let decodedData = try? PropertyListDecoder().decode([Person].self, from: data) else { return }
+                self.dataManager.contacts = Set(decodedData)
+            }
+        }
     }
     
     func setStoredContactsData() {
-        dataManager.setStoredContactsData()
+        let data = dataManager.getcontactsDataAsPerson()
+        let encodedData = try? PropertyListEncoder().encode(data)
+        dataStore.set(encodedData, forKey: UserDefaults.Keys.contacts)
     }
     
-    func setContactData(_ userInputModel: UserInputModel) throws {
+    private func setContactData(_ userInputModel: UserInputModel) throws {
         let contactData = try requestValidation(with: userInputModel)
         dataManager.setContact(contactData)
     }
@@ -97,6 +106,7 @@ extension ContactUIManager {
     }
     
     func clearAllStoredDataForTest() {
-        dataManager.clearAllStoredDataForTest()
+        dataStore.removeObject(forKey: UserDefaults.Keys.contacts)
+        dataManager.contacts.removeAll()
     }
 }

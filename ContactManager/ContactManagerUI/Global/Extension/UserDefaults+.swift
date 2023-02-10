@@ -8,7 +8,7 @@
 import Foundation
 
 extension UserDefaults {
-    enum Keys: String {
-        case contacts = "contactsData"
+    enum Keys {
+        static var contacts = "contactsData"
     }
 }

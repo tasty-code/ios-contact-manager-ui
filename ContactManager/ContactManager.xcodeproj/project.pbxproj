@@ -214,12 +214,12 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		8E3F3B442995FC9600BDA700 /* Data */ = {
+		8E3F3B442995FC9600BDA700 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				8ED8BB1D2990E9D8002B8782 /* ContactUIManager.swift */,
+				8E5E2FB72995FF130094B0F5 /* UseCase */,
 			);
-			path = Data;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		8E3F3B452995FCAF00BDA700 /* AddContact */ = {
@@ -247,12 +247,45 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		8E5E2FB72995FF130094B0F5 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				8ED8BB1D2990E9D8002B8782 /* ContactUIManager.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		8E5E2FBB299603AB0094B0F5 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8E5E2FBC299603B20094B0F5 /* Sources */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		8E5E2FBC299603B20094B0F5 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8E0FC6A729875DE500CF0DA1 /* Enum */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		8E5E2FBD299603C00094B0F5 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				8E0FC6B029875E1C00CF0DA1 /* Model */,
+				8E0FC6B629875E4C00CF0DA1 /* Service */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		F1A86A7E2987BCBC00A9A867 /* ContactManagerUI */ = {
 			isa = PBXGroup;
 			children = (
 				8E3F3B3C2995E75F00BDA700 /* Application */,
 				8E3F3B3D2995E76C00BDA700 /* Global */,
-				8E3F3B442995FC9600BDA700 /* Data */,
+				8E3F3B442995FC9600BDA700 /* Domain */,
 				8E3F3B402995E7BE00BDA700 /* Presentation */,
 				F1A86A8D2987BCBD00A9A867 /* Info.plist */,
 			);
@@ -280,9 +313,8 @@
 		F1C1CC1929875D9800572F80 /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
-				8E0FC6A729875DE500CF0DA1 /* Enum */,
-				8E0FC6B029875E1C00CF0DA1 /* Model */,
-				8E0FC6B629875E4C00CF0DA1 /* Service */,
+				8E5E2FBB299603AB0094B0F5 /* Core */,
+				8E5E2FBD299603C00094B0F5 /* Data */,
 				F1C1CC1A29875D9800572F80 /* main.swift */,
 			);
 			path = ContactManager;
