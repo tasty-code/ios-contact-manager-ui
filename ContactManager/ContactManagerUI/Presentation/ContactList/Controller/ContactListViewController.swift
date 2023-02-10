@@ -68,7 +68,9 @@ extension ContactListViewController {
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cellDataInRow = contactUIManager.getContactsData()[safe: indexPath.row] else { return }
+        var cellDataInRow = contactUIManager.getContactsData()[indexPath.row]
+        if isSearching { cellDataInRow = searchedContacts[indexPath.row] }
+        
         let alert = UIAlertController(title: "\(cellDataInRow.name)님의\n연락처가 복사되었습니다.", message: nil, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "닫기", style: .destructive)
         let action = UIAlertAction(title: "메시지 보내기", style: .default) { _ in
