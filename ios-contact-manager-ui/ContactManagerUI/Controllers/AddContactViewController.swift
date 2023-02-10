@@ -31,7 +31,7 @@ final class AddContactViewController: UIViewController {
             let newContact = try UserInfo(name: name, age: age, phone: contact)
             ContactsController.shared.add(user: newContact)
             newContactDelegate?.addNewContact()
-            self.dismiss(animated: true)
+            dismiss(animated: true)
         } catch {
             makeErrorAlert(description: error.localizedDescription)
         }
@@ -51,7 +51,7 @@ extension AddContactViewController {
         )
         let checkAction = UIAlertAction(title: "확인", style: .default)
         alert.addAction(checkAction)
-        self.present(alert, animated: true)
+        present(alert, animated: true)
     }
     
     private func makeCancelAlert() {
@@ -61,13 +61,13 @@ extension AddContactViewController {
             preferredStyle: .alert
         )
         let noAction = UIAlertAction(title: "아니오", style: .default)
-        let yesAction = UIAlertAction(title: "예", style: .destructive) { _ in
-            self.dismiss(animated: true)
+        let yesAction = UIAlertAction(title: "예", style: .destructive) { [weak self] _ in
+            self?.dismiss(animated: true)
         }
         alert.addAction(noAction)
         alert.addAction(yesAction)
         alert.preferredAction = yesAction
-        self.present(alert, animated: true)
+        present(alert, animated: true)
     }
 }
 

@@ -16,12 +16,12 @@ extension String {
     }
 
     mutating func insert(_ newElement: Character, at i: Int) {
-        self.insert(newElement, at: self.index(self.startIndex, offsetBy: i))
+        insert(newElement, at: index(startIndex, offsetBy: i))
     }
 
     func inserting(_ newElement: Character, at i: Int) -> String {
         var newString = self
-        newString.insert(newElement, at: self.index(self.startIndex, offsetBy: i))
+        newString.insert(newElement, at: index(startIndex, offsetBy: i))
         return newString
     }
 }

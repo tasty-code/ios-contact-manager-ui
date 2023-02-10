@@ -50,10 +50,10 @@ struct UserInfo: Codable, Hashable {
 
 extension UserInfo: CustomStringConvertible {
     var description: String {
-        return "\(self.name) / \(self.age) / \(self.phone)"
+        return "\(name) / \(age) / \(phone)"
     }
     
     var addedDescription: String {
-        return "\(self.age)세 \(self.name)(\(self.phone))"
+        return "\(age)세 \(name)(\(phone))"
     }
 }
