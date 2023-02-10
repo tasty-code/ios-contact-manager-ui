@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4000CC39298A50F3003C8B95 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000CC38298A50F3003C8B95 /* TableViewDataSource.swift */; };
-		4000CC3B298A59DC003C8B95 /* ContactError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000CC3A298A59DC003C8B95 /* ContactError.swift */; };
+		4000CC3B298A59DC003C8B95 /* JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4000CC3A298A59DC003C8B95 /* JSONCodable.swift */; };
 		4062671E2954226900A2CBE4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4062671D2954226900A2CBE4 /* UserInfo.swift */; };
 		40BC412D2990BB9A00BF62B3 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BC412C2990BB9A00BF62B3 /* AddContactViewController.swift */; };
 		40F965542952ED4200ACCA0C /* StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F965532952ED4200ACCA0C /* StringLiteral.swift */; };
@@ -50,7 +50,7 @@
 
 /* Begin PBXFileReference section */
 		4000CC38298A50F3003C8B95 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
-		4000CC3A298A59DC003C8B95 /* ContactError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactError.swift; sourceTree = "<group>"; };
+		4000CC3A298A59DC003C8B95 /* JSONCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodable.swift; sourceTree = "<group>"; };
 		4062671D2954226900A2CBE4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		40BC412C2990BB9A00BF62B3 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		40F965532952ED4200ACCA0C /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 				4F5075152992304100C0AC18 /* Controllers */,
 				4000CC38298A50F3003C8B95 /* TableViewDataSource.swift */,
 				4F507517299230CA00C0AC18 /* Model */,
-				4000CC3A298A59DC003C8B95 /* ContactError.swift */,
+				4000CC3A298A59DC003C8B95 /* JSONCodable.swift */,
 				4F5075162992306B00C0AC18 /* Extensions */,
 				4FAE8E8B298A4F90006DCD46 /* Resources */,
 				4F507518299230E000C0AC18 /* Views */,
@@ -308,7 +308,7 @@
 				4FEEF66229879DE000FF6A89 /* AppDelegate.swift in Sources */,
 				4FAE8E8D298A526F006DCD46 /* ModelData.swift in Sources */,
 				4FEEF66429879DE000FF6A89 /* SceneDelegate.swift in Sources */,
-				4000CC3B298A59DC003C8B95 /* ContactError.swift in Sources */,
+				4000CC3B298A59DC003C8B95 /* JSONCodable.swift in Sources */,
 				4FEEF67329879E0300FF6A89 /* Extension.swift in Sources */,
 				4FEEF67929879E2B00FF6A89 /* Phonebook.swift in Sources */,
 				4000CC39298A50F3003C8B95 /* TableViewDataSource.swift in Sources */,

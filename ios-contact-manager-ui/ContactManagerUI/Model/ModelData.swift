@@ -7,29 +7,38 @@
 
 import Foundation
 
-final class ModelData {
-    // TODO: Error 처리하기
-    private(set) var contacts: [UserInfo] = (try? load("contacts.json")) ?? []
+final class ModelData: JSONCodable {
+    var fileName: String = "contacts.json"
+    private lazy var contacts: [UserInfo] = decoding()
 }
 
-func load<T: Decodable>(_ fileName: String) throws -> T {
-    let data: Data
-    
-    guard let file = Bundle.main.url(forResource: fileName, withExtension: nil) else {
-        throw ContactError.FileNotFound
+extension ModelData {
+    func decoding() -> [UserInfo] {
+        do {
+            return try decoder()
+        } catch {
+            return []
+        }
     }
     
-    do {
-        data = try Data(contentsOf: file)
-    } catch {
-        throw ContactError.FileNotLoad
+    func load() -> [UserInfo] {
+        return contacts
     }
     
-    do {
-        let decoder = JSONDecoder()
-        return try decoder.decode(T.self, from: data)
-    } catch {
-        throw ContactError.FileNotParse
+    func save(data: [UserInfo]) {
+        do {
+            try encoder(data: data)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func add(user: UserInfo) {
+        contacts.append(user)
+    }
+    
+    func remove(index: Int) {
+        contacts.remove(at: index)
     }
 }
-    
+
