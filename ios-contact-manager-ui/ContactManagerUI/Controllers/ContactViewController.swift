@@ -24,20 +24,19 @@ final class ContactViewController: UIViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = dataSource
+        
+        tableView.register(ContactCell.self, forCellReuseIdentifier: "ContactCell")
     }
 }
 
 extension ContactViewController {
     private func setupDataSource() {
         dataSource = UITableViewDiffableDataSource<Section, UserInfo>(tableView: tableView) { tableView, indexPath, itemIdentifier in
-            let identifier = "contactCell"
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier) else {
+            let identifier = "ContactCell"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? ContactCell else {
                 fatalError("cannot provide cell..")
             }
-            var content = cell.defaultContentConfiguration()
-            content.text = itemIdentifier.text
-            content.secondaryText = itemIdentifier.secondaryText
-            cell.contentConfiguration = content
+            cell.content = itemIdentifier
             return cell
         }
 
