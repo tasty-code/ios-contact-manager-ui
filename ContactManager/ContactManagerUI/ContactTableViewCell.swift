@@ -9,8 +9,8 @@ import UIKit
 
 final class ContactTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var name:UILabel!
-    @IBOutlet weak var age:UILabel!
-    @IBOutlet weak var phoneNumber:UILabel!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var age: UILabel!
+    @IBOutlet weak var phoneNumber: UILabel!
     
 }

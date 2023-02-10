@@ -95,10 +95,7 @@ extension ContactUIManager {
             throw error
         }
     }
-}
-
-// for test
-extension ContactUIManager {
+    
     func clearAllStoredDataForTest() {
         dataManager.clearAllStoredDataForTest()
     }

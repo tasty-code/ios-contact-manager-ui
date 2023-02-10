@@ -15,9 +15,13 @@ final class DataManager {
     
     private var dataStore = UserDefaults.standard
     
+    private init() {
+        getStoredContactsData()
+    }
+    
     func getStoredContactsData(){
-        if dataStore.object(forKey:userDefaultKey.contacts.rawValue) != nil {
-            if let data = dataStore.value(forKey: userDefaultKey.contacts.rawValue) as? Data {
+        if dataStore.object(forKey: UserDefaultKey.contacts.rawValue) != nil {
+            if let data = dataStore.value(forKey: UserDefaultKey.contacts.rawValue) as? Data {
                 guard let decodedData = try? PropertyListDecoder().decode([Person].self, from: data) else { return }
                 self.contacts = Set(decodedData)
             }
@@ -27,11 +31,7 @@ final class DataManager {
     func setStoredContactsData() {
         let data = getcontactsDataAsPerson()
         let encodedData = try? PropertyListEncoder().encode(data)
-        dataStore.set(encodedData, forKey: userDefaultKey.contacts.rawValue)
-    }
-    
-    private init() {
-        getStoredContactsData()
+        dataStore.set(encodedData, forKey: UserDefaultKey.contacts.rawValue)
     }
     
     func setContact(_ person: Person) {
@@ -59,11 +59,9 @@ final class DataManager {
     func deleteContact(of data: Person) {
         contacts.remove(data)
     }
-}
-
-extension DataManager {
+    
     func clearAllStoredDataForTest() {
-        dataStore.removeObject(forKey: userDefaultKey.contacts.rawValue)
+        dataStore.removeObject(forKey: UserDefaultKey.contacts.rawValue)
         contacts.removeAll()
     }
 }

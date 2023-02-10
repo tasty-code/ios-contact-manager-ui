@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum userDefaultKey: String {
+enum UserDefaultKey: String {
     case contacts = "contactsData"
 }
