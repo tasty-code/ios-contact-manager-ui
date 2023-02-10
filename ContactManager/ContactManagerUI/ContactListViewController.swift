@@ -23,6 +23,9 @@ final class ContactListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let r = Person(name: "Avery", age: 2, phoneNum: "000-000-0000")
+        let l = Person(name: "Logan", age: 2, phoneNum: "000-000-0000")
+        
         setDelegate()
         setSearchController()
     }
@@ -94,7 +97,7 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
         delete.backgroundColor = .systemRed
         
         let config = UISwipeActionsConfiguration(actions: [delete])
-        config.performsFirstActionWithFullSwipe = true
+        config.performsFirstActionWithFullSwipe = false
         return config
     }
 }

@@ -44,7 +44,8 @@ final class DataManager {
     
     func getcontactsDataAsPerson() -> [Person] {
         let datas = contacts.map { $0 }
-        return datas
+        let sortedDatas = datas.sorted()
+        return sortedDatas
     }
     
     func getContactsList() -> [String] {
