@@ -15,7 +15,7 @@ final class ContactTableViewCell: UITableViewCell {
     
     func setData(with person: Person) {
         name.text = person.name
-        age.text = String(person.age)
+        age.text = String(person.age) + " 세"
         phoneNumber.text = person.phoneNum
     }
 }
