@@ -8,7 +8,8 @@
 import Foundation
 
 var isMenuInputError: Bool = false
-let regex = "^[A-Za-z\\s]+$"
+let nameRegex = "^[A-Za-z\\s]+$"
+let phoneNumberRegex = "^[0-9-]+$"
 
 struct Validation {
     static func validateInputBySlash(input: String) -> Bool {
