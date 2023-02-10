@@ -9,7 +9,7 @@ import Foundation
 
 final class ModelData: JSONCodable {
     var fileName: String = "contacts.json"
-    private lazy var contacts: [UserInfo] = decoding()
+    private(set) lazy var contacts: [UserInfo] = decoding()
 }
 
 extension ModelData {
@@ -19,10 +19,6 @@ extension ModelData {
         } catch {
             return []
         }
-    }
-    
-    func load() -> [UserInfo] {
-        return contacts
     }
     
     func save(data: [UserInfo]) {
