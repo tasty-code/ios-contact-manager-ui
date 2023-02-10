@@ -9,7 +9,11 @@ import UIKit
 
 final class ContactDataSource: NSObject, UITableViewDataSource {
 
-    var contacts: [Contact] = []
+    var contacts: [Contact] = [] {
+        didSet {
+            NotificationCenter.default.post(name: Notification.Name.didUpdateContacts, object: nil)
+        }
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count

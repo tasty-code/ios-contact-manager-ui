@@ -12,18 +12,18 @@ final class ContactViewController: UIViewController {
     @IBOutlet private weak var contactTableView: UITableView!
     
     private let contactDataSource = ContactDataSource()
-    private var contacts: [Contact] = [] {
-        didSet {
-            contactDataSource.contacts = contacts
-            contactTableView.reloadData()
-        }
-    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         fetchContactData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadContactTableView), name: Notification.Name.didUpdateContacts, object: nil)
+    }
+    
+    @objc func reloadContactTableView() {
+        contactTableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -42,12 +42,12 @@ final class ContactViewController: UIViewController {
         mockupContacts.forEach {
             ContactManager.shared.add(contact: $0)
         }
-        contacts = ContactManager.shared.fetchContacts()
+        contactDataSource.contacts = ContactManager.shared.fetchContacts()
     }
 }
 
 extension ContactViewController: AddContactViewControllerDelegate {
     func addContactViewController(_ addContactViewController: AddContactViewController, didAddContact contact: Contact) {
-        contacts.append(contact)
+        contactDataSource.contacts.append(contact)
     }
 }

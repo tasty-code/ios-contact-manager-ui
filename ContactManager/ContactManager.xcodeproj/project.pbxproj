@@ -14,6 +14,7 @@
 		B4F19BF0295BFD6D0021CB9E /* UserMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F19BEF295BFD6D0021CB9E /* UserMenu.swift */; };
 		B4FFAAD72989F7EA00A3E490 /* ContactMockupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FFAAD62989F7EA00A3E490 /* ContactMockupData.swift */; };
 		E700DC0B2989F5CC00A090E1 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E700DC0A2989F5CC00A090E1 /* ContactCell.swift */; };
+		E729CF5B2995E82A0072EA10 /* Extension+NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729CF5A2995E82A0072EA10 /* Extension+NotificationName.swift */; };
 		E72DCD9729933D100061C9BB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72DCD9629933D100061C9BB /* Constants.swift */; };
 		E73AC77A295AB04800054805 /* ExtensionArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73AC779295AB04700054805 /* ExtensionArray.swift */; };
 		E76B5B582987A5ED002E2C99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76B5B572987A5ED002E2C99 /* AppDelegate.swift */; };
@@ -59,6 +60,7 @@
 		B4F19BEF295BFD6D0021CB9E /* UserMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenu.swift; sourceTree = "<group>"; };
 		B4FFAAD62989F7EA00A3E490 /* ContactMockupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMockupData.swift; sourceTree = "<group>"; };
 		E700DC0A2989F5CC00A090E1 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactCell.swift; path = ContactManagerUI/View/ContactCell.swift; sourceTree = SOURCE_ROOT; };
+		E729CF5A2995E82A0072EA10 /* Extension+NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+NotificationName.swift"; sourceTree = "<group>"; };
 		E72DCD9629933D100061C9BB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E73AC779295AB04700054805 /* ExtensionArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionArray.swift; sourceTree = "<group>"; };
 		E76B5B552987A5ED002E2C99 /* ContactManagerUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManagerUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +206,7 @@
 			children = (
 				E7F41924298C9824007D591D /* Extension+UITableViewCell.swift */,
 				E7F41926298C9984007D591D /* Extension+UITableView.swift */,
+				E729CF5A2995E82A0072EA10 /* Extension+NotificationName.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				B4563890298CA7E100C42861 /* ContactDataSource.swift in Sources */,
 				E76B5B582987A5ED002E2C99 /* AppDelegate.swift in Sources */,
 				E76B5B6B2987A60D002E2C99 /* UserMenu.swift in Sources */,
+				E729CF5B2995E82A0072EA10 /* Extension+NotificationName.swift in Sources */,
 				E76B5B6E2987A614002E2C99 /* InputManager.swift in Sources */,
 				E76B5B6A2987A60A002E2C99 /* InputError.swift in Sources */,
 				B4FFAAD72989F7EA00A3E490 /* ContactMockupData.swift in Sources */,
