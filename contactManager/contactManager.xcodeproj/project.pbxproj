@@ -80,14 +80,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		87BEAF9829962380009E180E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8735C23D2991DC0D00B4F9CD /* UITextFieldExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D91A9C1929923E5800C66910 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				87BEAF9829962380009E180E /* Extensions */,
 				D91A9C1A29923E7E00C66910 /* Storyboards */,
 				D91FBE562988A67B0091F104 /* AppDelegate.swift */,
 				D91FBE582988A67B0091F104 /* SceneDelegate.swift */,
 				D91FBE5F2988A67B0091F104 /* Assets.xcassets */,
-				8735C23D2991DC0D00B4F9CD /* UITextFieldExtensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
