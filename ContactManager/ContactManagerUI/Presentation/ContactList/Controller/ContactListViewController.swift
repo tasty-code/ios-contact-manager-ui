@@ -12,9 +12,14 @@ final class ContactListViewController: UIViewController {
     // MARK: - Properties
     
     private let contactUIManager = ContactUIManager(validator: Validator())
-    private var searchResultTableController = SearchResultTableViewController()
-    private var searchController: UISearchController!
-    private var willSearchedContacts: [Person]?
+
+    private var searchedDataSource: [Person] = []
+    private var isSearching: Bool {
+        let searchController = navigationItem.searchController
+        let isActive = searchController?.isActive ?? false
+        let isSearchBarHasText = searchController?.searchBar.text?.isEmpty == false
+        return isActive && isSearchBarHasText
+    }
     
     // MARK: - @IBOutlet Properties
     
@@ -48,14 +53,14 @@ extension ContactListViewController {
     }
     
     private func setSearchController() {
-        let searchController = UISearchController(searchResultsController: searchResultTableController)
-        willSearchedContacts = contactUIManager.getContactsData()
-        
-        self.navigationItem.searchController = searchController
+        let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.placeholder = "Search User"
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.automaticallyShowsCancelButton = false
         searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 }
 
@@ -63,20 +68,30 @@ extension ContactListViewController {
 
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cellDataInRow = contactUIManager.getContactsData()[safe: indexPath.row] else { return }
+        let alert = UIAlertController(title: "\(cellDataInRow.name)님의\n연락처가 복사되었습니다.", message: nil, preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
+        UIPasteboard.general.string = cellDataInRow.phoneNum
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactUIManager.countContactLists()
+        return isSearching ? searchedDataSource.count : contactUIManager.countContactLists()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(type: ContactTableViewCell.self, indexPath: indexPath)
         guard let cellDataInRow = contactUIManager.getContactsData()[safe: indexPath.row] else { return UITableViewCell() }
-        cell.setData(with: cellDataInRow)
-        
+        isSearching ? cell.setData(with: searchedDataSource[indexPath.row]) : cell.setData(with: cellDataInRow)
         return cell
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
+        if isSearching { return nil }
         let delete = UIContextualAction(style: .normal, title: "delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             
             let selectedItem = self.contactUIManager.getContactsData()[indexPath.row]
@@ -99,47 +114,8 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
 extension ContactListViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
-        guard let willSearchedContacts else { return }
-        
-        //        searchController.showsSearchResultsController = false
-        
-//        if let resultTableViewController = searchController.searchResultsController as? SearchResultTableViewController {
-//            let whitespaceCharacterSet = CharacterSet.whitespaces
-//            let strippedString = searchController.searchBar.text!.trimmingCharacters(in: whitespaceCharacterSet).lowercased()
-//            let searchItems = strippedString.components(separatedBy: " ") as [String]
-//
-//            var filterdContacts = willSearchedContacts
-//            var curTerm = searchItems[0]
-//            var index = 0
-//            while curTerm != "" {
-//                filterdContacts = filterdContacts.filter {_ in
-//
-//                    return true
-//                }
-//            }
-//
-//
-//            if let resultTableViewController = searchController.searchResultsController as? SearchResultTableViewController {
-//                resultTableViewController.contactUIManager = self.contactUIManager
-//                resultTableViewController.filteredContacts = filterdContacts
-//            }
-//        }
-    }
-    
-    
-    
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //        print(searchBar.text)
-        //        if searchBar.text!.isEmpty {
-        //            searchResultTableController.showSuggestedSearches = false
-        //        } else {
-        //            searchResultTableController.showSuggestedSearches = true
-        //        }
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchController.dismiss(animated: true)
-        searchBar.text = ""
+        guard let text = searchController.searchBar.text else { return }
+        searchedDataSource = contactUIManager.getContactsData().filter { $0.name.contains(text) }
+        contactListTableView.reloadData()
     }
 }
