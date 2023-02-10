@@ -11,7 +11,7 @@ final class ContactViewController: UIViewController {
     enum Section {
         case main
     }
-    private let modelData = ModelData()
+    
     @IBOutlet private weak var tableView: UITableView!
     private var dataSource: DataSource?
 
@@ -19,6 +19,11 @@ final class ContactViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupDataSource()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let addViewController = segue.destination as? AddContactViewController else { return }
+        addViewController.newContactDelegate = self
     }
 
     private func setupTableView() {
@@ -69,5 +74,12 @@ extension ContactViewController {
                 }
             }
         }
+    }
+}
+
+extension ContactViewController: NewContactDelegate {
+    func addNewContact() {
+        print("실행됌")
+        dataSource?.update(animatingDifferences: true)
     }
 }

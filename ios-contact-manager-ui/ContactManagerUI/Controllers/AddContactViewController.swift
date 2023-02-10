@@ -9,10 +9,11 @@ import UIKit
 
 final class AddContactViewController: UIViewController {
     
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var contactTextField: UITextField!
+    
+    weak var newContactDelegate: NewContactDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,9 @@ final class AddContactViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let name = nameTextField.text, let age = ageTextField.text, let contact = contactTextField.text else { return }
         do {
-            // TODO: 새로운 연락처 Contacts.json에 추가하기
-            _ = try UserInfo(name: name, age: age, phone: contact)
+            let newContact = try UserInfo(name: name, age: age, phone: contact)
+            ModelData.shared.add(user: newContact)
+            newContactDelegate?.addNewContact()
             self.dismiss(animated: true)
         } catch {
             makeErrorAlert(description: error.localizedDescription)
