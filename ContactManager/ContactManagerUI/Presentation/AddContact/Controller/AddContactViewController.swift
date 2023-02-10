@@ -25,6 +25,7 @@ final class AddContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpFirstResponser()
         configureSaveButton()
         setDelegate()
     }
@@ -68,6 +69,10 @@ final class AddContactViewController: UIViewController {
 // MARK: - Methods
 
 extension AddContactViewController {
+    
+    private func setUpFirstResponser() {
+        nameTextField.becomeFirstResponder()
+    }
     
     private func configureSaveButton() {
         saveButton.isEnabled = false
