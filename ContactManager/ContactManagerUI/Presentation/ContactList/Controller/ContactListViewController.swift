@@ -57,6 +57,7 @@ extension ContactListViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.automaticallyShowsCancelButton = false
 
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -124,8 +125,22 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
 extension ContactListViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
+        let bar = UIToolbar()
+        let done = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector (done))
+        bar.items = [done]
+        bar.sizeToFit()
+        searchController.searchBar.inputAccessoryView = bar
+        
+        let doneBtn = {
+            print("fuck")
+        }
+        
         guard let text = searchController.searchBar.text else { return }
         searchedContacts = contactUIManager.getContactsData().filter { $0.name.contains(text) }
         contactListTableView.reloadData()
     }
+    @objc func done() {
+        self.navigationItem.searchController?.searchBar.searchTextField.resignFirstResponder()
+    }
+    
 }
