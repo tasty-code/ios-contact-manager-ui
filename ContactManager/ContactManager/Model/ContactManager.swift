@@ -9,12 +9,12 @@ import Foundation
 
 final class ContactManager: InputPossible {
     var contactInformationArray: Set<ContactInformation> = []
-    let detector: Detectable
+    let remover: Removable
     let convertor: Convertable
     let checker: Checkable
     
-    init(detector: Detectable = Detector(), convertor: Convertable = Converter(), checker: Checkable = Checker()) {
-        self.detector = detector
+    init(detector: Removable = Remover(), convertor: Convertable = Converter(), checker: Checkable = Checker()) {
+        self.remover = detector
         self.convertor = convertor
         self.checker = checker
     }
@@ -67,7 +67,7 @@ extension ContactManager: SystemMenuWorkable {
     
     func removeBlankInput(value: String) -> String {
         let convertedUserInputValues = convertor.renderToCharacter(value)
-        let removedBlankUserInputValues = detector.removeSpace(convertedUserInputValues)
+        let removedBlankUserInputValues = remover.removeSpace(convertedUserInputValues)
         let validName = convertor.renderToString(removedBlankUserInputValues)
         return validName
     }

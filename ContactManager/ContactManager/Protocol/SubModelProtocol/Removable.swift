@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol Detectable {
+protocol Removable {
     func removeSpace(_ characters: [Character]) -> [Character]
 }
