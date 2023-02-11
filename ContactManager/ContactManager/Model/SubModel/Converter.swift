@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Converter: Convertable {
+final class Converter: Convertable {
     func renderToCharacter(_ sentence: String) -> [Character] {
         var characters = [Character]()
         

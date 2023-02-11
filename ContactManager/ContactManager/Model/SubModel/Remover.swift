@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Remover: Removable {
+final class Remover: Removable {
     func removeSpace(_ characters: [Character]) -> [Character] {
         var verifiedCharacters = [Character]()
         
