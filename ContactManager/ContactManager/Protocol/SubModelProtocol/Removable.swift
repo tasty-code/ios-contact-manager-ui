@@ -8,5 +8,5 @@
 import Foundation
 
 protocol Removable {
-    func removeSpace(_ characters: [Character]) -> [Character]
+    func removeSpace(from characters: [Character]) -> [Character]
 }
