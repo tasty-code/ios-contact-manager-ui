@@ -27,7 +27,7 @@ final class Checker: Checkable {
             switch $0 {
             case 0:
                 let isCorrectName = target[$0].range(of: RegularExpression.namePattern.rawValue, options: .regularExpression) != nil
-                if isCorrectName == true {
+                if isCorrectName {
                     nameValue = target[0]          // 값 지정
                 } else {
                     print(InputErrorMessage.invalidName)
@@ -35,7 +35,7 @@ final class Checker: Checkable {
                 break
             case 1:
                 let isCorrectAge = target[$0].range(of: RegularExpression.agePattern.rawValue, options: .regularExpression) != nil
-                if isCorrectAge == true {
+                if isCorrectAge {
                     ageValue = target[1]
                 } else {
                     print(InputErrorMessage.invalidAge)
@@ -43,7 +43,7 @@ final class Checker: Checkable {
                 break
             case 2:
                 let isCorrectPhoneNumber = target[$0].range(of: RegularExpression.phoneNumberPattern.rawValue, options: .regularExpression) != nil
-                if isCorrectPhoneNumber == true {
+                if isCorrectPhoneNumber {
                     phoneNumberValue = target[2]
                 } else {
                     print(InputErrorMessage.invalidPhoneNumber)
