@@ -30,7 +30,7 @@ final class ContactManager: InputPossible {
                 addContact()
                 break
             case .view:
-                viewContactList(value: contactInformationArray)
+                showContactList(value: contactInformationArray)
                 break
             case .search:
                 searchByName(value: contactInformationArray)

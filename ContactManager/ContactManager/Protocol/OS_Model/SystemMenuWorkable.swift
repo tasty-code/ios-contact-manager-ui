@@ -9,13 +9,13 @@ import Foundation
 
 internal protocol SystemMenuWorkable {
     func addContact()
-    func viewContactList(value: Set<ContactInformation>)
+    func showContactList(value: Set<ContactInformation>)
     func searchByName(value: Set<ContactInformation>)
     func exitProgram() -> Bool
 }
 
 extension SystemMenuWorkable {
-    func viewContactList(value: Set<ContactInformation>) {
+    func showContactList(value: Set<ContactInformation>) {
         PrintMessage.viewContact(list: value)
     }
     
