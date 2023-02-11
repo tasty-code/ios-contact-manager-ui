@@ -7,36 +7,46 @@
 
 import Foundation
 
-class Checker {
+final class Checker: Checkable {
+    func checkCorrect(targets: [String]) -> [Bool] {
+        var checkResults = [Bool]()
+        
+        for (target, pattern) in zip(targets, RegularExpression.allCases) {
+            let isValid = target.range(of: pattern.rawValue, options: .regularExpression) != nil
+            checkResults.append(isValid)
+        }
+        return checkResults
+    }
+    
     func checkCorrectWord(target: [String]) -> ContactInformation? {
         var nameValue: String = ""
         var ageValue: String = ""
         var phoneNumberValue: String = ""
         
-        target.indices.forEach{
+        target.indices.forEach {
             switch $0 {
             case 0:
                 let isCorrectName = target[$0].range(of: RegularExpression.namePattern.rawValue, options: .regularExpression) != nil
-                if isCorrectName == true {
-                    nameValue = target[0]          // 값 지정
+                if isCorrectName {
+                    nameValue = target[0]
                 } else {
-                    print(PrintMessage.invalidName)
+                    print(InputErrorMessage.invalidName)
                 }
                 break
             case 1:
                 let isCorrectAge = target[$0].range(of: RegularExpression.agePattern.rawValue, options: .regularExpression) != nil
-                if isCorrectAge == true {
+                if isCorrectAge {
                     ageValue = target[1]
                 } else {
-                    print(PrintMessage.invalidAge)
+                    print(InputErrorMessage.invalidAge)
                 }
                 break
             case 2:
                 let isCorrectPhoneNumber = target[$0].range(of: RegularExpression.phoneNumberPattern.rawValue, options: .regularExpression) != nil
-                if isCorrectPhoneNumber == true {
+                if isCorrectPhoneNumber {
                     phoneNumberValue = target[2]
                 } else {
-                    print(PrintMessage.invalidPhoneNumber)
+                    print(InputErrorMessage.invalidPhoneNumber)
                 }
                 break
             default:

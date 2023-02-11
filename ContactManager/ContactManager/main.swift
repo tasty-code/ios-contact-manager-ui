@@ -7,4 +7,5 @@
 
 import Foundation
 
-ContactManager().startProcess()
+let contactManager = ContactManager()
+contactManager.startProcess()

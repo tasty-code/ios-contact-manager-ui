@@ -9,47 +9,39 @@ import UIKit
 
 final class ContactManagerTableViewController: UITableViewController {
     
+    //MARK: - Property
     @IBOutlet private weak var contactManagerTableView: UITableView!
     private var contactInfomation = [ContactInformation]()
+    private var jsonManagement: JSONParsable = JSONManangement()
     
+    //MARK: - BarButtonAction
+    @IBAction func tappedAddNewContactAction(_ sender: UIBarButtonItem) {
+        guard let addNewContactVC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewContactViewController") as? AddNewContactViewController else { return }
+
+        addNewContactVC.modalTransitionStyle = .coverVertical
+        addNewContactVC.modalPresentationStyle = .automatic
+
+        addNewContactVC.delegate = self
+        
+        present(addNewContactVC, animated: true)
+    }
+    
+    //MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureTableView()
-        assignLoadJSONData()
+        assignJSONData()
     }
-    
+
+    //MARK: - Method
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    private func loadJSON<T: Decodable>(_ filename: String) throws -> T {
-        let data: Data
-        
-        guard let filePath = Bundle.main.url(forResource: filename, withExtension: nil) else {
-            print("\(filename) not found.")
-            throw Errors.notFoundJsonFile
-        }
-        
-        do {
-            data = try Data(contentsOf: filePath)
-        } catch {
-            print("Could not load \(filename): (error)")
-            throw Errors.notLoadData
-        }
-        
-        do {
-            let jsonDecoder = JSONDecoder()
-            return try jsonDecoder.decode(T.self, from: data)
-        } catch {
-            print("Unable to parse \(filename): (error)")
-            throw Errors.unableToParse
-        }
-    }
-
-    private func assignLoadJSONData() {
-        guard let parsedInformation: [ContactInformation] = try? loadJSON("Dummy.json") else { return }
+    private func assignJSONData() {
+        guard let parsedInformation = jsonManagement.parseJSON() else { return }
         contactInfomation = parsedInformation
     }
 }
@@ -71,5 +63,12 @@ extension ContactManagerTableViewController {
             cell.contentConfiguration = infoContent
         }
         return cell
+    }
+}
+
+extension ContactManagerTableViewController: SendContactDataDelegate {
+    func sendData(newData: ContactInformation) {
+        contactInfomation.append(newData)
+        contactManagerTableView.reloadData()
     }
 }

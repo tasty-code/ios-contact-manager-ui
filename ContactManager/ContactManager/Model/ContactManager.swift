@@ -7,11 +7,17 @@
 
 import Foundation
 
-final class ContactManager {
+final class ContactManager: InputPossible {
     var contactInformationArray: Set<ContactInformation> = []
-    let detector = Detector()
-    let convertor = Converter()
-    let checker = Checker()
+    let remover: Removable
+    let convertor: Convertable
+    let checker: Checkable
+    
+    init(detector: Removable = Remover(), convertor: Convertable = Converter(), checker: Checkable = Checker()) {
+        self.remover = detector
+        self.convertor = convertor
+        self.checker = checker
+    }
     
     func startProcess() {
         var identifier: Bool = true
@@ -19,46 +25,24 @@ final class ContactManager {
         repeat {
             print(PrintMessage.startComment, terminator: "")
             let receiveUserInputValues = userInputValue()
-            switch MenuStart(rawValue: receiveUserInputValues) {
-            case .addContact:
+            switch WorkList(rawValue: receiveUserInputValues) {
+            case .add:
                 addContact()
                 break
-            case .viewContact:
-                viewContactList(value: contactInformationArray)
+            case .view:
+                showContactList(value: contactInformationArray)
                 break
-            case .searchContact:
+            case .search:
                 searchByName(value: contactInformationArray)
                 break
             case .exit:
-                identifier = exitProgram()
+                identifier = isClosed()
                 exit(1)
                 break
             default:
                 print(PrintMessage.choiceWrorngMenu)
             }
         } while identifier == true
-    }
-}
-
-extension ContactManager: InputPossible {
-    func userInputValue() -> String {
-        guard let userInput = readLine() else {
-            return "F"
-        }
-        return userInput
-    }
-}
-
-extension ContactManager {
-    enum MenuStart: String, CustomStringConvertible {
-        case addContact = "1"
-        case viewContact = "2"
-        case searchContact = "3"
-        case exit = "x"
-        
-        var description: String {
-            return self.rawValue
-        }
     }
 }
 
@@ -70,9 +54,7 @@ extension ContactManager: SystemMenuWorkable {
             print(PrintMessage.nothingUserInput)
             return
         }
-        let convertedUserInputValues = convertor.convertToCharacter(this: receiveUserInputValues)
-        let removedBlankUserInputValues = detector.excludeSpaceWord(convertedUserInputValues)
-        let combinedUserInputValues = convertor.convertToString(removedBlankUserInputValues)
+        let combinedUserInputValues = removeBlankInput(value: receiveUserInputValues)
         let splitedUserInputValues = combinedUserInputValues.split(separator: "/").map{ String($0) }
         
         guard let checkUserInputValues = checker.checkCorrectWord(target: splitedUserInputValues) else {
@@ -83,18 +65,16 @@ extension ContactManager: SystemMenuWorkable {
         PrintMessage.validUserInput(value: checkUserInputValues)
     }
     
-    func viewContactList(value: Set<ContactInformation>) {
-        PrintMessage.viewContact(list: value)
+    func removeBlankInput(value: String) -> String {
+        let convertedUserInputValues = convertor.renderToCharacter(value)
+        let removedBlankUserInputValues = remover.removeSpace(from: convertedUserInputValues)
+        let validName = convertor.renderToString(removedBlankUserInputValues)
+        return validName
     }
     
     func searchByName(value: Set<ContactInformation>) {
         print(PrintMessage.requestToSearchName, terminator: "")
         let searchName = userInputValue()
         PrintMessage.searchContact(list: value, word: searchName)
-    }
-    
-    func exitProgram() -> Bool {
-        print(PrintMessage.exitProgram)
-        return false
     }
 }
