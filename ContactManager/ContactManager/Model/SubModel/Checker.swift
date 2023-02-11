@@ -28,7 +28,7 @@ final class Checker: Checkable {
             case 0:
                 let isCorrectName = target[$0].range(of: RegularExpression.namePattern.rawValue, options: .regularExpression) != nil
                 if isCorrectName {
-                    nameValue = target[0]          // 값 지정
+                    nameValue = target[0]
                 } else {
                     print(InputErrorMessage.invalidName)
                 }
