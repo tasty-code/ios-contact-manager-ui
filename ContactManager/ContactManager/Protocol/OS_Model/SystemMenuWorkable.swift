@@ -11,7 +11,7 @@ internal protocol SystemMenuWorkable {
     func addContact()
     func showContactList(value: Set<ContactInformation>)
     func searchByName(value: Set<ContactInformation>)
-    func exitProgram() -> Bool
+    func isClosed() -> Bool
 }
 
 extension SystemMenuWorkable {
@@ -19,7 +19,7 @@ extension SystemMenuWorkable {
         PrintMessage.viewContact(list: value)
     }
     
-    func exitProgram() -> Bool {
+    func isClosed() -> Bool {
         print(PrintMessage.exitProgram)
         return false
     }

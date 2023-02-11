@@ -36,7 +36,7 @@ final class ContactManager: InputPossible {
                 searchByName(value: contactInformationArray)
                 break
             case .exit:
-                identifier = exitProgram()
+                identifier = isClosed()
                 exit(1)
                 break
             default:
