@@ -11,7 +11,7 @@ final class DataManager {
     
     static let shared = DataManager()
     
-    var contacts: Set<Person> = Set<Person>()
+    private var contacts: Set<Person> = Set<Person>()
         
     private init() { }
     
@@ -19,14 +19,17 @@ final class DataManager {
         contacts.insert(person)
     }
     
+    func setStoredContact(_ data: Set<Person>) {
+        contacts = data
+    }
+    
     func getContactsData() -> Set<Person> {
         return contacts
     }
     
-    func getcontactsDataAsPerson() -> [Person] {
+    func getContacts() -> [Person] {
         let datas = contacts.map { $0 }
-        let sortedDatas = datas.sorted()
-        return sortedDatas
+        return datas
     }
     
     func getContactsList() -> [String] {

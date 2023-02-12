@@ -30,7 +30,7 @@ final class ContactUIManager: ContactUIManagerProtocol {
         case .add:
             try setContactData(userInputModel)
         case .showList:
-            return getContactsData()
+            return getSortedContacts()
         default:
             throw Errors.readFail
         }
@@ -44,13 +44,13 @@ extension ContactUIManager {
         if dataStore.object(forKey: UserDefaults.Keys.contacts) != nil {
             if let data = dataStore.value(forKey: UserDefaults.Keys.contacts) as? Data {
                 guard let decodedData = try? PropertyListDecoder().decode([Person].self, from: data) else { return }
-                self.dataManager.contacts = Set(decodedData)
+                self.dataManager.setStoredContact(Set(decodedData))
             }
         }
     }
     
     func setStoredContactsData() {
-        let data = dataManager.getcontactsDataAsPerson()
+        let data = dataManager.getContacts()
         let encodedData = try? PropertyListEncoder().encode(data)
         dataStore.set(encodedData, forKey: UserDefaults.Keys.contacts)
     }
@@ -64,8 +64,16 @@ extension ContactUIManager {
         dataManager.deleteContact(of: data)
     }
     
-    func getContactsData() -> [Person]  {
-        let persons = dataManager.getcontactsDataAsPerson()
+    func getSortedContacts() -> [Person]  {
+        let persons = dataManager.getContacts().sorted{ lhs, rhs in
+            if lhs.name != rhs.name {
+                return lhs.name < rhs.name
+            } else if lhs.name == rhs.name {
+                return lhs.age < rhs.age
+            } else {
+                return lhs.phoneNum < rhs.phoneNum
+            }
+        }
         return persons
     }
     

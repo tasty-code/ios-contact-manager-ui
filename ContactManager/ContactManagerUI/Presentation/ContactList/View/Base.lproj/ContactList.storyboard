@@ -111,9 +111,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="age" destination="u9K-3f-Ikj" id="EmK-9Q-Tf1"/>
-                                            <outlet property="name" destination="1TN-TF-0w5" id="b8e-aa-nRG"/>
-                                            <outlet property="phoneNumber" destination="eSN-Yq-kHu" id="dL8-BL-AQX"/>
+                                            <outlet property="ageLabel" destination="u9K-3f-Ikj" id="unN-54-tVT"/>
+                                            <outlet property="nameLabel" destination="1TN-TF-0w5" id="fbI-l0-0cl"/>
+                                            <outlet property="phoneNumberLabel" destination="eSN-Yq-kHu" id="FHP-3t-Dsd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

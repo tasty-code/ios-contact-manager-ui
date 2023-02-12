@@ -14,6 +14,13 @@ protocol ValidatorProtocol {
 
 struct Validator: ValidatorProtocol {
     
+    //MARK: Constants
+    enum Constants {
+        static let minimumAge = 1
+        static let maximumAge = 999
+    }
+    
+    //MARK: Methods
     func checkValidFormat(input: UserInputModel) throws -> Person {
         let (name, age, number) = (input.name, input.age, input.phoneNum)
         

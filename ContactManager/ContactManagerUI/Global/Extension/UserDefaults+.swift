@@ -9,6 +9,6 @@ import Foundation
 
 extension UserDefaults {
     enum Keys {
-        static var contacts = "contactsData"
+        static let contacts = "contactsData"
     }
 }

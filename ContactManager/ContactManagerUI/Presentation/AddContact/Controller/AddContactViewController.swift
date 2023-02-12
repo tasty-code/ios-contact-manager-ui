@@ -19,7 +19,7 @@ final class AddContactViewController: UIViewController {
     @IBOutlet weak private var nameTextField: UITextField!
     @IBOutlet weak private var ageTextField: UITextField!
     @IBOutlet weak private var phoneNumberTextField: UITextField!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak private var saveButton: UIBarButtonItem!
     
     // MARK: - View Life Cycle
     
@@ -118,7 +118,7 @@ extension AddContactViewController: UITextFieldDelegate {
         checkSaveButtonState()
     }
     
-    func checkMaxLength(_ textField: UITextField, _ maxLength: Int) {
+    private func checkMaxLength(_ textField: UITextField, _ maxLength: Int) {
         if textField.text!.count > maxLength {
             textField.deleteBackward()
         }

@@ -34,7 +34,7 @@ final class ContactListViewController: UIViewController {
     
     // MARK: - @IBAction Properties
     
-    @IBAction func tappedAddContactButton(_ sender: UIBarButtonItem) {
+    @IBAction private func tappedAddContactButton(_ sender: UIBarButtonItem) {
         guard let addContactVC = UIStoryboard(name: "AddContact", bundle: nil).instantiateViewController(withIdentifier:"AddContactViewController") as? AddContactViewController else { return }
         addContactVC.contactUIManager = contactUIManager
         addContactVC.contactListTableView = contactListTableView
@@ -69,7 +69,7 @@ extension ContactListViewController {
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var cellDataInRow = contactUIManager.getContactsData()[indexPath.row]
+        var cellDataInRow = contactUIManager.getSortedContacts()[indexPath.row]
         if isSearching { cellDataInRow = searchedContacts[indexPath.row] }
         
         let alert = UIAlertController(title: "\(cellDataInRow.name)님의\n연락처가 복사되었습니다.", message: nil, preferredStyle: .alert)
@@ -95,8 +95,14 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(type: ContactTableViewCell.self, indexPath: indexPath)
-        guard let cellDataInRow = contactUIManager.getContactsData()[safe: indexPath.row] else { return UITableViewCell() }
-        isSearching ? cell.setData(with: searchedContacts[indexPath.row]) : cell.setData(with: cellDataInRow)
+        guard let cellDataInRow = contactUIManager.getSortedContacts()[safe: indexPath.row] else { return UITableViewCell() }
+        
+        if isSearching {
+            let cellData = searchedContacts[indexPath.row]
+            cell.setData(ContactTableViewModel(name: cellData.name, age: String(cellData.age), phoneNumber: cellData.phoneNum))
+        } else {
+            cell.setData(ContactTableViewModel(name: cellDataInRow.name, age: String(cellDataInRow.age), phoneNumber: cellDataInRow.phoneNum))
+        }
         return cell
     }
     
@@ -105,7 +111,7 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
         if isSearching { return nil }
         let delete = UIContextualAction(style: .normal, title: "delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             
-            let selectedItem = self.contactUIManager.getContactsData()[indexPath.row]
+            let selectedItem = self.contactUIManager.getSortedContacts()[indexPath.row]
             
             self.contactUIManager.deleteContactData(of: selectedItem)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.left)
@@ -132,7 +138,7 @@ extension ContactListViewController: UISearchResultsUpdating, UISearchBarDelegat
         searchController.searchBar.inputAccessoryView = bar
         
         guard let text = searchController.searchBar.text else { return }
-        searchedContacts = contactUIManager.getContactsData().filter { $0.name.contains(text) }
+        searchedContacts = contactUIManager.getSortedContacts().filter { $0.name.contains(text) }
         contactListTableView.reloadData()
     }
     
