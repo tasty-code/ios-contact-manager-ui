@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol UpdateDataProtocol {
+    func delevaryupdatedData(_ with: UserInputModel)
+}
+
 final class ContactListViewController: UIViewController {
     
     // MARK: - Properties
