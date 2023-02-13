@@ -138,7 +138,19 @@ extension AddContactViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return true
+        switch textField {
+        case nameTextField:
+            return true
+        case ageTextField, phoneNumberTextField:
+            if string == "" {
+                return true
+            } else if Int(string) == nil {
+                return false
+            }
+            return true
+        default:
+            return true
+        }
     }
     
     private func checkMaxLength(_ textField: UITextField, _ maxLength: Int) {
