@@ -21,14 +21,8 @@ final class NewContactViewController: UIViewController {
     }
 
     @IBAction private func cancelButtonDidTap(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "정말로 취소하시겠습니까?", message: nil, preferredStyle: .alert)
-        let noButton = UIAlertAction(title: "아니오", style: .default)
-        alert.addAction(noButton)
-        let yesButton = UIAlertAction(title: "예", style: .destructive) { _ in
-            self.dismiss(animated: true)
-        }
-        alert.addAction(yesButton)
-        present(alert, animated: true)
+        let cancelTitle = "정말로 취소하시겠습니까?"
+        showAlert(title: cancelTitle, leftButtonTitle: "아니오", rightButtonTitle: "예")
     }
 
     @IBAction private func saveButtonDidTap(_ sender: UIBarButtonItem) {
@@ -41,14 +35,20 @@ final class NewContactViewController: UIViewController {
             delegate?.sendData(contact: contact)
             dismiss(animated: true)
         } catch {
-            showErrorAlert(error.localizedDescription)
+            showAlert(title: error.localizedDescription, leftButtonTitle: "확인")
         }
     }
 
-    private func showErrorAlert(_ message: String) {
-        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
-        let checkButton = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(checkButton)
+    private func showAlert(title: String, leftButtonTitle: String, rightButtonTitle: String? = nil) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let leftButton = UIAlertAction(title: leftButtonTitle, style: .default)
+        alert.addAction(leftButton)
+        if rightButtonTitle != nil {
+            let rightButton = UIAlertAction(title: rightButtonTitle, style: .destructive) { _ in
+                   self.dismiss(animated: true)
+               }
+            alert.addAction(rightButton)
+        }
         present(alert, animated: true)
     }
 }
