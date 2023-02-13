@@ -10,6 +10,7 @@ import UIKit
 protocol UpdateDataProtocol {
     
     func delevaryupdatedData(_ data: UserInputModel) throws
+    
 }
 
 final class ContactListViewController: UIViewController {
@@ -151,7 +152,6 @@ extension ContactListViewController: UISearchResultsUpdating, UISearchBarDelegat
         let bar = UIToolbar()
         let done = UIBarButtonItem(title: "닫기", style: .done, target: self, action: #selector (closeButtonTappedAction))
         bar.items = [done]
-        bar.sizeToFit()
         searchController.searchBar.inputAccessoryView = bar
         
         guard let text = searchController.searchBar.text else { return }
@@ -163,4 +163,5 @@ extension ContactListViewController: UISearchResultsUpdating, UISearchBarDelegat
     func closeButtonTappedAction() {
         self.navigationItem.searchController?.searchBar.searchTextField.resignFirstResponder()
     }
+    
 }
