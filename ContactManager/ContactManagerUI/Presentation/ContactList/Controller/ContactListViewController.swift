@@ -8,7 +8,8 @@
 import UIKit
 
 protocol UpdateDataProtocol {
-    func delevaryupdatedData(_ with: UserInputModel)
+    
+    func delevaryupdatedData(_ data: UserInputModel) throws
 }
 
 final class ContactListViewController: UIViewController {
@@ -40,10 +41,10 @@ final class ContactListViewController: UIViewController {
     
     @IBAction private func tappedAddContactButton(_ sender: UIBarButtonItem) {
         guard let addContactVC = UIStoryboard(name: "AddContact", bundle: nil).instantiateViewController(withIdentifier:"AddContactViewController") as? AddContactViewController else { return }
-        addContactVC.contactUIManager = contactUIManager
-        addContactVC.contactListTableView = contactListTableView
+        addContactVC.delegate = self
         self.present(addContactVC, animated: true)
     }
+    
 }
 
 // MARK: - Methods
@@ -66,6 +67,19 @@ extension ContactListViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
+    
+}
+
+//MARK: - UdateDataProtocol
+
+extension ContactListViewController: UpdateDataProtocol {
+    
+    func delevaryupdatedData(_ data: UserInputModel) throws {
+        try contactUIManager.runProgram(menu: .add, userInputModel: data)
+        contactUIManager.setStoredContactsData()
+        contactListTableView?.reloadData()
+    }
+    
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -84,7 +98,6 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
                 UIApplication.shared.open(url)
             }
         }
-
         alert.addAction(cancel)
         alert.addAction(action)
 
@@ -111,7 +124,6 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
         if isSearching { return nil }
         let delete = UIContextualAction(style: .normal, title: "delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             
@@ -128,6 +140,7 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
         config.performsFirstActionWithFullSwipe = false
         return config
     }
+    
 }
 
 //MARK: - UISearchResultUpdating, UISearchBarDelegate

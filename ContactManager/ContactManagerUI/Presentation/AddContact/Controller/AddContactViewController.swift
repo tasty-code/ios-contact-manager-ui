@@ -10,9 +10,8 @@ import UIKit
 final class AddContactViewController: UIViewController {
     
     // MARK: - Properties
-
-    var contactUIManager: ContactUIManager?
-    var contactListTableView: UITableView?
+    
+    var delegate: UpdateDataProtocol?
     
     // MARK: - @IBOutlet Properties
     
@@ -46,8 +45,6 @@ final class AddContactViewController: UIViewController {
     }
     
     @IBAction private func tappedSaveButton(_ sender: UIBarButtonItem) {
-        guard let contactUIManager else { return }
-        
         do {
             guard let name = nameTextField.text else { throw Errors.wrongName }
             guard let age = ageTextField.text else { throw Errors.wrongAge }
@@ -56,10 +53,9 @@ final class AddContactViewController: UIViewController {
             let trimmedName = name.split(separator: " ").joined()
             let userInputModel = UserInputModel(name: trimmedName, age: age, phoneNum: phoneNumber)
             
-            try contactUIManager.runProgram(menu: .add, userInputModel: userInputModel)
-            contactUIManager.setStoredContactsData()
-            contactListTableView?.reloadData()
+            try delegate?.delevaryupdatedData(userInputModel)
             self.dismiss(animated: true)
+            
         } catch {
             presentErrorAlert(with: error.localizedDescription)
         }
@@ -100,6 +96,30 @@ extension AddContactViewController {
         
         saveButton.isEnabled = !(name.isEmpty || age.isEmpty || phoneNumber.isEmpty)
     }
+    
+    private func formmatingPhoneNumber(with number: String?) -> String? {
+        guard let number = number else { return nil }
+        
+        let numberWithNoHyphen = number.split(separator: "-").joined()
+        var phoneNumber = numberWithNoHyphen.map { String($0) }
+        
+        switch phoneNumber.count {
+        case 0..<3:
+            return phoneNumber.joined()
+        case 3..<6:
+            phoneNumber.insert("-", at: 2)
+            return phoneNumber.joined()
+        case 6..<10:
+            phoneNumber.insert("-", at: 2)
+            phoneNumber.insert("-", at: 6)
+            return phoneNumber.joined()
+        default:
+            phoneNumber.insert("-", at: 3)
+            phoneNumber.insert("-", at: 8)
+            return phoneNumber.joined()
+        }
+    }
+    
 }
 
 // MARK: - UITextFieldDelegate
@@ -107,11 +127,10 @@ extension AddContactViewController {
 extension AddContactViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let contactUIManager else { return }
         guard let text = textField.text else { return }
         
         if textField == phoneNumberTextField {
-            guard let formattedPhoneNumber = contactUIManager.formmatingPhoneNumber(with: text) else { return }
+            guard let formattedPhoneNumber = formmatingPhoneNumber(with: text) else { return }
             textField.text = formattedPhoneNumber
         }
         checkMaxLength(phoneNumberTextField, 13)
@@ -123,4 +142,5 @@ extension AddContactViewController: UITextFieldDelegate {
             textField.deleteBackward()
         }
     }
+    
 }

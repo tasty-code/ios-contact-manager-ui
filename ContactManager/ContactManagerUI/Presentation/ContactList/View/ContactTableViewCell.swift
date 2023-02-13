@@ -18,4 +18,5 @@ final class ContactTableViewCell: UITableViewCell {
         ageLabel.text = String(viewModel.age) + " 세"
         phoneNumberLabel.text = viewModel.phoneNumber
     }
+    
 }

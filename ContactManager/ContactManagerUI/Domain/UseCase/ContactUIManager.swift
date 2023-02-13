@@ -36,6 +36,7 @@ final class ContactUIManager: ContactUIManagerProtocol {
         }
         return nil
     }
+    
 }
 
 extension ContactUIManager {
@@ -75,29 +76,6 @@ extension ContactUIManager {
             }
         }
         return persons
-    }
-    
-    func formmatingPhoneNumber(with number: String?) -> String? {
-        guard let number = number else { return nil }
-        
-        let numberWithNoHyphen = number.split(separator: "-").joined()
-        var phoneNumber = numberWithNoHyphen.map { String($0) }
-        
-        switch phoneNumber.count {
-        case 0..<3:
-            return phoneNumber.joined()
-        case 3..<6:
-            phoneNumber.insert("-", at: 2)
-            return phoneNumber.joined()
-        case 6..<10:
-            phoneNumber.insert("-", at: 2)
-            phoneNumber.insert("-", at: 6)
-            return phoneNumber.joined()
-        default:
-            phoneNumber.insert("-", at: 3)
-            phoneNumber.insert("-", at: 8)
-            return phoneNumber.joined()
-        }
     }
     
     func countContactLists() -> Int {
