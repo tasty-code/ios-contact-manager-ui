@@ -137,6 +137,10 @@ extension AddContactViewController: UITextFieldDelegate {
         checkSaveButtonState()
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
+    
     private func checkMaxLength(_ textField: UITextField, _ maxLength: Int) {
         if textField.text!.count > maxLength {
             textField.deleteBackward()
