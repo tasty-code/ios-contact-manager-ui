@@ -139,8 +139,6 @@ extension AddContactViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         switch textField {
-        case nameTextField:
-            return true
         case ageTextField, phoneNumberTextField:
             if string == "" {
                 return true
