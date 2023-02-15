@@ -41,8 +41,10 @@ final class ContactListViewController: UIViewController {
     // MARK: - @IBAction Properties
     
     @IBAction private func tappedAddContactButton(_ sender: UIBarButtonItem) {
-        guard let addContactVC = UIStoryboard(name: "AddContact", bundle: nil).instantiateViewController(withIdentifier:"AddContactViewController") as? AddContactViewController else { return }
-        addContactVC.delegate = self
+        let storyboard = UIStoryboard(name: "AddContact", bundle: nil)
+        guard let addContactVC = storyboard.instantiateInitialViewController(creator: { coder in
+            return AddContactViewController(coder: coder, delegate: self)
+        }) else { return }
         self.present(addContactVC, animated: true)
     }
     
