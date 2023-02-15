@@ -13,6 +13,16 @@ final class AddContactViewController: UIViewController {
     
     var delegate: UpdateDataProtocol?
     
+    //MARK: - Initializer
+    init?(coder: NSCoder, delegate: UpdateDataProtocol) {
+        self.delegate = delegate
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("AddContactViewController must created with delegate")
+    }
+    
     // MARK: - @IBOutlet Properties
     
     @IBOutlet weak private var nameTextField: UITextField!
