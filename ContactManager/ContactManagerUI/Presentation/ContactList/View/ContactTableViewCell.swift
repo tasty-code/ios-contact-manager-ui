@@ -13,10 +13,10 @@ final class ContactTableViewCell: UITableViewCell {
     @IBOutlet weak private var ageLabel: UILabel!
     @IBOutlet weak private var phoneNumberLabel: UILabel!
     
-    func setData(_ viewModel: ContactTableViewModel) {
+    func setData(_ viewModel: UserInputModel) {
         nameLabel.text = viewModel.name
         ageLabel.text = String(viewModel.age) + " 세"
-        phoneNumberLabel.text = viewModel.phoneNumber
+        phoneNumberLabel.text = viewModel.phoneNum
     }
     
 }

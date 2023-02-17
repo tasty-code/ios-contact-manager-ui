@@ -117,9 +117,9 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
         
         if isSearching {
             let cellData = searchedContacts[indexPath.row]
-            cell.setData(ContactTableViewModel(name: cellData.name, age: String(cellData.age), phoneNumber: cellData.phoneNum))
+            cell.setData(UserInputModel(name: cellData.name, age: String(cellData.age), phoneNum: cellData.phoneNum))
         } else {
-            cell.setData(ContactTableViewModel(name: cellDataInRow.name, age: String(cellDataInRow.age), phoneNumber: cellDataInRow.phoneNum))
+            cell.setData(UserInputModel(name: cellDataInRow.name, age: String(cellDataInRow.age), phoneNum: cellDataInRow.phoneNum))
         }
         return cell
     }
