@@ -11,7 +11,7 @@ final class AddContactViewController: UIViewController {
     
     // MARK: - Properties
     
-    var delegate: UpdateDataProtocol
+    let delegate: UpdateDataProtocol
     
     // MARK: - @IBOutlet Properties
     
