@@ -8,9 +8,7 @@
 import UIKit
 
 protocol UpdateDataProtocol {
-    
     func delevaryupdatedData(_ data: UserInputModel) throws
-    
 }
 
 final class ContactListViewController: UIViewController {
