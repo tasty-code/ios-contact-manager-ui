@@ -1,6 +1,6 @@
 //
 //  Array+.swift
-//  ContactManager
+//  ContactManagerUI
 //
 //  Created by DONGWOOK SEO on 2023/02/01.
 //
