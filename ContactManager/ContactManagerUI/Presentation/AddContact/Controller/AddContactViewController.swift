@@ -11,7 +11,7 @@ final class AddContactViewController: UIViewController {
     
     // MARK: - Properties
     
-    let delegate: UpdateDataProtocol
+    weak var delegate: UpdateDataProtocol?
     
     // MARK: - @IBOutlet Properties
     
@@ -63,7 +63,7 @@ final class AddContactViewController: UIViewController {
             let trimmedName = name.split(separator: " ").joined()
             let userInputModel = UserInputModel(name: trimmedName, age: age, phoneNum: phoneNumber)
             
-            try delegate.delevaryupdatedData(userInputModel)
+            try delegate?.delevaryupdatedData(userInputModel)
             self.dismiss(animated: true)
             
         } catch {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol UpdateDataProtocol {
+protocol UpdateDataProtocol: AnyObject {
     func delevaryupdatedData(_ data: UserInputModel) throws
 }
 
