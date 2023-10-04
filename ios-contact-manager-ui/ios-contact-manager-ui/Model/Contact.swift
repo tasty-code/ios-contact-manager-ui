@@ -8,7 +8,6 @@
 import Foundation
 
 typealias PhoneNumber = String
-
 struct Contact: Hashable {
     let uuid = UUID()
     private(set) var name: String
@@ -34,5 +33,54 @@ struct Contact: Hashable {
     fileprivate mutating func modify(from existingPhoneNumber: PhoneNumber, to newPhoneNumber: PhoneNumber) {
         phoneNumbers.remove(existingPhoneNumber)
         phoneNumbers.insert(newPhoneNumber)
+    }
+}
+
+class ContactManager {
+    private(set) var contacts = [UUID: Contact]()
+    
+    func add(_ person: Contact) {
+        contacts[person.uuid] = person
+    }
+    
+    func add(_ phoneNumber: PhoneNumber, of uuid: UUID) {
+        contacts[uuid]?.add(phoneNumber)
+    }
+    
+    func delete(_ person: Contact) {
+        guard let contact = contacts.removeValue(forKey: person.uuid)
+        else {
+            return
+        }
+    }
+    
+    func delete(_ phoneNumber: PhoneNumber, of uuid: UUID) {
+        contacts[uuid]?.delete(phoneNumber)
+    }
+    
+    func modify(_ personName: String, _ personAge: Int, of uuid: UUID) {
+        guard var contact = contacts[uuid]
+        else {
+            return
+        }
+        contact.changeName(personName)
+        contact.changeAge(personAge)
+        contacts[uuid] = contact
+    }
+    
+    func modify(from exsistingPhoneNumber: PhoneNumber, to newPhoneNumber: PhoneNumber, of uuid: UUID) {
+        contacts[uuid]?.modify(from: exsistingPhoneNumber, to: newPhoneNumber)
+    }
+}
+
+extension ContactManager {
+    static var mock: ContactManager {
+        let temp = ContactManager()
+        
+        let hong = Contact(name: "홍길동", age: 32)
+        let lim = Contact(name: "임꺽정", age: 40)
+        let sim = Contact(name: "심춘향", age: 20)
+        
+        return temp
     }
 }
