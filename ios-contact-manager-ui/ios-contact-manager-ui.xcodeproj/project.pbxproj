@@ -16,6 +16,8 @@
 		0D6F97072ACCF0B6006EF067 /* ios_contact_manager_uiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F97062ACCF0B6006EF067 /* ios_contact_manager_uiTests.swift */; };
 		0D6F97112ACCF0B6006EF067 /* ios_contact_manager_uiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F97102ACCF0B6006EF067 /* ios_contact_manager_uiUITests.swift */; };
 		0D6F97132ACCF0B6006EF067 /* ios_contact_manager_uiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F97122ACCF0B6006EF067 /* ios_contact_manager_uiUITestsLaunchTests.swift */; };
+		0D6F97252ACCF1CA006EF067 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F97242ACCF1CA006EF067 /* Contact.swift */; };
+		0D6F97262ACCF1CA006EF067 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F97242ACCF1CA006EF067 /* Contact.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 		0D6F970C2ACCF0B6006EF067 /* ios-contact-manager-uiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-contact-manager-uiUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D6F97102ACCF0B6006EF067 /* ios_contact_manager_uiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITests.swift; sourceTree = "<group>"; };
 		0D6F97122ACCF0B6006EF067 /* ios_contact_manager_uiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0D6F97242ACCF1CA006EF067 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +102,10 @@
 		0D6F96EE2ACCF0B5006EF067 /* ios-contact-manager-ui */ = {
 			isa = PBXGroup;
 			children = (
-				0D6F96EF2ACCF0B5006EF067 /* AppDelegate.swift */,
-				0D6F96F12ACCF0B5006EF067 /* SceneDelegate.swift */,
-				0D6F96F32ACCF0B5006EF067 /* ViewController.swift */,
-				0D6F96F52ACCF0B5006EF067 /* Main.storyboard */,
-				0D6F96F82ACCF0B6006EF067 /* Assets.xcassets */,
-				0D6F96FA2ACCF0B6006EF067 /* LaunchScreen.storyboard */,
 				0D6F96FD2ACCF0B6006EF067 /* Info.plist */,
+				0D6F97202ACCF17C006EF067 /* Controller */,
+				0D6F97212ACCF188006EF067 /* Model */,
+				0D6F971F2ACCF166006EF067 /* View */,
 			);
 			path = "ios-contact-manager-ui";
 			sourceTree = "<group>";
@@ -125,6 +125,34 @@
 				0D6F97122ACCF0B6006EF067 /* ios_contact_manager_uiUITestsLaunchTests.swift */,
 			);
 			path = "ios-contact-manager-uiUITests";
+			sourceTree = "<group>";
+		};
+		0D6F971F2ACCF166006EF067 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0D6F96F82ACCF0B6006EF067 /* Assets.xcassets */,
+				0D6F96F52ACCF0B5006EF067 /* Main.storyboard */,
+				0D6F96FA2ACCF0B6006EF067 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0D6F97202ACCF17C006EF067 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0D6F96EF2ACCF0B5006EF067 /* AppDelegate.swift */,
+				0D6F96F12ACCF0B5006EF067 /* SceneDelegate.swift */,
+				0D6F96F32ACCF0B5006EF067 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0D6F97212ACCF188006EF067 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0D6F97242ACCF1CA006EF067 /* Contact.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D6F97252ACCF1CA006EF067 /* Contact.swift in Sources */,
 				0D6F96F42ACCF0B5006EF067 /* ViewController.swift in Sources */,
 				0D6F96F02ACCF0B5006EF067 /* AppDelegate.swift in Sources */,
 				0D6F96F22ACCF0B5006EF067 /* SceneDelegate.swift in Sources */,
@@ -268,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D6F97262ACCF1CA006EF067 /* Contact.swift in Sources */,
 				0D6F97072ACCF0B6006EF067 /* ios_contact_manager_uiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
