@@ -7,9 +7,17 @@
 
 import Foundation
 
+
+
 struct Contact: Hashable {
-    var name: String
-    var age: Int
-    var phoneNumber: String
+    let uuid = UUID()
+    private(set) var name: String
+    private(set) var age: Int
+    private(set) var phoneNumbers = Set<PhoneNumber>()
 }
+
+
+typealias PhoneNumber = String
+
+
 
