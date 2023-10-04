@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D4347162ACD5F7D00052559 /* ContactException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4347152ACD5F7D00052559 /* ContactException.swift */; };
 		0D6F96F02ACCF0B5006EF067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F96EF2ACCF0B5006EF067 /* AppDelegate.swift */; };
 		0D6F96F22ACCF0B5006EF067 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F96F12ACCF0B5006EF067 /* SceneDelegate.swift */; };
 		0D6F96F42ACCF0B5006EF067 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F96F32ACCF0B5006EF067 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D4347152ACD5F7D00052559 /* ContactException.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactException.swift; sourceTree = "<group>"; };
 		0D6F96EC2ACCF0B5006EF067 /* ios-contact-manager-ui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-contact-manager-ui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D6F96EF2ACCF0B5006EF067 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D6F96F12ACCF0B5006EF067 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D4347142ACD5F4400052559 /* Exception */ = {
+			isa = PBXGroup;
+			children = (
+				0D4347152ACD5F7D00052559 /* ContactException.swift */,
+			);
+			path = Exception;
+			sourceTree = "<group>";
+		};
 		0D6F96E32ACCF0B5006EF067 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +112,7 @@
 		0D6F96EE2ACCF0B5006EF067 /* ios-contact-manager-ui */ = {
 			isa = PBXGroup;
 			children = (
+				0D4347142ACD5F4400052559 /* Exception */,
 				0D6F96FD2ACCF0B6006EF067 /* Info.plist */,
 				0D6F97202ACCF17C006EF067 /* Controller */,
 				0D6F97212ACCF188006EF067 /* Model */,
@@ -290,6 +301,7 @@
 				0D6F96F42ACCF0B5006EF067 /* ViewController.swift in Sources */,
 				0D6F96F02ACCF0B5006EF067 /* AppDelegate.swift in Sources */,
 				0D6F96F22ACCF0B5006EF067 /* SceneDelegate.swift in Sources */,
+				0D4347162ACD5F7D00052559 /* ContactException.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,7 +39,10 @@ struct Contact: Hashable {
 class ContactManager {
     private(set) var contacts = [UUID: Contact]()
     
-    func add(_ person: Contact) {
+    func add(_ person: Contact) throws {
+        if contacts[person.uuid] != nil {
+            throw ContactException.contactAlreadyExsist(contact: person)
+        }
         contacts[person.uuid] = person
     }
     
@@ -47,10 +50,10 @@ class ContactManager {
         contacts[uuid]?.add(phoneNumber)
     }
     
-    func delete(_ person: Contact) {
-        guard let contact = contacts.removeValue(forKey: person.uuid)
+    func delete(_ person: Contact) throws {
+        guard let _ = contacts.removeValue(forKey: person.uuid)
         else {
-            return
+            throw ContactException.contactNotFound(contact: person)
         }
     }
     
@@ -58,14 +61,14 @@ class ContactManager {
         contacts[uuid]?.delete(phoneNumber)
     }
     
-    func modify(_ personName: String, _ personAge: Int, of uuid: UUID) {
-        guard var contact = contacts[uuid]
+    func modify(_ personName: String, _ personAge: Int, of person: Contact) throws {
+        guard var contact = contacts[person.uuid]
         else {
-            return
+            throw ContactException.contactNotFound(contact: person)
         }
         contact.changeName(personName)
         contact.changeAge(personAge)
-        contacts[uuid] = contact
+        contacts[person.uuid] = contact
     }
     
     func modify(from exsistingPhoneNumber: PhoneNumber, to newPhoneNumber: PhoneNumber, of uuid: UUID) {
