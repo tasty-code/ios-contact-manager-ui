@@ -10,7 +10,7 @@ import Foundation
 class ContactManager {
     private var contacts: [Contact] = []
     
-    var count: Int {
+    var contactsCount: Int {
         return contacts.count
     }
     

@@ -13,6 +13,8 @@
 		DE6D12E72ACD0A2800A43550 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE6D12E52ACD0A2800A43550 /* Main.storyboard */; };
 		DE6D12E92ACD0A2800A43550 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE6D12E82ACD0A2800A43550 /* Assets.xcassets */; };
 		DE6D12EC2ACD0A2800A43550 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE6D12EA2ACD0A2800A43550 /* LaunchScreen.storyboard */; };
+		DE6D12F42ACD0AE500A43550 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D12F32ACD0AE500A43550 /* Contact.swift */; };
+		DE6D12F82ACD0B1900A43550 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D12F72ACD0B1900A43550 /* ContactManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		DE6D12E82ACD0A2800A43550 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE6D12EB2ACD0A2800A43550 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE6D12ED2ACD0A2800A43550 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE6D12F32ACD0AE500A43550 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		DE6D12F72ACD0B1900A43550 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +62,39 @@
 			children = (
 				DE6D12DF2ACD0A2800A43550 /* AppDelegate.swift */,
 				DE6D12E12ACD0A2800A43550 /* SceneDelegate.swift */,
-				DE6D12E32ACD0A2800A43550 /* ViewController.swift */,
-				DE6D12E52ACD0A2800A43550 /* Main.storyboard */,
 				DE6D12E82ACD0A2800A43550 /* Assets.xcassets */,
-				DE6D12EA2ACD0A2800A43550 /* LaunchScreen.storyboard */,
 				DE6D12ED2ACD0A2800A43550 /* Info.plist */,
+				DE6D13002ACD113D00A43550 /* Views */,
+				DE6D12FF2ACD113500A43550 /* Controllers */,
+				DE6D12FE2ACD112F00A43550 /* Models */,
 			);
 			path = "ios-contact-manager-ui";
+			sourceTree = "<group>";
+		};
+		DE6D12FE2ACD112F00A43550 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE6D12F72ACD0B1900A43550 /* ContactManager.swift */,
+				DE6D12F32ACD0AE500A43550 /* Contact.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DE6D12FF2ACD113500A43550 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DE6D12E32ACD0A2800A43550 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DE6D13002ACD113D00A43550 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DE6D12E52ACD0A2800A43550 /* Main.storyboard */,
+				DE6D12EA2ACD0A2800A43550 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +168,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE6D12F82ACD0B1900A43550 /* ContactManager.swift in Sources */,
+				DE6D12F42ACD0AE500A43550 /* Contact.swift in Sources */,
 				DE6D12E42ACD0A2800A43550 /* ViewController.swift in Sources */,
 				DE6D12E02ACD0A2800A43550 /* AppDelegate.swift in Sources */,
 				DE6D12E22ACD0A2800A43550 /* SceneDelegate.swift in Sources */,
@@ -302,9 +334,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JinUng41.ios-contact-manager-ui";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -330,9 +365,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JinUng41.ios-contact-manager-ui";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
