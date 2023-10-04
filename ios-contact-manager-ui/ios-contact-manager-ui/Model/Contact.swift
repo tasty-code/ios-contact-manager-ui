@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct Contact: Hashable {
+    var name: String
+    var age: Int
+    var phoneNumber: String
+}
+
