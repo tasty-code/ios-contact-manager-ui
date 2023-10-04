@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D6F96F02ACCF0B5006EF067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F96EF2ACCF0B5006EF067 /* AppDelegate.swift */; };
+		0D6F96F22ACCF0B5006EF067 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F96F12ACCF0B5006EF067 /* SceneDelegate.swift */; };
+		0D6F96F42ACCF0B5006EF067 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F96F32ACCF0B5006EF067 /* ViewController.swift */; };
+		0D6F96F72ACCF0B5006EF067 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F96F52ACCF0B5006EF067 /* Main.storyboard */; };
+		0D6F96F92ACCF0B6006EF067 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F96F82ACCF0B6006EF067 /* Assets.xcassets */; };
+		0D6F96FC2ACCF0B6006EF067 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F96FA2ACCF0B6006EF067 /* LaunchScreen.storyboard */; };
+		0D6F97072ACCF0B6006EF067 /* ios_contact_manager_uiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F97062ACCF0B6006EF067 /* ios_contact_manager_uiTests.swift */; };
+		0D6F97112ACCF0B6006EF067 /* ios_contact_manager_uiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F97102ACCF0B6006EF067 /* ios_contact_manager_uiUITests.swift */; };
+		0D6F97132ACCF0B6006EF067 /* ios_contact_manager_uiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F97122ACCF0B6006EF067 /* ios_contact_manager_uiUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0D6F97032ACCF0B6006EF067 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D6F96E42ACCF0B5006EF067 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D6F96EB2ACCF0B5006EF067;
+			remoteInfo = "ios-contact-manager-ui";
+		};
+		0D6F970D2ACCF0B6006EF067 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D6F96E42ACCF0B5006EF067 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D6F96EB2ACCF0B5006EF067;
+			remoteInfo = "ios-contact-manager-ui";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D6F96EC2ACCF0B5006EF067 /* ios-contact-manager-ui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-contact-manager-ui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D6F96EF2ACCF0B5006EF067 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0D6F96F12ACCF0B5006EF067 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0D6F96F32ACCF0B5006EF067 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0D6F96F62ACCF0B5006EF067 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0D6F96F82ACCF0B6006EF067 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0D6F96FB2ACCF0B6006EF067 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0D6F96FD2ACCF0B6006EF067 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D6F97022ACCF0B6006EF067 /* ios-contact-manager-uiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-contact-manager-uiTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D6F97062ACCF0B6006EF067 /* ios_contact_manager_uiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiTests.swift; sourceTree = "<group>"; };
+		0D6F970C2ACCF0B6006EF067 /* ios-contact-manager-uiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-contact-manager-uiUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D6F97102ACCF0B6006EF067 /* ios_contact_manager_uiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITests.swift; sourceTree = "<group>"; };
+		0D6F97122ACCF0B6006EF067 /* ios_contact_manager_uiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0D6F96E92ACCF0B5006EF067 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D6F96FF2ACCF0B6006EF067 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D6F97092ACCF0B6006EF067 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D6F96E32ACCF0B5006EF067 = {
+			isa = PBXGroup;
+			children = (
+				0D6F96EE2ACCF0B5006EF067 /* ios-contact-manager-ui */,
+				0D6F97052ACCF0B6006EF067 /* ios-contact-manager-uiTests */,
+				0D6F970F2ACCF0B6006EF067 /* ios-contact-manager-uiUITests */,
+				0D6F96ED2ACCF0B5006EF067 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0D6F96ED2ACCF0B5006EF067 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0D6F96EC2ACCF0B5006EF067 /* ios-contact-manager-ui.app */,
+				0D6F97022ACCF0B6006EF067 /* ios-contact-manager-uiTests.xctest */,
+				0D6F970C2ACCF0B6006EF067 /* ios-contact-manager-uiUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0D6F96EE2ACCF0B5006EF067 /* ios-contact-manager-ui */ = {
+			isa = PBXGroup;
+			children = (
+				0D6F96EF2ACCF0B5006EF067 /* AppDelegate.swift */,
+				0D6F96F12ACCF0B5006EF067 /* SceneDelegate.swift */,
+				0D6F96F32ACCF0B5006EF067 /* ViewController.swift */,
+				0D6F96F52ACCF0B5006EF067 /* Main.storyboard */,
+				0D6F96F82ACCF0B6006EF067 /* Assets.xcassets */,
+				0D6F96FA2ACCF0B6006EF067 /* LaunchScreen.storyboard */,
+				0D6F96FD2ACCF0B6006EF067 /* Info.plist */,
+			);
+			path = "ios-contact-manager-ui";
+			sourceTree = "<group>";
+		};
+		0D6F97052ACCF0B6006EF067 /* ios-contact-manager-uiTests */ = {
+			isa = PBXGroup;
+			children = (
+				0D6F97062ACCF0B6006EF067 /* ios_contact_manager_uiTests.swift */,
+			);
+			path = "ios-contact-manager-uiTests";
+			sourceTree = "<group>";
+		};
+		0D6F970F2ACCF0B6006EF067 /* ios-contact-manager-uiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0D6F97102ACCF0B6006EF067 /* ios_contact_manager_uiUITests.swift */,
+				0D6F97122ACCF0B6006EF067 /* ios_contact_manager_uiUITestsLaunchTests.swift */,
+			);
+			path = "ios-contact-manager-uiUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0D6F96EB2ACCF0B5006EF067 /* ios-contact-manager-ui */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D6F97162ACCF0B6006EF067 /* Build configuration list for PBXNativeTarget "ios-contact-manager-ui" */;
+			buildPhases = (
+				0D6F96E82ACCF0B5006EF067 /* Sources */,
+				0D6F96E92ACCF0B5006EF067 /* Frameworks */,
+				0D6F96EA2ACCF0B5006EF067 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ios-contact-manager-ui";
+			productName = "ios-contact-manager-ui";
+			productReference = 0D6F96EC2ACCF0B5006EF067 /* ios-contact-manager-ui.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0D6F97012ACCF0B6006EF067 /* ios-contact-manager-uiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D6F97192ACCF0B6006EF067 /* Build configuration list for PBXNativeTarget "ios-contact-manager-uiTests" */;
+			buildPhases = (
+				0D6F96FE2ACCF0B6006EF067 /* Sources */,
+				0D6F96FF2ACCF0B6006EF067 /* Frameworks */,
+				0D6F97002ACCF0B6006EF067 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0D6F97042ACCF0B6006EF067 /* PBXTargetDependency */,
+			);
+			name = "ios-contact-manager-uiTests";
+			productName = "ios-contact-manager-uiTests";
+			productReference = 0D6F97022ACCF0B6006EF067 /* ios-contact-manager-uiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0D6F970B2ACCF0B6006EF067 /* ios-contact-manager-uiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D6F971C2ACCF0B6006EF067 /* Build configuration list for PBXNativeTarget "ios-contact-manager-uiUITests" */;
+			buildPhases = (
+				0D6F97082ACCF0B6006EF067 /* Sources */,
+				0D6F97092ACCF0B6006EF067 /* Frameworks */,
+				0D6F970A2ACCF0B6006EF067 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0D6F970E2ACCF0B6006EF067 /* PBXTargetDependency */,
+			);
+			name = "ios-contact-manager-uiUITests";
+			productName = "ios-contact-manager-uiUITests";
+			productReference = 0D6F970C2ACCF0B6006EF067 /* ios-contact-manager-uiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0D6F96E42ACCF0B5006EF067 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					0D6F96EB2ACCF0B5006EF067 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					0D6F97012ACCF0B6006EF067 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 0D6F96EB2ACCF0B5006EF067;
+					};
+					0D6F970B2ACCF0B6006EF067 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 0D6F96EB2ACCF0B5006EF067;
+					};
+				};
+			};
+			buildConfigurationList = 0D6F96E72ACCF0B5006EF067 /* Build configuration list for PBXProject "ios-contact-manager-ui" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0D6F96E32ACCF0B5006EF067;
+			productRefGroup = 0D6F96ED2ACCF0B5006EF067 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0D6F96EB2ACCF0B5006EF067 /* ios-contact-manager-ui */,
+				0D6F97012ACCF0B6006EF067 /* ios-contact-manager-uiTests */,
+				0D6F970B2ACCF0B6006EF067 /* ios-contact-manager-uiUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0D6F96EA2ACCF0B5006EF067 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D6F96FC2ACCF0B6006EF067 /* LaunchScreen.storyboard in Resources */,
+				0D6F96F92ACCF0B6006EF067 /* Assets.xcassets in Resources */,
+				0D6F96F72ACCF0B5006EF067 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D6F97002ACCF0B6006EF067 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D6F970A2ACCF0B6006EF067 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0D6F96E82ACCF0B5006EF067 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D6F96F42ACCF0B5006EF067 /* ViewController.swift in Sources */,
+				0D6F96F02ACCF0B5006EF067 /* AppDelegate.swift in Sources */,
+				0D6F96F22ACCF0B5006EF067 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D6F96FE2ACCF0B6006EF067 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D6F97072ACCF0B6006EF067 /* ios_contact_manager_uiTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D6F97082ACCF0B6006EF067 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D6F97112ACCF0B6006EF067 /* ios_contact_manager_uiUITests.swift in Sources */,
+				0D6F97132ACCF0B6006EF067 /* ios_contact_manager_uiUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0D6F97042ACCF0B6006EF067 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D6F96EB2ACCF0B5006EF067 /* ios-contact-manager-ui */;
+			targetProxy = 0D6F97032ACCF0B6006EF067 /* PBXContainerItemProxy */;
+		};
+		0D6F970E2ACCF0B6006EF067 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D6F96EB2ACCF0B5006EF067 /* ios-contact-manager-ui */;
+			targetProxy = 0D6F970D2ACCF0B6006EF067 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0D6F96F52ACCF0B5006EF067 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D6F96F62ACCF0B5006EF067 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0D6F96FA2ACCF0B6006EF067 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D6F96FB2ACCF0B6006EF067 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0D6F97142ACCF0B6006EF067 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0D6F97152ACCF0B6006EF067 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0D6F97172ACCF0B6006EF067 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ios-contact-manager-ui/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kimjunsung.ios-contact-manager-ui";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		0D6F97182ACCF0B6006EF067 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ios-contact-manager-ui/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kimjunsung.ios-contact-manager-ui";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		0D6F971A2ACCF0B6006EF067 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kimjunsung.ios-contact-manager-uiTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ios-contact-manager-ui.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ios-contact-manager-ui";
+			};
+			name = Debug;
+		};
+		0D6F971B2ACCF0B6006EF067 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kimjunsung.ios-contact-manager-uiTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ios-contact-manager-ui.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ios-contact-manager-ui";
+			};
+			name = Release;
+		};
+		0D6F971D2ACCF0B6006EF067 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kimjunsung.ios-contact-manager-uiUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ios-contact-manager-ui";
+			};
+			name = Debug;
+		};
+		0D6F971E2ACCF0B6006EF067 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kimjunsung.ios-contact-manager-uiUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ios-contact-manager-ui";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0D6F96E72ACCF0B5006EF067 /* Build configuration list for PBXProject "ios-contact-manager-ui" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D6F97142ACCF0B6006EF067 /* Debug */,
+				0D6F97152ACCF0B6006EF067 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D6F97162ACCF0B6006EF067 /* Build configuration list for PBXNativeTarget "ios-contact-manager-ui" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D6F97172ACCF0B6006EF067 /* Debug */,
+				0D6F97182ACCF0B6006EF067 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D6F97192ACCF0B6006EF067 /* Build configuration list for PBXNativeTarget "ios-contact-manager-uiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D6F971A2ACCF0B6006EF067 /* Debug */,
+				0D6F971B2ACCF0B6006EF067 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D6F971C2ACCF0B6006EF067 /* Build configuration list for PBXNativeTarget "ios-contact-manager-uiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D6F971D2ACCF0B6006EF067 /* Debug */,
+				0D6F971E2ACCF0B6006EF067 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0D6F96E42ACCF0B5006EF067 /* Project object */;
+}
