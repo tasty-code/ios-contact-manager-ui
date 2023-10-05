@@ -51,7 +51,7 @@ extension ViewController: UITableViewDelegate {
 }
 
 extension ViewController {
-    func makeDummyData() {
+    private func makeDummyData() {
         for i in 1...30 {
             let name = "사용자 \(i)"
             let age = Int.random(in: 20...60)
