@@ -17,6 +17,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        makeDummyData()
         self.contactTableView.delegate = self
         self.contactTableView.dataSource = self
     }
@@ -41,6 +42,19 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+}
+
+extension ViewController {
+    func makeDummyData() {
+        for i in 1...30 {
+            let name = "사용자 \(i)"
+            let age = Int.random(in: 20...60)
+            let phoneNumber = "010-1234-3455"
+            
+            contactManager.addContact(name: name, age: age, phoneNumber: phoneNumber)
+        }
     }
 }
 
