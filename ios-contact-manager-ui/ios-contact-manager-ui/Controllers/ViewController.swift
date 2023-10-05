@@ -41,7 +41,11 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let contact = contactManager.showContact(index: indexPath.row)
+        print(contact.name)
+        print(contact.age)
+        print(contact.phoneNumber)
+        print("|---------------|")
     }
     
 }
