@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ContactManager {
+final class ContactManager {
     private var contacts: [Contact] = []
     
     var contactsCount: Int {
