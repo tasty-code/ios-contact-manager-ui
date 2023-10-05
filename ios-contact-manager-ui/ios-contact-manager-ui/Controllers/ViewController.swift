@@ -28,7 +28,11 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as! ContactCell
+        let contact = contactManager.showContact(index: indexPath.row)
+        cell.titleLabel.text = "\(contact.name)(\(contact.age))"
+        cell.subtitleLabel.text = "\(contact.phoneNumber)"
+        cell.accessoryType = .disclosureIndicator
         
         return cell
     }
