@@ -53,7 +53,7 @@ extension ViewController {
             let age = Int.random(in: 20...60)
             let phoneNumber = "010-1234-3455"
             
-            contactManager.addContact(name: name, age: age, phoneNumber: phoneNumber)
+            contactManager.addContact(name, age, phoneNumber)
         }
     }
 }

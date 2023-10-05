@@ -14,7 +14,7 @@ final class ContactManager {
         return contacts.count
     }
     
-    func addContact(name: String, age: Int, phoneNumber: String) {
+    func addContact(_ name: String, _ age: Int, _ phoneNumber: String) {
         contacts.append(Contact(name: name, age: age, phoneNumber: phoneNumber))
     }
     
