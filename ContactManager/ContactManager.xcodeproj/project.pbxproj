@@ -15,6 +15,7 @@
 		CB8D4C0A2ACE3D53002132D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8D4C082ACE3D53002132D4 /* LaunchScreen.storyboard */; };
 		CB8D4C132ACE41B6002132D4 /* ContactBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D4C122ACE41B6002132D4 /* ContactBook.swift */; };
 		CB8D4C152ACE4236002132D4 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D4C142ACE4236002132D4 /* Person.swift */; };
+		CB8D4C172ACE4D69002132D4 /* WholeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D4C162ACE4D69002132D4 /* WholeListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CB8D4C0B2ACE3D53002132D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB8D4C122ACE41B6002132D4 /* ContactBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactBook.swift; sourceTree = "<group>"; };
 		CB8D4C142ACE4236002132D4 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		CB8D4C162ACE4D69002132D4 /* WholeListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				CB8D4BFF2ACE3D52002132D4 /* SceneDelegate.swift */,
 				CB8D4C012ACE3D52002132D4 /* ViewController.swift */,
 				CB8D4C032ACE3D52002132D4 /* Main.storyboard */,
+				CB8D4C162ACE4D69002132D4 /* WholeListTableViewController.swift */,
 				CB8D4C062ACE3D53002132D4 /* Assets.xcassets */,
 				CB8D4C082ACE3D53002132D4 /* LaunchScreen.storyboard */,
 				CB8D4C0B2ACE3D53002132D4 /* Info.plist */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB8D4C152ACE4236002132D4 /* Person.swift in Sources */,
+				CB8D4C172ACE4D69002132D4 /* WholeListTableViewController.swift in Sources */,
 				CB8D4C022ACE3D52002132D4 /* ViewController.swift in Sources */,
 				CB8D4BFE2ACE3D52002132D4 /* AppDelegate.swift in Sources */,
 				CB8D4C002ACE3D52002132D4 /* SceneDelegate.swift in Sources */,
