@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5347C6282ACE537B00AD9D7B /* PersonInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347C6272ACE537B00AD9D7B /* PersonInformation.swift */; };
 		E3914A442ACD5311000BF441 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3914A432ACD5311000BF441 /* AppDelegate.swift */; };
 		E3914A462ACD5311000BF441 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3914A452ACD5311000BF441 /* SceneDelegate.swift */; };
 		E3914A482ACD5311000BF441 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3914A472ACD5311000BF441 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5347C6272ACE537B00AD9D7B /* PersonInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInformation.swift; sourceTree = "<group>"; };
 		E3914A402ACD5311000BF441 /* ios-contact-manager-ui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-contact-manager-ui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3914A432ACD5311000BF441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3914A452ACD5311000BF441 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5347C6292ACE537F00AD9D7B /* Mode */ = {
+			isa = PBXGroup;
+			children = (
+				5347C6272ACE537B00AD9D7B /* PersonInformation.swift */,
+			);
+			path = Mode;
+			sourceTree = "<group>";
+		};
 		E3914A372ACD5311000BF441 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +66,7 @@
 		E3914A422ACD5311000BF441 /* ios-contact-manager-ui */ = {
 			isa = PBXGroup;
 			children = (
+				5347C6292ACE537F00AD9D7B /* Mode */,
 				E3914A432ACD5311000BF441 /* AppDelegate.swift */,
 				E3914A452ACD5311000BF441 /* SceneDelegate.swift */,
 				E3914A472ACD5311000BF441 /* ViewController.swift */,
@@ -141,6 +152,7 @@
 				E3914A482ACD5311000BF441 /* ViewController.swift in Sources */,
 				E3914A442ACD5311000BF441 /* AppDelegate.swift in Sources */,
 				E3914A462ACD5311000BF441 /* SceneDelegate.swift in Sources */,
+				5347C6282ACE537B00AD9D7B /* PersonInformation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
