@@ -14,7 +14,15 @@ struct Contact: Hashable {
     let uuid = UUID()
     private(set) var name: String
     private(set) var age: Int
-    private(set) var phoneNumbers = Set<PhoneNumber>()
+    private var _phoneNumbers = Set<PhoneNumber>()
+    var phoneNumbers: [PhoneNumber] {
+        _phoneNumbers.sorted()
+    }
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
     
     fileprivate mutating func changeName(_ name: String) {
         self.name = name
@@ -25,16 +33,16 @@ struct Contact: Hashable {
     }
     
     fileprivate mutating func add(_ phoneNumber: PhoneNumber) {
-        phoneNumbers.insert(phoneNumber)
+        _phoneNumbers.insert(phoneNumber)
     }
     
     fileprivate mutating func delete(_ phoneNumber: PhoneNumber) {
-        phoneNumbers.remove(phoneNumber)
+        _phoneNumbers.remove(phoneNumber)
     }
     
     fileprivate mutating func modify(from existingPhoneNumber: PhoneNumber, to newPhoneNumber: PhoneNumber) {
-        phoneNumbers.remove(existingPhoneNumber)
-        phoneNumbers.insert(newPhoneNumber)
+        _phoneNumbers.remove(existingPhoneNumber)
+        _phoneNumbers.insert(newPhoneNumber)
     }
 }
 
