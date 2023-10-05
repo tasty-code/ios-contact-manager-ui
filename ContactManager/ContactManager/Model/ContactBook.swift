@@ -9,16 +9,10 @@ import Foundation
 
 struct ContactBook {
     private var contactInfomation: [[Person]] = [[Person(name: "Yeji", digits: "010-1234-1234", age: "23"), Person(name: "Howard", digits: "010-1234-1234", age: "35"),Person(name: "Dora", digits: "010-1234-1234", age: "23"),Person(name: "Rarla", digits: "010-2234-1234", age: "23")]]
-    
-    func getSectionCount() -> Int {
-        return contactInfomation.count
-    }
-    
-    func showContactList(_ indexPath: IndexPath) -> Person {
-        return contactInfomation[indexPath.section][indexPath.row]
-    }
-    
-    func addContactList() {
+}
+
+extension ContactBook {
+    mutating func addContactList() {
         
     }
     
@@ -26,7 +20,17 @@ struct ContactBook {
         contactInfomation[indexPath.section].remove(at: indexPath.row)
     }
     
-    func updateContactList() {
+    mutating func updateContactList() {
         
+    }
+}
+
+extension ContactBook {
+    func getSectionCount() -> Int {
+        return contactInfomation.count
+    }
+    
+    func showContactList(_ indexPath: IndexPath) -> Person {
+        return contactInfomation[indexPath.section][indexPath.row]
     }
 }
