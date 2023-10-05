@@ -18,8 +18,8 @@ struct ContactBook {
         
     }
     
-    func deleteContactList() {
-        
+    mutating func deleteContactList(_ indexPath: IndexPath) {
+        contactInfomation[indexPath.section].remove(at: indexPath.row)
     }
     
     func updateContactList() {
