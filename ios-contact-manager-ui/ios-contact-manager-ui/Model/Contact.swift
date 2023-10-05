@@ -8,6 +8,8 @@
 import Foundation
 
 typealias PhoneNumber = String
+
+//MARK: - Contact
 struct Contact: Hashable {
     let uuid = UUID()
     private(set) var name: String
@@ -36,6 +38,9 @@ struct Contact: Hashable {
     }
 }
 
+
+
+//MARK: - ContactManager
 class ContactManager {
     private(set) var contacts = [UUID: Contact]()
     
@@ -73,17 +78,5 @@ class ContactManager {
     
     func modify(from exsistingPhoneNumber: PhoneNumber, to newPhoneNumber: PhoneNumber, of uuid: UUID) {
         contacts[uuid]?.modify(from: exsistingPhoneNumber, to: newPhoneNumber)
-    }
-}
-
-extension ContactManager {
-    static var mock: ContactManager {
-        let temp = ContactManager()
-        
-        let hong = Contact(name: "홍길동", age: 32)
-        let lim = Contact(name: "임꺽정", age: 40)
-        let sim = Contact(name: "심춘향", age: 20)
-        
-        return temp
     }
 }
