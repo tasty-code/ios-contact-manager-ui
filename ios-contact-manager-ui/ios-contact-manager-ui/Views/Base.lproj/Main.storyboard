@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="46w-uZ-3wC" detailTextLabel="tsb-jR-9an" style="IBUITableViewCellStyleSubtitle" id="zlf-oS-nQm" customClass="ContactCell" customModule="ios_contact_manager_ui" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" textLabel="46w-uZ-3wC" detailTextLabel="tsb-jR-9an" style="IBUITableViewCellStyleSubtitle" id="zlf-oS-nQm" customClass="ContactCell" customModule="ios_contact_manager_ui" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zlf-oS-nQm" id="HcQ-75-WO0">
@@ -60,6 +60,9 @@
                             <constraint firstItem="XpC-GV-PZ9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ttY-NA-Bp3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contactTableView" destination="XpC-GV-PZ9" id="VCm-23-Tbk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
