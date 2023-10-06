@@ -50,7 +50,7 @@ struct Contact: Hashable {
 
 //MARK: - ContactManager
 class ContactManager {
-    private(set) var _contacts = [UUID: Contact]()
+    private var _contacts = [UUID: Contact]()
     var contacts: [Contact] {
         _contacts.values.sorted { $0.name < $1.name }
     }
