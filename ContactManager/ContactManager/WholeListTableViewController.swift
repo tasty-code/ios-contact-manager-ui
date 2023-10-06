@@ -17,12 +17,10 @@ class WholeListTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
         return contactBook.getSectionCount()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return 4
     }
     
