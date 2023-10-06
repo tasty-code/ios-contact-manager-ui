@@ -7,16 +7,24 @@
 
 import UIKit
 
-class ContactManagerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class ContactManagerViewController: UIViewController, UITableViewDelegate {
+  // MARK: - Property
   
-  @IBOutlet weak var contactTableView: UITableView!
-  let decoder = JSONDecoder()
+  @IBOutlet private weak var contactTableView: UITableView!
+  private let decoder = JSONDecoder()
+  private var contacts: [Contact] = []
   
-  var contacts: [Contact] = []
+  // MARK: - Methods
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     contactTableView.delegate = self
     contactTableView.dataSource = self
+    
+    loadData()
+  }
+  
+  private func loadData() {
     do {
       guard let asset = NSDataAsset.init(name: "data") else { return }
       self.contacts = try decoder.decode([Contact].self, from: asset.data)
@@ -24,17 +32,17 @@ class ContactManagerViewController: UIViewController, UITableViewDelegate, UITab
       print(error.localizedDescription)
     }
   }
-  
+}
+
+extension ContactManagerViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return contacts.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell: ContactTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ContactTableViewCell
+    guard let cell: ContactTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
     cell.nameAndAgeLabel.text = contacts[indexPath.row].nameAndAge
     cell.phoneLabel.text = contacts[indexPath.row].phone
     return cell
   }
-  
 }
-
