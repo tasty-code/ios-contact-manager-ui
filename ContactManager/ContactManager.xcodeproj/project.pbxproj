@@ -14,6 +14,7 @@
 		A62B6E9C2ACD6DF9005DC167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62B6E9A2ACD6DF9005DC167 /* Main.storyboard */; };
 		A62B6E9E2ACD6DFA005DC167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A62B6E9D2ACD6DFA005DC167 /* Assets.xcassets */; };
 		A62B6EA12ACD6DFA005DC167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62B6E9F2ACD6DFA005DC167 /* LaunchScreen.storyboard */; };
+		C3BD04272ACFDF2200C0B9E7 /* ContactJSON.json in Sources */ = {isa = PBXBuildFile; fileRef = C3BD04262ACFDF2200C0B9E7 /* ContactJSON.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A62B6E9D2ACD6DFA005DC167 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A62B6EA02ACD6DFA005DC167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A62B6EA22ACD6DFA005DC167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3BD04262ACFDF2200C0B9E7 /* ContactJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ContactJSON.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				A61237BB2ACFDA7200CBCA0F /* ContactInfomationModel.swift */,
+				C3BD04262ACFDF2200C0B9E7 /* ContactJSON.json */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				A62B6E992ACD6DF9005DC167 /* ViewController.swift in Sources */,
 				A62B6E952ACD6DF9005DC167 /* AppDelegate.swift in Sources */,
 				A62B6E972ACD6DF9005DC167 /* SceneDelegate.swift in Sources */,
+				C3BD04272ACFDF2200C0B9E7 /* ContactJSON.json in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

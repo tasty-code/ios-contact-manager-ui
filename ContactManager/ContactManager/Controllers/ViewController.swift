@@ -28,8 +28,4 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return UITableViewCell()
     }
-    
-
-
-    
 }
