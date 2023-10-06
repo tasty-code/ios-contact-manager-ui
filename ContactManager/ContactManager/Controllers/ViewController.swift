@@ -31,5 +31,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> STEP1

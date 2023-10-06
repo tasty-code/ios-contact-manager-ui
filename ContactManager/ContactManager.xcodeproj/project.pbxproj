@@ -65,7 +65,12 @@
 		A61237BA2ACFD9D900CBCA0F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				A61237BB2ACFDA7200CBCA0F /* ContactModel.swift */,
+=======
+				A61237BB2ACFDA7200CBCA0F /* ContactInfomationModel.swift */,
+				C3BD04262ACFDF2200C0B9E7 /* ContactJSON.json */,
+>>>>>>> STEP1
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,7 +202,10 @@
 				A62B6E992ACD6DF9005DC167 /* ViewController.swift in Sources */,
 				A62B6E952ACD6DF9005DC167 /* AppDelegate.swift in Sources */,
 				A62B6E972ACD6DF9005DC167 /* SceneDelegate.swift in Sources */,
+<<<<<<< HEAD
 				A61237C32ACFE7C900CBCA0F /* JSONCodable.swift in Sources */,
+=======
+>>>>>>> STEP1
 				C3BD04272ACFDF2200C0B9E7 /* ContactJSON.json in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
