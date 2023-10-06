@@ -14,7 +14,18 @@ final class ContactManager {
         return contacts.count
     }
     
-    func addContact(_ name: String, _ age: Int, _ phoneNumber: String) {
+    func addContact(_ name: String, _ age: String, _ phoneNumber: String) throws {
+        guard verifyAge(age) else {
+            throw ContactsError.invalidAge
+        }
+        guard verifyNumber(phoneNumber) else {
+            throw ContactsError.invalidPhoneNumber
+        }
+        
+        guard checkDuplicateNumber(phoneNumber) else {
+            throw ContactsError.duplicateNumberFound
+        }
+        
         contacts.append(Contact(name: name, age: age, phoneNumber: phoneNumber))
     }
     
