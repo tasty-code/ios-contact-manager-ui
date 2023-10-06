@@ -7,16 +7,24 @@
 
 import Foundation
 
-struct ContactInfo {
+struct Root: Decodable {
+    let data: [ContactInfo]
+}
+
+struct ContactInfo: Decodable {
     var name: String?
     var age: Int?
     var phoneNum: String?
     let uuid: UUID
     
-    init(name: String, age: Int, phoneNum: String) {
+    init(name: String, age: Int, phoneNum: String, uuid: UUID? = nil) {
         self.name = name
         self.age = age
         self.phoneNum = phoneNum
-        self.uuid = UUID()
+        guard let identifier = uuid else {
+            self.uuid = UUID()
+            return
+        }
+        self.uuid = identifier
     }
 }

@@ -20,6 +20,10 @@ final class ContactManager {
         return contactList
     }
     
+    func setContactList(list: [ContactInfo]) {
+        contactList = list
+    }
+    
     func addContact(name:String, age: Int, phoneNum: String) {
         contactList.append(ContactInfo(name: name, age: age, phoneNum: phoneNum))
     }
