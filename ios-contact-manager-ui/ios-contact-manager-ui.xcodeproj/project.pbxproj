@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DE08F36E2ACE3CDD002CD3C1 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE08F36D2ACE3CDD002CD3C1 /* ContactCell.swift */; };
+		DE56B7D02ACFCD9F00751829 /* ContactsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56B7CF2ACFCD9F00751829 /* ContactsError.swift */; };
 		DE6D12E02ACD0A2800A43550 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D12DF2ACD0A2800A43550 /* AppDelegate.swift */; };
 		DE6D12E22ACD0A2800A43550 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D12E12ACD0A2800A43550 /* SceneDelegate.swift */; };
 		DE6D12E42ACD0A2800A43550 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D12E32ACD0A2800A43550 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		DE08F36D2ACE3CDD002CD3C1 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		DE56B7CF2ACFCD9F00751829 /* ContactsError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsError.swift; sourceTree = "<group>"; };
 		DE6D12DC2ACD0A2800A43550 /* ios-contact-manager-ui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-contact-manager-ui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE6D12DF2ACD0A2800A43550 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE6D12E12ACD0A2800A43550 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			children = (
 				DE6D12F72ACD0B1900A43550 /* ContactManager.swift */,
 				DE6D12F32ACD0AE500A43550 /* Contact.swift */,
+				DE56B7CF2ACFCD9F00751829 /* ContactsError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE08F36E2ACE3CDD002CD3C1 /* ContactCell.swift in Sources */,
+				DE56B7D02ACFCD9F00751829 /* ContactsError.swift in Sources */,
 				DE6D12F82ACD0B1900A43550 /* ContactManager.swift in Sources */,
 				DE6D12F42ACD0AE500A43550 /* Contact.swift in Sources */,
 				DE6D12E42ACD0A2800A43550 /* ViewController.swift in Sources */,
