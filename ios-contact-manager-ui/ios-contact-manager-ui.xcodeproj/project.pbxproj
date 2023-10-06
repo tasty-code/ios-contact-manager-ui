@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5347C6282ACE537B00AD9D7B /* PersonInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347C6272ACE537B00AD9D7B /* PersonInformation.swift */; };
+		5347C6282ACE537B00AD9D7B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347C6272ACE537B00AD9D7B /* Contact.swift */; };
 		E3914A442ACD5311000BF441 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3914A432ACD5311000BF441 /* AppDelegate.swift */; };
 		E3914A462ACD5311000BF441 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3914A452ACD5311000BF441 /* SceneDelegate.swift */; };
 		E3914A482ACD5311000BF441 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3914A472ACD5311000BF441 /* ViewController.swift */; };
 		E3914A4B2ACD5311000BF441 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3914A492ACD5311000BF441 /* Main.storyboard */; };
 		E3914A4D2ACD5312000BF441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3914A4C2ACD5312000BF441 /* Assets.xcassets */; };
 		E3914A502ACD5312000BF441 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3914A4E2ACD5312000BF441 /* LaunchScreen.storyboard */; };
+		E3ABF50A2ACE5635000F3707 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ABF5092ACE5635000F3707 /* AddressBook.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5347C6272ACE537B00AD9D7B /* PersonInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInformation.swift; sourceTree = "<group>"; };
+		5347C6272ACE537B00AD9D7B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		E3914A402ACD5311000BF441 /* ios-contact-manager-ui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-contact-manager-ui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3914A432ACD5311000BF441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3914A452ACD5311000BF441 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +27,7 @@
 		E3914A4C2ACD5312000BF441 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3914A4F2ACD5312000BF441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3914A512ACD5312000BF441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3ABF5092ACE5635000F3707 /* AddressBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBook.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,12 +41,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5347C6292ACE537F00AD9D7B /* Mode */ = {
+		5347C6292ACE537F00AD9D7B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5347C6272ACE537B00AD9D7B /* PersonInformation.swift */,
+				5347C6272ACE537B00AD9D7B /* Contact.swift */,
+				E3ABF5092ACE5635000F3707 /* AddressBook.swift */,
 			);
-			path = Mode;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E3914A372ACD5311000BF441 = {
@@ -66,7 +69,7 @@
 		E3914A422ACD5311000BF441 /* ios-contact-manager-ui */ = {
 			isa = PBXGroup;
 			children = (
-				5347C6292ACE537F00AD9D7B /* Mode */,
+				5347C6292ACE537F00AD9D7B /* Model */,
 				E3914A432ACD5311000BF441 /* AppDelegate.swift */,
 				E3914A452ACD5311000BF441 /* SceneDelegate.swift */,
 				E3914A472ACD5311000BF441 /* ViewController.swift */,
@@ -152,7 +155,8 @@
 				E3914A482ACD5311000BF441 /* ViewController.swift in Sources */,
 				E3914A442ACD5311000BF441 /* AppDelegate.swift in Sources */,
 				E3914A462ACD5311000BF441 /* SceneDelegate.swift in Sources */,
-				5347C6282ACE537B00AD9D7B /* PersonInformation.swift in Sources */,
+				5347C6282ACE537B00AD9D7B /* Contact.swift in Sources */,
+				E3ABF50A2ACE5635000F3707 /* AddressBook.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

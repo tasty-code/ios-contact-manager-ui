@@ -7,8 +7,10 @@
 
 import Foundation
 
-struct PersonInformation {
+struct Contact {
     var name: String
-    var contacts: String
+    var phoneNumber: String
     var age: Int
 }
+
+
