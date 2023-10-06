@@ -50,41 +50,44 @@ struct Contact: Hashable {
 
 //MARK: - ContactManager
 class ContactManager {
-    private(set) var contacts = [UUID: Contact]()
+    private(set) var _contacts = [UUID: Contact]()
+    var contacts: [Contact] {
+        _contacts.values.sorted { $0.name < $1.name }
+    }
     
     func add(_ person: Contact) throws {
-        if contacts[person.uuid] != nil {
+        if _contacts[person.uuid] != nil {
             throw ContactException.contactAlreadyExsist(contact: person)
         }
-        contacts[person.uuid] = person
+        _contacts[person.uuid] = person
     }
     
     func add(_ phoneNumber: PhoneNumber, of uuid: UUID) {
-        contacts[uuid]?.add(phoneNumber)
+        _contacts[uuid]?.add(phoneNumber)
     }
     
     func delete(_ person: Contact) throws {
-        guard let _ = contacts.removeValue(forKey: person.uuid)
+        guard let _ = _contacts.removeValue(forKey: person.uuid)
         else {
             throw ContactException.contactNotFound(contact: person)
         }
     }
     
     func delete(_ phoneNumber: PhoneNumber, of uuid: UUID) {
-        contacts[uuid]?.delete(phoneNumber)
+        _contacts[uuid]?.delete(phoneNumber)
     }
     
     func modify(_ personName: String, _ personAge: Int, of person: Contact) throws {
-        guard var contact = contacts[person.uuid]
+        guard var contact = _contacts[person.uuid]
         else {
             throw ContactException.contactNotFound(contact: person)
         }
         contact.changeName(personName)
         contact.changeAge(personAge)
-        contacts[person.uuid] = contact
+        _contacts[person.uuid] = contact
     }
     
     func modify(from exsistingPhoneNumber: PhoneNumber, to newPhoneNumber: PhoneNumber, of uuid: UUID) {
-        contacts[uuid]?.modify(from: exsistingPhoneNumber, to: newPhoneNumber)
+        _contacts[uuid]?.modify(from: exsistingPhoneNumber, to: newPhoneNumber)
     }
 }
