@@ -7,17 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A61237BC2ACFDA7200CBCA0F /* ContactInfomationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61237BB2ACFDA7200CBCA0F /* ContactInfomationModel.swift */; };
+		A61237BC2ACFDA7200CBCA0F /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61237BB2ACFDA7200CBCA0F /* ContactModel.swift */; };
+		A61237C02ACFE37E00CBCA0F /* JSON+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61237BF2ACFE37E00CBCA0F /* JSON+Codable.swift */; };
+		A61237C32ACFE7C900CBCA0F /* JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61237C22ACFE7C900CBCA0F /* JSONCodable.swift */; };
+		A61237C42AD01E0D00CBCA0F /* ContactJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = C3BD04262ACFDF2200C0B9E7 /* ContactJSON.json */; };
 		A62B6E952ACD6DF9005DC167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62B6E942ACD6DF9005DC167 /* AppDelegate.swift */; };
 		A62B6E972ACD6DF9005DC167 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62B6E962ACD6DF9005DC167 /* SceneDelegate.swift */; };
 		A62B6E992ACD6DF9005DC167 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62B6E982ACD6DF9005DC167 /* ViewController.swift */; };
 		A62B6E9C2ACD6DF9005DC167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62B6E9A2ACD6DF9005DC167 /* Main.storyboard */; };
 		A62B6E9E2ACD6DFA005DC167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A62B6E9D2ACD6DFA005DC167 /* Assets.xcassets */; };
 		A62B6EA12ACD6DFA005DC167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62B6E9F2ACD6DFA005DC167 /* LaunchScreen.storyboard */; };
+		C3BD04272ACFDF2200C0B9E7 /* ContactJSON.json in Sources */ = {isa = PBXBuildFile; fileRef = C3BD04262ACFDF2200C0B9E7 /* ContactJSON.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A61237BB2ACFDA7200CBCA0F /* ContactInfomationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfomationModel.swift; sourceTree = "<group>"; };
+		A61237BB2ACFDA7200CBCA0F /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
+		A61237BF2ACFE37E00CBCA0F /* JSON+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Codable.swift"; sourceTree = "<group>"; };
+		A61237C22ACFE7C900CBCA0F /* JSONCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodable.swift; sourceTree = "<group>"; };
 		A62B6E912ACD6DF9005DC167 /* ContactManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62B6E942ACD6DF9005DC167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A62B6E962ACD6DF9005DC167 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +32,7 @@
 		A62B6E9D2ACD6DFA005DC167 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A62B6EA02ACD6DFA005DC167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A62B6EA22ACD6DFA005DC167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3BD04262ACFDF2200C0B9E7 /* ContactJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ContactJSON.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +65,25 @@
 		A61237BA2ACFD9D900CBCA0F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A61237BB2ACFDA7200CBCA0F /* ContactInfomationModel.swift */,
+				A61237BB2ACFDA7200CBCA0F /* ContactModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A61237BE2ACFE37500CBCA0F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A61237BF2ACFE37E00CBCA0F /* JSON+Codable.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A61237C12ACFE7AD00CBCA0F /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A61237C22ACFE7C900CBCA0F /* JSONCodable.swift */,
+			);
+			path = protocols;
 			sourceTree = "<group>";
 		};
 		A62B6E882ACD6DF9005DC167 = {
@@ -83,7 +106,10 @@
 			isa = PBXGroup;
 			children = (
 				A62B6E942ACD6DF9005DC167 /* AppDelegate.swift */,
+				C3BD04262ACFDF2200C0B9E7 /* ContactJSON.json */,
 				A62B6E962ACD6DF9005DC167 /* SceneDelegate.swift */,
+				A61237C12ACFE7AD00CBCA0F /* protocols */,
+				A61237BE2ACFE37500CBCA0F /* Extension */,
 				A61237BA2ACFD9D900CBCA0F /* Models */,
 				A61237B92ACFD9C900CBCA0F /* Controllers */,
 				A61237B82ACFD9B700CBCA0F /* Views */,
@@ -152,6 +178,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A61237C42AD01E0D00CBCA0F /* ContactJSON.json in Resources */,
 				A62B6EA12ACD6DFA005DC167 /* LaunchScreen.storyboard in Resources */,
 				A62B6E9E2ACD6DFA005DC167 /* Assets.xcassets in Resources */,
 				A62B6E9C2ACD6DF9005DC167 /* Main.storyboard in Resources */,
@@ -165,10 +192,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A61237BC2ACFDA7200CBCA0F /* ContactInfomationModel.swift in Sources */,
+				A61237C02ACFE37E00CBCA0F /* JSON+Codable.swift in Sources */,
+				A61237BC2ACFDA7200CBCA0F /* ContactModel.swift in Sources */,
 				A62B6E992ACD6DF9005DC167 /* ViewController.swift in Sources */,
 				A62B6E952ACD6DF9005DC167 /* AppDelegate.swift in Sources */,
 				A62B6E972ACD6DF9005DC167 /* SceneDelegate.swift in Sources */,
+				A61237C32ACFE7C900CBCA0F /* JSONCodable.swift in Sources */,
+				C3BD04272ACFDF2200C0B9E7 /* ContactJSON.json in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
