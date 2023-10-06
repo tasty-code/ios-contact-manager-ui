@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "9FFED1E8-AB50-425F-9D0E-510C1B91B72E"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "98773291-C7AF-4C2C-BAF9-7C04DBCE88F3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ContactManager/ContactManagerViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "98773291-C7AF-4C2C-BAF9-7C04DBCE88F3 - bbd324fb48151419"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ContactManager.ContactManagerViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "ContactManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yejun/Desktop/tasty_code/ios-contact-manager-ui/ContactManager/ContactManager/ContactManagerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "672">
+               </Location>
+               <Location
+                  uuid = "98773291-C7AF-4C2C-BAF9-7C04DBCE88F3 - bbd324fb481514df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ContactManager.ContactManagerViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "ContactManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yejun/Desktop/tasty_code/ios-contact-manager-ui/ContactManager/ContactManager/ContactManagerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "572">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
