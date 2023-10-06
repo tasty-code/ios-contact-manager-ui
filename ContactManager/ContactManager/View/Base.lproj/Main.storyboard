@@ -45,7 +45,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="nameLabel" destination="tgf-xk-LO6" id="11b-At-StB"/>
+                                            <outlet property="nameAndAgeLabel" destination="tgf-xk-LO6" id="R1Y-H3-2Gl"/>
                                             <outlet property="phoneLabel" destination="eug-A5-qJ6" id="zTl-Bx-5vT"/>
                                         </connections>
                                     </tableViewCell>

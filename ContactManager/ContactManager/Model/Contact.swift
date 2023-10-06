@@ -8,13 +8,15 @@
 import Foundation
 
 struct Contact: Codable {
+  let uid: UUID = UUID()
   var name: String
   var phone: String
   var age: Int
-  var uuid: UUID {
-    return UUID()
-  }
   var nameAndAge: String {
     return "\(name)(\(age))"
+  }
+  
+  private enum CodingKeys: CodingKey {
+    case name, phone, age
   }
 }

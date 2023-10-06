@@ -60,17 +60,41 @@
 		66CD224A2ACF905E00BE35F7 /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
-				66CD224B2ACF905E00BE35F7 /* AppDelegate.swift */,
+				66CD22622ACFDC2700BE35F7 /* Controller */,
+				66CD22612ACFDC1B00BE35F7 /* Model */,
+				66CD22632ACFDC3200BE35F7 /* View */,
 				66CD224D2ACF905E00BE35F7 /* SceneDelegate.swift */,
-				66CD224F2ACF905E00BE35F7 /* ContactManagerViewController.swift */,
-				D07AF2172ACFCAD700F7B1B8 /* Contact.swift */,
-				66CD22512ACF905E00BE35F7 /* Main.storyboard */,
+				66CD224B2ACF905E00BE35F7 /* AppDelegate.swift */,
 				66CD22542ACF905F00BE35F7 /* Assets.xcassets */,
-				66CD22562ACF905F00BE35F7 /* LaunchScreen.storyboard */,
 				66CD22592ACF905F00BE35F7 /* Info.plist */,
-				66CD225F2ACFD14F00BE35F7 /* ContactTableViewCell.swift */,
 			);
 			path = ContactManager;
+			sourceTree = "<group>";
+		};
+		66CD22612ACFDC1B00BE35F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D07AF2172ACFCAD700F7B1B8 /* Contact.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		66CD22622ACFDC2700BE35F7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				66CD224F2ACF905E00BE35F7 /* ContactManagerViewController.swift */,
+				66CD225F2ACFD14F00BE35F7 /* ContactTableViewCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		66CD22632ACFDC3200BE35F7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				66CD22512ACF905E00BE35F7 /* Main.storyboard */,
+				66CD22562ACF905F00BE35F7 /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
