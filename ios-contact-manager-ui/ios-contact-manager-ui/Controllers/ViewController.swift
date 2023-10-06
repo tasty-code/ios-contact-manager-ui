@@ -54,10 +54,15 @@ extension ViewController {
     private func makeDummyData() {
         for i in 1...30 {
             let name = "사용자 \(i)"
-            let age = Int.random(in: 20...60)
-            let phoneNumber = "010-1234-3455"
+            let age = "\(Int.random(in: 20...100))"
+            let phoneNumber = "0\(Int.random(in: 1...99))-\(Int.random(in: 100...999))-\(Int.random(in: 1000...9999))"
             
-            contactManager.addContact(name, age, phoneNumber)
+            do {
+                try contactManager.addContact(name, age, phoneNumber)
+            } catch {
+                print("\(name) \(age) \(phoneNumber)")
+                print(String(describing: error))
+            }
         }
     }
 }
