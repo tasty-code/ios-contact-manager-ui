@@ -17,9 +17,8 @@ class ContactManagerViewController: UIViewController, UITableViewDelegate, UITab
     super.viewDidLoad()
     contactTableView.delegate = self
     contactTableView.dataSource = self
-    guard let asset = NSDataAsset.init(name: "data") else { return }
-    
     do {
+      guard let asset = NSDataAsset.init(name: "data") else { return }
       self.contacts = try decoder.decode([Contact].self, from: asset.data)
     } catch {
       print(error.localizedDescription)
@@ -32,7 +31,7 @@ class ContactManagerViewController: UIViewController, UITableViewDelegate, UITab
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: ContactTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ContactTableViewCell
-    cell.nameLabel.text = contacts[indexPath.row].nameAndAge
+    cell.nameAndAgeLabel.text = contacts[indexPath.row].nameAndAge
     cell.phoneLabel.text = contacts[indexPath.row].phone
     return cell
   }

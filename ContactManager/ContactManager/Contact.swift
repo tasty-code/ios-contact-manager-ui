@@ -11,10 +11,10 @@ struct Contact: Codable {
   var name: String
   var phone: String
   var age: Int
-  var uuid: UUID?
+  var uuid: UUID {
+    return UUID()
+  }
   var nameAndAge: String {
     return "\(name)(\(age))"
   }
 }
-
-
