@@ -1,38 +1,43 @@
+//
+//  ViewController.swift
+//  ContactManager
+//
+//  Created by imseonghyeon on 2023/10/04.
+//
+
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JSONCodable {
-
-    @IBOutlet weak var tableView: UITableView!
-    var contactModel: [ContactModel]?
-    
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        decodeJSON(&contactModel)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
+    @IBOutlet weak var tableView: UITableView!
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let peopleCount = contactModel?.count else {
-            return 0
-        }
-        return peopleCount
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        // 리팩터링 할 부분
-        cell.textLabel?.text = contactModel![indexPath.row].name + "(" + contactModel![indexPath.row].age + ")"
-        cell.detailTextLabel?.text = contactModel![indexPath.row].phoneNumber
-        
-        return cell
+        return UITableViewCell()
     }
+    
+
+
+    
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 
 =======
 >>>>>>> STEP1
+=======
+>>>>>>> parent of 145443e (feat: JSON 더미 데이터 추가)
