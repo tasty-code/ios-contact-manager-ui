@@ -51,11 +51,19 @@ extension ViewController: UITableViewDelegate {
 }
 
 extension ViewController {
-    private func makeDummyData() {
-        for i in 1...30 {
-            let name = "사용자 \(i)"
-            let age = "\(Int.random(in: 20...100))"
-            let phoneNumber = "0\(Int.random(in: 1...99))-\(Int.random(in: 100...999))-\(Int.random(in: 1000...9999))"
+    func makeDummyData() {
+        guard let path = Bundle.main.path(forResource: "Contacts", ofType: "json"),
+              let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
+              let jsonArray = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] else {
+            return
+        }
+        
+        for (_, item) in jsonArray.enumerated() {
+            guard let name = item["name"] as? String,
+                  let age = item["age"] as? String,
+                  let phoneNumber = item["phoneNumber"] as? String else {
+                continue
+            }
             
             do {
                 try contactManager.addContact(name, age, phoneNumber)
