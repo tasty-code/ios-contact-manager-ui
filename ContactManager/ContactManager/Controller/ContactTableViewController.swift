@@ -13,29 +13,37 @@ class ContactTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadJsonData()
+        
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 0
+        let count = contactManager.getContactList().count
+        return count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
+        let name = contactManager.getContactList()[indexPath.row].name ?? ""
+        let age = contactManager.getContactList()[indexPath.row].age ?? 0
+        let phoneNumber = contactManager.getContactList()[indexPath.row].phoneNum ?? ""
+        cell.textLabel!.text = "\(name) (\(age))"
+        cell.detailTextLabel!.text = phoneNumber
+        return cell
     }
 }
 
 extension ContactTableViewController {
     func loadJsonData() {
-        guard let jsonURL = Bundle(for: type(of: self)).path(forResource: "mockData", ofType: "json") else {
-            return
-        }
-        
-        guard let jsonString = try? String(contentsOf: URL(fileURLWithPath: jsonURL), encoding: String.Encoding.utf8) else {
+        guard let jsonURL = Bundle.main.url(forResource: "mockData", withExtension: "json") else {
             return
         }
         
         do {
-            let root = try JSONDecoder().decode(Root.self, from: Data(jsonString.utf8))
+            let data = try Data(contentsOf: jsonURL)
+            let root = try JSONDecoder().decode(Root.self, from: data)
             contactManager.setContactList(list: root.data)
         } catch {
             print("error")
