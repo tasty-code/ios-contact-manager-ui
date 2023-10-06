@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Contact {
+struct Contact: Codable {
   var name: String
   var phone: String
   var age: Int
-  var uuid: Int
+  var uuid: UUID
 }
 
 
