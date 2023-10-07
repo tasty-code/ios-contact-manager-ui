@@ -5,6 +5,7 @@ extension JSONCodable {
         guard let path = Bundle.main.url(forResource: "ContactJSON", withExtension: "json") else {
             return
         }
+        
         guard let data = try? Data(contentsOf: path) else {
             return
         }

@@ -23,10 +23,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.accessoryType = .disclosureIndicator
         
         // 리팩터링 할 부분
-        cell.textLabel?.text = contactModel![indexPath.row].name + "(" + contactModel![indexPath.row].age + ")"
-        cell.detailTextLabel?.text = contactModel![indexPath.row].phoneNumber
+//        cell.textLabel?.text = contactModel![indexPath.row].name + "(" + contactModel![indexPath.row].age + ")"
+//        cell.detailTextLabel?.text = contactModel![indexPath.row].phoneNumber
         
         return cell
     }

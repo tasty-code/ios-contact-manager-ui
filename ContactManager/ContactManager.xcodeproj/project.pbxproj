@@ -32,7 +32,7 @@
 		A62B6E9D2ACD6DFA005DC167 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A62B6EA02ACD6DFA005DC167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A62B6EA22ACD6DFA005DC167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C3BD04262ACFDF2200C0B9E7 /* ContactJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ContactJSON.json; sourceTree = "<group>"; };
+		C3BD04262ACFDF2200C0B9E7 /* ContactJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = ContactJSON.json; path = ../ContactJSON.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +65,7 @@
 		A61237BA2ACFD9D900CBCA0F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C3BD04262ACFDF2200C0B9E7 /* ContactJSON.json */,
 				A61237BB2ACFDA7200CBCA0F /* ContactModel.swift */,
 			);
 			path = Models;
@@ -106,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				A62B6E942ACD6DF9005DC167 /* AppDelegate.swift */,
-				C3BD04262ACFDF2200C0B9E7 /* ContactJSON.json */,
 				A62B6E962ACD6DF9005DC167 /* SceneDelegate.swift */,
 				A61237C12ACFE7AD00CBCA0F /* protocols */,
 				A61237BE2ACFE37500CBCA0F /* Extension */,
