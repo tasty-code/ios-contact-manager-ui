@@ -1,5 +1,5 @@
 import Foundation
 
 protocol JSONCodable {
-    func decodeJSON(_ contactModel: inout [ContactModel]?)
+    func decodeJSON(_ contactModel: inout [ContactDTO]?)
 }
