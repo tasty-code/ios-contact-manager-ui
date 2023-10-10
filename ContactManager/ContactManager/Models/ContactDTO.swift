@@ -5,4 +5,3 @@ struct ContactDTO: Codable {
     let age: String
     let phoneNumber: String
 }
-
