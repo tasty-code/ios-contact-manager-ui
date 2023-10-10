@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Contact {
+final class Contact: Codable {
     var name: String
     var age: String
     var phoneNumber: String
