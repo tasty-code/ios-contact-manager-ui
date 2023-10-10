@@ -13,6 +13,7 @@ final class ContactsViewController: UIViewController {
     
     private let contactManager = ContactManager()
     private let cellIdentifier = "ContactCell"
+    private let newContactVCIdentifier = "NewContactViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,9 @@ final class ContactsViewController: UIViewController {
     
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
-        
+        guard let newContactVC = storyboard?.instantiateViewController(identifier: newContactVCIdentifier) as? NewContactViewController else { return }
+        let navigationVC = UINavigationController(rootViewController: newContactVC)
+        present(navigationVC, animated: true)
     }
     
 }
