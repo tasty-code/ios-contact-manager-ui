@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A61237C02ACFE37E00CBCA0F /* JSON+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61237BF2ACFE37E00CBCA0F /* JSON+Codable.swift */; };
+		A61237C02ACFE37E00CBCA0F /* JSONCodable+decodeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61237BF2ACFE37E00CBCA0F /* JSONCodable+decodeJSON.swift */; };
 		A61237C32ACFE7C900CBCA0F /* JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61237C22ACFE7C900CBCA0F /* JSONCodable.swift */; };
 		A62B6E952ACD6DF9005DC167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62B6E942ACD6DF9005DC167 /* AppDelegate.swift */; };
 		A62B6E972ACD6DF9005DC167 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62B6E962ACD6DF9005DC167 /* SceneDelegate.swift */; };
@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A61237BF2ACFE37E00CBCA0F /* JSON+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Codable.swift"; sourceTree = "<group>"; };
+		A61237BF2ACFE37E00CBCA0F /* JSONCodable+decodeJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONCodable+decodeJSON.swift"; sourceTree = "<group>"; };
 		A61237C22ACFE7C900CBCA0F /* JSONCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodable.swift; sourceTree = "<group>"; };
 		A62B6E912ACD6DF9005DC167 /* ContactManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62B6E942ACD6DF9005DC167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		A61237BE2ACFE37500CBCA0F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A61237BF2ACFE37E00CBCA0F /* JSON+Codable.swift */,
+				A61237BF2ACFE37E00CBCA0F /* JSONCodable+decodeJSON.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -191,7 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A61237C02ACFE37E00CBCA0F /* JSON+Codable.swift in Sources */,
+				A61237C02ACFE37E00CBCA0F /* JSONCodable+decodeJSON.swift in Sources */,
 				A62B6E992ACD6DF9005DC167 /* ContactViewController.swift in Sources */,
 				A62B6E952ACD6DF9005DC167 /* AppDelegate.swift in Sources */,
 				A62B6E972ACD6DF9005DC167 /* SceneDelegate.swift in Sources */,
