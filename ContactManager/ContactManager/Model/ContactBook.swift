@@ -8,45 +8,57 @@
 import Foundation
 
 struct ContactBook {
-    private var contactInfomation: [Person] = [Person(name: "Yeji", age: "23", digits: "010-1234-1234"), Person(name: "Howard", age: "35", digits: "010-1234-1234"),Person(name: "Dora", age: "23", digits: "010-1234-1234"),Person(name: "Rarla", age: "23", digits: "010-2234-1234")]
+    private var contactInfomation: [Person] = []
 }
 
 extension ContactBook {
+    mutating func setContactList (_ list: [Person] ) {
+        self.contactInfomation = list
+        rangeList()
+    }
+    
     mutating func addContactList(_ person: Person) {
         let isOverLap: Bool = overlapCheck(person)
 
         if isOverLap {
             return
         } else {
-            contactInfomation.append(person)
+            self.contactInfomation.append(person)
             rangeList()
         }
     }
     
     mutating func deleteContactList(_ indexPath: IndexPath) {
-        contactInfomation.remove(at: indexPath.row)
+        self.contactInfomation.remove(at: indexPath.row)
     }
     
-    mutating func updateContactList() {
-        
+    mutating func updateContactList(_ indexPath: IndexPath, _ person: Person) {
+        let isOverLap: Bool = overlapCheck(person)
+
+        if isOverLap {
+            return
+        } else {
+            self.contactInfomation[indexPath.row] = person
+            rangeList()
+        }
     }
     
     mutating func rangeList() {
-        contactInfomation.sort { $0.name.uppercased() < $1.name.uppercased()}
+        self.contactInfomation.sort { $0.name.uppercased() < $1.name.uppercased() }
     }
 }
 
 extension ContactBook {
-    func getSectionCount() -> Int {
-        return contactInfomation.count
+    func getRowCount() -> Int {
+        return self.contactInfomation.count
     }
     
     func showContactList(_ indexPath: IndexPath) -> Person {
-        return contactInfomation[indexPath.row]
+        return self.contactInfomation[indexPath.row]
     }
     
-    func overlapCheck(_ contact: Person ) -> Bool {
-        if contactInfomation.contains(where: ({ $0.name == contact.name && $0.age == contact.age && $0.digits == contact.digits })) {
+    func overlapCheck(_ contact: Person) -> Bool {
+        if self.contactInfomation.contains(where: ({ $0.name == contact.name && $0.age == contact.age && $0.digits == contact.digits })) {
             return true
         } else {
             return false

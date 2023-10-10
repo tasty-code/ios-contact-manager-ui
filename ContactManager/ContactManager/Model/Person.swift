@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Person {
+struct Person: Codable {
     var name: String
-    var age: String
+    var age: Int
     var digits: String
 }
