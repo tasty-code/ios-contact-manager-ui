@@ -13,6 +13,8 @@ class NewContactViewController: UIViewController {
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     
+    var contactManager: ContactManager?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
