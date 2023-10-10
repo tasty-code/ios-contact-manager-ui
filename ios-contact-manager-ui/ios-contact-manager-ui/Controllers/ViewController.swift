@@ -17,7 +17,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        makeDummyData()
+        setDummyData()
         self.contactTableView.delegate = self
         self.contactTableView.dataSource = self
     }
@@ -47,26 +47,18 @@ extension ViewController: UITableViewDelegate {
 }
 
 extension ViewController {
-    func makeDummyData() {
+    func setDummyData() {
         guard let path = Bundle.main.path(forResource: "Contacts", ofType: "json"),
-              let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
-              let jsonArray = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] else {
-            return
-        }
+              let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) else { return }
+        let decoder = JSONDecoder()
         
-        for (_, item) in jsonArray.enumerated() {
-            guard let name = item["name"] as? String,
-                  let age = item["age"] as? String,
-                  let phoneNumber = item["phoneNumber"] as? String else {
-                continue
+        do {
+            let contacts = try decoder.decode([Contact].self, from: jsonData)
+            for contact in contacts {
+                try contactManager.addContact(contact)
             }
-            
-            do {
-                try contactManager.addContact(name, age, phoneNumber)
-            } catch {
-                print("\(name) \(age) \(phoneNumber)")
-                print(String(describing: error))
-            }
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }
