@@ -9,85 +9,31 @@ import Foundation
 
 typealias PhoneNumber = String
 
-//MARK: - Contact
 struct Contact: Hashable {
-    let uuid = UUID()
+    let uuid: UUID
     private(set) var name: String
     private(set) var age: Int
-    private var _phoneNumbers = Set<PhoneNumber>()
-    var phoneNumbers: [PhoneNumber] {
-        _phoneNumbers.sorted()
-    }
+    private(set) var phoneNumber: PhoneNumber
     
-    init(name: String, age: Int) {
+    init(uuid: UUID, name: String, age: Int, phoneNumber: PhoneNumber) {
+        self.uuid = uuid
         self.name = name
         self.age = age
+        self.phoneNumber = phoneNumber
     }
     
-    fileprivate mutating func changeName(_ name: String) {
+    init(uuidString: String, name: String, age: Int, phoneNumber: PhoneNumber) {
+        if let uuid = UUID(uuidString: uuidString) {
+            self.uuid = uuid
+        } else {
+            self.uuid = UUID()
+        }
         self.name = name
-    }
-    
-    fileprivate mutating func changeAge(_ age: Int) {
         self.age = age
+        self.phoneNumber = phoneNumber
     }
     
-    fileprivate mutating func add(_ phoneNumber: PhoneNumber) {
-        _phoneNumbers.insert(phoneNumber)
-    }
-    
-    fileprivate mutating func delete(_ phoneNumber: PhoneNumber) {
-        _phoneNumbers.remove(phoneNumber)
-    }
-    
-    fileprivate mutating func modify(from existingPhoneNumber: PhoneNumber, to newPhoneNumber: PhoneNumber) {
-        _phoneNumbers.remove(existingPhoneNumber)
-        _phoneNumbers.insert(newPhoneNumber)
-    }
-}
-
-
-
-//MARK: - ContactManager
-class ContactManager {
-    private var _contacts = [UUID: Contact]()
-    var contacts: [Contact] {
-        _contacts.values.sorted { $0.name < $1.name }
-    }
-    
-    func add(_ person: Contact) throws {
-        if _contacts[person.uuid] != nil {
-            throw ContactException.contactAlreadyExsist(contact: person)
-        }
-        _contacts[person.uuid] = person
-    }
-    
-    func add(_ phoneNumber: PhoneNumber, of uuid: UUID) {
-        _contacts[uuid]?.add(phoneNumber)
-    }
-    
-    func delete(_ person: Contact) throws {
-        guard let _ = _contacts.removeValue(forKey: person.uuid)
-        else {
-            throw ContactException.contactNotFound(contact: person)
-        }
-    }
-    
-    func delete(_ phoneNumber: PhoneNumber, of uuid: UUID) {
-        _contacts[uuid]?.delete(phoneNumber)
-    }
-    
-    func modify(_ personName: String, _ personAge: Int, of person: Contact) throws {
-        guard var contact = _contacts[person.uuid]
-        else {
-            throw ContactException.contactNotFound(contact: person)
-        }
-        contact.changeName(personName)
-        contact.changeAge(personAge)
-        _contacts[person.uuid] = contact
-    }
-    
-    func modify(from exsistingPhoneNumber: PhoneNumber, to newPhoneNumber: PhoneNumber, of uuid: UUID) {
-        _contacts[uuid]?.modify(from: exsistingPhoneNumber, to: newPhoneNumber)
+    init(name: String, age: Int, phoneNumber: PhoneNumber) {
+        self.init(uuid: UUID(), name: name, age: age, phoneNumber: phoneNumber)
     }
 }

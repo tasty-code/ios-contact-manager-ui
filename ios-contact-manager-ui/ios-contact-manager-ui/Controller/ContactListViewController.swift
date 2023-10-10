@@ -8,7 +8,7 @@
 import UIKit
 
 final class ContactListViewController: UIViewController {
-    private var contactManager = ContactManager()
+    private let contactManager = ContactManager()
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -28,8 +28,7 @@ extension ContactListViewController: UITableViewDataSource {
         let contact = contactManager.contacts[indexPath.row]
         
         cell.textLabel?.text = "\(contact.name)(\(contact.age))"
-        cell.detailTextLabel?.text = "\(contact.phoneNumbers.first ?? "연락처를 추가해주세요.")"
-        
+        cell.detailTextLabel?.text = "\(contact.phoneNumber)"
         return cell
     }
 }

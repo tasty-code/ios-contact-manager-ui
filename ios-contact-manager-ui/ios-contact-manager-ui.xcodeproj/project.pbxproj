@@ -19,6 +19,7 @@
 		0D6F97132ACCF0B6006EF067 /* ios_contact_manager_uiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F97122ACCF0B6006EF067 /* ios_contact_manager_uiUITestsLaunchTests.swift */; };
 		0D6F97252ACCF1CA006EF067 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F97242ACCF1CA006EF067 /* Contact.swift */; };
 		0D6F97262ACCF1CA006EF067 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F97242ACCF1CA006EF067 /* Contact.swift */; };
+		0DA361A02AD4DFF500A2AA25 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3619F2AD4DFF500A2AA25 /* ContactManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		0D6F97102ACCF0B6006EF067 /* ios_contact_manager_uiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITests.swift; sourceTree = "<group>"; };
 		0D6F97122ACCF0B6006EF067 /* ios_contact_manager_uiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0D6F97242ACCF1CA006EF067 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		0DA3619F2AD4DFF500A2AA25 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				0D6F97242ACCF1CA006EF067 /* Contact.swift */,
+				0DA3619F2AD4DFF500A2AA25 /* ContactManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				0D6F96F42ACCF0B5006EF067 /* ContactListViewController.swift in Sources */,
 				0D6F96F02ACCF0B5006EF067 /* AppDelegate.swift in Sources */,
 				0D6F96F22ACCF0B5006EF067 /* SceneDelegate.swift in Sources */,
+				0DA361A02AD4DFF500A2AA25 /* ContactManager.swift in Sources */,
 				0D4347162ACD5F7D00052559 /* ContactException.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
