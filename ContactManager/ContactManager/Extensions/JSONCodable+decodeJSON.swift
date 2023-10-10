@@ -1,7 +1,7 @@
 import UIKit
 
 extension JSONCodable {
-    func decodeJSON(_ contactModel: inout [ContactDTO]?) {
+    func decodeJSON(_ contactDTO: inout [ContactDTO]?) {
         guard let path = Bundle.main.url(forResource: "ContactJSON", withExtension: "json") else {
             return
         }
@@ -9,7 +9,7 @@ extension JSONCodable {
         guard let data = try? Data(contentsOf: path) else {
             return
         }
-
-        contactModel = try? JSONDecoder().decode([ContactDTO].self, from: data)
+        
+        contactDTO = try? JSONDecoder().decode([ContactDTO].self, from: data)
     }
 }
