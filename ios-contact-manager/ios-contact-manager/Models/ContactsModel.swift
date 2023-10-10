@@ -1,23 +1,4 @@
-//
-//  ContactsModel.swift
-//  ios-contact-manager-ui
-//
-//  Created by Swain Yun on 10/4/23.
-//
-
 import Foundation
-
-struct Contact {
-    let name: String
-    let age: Int
-    let phoneNumber: Int
-    
-    init(name: String, age: Int, phoneNumber: Int) {
-        self.name = name
-        self.age = age
-        self.phoneNumber = phoneNumber
-    }
-}
 
 final class ContactsModel {
     private var contactsList: [Contact] = [
