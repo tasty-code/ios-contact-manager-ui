@@ -2,19 +2,19 @@ import UIKit
 final class ContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JSONCodable {
     
     @IBOutlet private weak var tableView: UITableView!
-    private var contactDTO: [ContactDTO]?
+    private var contactDTOs: [ContactDTO]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        decodeJSON(&contactDTO)
+        decodeJSON(&contactDTOs)
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let peopleCount = contactDTO?.count else {
+        guard let peopleCount = contactDTOs?.count else {
             return 0
         }
         return peopleCount
@@ -25,12 +25,14 @@ final class ContactViewController: UIViewController, UITableViewDelegate, UITabl
         cell.accessoryType = .disclosureIndicator
         var content = cell.defaultContentConfiguration()
         
-        guard let name = contactDTO?[indexPath.row].name,
-              let age = contactDTO?[indexPath.row].age,
-              let phoneNumber = contactDTO?[indexPath.row].phoneNumber 
-        else {
+        guard let contactDTOs = contactDTOs?[indexPath.row] else {
             return UITableViewCell()
         }
+        
+        let name = contactDTOs.name
+        let age = contactDTOs.age
+        let phoneNumber = contactDTOs.phoneNumber
+        
         
         content.text = "\(name) (\(age))"
         content.secondaryText = phoneNumber
