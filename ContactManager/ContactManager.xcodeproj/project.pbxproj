@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		CB8D4BFE2ACE3D52002132D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D4BFD2ACE3D52002132D4 /* AppDelegate.swift */; };
 		CB8D4C002ACE3D52002132D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D4BFF2ACE3D52002132D4 /* SceneDelegate.swift */; };
-		CB8D4C022ACE3D52002132D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D4C012ACE3D52002132D4 /* ViewController.swift */; };
 		CB8D4C052ACE3D52002132D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8D4C032ACE3D52002132D4 /* Main.storyboard */; };
 		CB8D4C072ACE3D53002132D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8D4C062ACE3D53002132D4 /* Assets.xcassets */; };
 		CB8D4C0A2ACE3D53002132D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8D4C082ACE3D53002132D4 /* LaunchScreen.storyboard */; };
@@ -22,7 +21,6 @@
 		CB8D4BFA2ACE3D52002132D4 /* ContactManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8D4BFD2ACE3D52002132D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB8D4BFF2ACE3D52002132D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CB8D4C012ACE3D52002132D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CB8D4C042ACE3D52002132D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB8D4C062ACE3D53002132D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB8D4C092ACE3D53002132D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -43,6 +41,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B8A587E12AD4D817008945BC /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				CB8D4BFD2ACE3D52002132D4 /* AppDelegate.swift */,
+				CB8D4BFF2ACE3D52002132D4 /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		B8A587E22AD4D827008945BC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB8D4C032ACE3D52002132D4 /* Main.storyboard */,
+				CB8D4C082ACE3D53002132D4 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B8A587E32AD4D83D008945BC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB8D4C162ACE4D69002132D4 /* WholeListTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		CB8D4BF12ACE3D52002132D4 = {
 			isa = PBXGroup;
 			children = (
@@ -62,14 +86,11 @@
 		CB8D4BFC2ACE3D52002132D4 /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
+				B8A587E32AD4D83D008945BC /* Controller */,
+				B8A587E22AD4D827008945BC /* View */,
+				B8A587E12AD4D817008945BC /* Delegate */,
 				CB8D4C112ACE418B002132D4 /* Model */,
-				CB8D4BFD2ACE3D52002132D4 /* AppDelegate.swift */,
-				CB8D4BFF2ACE3D52002132D4 /* SceneDelegate.swift */,
-				CB8D4C012ACE3D52002132D4 /* ViewController.swift */,
-				CB8D4C032ACE3D52002132D4 /* Main.storyboard */,
-				CB8D4C162ACE4D69002132D4 /* WholeListTableViewController.swift */,
 				CB8D4C062ACE3D53002132D4 /* Assets.xcassets */,
-				CB8D4C082ACE3D53002132D4 /* LaunchScreen.storyboard */,
 				CB8D4C0B2ACE3D53002132D4 /* Info.plist */,
 			);
 			path = ContactManager;
@@ -157,7 +178,6 @@
 			files = (
 				CB8D4C152ACE4236002132D4 /* Person.swift in Sources */,
 				CB8D4C172ACE4D69002132D4 /* WholeListTableViewController.swift in Sources */,
-				CB8D4C022ACE3D52002132D4 /* ViewController.swift in Sources */,
 				CB8D4BFE2ACE3D52002132D4 /* AppDelegate.swift in Sources */,
 				CB8D4C002ACE3D52002132D4 /* SceneDelegate.swift in Sources */,
 				CB8D4C132ACE41B6002132D4 /* ContactBook.swift in Sources */,
