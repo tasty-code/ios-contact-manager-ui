@@ -16,6 +16,9 @@ final class ContactListViewController: UIViewController {
         super.viewDidLoad()
         self.tableView.dataSource = self
         
+        for i in 0...100 {
+            try! contactManager.add(Contact(name: "123", age: i, phoneNumber: "123-123-1234"))
+        }
     }
 }
 
@@ -29,14 +32,13 @@ extension ContactListViewController: UITableViewDataSource {
         let contact = contactManager.contacts[indexPath.row]
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as? ContactCell else {
-            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: id)
-            cell.textLabel?.text = "\(contact.name)(\(contact.age))"
-            cell.detailTextLabel?.text = contact.phoneNumber
-            cell.accessoryType = .disclosureIndicator
+            let cell = ContactCell(style: .subtitle, reuseIdentifier: id)
+            cell.configureCell(contact)
+            print("no cell \(indexPath.row)")
             return cell
         }
         cell.configureCell(contact)
-        cell.accessoryType = .disclosureIndicator
+        print("yes cell \(indexPath.row)")
         return cell
     }
 }
