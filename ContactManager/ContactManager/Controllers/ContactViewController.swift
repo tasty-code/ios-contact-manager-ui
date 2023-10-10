@@ -1,5 +1,5 @@
 import UIKit
-final class ContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JSONCodable {
+final class ContactViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     private var contactDTOs: [ContactDTO]?
@@ -11,7 +11,13 @@ final class ContactViewController: UIViewController, UITableViewDelegate, UITabl
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
+}
+
+extension ContactViewController: UITableViewDelegate {
     
+}
+
+extension ContactViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let peopleCount = contactDTOs?.count else {
@@ -40,4 +46,8 @@ final class ContactViewController: UIViewController, UITableViewDelegate, UITabl
         
         return cell
     }
+}
+
+extension ContactViewController: JSONCodable {
+    
 }
