@@ -1,5 +1,5 @@
 //
-//  TableViewController.swift
+//  ContactTableViewController.swift
 //  ContactManager
 //
 //  Created by Janine on 2023/10/06.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactTableViewController: UITableViewController {
+final class ContactTableViewController: UITableViewController {
     private let contactManager = ContactManager()
     
     override func viewDidLoad() {
@@ -17,20 +17,24 @@ class ContactTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = contactManager.getContactList().count
+        let count = contactManager.checkContactsListCount()
         return count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
         
-        let name = contactManager.getContactList()[indexPath.row].name ?? ""
-        let age = contactManager.getContactList()[indexPath.row].age ?? 0
-        let phoneNumber = contactManager.getContactList()[indexPath.row].phoneNum ?? ""
+        var content = cell.defaultContentConfiguration()
         
-        cell.textLabel!.text = "\(name) (\(age))"
-        cell.detailTextLabel!.text = phoneNumber
-        
+        guard let name = contactManager.listOfContact[indexPath.row].name, let age = contactManager.listOfContact[indexPath.row].age,
+              let phoneNumber = contactManager.listOfContact[indexPath.row].phoneNum else {
+            return cell
+        }
+
+        content.text = "\(name) (\(age))"
+        content.secondaryText = phoneNumber
+        cell.contentConfiguration = content
+
         return cell
     }
 }
