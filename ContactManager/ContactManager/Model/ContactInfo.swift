@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Root: Decodable {
+struct Root: Codable {
     let data: [ContactInfo]
 }
 
-struct ContactInfo: Decodable {
+struct ContactInfo: Codable {
     var name: String?
     var age: Int?
     var phoneNum: String?

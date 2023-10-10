@@ -8,36 +8,37 @@
 import Foundation
 
 final class ContactManager {
-    private var contactList: [ContactInfo] = []
-    
-    func getContact(uuid: UUID) -> ContactInfo? {
-        guard let contact = contactList.first(where: { $0.uuid == uuid }) else { return nil }
-        return contact
-    }
-    
-    func getContactList() -> [ContactInfo] {
-        return contactList
-    }
-    
-    func setContactList(list: [ContactInfo]) {
-        contactList = list
-    }
-    
-    func addContact(name:String, age: Int, phoneNum: String) {
-        contactList.append(ContactInfo(name: name, age: age, phoneNum: phoneNum))
-    }
-    
-    func updateContact(name:String, age: Int, phoneNum: String, uuid: UUID) {
-        if let targetIndex = contactList.firstIndex(where: {$0.uuid == uuid}) {
-            contactList[targetIndex].name = name
-            contactList[targetIndex].age = age
-            contactList[targetIndex].phoneNum = phoneNum
+    private var contactsList: [ContactInfo] = []
+    var listOfContact: [ContactInfo] {
+        get {
+            return contactsList
+        } set(newList) {
+            contactsList = newList
         }
     }
     
-    func deleteContact(uuid: UUID) {
-        if let targetIndex = contactList.firstIndex(where: {$0.uuid == uuid}) {
-            contactList.remove(at: targetIndex)
+    func getContact(uuid: UUID) -> ContactInfo? {
+        guard let contact = contactsList.first(where: { $0.uuid == uuid }) else { return nil }
+        return contact
+    }
+
+    func checkContactsListCount() -> Int {
+        return contactsList.count
+    }
+    
+    func add(contact: ContactInfo) {
+        contactsList.append(contact)
+    }
+    
+    func update(contact: ContactInfo, of uuid: UUID) {
+        if let targetIndex = contactsList.firstIndex(where: {$0.uuid == uuid}) {
+            contactsList[targetIndex] = contact
+        }
+    }
+    
+    func delete(uuid: UUID) {
+        if let targetIndex = contactsList.firstIndex(where: {$0.uuid == uuid}) {
+            contactsList.remove(at: targetIndex)
         }
     }
 }
