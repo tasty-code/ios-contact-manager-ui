@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class ContactsViewController: UIViewController {
     
     @IBOutlet weak var contactTableView: UITableView!
     
@@ -21,9 +21,15 @@ final class ViewController: UIViewController {
         self.contactTableView.delegate = self
         self.contactTableView.dataSource = self
     }
+    
+    
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        
+    }
+    
 }
 
-extension ViewController: UITableViewDataSource {
+extension ContactsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactManager.contactsCount
     }
@@ -39,14 +45,14 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
     
 }
 
-extension ViewController {
+extension ContactsViewController {
     func setDummyData() {
         guard let path = Bundle.main.path(forResource: "Contacts", ofType: "json"),
               let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) else { return }
