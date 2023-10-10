@@ -20,10 +20,8 @@ class ViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        
         addressBook.addContact(Contact(name: "dora", phoneNumber: "010-0000-0000", age: 100))
         addressBook.addContact(Contact(name: "jaehyeok", phoneNumber: "010-1111-1111", age: 200))
-        
         tableView.reloadData()
     }
 }

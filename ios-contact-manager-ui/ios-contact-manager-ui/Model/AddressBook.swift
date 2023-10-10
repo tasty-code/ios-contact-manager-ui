@@ -9,7 +9,7 @@ import Foundation
 
 class AddressBook {
     private var contacts: [[Contact]] = Array(repeating: [], count: 26)
-    
+    private var contactsForDisplay: [[Contact]] = [[Contact]]()
     func getFirstLetterIndex(_ name: String) -> Int {
         let firstLetter = Array(name)[0].uppercased()
         let index = firstLetter.unicodeScalars.map { Int($0.value)}[0]
@@ -31,19 +31,15 @@ class AddressBook {
     }
     
     func showContact(_ section: Int, _ row: Int) -> Contact {
-        return contacts[section][row]
+        return contactsForDisplay[section][row]
     }
     
     func getSectionSize() -> Int {
-//        var size = 0
-//        for contact in contacts {
-//            size += contact.count == 0 ? 0 : 1
-//        }
-//        return size
-        return contacts.count
+        contactsForDisplay = contacts.filter{ !$0.isEmpty }
+        return contactsForDisplay.count
     }
     
     func getRowSize(_ section: Int) -> Int {
-        return contacts[section].count
+        return contactsForDisplay[section].count
     }
 }
