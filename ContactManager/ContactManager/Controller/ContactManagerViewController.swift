@@ -41,8 +41,8 @@ extension ContactManagerViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell: ContactTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
-    cell.nameAndAgeLabel.text = contacts[indexPath.row].nameAndAge
-    cell.phoneLabel.text = contacts[indexPath.row].phone
+    
+    cell.configure(model: contacts[indexPath.row])
     return cell
   }
 }
