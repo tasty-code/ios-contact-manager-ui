@@ -45,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3729240D2AD5110600C6B25D /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				37997A242ACFD885007DF473 /* mockData.json */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		37A71F432ACD4936004574A6 = {
 			isa = PBXGroup;
 			children = (
@@ -64,10 +72,11 @@
 		37A71F4E2ACD4936004574A6 /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
-				E133531D2AD4F09B0077E637 /* Utility */,
+				3729240D2AD5110600C6B25D /* Resource */,
 				E1E7933F2ACD4AC40015ECD6 /* Controller */,
 				E1E7933E2ACD4ABE0015ECD6 /* Model */,
 				E1E7933D2ACD4AB00015ECD6 /* View */,
+				E133531D2AD4F09B0077E637 /* Utility */,
 				37A71F5D2ACD4937004574A6 /* Info.plist */,
 			);
 			path = ContactManager;
@@ -94,7 +103,6 @@
 		E1E7933E2ACD4ABE0015ECD6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				37997A242ACFD885007DF473 /* mockData.json */,
 				E1E793402ACD4AE10015ECD6 /* ContactManager.swift */,
 				E1E793422ACD4AED0015ECD6 /* ContactInfo.swift */,
 			);

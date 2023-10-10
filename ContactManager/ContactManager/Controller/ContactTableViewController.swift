@@ -48,7 +48,7 @@ extension ContactTableViewController {
         do {
             let data = try Data(contentsOf: jsonURL)
             let root = try JSONDecoder().decode(Root.self, from: data)
-            contactManager.setContactList(list: root.data)
+            contactManager.listOfContact = root.data
         } catch {
             print(error)
         }
