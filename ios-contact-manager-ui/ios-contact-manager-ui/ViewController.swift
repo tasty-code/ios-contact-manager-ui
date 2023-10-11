@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     var cellIdentifier: String = "cell"
     var addressBook: AddressBook  = AddressBook()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetting()
@@ -52,6 +53,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 extension ViewController {
     @IBAction func TappedAddButton(_ sender: UIBarButtonItem) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "NewContactViewController") as? NewContactViewController else { return }
+        vc.delegate = self
         self.present(vc, animated: true)
+    }
+}
+
+extension ViewController: SendDelegate {
+    func sendContact(newContact: Contact) {
+        self.addressBook.addContact(newContact)
+        self.tableView.reloadData()
     }
 }
