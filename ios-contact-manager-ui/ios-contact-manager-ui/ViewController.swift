@@ -16,15 +16,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialSetting()
         
-        self.tableView.dataSource = self
         
         addressBook.addContact(Contact(name: "dora", phoneNumber: "010-0000-0000", age: 100))
         addressBook.addContact(Contact(name: "jaehyeok", phoneNumber: "010-1111-1111", age: 200))
     }
+    
+    func initialSetting() {
+        self.tableView.dataSource = self
+    }
 }
 
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return addressBook.getSectionSize()
@@ -45,4 +49,9 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-
+extension ViewController {
+    @IBAction func TappedAddButton(_ sender: UIBarButtonItem) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "NewContactViewController") as? NewContactViewController else { return }
+        self.present(vc, animated: true)
+    }
+}
