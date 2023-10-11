@@ -14,17 +14,19 @@ struct ContactManager {
     return true
   }
   
-  func ageValidate(_ age: Int) -> Bool {
+  func ageValidate(_ age: Int?) -> Bool {
+    guard let age = age else { return false }
     if age > 999 { return false }
     if age < 0 { return false }
     return true
   }
   
-  func phoneValidate(_ phone: String?) -> Bool {
+  mutating func phoneValidate(_ phone: String?) -> Bool {
     guard let phone = phone else { return false }
     let dashCount = phone.filter { ($0) == "-" }.count
     if dashCount != 2 { return false }
     if (phone.count - dashCount) <= 9 { return false }
+    phone = 22
     return true
   }
 }

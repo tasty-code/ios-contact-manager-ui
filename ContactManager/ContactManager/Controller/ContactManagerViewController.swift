@@ -13,6 +13,7 @@ final class ContactManagerViewController: UIViewController, UITableViewDelegate 
   @IBOutlet private weak var contactTableView: UITableView!
   private let decoder = JSONDecoder()
   private var contacts: [Contact] = []
+  private let manager = ContactManager()
   
   // MARK: - Methods
   
@@ -32,6 +33,16 @@ final class ContactManagerViewController: UIViewController, UITableViewDelegate 
       print(error.localizedDescription)
     }
   }
+  
+  @IBAction func addContactTapped(_ sender: UIBarButtonItem) {
+    let addContactView = storyboard?.instantiateViewController(
+      identifier: "addContactView", creator: { creater in
+        let viewController = AddContactViewController(coder: creater, manager: self.manager)
+        return viewController
+      })
+    
+    self.present(addContactView!, animated: true)
+  }
 }
 
 extension ContactManagerViewController: UITableViewDataSource {
@@ -45,4 +56,6 @@ extension ContactManagerViewController: UITableViewDataSource {
     cell.configure(model: contacts[indexPath.row])
     return cell
   }
+  
+  
 }

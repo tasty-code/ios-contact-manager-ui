@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		666502922AD65C550019A138 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666502912AD65C550019A138 /* AddContactViewController.swift */; };
 		66CD224C2ACF905E00BE35F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CD224B2ACF905E00BE35F7 /* AppDelegate.swift */; };
 		66CD224E2ACF905E00BE35F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CD224D2ACF905E00BE35F7 /* SceneDelegate.swift */; };
 		66CD22502ACF905E00BE35F7 /* ContactManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CD224F2ACF905E00BE35F7 /* ContactManagerViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		666502912AD65C550019A138 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		66CD22482ACF905E00BE35F7 /* ContactManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66CD224B2ACF905E00BE35F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66CD224D2ACF905E00BE35F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				66CD224F2ACF905E00BE35F7 /* ContactManagerViewController.swift */,
+				666502912AD65C550019A138 /* AddContactViewController.swift */,
 				66CD225F2ACFD14F00BE35F7 /* ContactTableViewCell.swift */,
 			);
 			path = Controller;
@@ -233,6 +236,7 @@
 			files = (
 				D07AF2182ACFCAD700F7B1B8 /* Contact.swift in Sources */,
 				66CD22602ACFD14F00BE35F7 /* ContactTableViewCell.swift in Sources */,
+				666502922AD65C550019A138 /* AddContactViewController.swift in Sources */,
 				66CD22502ACF905E00BE35F7 /* ContactManagerViewController.swift in Sources */,
 				66CD224C2ACF905E00BE35F7 /* AppDelegate.swift in Sources */,
 				D07AF2892AD6353500F7B1B8 /* ContactManager.swift in Sources */,
