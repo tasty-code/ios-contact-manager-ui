@@ -8,57 +8,57 @@
 import Foundation
 
 struct ContactBook {
-    private var contactInfomation: [Person] = []
+    private var personContactList: [Person] = []
 }
 
 extension ContactBook {
-    mutating func setContactList (_ list: [Person] ) {
-        self.contactInfomation = list
-        rangeList()
+    mutating func setContactList(_ list: [Person]) {
+        self.personContactList = list
+        sortContactList()
     }
     
-    mutating func addContactList(_ person: Person) {
-        let isOverLap: Bool = overlapCheck(person)
+    mutating func addPersonContact(_ person: Person) {
+        let isDuplicated = hasDuplicates(person)
 
-        if isOverLap {
+        if isDuplicated {
             return
         } else {
-            self.contactInfomation.append(person)
-            rangeList()
+            self.personContactList.append(person)
+            sortContactList()
         }
     }
     
-    mutating func deleteContactList(_ indexPath: IndexPath) {
-        self.contactInfomation.remove(at: indexPath.row)
+    mutating func deletePersonContact(_ indexPath: IndexPath) {
+        self.personContactList.remove(at: indexPath.row)
     }
     
     mutating func updateContactList(_ indexPath: IndexPath, _ person: Person) {
-        let isOverLap: Bool = overlapCheck(person)
+        let isDuplicated = hasDuplicates(person)
 
-        if isOverLap {
+        if isDuplicated {
             return
         } else {
-            self.contactInfomation[indexPath.row] = person
-            rangeList()
+            self.personContactList[indexPath.row] = person
+            sortContactList()
         }
     }
     
-    mutating func rangeList() {
-        self.contactInfomation.sort { $0.name.uppercased() < $1.name.uppercased() }
+    mutating func sortContactList() {
+        self.personContactList.sort { $0.name.uppercased() < $1.name.uppercased() }
     }
 }
 
 extension ContactBook {
-    func getRowCount() -> Int {
-        return self.contactInfomation.count
+    func rowCountContactList() -> Int {
+        return self.personContactList.count
     }
     
-    func showContactList(_ indexPath: IndexPath) -> Person {
-        return self.contactInfomation[indexPath.row]
+    func bringPersonContact(_ indexPath: IndexPath) -> Person {
+        return self.personContactList[indexPath.row]
     }
     
-    func overlapCheck(_ contact: Person) -> Bool {
-        if self.contactInfomation.contains(where: ({ $0.name == contact.name && $0.age == contact.age && $0.digits == contact.digits })) {
+    func hasDuplicates(_ contact: Person) -> Bool {
+        if self.personContactList.contains(where: ({ $0.name == contact.name && $0.age == contact.age && $0.digits == contact.digits })) {
             return true
         } else {
             return false
