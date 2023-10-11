@@ -7,31 +7,31 @@
 
 import Foundation
 
-class ContactManager {
-    private var _contacts = [UUID: Contact]()
+final class ContactManager {
+    private static var _contacts = [UUID: Contact]()
     var contacts: [Contact] {
-        _contacts.values.sorted { $0.name < $1.name }
+        ContactManager._contacts.values.sorted { $0.name < $1.name }
     }
     
     func add(_ contact: Contact) throws {
-        if _contacts[contact.uuid] != nil {
+        if ContactManager._contacts[contact.uuid] != nil {
             throw ContactException.contactAlreadyExsist(contact: contact)
         }
-        _contacts[contact.uuid] = contact
+        ContactManager._contacts[contact.uuid] = contact
     }
     
-    func delete(_ person: Contact) throws {
-        guard let _ = _contacts.removeValue(forKey: person.uuid)
+    func delete(_ contact: Contact) throws {
+        guard let _ = ContactManager._contacts.removeValue(forKey: contact.uuid)
         else {
-            throw ContactException.contactNotFound(contact: person)
+            throw ContactException.contactNotFound(contact: contact)
         }
     }
     
     func modify(_ oldContact: Contact, to newContact: Contact) throws {
-        if _contacts[oldContact.uuid] == nil {
+        if ContactManager._contacts[oldContact.uuid] == nil {
             throw ContactException.contactNotFound(contact: oldContact)
         }
-        _contacts.removeValue(forKey: oldContact.uuid)
-        _contacts[newContact.uuid] = newContact
+        ContactManager._contacts.removeValue(forKey: oldContact.uuid)
+        ContactManager._contacts[newContact.uuid] = newContact
     }
 }
