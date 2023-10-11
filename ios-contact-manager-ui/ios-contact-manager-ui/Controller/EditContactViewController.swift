@@ -25,7 +25,11 @@ final class EditContactViewController: UIViewController {
     }
     
     @objc private func tapSaveButton(_ sender: UIBarButtonItem) {
-        showInvalidContactAlert("gdgdgdgdgdgdg")
+        do {
+            try checkContactValidation()
+        } catch {
+            showInvalidContactAlert(error.localizedDescription)
+        }
     }
     
     private func showInvalidContactAlert(_ message: String) {
@@ -43,5 +47,9 @@ final class EditContactViewController: UIViewController {
             self.dismiss(animated: true)
         })
         present(cancelAlert, animated: true)
+    }
+    
+    private func checkContactValidation() throws {
+        throw ContactException.invalidInput(type: .name)
     }
 }
