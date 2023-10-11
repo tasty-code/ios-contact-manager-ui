@@ -18,6 +18,7 @@
 		DE6D12F42ACD0AE500A43550 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D12F32ACD0AE500A43550 /* Contact.swift */; };
 		DE6D12F82ACD0B1900A43550 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D12F72ACD0B1900A43550 /* ContactManager.swift */; };
 		DE7807382AD5381A00ECA110 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7807372AD5381A00ECA110 /* NewContactViewController.swift */; };
+		DE9585C32AD5417800183B37 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9585C22AD5417800183B37 /* Validatable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DE6D12F32ACD0AE500A43550 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		DE6D12F72ACD0B1900A43550 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		DE7807372AD5381A00ECA110 /* NewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewContactViewController.swift; path = "ios-contact-manager-ui/Controllers/NewContactViewController.swift"; sourceTree = SOURCE_ROOT; };
+		DE9585C22AD5417800183B37 /* Validatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				DE6D12F72ACD0B1900A43550 /* ContactManager.swift */,
 				DE6D12F32ACD0AE500A43550 /* Contact.swift */,
+				DE9585C22AD5417800183B37 /* Validatable.swift */,
 				DE56B7CF2ACFCD9F00751829 /* ContactsError.swift */,
 			);
 			path = Models;
@@ -183,6 +186,7 @@
 				DE6D12F42ACD0AE500A43550 /* Contact.swift in Sources */,
 				DE6D12E42ACD0A2800A43550 /* ContactsViewController.swift in Sources */,
 				DE6D12E02ACD0A2800A43550 /* AppDelegate.swift in Sources */,
+				DE9585C32AD5417800183B37 /* Validatable.swift in Sources */,
 				DE7807382AD5381A00ECA110 /* NewContactViewController.swift in Sources */,
 				DE6D12E22ACD0A2800A43550 /* SceneDelegate.swift in Sources */,
 			);
