@@ -17,6 +17,13 @@ final class NewContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUI()
+    }
+    
+    private func setUpUI() {
+        nameTextField.autocapitalizationType = .sentences
+        ageTextField.keyboardType = .numberPad
+        phoneNumberTextField.keyboardType = .phonePad
     }
     
     
