@@ -11,6 +11,7 @@ final class ContactViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
+  
 }
 
 extension ContactViewController: UITableViewDelegate {

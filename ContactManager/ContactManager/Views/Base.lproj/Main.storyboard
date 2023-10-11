@@ -155,7 +155,11 @@
                                                 <action selector="touchUpCancelButton:" destination="GxN-tg-N2p" id="MsG-Y8-yLs"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="4j1-Ao-Q8C"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="4j1-Ao-Q8C">
+                                            <connections>
+                                                <action selector="touchUpSaveButton:" destination="GxN-tg-N2p" id="PTs-VP-7e8"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -172,7 +176,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ageTextField" destination="OiD-cR-WDi" id="znJ-JL-4ae"/>
                         <outlet property="cancelButton" destination="klg-dh-3yW" id="mtj-QS-rU6"/>
+                        <outlet property="contactTextField" destination="LIh-Sn-eDJ" id="3UP-dB-cqY"/>
+                        <outlet property="nameTextField" destination="Inh-ea-K53" id="SH8-lD-0f6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Gr-oy-3m5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
