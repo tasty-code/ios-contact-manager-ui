@@ -21,12 +21,12 @@ class WholeListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactBook.getRowCount()
+        return contactBook.rowCountContactList()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainList", for: indexPath)
-        let person = contactBook.showContactList(indexPath)
+        let person = contactBook.bringPersonContact(indexPath)
         
         cell.textLabel?.text = person.name + "(\(person.age))"
         cell.detailTextLabel?.text = person.digits
