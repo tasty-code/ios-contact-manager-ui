@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ContactsViewController.swift
 //  ios-contact-manager-ui
 //
 //  Created by 김진웅 on 2023/10/04.
