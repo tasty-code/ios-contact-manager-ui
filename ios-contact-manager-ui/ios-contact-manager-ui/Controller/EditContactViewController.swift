@@ -8,7 +8,6 @@
 import UIKit
 
 final class EditContactViewController: UIViewController {
-
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -16,12 +15,18 @@ final class EditContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
+        configureTextFields()
     }
     
     private func configureNavigationBar() {
         navigationItem.title = "새 연락처"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(tapCancelButton(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(tapSaveButton(_:)))
+    }
+    
+    private func configureTextFields() {
+        self.ageTextField.keyboardType = .numberPad
+        self.phoneNumberTextField.keyboardType = .numbersAndPunctuation
     }
     
     @objc private func tapCancelButton(_ sender: UIBarButtonItem) {
