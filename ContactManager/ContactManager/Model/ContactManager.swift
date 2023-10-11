@@ -13,15 +13,17 @@ final class ContactManager {
         return contactsList.count
     }
     
+    func setContactsList(_ list: [ContactInfo]) {
+        contactsList = list
+    }
+    
     func getContact(of uuid: UUID) -> ContactInfo? {
         guard let contact = contactsList.first(where: { $0.uuid == uuid }) else { return nil }
         return contact
     }
-    
-    func setContactList(_ list: [ContactInfo]) {
-        contactsList = list
-    }
-    
+}
+
+extension ContactManager {
     func add(_ contact: ContactInfo) {
         contactsList.append(contact)
     }
@@ -39,3 +41,6 @@ final class ContactManager {
     }
 }
 
+extension ContactManager {
+    func checkValidate() {}
+}
