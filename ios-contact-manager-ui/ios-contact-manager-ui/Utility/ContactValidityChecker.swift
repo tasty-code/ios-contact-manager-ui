@@ -9,14 +9,36 @@ import Foundation
 
 struct ContactValidityChecker {
     func checkNameValidation(_ name: String) -> String? {
-        return nil
+        let subSpaceName = name.trimmingCharacters(in: [" "])
+        
+        if subSpaceName.count == 0 {
+            return nil
+        }
+        
+        return subSpaceName
     }
     
     func checkAgeValidation(_ age: String) -> Int? {
-        return nil
+        let subSpaceAge = age.trimmingCharacters(in: [" "])
+        
+        if subSpaceAge.count == 0 {
+            return nil
+        }
+        
+        guard let validAge = Int(subSpaceAge), (1..<100).contains(validAge)
+        else {
+            return nil
+        }
+        
+        return validAge
     }
     
     func checkPhoneNumberValidation(_ phoneNumber: String) -> String? {
-        return nil
+        guard let _ = try? /^\d{1,9}-\d{1,9}-\d{1,9}$/.wholeMatch(in: phoneNumber)
+        else {
+            return nil
+        }
+        
+        return phoneNumber
     }
 }

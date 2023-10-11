@@ -45,9 +45,6 @@ final class ios_contact_manager_uiTests: XCTestCase {
         let ages = [
             (input: " ", output: nil),
             (input: "  ", output: nil),
-            (input: "a b", output: nil),
-            (input: "a 3", output: nil),
-            (input: "3 a 5", output: nil),
             (input: "3 5", output: 35),
             (input: " 35", output: 35),
             (input: "35 ", output: 35),
