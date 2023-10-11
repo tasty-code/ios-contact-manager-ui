@@ -32,4 +32,10 @@ class WholeListTableViewController: UITableViewController {
         
         return cell
     }
+    
+    @IBAction func addNewContact(_ sender: Any) {
+        guard let addNewContactVC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewContactViewController") as? AddNewContactViewController else { return }
+        
+        self.present(addNewContactVC, animated:true, completion: nil)
+    }
 }

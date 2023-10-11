@@ -66,7 +66,7 @@
                     <navigationItem key="navigationItem" title="연락처" id="Lvg-en-WX4">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="QeL-9r-0Th">
                             <connections>
-                                <segue destination="Nx0-Wp-vRw" kind="presentation" id="uSg-Vp-8PB"/>
+                                <action selector="addNewContact:" destination="lrX-ml-VmF" id="iHw-LQ-KEX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -75,31 +75,46 @@
             </objects>
             <point key="canvasLocation" x="1" y="-8"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="4He-wJ-q2l">
-            <objects>
-                <navigationController id="Nx0-Wp-vRw" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eht-iz-IBA">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="nET-Fa-iZv" kind="relationship" relationship="rootViewController" id="I1D-cE-P2i"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EA6-Kt-sNi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-787" y="711"/>
-        </scene>
         <!--새 연락처-->
         <scene sceneID="1bh-Hw-AW2">
             <objects>
-                <viewController id="nET-Fa-iZv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddNewContactViewController" id="nET-Fa-iZv" customClass="AddNewContactViewController" customModule="ContactManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VAV-s5-9TY">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="QWv-pr-uyh">
+                                <rect key="frame" x="0.0" y="79" width="393" height="34.333333333333343"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4H-rO-1Uh">
+                                        <rect key="frame" x="0.0" y="0.0" width="76.666666666666671" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                        <connections>
+                                            <action selector="goBack:" destination="nET-Fa-iZv" eventType="touchUpInside" id="DFM-Qe-Ifs"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새 연락처" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLt-cK-KO3">
+                                        <rect key="frame" x="169" y="0.0" width="63" height="34.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyH-WV-zDL">
+                                        <rect key="frame" x="332" y="0.0" width="61" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Rka-i1-DdQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QWv-pr-uyh" firstAttribute="top" secondItem="Rka-i1-DdQ" secondAttribute="top" constant="20" id="LYQ-9u-2lQ"/>
+                            <constraint firstItem="QWv-pr-uyh" firstAttribute="leading" secondItem="Rka-i1-DdQ" secondAttribute="leading" id="ZhR-l0-cfc"/>
+                            <constraint firstItem="Rka-i1-DdQ" firstAttribute="trailing" secondItem="QWv-pr-uyh" secondAttribute="trailing" id="rmc-cY-5FN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="새 연락처" id="XYC-dq-Wkb">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Tg5-bC-9A7"/>
@@ -108,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1JX-Bw-LhU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.76335877862595414" y="710.56338028169023"/>
+            <point key="canvasLocation" x="778" y="-8"/>
         </scene>
     </scenes>
     <resources>
