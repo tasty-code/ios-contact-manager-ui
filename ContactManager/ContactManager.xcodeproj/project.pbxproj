@@ -16,6 +16,9 @@
 		37A71F5C2ACD4937004574A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A71F5A2ACD4937004574A6 /* LaunchScreen.storyboard */; };
 		37B8C97F2AD6797A000F33D8 /* ContactCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8C97E2AD6797A000F33D8 /* ContactCreationViewController.swift */; };
 		E133531F2AD4F0AD0077E637 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E133531E2AD4F0AD0077E637 /* Array.swift */; };
+		E133534B2AD671900077E637 /* ValidateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E133534A2AD671900077E637 /* ValidateType.swift */; };
+		E133534D2AD671BB0077E637 /* InvalidError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E133534C2AD671BB0077E637 /* InvalidError.swift */; };
+		E133534F2AD67A7B0077E637 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E133534E2AD67A7B0077E637 /* String.swift */; };
 		E1E793412ACD4AE10015ECD6 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E793402ACD4AE10015ECD6 /* ContactManager.swift */; };
 		E1E793432ACD4AED0015ECD6 /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E793422ACD4AED0015ECD6 /* ContactInfo.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +35,9 @@
 		37A71F5D2ACD4937004574A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37B8C97E2AD6797A000F33D8 /* ContactCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCreationViewController.swift; sourceTree = "<group>"; };
 		E133531E2AD4F0AD0077E637 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		E133534A2AD671900077E637 /* ValidateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateType.swift; sourceTree = "<group>"; };
+		E133534C2AD671BB0077E637 /* InvalidError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvalidError.swift; sourceTree = "<group>"; };
+		E133534E2AD67A7B0077E637 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		E1E793402ACD4AE10015ECD6 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		E1E793422ACD4AED0015ECD6 /* ContactInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +80,7 @@
 		37A71F4E2ACD4936004574A6 /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
+				E13353492AD671820077E637 /* Enums */,
 				3729240D2AD5110600C6B25D /* Resource */,
 				E1E7933F2ACD4AC40015ECD6 /* Controller */,
 				E1E7933E2ACD4ABE0015ECD6 /* Model */,
@@ -88,8 +95,18 @@
 			isa = PBXGroup;
 			children = (
 				E133531E2AD4F0AD0077E637 /* Array.swift */,
+				E133534E2AD67A7B0077E637 /* String.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		E13353492AD671820077E637 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				E133534A2AD671900077E637 /* ValidateType.swift */,
+				E133534C2AD671BB0077E637 /* InvalidError.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		E1E7933D2ACD4AB00015ECD6 /* View */ = {
@@ -197,10 +214,13 @@
 				37997A272ACFD918007DF473 /* ContactTableViewController.swift in Sources */,
 				E1E793432ACD4AED0015ECD6 /* ContactInfo.swift in Sources */,
 				E133531F2AD4F0AD0077E637 /* Array.swift in Sources */,
+				E133534F2AD67A7B0077E637 /* String.swift in Sources */,
 				37A71F502ACD4936004574A6 /* AppDelegate.swift in Sources */,
 				E1E793412ACD4AE10015ECD6 /* ContactManager.swift in Sources */,
 				37B8C97F2AD6797A000F33D8 /* ContactCreationViewController.swift in Sources */,
 				37A71F522ACD4936004574A6 /* SceneDelegate.swift in Sources */,
+				E133534D2AD671BB0077E637 /* InvalidError.swift in Sources */,
+				E133534B2AD671900077E637 /* ValidateType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
