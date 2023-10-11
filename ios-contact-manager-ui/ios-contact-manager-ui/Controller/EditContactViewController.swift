@@ -74,7 +74,7 @@ final class EditContactViewController: UIViewController {
         guard let validPhoneNumber = contactValidityChecker.checkPhoneNumberValidation(phoneNumberTextField.text ?? "") else {
             throw ContactException.invalidInput(type: .phoneNumber)
         }
-        try! contactManager.add(Contact(name: validName, age: validAge, phoneNumber: validPhoneNumber))
+        try contactManager.add(Contact(name: validName, age: validAge, phoneNumber: validPhoneNumber))
         NotificationCenter.default.post(name: NSNotification.Name("Update Contacts"), object: nil)
     }
     
