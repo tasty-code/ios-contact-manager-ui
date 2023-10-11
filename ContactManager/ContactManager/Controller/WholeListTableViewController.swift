@@ -13,7 +13,13 @@ class WholeListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        contactBook.setContactList([Person(name: "Howard", age: 34, digits: "010-1234-1234"), Person(name: "Mond", age: 12, digits: "010-1234-1234"), Person(name: "Thor", age: 7, digits: "010-1234-1234"), Person(name: "Dora", age: 99, digits: "010-1234-1234"), Person(name: "JaeHyuk", age: 88, digits: "010-1234-1234")])
+        contactBook.setContactList([
+            Person(name: "Howard", age: 34, digits: "010-1234-1234"),
+            Person(name: "Mond", age: 12, digits: "010-1234-1234"),
+            Person(name: "Thor", age: 7, digits: "010-1234-1234"),
+            Person(name: "Dora", age: 99, digits: "010-1234-1234"),
+            Person(name: "JaeHyuk", age: 88, digits: "010-1234-1234")
+        ])
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
