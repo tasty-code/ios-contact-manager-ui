@@ -16,7 +16,32 @@ final class EditContactViewController: UIViewController {
     
     private func configureNavigationBar() {
         navigationItem.title = "새 연락처"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: nil, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(tapCancelButton(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(tapSaveButton(_:)))
+    }
+    
+    @objc private func tapCancelButton(_ sender: UIBarButtonItem) {
+        showCancelAlert()
+    }
+    
+    @objc private func tapSaveButton(_ sender: UIBarButtonItem) {
+        showInvalidContactAlert("gdgdgdgdgdgdg")
+    }
+    
+    private func showInvalidContactAlert(_ message: String) {
+        let invalidContactAlert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        invalidContactAlert.addAction(UIAlertAction(title: "확인", style: .default))
+        
+        present(invalidContactAlert, animated: true)
+    }
+    
+    private func showCancelAlert() {
+        let message = "정말로 취소 하시겠습니까?"
+        let cancelAlert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        cancelAlert.addAction(UIAlertAction(title: "아니오", style: .cancel))
+        cancelAlert.addAction(UIAlertAction(title: "예", style: .destructive) { _ in
+            self.dismiss(animated: true)
+        })
+        present(cancelAlert, animated: true)
     }
 }
