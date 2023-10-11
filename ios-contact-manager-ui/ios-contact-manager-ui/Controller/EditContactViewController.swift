@@ -12,6 +12,8 @@ final class EditContactViewController: UIViewController {
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     
+    private let contactValidityChecker = ContactValidityChecker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
@@ -59,6 +61,17 @@ final class EditContactViewController: UIViewController {
     }
     
     private func checkContactValidation() throws {
-        throw ContactException.invalidInput(type: .name)
+        guard let validName = contactValidityChecker.checkNameValidation(nameTextField.text ?? "") else {
+            throw ContactException.invalidInput(type: .name)
+        }
+        
+        guard let validAge = contactValidityChecker.checkAgeValidation(ageTextField.text ?? "") else {
+            throw ContactException.invalidInput(type: .age)
+        }
+        
+        guard let validPhoneNumber = contactValidityChecker.checkPhoneNumberValidation(phoneNumberTextField.text ?? "") else {
+            throw ContactException.invalidInput(type: .phoneNumber)
+        }
+        
     }
 }
