@@ -15,8 +15,6 @@ final class ContactsViewController: UIViewController {
     private let cellIdentifier = "ContactCell"
     private let newContactVCIdentifier = "NewContactViewController"
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,11 +53,10 @@ extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    
 }
 
 extension ContactsViewController {
-    func setDummyData() {
+    private func setDummyData() {
         guard let path = Bundle.main.path(forResource: "Contacts", ofType: "json"),
               let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) else { return }
         let decoder = JSONDecoder()
@@ -67,7 +64,7 @@ extension ContactsViewController {
         do {
             let contacts = try decoder.decode([Contact].self, from: jsonData)
             for contact in contacts {
-                try contactManager.addContact(contact)
+                contactManager.addContact(contact)
             }
         } catch {
             print(error.localizedDescription)
