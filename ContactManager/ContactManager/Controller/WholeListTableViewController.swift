@@ -9,7 +9,7 @@ import UIKit
 
 class WholeListTableViewController: UITableViewController {
 
-    private var contactBook: ContactBook = ContactBook()
+    private var contactBook = ContactBook()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +26,10 @@ class WholeListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainList", for: indexPath)
+        let person = contactBook.showContactList(indexPath)
         
-        cell.textLabel?.text = contactBook.showContactList(indexPath).name + "(\(contactBook.showContactList(indexPath).age))"
-        cell.detailTextLabel?.text = contactBook.showContactList(indexPath).digits
+        cell.textLabel?.text = person.name + "(\(person.age))"
+        cell.detailTextLabel?.text = person.digits
         
         return cell
     }
