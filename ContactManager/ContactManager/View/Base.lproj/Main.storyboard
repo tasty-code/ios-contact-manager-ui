@@ -182,6 +182,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Tg5-bC-9A7"/>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="hNW-sP-37F"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="inputAge" destination="Jzx-GZ-p4X" id="pg5-sg-VKf"/>
+                        <outlet property="inputDigits" destination="PXo-29-VHT" id="r95-xd-TfK"/>
+                        <outlet property="inputName" destination="3Pu-AB-hQ4" id="X1U-3d-IHN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1JX-Bw-LhU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
