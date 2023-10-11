@@ -72,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="1066.4122137404579" y="24.647887323943664"/>
         </scene>
-        <!--View Controller-->
+        <!--New Contact View Controller-->
         <scene sceneID="r66-bx-7c9">
             <objects>
-                <viewController id="GxN-tg-N2p" sceneMemberID="viewController">
+                <viewController id="GxN-tg-N2p" customClass="NewContactViewController" customModule="ContactManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KlE-tL-rxw">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,7 +147,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
                                 <items>
                                     <navigationItem title="새 연락처" id="wII-Yr-0Qx">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="klg-dh-3yW"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="klg-dh-3yW">
+                                            <connections>
+                                                <action selector="touchUpCancelButton:" destination="GxN-tg-N2p" id="MsG-Y8-yLs"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="4j1-Ao-Q8C"/>
                                     </navigationItem>
                                 </items>
@@ -164,6 +168,9 @@
                             <constraint firstItem="X2y-j9-gWS" firstAttribute="leading" secondItem="7tM-Oz-Nwe" secondAttribute="leading" id="wmi-2Y-S3g"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="klg-dh-3yW" id="mtj-QS-rU6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Gr-oy-3m5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
