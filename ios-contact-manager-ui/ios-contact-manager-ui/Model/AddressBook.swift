@@ -8,8 +8,10 @@
 import Foundation
 
 class AddressBook {
+    
     private var contacts: [[Contact]] = Array(repeating: [], count: 26)
     private var contactsForDisplay: [[Contact]] = [[Contact]]()
+    
     func getFirstLetterIndex(_ name: String) -> Int {
         let firstLetter = Array(name)[0].uppercased()
         let index = firstLetter.unicodeScalars.map { Int($0.value)}[0]

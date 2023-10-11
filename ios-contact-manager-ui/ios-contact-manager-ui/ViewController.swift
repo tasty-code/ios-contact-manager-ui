@@ -12,21 +12,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var cellIdentifier: String = "cell"
-    var addressBook: AddressBook!  = AddressBook()
+    var addressBook: AddressBook  = AddressBook()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.dataSource = self
-        self.tableView.delegate = self
         
         addressBook.addContact(Contact(name: "dora", phoneNumber: "010-0000-0000", age: 100))
         addressBook.addContact(Contact(name: "jaehyeok", phoneNumber: "010-1111-1111", age: 200))
-        tableView.reloadData()
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension ViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return addressBook.getSectionSize()
