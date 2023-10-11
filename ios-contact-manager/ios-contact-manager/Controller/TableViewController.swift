@@ -22,5 +22,35 @@ final class TableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contact = self.contactsModel.readContact(indexPath: indexPath)
+        self.presentModallyEditViewController(contact, indexPath)
+    }
+    
+    @IBAction private func touchAddBarButton(_ sender: UIBarButtonItem) {
+        self.presentModallyEditViewController(nil, nil)
+    }
+    
+    private func presentModallyEditViewController(_ contact: Contact?, _ indexPath: IndexPath?) {
+        guard let editViewController = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as? EditViewController else { return }
+        
+        editViewController.delegate = self
+        editViewController.indexPath = indexPath
+        editViewController.contact = contact
+        
+        self.present(editViewController, animated: true)
+    }
+}
 
+extension TableViewController: ContactsManagable {
+    func createContact(_ contact: Contact) {
+        self.contactsModel.createContact(contact: contact)
+        self.tableView.reloadData()
+    }
+    
+    func updateContact(_ contact: Contact, _ indexPath: IndexPath) {
+        self.contactsModel.updateContact(contact: contact, indexPath: indexPath)
+        self.tableView.reloadData()
+    }
 }

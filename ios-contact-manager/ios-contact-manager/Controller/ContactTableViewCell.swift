@@ -1,7 +1,6 @@
 import UIKit
 
-final class ContactTableViewCell: UITableViewCell {
-
+final class ContactTableViewCell: UITableViewCell, ContactCellConfigurable {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -13,7 +12,9 @@ final class ContactTableViewCell: UITableViewCell {
     func configureCell(item contact: Contact) {
         var content = self.defaultContentConfiguration()
         content.text = "\(contact.name)(\(contact.age))"
+        content.textProperties.adjustsFontForContentSizeCategory = true
         content.secondaryText = "\(contact.phoneNumber)"
+        content.secondaryTextProperties.adjustsFontForContentSizeCategory = true
         self.contentConfiguration = content
     }
 }
