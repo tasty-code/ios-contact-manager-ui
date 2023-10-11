@@ -60,7 +60,6 @@ extension ContactsViewController {
         guard let path = Bundle.main.path(forResource: "Contacts", ofType: "json"),
               let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) else { return }
         let decoder = JSONDecoder()
-        
         do {
             let contacts = try decoder.decode([Contact].self, from: jsonData)
             for contact in contacts {
@@ -71,5 +70,3 @@ extension ContactsViewController {
         }
     }
 }
-
-
