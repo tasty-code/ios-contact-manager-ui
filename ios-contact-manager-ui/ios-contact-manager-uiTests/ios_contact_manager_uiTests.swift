@@ -18,7 +18,7 @@ final class ios_contact_manager_uiTests: XCTestCase {
     }
     
     func test_이름_띄어쓰기_제거되는지() {
-        let names = [
+        let names: [(input: String, output: String?)] = [
             (input: " ", output: nil),
             (input: "  ", output: nil),
             (input: "j ames", output: "james"),
@@ -38,7 +38,7 @@ final class ios_contact_manager_uiTests: XCTestCase {
     // MARK: - 나이
     func test_나이_빈_문자열인지() {
         let age = ""
-        XCTAssertEqual(age, nil)
+        XCTAssertEqual(contactValidityChecker.checkAgeValidation(age), nil)
     }
     
     func test_나이_띄어쓰기_제거되는지() {

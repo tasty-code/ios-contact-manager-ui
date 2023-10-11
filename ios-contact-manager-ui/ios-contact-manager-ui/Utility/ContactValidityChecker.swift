@@ -9,7 +9,7 @@ import Foundation
 
 struct ContactValidityChecker {
     func checkNameValidation(_ name: String) -> String? {
-        let subSpaceName = name.trimmingCharacters(in: [" "])
+        let subSpaceName = name.replacingOccurrences(of: " ", with: "")
         
         if subSpaceName.count == 0 {
             return nil
@@ -19,7 +19,7 @@ struct ContactValidityChecker {
     }
     
     func checkAgeValidation(_ age: String) -> Int? {
-        let subSpaceAge = age.trimmingCharacters(in: [" "])
+        let subSpaceAge = age.replacingOccurrences(of: " ", with: "")
         
         if subSpaceAge.count == 0 {
             return nil
@@ -39,6 +39,6 @@ struct ContactValidityChecker {
             return nil
         }
         
-        return phoneNumber
+        return phoneNumber.count > 10 ? phoneNumber : nil
     }
 }
