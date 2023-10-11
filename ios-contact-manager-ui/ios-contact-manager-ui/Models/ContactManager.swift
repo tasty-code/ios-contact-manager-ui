@@ -14,11 +14,9 @@ final class ContactManager {
         return contacts.count
     }
     
-    func addContact(_ contact: Contact) throws {
-        guard checkDuplicateNumber(contact.phoneNumber) else {
-            throw ContactsError.duplicateNumberFound
-        }
+    func addContact(_ contact: Contact) {
         contacts.append(contact)
+        sortContactsByName()
     }
     
     func deleteContact(index: Int) {
@@ -29,10 +27,7 @@ final class ContactManager {
         return contacts[index]
     }
     
-    private func checkDuplicateNumber(_ phoneNumber: String) -> Bool {
-        if contacts.contains(where: { $0.phoneNumber == phoneNumber }) {
-            return false
-        }
-        return true
+    private func sortContactsByName() {
+        contacts.sort { $0.name < $1.name }
     }
 }
