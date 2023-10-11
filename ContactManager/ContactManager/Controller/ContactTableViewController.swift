@@ -37,6 +37,12 @@ final class ContactTableViewController: UITableViewController {
 
         return cell
     }
+    
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+        let contactCreationViewController = ContactCreationViewController()
+        present(contactCreationViewController, animated: true)
+    }
+    
 }
 
 extension ContactTableViewController {
