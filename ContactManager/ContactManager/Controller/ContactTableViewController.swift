@@ -17,7 +17,7 @@ final class ContactTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = contactManager.checkContactsListCount()
+        let count = contactManager.countOfContactList
         return count
     }
     
@@ -26,8 +26,8 @@ final class ContactTableViewController: UITableViewController {
         
         var content = cell.defaultContentConfiguration()
         
-        guard let name = contactManager.listOfContact[indexPath.row].name, let age = contactManager.listOfContact[indexPath.row].age,
-              let phoneNumber = contactManager.listOfContact[indexPath.row].phoneNum else {
+        guard let name = contactManager.contactsList[indexPath.row].name, let age = contactManager.contactsList[indexPath.row].age,
+              let phoneNumber = contactManager.contactsList[indexPath.row].phoneNum else {
             return cell
         }
 
@@ -48,7 +48,7 @@ extension ContactTableViewController {
         do {
             let data = try Data(contentsOf: jsonURL)
             let root = try JSONDecoder().decode(Root.self, from: data)
-            contactManager.listOfContact = root.data
+            contactManager.setContactList(root.data)
         } catch {
             print(error)
         }

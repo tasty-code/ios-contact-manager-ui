@@ -1,5 +1,5 @@
 //
-//  CustomArray.swift
+//  Array.swift
 //  ContactManager
 //
 //  Created by Janine on 2023/10/10.
