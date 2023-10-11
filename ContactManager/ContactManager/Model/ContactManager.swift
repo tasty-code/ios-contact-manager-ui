@@ -9,7 +9,6 @@ import Foundation
 
 struct ContactManager {
   func nameValidate(_ name: String?) -> Bool {
-//    let trimedName = name?.trimmingCharacters(in: .whitespaces)
     if (name ?? "").isEmpty { return false }
     return true
   }
@@ -26,7 +25,6 @@ struct ContactManager {
     let dashCount = phone.filter { ($0) == "-" }.count
     if dashCount != 2 { return false }
     if (phone.count - dashCount) <= 9 { return false }
-    phone = 22
     return true
   }
 }

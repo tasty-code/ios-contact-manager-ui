@@ -22,39 +22,56 @@ class AddContactViewController: UIViewController {
     super.init(coder: coder)
   }
   
-  
   override func viewDidLoad() {
         super.viewDidLoad()
     }
     
   @IBAction func saveButtonTapped(_ sender: UIButton) {
+    do {
+      let newContact = try getCurrentText()
+    } catch {
+      switch error {
+      case ValidateError.nameValidateError:
+        showAlert(message: ValidateError.nameValidateError.errorMessage)
+      case ValidateError.ageValidateError:
+        showAlert(message: ValidateError.ageValidateError.errorMessage)
+      case ValidateError.phoneValidateError:
+        showAlert(message: ValidateError.phoneValidateError.errorMessage)
+      default:
+        print(error.localizedDescription)
+      }
+    }
+  }
+  
+  func showAlert(message: String) {
+    let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
+    let alertAction = UIAlertAction(title: "확인", style: .default)
+    alert.addAction(alertAction)
+    present(alert, animated: true)
+  }
+  
+  func getCurrentText() throws -> Contact {
     guard let nameText = nameTextField.text else {
-      print("alert")
-      return
+      throw ValidateError.nameValidateError
     }
     if !manager.nameValidate(nameText) {
-      print("alert")
-      return
+      throw ValidateError.nameValidateError
     }
     
     guard let ageText = Int(ageTextField.text ?? "")  else {
-      print("alert")
-      return
+      throw ValidateError.nameValidateError
     }
     if !manager.ageValidate(ageText) {
-      print("alert")
-      return
+      throw ValidateError.nameValidateError
     }
     
     guard let phoneText = phoneTextField.text else {
-      print("alert")
-      return
+      throw ValidateError.nameValidateError
     }
     if !manager.phoneValidate(phoneText) {
-      print("alert")
-      return
+      throw ValidateError.nameValidateError
     }
     
-    let newContact = Contact(name: nameText, age: ageText, phone: phoneText)
+    return Contact(name: nameText, age: ageText, phone: phoneText)
   }
 }
