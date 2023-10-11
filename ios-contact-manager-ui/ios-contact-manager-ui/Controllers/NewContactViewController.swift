@@ -19,6 +19,12 @@ final class NewContactViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    
+    @IBAction func phoneNumberTextFieldEditingChanged(_ sender: UITextField) {
+        guard let text = sender.text?.replacingOccurrences(of: "-", with: "") else { return }
+        sender.text = text.formattingPhoneNumber()
+    }
+    
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
         showAlert(with: "정말로 취소하시겠습니까?")
     }
