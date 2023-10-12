@@ -23,12 +23,12 @@ class AddContactViewController: UIViewController {
   }
   
   override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+    super.viewDidLoad()
+  }
+  
   @IBAction func saveButtonTapped(_ sender: UIButton) {
     do {
-      let newContact = try getCurrentText()
+      let newContact = try makeContact()
       manager.addContact(data: newContact)
       dismiss(animated: true)
     } catch {
@@ -56,7 +56,6 @@ class AddContactViewController: UIViewController {
     present(alert, animated: true)
   }
   
-  
   func showAlert(message: String) {
     let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
     let alertAction = UIAlertAction(title: "확인", style: .default)
@@ -64,27 +63,10 @@ class AddContactViewController: UIViewController {
     present(alert, animated: true)
   }
   
-  func getCurrentText() throws -> Contact {
-    guard let nameText = nameTextField.text else {
-      throw ValidateError.nameValidateError
-    }
-    if !manager.nameValidate(nameText) {
-      throw ValidateError.nameValidateError
-    }
-    
-    guard let ageText = Int(ageTextField.text ?? "")  else {
-      throw ValidateError.nameValidateError
-    }
-    if !manager.ageValidate(ageText) {
-      throw ValidateError.nameValidateError
-    }
-    
-    guard let phoneText = phoneTextField.text else {
-      throw ValidateError.nameValidateError
-    }
-    if !manager.phoneValidate(phoneText) {
-      throw ValidateError.nameValidateError
-    }
+  private func makeContact() throws -> Contact {
+    let nameText = try manager.nameValidate(nameTextField.text)
+    let ageText = try manager.ageValidate(ageTextField.text)
+    let phoneText = try manager.phoneValidate(phoneTextField.text)
     
     return Contact(name: nameText, age: ageText, phone: phoneText)
   }

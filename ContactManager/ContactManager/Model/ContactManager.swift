@@ -36,24 +36,28 @@ class ContactManager {
   
   // MARK: - Validate
   
-  func nameValidate(_ name: String?) -> Bool {
-    if (name ?? "").isEmpty { return false }
-    return true
+  func nameValidate(_ name: String?) throws -> String {
+    guard let name = name else { throw ValidateError.nameValidateError }
+    if name.isEmpty { throw ValidateError.nameValidateError }
+    
+    return name
   }
   
-  func ageValidate(_ age: Int?) -> Bool {
-    guard let age = age else { return false }
-    if age > 999 { return false }
-    if age < 0 { return false }
-    return true
+  func ageValidate(_ age: String?) throws -> Int {
+    let age = Int(age ?? "") // 만약 nil이라도 빈문자열로 변환돼서 에러처리 되므로 상관 x
+    guard let age = age else { throw ValidateError.ageValidateError }
+    if (age > 999) || (age < 0) { throw ValidateError.ageValidateError }
+    
+    return age
   }
   
-  func phoneValidate(_ phone: String?) -> Bool {
-    guard let phone = phone else { return false }
+  func phoneValidate(_ phone: String?) throws -> String {
+    guard let phone = phone else { throw ValidateError.phoneValidateError }
     let dashCount = phone.filter { ($0) == "-" }.count
-    if dashCount != 2 { return false }
-    if (phone.count - dashCount) <= 9 { return false }
-    return true
+    if dashCount != 2 { throw ValidateError.phoneValidateError }
+    if (phone.count - dashCount) <= 9 { throw ValidateError.phoneValidateError }
+    
+    return phone
   }
   
 }
