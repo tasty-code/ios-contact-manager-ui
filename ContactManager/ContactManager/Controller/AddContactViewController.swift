@@ -32,16 +32,11 @@ class AddContactViewController: UIViewController {
       manager.addContact(data: newContact)
       dismiss(animated: true)
     } catch {
-      switch error {
-      case ValidateError.nameValidateError:
-        showAlert(message: ValidateError.nameValidateError.errorMessage)
-      case ValidateError.ageValidateError:
-        showAlert(message: ValidateError.ageValidateError.errorMessage)
-      case ValidateError.phoneValidateError:
-        showAlert(message: ValidateError.phoneValidateError.errorMessage)
-      default:
+      guard let errorType = error as? ValidateError else {
         print(error.localizedDescription)
+        return
       }
+      showAlert(message: errorType.errorMessage)
     }
   }
   
