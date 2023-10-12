@@ -26,10 +26,9 @@ final class NewContactViewController: UIViewController {
         phoneNumberTextField.keyboardType = .phonePad
     }
     
-    
     @IBAction func phoneNumberTextFieldEditingChanged(_ sender: UITextField) {
-        guard let text = sender.text?.replacingOccurrences(of: "-", with: "") else { return }
-        sender.text = text.formattingPhoneNumber()
+        guard let text = sender.text?.replacingOccurrences(of: "\(hyphen)", with: "") else { return }
+        sender.text = text.formattingPhoneNumber(divider: hyphen)
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
