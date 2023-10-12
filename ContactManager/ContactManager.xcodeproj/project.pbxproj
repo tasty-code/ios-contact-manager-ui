@@ -18,6 +18,7 @@
 		A637B8482AD65D3E0070D080 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A637B8472AD65D3E0070D080 /* NewContactViewController.swift */; };
 		A6EF904A2AD2757E0008C0A9 /* ContactDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF90492AD2757E0008C0A9 /* ContactDTO.swift */; };
 		A6EF904C2AD275830008C0A9 /* ContactJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A6EF904B2AD275830008C0A9 /* ContactJSON.json */; };
+		C3B4A2D12AD7CE3F00ECF20E /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4A2D02AD7CE3F00ECF20E /* AlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		A637B8472AD65D3E0070D080 /* NewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
 		A6EF90492AD2757E0008C0A9 /* ContactDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDTO.swift; sourceTree = "<group>"; };
 		A6EF904B2AD275830008C0A9 /* ContactJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ContactJSON.json; sourceTree = "<group>"; };
+		C3B4A2D02AD7CE3F00ECF20E /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				A62B6E982ACD6DF9005DC167 /* ContactViewController.swift */,
 				A637B8472AD65D3E0070D080 /* NewContactViewController.swift */,
+				C3B4A2D02AD7CE3F00ECF20E /* AlertController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				A62B6E992ACD6DF9005DC167 /* ContactViewController.swift in Sources */,
 				A62B6E952ACD6DF9005DC167 /* AppDelegate.swift in Sources */,
 				A62B6E972ACD6DF9005DC167 /* SceneDelegate.swift in Sources */,
+				C3B4A2D12AD7CE3F00ECF20E /* AlertController.swift in Sources */,
 				A61237C32ACFE7C900CBCA0F /* JSONCodable.swift in Sources */,
 				A637B8482AD65D3E0070D080 /* NewContactViewController.swift in Sources */,
 				A6EF904A2AD2757E0008C0A9 /* ContactDTO.swift in Sources */,

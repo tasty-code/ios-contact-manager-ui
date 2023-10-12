@@ -17,7 +17,6 @@ class NewContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     @IBAction func touchUpSaveButton(_ sender: Any) {
@@ -28,10 +27,8 @@ class NewContactViewController: UIViewController {
     
     func checkName() {
         let regex = /^\S+$/
-        print("name first")
         if let name = nameTextField.text, let match = name.wholeMatch(of: regex) {
             print(match.output)
-            print("name second")
         }
     }
     
@@ -46,21 +43,18 @@ class NewContactViewController: UIViewController {
         let regex = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/
         if let contact = contactTextField.text, let match = contact.wholeMatch(of: regex) {
             // 가능하면 match.output으로 받을 수 있도록 regex 수정하기
-            print(match.output.0)
+            print(match.output)
         }
     }
     
     @IBAction func touchUpCancelButton(_ sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "정말로 취소하시겠습니까?",
-                                                message: nil,
-                                                preferredStyle: .alert)
-        let noAlertAction = UIAlertAction(title: "아니오", style: .default, handler: nil)
-        let yesAlertAction = UIAlertAction(title: "예", style: .destructive, handler: { _ in
-            self.dismiss(animated: true)
-        })
+        let alertController = UIAlertController()
         
-        alertController.addAction(noAlertAction)
-        alertController.addAction(yesAlertAction)
-        present(alertController, animated: true)
+        alertController
+            .configureAlertController(title: "정말로 취소하시겠습니까?",
+                                      message: nil,
+                                      firstAction: "아니오",
+                                      secondAction: "예",
+                                      viewController: self)
     }
 }
