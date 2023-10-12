@@ -63,7 +63,7 @@ extension ContactsViewController {
         do {
             let contacts = try decoder.decode([Contact].self, from: jsonData)
             for contact in contacts {
-                contactManager.addContact(contact)
+                let _ = contactManager.addContact(contact)
             }
         } catch {
             print(error.localizedDescription)
