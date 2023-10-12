@@ -156,6 +156,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="76.666666666666671" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButtonTapped:" destination="H5h-6J-bat" eventType="touchUpInside" id="o11-vI-VpE"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새 연락처" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgT-tR-Osy">
                                         <rect key="frame" x="148.66666666666666" y="0.0" width="63.333333333333343" height="34.333333333333336"/>

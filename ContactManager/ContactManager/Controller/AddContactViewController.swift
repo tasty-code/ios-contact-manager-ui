@@ -45,6 +45,18 @@ class AddContactViewController: UIViewController {
     }
   }
   
+  @IBAction func cancelButtonTapped(_ sender: UIButton) {
+    let alert = UIAlertController(title: "", message: "정말로 취소하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
+    let alertNoAction = UIAlertAction(title: "아니오", style: .destructive)
+    let alertYesAction = UIAlertAction(title: "예", style: .default) { _ in
+      self.dismiss(animated: true)
+    }
+    alert.addAction(alertNoAction)
+    alert.addAction(alertYesAction)
+    present(alert, animated: true)
+  }
+  
+  
   func showAlert(message: String) {
     let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
     let alertAction = UIAlertAction(title: "확인", style: .default)
