@@ -80,5 +80,3 @@ extension ContactsViewController: ContactsTableViewUpdateDelegate {
         self.contactsTableView.insertRows(at: [indexPath], with: .none)
     }
 }
-
-
