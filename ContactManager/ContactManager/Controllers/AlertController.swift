@@ -7,21 +7,22 @@ extension UIAlertController {
                                                 message: message,
                                                 preferredStyle: .alert)
         
-        guard let secondAction = secondAction else {
-            return
+        if let secondAction = secondAction {
+            configureAlertAction(of: alertController, firstAction, secondAction, viewController)
+            viewController.present(alertController, animated: true)
+        } else {
+            configureAlertAction(of: alertController, firstAction)
+            viewController.present(alertController, animated: true)
         }
-        
-        configureAlertAction(of: alertController, firstAction, secondAction, viewController)
-        
-        viewController.present(alertController, animated: true)
     }
     
-    func configureAlertAction(of alertController: UIAlertController, _ firstAction: String, _ secondAction: String?, _ viewController: UIViewController) {
+    func configureAlertAction(of alertController: UIAlertController, _ firstAction: String) {
         alertController.addAction(configureDefaultAlertAction(title: firstAction))
-
-        if let secondAction = secondAction {
-            alertController.addAction(configureDestructiveAlertAction(title: secondAction, viewController))
-        }
+    }
+    
+    func configureAlertAction(of alertController: UIAlertController, _ firstAction: String, _ secondAction: String, _ viewController: UIViewController) {
+        alertController.addAction(configureDefaultAlertAction(title: firstAction))
+        alertController.addAction(configureDestructiveAlertAction(title: secondAction, viewController))
     }
     
     func configureDestructiveAlertAction(title: String, _ viewController: UIViewController) -> UIAlertAction {
