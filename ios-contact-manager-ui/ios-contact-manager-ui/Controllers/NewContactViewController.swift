@@ -69,4 +69,9 @@ extension NewContactViewController {
         }
         self.present(alert, animated: true)
     }
+    
+    func configureData(_ contactManager: ContactManager?, delegate: ContactsTableViewUpdateDelegate?) {
+        self.contactManager = contactManager
+        self.delegate = delegate
+    }
 }
