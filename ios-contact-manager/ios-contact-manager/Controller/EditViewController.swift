@@ -12,7 +12,6 @@ final class EditViewController: UIViewController {
     @IBOutlet private weak var ageTextField: UITextField!
     @IBOutlet private weak var phoneNumberTextField: UITextField!
     
-    weak var delegate: ContactsManagable?
     var contact: Contact?
     var indexPath: IndexPath?
     
@@ -70,13 +69,8 @@ final class EditViewController: UIViewController {
             try checkAgeTextFieldIsValid()
             try checkPhoneNumberTextFieldIsValid()
             self.saveContact()
-            guard let contact = contact else { return }
             self.dismiss(animated: true) { [weak self] in
-                if let indexPath = self?.indexPath {
-                    self?.delegate?.updateContact(contact, indexPath)
-                } else {
-                    self?.delegate?.createContact(contact)
-                }
+                self?.postEditedContact()
             }
         } catch {
             guard let error = error as? ContactError else { return }
@@ -92,7 +86,7 @@ extension EditViewController {
               text.isEmpty == false
         else { throw ContactError.invalidName }
         
-        self.name = text
+        self.name = text.replacingOccurrences(of: " ", with: "")
     }
     
     private func checkAgeTextFieldIsValid() throws {
@@ -105,11 +99,12 @@ extension EditViewController {
     }
     
     private func checkPhoneNumberTextFieldIsValid() throws {
-        guard let text = phoneNumberTextField.text,
-              text.replacingOccurrences(of: "-", with: "").count >= 9
+        guard let text = phoneNumberTextField.text?.replacingOccurrences(of: "-", with: ""),
+              text.count >= 9,
+              let _ = Int(text)
         else { throw ContactError.invalidPhoneNumber }
         
-        self.phoneNumber = text
+        self.phoneNumber = text.formatted()
     }
     
     private func saveContact() {
@@ -119,5 +114,22 @@ extension EditViewController {
         else { return }
         
         self.contact = Contact(name: name, age: age, phoneNumber: phoneNumber)
+    }
+}
+
+// MARK: Observer Pattern by using Notification Center
+extension EditViewController {
+    private func postEditedContact() {
+        if let indexPath = indexPath {
+            NotificationCenter.default.post(
+                name: Notification.Name(NotificationType.updateContact.name),
+                object: (contact, indexPath)
+            )
+        } else {
+            NotificationCenter.default.post(
+                name: Notification.Name(NotificationType.createContact.name),
+                object: contact
+            )
+        }
     }
 }

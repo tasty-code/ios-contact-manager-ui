@@ -5,6 +5,7 @@ final class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.observeEditedContact()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,7 +36,6 @@ final class TableViewController: UITableViewController {
     private func presentModallyEditViewController(_ contact: Contact?, _ indexPath: IndexPath?) {
         guard let editViewController = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as? EditViewController else { return }
         
-        editViewController.delegate = self
         editViewController.indexPath = indexPath
         editViewController.contact = contact
         
@@ -43,14 +43,27 @@ final class TableViewController: UITableViewController {
     }
 }
 
-extension TableViewController: ContactsManagable {
-    func createContact(_ contact: Contact) {
-        self.contactsModel.createContact(contact: contact)
-        self.tableView.reloadData()
-    }
-    
-    func updateContact(_ contact: Contact, _ indexPath: IndexPath) {
-        self.contactsModel.updateContact(contact: contact, indexPath: indexPath)
-        self.tableView.reloadData()
+// MARK: Observer Pattern by using Notification Center
+extension TableViewController {
+    private func observeEditedContact() {
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name(NotificationType.createContact.name),
+            object: nil,
+            queue: nil) { [weak self] notification in
+                guard let contact = notification.object as? Contact else { return }
+                self?.contactsModel.createContact(contact: contact)
+                self?.tableView.reloadData()
+            }
+        
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name(NotificationType.updateContact.name),
+            object: nil,
+            queue: nil) { [weak self] notification in
+                guard let object = notification.object as? (contact: Contact, indexPath: IndexPath) else { return }
+                let contact = object.contact
+                let indexPath = object.indexPath
+                self?.contactsModel.updateContact(contact: contact, indexPath: indexPath)
+                self?.tableView.reloadRows(at: [indexPath], with: .none)
+            }
     }
 }

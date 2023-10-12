@@ -157,6 +157,11 @@
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="ageTextField" destination="qFF-Af-gpn" id="h8S-8G-TPf"/>
+                        <outlet property="nameTextField" destination="M06-1y-ysN" id="puA-J1-aEp"/>
+                        <outlet property="phoneNumberTextField" destination="PpO-SA-h4q" id="cIO-Gh-Bfc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kUx-B7-S3P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
