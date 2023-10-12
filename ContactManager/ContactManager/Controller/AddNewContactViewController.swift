@@ -28,6 +28,8 @@ final class AddNewContactViewController: UIViewController {
         
         do {
             try hasText(name, age, digits)
+            try isAgeLimitOver(age)
+            try isDigitsProper(digits)
         } catch {
             switch error {
             case InputError.name:
@@ -131,5 +133,19 @@ extension AddNewContactViewController: UITextFieldDelegate {
         let removedEmptyName = name.components(separatedBy: [" "]).joined()
         
         return removedEmptyName
+    }
+    
+    func isAgeLimitOver(_ age: String) throws {
+        guard let age = Int(age) else { throw InputError.exception }
+        
+        if age < 0 || age > 122 {
+            throw InputError.age
+        }
+    }
+    
+    func isDigitsProper(_ digits: String) throws {
+        if digits.count < 11 {
+            throw InputError.digits
+        }
     }
 }
