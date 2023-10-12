@@ -29,6 +29,10 @@ final class ContactManager {
         return contacts[index]
     }
     
+    func fetchIndexOfContact(with id: ObjectIdentifier) -> Int? {
+        return contacts.firstIndex { $0.id == id }
+    }
+    
     private func sortContactsByName() {
         contacts.sort { $0.name < $1.name }
     }
