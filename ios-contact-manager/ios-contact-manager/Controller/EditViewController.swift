@@ -12,6 +12,7 @@ final class EditViewController: UIViewController {
     @IBOutlet private weak var ageTextField: UITextField!
     @IBOutlet private weak var phoneNumberTextField: UITextField!
     
+    weak var delegate: ContactsManagable?
     var contact: Contact?
     var indexPath: IndexPath?
     
@@ -31,13 +32,13 @@ final class EditViewController: UIViewController {
     }
     
     private func configureViewComponents() {
-        ageTextField.keyboardType = .numberPad
-        phoneNumberTextField.keyboardType = .phonePad
+        self.ageTextField.keyboardType = .numberPad
+        self.phoneNumberTextField.keyboardType = .phonePad
         
         if let contact = contact {
-            nameTextField.text = contact.name
-            ageTextField.text = "\(contact.age)"
-            phoneNumberTextField.text = contact.phoneNumber
+            self.nameTextField.text = contact.name
+            self.ageTextField.text = "\(contact.age)"
+            self.phoneNumberTextField.text = contact.phoneNumber
         }
     }
     
@@ -69,8 +70,13 @@ final class EditViewController: UIViewController {
             try checkAgeTextFieldIsValid()
             try checkPhoneNumberTextFieldIsValid()
             self.saveContact()
+            guard let contact = contact else { return }
             self.dismiss(animated: true) { [weak self] in
-                self?.postEditedContact()
+                if let indexPath = self?.indexPath {
+                    self?.delegate?.updateContact(contact, indexPath)
+                } else {
+                    self?.delegate?.createContact(contact)
+                }
             }
         } catch {
             guard let error = error as? ContactError else { return }
@@ -82,7 +88,7 @@ final class EditViewController: UIViewController {
 // MARK: TextField validation methods
 extension EditViewController {
     private func checkNameTextFieldIsValid() throws {
-        guard let text = nameTextField.text,
+        guard let text = self.nameTextField.text,
               text.isEmpty == false
         else { throw ContactError.invalidName }
         
@@ -90,7 +96,7 @@ extension EditViewController {
     }
     
     private func checkAgeTextFieldIsValid() throws {
-        guard let text = ageTextField.text?.replacingOccurrences(of: " ", with: ""),
+        guard let text = self.ageTextField.text?.replacingOccurrences(of: " ", with: ""),
               let age = Int(text),
               age >= 0 && age < 1000
         else { throw ContactError.invalidAge }
@@ -99,7 +105,7 @@ extension EditViewController {
     }
     
     private func checkPhoneNumberTextFieldIsValid() throws {
-        guard let text = phoneNumberTextField.text?.replacingOccurrences(of: "-", with: ""),
+        guard let text = self.phoneNumberTextField.text?.replacingOccurrences(of: "-", with: ""),
               text.count >= 9,
               let _ = Int(text)
         else { throw ContactError.invalidPhoneNumber }
@@ -108,28 +114,11 @@ extension EditViewController {
     }
     
     private func saveContact() {
-        guard let name = name,
-              let age = age,
-              let phoneNumber = phoneNumber
+        guard let name = self.name,
+              let age = self.age,
+              let phoneNumber = self.phoneNumber
         else { return }
         
         self.contact = Contact(name: name, age: age, phoneNumber: phoneNumber)
-    }
-}
-
-// MARK: Observer Pattern by using Notification Center
-extension EditViewController {
-    private func postEditedContact() {
-        if let indexPath = indexPath {
-            NotificationCenter.default.post(
-                name: Notification.Name(NotificationType.updateContact.name),
-                object: (contact, indexPath)
-            )
-        } else {
-            NotificationCenter.default.post(
-                name: Notification.Name(NotificationType.createContact.name),
-                object: contact
-            )
-        }
     }
 }

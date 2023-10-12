@@ -1,6 +1,9 @@
 import UIKit
 
 final class ContactTableViewCell: UITableViewCell, ContactCellConfigurable {
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var subTitle: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -10,9 +13,7 @@ final class ContactTableViewCell: UITableViewCell, ContactCellConfigurable {
     }
     
     func configureCell(item contact: Contact) {
-        var content = self.defaultContentConfiguration()
-        content.text = "\(contact.name)(\(contact.age))"
-        content.secondaryText = "\(contact.phoneNumber)"
-        self.contentConfiguration = content
+        self.title.text = "\(contact.name)(\(contact.age))"
+        self.subTitle.text = contact.phoneNumber
     }
 }

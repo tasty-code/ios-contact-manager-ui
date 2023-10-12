@@ -1,7 +1,11 @@
 import Foundation
 
 final class ContactsModel {
-    private var contactsList = [Contact]()
+    private var contactsList = [Contact]() {
+        didSet {
+            self.notifyContactsDidChange()
+        }
+    }
 
     var count: Int {
         self.contactsList.count
@@ -24,5 +28,13 @@ extension ContactsModel {
     
     func deleteContact(indexPath: IndexPath) {
         self.contactsList.remove(at: indexPath.row)
+    }
+}
+
+// MARK: Observer Pattern Methods by using Notification Center
+extension ContactsModel {
+    private func notifyContactsDidChange() {
+        let notificationName = NotificationType.contactsDidChange.name
+        NotificationCenter.default.post(name: Notification.Name(notificationName), object: nil)
     }
 }
