@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AddNewContactViewController: UIViewController, UITextFieldDelegate {
+final class AddNewContactViewController: UIViewController {
     
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputAge: UITextField!
@@ -23,10 +23,46 @@ final class AddNewContactViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveNewPersonContact(_ sender: Any) {
-        presentAlert("test")
+        guard let name = inputName.text, let age = inputAge.text, let digits = inputDigits.text
+        else { return }
+        
+        
+        
+        if hasText(name, age, digits) {
+            print("몬드가잘못했네")
+        } else {
+            presentAlert("")
+        }
+        //나이 3자리와 122 언더
+        //전화번호 9자리 미만일시 거를것
+        
+        inputName.text = removeEmptySpace(name)
     }
     
-    
+    func presentAlert(_ type: String) {
+        var title: String = ""
+        
+        switch type {
+        case "이름":
+            title = "입력한 \(type)정보가 잘못되었습니다"
+        case "나이":
+            title = "입력한 \(type)정보가 잘못되었습니다"
+        case "연락처":
+            title = "입력한 \(type)정보가 잘못되었습니다"
+        default:
+            title = "입력한 정보가 잘못되었습니다"
+        }
+        
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default)
+        
+        alert.addAction(okAction)
+        
+        present(alert, animated: true)
+    }
+}
+
+extension AddNewContactViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let digitsLength = inputDigits.text?.count else { return false }
@@ -48,15 +84,6 @@ final class AddNewContactViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func presentAlert(_ title: String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(okAction)
-        present(alert, animated: true)
-    }
-}
-
-extension AddNewContactViewController {
     private func setHyphenInDigits(range: NSRange, inputText: String, digitsLength: Int) {
         var inputText: String = inputText
         
@@ -79,5 +106,26 @@ extension AddNewContactViewController {
         default:
             return
         }
+    }
+    
+    func hasText(_ name: String, _ age: String, _ digits: String) -> Bool {
+        if name.isEmpty {
+            presentAlert("이름")
+            return false
+        } else if age.isEmpty {
+            presentAlert("나이")
+            return false
+        } else if digits.isEmpty{
+            presentAlert("연락처")
+            return false
+        }
+        
+        return true
+    }
+    
+    func removeEmptySpace(_ name: String) -> String {
+        let removedEmptyName = name.components(separatedBy: [" "]).joined()
+        
+        return removedEmptyName
     }
 }
