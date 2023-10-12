@@ -13,7 +13,9 @@ final class NewContactViewController: UIViewController {
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     
-    var contactManager: ContactManager?
+    private var contactManager: ContactManager?
+    private weak var delegate: ContactsTableViewUpdateDelegate?
+    private let hyphen: Character = "-"
     
     override func viewDidLoad() {
         super.viewDidLoad()
