@@ -22,6 +22,11 @@ final class AddNewContactViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true)
     }
     
+    @IBAction func saveNewPersonContact(_ sender: Any) {
+        presentAlert("test")
+    }
+    
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let digitsLength = inputDigits.text?.count else { return false }
@@ -42,6 +47,13 @@ final class AddNewContactViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
+    
+    func presentAlert(_ title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
 }
 
 extension AddNewContactViewController {
@@ -52,7 +64,6 @@ extension AddNewContactViewController {
         case 0...10 :
             if range.length == 0 && (range.location == 2 || range.location == 6) {
                 inputDigits.text = "\(inputDigits.text!)-"
-                print("함수타는중")
             }
         case 11...12 :
             inputText = inputText.components(separatedBy: ["-"]).joined()

@@ -104,6 +104,9 @@
                                         <rect key="frame" x="332" y="0.0" width="61" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                        <connections>
+                                            <action selector="saveNewPersonContact:" destination="nET-Fa-iZv" eventType="touchUpInside" id="w2H-qV-mGA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
