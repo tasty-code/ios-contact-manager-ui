@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol SendPersonContactData {
+    func sendData(name: String, age: String, digits: String)
+}
+
 final class AddNewContactViewController: UIViewController {
+    
+    var delegate: SendPersonContactData?
     
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputAge: UITextField!
@@ -23,7 +29,7 @@ final class AddNewContactViewController: UIViewController {
     }
     
     @IBAction func saveNewPersonContact(_ sender: Any) {
-        guard let name = inputName.text, let age = inputAge.text, let digits = inputDigits.text
+        guard var name = inputName.text, let age = inputAge.text, let digits = inputDigits.text
         else { return }
         
         do {
@@ -47,7 +53,10 @@ final class AddNewContactViewController: UIViewController {
             }
         }
         
-        inputName.text = removeEmptySpace(name)
+        name = removeEmptySpace(name)
+        
+        delegate?.sendData(name: name, age: age, digits: digits)
+        self.dismiss(animated: true)
     }
     
     func presentInputValidationAlert(_ type: String) {

@@ -37,16 +37,27 @@ final class WholeListTableViewController: UITableViewController {
     @IBAction private func addNewContact(_ sender: Any) {
         guard let addNewContactVC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewContactViewController") as? AddNewContactViewController else { return }
         
+        addNewContactVC.delegate = self
+        
         self.present(addNewContactVC, animated:true, completion: nil)
     }
     
     private func setPersonContactList() {
         contactBook.setContactList([
-            Person(name: "Howard", age: 34, digits: "010-1234-1234"),
-            Person(name: "Mond", age: 12, digits: "010-1234-1234"),
-            Person(name: "Thor", age: 7, digits: "010-1234-1234"),
-            Person(name: "Dora", age: 99, digits: "010-1234-1234"),
-            Person(name: "JaeHyuk", age: 88, digits: "010-1234-1234")
+            Person(name: "Howard", age: "34", digits: "010-1234-1234"),
+            Person(name: "Mond", age: "12", digits: "010-1234-1234"),
+            Person(name: "Thor", age: "7", digits: "010-1234-1234"),
+            Person(name: "Dora", age: "99", digits: "010-1234-1234"),
+            Person(name: "JaeHyuk", age: "88", digits: "010-1234-1234")
         ])
+    }
+}
+
+extension WholeListTableViewController: SendPersonContactData {
+    func sendData(name: String, age: String, digits: String) {
+        let newPersonContact = Person(name: name, age: age, digits: digits)
+        contactBook.addPersonContact(newPersonContact)
+        
+        tableView.reloadData()
     }
 }
