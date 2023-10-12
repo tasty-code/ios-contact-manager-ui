@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddNewContactViewController: UIViewController, UITextFieldDelegate {
+final class AddNewContactViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputAge: UITextField!
@@ -18,7 +18,7 @@ class AddNewContactViewController: UIViewController, UITextFieldDelegate {
         inputDigits.delegate = self
     }
     
-    @IBAction func goBack(_ sender: Any) {
+    @IBAction private func goBack(_ sender: Any) {
         self.dismiss(animated: true)
     }
     
