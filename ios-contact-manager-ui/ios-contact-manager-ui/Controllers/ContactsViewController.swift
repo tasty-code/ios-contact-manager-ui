@@ -9,7 +9,7 @@ import UIKit
 
 final class ContactsViewController: UIViewController {
     
-    @IBOutlet weak var contactTableView: UITableView!
+    @IBOutlet weak var contactsTableView: UITableView!
     
     private let contactManager = ContactManager()
     private let cellIdentifier = "ContactCell"
@@ -19,8 +19,8 @@ final class ContactsViewController: UIViewController {
         super.viewDidLoad()
         
         setDummyData()
-        self.contactTableView.delegate = self
-        self.contactTableView.dataSource = self
+        self.contactsTableView.delegate = self
+        self.contactsTableView.dataSource = self
     }
     
     
