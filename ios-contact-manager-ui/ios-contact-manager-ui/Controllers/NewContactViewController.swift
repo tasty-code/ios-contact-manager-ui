@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ContactsTableViewUpdateDelegate: AnyObject {
+    func didContactsAdded(_ contactId: ObjectIdentifier)
+}
+
 final class NewContactViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!

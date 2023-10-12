@@ -69,10 +69,6 @@ extension ContactsViewController {
     }
 }
 
-protocol ContactsTableViewUpdateDelegate: AnyObject {
-    func didContactsAdded(_ contactId: ObjectIdentifier)
-}
-
 extension ContactsViewController: ContactsTableViewUpdateDelegate {
     func didContactsAdded(_ contactId: ObjectIdentifier) {
         guard let index = contactManager.fetchIndexOfContact(with: contactId) else { return }
