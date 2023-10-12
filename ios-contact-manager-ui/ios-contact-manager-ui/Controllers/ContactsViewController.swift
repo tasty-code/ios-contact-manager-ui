@@ -23,14 +23,12 @@ final class ContactsViewController: UIViewController {
         self.contactsTableView.dataSource = self
     }
     
-    
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         guard let newContactVC = storyboard?.instantiateViewController(identifier: newContactVCIdentifier) as? NewContactViewController else { return }
-        newContactVC.contactManager = self.contactManager
+        newContactVC.configureData(self.contactManager, delegate: self)
         let navigationVC = UINavigationController(rootViewController: newContactVC)
         present(navigationVC, animated: true)
     }
-    
 }
 
 extension ContactsViewController: UITableViewDataSource {
