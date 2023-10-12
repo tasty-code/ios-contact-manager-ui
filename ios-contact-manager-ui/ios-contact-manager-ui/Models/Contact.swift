@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Contact: Codable, Validatable {
+final class Contact: Codable, Validatable, Identifiable {
     var name: String
     var age: String
     var phoneNumber: String
