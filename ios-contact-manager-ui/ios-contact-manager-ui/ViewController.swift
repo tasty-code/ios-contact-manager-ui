@@ -55,6 +55,7 @@ extension ViewController {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "NewContactViewController") as? NewContactViewController else { return }
         vc.delegate = self
         self.present(vc, animated: true)
+        
     }
 }
 
