@@ -6,8 +6,37 @@
 //
 
 import Foundation
+import UIKit
 
 struct ContactManager {
+  private var contacts = Array<Contact>()
+  
+  init() {
+    loadData()
+  }
+  
+  private mutating func loadData() {
+    do {
+      let decoder = JSONDecoder()
+      guard let asset = NSDataAsset.init(name: "data") else { return }
+      self.contacts = try decoder.decode([Contact].self, from: asset.data)
+    } catch {
+      print(error.localizedDescription)
+    }
+  }
+  
+  mutating func addContact(data: Contact) {
+    contacts.append(data)
+    NotificationCenter.default.post(name: NSNotification.Name("AddContact"),
+                                    object: self)
+  }
+  
+  func getContacts() -> Array<Contact> {
+    return self.contacts
+  }
+  
+  // MARK: - Validate
+  
   func nameValidate(_ name: String?) -> Bool {
     if (name ?? "").isEmpty { return false }
     return true
@@ -27,4 +56,5 @@ struct ContactManager {
     if (phone.count - dashCount) <= 9 { return false }
     return true
   }
+  
 }

@@ -29,6 +29,8 @@ class AddContactViewController: UIViewController {
   @IBAction func saveButtonTapped(_ sender: UIButton) {
     do {
       let newContact = try getCurrentText()
+      manager.addContact(data: newContact)
+      dismiss(animated: true)
     } catch {
       switch error {
       case ValidateError.nameValidateError:

@@ -11,8 +11,6 @@ final class ContactManagerViewController: UIViewController, UITableViewDelegate 
   // MARK: - Property
   
   @IBOutlet private weak var contactTableView: UITableView!
-  private let decoder = JSONDecoder()
-  private var contacts: [Contact] = []
   private let manager = ContactManager()
   
   // MARK: - Methods
@@ -22,16 +20,11 @@ final class ContactManagerViewController: UIViewController, UITableViewDelegate 
     contactTableView.delegate = self
     contactTableView.dataSource = self
     
-    loadData()
+    NotificationCenter.default.addObserver(self, selector: #selector(reload), name: NSNotification.Name("AddContact"), object: nil)
+    
   }
-  
-  private func loadData() {
-    do {
-      guard let asset = NSDataAsset.init(name: "data") else { return }
-      self.contacts = try decoder.decode([Contact].self, from: asset.data)
-    } catch {
-      print(error.localizedDescription)
-    }
+  @objc private func reload() {
+    contactTableView.reloadData()
   }
   
   @IBAction func addContactTapped(_ sender: UIBarButtonItem) {
@@ -47,15 +40,15 @@ final class ContactManagerViewController: UIViewController, UITableViewDelegate 
 
 extension ContactManagerViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return contacts.count
+    return manager.getContacts().count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell: ContactTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
+    let contacts = manager.getContacts()
     
     cell.configure(model: contacts[indexPath.row])
     return cell
   }
-  
   
 }
