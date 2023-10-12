@@ -26,15 +26,24 @@ final class AddNewContactViewController: UIViewController {
         guard let name = inputName.text, let age = inputAge.text, let digits = inputDigits.text
         else { return }
         
-        
-        
-        if hasText(name, age, digits) {
-            print("몬드가잘못했네")
-        } else {
-            presentAlert("")
+        do {
+            try hasText(name, age, digits)
+        } catch {
+            switch error {
+            case InputError.name:
+                presentAlert("이름")
+                return
+            case InputError.age:
+                presentAlert("나이")
+                return
+            case InputError.digits:
+                presentAlert("연락처")
+                return
+            default:
+                presentAlert("")
+                return
+            }
         }
-        //나이 3자리와 122 언더
-        //전화번호 9자리 미만일시 거를것
         
         inputName.text = removeEmptySpace(name)
     }
@@ -108,19 +117,14 @@ extension AddNewContactViewController: UITextFieldDelegate {
         }
     }
     
-    func hasText(_ name: String, _ age: String, _ digits: String) -> Bool {
+    func hasText(_ name: String, _ age: String, _ digits: String) throws {
         if name.isEmpty {
-            presentAlert("이름")
-            return false
+            throw InputError.name
         } else if age.isEmpty {
-            presentAlert("나이")
-            return false
+            throw InputError.age
         } else if digits.isEmpty{
-            presentAlert("연락처")
-            return false
+            throw InputError.digits
         }
-        
-        return true
     }
     
     func removeEmptySpace(_ name: String) -> String {
