@@ -5,17 +5,16 @@
 //  Created by Rarla on 2023/10/11.
 //
 
-import Foundation
 import UIKit
 
-struct ContactManager {
+class ContactManager {
   private var contacts = Array<Contact>()
   
   init() {
     loadData()
   }
   
-  private mutating func loadData() {
+  private func loadData() {
     do {
       let decoder = JSONDecoder()
       guard let asset = NSDataAsset.init(name: "data") else { return }
@@ -25,7 +24,7 @@ struct ContactManager {
     }
   }
   
-  mutating func addContact(data: Contact) {
+  func addContact(data: Contact) {
     contacts.append(data)
     NotificationCenter.default.post(name: NSNotification.Name("AddContact"),
                                     object: self)
@@ -49,7 +48,7 @@ struct ContactManager {
     return true
   }
   
-  mutating func phoneValidate(_ phone: String?) -> Bool {
+  func phoneValidate(_ phone: String?) -> Bool {
     guard let phone = phone else { return false }
     let dashCount = phone.filter { ($0) == "-" }.count
     if dashCount != 2 { return false }
