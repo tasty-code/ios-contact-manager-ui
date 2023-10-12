@@ -19,7 +19,7 @@ final class AddNewContactViewController: UIViewController {
     }
     
     @IBAction private func goBack(_ sender: Any) {
-        self.dismiss(animated: true)
+        presentInputValidationAlert()
     }
     
     @IBAction func saveNewPersonContact(_ sender: Any) {
@@ -33,16 +33,16 @@ final class AddNewContactViewController: UIViewController {
         } catch {
             switch error {
             case InputError.name:
-                presentAlert("이름")
+                presentInputValidationAlert("이름")
                 return
             case InputError.age:
-                presentAlert("나이")
+                presentInputValidationAlert("나이")
                 return
             case InputError.digits:
-                presentAlert("연락처")
+                presentInputValidationAlert("연락처")
                 return
             default:
-                presentAlert("")
+                presentInputValidationAlert("")
                 return
             }
         }
@@ -50,7 +50,7 @@ final class AddNewContactViewController: UIViewController {
         inputName.text = removeEmptySpace(name)
     }
     
-    func presentAlert(_ type: String) {
+    func presentInputValidationAlert(_ type: String) {
         var title: String = ""
         
         switch type {
@@ -68,6 +68,19 @@ final class AddNewContactViewController: UIViewController {
         let okAction = UIAlertAction(title: "확인", style: .default)
         
         alert.addAction(okAction)
+        
+        present(alert, animated: true)
+    }
+    
+    func presentInputValidationAlert() {
+        let alert = UIAlertController(title: "정말로 취소하시겠습니까?", message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "예", style: .destructive, handler: {_ in 
+            self.dismiss(animated: true)
+        })
+        let cancelAction = UIAlertAction(title: "아니오", style: .cancel)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
         
         present(alert, animated: true)
     }
