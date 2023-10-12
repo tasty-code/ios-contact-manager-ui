@@ -43,7 +43,8 @@ final class NewContactViewController: UIViewController {
               let age = ageTextField.text,
               let phoneNumber = phoneNumberTextField.text else { return }
         do {
-            contactManager.addContact(try Contact(name: name, age: age, phoneNumber: phoneNumber))
+            let contactId = contactManager.addContact(try Contact(name: name, age: age, phoneNumber: phoneNumber))
+            delegate?.didContactsAdded(contactId)
             self.dismiss(animated: true)
         } catch {
             showAlert(with: String(describing: error))
