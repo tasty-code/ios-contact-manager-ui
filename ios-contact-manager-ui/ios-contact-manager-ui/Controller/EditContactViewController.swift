@@ -8,13 +8,24 @@
 import UIKit
 
 final class EditContactViewController: UIViewController {
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var ageTextField: UITextField!
+    @IBOutlet private weak var phoneNumberTextField: UITextField!
     
-    private let contactValidityChecker = ContactValidityChecker()
-    private let contactManager = ContactManager()
+    private let contactValidityChecker: ContactValidityChecker
+    private let contactManager: ContactManager
     
+    
+    init?(coder: NSCoder, contactValidityChecker: ContactValidityChecker, contactManager: ContactManager) {
+        self.contactValidityChecker = contactValidityChecker
+        self.contactManager = contactManager
+        
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init?(coder: NSCoder)가 구현되지 않았다.")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
@@ -38,7 +49,8 @@ final class EditContactViewController: UIViewController {
     
     @objc private func tapSaveButton(_ sender: UIBarButtonItem) {
         do {
-            try checkContactValidation()
+            let validContact = try checkContactValidation()
+            try add(validContact)
             self.dismiss(animated: true)
         } catch {
             showInvalidContactAlert(error.localizedDescription)
@@ -62,7 +74,7 @@ final class EditContactViewController: UIViewController {
         present(cancelAlert, animated: true)
     }
     
-    private func checkContactValidation() throws {
+    private func checkContactValidation() throws -> Contact {
         guard let validName = contactValidityChecker.checkNameValidation(nameTextField.text ?? "") else {
             throw ContactException.invalidInput(type: .name)
         }
@@ -74,8 +86,15 @@ final class EditContactViewController: UIViewController {
         guard let validPhoneNumber = contactValidityChecker.checkPhoneNumberValidation(phoneNumberTextField.text ?? "") else {
             throw ContactException.invalidInput(type: .phoneNumber)
         }
-        try contactManager.add(Contact(name: validName, age: validAge, phoneNumber: validPhoneNumber))
-        NotificationCenter.default.post(name: NSNotification.Name("Update Contacts"), object: nil)
+        
+        return Contact(name: validName, age: validAge, phoneNumber: validPhoneNumber)
     }
     
+    
+    private func add(_ contact: Contact)throws {
+        try contactManager.add(contact)
+        NotificationCenter.default.post(name: Notification.didUpdateContact, object: nil)
+    }
 }
+
+

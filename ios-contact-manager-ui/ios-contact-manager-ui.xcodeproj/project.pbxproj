@@ -23,6 +23,7 @@
 		0DA361A42AD62AE600A2AA25 /* EditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA361A32AD62AE600A2AA25 /* EditContactViewController.swift */; };
 		0DA361A72AD63D3B00A2AA25 /* ContactValidityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA361A62AD63D3B00A2AA25 /* ContactValidityChecker.swift */; };
 		0DA361A82AD63D4F00A2AA25 /* ContactValidityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA361A62AD63D3B00A2AA25 /* ContactValidityChecker.swift */; };
+		7F1336192AD92044004D0DFD /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1336182AD92044004D0DFD /* Notification+Extension.swift */; };
 		7FFDC2A62AD4EBBA00DCCE29 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFDC2A52AD4EBBA00DCCE29 /* ContactCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		0DA3619F2AD4DFF500A2AA25 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		0DA361A32AD62AE600A2AA25 /* EditContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewController.swift; sourceTree = "<group>"; };
 		0DA361A62AD63D3B00A2AA25 /* ContactValidityChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactValidityChecker.swift; sourceTree = "<group>"; };
+		7F1336182AD92044004D0DFD /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		7FFDC2A52AD4EBBA00DCCE29 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 		0D6F96EE2ACCF0B5006EF067 /* ios-contact-manager-ui */ = {
 			isa = PBXGroup;
 			children = (
+				7F1336172AD92013004D0DFD /* Extensions */,
 				0DA361A52AD63CE500A2AA25 /* Utility */,
 				0D6F96FD2ACCF0B6006EF067 /* Info.plist */,
 				0D6F97202ACCF17C006EF067 /* Controller */,
@@ -185,6 +188,14 @@
 				0DA361A62AD63D3B00A2AA25 /* ContactValidityChecker.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		7F1336172AD92013004D0DFD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7F1336182AD92044004D0DFD /* Notification+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +337,7 @@
 				0DA361A02AD4DFF500A2AA25 /* ContactManager.swift in Sources */,
 				0DA361A72AD63D3B00A2AA25 /* ContactValidityChecker.swift in Sources */,
 				7FFDC2A62AD4EBBA00DCCE29 /* ContactCell.swift in Sources */,
+				7F1336192AD92044004D0DFD /* Notification+Extension.swift in Sources */,
 				0D4347162ACD5F7D00052559 /* ContactException.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

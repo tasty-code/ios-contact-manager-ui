@@ -16,7 +16,7 @@ final class ContactListViewController: UIViewController {
         super.viewDidLoad()
         configureNavigationBar()
         self.tableView.dataSource = self
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadContacts(_:)), name: NSNotification.Name(rawValue: "Update Contacts"), object: nil)
+        observeUpdatedContacts()
     }
     
     private func configureNavigationBar() {
@@ -32,13 +32,11 @@ final class ContactListViewController: UIViewController {
     }
     
     @objc private func tapAddButton(_ sender: UIButton) {
-        guard let viewController = storyboard?.instantiateViewController(identifier: "EditContactViewController")
-                as? EditContactViewController
-        else {
-            return
+        if let viewController = storyboard?.instantiateViewController(identifier: "EditContactViewController", creator: { coder in
+            return EditContactViewController(coder: coder, contactValidityChecker: ContactValidityChecker(), contactManager: self.contactManager)
+        }) {
+            present(UINavigationController(rootViewController: viewController), animated: true)
         }
-        
-        present(UINavigationController(rootViewController: viewController), animated: true)
     }
     
     @objc private func reloadContacts(_ notification: Notification) {
@@ -46,7 +44,9 @@ final class ContactListViewController: UIViewController {
     }
     
     
-    
+    private func observeUpdatedContacts() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadContacts(_:)), name: Notification.didUpdateContact, object: nil)
+    }
 }
 
 extension ContactListViewController: UITableViewDataSource {
