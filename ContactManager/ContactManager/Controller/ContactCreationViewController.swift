@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol ContactCreationVCDelegate: AnyObject {
+    func addContact(_ contact: ContactInfo)
+}
+
 class ContactCreationViewController: UIViewController {
+    weak var delegate: ContactCreationVCDelegate?
     
     let nameLabel = UILabel()
     let nameField = UITextField()
@@ -107,7 +112,29 @@ class ContactCreationViewController: UIViewController {
     
     @objc func didTapSaveButton(_ sender: UINavigationItem) {
         hideKeyboard()
-        print("save tapped")
+      
+        guard let age = ageField.text, let ageToInt = Int(age), let phoneNum = phoneNumberField.text, let name = nameField.text else {
+            presentAlert(message: "정보를 입력해주세요")
+            return
+        }
+        
+        let labels: [(String, ValidateType)] = [(age, .age),(name, .name),(phoneNum, .phoneNum)]
+        
+        do {
+           try labels.forEach { text, type in
+                try checkValidate(text: text, type: type)
+            }
+        } catch let error as InvalidError {
+            presentAlert(message: error.description)
+            return
+        } catch {
+            presentAlert(message: "잘못된 입력값입니다")
+            return
+        }
+        
+        let newContact = ContactInfo(name: name, age: ageToInt, phoneNum: phoneNum)
+        self.delegate?.addContact(newContact)
+        dismiss(animated: true)
     }
     
     private func contactView() {
@@ -198,6 +225,38 @@ extension ContactCreationViewController: UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+}
+
+extension ContactCreationViewController {
+    func checkValidate(text: String, type: ValidateType) throws -> Void {
+        guard !text.isEmpty else {
+            throw InvalidError.invalidInput(type)
+        }
+        
+        var isValidate: Bool = true
+        switch type {
+        case .age:
+            isValidate = !text.contains("-") && text.count < 4
+            break
+        case .phoneNum:
+            isValidate = text.components(separatedBy: "-").count == 3 && text.count > 8
+            break
+        default:
+            break
+        }
+        
+        guard isValidate else {
+            throw InvalidError.invalidInput(type)
+        }
+    }
+    
+    func presentAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        
+        let confirm = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+        alert.addAction(confirm)
+        present(alert, animated: true, completion: nil)
     }
 }
 

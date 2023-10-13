@@ -40,6 +40,7 @@ final class ContactTableViewController: UITableViewController {
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
         let contactCreationViewController = ContactCreationViewController()
+        contactCreationViewController.delegate = self
         present(contactCreationViewController, animated: true)
     }
     
@@ -58,5 +59,11 @@ extension ContactTableViewController {
         } catch {
             print(error)
         }
+    }
+}
+
+extension ContactTableViewController: ContactCreationVCDelegate {
+    func addContact(_ contact: ContactInfo) {
+        contactManager.add(contact)
     }
 }
