@@ -24,7 +24,12 @@ class ContactManager {
     }
   }
   
-  func addContact(data: Contact) {
+  func addContact(nameText: String?, ageText: String?, phoneText: String?) throws {
+    let name = try getValidName(nameText)
+    let age = try getValidAge(ageText)
+    let phone = try getValidPhone(phoneText)
+    
+    let data = Contact(name: name, age: age, phone: phone)
     contacts.append(data)
     NotificationCenter.default.post(name: NSNotification.Name("AddContact"),
                                     object: self)
@@ -36,28 +41,27 @@ class ContactManager {
   
   // MARK: - Validate
   
-  func nameValidate(_ name: String?) throws -> String {
-    guard let name = name else { throw ValidateError.nameValidateError }
-    if name.isEmpty { throw ValidateError.nameValidateError }
+  private func getValidName(_ name: String?) throws -> String {
+    guard let name = name else { throw ValidationError.nameValidationError }
+    if name.isEmpty { throw ValidationError.nameValidationError }
     
     return name
   }
   
-  func ageValidate(_ age: String?) throws -> Int {
+  private func getValidAge(_ age: String?) throws -> Int {
     let age = Int(age ?? "") // 만약 nil이라도 빈문자열로 변환돼서 에러처리 되므로 상관 x
-    guard let age = age else { throw ValidateError.ageValidateError }
-    if (age > 999) || (age < 0) { throw ValidateError.ageValidateError }
+    guard let age = age else { throw ValidationError.ageValidationError }
+    if (age > 999) || (age < 0) { throw ValidationError.ageValidationError }
     
     return age
   }
   
-  func phoneValidate(_ phone: String?) throws -> String {
-    guard let phone = phone else { throw ValidateError.phoneValidateError }
+  private func getValidPhone(_ phone: String?) throws -> String {
+    guard let phone = phone else { throw ValidationError.phoneValidationError }
     let dashCount = phone.filter { ($0) == "-" }.count
-    if dashCount != 2 { throw ValidateError.phoneValidateError }
-    if (phone.count - dashCount) <= 9 { throw ValidateError.phoneValidateError }
+    if dashCount != 2 { throw ValidationError.phoneValidationError }
+    if (phone.count - dashCount) <= 9 { throw ValidationError.phoneValidationError }
     
     return phone
   }
-  
 }

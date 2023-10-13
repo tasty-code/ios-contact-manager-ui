@@ -27,13 +27,13 @@ final class ContactManagerViewController: UIViewController, UITableViewDelegate 
     contactTableView.reloadData()
   }
   
-  @IBAction func addContactTapped(_ sender: UIBarButtonItem) {
+  @IBAction private func addContactTapped(_ sender: UIBarButtonItem) {
     guard let addContactView = storyboard?.instantiateViewController(
       identifier: "addContactView", creator: { creater in
         let viewController = AddContactViewController(coder: creater, manager: self.manager)
         return viewController
       }) else { return }
-
+    
     self.present(addContactView, animated: true)
   }
 }

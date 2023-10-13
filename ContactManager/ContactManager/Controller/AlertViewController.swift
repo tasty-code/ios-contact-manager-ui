@@ -15,7 +15,6 @@ class AlertViewController: UIAlertController {
   
   func showAlert(self: UIViewController, message: String, defaultButtonTitle: String, destructiveButtonTitle: String? = nil, destructiveAction: (() -> Void)? = nil ) {
     let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
-    
     let alertOkAction = UIAlertAction(title: defaultButtonTitle, style: .default)
     alert.addAction(alertOkAction)
     
@@ -25,7 +24,6 @@ class AlertViewController: UIAlertController {
       }
       alert.addAction(alertNoAction)
     }
-    
     self.present(alert, animated: true)
   }
 }

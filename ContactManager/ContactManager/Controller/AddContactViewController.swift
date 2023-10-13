@@ -9,10 +9,9 @@ import UIKit
 
 class AddContactViewController: UIViewController {
   private var manager: ContactManager
-  @IBOutlet var nameTextField: UITextField!
-  @IBOutlet var ageTextField: UITextField!
-  @IBOutlet var phoneTextField: UITextField!
-  
+  @IBOutlet private var nameTextField: UITextField!
+  @IBOutlet private var ageTextField: UITextField!
+  @IBOutlet private var phoneTextField: UITextField!
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
@@ -27,13 +26,14 @@ class AddContactViewController: UIViewController {
     super.viewDidLoad()
   }
   
-  @IBAction func saveButtonTapped(_ sender: UIButton) {
+  @IBAction private func saveButtonTapped(_ sender: UIButton) {
     do {
-      let newContact = try makeContact()
-      manager.addContact(data: newContact)
+      try manager.addContact(nameText: nameTextField.text,
+                             ageText: ageTextField.text,
+                             phoneText: phoneTextField.text)
       dismiss(animated: true)
     } catch {
-      guard let errorType = error as? ValidateError else {
+      guard let errorType = error as? ValidationError else {
         print(error.localizedDescription)
         return
       }
@@ -41,30 +41,21 @@ class AddContactViewController: UIViewController {
     }
   }
   
-  @IBAction func cancelButtonTapped(_ sender: UIButton) {
+  @IBAction private func cancelButtonTapped(_ sender: UIButton) {
     AlertViewController().showAlert(self: self, message: "정말로 취소하시겠습니까?", defaultButtonTitle: "아니오", destructiveButtonTitle: "예", destructiveAction: {
       self.dismiss(animated: true)
     })
   }
   
-  private func makeContact() throws -> Contact {
-    let nameText = try manager.nameValidate(nameTextField.text)
-    let ageText = try manager.ageValidate(ageTextField.text)
-    let phoneText = try manager.phoneValidate(phoneTextField.text)
-    
-    return Contact(name: nameText, age: ageText, phone: phoneText)
-  }
-  
-  @IBAction func phoneTextDidChanged(_ sender: UITextField) {
-    sender.text = sender.text?.pretty()
+  @IBAction private func phoneTextDidChanged(_ sender: UITextField) {
+    sender.text = sender.text?.formatingPhone()
   }
 }
-
 
 // MARK: - extension
 
 extension String {
-  func pretty() -> String {
+  func formatingPhone() -> String {
     let _str = self.replacingOccurrences(of: "-", with: "")
     if(self.count > 12) { return self }
     
@@ -78,7 +69,7 @@ extension String {
                                                        withTemplate: "$1-$2-$3")
         return modString.trimmingCharacters(in: ["-"])
       }
-    } else { // 나머지는 휴대폰번호 (010-xxxx-xxxx, 031-xxx-xxxx, 061-xxxx-xxxx 식이라 상관무)
+    } else {
       if let regex = try? NSRegularExpression(pattern: "([0-9]{0,3})([0-9]{0,4})([0-9]{0,4})",
                                               options: .caseInsensitive) {
         let modString = regex.stringByReplacingMatches(in: _str,
