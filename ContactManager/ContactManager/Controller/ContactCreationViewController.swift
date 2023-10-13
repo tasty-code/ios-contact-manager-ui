@@ -8,7 +8,14 @@
 import UIKit
 
 class ContactCreationViewController: UIViewController {
-
+    
+    let nameLabel = UILabel()
+    let nameField = UITextField()
+    let ageLabel = UILabel()
+    let ageField = UITextField()
+    let phoneNumberLabel = UILabel()
+    let phoneNumberField = UITextField()
+    
     let nameStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,13 +55,14 @@ class ContactCreationViewController: UIViewController {
         stackView.spacing = 15
         return stackView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.nameField.delegate = self
         setup()
     }
     
-    func setup() {
+    private func setup() {
         self.view.backgroundColor = .systemBackground
         setNavigationBar()
         contactView()
@@ -64,7 +72,6 @@ class ContactCreationViewController: UIViewController {
         let navbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
         navbar.backgroundColor = .clear
         navbar.barTintColor = .systemBackground
-        
         navbar.setBackgroundImage(UIImage(), for: .default)
         navbar.shadowImage = UIImage()
         navbar.layer.shadowColor = UIColor.clear.cgColor
@@ -84,29 +91,24 @@ class ContactCreationViewController: UIViewController {
     @objc func didTapCancelButton(_ sender: UINavigationItem) {
         hideKeyboard()
         let alert = UIAlertController(title: nil, message: "정말로 취소하시겠습니까?", preferredStyle: .alert)
-                
-                let cancel = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-                let confirm = UIAlertAction(title: "예", style: .destructive, handler: { [weak self] _ in
-                    self?.dismiss(animated: true)
-                })
-                
-                alert.addAction(cancel)
-                alert.addAction(confirm)
-                present(alert, animated: true, completion: nil)
+        
+        let cancel = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+        let confirm = UIAlertAction(title: "예", style: .destructive, handler: { [weak self] _ in
+            self?.dismiss(animated: true)
+        })
+        
+        alert.addAction(cancel)
+        alert.addAction(confirm)
+        present(alert, animated: true, completion: nil)
         
     }
     @objc func didTapSaveButton(_ sender: UINavigationItem) {
+        hideKeyboard()
         print("save tapped")
     }
     
-    func contactView() {
-        let nameLabel = UILabel()
-        let nameField = UITextField()
-        let ageLabel = UILabel()
-        let ageField = UITextField()
-        let phoneNumberLabel = UILabel()
-        let phoneNumberField = UITextField()
-
+    private func contactView() {
+        
         nameLabel.text = "이름"
         nameField.borderStyle = .roundedRect
         nameField.widthAnchor.constraint(equalToConstant: 320).isActive = true
@@ -115,19 +117,19 @@ class ContactCreationViewController: UIViewController {
         ageField.borderStyle = .roundedRect
         ageField.keyboardType = .numberPad
         ageField.widthAnchor.constraint(equalToConstant: 320).isActive = true
-
+        
         phoneNumberLabel.text = "연락처"
         phoneNumberField.borderStyle = .roundedRect
         phoneNumberField.keyboardType = .phonePad
         phoneNumberField.widthAnchor.constraint(equalToConstant: 320).isActive = true
-
+        
         let nameStack = [nameLabel, nameField]
         nameStack.forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.nameStackView.addArrangedSubview($0)
         }
-
-
+        
+        
         let ageStack = [ageLabel, ageField]
         ageStack.forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -152,7 +154,18 @@ class ContactCreationViewController: UIViewController {
         stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
     }
     
-    func hideKeyboard() {
-        self.view.endEditing(false)
+}
+
+extension ContactCreationViewController: UITextFieldDelegate {
+    private func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
