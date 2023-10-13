@@ -2,14 +2,14 @@ import UIKit
 final class ContactViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    private var contactDTOs: [ContactDTO]?
+    var contactDTOs: [ContactDTO]? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        decodeJSON(&contactDTOs)
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        contactDTOs = decodeJSON()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
   
 }
@@ -40,7 +40,6 @@ extension ContactViewController: UITableViewDataSource {
         let age = contactDTOs.age
         let phoneNumber = contactDTOs.phoneNumber
         
-        
         content.text = "\(name) (\(age))"
         content.secondaryText = phoneNumber
         cell.contentConfiguration = content
@@ -52,3 +51,10 @@ extension ContactViewController: UITableViewDataSource {
 extension ContactViewController: JSONCodable {
     
 }
+
+extension ContactViewController: DataSendable {
+    func send(textField: [ContactDTO]) {
+        print("a")
+    }
+}
+

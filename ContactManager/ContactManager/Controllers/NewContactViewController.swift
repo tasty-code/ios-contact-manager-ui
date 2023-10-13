@@ -1,14 +1,16 @@
 import UIKit
 
 @available(iOS 16.0, *)
-class NewContactViewController: UIViewController {
+final class NewContactViewController: UIViewController {
     
     @IBOutlet private weak var cancelButton: UIBarButtonItem!
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var ageTextField: UITextField!
     @IBOutlet private weak var contactTextField: UITextField!
     private let alertController = UIAlertController()
+    weak var delegate: DataSendable?
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -17,6 +19,7 @@ class NewContactViewController: UIViewController {
         checkName()
         checkAge()
         checkContact()
+        
     }
     
     private func checkName() {

@@ -16,6 +16,7 @@
 		A62B6E9E2ACD6DFA005DC167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A62B6E9D2ACD6DFA005DC167 /* Assets.xcassets */; };
 		A62B6EA12ACD6DFA005DC167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62B6E9F2ACD6DFA005DC167 /* LaunchScreen.storyboard */; };
 		A637B8482AD65D3E0070D080 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A637B8472AD65D3E0070D080 /* NewContactViewController.swift */; };
+		A68DBFA72AD8FF4400779ABD /* DataSendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68DBFA62AD8FF4400779ABD /* DataSendable.swift */; };
 		A6EF904A2AD2757E0008C0A9 /* ContactDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF90492AD2757E0008C0A9 /* ContactDTO.swift */; };
 		A6EF904C2AD275830008C0A9 /* ContactJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A6EF904B2AD275830008C0A9 /* ContactJSON.json */; };
 		C3B4A2D12AD7CE3F00ECF20E /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4A2D02AD7CE3F00ECF20E /* AlertController.swift */; };
@@ -33,6 +34,7 @@
 		A62B6EA02ACD6DFA005DC167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A62B6EA22ACD6DFA005DC167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A637B8472AD65D3E0070D080 /* NewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
+		A68DBFA62AD8FF4400779ABD /* DataSendable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSendable.swift; sourceTree = "<group>"; };
 		A6EF90492AD2757E0008C0A9 /* ContactDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDTO.swift; sourceTree = "<group>"; };
 		A6EF904B2AD275830008C0A9 /* ContactJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ContactJSON.json; sourceTree = "<group>"; };
 		C3B4A2D02AD7CE3F00ECF20E /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				A61237C22ACFE7C900CBCA0F /* JSONCodable.swift */,
+				A68DBFA62AD8FF4400779ABD /* DataSendable.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				A61237C02ACFE37E00CBCA0F /* JSONCodable+decodeJSON.swift in Sources */,
 				A62B6E992ACD6DF9005DC167 /* ContactViewController.swift in Sources */,
 				A62B6E952ACD6DF9005DC167 /* AppDelegate.swift in Sources */,
+				A68DBFA72AD8FF4400779ABD /* DataSendable.swift in Sources */,
 				A62B6E972ACD6DF9005DC167 /* SceneDelegate.swift in Sources */,
 				C3B4A2D12AD7CE3F00ECF20E /* AlertController.swift in Sources */,
 				A61237C32ACFE7C900CBCA0F /* JSONCodable.swift in Sources */,
