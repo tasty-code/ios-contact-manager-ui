@@ -103,18 +103,19 @@ extension AddNewContactViewController: UITextFieldDelegate {
     }
     
     private func setHyphenInDigits(range: NSRange, inputDigitsText: String, digitsCount: Int) {
-        var inputDigitsText: String = inputDigitsText
+        var inputDigitsText = inputDigitsText
         
         switch digitsCount {
         case 0...10 :
             if range.length == 0 && (range.location == 2 || range.location == 6) {
-                inputDigits.text = "\(inputDigits.text!)-"
+                inputDigits.text = "\(inputDigitsText)-"
             }
         case 11...12 :
             inputDigitsText = inputDigitsText.components(separatedBy: ["-"]).joined()
             inputDigitsText.insert("-", at: inputDigitsText.index(inputDigitsText.startIndex, offsetBy: 3))
             inputDigitsText.insert("-", at: inputDigitsText.index(inputDigitsText.startIndex, offsetBy: 8))
             inputDigits.text = inputDigitsText
+            
             if range.length == 1 {
                 inputDigitsText = inputDigitsText.components(separatedBy: ["-"]).joined()
                 inputDigitsText.insert("-", at: inputDigitsText.index(inputDigitsText.startIndex, offsetBy: 2))
