@@ -82,7 +82,18 @@ class ContactCreationViewController: UIViewController {
     }
     
     @objc func didTapCancelButton(_ sender: UINavigationItem) {
-        dismiss(animated: true)
+        hideKeyboard()
+        let alert = UIAlertController(title: nil, message: "정말로 취소하시겠습니까?", preferredStyle: .alert)
+                
+                let cancel = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+                let confirm = UIAlertAction(title: "예", style: .destructive, handler: { [weak self] _ in
+                    self?.dismiss(animated: true)
+                })
+                
+                alert.addAction(cancel)
+                alert.addAction(confirm)
+                present(alert, animated: true, completion: nil)
+        
     }
     @objc func didTapSaveButton(_ sender: UINavigationItem) {
         print("save tapped")
@@ -139,5 +150,9 @@ class ContactCreationViewController: UIViewController {
         stackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100).isActive = true
         stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+    }
+    
+    func hideKeyboard() {
+        self.view.endEditing(false)
     }
 }
