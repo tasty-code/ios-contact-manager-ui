@@ -15,7 +15,6 @@ final class ContactViewController: UIViewController {
     }
     
     @available(iOS 16.0, *)
-    
     @IBAction func touchUpAddButton(_ sender: Any) {
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "NewContactViewController") as? NewContactViewController else {
             return
