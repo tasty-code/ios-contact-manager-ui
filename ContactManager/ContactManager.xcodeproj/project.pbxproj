@@ -21,6 +21,8 @@
 		A6EF904C2AD275830008C0A9 /* ContactJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A6EF904B2AD275830008C0A9 /* ContactJSON.json */; };
 		C3B4A2D12AD7CE3F00ECF20E /* AlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4A2D02AD7CE3F00ECF20E /* AlertController+Extension.swift */; };
 		C3CF48002AD93C93007D5452 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CF47FF2AD93C93007D5452 /* String+Extension.swift */; };
+		C3CF48022AD944BE007D5452 /* DecodingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CF48012AD944BE007D5452 /* DecodingErrors.swift */; };
+		C3CF48052AD94A7E007D5452 /* CheckContactErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CF48042AD94A7E007D5452 /* CheckContactErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		A6EF904B2AD275830008C0A9 /* ContactJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ContactJSON.json; sourceTree = "<group>"; };
 		C3B4A2D02AD7CE3F00ECF20E /* AlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertController+Extension.swift"; sourceTree = "<group>"; };
 		C3CF47FF2AD93C93007D5452 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		C3CF48012AD944BE007D5452 /* DecodingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingErrors.swift; sourceTree = "<group>"; };
+		C3CF48042AD94A7E007D5452 /* CheckContactErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckContactErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,11 +128,21 @@
 				A61237BA2ACFD9D900CBCA0F /* Models */,
 				A61237B92ACFD9C900CBCA0F /* Controllers */,
 				A61237B82ACFD9B700CBCA0F /* Views */,
+				C3CF48032AD9458E007D5452 /* ErrorCases */,
 				A62B6E9D2ACD6DFA005DC167 /* Assets.xcassets */,
 				A62B6E9F2ACD6DFA005DC167 /* LaunchScreen.storyboard */,
 				A62B6EA22ACD6DFA005DC167 /* Info.plist */,
 			);
 			path = ContactManager;
+			sourceTree = "<group>";
+		};
+		C3CF48032AD9458E007D5452 /* ErrorCases */ = {
+			isa = PBXGroup;
+			children = (
+				C3CF48012AD944BE007D5452 /* DecodingErrors.swift */,
+				C3CF48042AD94A7E007D5452 /* CheckContactErrors.swift */,
+			);
+			path = ErrorCases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,10 +219,12 @@
 			files = (
 				A61237C02ACFE37E00CBCA0F /* JSONCodable+decodeJSON.swift in Sources */,
 				A62B6E992ACD6DF9005DC167 /* ContactViewController.swift in Sources */,
+				C3CF48052AD94A7E007D5452 /* CheckContactErrors.swift in Sources */,
 				A62B6E952ACD6DF9005DC167 /* AppDelegate.swift in Sources */,
 				A68DBFA72AD8FF4400779ABD /* DataSendable.swift in Sources */,
 				A62B6E972ACD6DF9005DC167 /* SceneDelegate.swift in Sources */,
 				C3B4A2D12AD7CE3F00ECF20E /* AlertController+Extension.swift in Sources */,
+				C3CF48022AD944BE007D5452 /* DecodingErrors.swift in Sources */,
 				A61237C32ACFE7C900CBCA0F /* JSONCodable.swift in Sources */,
 				A637B8482AD65D3E0070D080 /* NewContactViewController.swift in Sources */,
 				C3CF48002AD93C93007D5452 /* String+Extension.swift in Sources */,

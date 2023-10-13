@@ -132,7 +132,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 <connections>
-                                                    <action selector="contactTextFieldEditingChanged:" destination="GxN-tg-N2p" eventType="editingChanged" id="PzV-Kz-MHN"/>
+                                                    <action selector="phoneNumberTextFieldEditingChanged:" destination="GxN-tg-N2p" eventType="editingChanged" id="YjB-Pa-cyH"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -181,8 +181,8 @@
                     <connections>
                         <outlet property="ageTextField" destination="OiD-cR-WDi" id="znJ-JL-4ae"/>
                         <outlet property="cancelButton" destination="klg-dh-3yW" id="mtj-QS-rU6"/>
-                        <outlet property="contactTextField" destination="LIh-Sn-eDJ" id="3UP-dB-cqY"/>
                         <outlet property="nameTextField" destination="Inh-ea-K53" id="SH8-lD-0f6"/>
+                        <outlet property="phoneNumberTextField" destination="LIh-Sn-eDJ" id="ZnG-gM-I4n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Gr-oy-3m5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

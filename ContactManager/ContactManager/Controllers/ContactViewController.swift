@@ -3,16 +3,26 @@ final class ContactViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     private var contactDTOs: [ContactDTO] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if let dummyContactDTOs = decodeJSON() {
+    private let alertController = UIAlertController()
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+    do {
+        if let dummyContactDTOs = try decodeJSON() {
             contactDTOs = dummyContactDTOs
         }
-        tableView.delegate = self
-        tableView.dataSource = self
     }
+    catch {
+        alertController
+            .configureAlertController(title: "데이터 불러오기 실패",
+                                      message: nil,
+                                      defaultAction: "예",
+                                      destructiveAction: nil,
+                                      viewController: self)
+    }
+    tableView.delegate = self
+    tableView.dataSource = self
+}
     
     @available(iOS 16.0, *)
     @IBAction private func touchUpAddButton(_ sender: Any) {

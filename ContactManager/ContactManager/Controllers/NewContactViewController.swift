@@ -23,10 +23,10 @@ final class NewContactViewController: UIViewController {
     }
     
     @IBAction private func touchUpSaveButton(_ sender: Any) {
-        guard let name = checkName(),
-              let age = checkAge(),
-              let phoneNumber = checkPhoneNumber() else {
-            return
+            guard let name = try? checkName(),
+                  let age = try? checkAge(),
+                  let phoneNumber = try? checkPhoneNumber() else {
+                return
         }
         
         delegate?.send(ContactDTO(name: name, age: age, phoneNumber: phoneNumber))
@@ -34,7 +34,7 @@ final class NewContactViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    private func checkName() -> String? {
+    private func checkName() throws -> String? {
         let regex = /^\S+$/
         if let name = nameTextField.text, let _ = name.wholeMatch(of: regex) {
             return name
@@ -45,16 +45,17 @@ final class NewContactViewController: UIViewController {
                                           defaultAction: "예",
                                           destructiveAction: nil,
                                           viewController: self)
+            
             return nil
         }
     }
     
-    private func checkAge() -> String? {
+    private func checkAge() throws -> String? {
         let regex = /^[0-9]{1, 3}$/
         if let age = ageTextField.text, let _ = age.wholeMatch(of: regex) {
             return age
         } else {
-            alertController
+             alertController
                 .configureAlertController(title: "입력된 나이 정보가 잘못되었습니다",
                                           message: nil,
                                           defaultAction: "예",
@@ -64,7 +65,7 @@ final class NewContactViewController: UIViewController {
         }
     }
     
-    private func checkPhoneNumber() -> String? {
+    private func checkPhoneNumber() throws -> String? {
         let regex = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/
         if let phoneNumber = phoneNumberTextField.text, let _ = phoneNumber.wholeMatch(of: regex) {
             return phoneNumber
