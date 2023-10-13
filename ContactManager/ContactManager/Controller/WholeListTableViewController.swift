@@ -57,7 +57,6 @@ extension WholeListTableViewController: SendPersonContactData {
     func sendData(name: String, age: String, digits: String) {
         let newPersonContact = Person(name: name, age: age, digits: digits)
         contactBook.addPersonContact(newPersonContact)
-        
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
 }

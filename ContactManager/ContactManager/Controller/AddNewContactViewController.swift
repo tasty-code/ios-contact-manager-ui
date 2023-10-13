@@ -59,21 +59,8 @@ final class AddNewContactViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    private func presentInputValidationAlert(_ errorType: String) {
-        var title: String = ""
-        
-        switch errorType {
-        case "이름":
-            title = "입력한 \(errorType)정보가 잘못되었습니다"
-        case "나이":
-            title = "입력한 \(errorType)정보가 잘못되었습니다"
-        case "연락처":
-            title = "입력한 \(errorType)정보가 잘못되었습니다"
-        default:
-            title = "입력한 정보가 잘못되었습니다"
-        }
-        
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+    private func presentInputValidationAlert(_ errorType: String) {        
+        let alert = UIAlertController(title: errorType == "" ? "입력한 정보가 잘못되었습니다" : "입력한 \(errorType)정보가 잘못되었습니다", message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)
         
         alert.addAction(okAction)
@@ -98,21 +85,19 @@ final class AddNewContactViewController: UIViewController {
 extension AddNewContactViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        guard let digitsCount = inputDigits.text?.count else { return false }
-        
         guard let inputDigitsText = inputDigits.text else { return false }
         
         if let char = string.cString(using: String.Encoding.utf8) {
             let isBackSpace = strcmp(char, "\\b")
             if isBackSpace == -92 {
-                setHyphenInDigits(range: range, inputDigitsText: inputDigitsText, digitsCount: digitsCount)
+                setHyphenInDigits(range: range, inputDigitsText: inputDigitsText, digitsCount: inputDigitsText.count)
                 return true
             }
         }
         
-        guard digitsCount < 13 else { return false }
+        guard inputDigitsText.count < 13 else { return false }
         
-        setHyphenInDigits(range: range, inputDigitsText: inputDigitsText, digitsCount: digitsCount)
+        setHyphenInDigits(range: range, inputDigitsText: inputDigitsText, digitsCount: inputDigitsText.count)
         
         return true
     }
@@ -158,6 +143,10 @@ extension AddNewContactViewController: UITextFieldDelegate {
     }
     
     private func isAgeLimitOver(_ age: String) throws {
+        if age[age.startIndex] == "0" {
+            throw InputError.age
+        }
+        
         guard let age = Int(age) else { throw InputError.exception }
         
         if age < 0 || age > 122 {
