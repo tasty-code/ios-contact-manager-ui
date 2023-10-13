@@ -60,7 +60,7 @@ class ContactManager {
     guard let phone = phone else { throw ValidationError.phoneValidationError }
     let dashCount = phone.filter { ($0) == "-" }.count
     if dashCount != 2 { throw ValidationError.phoneValidationError }
-    if (phone.count - dashCount) <= 9 { throw ValidationError.phoneValidationError }
+    if (phone.count - dashCount) < 9 { throw ValidationError.phoneValidationError }
     
     return phone
   }
