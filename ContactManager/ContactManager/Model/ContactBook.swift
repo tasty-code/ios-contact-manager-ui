@@ -43,7 +43,7 @@ extension ContactBook {
         }
     }
     
-    mutating func sortContactList() {
+    private mutating func sortContactList() {
         self.personContactList.sort { $0.name.uppercased() < $1.name.uppercased() }
     }
 }
@@ -57,7 +57,7 @@ extension ContactBook {
         return self.personContactList[indexPath.row]
     }
     
-    func hasDuplicates(_ contact: Person) -> Bool {
+    private func hasDuplicates(_ contact: Person) -> Bool {
         if self.personContactList.contains(where: ({ $0.name == contact.name && $0.age == contact.age && $0.digits == contact.digits })) {
             return true
         } else {

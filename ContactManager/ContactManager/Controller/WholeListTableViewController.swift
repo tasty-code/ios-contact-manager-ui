@@ -25,16 +25,16 @@ final class WholeListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "mainList", for: indexPath)
-        let person = contactBook.bringPersonContact(indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contactList", for: indexPath)
+        let personContact = contactBook.bringPersonContact(indexPath)
         
-        cell.textLabel?.text = person.name + "(\(person.age))"
-        cell.detailTextLabel?.text = person.digits
+        cell.textLabel?.text = personContact.name + "(\(personContact.age))"
+        cell.detailTextLabel?.text = personContact.digits
         
         return cell
     }
     
-    @IBAction private func addNewContact(_ sender: Any) {
+    @IBAction private func moveToAddNewContact(_ sender: Any) {
         guard let addNewContactVC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewContactViewController") as? AddNewContactViewController else { return }
         
         addNewContactVC.delegate = self
