@@ -9,7 +9,7 @@ import UIKit
 
 class AddContactViewController: UIViewController {
   private var manager: ContactManager
-  // private let alertViewController = AlertViewController()
+  private let alertViewController = AlertViewController()
   @IBOutlet private var nameTextField: UITextField!
   @IBOutlet private var ageTextField: UITextField!
   @IBOutlet private var phoneTextField: UITextField!
@@ -41,7 +41,7 @@ class AddContactViewController: UIViewController {
       let customAlertData = AlertData(viewController: self, 
                                       message: errorType.errorMessage,
                                       defaultButtonTitle: "확인")
-      AlertViewController().showAlert(customAlertData)
+      alertViewController.showAlert(customAlertData)
     }
   }
   
@@ -53,7 +53,7 @@ class AddContactViewController: UIViewController {
                                     destructiveAction: {
                                       self.dismiss(animated: true)
                                     })
-    AlertViewController().showAlert(customAlertData)
+    alertViewController.showAlert(customAlertData)
   }
   
   @IBAction private func phoneTextDidChanged(_ sender: UITextField) {
