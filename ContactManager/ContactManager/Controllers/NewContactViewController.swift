@@ -27,8 +27,8 @@ class NewContactViewController: UIViewController {
             alertController
                 .configureAlertController(title: "입력된 이름 정보가 잘못되었습니다",
                                           message: nil,
-                                          firstAction: "예",
-                                          secondAction: nil,
+                                          defaultAction: "예",
+                                          destructiveAction: nil,
                                           viewController: self)
         }
     }
@@ -41,8 +41,8 @@ class NewContactViewController: UIViewController {
             alertController
                 .configureAlertController(title: "입력된 나이 정보가 잘못되었습니다",
                                           message: nil,
-                                          firstAction: "예",
-                                          secondAction: nil,
+                                          defaultAction: "예",
+                                          destructiveAction: nil,
                                           viewController: self)
         }
     }
@@ -56,8 +56,8 @@ class NewContactViewController: UIViewController {
             alertController
                 .configureAlertController(title: "입력된 연락처 정보가 잘못되었습니다",
                                           message: nil,
-                                          firstAction: "예",
-                                          secondAction: nil,
+                                          defaultAction: "예",
+                                          destructiveAction: nil,
                                           viewController: self)
         }
     }
@@ -66,8 +66,8 @@ class NewContactViewController: UIViewController {
         alertController
             .configureAlertController(title: "정말로 취소하시겠습니까?",
                                       message: nil,
-                                      firstAction: "아니오",
-                                      secondAction: "예",
+                                      defaultAction: "아니오",
+                                      destructiveAction: "예",
                                       viewController: self)
     }
 }
