@@ -9,6 +9,7 @@ import UIKit
 
 class AddContactViewController: UIViewController {
   private var manager: ContactManager
+  // private let alertViewController = AlertViewController()
   @IBOutlet private var nameTextField: UITextField!
   @IBOutlet private var ageTextField: UITextField!
   @IBOutlet private var phoneTextField: UITextField!
@@ -37,14 +38,22 @@ class AddContactViewController: UIViewController {
         print(error.localizedDescription)
         return
       }
-      AlertViewController().showAlert(self: self, message: errorType.errorMessage, defaultButtonTitle: "확인")
+      let customAlertData = AlertData(viewController: self, 
+                                      message: errorType.errorMessage,
+                                      defaultButtonTitle: "확인")
+      AlertViewController().showAlert(customAlertData)
     }
   }
   
   @IBAction private func cancelButtonTapped(_ sender: UIButton) {
-    AlertViewController().showAlert(self: self, message: "정말로 취소하시겠습니까?", defaultButtonTitle: "아니오", destructiveButtonTitle: "예", destructiveAction: {
-      self.dismiss(animated: true)
-    })
+    let customAlertData = AlertData(viewController: self,
+                                    message: "정말로 취소하시겠습니까?",
+                                    defaultButtonTitle: "아니오",
+                                    destructiveButtonTitle: "예",
+                                    destructiveAction: {
+                                      self.dismiss(animated: true)
+                                    })
+    AlertViewController().showAlert(customAlertData)
   }
   
   @IBAction private func phoneTextDidChanged(_ sender: UITextField) {
