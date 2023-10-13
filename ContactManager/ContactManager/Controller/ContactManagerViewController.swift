@@ -21,8 +21,8 @@ final class ContactManagerViewController: UIViewController, UITableViewDelegate 
     contactTableView.dataSource = self
     
     NotificationCenter.default.addObserver(self, selector: #selector(reload), name: NSNotification.Name("AddContact"), object: nil)
-    
   }
+  
   @objc private func reload() {
     contactTableView.reloadData()
   }
@@ -33,7 +33,7 @@ final class ContactManagerViewController: UIViewController, UITableViewDelegate 
         let viewController = AddContactViewController(coder: creater, manager: self.manager)
         return viewController
       }) else { return }
-    
+
     self.present(addContactView, animated: true)
   }
 }
@@ -50,5 +50,4 @@ extension ContactManagerViewController: UITableViewDataSource {
     cell.configure(model: contacts[indexPath.row])
     return cell
   }
-  
 }
