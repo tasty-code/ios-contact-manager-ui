@@ -20,6 +20,7 @@
 		A6EF904A2AD2757E0008C0A9 /* ContactDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF90492AD2757E0008C0A9 /* ContactDTO.swift */; };
 		A6EF904C2AD275830008C0A9 /* ContactJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A6EF904B2AD275830008C0A9 /* ContactJSON.json */; };
 		C3B4A2D12AD7CE3F00ECF20E /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4A2D02AD7CE3F00ECF20E /* AlertController.swift */; };
+		C3CF48002AD93C93007D5452 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CF47FF2AD93C93007D5452 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		A6EF90492AD2757E0008C0A9 /* ContactDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDTO.swift; sourceTree = "<group>"; };
 		A6EF904B2AD275830008C0A9 /* ContactJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ContactJSON.json; sourceTree = "<group>"; };
 		C3B4A2D02AD7CE3F00ECF20E /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		C3CF47FF2AD93C93007D5452 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				A61237BF2ACFE37E00CBCA0F /* JSONCodable+decodeJSON.swift */,
+				C3CF47FF2AD93C93007D5452 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				C3B4A2D12AD7CE3F00ECF20E /* AlertController.swift in Sources */,
 				A61237C32ACFE7C900CBCA0F /* JSONCodable.swift in Sources */,
 				A637B8482AD65D3E0070D080 /* NewContactViewController.swift in Sources */,
+				C3CF48002AD93C93007D5452 /* String+Extension.swift in Sources */,
 				A6EF904A2AD2757E0008C0A9 /* ContactDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,29 +2,31 @@ import UIKit
 final class ContactViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    var contactDTOs: [ContactDTO]? = nil
+    var contactDTOs: [ContactDTO] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contactDTOs = decodeJSON()
+        if let dummyContactDTOs = decodeJSON() {
+            contactDTOs = dummyContactDTOs
+        }
         tableView.delegate = self
         tableView.dataSource = self
+        
     }
-  
-}
-
-extension ContactViewController: UITableViewDelegate {
-    
+    @available(iOS 16.0, *)
+    @IBAction func touchUpAddButton(_ sender: Any) {
+        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "NewContactViewController") as? NewContactViewController else {
+            return
+        }
+        nextVC.delegate = self
+        present(nextVC, animated: true)
+    }
 }
 
 extension ContactViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let peopleCount = contactDTOs?.count else {
-            return 0
-        }
-        return peopleCount
+        return contactDTOs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -32,9 +34,7 @@ extension ContactViewController: UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
         var content = cell.defaultContentConfiguration()
         
-        guard let contactDTOs = contactDTOs?[indexPath.row] else {
-            return UITableViewCell()
-        }
+        let contactDTOs = contactDTOs[indexPath.row]
         
         let name = contactDTOs.name
         let age = contactDTOs.age
@@ -48,13 +48,13 @@ extension ContactViewController: UITableViewDataSource {
     }
 }
 
-extension ContactViewController: JSONCodable {
-    
-}
-
 extension ContactViewController: DataSendable {
-    func send(textField: [ContactDTO]) {
-        print("a")
+    func send(_ data: ContactDTO) {
+        contactDTOs.append(data)
+        tableView.reloadData()
     }
 }
 
+extension ContactViewController: JSONCodable { }
+
+extension ContactViewController: UITableViewDelegate { }
