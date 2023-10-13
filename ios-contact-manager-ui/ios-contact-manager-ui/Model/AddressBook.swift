@@ -9,13 +9,13 @@ import Foundation
 
 class AddressBook {
     
-    private var contacts: [[Contact]] = Array(repeating: [], count: 26)
+    private var contacts: [[Contact]] = Array(repeating: [], count: 27)
     private var contactsForDisplay: [[Contact]] = [[Contact]]()
     
     func getFirstLetterIndex(_ name: String) -> Int {
         let firstLetter = Array(name)[0].uppercased()
         let index = firstLetter.unicodeScalars.map { Int($0.value)}[0]
-        return Int(index - 65)
+        return index >= 65 && index <= 90 ? Int(index - 65) : 26
     }
     
     func addContact(_ newContact: Contact) {
