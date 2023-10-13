@@ -173,15 +173,86 @@ extension ContactCreationViewController: UITextFieldDelegate {
             return false
         }
         
-        if textField == self.ageField || textField == self.phoneNumberField {
-            let characters = CharacterSet.decimalDigits
-            let characterSet = CharacterSet(charactersIn: string)
-            guard characters.isSuperset(of: characterSet) == true else { return false }
+        switch textField {
+        case self.ageField:
+            return isDecimalDigit(string)
+        case self.phoneNumberField:
+            guard isDecimalDigit(string) else { return false }
+            
+            guard let text = textField.text else {
+                return true
+            }
+            guard string != "" else {
+                textField.text = removeSuffix(text)
+                return false
+            }
+            let newVal = formatContactNumber(text)
+            textField.text = newVal
+            return true
+        default:
+            break
         }
+        
         return true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+}
+
+extension ContactCreationViewController {
+    func isDecimalDigit(_ char: String) -> Bool {
+        let characters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: char)
+        return characters.isSuperset(of: characterSet)
+    }
+    func formatContactNumber(_ text: String) -> String {
+        let removeAllHyphenPatterns = [
+            "^02-\\d{4}-\\d{4}$",
+            "^0[013456789]\\d-\\d{4}-\\d{4}$"].joined(separator: "|")
+        
+        if matches(text, with: removeAllHyphenPatterns) {
+            return text.replacingOccurrences(of: "-", with: "")
+        }
+        
+        let addHyphenPatterns = [
+            "^02$",
+            "^0[013456789]\\d$",
+            "^02-\\d{3}$",
+            "^0[013456789]\\d-\\d{3}$"
+        ].joined(separator: "|")
+        
+        if matches(text, with: addHyphenPatterns) {
+            return text + "-"
+        }
+        
+        let swapHyphenPatterns = [
+            "^02-\\d{3}-\\d{4}$",
+            "^0[013456789]\\d-\\d{3}-\\d{4}$"
+        ].joined(separator: "|")
+        
+        if matches(text, with: swapHyphenPatterns), let targetIdx = text.lastIndex(of: "-") {
+            let stored = text.index(after: targetIdx)
+            return text.replacingCharacters(in: targetIdx...stored, with: String(text[stored]) + "-")
+        }
+        
+        return text
+    }
+
+    func matches(_ string: String, with pattern: String) -> Bool {
+        guard let _ = string.range(of: pattern, options: .regularExpression) else {
+            return false
+        }
+        return true
+    }
+    
+    func removeSuffix(_ string: String) -> String {
+        var copy = string
+        if copy.hasSuffix("-") {
+            copy.removeLast()
+        }
+        copy.removeLast()
+        return String(copy)
     }
 }
