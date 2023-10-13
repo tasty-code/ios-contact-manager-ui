@@ -59,6 +59,8 @@ class ContactCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameField.delegate = self
+        self.ageField.delegate = self
+        self.phoneNumberField.delegate = self
         setup()
     }
     
@@ -102,6 +104,7 @@ class ContactCreationViewController: UIViewController {
         present(alert, animated: true, completion: nil)
         
     }
+    
     @objc func didTapSaveButton(_ sender: UINavigationItem) {
         hideKeyboard()
         print("save tapped")
@@ -129,7 +132,6 @@ class ContactCreationViewController: UIViewController {
             self.nameStackView.addArrangedSubview($0)
         }
         
-        
         let ageStack = [ageLabel, ageField]
         ageStack.forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -153,16 +155,30 @@ class ContactCreationViewController: UIViewController {
         stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
     }
-    
 }
 
 extension ContactCreationViewController: UITextFieldDelegate {
     private func hideKeyboard() {
         self.view.endEditing(true)
+        print(nameField.text ?? "")
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == " " {
+            return false
+        }
+        
+        if textField == self.ageField || textField == self.phoneNumberField {
+            let characters = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+            guard characters.isSuperset(of: characterSet) == true else { return false }
+        }
+        return true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
