@@ -42,14 +42,14 @@ class ContactManager {
   // MARK: - Validate
   
   private func getValidName(_ name: String?) throws -> String {
-    guard let name = name else { throw ValidationError.nameValidationError }
+    guard let name = name?.components(separatedBy: " ").joined() else { throw ValidationError.nameValidationError }
     if name.isEmpty { throw ValidationError.nameValidationError }
     
     return name
   }
   
   private func getValidAge(_ age: String?) throws -> Int {
-    let age = Int(age ?? "") // 만약 nil이라도 빈문자열로 변환돼서 에러처리 되므로 상관 x
+    let age = Int(age?.components(separatedBy: " ").joined() ?? "")
     guard let age = age else { throw ValidationError.ageValidationError }
     if (age > 999) || (age < 0) { throw ValidationError.ageValidationError }
     

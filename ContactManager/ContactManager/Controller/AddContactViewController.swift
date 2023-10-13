@@ -68,26 +68,21 @@ extension String {
     let _str = self.replacingOccurrences(of: "-", with: "")
     if(self.count > 12) { return self }
     
-    let prefix = _str.prefix(2)
-    if prefix == "02" {
-      if let regex = try? NSRegularExpression(pattern:"([0-9]{0,2})([0-9]{0,4})([0-9]{0,4})",
-                                              options: .caseInsensitive) {
-        let modString = regex.stringByReplacingMatches(in: _str,
-                                                       options: [],
-                                                       range: NSRange(_str.startIndex..., in: _str),
-                                                       withTemplate: "$1-$2-$3")
-        return modString.trimmingCharacters(in: ["-"])
-      }
+    var regexPattern: String
+    if _str.count == 9 {
+      regexPattern = "([0-9]{0,2})([0-9]{0,3})([0-9]{0,4})"
     } else {
-      if let regex = try? NSRegularExpression(pattern: "([0-9]{0,3})([0-9]{0,4})([0-9]{0,4})",
-                                              options: .caseInsensitive) {
-        let modString = regex.stringByReplacingMatches(in: _str,
-                                                       options: [],
-                                                       range: NSRange(_str.startIndex..., in: _str),
-                                                       withTemplate: "$1-$2-$3")
-        return modString.trimmingCharacters(in: ["-"])
-      }
+      regexPattern = "([0-9]{0,3})([0-9]{0,4})([0-9]{0,4})"
     }
-    return self
+    
+    if let regex = try? NSRegularExpression(pattern: regexPattern, options: .caseInsensitive) {
+      let modString = regex.stringByReplacingMatches(in: _str,
+                                                     options: [],
+                                                     range: NSRange(_str.startIndex..., in: _str),
+                                                     withTemplate: "$1-$2-$3")
+      return modString.trimmingCharacters(in: ["-"])
+    }
+    
+    return _str
   }
 }
