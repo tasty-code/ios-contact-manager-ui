@@ -28,7 +28,7 @@ final class AddNewContactViewController: UIViewController {
         presentUserCancelConfirmAlert()
     }
     
-    @IBAction private func saveNewPersonContact(_ sender: Any) {
+    @IBAction func saveNewPersonContact(_ sender: Any) {
         guard var name = inputName.text, let age = inputAge.text, let digits = inputDigits.text
         else { return }
         

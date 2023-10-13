@@ -20,12 +20,9 @@ extension ContactBook {
     mutating func addPersonContact(_ person: Person) {
         let isDuplicated = hasDuplicates(person)
 
-        if isDuplicated {
-            return
-        } else {
-            self.personContactList.append(person)
-            sortContactList()
-        }
+        guard isDuplicated else { return }
+        self.personContactList.append(person)
+        sortContactList()
     }
     
     mutating func deletePersonContact(_ indexPath: IndexPath) {
@@ -35,12 +32,9 @@ extension ContactBook {
     mutating func updateContactList(_ indexPath: IndexPath, _ person: Person) {
         let isDuplicated = hasDuplicates(person)
 
-        if isDuplicated {
-            return
-        } else {
-            self.personContactList[indexPath.row] = person
-            sortContactList()
-        }
+        guard isDuplicated else { return }
+        self.personContactList[indexPath.row] = person
+        sortContactList()
     }
     
     private mutating func sortContactList() {
