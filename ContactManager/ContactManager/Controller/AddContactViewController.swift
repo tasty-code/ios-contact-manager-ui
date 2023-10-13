@@ -13,6 +13,7 @@ class AddContactViewController: UIViewController {
   @IBOutlet var ageTextField: UITextField!
   @IBOutlet var phoneTextField: UITextField!
   
+  
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -45,12 +46,48 @@ class AddContactViewController: UIViewController {
       self.dismiss(animated: true)
     })
   }
-
+  
   private func makeContact() throws -> Contact {
     let nameText = try manager.nameValidate(nameTextField.text)
     let ageText = try manager.ageValidate(ageTextField.text)
     let phoneText = try manager.phoneValidate(phoneTextField.text)
     
     return Contact(name: nameText, age: ageText, phone: phoneText)
+  }
+  
+  @IBAction func phoneTextDidChanged(_ sender: UITextField) {
+    sender.text = sender.text?.pretty()
+  }
+}
+
+
+// MARK: - extension
+
+extension String {
+  func pretty() -> String {
+    let _str = self.replacingOccurrences(of: "-", with: "")
+    if(self.count > 12) { return self }
+    
+    let prefix = _str.prefix(2)
+    if prefix == "02" {
+      if let regex = try? NSRegularExpression(pattern:"([0-9]{0,2})([0-9]{0,4})([0-9]{0,4})",
+                                              options: .caseInsensitive) {
+        let modString = regex.stringByReplacingMatches(in: _str,
+                                                       options: [],
+                                                       range: NSRange(_str.startIndex..., in: _str),
+                                                       withTemplate: "$1-$2-$3")
+        return modString.trimmingCharacters(in: ["-"])
+      }
+    } else { // 나머지는 휴대폰번호 (010-xxxx-xxxx, 031-xxx-xxxx, 061-xxxx-xxxx 식이라 상관무)
+      if let regex = try? NSRegularExpression(pattern: "([0-9]{0,3})([0-9]{0,4})([0-9]{0,4})",
+                                              options: .caseInsensitive) {
+        let modString = regex.stringByReplacingMatches(in: _str,
+                                                       options: [],
+                                                       range: NSRange(_str.startIndex..., in: _str),
+                                                       withTemplate: "$1-$2-$3")
+        return modString.trimmingCharacters(in: ["-"])
+      }
+    }
+    return self
   }
 }
