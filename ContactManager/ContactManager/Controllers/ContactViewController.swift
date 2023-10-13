@@ -2,7 +2,7 @@ import UIKit
 final class ContactViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    var contactDTOs: [ContactDTO] = []
+    private var contactDTOs: [ContactDTO] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,12 +15,12 @@ final class ContactViewController: UIViewController {
     }
     
     @available(iOS 16.0, *)
-    @IBAction func touchUpAddButton(_ sender: Any) {
-        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "NewContactViewController") as? NewContactViewController else {
+    @IBAction private func touchUpAddButton(_ sender: Any) {
+        guard let newContactViewController = self.storyboard?.instantiateViewController(identifier: "NewContactViewController") as? NewContactViewController else {
             return
         }
-        nextVC.delegate = self
-        present(nextVC, animated: true)
+        newContactViewController.delegate = self
+        present(newContactViewController, animated: true)
     }
 }
 

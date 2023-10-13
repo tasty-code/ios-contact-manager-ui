@@ -15,7 +15,7 @@ final class NewContactViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func phoneNumberTextFieldEditingChanged(_ sender: UITextField) {
+    @IBAction private func phoneNumberTextFieldEditingChanged(_ sender: UITextField) {
         guard let text = sender.text?.replacingOccurrences(of: "-", with: "") else {
             return
         }
