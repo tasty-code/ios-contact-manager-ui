@@ -6,7 +6,7 @@ final class NewContactViewController: UIViewController {
     @IBOutlet private weak var cancelButton: UIBarButtonItem!
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var ageTextField: UITextField!
-    @IBOutlet private weak var contactTextField: UITextField!
+    @IBOutlet private weak var phoneNumberTextField: UITextField!
     private let alertController = UIAlertController()
     
     weak var delegate: DataSendable?
@@ -15,21 +15,21 @@ final class NewContactViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    
-    @IBAction func contactTextFieldEditingChanged(_ sender: UITextField) {
-        guard let text = sender.text?.replacingOccurrences(of: "-", with: "") else { return }
+    @IBAction func phoneNumberTextFieldEditingChanged(_ sender: UITextField) {
+        guard let text = sender.text?.replacingOccurrences(of: "-", with: "") else {
+            return
+        }
         sender.text = text.formattingPhoneNumber(divider: "-")
     }
-    
     
     @IBAction private func touchUpSaveButton(_ sender: Any) {
         guard let name = checkName(),
               let age = checkAge(),
-              let contact = checkContact() else {
+              let phoneNumber = checkPhoneNumber() else {
             return
         }
         
-        delegate?.send(ContactDTO(name: name, age: age, phoneNumber: contact))
+        delegate?.send(ContactDTO(name: name, age: age, phoneNumber: phoneNumber))
         
         self.dismiss(animated: true)
     }
@@ -64,10 +64,10 @@ final class NewContactViewController: UIViewController {
         }
     }
     
-    private func checkContact() -> String? {
+    private func checkPhoneNumber() -> String? {
         let regex = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/
-        if let contact = contactTextField.text, let _ = contact.wholeMatch(of: regex) {
-            return contact
+        if let phoneNumber = phoneNumberTextField.text, let _ = phoneNumber.wholeMatch(of: regex) {
+            return phoneNumber
         } else {
             alertController
                 .configureAlertController(title: "입력된 연락처 정보가 잘못되었습니다",

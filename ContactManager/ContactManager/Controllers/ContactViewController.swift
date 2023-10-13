@@ -12,9 +12,10 @@ final class ContactViewController: UIViewController {
         }
         tableView.delegate = self
         tableView.dataSource = self
-        
     }
+    
     @available(iOS 16.0, *)
+    
     @IBAction func touchUpAddButton(_ sender: Any) {
         guard let nextVC = self.storyboard?.instantiateViewController(identifier: "NewContactViewController") as? NewContactViewController else {
             return
