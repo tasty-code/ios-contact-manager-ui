@@ -5,4 +5,3 @@ enum DecodingErrors: Error {
     case invaildData
     case invaildDecoding
 }
-
