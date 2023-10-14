@@ -65,7 +65,6 @@ final class NewContactViewController: UIViewController {
     
     private func checkAge() throws -> String? {
         let regex = /^\d+(\s\d+)?$/
-        
         if let age = ageTextField.text,
            let _ = age.wholeMatch(of: regex) {
             return age
@@ -87,7 +86,6 @@ final class NewContactViewController: UIViewController {
     private func catcher(of error: CheckContactErrors) -> String {
         switch error {
         case .invalidName:
-            print("test")
             return "입력된 이름 정보가 잘못되었습니다"
         case .invaildAge:
             return "입력된 나이 정보가 잘못되었습니다"
