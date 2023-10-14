@@ -23,15 +23,24 @@ final class NewContactViewController: UIViewController {
     }
     
     @IBAction private func touchUpSaveButton(_ sender: Any) {
-            guard let name = try? checkName(),
-                  let age = try? checkAge(),
-                  let phoneNumber = try? checkPhoneNumber() else {
+        do {
+            guard let name = try checkName(),
+                  let age = try checkAge(),
+                  let phoneNumber = try checkPhoneNumber() else {
                 return
+            }
+            delegate?.send(ContactDTO(name: name, age: age, phoneNumber: phoneNumber))
+            
+            self.dismiss(animated: true)
+        } catch {
+            let errorMessage = catcher(of: error as? CheckContactErrors ?? CheckContactErrors.unknown)
+            alertController
+                            .configureAlertController(title: errorMessage,
+                                                      message: nil,
+                                                      defaultAction: "예",
+                                                      destructiveAction: nil,
+                                                      viewController: self)
         }
-        
-        delegate?.send(ContactDTO(name: name, age: age, phoneNumber: phoneNumber))
-        
-        self.dismiss(animated: true)
     }
     
     private func checkName() throws -> String? {
@@ -39,14 +48,7 @@ final class NewContactViewController: UIViewController {
         if let name = nameTextField.text, let _ = name.wholeMatch(of: regex) {
             return name
         } else {
-            alertController
-                .configureAlertController(title: "입력된 이름 정보가 잘못되었습니다",
-                                          message: nil,
-                                          defaultAction: "예",
-                                          destructiveAction: nil,
-                                          viewController: self)
-            
-            return nil
+            throw CheckContactErrors.invalidName
         }
     }
     
@@ -56,13 +58,7 @@ final class NewContactViewController: UIViewController {
         if let age = ageTextField.text, let _ = age.wholeMatch(of: regex) {
             return age
         } else {
-             alertController
-                .configureAlertController(title: "입력된 나이 정보가 잘못되었습니다",
-                                          message: nil,
-                                          defaultAction: "예",
-                                          destructiveAction: nil,
-                                          viewController: self)
-            return nil
+            throw CheckContactErrors.invaildAge
         }
     }
     
@@ -71,13 +67,7 @@ final class NewContactViewController: UIViewController {
         if let phoneNumber = phoneNumberTextField.text, let _ = phoneNumber.wholeMatch(of: regex) {
             return phoneNumber
         } else {
-            alertController
-                .configureAlertController(title: "입력된 연락처 정보가 잘못되었습니다",
-                                          message: nil,
-                                          defaultAction: "예",
-                                          destructiveAction: nil,
-                                          viewController: self)
-            return nil
+            throw CheckContactErrors.invalidPhoneNumber
         }
     }
     
