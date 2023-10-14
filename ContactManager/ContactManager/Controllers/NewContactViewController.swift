@@ -35,11 +35,11 @@ final class NewContactViewController: UIViewController {
         } catch {
             let errorMessage = catcher(of: error as? CheckContactErrors ?? CheckContactErrors.unknown)
             alertController
-                            .configureAlertController(title: errorMessage,
-                                                      message: nil,
-                                                      defaultAction: "예",
-                                                      destructiveAction: nil,
-                                                      viewController: self)
+                .configureAlertController(title: errorMessage,
+                                          message: nil,
+                                          defaultAction: "예",
+                                          destructiveAction: nil,
+                                          viewController: self)
         }
     }
     
@@ -54,7 +54,7 @@ final class NewContactViewController: UIViewController {
     
     private func checkAge() throws -> String? {
         let regex = /^\d+(\s\d+)?$/
-
+        
         if let age = ageTextField.text, let _ = age.wholeMatch(of: regex) {
             return age
         } else {

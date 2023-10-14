@@ -13,7 +13,7 @@ extension JSONCodable {
         guard let contactDTO = try? JSONDecoder().decode([ContactDTO].self, from: data) else {
             throw DecodingErrors.invaildDecoding
         }
-            
+        
         return contactDTO
     }
 }
