@@ -51,7 +51,8 @@ final class NewContactViewController: UIViewController {
     }
     
     private func checkAge() throws -> String? {
-        let regex = /^[0-9]{1, 3}$/
+        let regex = /^\d+(\s\d+)?$/
+
         if let age = ageTextField.text, let _ = age.wholeMatch(of: regex) {
             return age
         } else {
