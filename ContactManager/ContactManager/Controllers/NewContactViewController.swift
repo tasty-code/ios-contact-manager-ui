@@ -35,7 +35,7 @@ final class NewContactViewController: UIViewController {
     }
     
     private func checkName() throws -> String? {
-        let regex = /^\S+$/
+        let regex = /^\S+(\s+\S+)*$/
         if let name = nameTextField.text, let _ = name.wholeMatch(of: regex) {
             return name
         } else {
