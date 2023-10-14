@@ -64,7 +64,8 @@ extension ContactViewController: UITableViewDataSource {
 extension ContactViewController: DataSendable {
     func send(_ data: ContactDTO) {
         contactDTOs.append(data)
-        tableView.reloadData()
+        let indexPath = IndexPath(row: self.contactDTOs.count - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
     }
 }
 
