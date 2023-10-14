@@ -84,7 +84,7 @@ final class NewContactViewController: UIViewController {
         }
     }
     
-    func catcher(of error: CheckContactErrors) -> String {
+    private func catcher(of error: CheckContactErrors) -> String {
         switch error {
         case .invalidName:
             print("test")
