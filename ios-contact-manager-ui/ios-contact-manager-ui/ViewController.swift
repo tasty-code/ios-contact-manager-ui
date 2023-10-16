@@ -17,11 +17,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initialSetting()
-        
-        
-        addressBook.addContact(Contact(name: "dora", phoneNumber: "010-0000-0000", age: 100))
-        addressBook.addContact(Contact(name: "jaehyeok", phoneNumber: "010-1111-1111", age: 200))
     }
     
     func initialSetting() {
@@ -45,7 +42,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.textLabel?.text = contactData.name + "(\(contactData.age))"
         cell.detailTextLabel?.text = contactData.phoneNumber
-        
         return cell
     }
 }
@@ -55,7 +51,6 @@ extension ViewController {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "NewContactViewController") as? NewContactViewController else { return }
         vc.delegate = self
         self.present(vc, animated: true)
-        
     }
 }
 

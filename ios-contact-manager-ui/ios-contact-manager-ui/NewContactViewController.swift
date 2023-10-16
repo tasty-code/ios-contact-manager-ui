@@ -52,6 +52,11 @@ extension NewContactViewController {
             invalidAlert(invalid: ageTextField)
             return
         }
+        guard let number = numberCheck() else {
+            invalidAlert(invalid: phoneNumberTextField)
+            return
+        }
+        saveAlert(Contact(name: name, phoneNumber: number, age: age))
     }
     
     func cancelAlert() {
@@ -78,11 +83,18 @@ extension NewContactViewController {
         return name == "" ? nil : name.components(separatedBy: " ").joined()
     }
     
-    func ageCheck() -> Int?  {
+    func ageCheck() -> Int? {
         guard let ageText = ageTextField.text, let age = Int(ageText) else {
             return nil
         }
         return age
+    }
+    
+    func numberCheck() -> String? {
+        guard let number = phoneNumberTextField.text else {
+            return nil
+        }
+        return number.count >= 11 && !isHyphen.contains(false) ? number : nil
     }
     
     @objc func didChangePhoneNumberTextField(_ send: Any?) {
@@ -106,7 +118,8 @@ extension NewContactViewController {
             phoneNumberTextField.text = number
             return
         }
-        if number.count == 9 &&                  mobile.contains(String(number.prefix(3))) {
+        
+        if number.count == 9 && mobile.contains(String(number.prefix(3))) {
             if  !isHyphen[1] {
                 number.insert("-", at: number.index(number.startIndex, offsetBy: 8))
             }
@@ -124,7 +137,8 @@ extension NewContactViewController {
             phoneNumberTextField.text = number
             return
         }
-        if number.count == 8 && !special.contains(String(number.prefix(3)))  {
+        
+        if number.count == 8 && !special.contains(String(number.prefix(3))) {
             if !isHyphen[1] {
                 number.insert("-", at: number.index(number.startIndex, offsetBy: 7))
             }
@@ -132,6 +146,7 @@ extension NewContactViewController {
             phoneNumberTextField.text = number
             return
         }
+        
         if number.count == 13 && !special.contains(String(number.prefix(3))) {
             number = number.components(separatedBy: "-").joined()
             number.insert("-", at: number.index(number.startIndex, offsetBy: 3))
@@ -149,6 +164,7 @@ extension NewContactViewController {
             phoneNumberTextField.text = number
             return
         }
+        
         if number.count == 7 && seoulLocal.contains(String(number.prefix(2))) {
             if !isHyphen[1] {
                 number.insert("-", at: number.index(number.startIndex, offsetBy: 6))
@@ -157,6 +173,7 @@ extension NewContactViewController {
             phoneNumberTextField.text = number
             return
         }
+        
         if number.count == 12 && seoulLocal.contains(String(number.prefix(2))) {
             number = number.components(separatedBy: "-").joined()
             number.insert("-", at: number.index(number.startIndex, offsetBy: 2))
