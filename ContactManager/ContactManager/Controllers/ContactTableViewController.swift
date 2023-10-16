@@ -65,5 +65,6 @@ extension ContactTableViewController {
 extension ContactTableViewController: ContactCreationVCDelegate {
     func addContact(_ contact: ContactInfo) {
         contactManager.add(contact)
+        self.tableView.insertRows(at: [IndexPath(row: contactManager.countOfContactList - 1, section: 0)], with: .automatic)
     }
 }

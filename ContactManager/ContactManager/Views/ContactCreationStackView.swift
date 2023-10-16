@@ -7,8 +7,7 @@
 
 import UIKit
 
-class CreationStackView: UIStackView {
-    
+class ContactCreationStackView: UIStackView {
     private let label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center

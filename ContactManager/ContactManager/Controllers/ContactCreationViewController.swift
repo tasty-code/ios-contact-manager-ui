@@ -22,9 +22,9 @@ class ContactCreationViewController: UIViewController {
         return stackView
     }()
     
-    private let nameStack = CreationStackView(frame: CGRect(), type: .name)
-    private let ageStack = CreationStackView(frame: CGRect(), type: .age)
-    private let phoneNumStack = CreationStackView(frame: CGRect(), type: .phoneNum)
+    private let nameStack = ContactCreationStackView(frame: CGRect(), type: .name)
+    private let ageStack = ContactCreationStackView(frame: CGRect(), type: .age)
+    private let phoneNumStack = ContactCreationStackView(frame: CGRect(), type: .phoneNum)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +78,8 @@ class ContactCreationViewController: UIViewController {
         self.view.addSubview(navbar)
     }
     
-    @objc func didTapCancelButton(_ sender: UINavigationItem) {
+    
+    @objc private func didTapCancelButton(_ sender: UINavigationItem) {
         hideKeyboard()
         let alert = UIAlertController(title: nil, message: "정말로 취소하시겠습니까?", preferredStyle: .alert)
         
@@ -93,18 +94,21 @@ class ContactCreationViewController: UIViewController {
         
     }
     
-    @objc func didTapSaveButton(_ sender: UINavigationItem) {
+    @objc private func didTapSaveButton(_ sender: UINavigationItem) {
         hideKeyboard()
-        
-        guard let age = ageStack.field.text, let ageToInt = Int(age), let phoneNum = phoneNumStack.field.text, let name = nameStack.field.text else {
+      
+        guard var age = ageStack.field.text, let phoneNum = phoneNumStack.field.text, var name = nameStack.field.text else {
             presentAlert(message: "정보를 입력해주세요")
             return
         }
         
+        age = age.formatter(type: .compress)
+        name = name.formatter(type: .compress)
+        
         let labels: [(String, ValidateType)] = [(age, .age),(name, .name),(phoneNum, .phoneNum)]
         
         do {
-            try labels.forEach { text, type in
+           try labels.forEach { text, type in
                 try checkValidate(text: text, type: type)
             }
         } catch let error as InvalidError {
@@ -115,42 +119,46 @@ class ContactCreationViewController: UIViewController {
             return
         }
         
+        guard let ageToInt = Int(age) else { return }
+        
         let newContact = ContactInfo(name: name, age: ageToInt, phoneNum: phoneNum)
         self.delegate?.addContact(newContact)
         dismiss(animated: true)
     }
-}
-
-extension ContactCreationViewController: UITextFieldDelegate {
-    private func hideKeyboard() {
-        self.view.endEditing(true)
+    
+    private func presentAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        
+        let confirm = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+        alert.addAction(confirm)
+        present(alert, animated: true, completion: nil)
     }
     
+}
+
+// MARK: - TextField delegate
+
+extension ContactCreationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string == " " {
-            return false
-        }
-        
+    
         switch textField {
         case ageStack.field:
-            return isDecimalDigit(string)
+            return isDigit(string)
         case phoneNumStack.field:
-            guard isDecimalDigit(string) else { return false }
+            guard isDigit(string) else { return false }
+            guard let text = textField.text else { return true }
             
-            guard let text = textField.text else {
-                return true
-            }
             guard string != "" else {
-                textField.text = removeSuffix(text)
+                textField.text = text.removeSuffix(with: "-").formatter(type: .phoneNum)
                 return false
             }
-            let newVal = formatContactNumber(text)
-            textField.text = newVal
+            
+            textField.text = text.formatter(type: .phoneNum)
             return true
         default:
             break
@@ -158,14 +166,14 @@ extension ContactCreationViewController: UITextFieldDelegate {
         
         return true
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
 }
 
 extension ContactCreationViewController {
-    func checkValidate(text: String, type: ValidateType) throws -> Void {
+    private func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    private func checkValidate(text: String, type: ValidateType) throws -> Void {
         guard !text.isEmpty else {
             throw InvalidError.invalidInput(type)
         }
@@ -173,10 +181,10 @@ extension ContactCreationViewController {
         var isValidate: Bool = true
         switch type {
         case .age:
-            isValidate = !text.contains("-") && text.count < 4
+            isValidate = !text.contains("-") && text.formatter(type: .compress).count < 4
             break
         case .phoneNum:
-            isValidate = text.components(separatedBy: "-").count == 3 && text.count > 8
+            isValidate = text.replacingOccurrences(of: "-", with: "").count > 8
             break
         default:
             break
@@ -187,67 +195,9 @@ extension ContactCreationViewController {
         }
     }
     
-    func presentAlert(message: String) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        
-        let confirm = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-        alert.addAction(confirm)
-        present(alert, animated: true, completion: nil)
-    }
-}
-
-extension ContactCreationViewController {
-    func isDecimalDigit(_ char: String) -> Bool {
+    private func isDigit(_ char: String) -> Bool {
         let characters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: char)
         return characters.isSuperset(of: characterSet)
-    }
-    func formatContactNumber(_ text: String) -> String {
-        let removeAllHyphenPatterns = [
-            "^02-\\d{4}-\\d{4}$",
-            "^0[013456789]\\d-\\d{4}-\\d{4}$"].joined(separator: "|")
-        
-        if matches(text, with: removeAllHyphenPatterns) {
-            return text.replacingOccurrences(of: "-", with: "")
-        }
-        
-        let addHyphenPatterns = [
-            "^02$",
-            "^0[013456789]\\d$",
-            "^02-\\d{3}$",
-            "^0[013456789]\\d-\\d{3}$"
-        ].joined(separator: "|")
-        
-        if matches(text, with: addHyphenPatterns) {
-            return text + "-"
-        }
-        
-        let swapHyphenPatterns = [
-            "^02-\\d{3}-\\d{4}$",
-            "^0[013456789]\\d-\\d{3}-\\d{4}$"
-        ].joined(separator: "|")
-        
-        if matches(text, with: swapHyphenPatterns), let targetIdx = text.lastIndex(of: "-") {
-            let stored = text.index(after: targetIdx)
-            return text.replacingCharacters(in: targetIdx...stored, with: String(text[stored]) + "-")
-        }
-        
-        return text
-    }
-
-    func matches(_ string: String, with pattern: String) -> Bool {
-        guard let _ = string.range(of: pattern, options: .regularExpression) else {
-            return false
-        }
-        return true
-    }
-    
-    func removeSuffix(_ string: String) -> String {
-        var copy = string
-        if copy.hasSuffix("-") {
-            copy.removeLast()
-        }
-        copy.removeLast()
-        return String(copy)
     }
 }
