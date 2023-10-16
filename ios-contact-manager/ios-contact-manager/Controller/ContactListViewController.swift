@@ -18,19 +18,29 @@ final class ContactListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
-        let contact = self.contactsModel.readContact(indexPath: indexPath)
+        let contact = self.contactsModel.readContact(index: indexPath.row)
         cell.configureCell(item: contact)
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let contact = self.contactsModel.readContact(indexPath: indexPath)
+        var contact = self.contactsModel.readContact(index: indexPath.row)
+        contact = Contact(name: contact.name, age: contact.age, phoneNumber: contact.phoneNumber, index: indexPath.row)
         self.presentEditViewController(contact)
     }
     
     @IBAction private func touchAddBarButton(_ sender: UIBarButtonItem) {
         self.presentEditViewController(nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.tableView.beginUpdates()
+            self.deleteContact(indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.tableView.endUpdates()
+        }
     }
     
     private func presentEditViewController(_ contact: Contact?) {
@@ -56,6 +66,10 @@ extension ContactListViewController: ContactsManagable {
     
     func updateContact(_ contact: Contact) {
         self.contactsModel.updateContact(contact: contact)
+    }
+    
+    func deleteContact(_ index: Int) {
+        self.contactsModel.deleteContact(index: index)
     }
 }
 

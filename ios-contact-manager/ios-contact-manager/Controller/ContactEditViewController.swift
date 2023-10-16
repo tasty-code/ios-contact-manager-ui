@@ -8,8 +8,6 @@
 import UIKit
 
 final class ContactEditViewController: ContactCreateViewController {
-    
-    
     override func configureViewComponents() {
         self.ageTextField.keyboardType = .numberPad
         self.phoneNumberTextField.keyboardType = .phonePad
@@ -30,8 +28,8 @@ final class ContactEditViewController: ContactCreateViewController {
             try checkPhoneNumberTextFieldIsValid()
             self.saveContact()
             guard let contact = contact else { return }
-            self.dismiss(animated: true) { [weak self] in
-                self?.delegate?.updateContact(contact)
+            self.dismiss(animated: true) {
+                super.delegate?.updateContact(contact)
             }
         } catch {
             guard let error = error as? ContactError else { return }
@@ -40,12 +38,11 @@ final class ContactEditViewController: ContactCreateViewController {
     }
  
     override func saveContact() {
-        guard let name = self.nameTextField.text,
-              let age = Int(self.ageTextField.text!),
-              let phoneNumber = self.phoneNumberTextField.text,
-              let index = super.contact!.index
-        else { return print("222222")}
-        print("11")
+        guard let name = super.name,
+              let age = super.age,
+              let phoneNumber = super.phoneNumber,
+              let index = super.contact?.index
+        else { return }
         super.contact = Contact(name: name, age: age, phoneNumber: phoneNumber, index: index)
     }
 

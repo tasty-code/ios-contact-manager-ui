@@ -12,7 +12,7 @@ final class ContactTableViewCell: UITableViewCell, ContactCellConfigurable {
         super.setSelected(selected, animated: animated)
     }
     
-    func configureCell(item contact: Contact) {
+    func configureCell(_ tableView: ContactListViewController, item contact: Contact) {
         self.titleLabel.text = "\(contact.name)(\(contact.age))"
         self.subTitleLabel.text = contact.phoneNumber
     }

@@ -8,5 +8,5 @@
 import UIKit
 
 protocol ContactCellConfigurable {
-    func configureCell(item: Contact)
+    func configureCell(_ tableView: ContactListViewController, item: Contact)
 }

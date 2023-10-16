@@ -14,7 +14,6 @@ class ContactCreateViewController: UIViewController {
     
     weak var delegate: ContactsManagable?
     var contact: Contact?
-    
     var name: String?
     var age: Int?
     var phoneNumber: String?
@@ -72,6 +71,7 @@ class ContactCreateViewController: UIViewController {
             self.presentErrorAlert(error)
         }
     }
+    
     func saveContact() {
         guard let name = self.name,
               let age = self.age,
@@ -109,6 +109,4 @@ extension ContactCreateViewController {
         
         self.phoneNumber = text.formatted()
     }
-    
-    
 }

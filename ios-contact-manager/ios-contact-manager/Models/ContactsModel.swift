@@ -18,8 +18,8 @@ extension ContactsModel {
         self.contactsList.append(contact)
     }
     
-    func readContact(indexPath: IndexPath) -> Contact {
-        return self.contactsList[indexPath.row]
+    func readContact(index: Int) -> Contact {
+        return self.contactsList[index]
     }
     
     func updateContact(contact: Contact) {
@@ -27,8 +27,8 @@ extension ContactsModel {
         self.contactsList[index] = contact
     }
     
-    func deleteContact(indexPath: IndexPath) {
-        self.contactsList.remove(at: indexPath.row)
+    func deleteContact(index: Int) {
+        self.contactsList.remove(at: index)
     }
 }
 
