@@ -1,6 +1,6 @@
 import UIKit
 
-final class TableViewController: UITableViewController {
+final class ContactListViewController: UITableViewController {
     private let contactsModel: ContactsModel = ContactsModel()
 
     override func viewDidLoad() {
@@ -26,37 +26,41 @@ final class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = self.contactsModel.readContact(indexPath: indexPath)
-        self.presentModallyEditViewController(contact, indexPath)
+        self.presentEditViewController(contact)
     }
     
     @IBAction private func touchAddBarButton(_ sender: UIBarButtonItem) {
-        self.presentModallyEditViewController(nil, nil)
+        self.presentEditViewController(nil)
     }
     
-    private func presentModallyEditViewController(_ contact: Contact?, _ indexPath: IndexPath?) {
-        guard let editViewController = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as? EditViewController else { return }
+    private func presentEditViewController(_ contact: Contact?) {
         
-        editViewController.delegate = self
-        editViewController.indexPath = indexPath
-        editViewController.contact = contact
-        
-        self.present(editViewController, animated: true)
+        if let contact = contact {
+            guard let contactEditViewController = storyboard?.instantiateViewController(withIdentifier: "ContactEditViewController") as? ContactEditViewController else { return }
+            contactEditViewController.delegate = self
+            contactEditViewController.contact = contact
+            self.present(contactEditViewController, animated: true)
+        } else {
+            guard let contactCreateViewController = storyboard?.instantiateViewController(withIdentifier: "ContactCreateViewController") as? ContactCreateViewController else { return }
+            contactCreateViewController.delegate = self
+            self.present(contactCreateViewController, animated: true)
+        }
     }
 }
 
 // MARK: Delegation Methods
-extension TableViewController: ContactsManagable {
+extension ContactListViewController: ContactsManagable {
     func createContact(_ contact: Contact) {
         self.contactsModel.createContact(contact: contact)
     }
     
-    func updateContact(_ contact: Contact, _ indexPath: IndexPath) {
-        self.contactsModel.updateContact(contact: contact, indexPath: indexPath)
+    func updateContact(_ contact: Contact) {
+        self.contactsModel.updateContact(contact: contact)
     }
 }
 
 // MARK: Observer Pattern Methods by using Notification Center
-extension TableViewController {
+extension ContactListViewController {
     private func addObserver() {
         let notificationName = NotificationType.contactsDidChange.name
         NotificationCenter.default.addObserver(

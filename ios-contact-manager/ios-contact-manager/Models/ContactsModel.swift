@@ -22,8 +22,9 @@ extension ContactsModel {
         return self.contactsList[indexPath.row]
     }
     
-    func updateContact(contact: Contact, indexPath: IndexPath) {
-        self.contactsList[indexPath.row] = contact
+    func updateContact(contact: Contact) {
+        guard let index = contact.index else { return }
+        self.contactsList[index] = contact
     }
     
     func deleteContact(indexPath: IndexPath) {

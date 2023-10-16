@@ -7,18 +7,17 @@
 
 import UIKit
 
-final class EditViewController: UIViewController {
-    @IBOutlet private weak var nameTextField: UITextField!
-    @IBOutlet private weak var ageTextField: UITextField!
-    @IBOutlet private weak var phoneNumberTextField: UITextField!
+class ContactCreateViewController: UIViewController {
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     
     weak var delegate: ContactsManagable?
     var contact: Contact?
-    var indexPath: IndexPath?
     
-    private var name: String?
-    private var age: Int?
-    private var phoneNumber: String?
+    var name: String?
+    var age: Int?
+    var phoneNumber: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,15 +30,9 @@ final class EditViewController: UIViewController {
         textField.text = text.formatted(by: "-")
     }
     
-    private func configureViewComponents() {
+    func configureViewComponents() {
         self.ageTextField.keyboardType = .numberPad
         self.phoneNumberTextField.keyboardType = .phonePad
-        
-        if let contact = contact {
-            self.nameTextField.text = contact.name
-            self.ageTextField.text = "\(contact.age)"
-            self.phoneNumberTextField.text = contact.phoneNumber
-        }
     }
     
     private func presentRewindCancelAlert() {
@@ -53,7 +46,7 @@ final class EditViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    private func presentErrorAlert(_ error: ContactError) {
+    func presentErrorAlert(_ error: ContactError) {
         let alert = UIAlertController(title: error.description, message: nil, preferredStyle: .alert)
         let confirm = UIAlertAction(title: "확인", style: .default)
         alert.addAction(confirm)
@@ -64,7 +57,7 @@ final class EditViewController: UIViewController {
         self.presentRewindCancelAlert()
     }
     
-    @IBAction private func touchSaveBarButton(_ sender: UIBarButtonItem) {
+    @IBAction func touchSaveBarButton(_ sender: UIBarButtonItem) {
         do {
             try checkNameTextFieldIsValid()
             try checkAgeTextFieldIsValid()
@@ -72,22 +65,26 @@ final class EditViewController: UIViewController {
             self.saveContact()
             guard let contact = contact else { return }
             self.dismiss(animated: true) { [weak self] in
-                if let indexPath = self?.indexPath {
-                    self?.delegate?.updateContact(contact, indexPath)
-                } else {
-                    self?.delegate?.createContact(contact)
-                }
+                self?.delegate?.createContact(contact)
             }
         } catch {
             guard let error = error as? ContactError else { return }
             self.presentErrorAlert(error)
         }
     }
+    func saveContact() {
+        guard let name = self.name,
+              let age = self.age,
+              let phoneNumber = self.phoneNumber
+        else { return }
+        
+        self.contact = Contact(name: name, age: age, phoneNumber: phoneNumber, index: nil)
+    }
 }
 
 // MARK: TextField validation methods
-extension EditViewController {
-    private func checkNameTextFieldIsValid() throws {
+extension ContactCreateViewController {
+    func checkNameTextFieldIsValid() throws {
         guard let text = self.nameTextField.text,
               text.isEmpty == false
         else { throw ContactError.invalidName }
@@ -95,7 +92,7 @@ extension EditViewController {
         self.name = text.replacingOccurrences(of: " ", with: "")
     }
     
-    private func checkAgeTextFieldIsValid() throws {
+    func checkAgeTextFieldIsValid() throws {
         guard let text = self.ageTextField.text?.replacingOccurrences(of: " ", with: ""),
               let age = Int(text),
               age >= 0 && age < 1000
@@ -104,7 +101,7 @@ extension EditViewController {
         self.age = age
     }
     
-    private func checkPhoneNumberTextFieldIsValid() throws {
+    func checkPhoneNumberTextFieldIsValid() throws {
         guard let text = self.phoneNumberTextField.text?.replacingOccurrences(of: "-", with: ""),
               text.count >= 9,
               let _ = Int(text)
@@ -113,12 +110,5 @@ extension EditViewController {
         self.phoneNumber = text.formatted()
     }
     
-    private func saveContact() {
-        guard let name = self.name,
-              let age = self.age,
-              let phoneNumber = self.phoneNumber
-        else { return }
-        
-        self.contact = Contact(name: name, age: age, phoneNumber: phoneNumber)
-    }
+    
 }

@@ -9,5 +9,5 @@ import Foundation
 
 protocol ContactsManagable: AnyObject {
     func createContact(_ contact: Contact)
-    func updateContact(_ contact: Contact, _ indexPath: IndexPath)
+    func updateContact(_ contact: Contact)
 }
