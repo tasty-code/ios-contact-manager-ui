@@ -103,28 +103,34 @@ extension AddNewContactViewController: UITextFieldDelegate {
     }
     
     private func setHyphenInDigits(range: NSRange, inputDigitsText: String, digitsCount: Int) {
-        var inputDigitsText = inputDigitsText
-        
         switch digitsCount {
         case 0...10 :
-            if range.length == 0 && (range.location == 2 || range.location == 6) {
-                inputDigits.text = "\(inputDigitsText)-"
-            }
+            insertHyphenLessThanNine(range, inputDigitsText)
         case 11...12 :
-            inputDigitsText = inputDigitsText.components(separatedBy: ["-"]).joined()
-            inputDigitsText.insert("-", at: inputDigitsText.index(inputDigitsText.startIndex, offsetBy: 3))
-            inputDigitsText.insert("-", at: inputDigitsText.index(inputDigitsText.startIndex, offsetBy: 8))
-            inputDigits.text = inputDigitsText
-            
-            if range.length == 1 {
-                inputDigitsText = inputDigitsText.components(separatedBy: ["-"]).joined()
-                inputDigitsText.insert("-", at: inputDigitsText.index(inputDigitsText.startIndex, offsetBy: 2))
-                inputDigitsText.insert("-", at: inputDigitsText.index(inputDigitsText.startIndex, offsetBy: 6))
-                inputDigits.text = inputDigitsText
-            }
+            insertHyphenMoreThanNine(range, inputDigitsText)
         default:
             return
         }
+    }
+    
+    private func insertHyphenLessThanNine(_ range: NSRange, _ inputDigitsText: String) {
+        if range.length == 0 && (range.location == 2 || range.location == 6) {
+            inputDigits.text = "\(inputDigitsText)-"
+        }
+    }
+    
+    private func insertHyphenMoreThanNine(_ range: NSRange, _ inputDigitsText: String) {
+        var convertedDigits = inputDigitsText.components(separatedBy: ["-"]).joined()
+        
+        if range.length == 1 {
+            convertedDigits.insert("-", at: convertedDigits.index(convertedDigits.startIndex, offsetBy: 2))
+            convertedDigits.insert("-", at: convertedDigits.index(convertedDigits.startIndex, offsetBy: 6))
+        } else {
+            convertedDigits.insert("-", at: convertedDigits.index(convertedDigits.startIndex, offsetBy: 3))
+            convertedDigits.insert("-", at: convertedDigits.index(convertedDigits.startIndex, offsetBy: 8))
+        }
+        
+        inputDigits.text = convertedDigits
     }
     
     private func removeEmptySpace(_ name: String) -> String {
