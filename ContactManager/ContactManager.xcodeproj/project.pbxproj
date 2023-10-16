@@ -21,6 +21,7 @@
 		D07AF2892AD6353500F7B1B8 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AF2882AD6353500F7B1B8 /* ContactManager.swift */; };
 		D07AF28D2AD6819A00F7B1B8 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AF28C2AD6819A00F7B1B8 /* ValidationError.swift */; };
 		D07AF2CF2AD8E04800F7B1B8 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AF2CE2AD8E04800F7B1B8 /* AlertViewController.swift */; };
+		D07AF2D22ADCC48500F7B1B8 /* FormatingPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AF2D12ADCC48500F7B1B8 /* FormatingPhone.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		D07AF2882AD6353500F7B1B8 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		D07AF28C2AD6819A00F7B1B8 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		D07AF2CE2AD8E04800F7B1B8 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		D07AF2D12ADCC48500F7B1B8 /* FormatingPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatingPhone.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		66CD224A2ACF905E00BE35F7 /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
+				D07AF2D02ADCC42200F7B1B8 /* Utility */,
 				66CD22622ACFDC2700BE35F7 /* Controller */,
 				66CD22612ACFDC1B00BE35F7 /* Model */,
 				66CD22632ACFDC3200BE35F7 /* View */,
@@ -140,6 +143,14 @@
 				D07AF2812AD62F0300F7B1B8 /* ContactManagerTests.swift */,
 			);
 			path = ContactManagerTests;
+			sourceTree = "<group>";
+		};
+		D07AF2D02ADCC42200F7B1B8 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				D07AF2D12ADCC48500F7B1B8 /* FormatingPhone.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 				D07AF2892AD6353500F7B1B8 /* ContactManager.swift in Sources */,
 				66E26F982AD92E6D005F9FBC /* AlertData.swift in Sources */,
 				66CD224E2ACF905E00BE35F7 /* SceneDelegate.swift in Sources */,
+				D07AF2D22ADCC48500F7B1B8 /* FormatingPhone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
