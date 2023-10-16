@@ -122,5 +122,4 @@ final class ContactManagerTests: XCTestCase {
             }
         }
     }
-    
 }
