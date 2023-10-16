@@ -37,6 +37,13 @@ final class ContactTableViewController: UITableViewController {
 
         return cell
     }
+    
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+        let contactCreationViewController = ContactCreationViewController()
+        contactCreationViewController.delegate = self
+        present(contactCreationViewController, animated: true)
+    }
+    
 }
 
 extension ContactTableViewController {
@@ -48,9 +55,16 @@ extension ContactTableViewController {
         do {
             let data = try Data(contentsOf: jsonURL)
             let root = try JSONDecoder().decode(Root.self, from: data)
-            contactManager.setContactList(root.data)
+            contactManager.setContactsList(root.data)
         } catch {
             print(error)
         }
+    }
+}
+
+extension ContactTableViewController: ContactCreationVCDelegate {
+    func addContact(_ contact: ContactInfo) {
+        contactManager.add(contact)
+        self.tableView.insertRows(at: [IndexPath(row: contactManager.countOfContactList - 1, section: 0)], with: .automatic)
     }
 }
