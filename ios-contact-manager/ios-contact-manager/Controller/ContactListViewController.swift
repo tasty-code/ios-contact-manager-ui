@@ -19,7 +19,7 @@ final class ContactListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
         let contact = self.contactsModel.readContact(index: indexPath.row)
-        cell.configureCell(item: contact)
+        cell.configureCell(self, item: contact)
         
         return cell
     }

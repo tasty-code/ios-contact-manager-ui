@@ -14,9 +14,6 @@ class ContactCreateViewController: UIViewController {
     
     weak var delegate: ContactsManagable?
     var contact: Contact?
-    var name: String?
-    var age: Int?
-    var phoneNumber: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,11 +55,10 @@ class ContactCreateViewController: UIViewController {
     
     @IBAction func touchSaveBarButton(_ sender: UIBarButtonItem) {
         do {
-            try checkNameTextFieldIsValid()
-            try checkAgeTextFieldIsValid()
-            try checkPhoneNumberTextFieldIsValid()
-            self.saveContact()
-            guard let contact = contact else { return }
+            let name = try formatNameTextFieldText()
+            let age = try formatAgeTextFieldText()
+            let phoneNumber = try formatPhoneNumberTextFieldText()
+            let contact = Contact(name: name, age: age, phoneNumber: phoneNumber, index: nil)
             self.dismiss(animated: true) { [weak self] in
                 self?.delegate?.createContact(contact)
             }
@@ -71,42 +67,33 @@ class ContactCreateViewController: UIViewController {
             self.presentErrorAlert(error)
         }
     }
-    
-    func saveContact() {
-        guard let name = self.name,
-              let age = self.age,
-              let phoneNumber = self.phoneNumber
-        else { return }
-        
-        self.contact = Contact(name: name, age: age, phoneNumber: phoneNumber, index: nil)
-    }
 }
 
 // MARK: TextField validation methods
 extension ContactCreateViewController {
-    func checkNameTextFieldIsValid() throws {
+    func formatNameTextFieldText() throws -> String {
         guard let text = self.nameTextField.text,
               text.isEmpty == false
         else { throw ContactError.invalidName }
         
-        self.name = text.replacingOccurrences(of: " ", with: "")
+        return text.replacingOccurrences(of: " ", with: "")
     }
     
-    func checkAgeTextFieldIsValid() throws {
+    func formatAgeTextFieldText() throws -> Int {
         guard let text = self.ageTextField.text?.replacingOccurrences(of: " ", with: ""),
               let age = Int(text),
               age >= 0 && age < 1000
         else { throw ContactError.invalidAge }
         
-        self.age = age
+        return age
     }
     
-    func checkPhoneNumberTextFieldIsValid() throws {
+    func formatPhoneNumberTextFieldText() throws -> String {
         guard let text = self.phoneNumberTextField.text?.replacingOccurrences(of: "-", with: ""),
               text.count >= 9,
               let _ = Int(text)
         else { throw ContactError.invalidPhoneNumber }
         
-        self.phoneNumber = text.formatted()
+        return text.formatted()
     }
 }

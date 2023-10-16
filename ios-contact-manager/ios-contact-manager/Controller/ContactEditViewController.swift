@@ -12,7 +12,6 @@ final class ContactEditViewController: ContactCreateViewController {
         self.ageTextField.keyboardType = .numberPad
         self.phoneNumberTextField.keyboardType = .phonePad
         
-        
         if let contact = contact {
             super.contact = contact
             self.nameTextField.text = contact.name
@@ -23,11 +22,11 @@ final class ContactEditViewController: ContactCreateViewController {
     
     override func touchSaveBarButton(_ sender: UIBarButtonItem) {
         do {
-            try checkNameTextFieldIsValid()
-            try checkAgeTextFieldIsValid()
-            try checkPhoneNumberTextFieldIsValid()
-            self.saveContact()
-            guard let contact = contact else { return }
+            let name = try formatNameTextFieldText()
+            let age = try formatAgeTextFieldText()
+            let phoneNumber = try formatPhoneNumberTextFieldText()
+            guard let index = super.contact?.index else { return }
+            let contact = Contact(name: name, age: age, phoneNumber: phoneNumber, index: index)
             self.dismiss(animated: true) {
                 super.delegate?.updateContact(contact)
             }
@@ -36,14 +35,4 @@ final class ContactEditViewController: ContactCreateViewController {
             self.presentErrorAlert(error)
         }
     }
- 
-    override func saveContact() {
-        guard let name = super.name,
-              let age = super.age,
-              let phoneNumber = super.phoneNumber,
-              let index = super.contact?.index
-        else { return }
-        super.contact = Contact(name: name, age: age, phoneNumber: phoneNumber, index: index)
-    }
-
 }
