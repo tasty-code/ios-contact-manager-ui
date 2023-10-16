@@ -13,16 +13,16 @@ class AlertViewController: UIAlertController {
     super.viewDidLoad()
   }
   
-  func showAlert(_ data: AlertData) {
-    let alert = UIAlertController(title: "", message: data.message, preferredStyle: UIAlertController.Style.alert)
-    let alertOkAction = UIAlertAction(title: data.defaultButtonTitle, style: .default)
+  static func showAlert(viewController: UIViewController, message: String, defaultButtonTitle: String, destructiveButtonTitle: String? = nil, destructiveAction: (() -> ())? = nil) {
+    let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
+    let alertOkAction = UIAlertAction(title: defaultButtonTitle, style: .default)
     alert.addAction(alertOkAction)
-    if let destructiveButtonTitle = data.destructiveButtonTitle {
+    if let destructiveButtonTitle = destructiveButtonTitle {
       let alertNoAction = UIAlertAction(title: destructiveButtonTitle, style: .destructive) { _ in
-        data.destructiveAction?()
+        destructiveAction?()
       }
       alert.addAction(alertNoAction)
     }
-    data.viewController.present(alert, animated: true)
+    viewController.present(alert, animated: true)
   }
 }
