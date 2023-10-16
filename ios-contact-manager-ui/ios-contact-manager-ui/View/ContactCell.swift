@@ -15,6 +15,7 @@ class ContactCell: UITableViewCell {
     func configureCell(_ contact: Contact) {
         personLabel.text = "\(contact.name)(\(contact.age))"
         phoneNumberLabel.text = contact.phoneNumber
+        self.accessoryType = .disclosureIndicator
     }
     
 }

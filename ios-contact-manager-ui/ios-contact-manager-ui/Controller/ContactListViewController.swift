@@ -14,8 +14,38 @@ final class ContactListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBar()
         self.tableView.dataSource = self
-        
+        observeUpdatedContacts()
+    }
+    
+    private func configureNavigationBar() {
+        self.navigationItem.title = "연락처"
+        self.navigationItem.rightBarButtonItem = buildAddButton()
+    }
+    
+    private func buildAddButton() -> UIBarButtonItem {
+        let addButton = UIBarButtonItem(systemItem: .add)
+        addButton.target = self
+        addButton.action = #selector(tapAddButton(_:))
+        return addButton
+    }
+    
+    @objc private func tapAddButton(_ sender: UIButton) {
+        if let viewController = storyboard?.instantiateViewController(identifier: "EditContactViewController", creator: { coder in
+            return EditContactViewController(coder: coder, contactValidityChecker: ContactValidityChecker(), contactManager: self.contactManager)
+        }) {
+            present(UINavigationController(rootViewController: viewController), animated: true)
+        }
+    }
+    
+    @objc private func reloadContacts(_ notification: Notification) {
+        self.tableView.reloadData()
+    }
+    
+    
+    private func observeUpdatedContacts() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadContacts(_:)), name: Notification.didUpdateContact, object: nil)
     }
 }
 
@@ -29,16 +59,12 @@ extension ContactListViewController: UITableViewDataSource {
         let contact = contactManager.contacts[indexPath.row]
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as? ContactCell else {
-            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: id)
-            cell.textLabel?.text = "\(contact.name)(\(contact.age))"
-            cell.detailTextLabel?.text = contact.phoneNumber
-            cell.accessoryType = .disclosureIndicator
+            let cell = ContactCell(style: .subtitle, reuseIdentifier: id)
+            cell.configureCell(contact)
             return cell
         }
         cell.configureCell(contact)
-        cell.accessoryType = .disclosureIndicator
         return cell
     }
 }
-
 

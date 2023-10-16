@@ -20,6 +20,10 @@
 		0D6F97252ACCF1CA006EF067 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F97242ACCF1CA006EF067 /* Contact.swift */; };
 		0D6F97262ACCF1CA006EF067 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F97242ACCF1CA006EF067 /* Contact.swift */; };
 		0DA361A02AD4DFF500A2AA25 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3619F2AD4DFF500A2AA25 /* ContactManager.swift */; };
+		0DA361A42AD62AE600A2AA25 /* EditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA361A32AD62AE600A2AA25 /* EditContactViewController.swift */; };
+		0DA361A72AD63D3B00A2AA25 /* ContactValidityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA361A62AD63D3B00A2AA25 /* ContactValidityChecker.swift */; };
+		0DA361A82AD63D4F00A2AA25 /* ContactValidityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA361A62AD63D3B00A2AA25 /* ContactValidityChecker.swift */; };
+		7F1336192AD92044004D0DFD /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1336182AD92044004D0DFD /* Notification+Extension.swift */; };
 		7FFDC2A62AD4EBBA00DCCE29 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFDC2A52AD4EBBA00DCCE29 /* ContactCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +61,9 @@
 		0D6F97122ACCF0B6006EF067 /* ios_contact_manager_uiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0D6F97242ACCF1CA006EF067 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		0DA3619F2AD4DFF500A2AA25 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
+		0DA361A32AD62AE600A2AA25 /* EditContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewController.swift; sourceTree = "<group>"; };
+		0DA361A62AD63D3B00A2AA25 /* ContactValidityChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactValidityChecker.swift; sourceTree = "<group>"; };
+		7F1336182AD92044004D0DFD /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		7FFDC2A52AD4EBBA00DCCE29 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,9 +123,11 @@
 		0D6F96EE2ACCF0B5006EF067 /* ios-contact-manager-ui */ = {
 			isa = PBXGroup;
 			children = (
-				0D4347142ACD5F4400052559 /* Exception */,
+				7F1336172AD92013004D0DFD /* Extensions */,
+				0DA361A52AD63CE500A2AA25 /* Utility */,
 				0D6F96FD2ACCF0B6006EF067 /* Info.plist */,
 				0D6F97202ACCF17C006EF067 /* Controller */,
+				0D4347142ACD5F4400052559 /* Exception */,
 				0D6F97212ACCF188006EF067 /* Model */,
 				0D6F971F2ACCF166006EF067 /* View */,
 			);
@@ -159,6 +168,7 @@
 				0D6F96EF2ACCF0B5006EF067 /* AppDelegate.swift */,
 				0D6F96F12ACCF0B5006EF067 /* SceneDelegate.swift */,
 				0D6F96F32ACCF0B5006EF067 /* ContactListViewController.swift */,
+				0DA361A32AD62AE600A2AA25 /* EditContactViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -170,6 +180,22 @@
 				0DA3619F2AD4DFF500A2AA25 /* ContactManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0DA361A52AD63CE500A2AA25 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				0DA361A62AD63D3B00A2AA25 /* ContactValidityChecker.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		7F1336172AD92013004D0DFD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7F1336182AD92044004D0DFD /* Notification+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,9 +332,12 @@
 				0D6F97252ACCF1CA006EF067 /* Contact.swift in Sources */,
 				0D6F96F42ACCF0B5006EF067 /* ContactListViewController.swift in Sources */,
 				0D6F96F02ACCF0B5006EF067 /* AppDelegate.swift in Sources */,
+				0DA361A42AD62AE600A2AA25 /* EditContactViewController.swift in Sources */,
 				0D6F96F22ACCF0B5006EF067 /* SceneDelegate.swift in Sources */,
 				0DA361A02AD4DFF500A2AA25 /* ContactManager.swift in Sources */,
+				0DA361A72AD63D3B00A2AA25 /* ContactValidityChecker.swift in Sources */,
 				7FFDC2A62AD4EBBA00DCCE29 /* ContactCell.swift in Sources */,
+				7F1336192AD92044004D0DFD /* Notification+Extension.swift in Sources */,
 				0D4347162ACD5F7D00052559 /* ContactException.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DA361A82AD63D4F00A2AA25 /* ContactValidityChecker.swift in Sources */,
 				0D6F97262ACCF1CA006EF067 /* Contact.swift in Sources */,
 				0D6F97072ACCF0B6006EF067 /* ios_contact_manager_uiTests.swift in Sources */,
 			);
@@ -555,7 +585,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kimjunsung.ios-contact-manager-uiTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -574,7 +604,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kimjunsung.ios-contact-manager-uiTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -592,6 +622,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kimjunsung.ios-contact-manager-uiUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -609,6 +640,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kimjunsung.ios-contact-manager-uiUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
