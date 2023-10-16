@@ -12,70 +12,53 @@ protocol ContactCreationVCDelegate: AnyObject {
 }
 
 class ContactCreationViewController: UIViewController {
-    weak var delegate: ContactCreationVCDelegate?
+    public weak var delegate: ContactCreationVCDelegate?
     
-    let nameLabel = UILabel()
-    let nameField = UITextField()
-    let ageLabel = UILabel()
-    let ageField = UITextField()
-    let phoneNumberLabel = UILabel()
-    let phoneNumberField = UITextField()
-    
-    let nameStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 10
-        return stackView
-    }()
-    
-    let ageStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 10
-        return stackView
-    }()
-    
-    let phoneStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 5
-        return stackView
-    }()
-    
-    let stackView: UIStackView = {
+    private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.distribution = .equalSpacing
         stackView.spacing = 15
         return stackView
     }()
     
+    private let nameStack = CreationStackView(frame: CGRect(), type: .name)
+    private let ageStack = CreationStackView(frame: CGRect(), type: .age)
+    private let phoneNumStack = CreationStackView(frame: CGRect(), type: .phoneNum)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.nameField.delegate = self
-        self.ageField.delegate = self
-        self.phoneNumberField.delegate = self
-        setup()
-    }
-    
-    private func setup() {
         self.view.backgroundColor = .systemBackground
-        setNavigationBar()
-        contactView()
+        
+        nameStack.field.delegate = self
+        ageStack.field.delegate = self
+        phoneNumStack.field.delegate = self
+        
+        addSubViews()
+        addConstraint()
+        addNavigationBar()
     }
     
-    func setNavigationBar() {
+    private func addSubViews() {
+        ageStack.field.borderStyle = .roundedRect
+        ageStack.field.keyboardType = .numberPad
+        
+        phoneNumStack.field.borderStyle = .roundedRect
+        phoneNumStack.field.keyboardType = .phonePad
+        
+        stackView.addArrangedSubviews(nameStack, ageStack, phoneNumStack)
+        view.addSubview(stackView)
+    }
+    
+    private func addConstraint() {
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            stackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            stackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+        ])
+    }
+    
+    private func addNavigationBar() {
         let navbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
         navbar.backgroundColor = .clear
         navbar.barTintColor = .systemBackground
@@ -112,8 +95,8 @@ class ContactCreationViewController: UIViewController {
     
     @objc func didTapSaveButton(_ sender: UINavigationItem) {
         hideKeyboard()
-      
-        guard let age = ageField.text, let ageToInt = Int(age), let phoneNum = phoneNumberField.text, let name = nameField.text else {
+        
+        guard let age = ageStack.field.text, let ageToInt = Int(age), let phoneNum = phoneNumStack.field.text, let name = nameStack.field.text else {
             presentAlert(message: "정보를 입력해주세요")
             return
         }
@@ -121,7 +104,7 @@ class ContactCreationViewController: UIViewController {
         let labels: [(String, ValidateType)] = [(age, .age),(name, .name),(phoneNum, .phoneNum)]
         
         do {
-           try labels.forEach { text, type in
+            try labels.forEach { text, type in
                 try checkValidate(text: text, type: type)
             }
         } catch let error as InvalidError {
@@ -136,58 +119,11 @@ class ContactCreationViewController: UIViewController {
         self.delegate?.addContact(newContact)
         dismiss(animated: true)
     }
-    
-    private func contactView() {
-        
-        nameLabel.text = "이름"
-        nameField.borderStyle = .roundedRect
-        nameField.widthAnchor.constraint(equalToConstant: 320).isActive = true
-        
-        ageLabel.text = "나이"
-        ageField.borderStyle = .roundedRect
-        ageField.keyboardType = .numberPad
-        ageField.widthAnchor.constraint(equalToConstant: 320).isActive = true
-        
-        phoneNumberLabel.text = "연락처"
-        phoneNumberField.borderStyle = .roundedRect
-        phoneNumberField.keyboardType = .phonePad
-        phoneNumberField.widthAnchor.constraint(equalToConstant: 320).isActive = true
-        
-        let nameStack = [nameLabel, nameField]
-        nameStack.forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.nameStackView.addArrangedSubview($0)
-        }
-        
-        let ageStack = [ageLabel, ageField]
-        ageStack.forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.ageStackView.addArrangedSubview($0)
-        }
-        
-        let phoneStack = [phoneNumberLabel, phoneNumberField]
-        phoneStack.forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.phoneStackView.addArrangedSubview($0)
-        }
-        
-        let stacksView = [nameStackView, ageStackView, phoneStackView]
-        for stack in stacksView {
-            self.stackView.addArrangedSubview(stack)
-        }
-        
-        view.addSubview(stackView)
-        
-        stackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
-    }
 }
 
 extension ContactCreationViewController: UITextFieldDelegate {
     private func hideKeyboard() {
         self.view.endEditing(true)
-        print(nameField.text ?? "")
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -201,9 +137,9 @@ extension ContactCreationViewController: UITextFieldDelegate {
         }
         
         switch textField {
-        case self.ageField:
+        case ageStack.field:
             return isDecimalDigit(string)
-        case self.phoneNumberField:
+        case phoneNumStack.field:
             guard isDecimalDigit(string) else { return false }
             
             guard let text = textField.text else {
