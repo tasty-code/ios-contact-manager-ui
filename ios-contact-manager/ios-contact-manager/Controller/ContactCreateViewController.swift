@@ -15,6 +15,15 @@ class ContactCreateViewController: UIViewController {
     weak var delegate: ContactsManagable?
     var contact: Contact?
     
+    init(_ contact: Contact?) {
+        self.contact = contact
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureViewComponents()
