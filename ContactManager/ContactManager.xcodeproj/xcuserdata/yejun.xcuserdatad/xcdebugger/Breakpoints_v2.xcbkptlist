@@ -21,22 +21,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "518CDA73-A77A-4BAD-9D7B-6C1DF1292C93"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ContactManager/Controller/AddContactViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "saveButtonTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "E01ED7D5-522E-48C8-9959-3F58A34CE1D6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -63,6 +47,38 @@
             startingLineNumber = "25"
             endingLineNumber = "25"
             landmarkName = "showAlert(viewController:message:defaultButtonTitle:destructiveButtonTitle:destructiveAction:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3FD284D7-F561-4FC6-BBBB-6644CCDC10FB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ContactManagerTests/ContactManagerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "test_phone_&#xbc88;&#xd638;&#xac00;_9&#xc790;&#xb9ac;&#xba74;_true()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "67125A5B-C952-4B4B-BC25-1B602F0448F0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ContactManagerTests/ContactManagerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "test_phone_&#xbc88;&#xd638;&#xac00;_9&#xc790;&#xb9ac;_&#xbbf8;&#xb9cc;&#xc774;&#xba74;_false()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
