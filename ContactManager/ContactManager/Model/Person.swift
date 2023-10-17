@@ -9,6 +9,6 @@ import Foundation
 
 struct Person: Codable {
     let name: String
-    let age: Int
+    let age: String
     let digits: String
 }

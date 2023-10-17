@@ -15,6 +15,8 @@
 		CB8D4C132ACE41B6002132D4 /* ContactBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D4C122ACE41B6002132D4 /* ContactBook.swift */; };
 		CB8D4C152ACE4236002132D4 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D4C142ACE4236002132D4 /* Person.swift */; };
 		CB8D4C172ACE4D69002132D4 /* WholeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D4C162ACE4D69002132D4 /* WholeListTableViewController.swift */; };
+		CBA735212AD6266100E5E184 /* AddNewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA735202AD6266100E5E184 /* AddNewContactViewController.swift */; };
+		CBD4CF8A2AD7C9A7002EA0ED /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD4CF892AD7C9A7002EA0ED /* InputError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		CB8D4C122ACE41B6002132D4 /* ContactBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactBook.swift; sourceTree = "<group>"; };
 		CB8D4C142ACE4236002132D4 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CB8D4C162ACE4D69002132D4 /* WholeListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeListTableViewController.swift; sourceTree = "<group>"; };
+		CBA735202AD6266100E5E184 /* AddNewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewContactViewController.swift; sourceTree = "<group>"; };
+		CBD4CF892AD7C9A7002EA0ED /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				CB8D4C162ACE4D69002132D4 /* WholeListTableViewController.swift */,
+				CBA735202AD6266100E5E184 /* AddNewContactViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 			children = (
 				CB8D4C122ACE41B6002132D4 /* ContactBook.swift */,
 				CB8D4C142ACE4236002132D4 /* Person.swift */,
+				CBD4CF892AD7C9A7002EA0ED /* InputError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,6 +182,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBA735212AD6266100E5E184 /* AddNewContactViewController.swift in Sources */,
+				CBD4CF8A2AD7C9A7002EA0ED /* InputError.swift in Sources */,
 				CB8D4C152ACE4236002132D4 /* Person.swift in Sources */,
 				CB8D4C172ACE4D69002132D4 /* WholeListTableViewController.swift in Sources */,
 				CB8D4BFE2ACE3D52002132D4 /* AppDelegate.swift in Sources */,
