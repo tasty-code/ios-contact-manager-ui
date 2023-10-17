@@ -9,7 +9,7 @@ final class ContactTableViewCell: UITableViewCell, ContactCellConfigurable {
         super.setSelected(selected, animated: animated)
     }
     
-    func configureCell(_ tableView: ContactListViewController, item contact: Contact) {
+    func configureCell(item contact: Contact) {
         
     }
 }

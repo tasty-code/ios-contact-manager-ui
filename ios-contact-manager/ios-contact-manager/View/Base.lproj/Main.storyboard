@@ -17,31 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="rC2-oH-tEh">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="연락처" id="Pjd-ku-x7n">
-                                    <barButtonItem key="rightBarButtonItem" systemItem="add" id="6AM-NW-TjE">
-                                        <connections>
-                                            <action selector="touchAddBarButton:" destination="7xY-kp-Nv3" id="cIU-SJ-xrC"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ContactCell" id="9V1-YQ-iYM" customClass="ContactTableViewCell" customModule="ios_contact_manager" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="94" width="393" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="HAT-TH-1BJ">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9V1-YQ-iYM" id="NrW-LJ-qUZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="43.666667938232422"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HAT-TH-1BJ" id="zTG-e7-YFE">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" none="YES"/>
-                                    <bool key="isElement" value="YES"/>
-                                </accessibility>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -54,10 +37,10 @@
             </objects>
             <point key="canvasLocation" x="778" y="-264"/>
         </scene>
-        <!--Contact Create View Controller-->
+        <!--Contact Form View Controller-->
         <scene sceneID="FtE-UP-02Y">
             <objects>
-                <viewController storyboardIdentifier="ContactCreateViewController" id="Z80-gc-5yp" customClass="ContactCreateViewController" customModule="ios_contact_manager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactCreateViewController" id="Z80-gc-5yp" customClass="ContactFormViewController" customModule="ios_contact_manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NDo-B6-fai">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
