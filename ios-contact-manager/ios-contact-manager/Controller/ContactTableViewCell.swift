@@ -1,7 +1,6 @@
 import UIKit
 
-final class ContactTableViewCell: UITableViewCell {
-
+final class ContactTableViewCell: UITableViewCell, ContactCellConfigurable {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -10,10 +9,7 @@ final class ContactTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configureCell(item contact: Contact) {
-        var content = self.defaultContentConfiguration()
-        content.text = "\(contact.name)(\(contact.age))"
-        content.secondaryText = "\(contact.phoneNumber)"
-        self.contentConfiguration = content
+    func configureCell(_ tableView: ContactListViewController, item contact: Contact) {
+        
     }
 }
