@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     var cellIdentifier: String = "cell"
     var addressBook: AddressBook  = AddressBook()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,14 +25,14 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension ViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return addressBook.getSectionSize()
+        addressBook.getSectionSize()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return addressBook.getRowSize(section)
+        addressBook.getRowSize(section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,9 +47,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ViewController {
     @IBAction func TappedAddButton(_ sender: UIBarButtonItem) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "NewContactViewController") as? NewContactViewController else { return }
-        vc.delegate = self
-        self.present(vc, animated: true)
+        guard let newContactViewController = storyboard?.instantiateViewController(withIdentifier: "NewContactViewController") as? NewContactViewController else { return }
+        newContactViewController.delegate = self
+        self.present(newContactViewController, animated: true)
     }
 }
 

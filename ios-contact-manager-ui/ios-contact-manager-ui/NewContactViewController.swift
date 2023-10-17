@@ -18,12 +18,12 @@ class NewContactViewController: UIViewController {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     
     var delegate: SendDelegate?
-    var isHyphen = [false, false]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationSetting()
         keyboardSetting()
-        self.phoneNumberTextField.addTarget(self, action: #selector(self.didChangePhoneNumberTextField(_:)), for: .editingChanged)
+        phoneNumberTextField.delegate = self
     }
     
     func navigationSetting() {
@@ -94,93 +94,7 @@ extension NewContactViewController {
         guard let number = phoneNumberTextField.text else {
             return nil
         }
-        return number.count >= 11 && !isHyphen.contains(false) ? number : nil
-    }
-    
-    @objc func didChangePhoneNumberTextField(_ send: Any?) {
-        guard var number = phoneNumberTextField.text else { return }
-        let mobile: [String] = ["010"]
-        let seoulLocal: String = "02-"
-        var special: [String] = mobile
-        special.append(seoulLocal)
-        
-        if number.count == 0 {
-            isHyphen = [false, false]
-            return
-        }
-        
-        // 010 핸드폰
-        if number.count == 4 && mobile.contains(String(number.prefix(3))) {
-            if !isHyphen[0] {
-                number.insert("-", at: number.index(number.startIndex, offsetBy: 3))
-            }
-            isHyphen[0].toggle()
-            phoneNumberTextField.text = number
-            return
-        }
-        
-        if number.count == 9 && mobile.contains(String(number.prefix(3))) {
-            if  !isHyphen[1] {
-                number.insert("-", at: number.index(number.startIndex, offsetBy: 8))
-            }
-            isHyphen[1].toggle()
-            phoneNumberTextField.text = number
-            return
-        }
-        
-        // ETC 지역번호
-        if number.count == 4 && !special.contains(String(number.prefix(3))) {
-            if  !isHyphen[0] {
-                number.insert("-", at: number.index(number.startIndex, offsetBy: 3))
-            }
-            isHyphen[0].toggle()
-            phoneNumberTextField.text = number
-            return
-        }
-        
-        if number.count == 8 && !special.contains(String(number.prefix(3))) {
-            if !isHyphen[1] {
-                number.insert("-", at: number.index(number.startIndex, offsetBy: 7))
-            }
-            isHyphen[1].toggle()
-            phoneNumberTextField.text = number
-            return
-        }
-        
-        if number.count == 13 && !special.contains(String(number.prefix(3))) {
-            number = number.components(separatedBy: "-").joined()
-            number.insert("-", at: number.index(number.startIndex, offsetBy: 3))
-            number.insert("-", at: number.index(number.startIndex, offsetBy: 8))
-            phoneNumberTextField.text = number
-            return
-        }
-        
-        //02
-        if number.count == 3 && seoulLocal.contains(String(number.prefix(2))) {
-            if !isHyphen[0] {
-                number.insert("-", at: number.index(number.startIndex, offsetBy: 2))
-            }
-            isHyphen[0].toggle()
-            phoneNumberTextField.text = number
-            return
-        }
-        
-        if number.count == 7 && seoulLocal.contains(String(number.prefix(2))) {
-            if !isHyphen[1] {
-                number.insert("-", at: number.index(number.startIndex, offsetBy: 6))
-            }
-            isHyphen[1].toggle()
-            phoneNumberTextField.text = number
-            return
-        }
-        
-        if number.count == 12 && seoulLocal.contains(String(number.prefix(2))) {
-            number = number.components(separatedBy: "-").joined()
-            number.insert("-", at: number.index(number.startIndex, offsetBy: 2))
-            number.insert("-", at: number.index(number.startIndex, offsetBy: 7))
-            phoneNumberTextField.text = number
-            return
-        }
+        return number.count >= 11 && number.filter { $0 == "-" }.count == 2 ? number : nil
     }
     
     func invalidAlert(invalid: UITextField) {
@@ -203,3 +117,32 @@ extension NewContactViewController {
     }
 }
 
+extension NewContactViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard var number = phoneNumberTextField.text else { return false }
+        
+        if range.location == 2 && number.last != "-" {
+            number.insert("-", at: number.index(number.startIndex, offsetBy: 2))
+            print(number.count)
+        }
+        
+        if range.location == 6 && number.last != "-" {
+            number.insert("-", at: number.index(number.startIndex, offsetBy: 6))
+        }
+        
+        if range.location == 11 {
+            number = number.components(separatedBy: "-").joined()
+            number.insert("-", at: number.index(number.startIndex, offsetBy: 2))
+            number.insert("-", at: number.index(number.startIndex, offsetBy: 7))
+        }
+        
+        if range.location == 12 {
+            number = number.components(separatedBy: "-").joined()
+            number.insert("-", at: number.index(number.startIndex, offsetBy: 3))
+            number.insert("-", at: number.index(number.startIndex, offsetBy: 8))
+        }
+        
+        phoneNumberTextField.text = number
+        return true
+    }
+}
