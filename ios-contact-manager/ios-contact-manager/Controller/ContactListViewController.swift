@@ -44,13 +44,16 @@ final class ContactListViewController: UITableViewController {
     }
     
     private func presentEditViewController(_ contact: Contact?) {
-        
         if let contact = contact {
-            let contactEditViewController = ContactEditViewController(contact)
+            guard let contactEditViewController = storyboard?.instantiateViewController(identifier: "ContactEditViewController", creator: { coder in
+                return ContactEditViewController(coder, contact)
+            }) else { return }
             contactEditViewController.delegate = self
             self.present(contactEditViewController, animated: true)
         } else {
-            let contactCreateViewController = ContactCreateViewController(nil)
+            guard let contactCreateViewController = storyboard?.instantiateViewController(identifier: "ContactCreateViewController", creator: { coder in
+                return ContactCreateViewController(coder, nil)
+            }) else { return }
             contactCreateViewController.delegate = self
             self.present(contactCreateViewController, animated: true)
         }
