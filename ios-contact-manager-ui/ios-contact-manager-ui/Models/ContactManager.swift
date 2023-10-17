@@ -21,7 +21,8 @@ final class ContactManager {
         return contact.id
     }
     
-    func deleteContact(index: Int) {
+    func deleteContact(by id: ObjectIdentifier) {
+        guard let index = contacts.firstIndex(where: { $0.id == id }) else { return }
         contacts.remove(at: index)
     }
     
