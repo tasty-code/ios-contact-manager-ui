@@ -13,12 +13,14 @@ final class ContactListViewController: UIViewController {
     private var isActive: Bool {
         navigationItem.searchController?.isActive ?? false
     }
+    
     @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureNavigationBar()
-        tableView.dataSource = self
+        configureTableView()
         observeUpdatedContacts()
     }
     
@@ -26,6 +28,12 @@ final class ContactListViewController: UIViewController {
         self.navigationItem.title = "연락처"
         self.navigationItem.rightBarButtonItem = buildAddButton()
         self.navigationItem.searchController = makeSearchBar()
+    }
+    
+    private func configureTableView() {
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     private func buildAddButton() -> UIBarButtonItem {

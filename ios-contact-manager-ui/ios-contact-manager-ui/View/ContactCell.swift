@@ -8,14 +8,28 @@
 import UIKit
 
 class ContactCell: UITableViewCell {
-
-    @IBOutlet weak var personLabel: UILabel!
-    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet private weak var thumbnailImage: UIImageView!
+    @IBOutlet private weak var personLabel: UILabel!
+    @IBOutlet private weak var ageLabel: UILabel!
+    @IBOutlet private weak var phoneNumberLabel: UILabel!
     
-    func configureCell(_ contact: Contact) {
-        personLabel.text = "\(contact.name)(\(contact.age))"
-        phoneNumberLabel.text = contact.phoneNumber
+    private let imageName = ["person.fill", "paperplane.fill", "trash.fill", "graduationcap.fill"]
+    
+    override func awakeFromNib() {
         self.accessoryType = .disclosureIndicator
     }
     
+    override func prepareForReuse() {
+        thumbnailImage.image = nil
+        personLabel.text = "NaN"
+        ageLabel.text = "0"
+        phoneNumberLabel.text = "NaN"
+    }
+    
+    func configureCell(_ contact: Contact) {
+        thumbnailImage.image = UIImage(systemName: imageName[contact.age % imageName.count])
+        personLabel.text = "이름: \(contact.name)"
+        ageLabel.text = "나이: \(contact.age)"
+        phoneNumberLabel.text = "연락처: \(contact.phoneNumber)"
+    }
 }
