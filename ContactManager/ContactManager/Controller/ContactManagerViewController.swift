@@ -8,10 +8,11 @@
 import UIKit
 
 final class ContactManagerViewController: UIViewController, UITableViewDelegate {
+  
   // MARK: - Property
   
   @IBOutlet private weak var contactTableView: UITableView!
-  private let manager = ContactManager()
+  private var contacts = [Contact]()
   
   // MARK: - Methods
   
@@ -19,35 +20,65 @@ final class ContactManagerViewController: UIViewController, UITableViewDelegate 
     super.viewDidLoad()
     contactTableView.delegate = self
     contactTableView.dataSource = self
-    
-    NotificationCenter.default.addObserver(self, selector: #selector(reload), name: NSNotification.Name("AddContact"), object: nil)
-  }
-  
-  @objc private func reload() {
-    contactTableView.reloadData()
+    loadData()
   }
   
   @IBAction private func addContactTapped(_ sender: UIBarButtonItem) {
-    guard let addContactView = storyboard?.instantiateViewController(
-      identifier: "addContactView", creator: { creater in
-        let viewController = AddContactViewController(coder: creater, manager: self.manager)
-        return viewController
-      }) else { return }
+    guard let addContactView = storyboard?.instantiateViewController(withIdentifier: "addContactView") as? AddContactViewController else { return }
+    addContactView.contactAddDelegate = self
+    addContactView.contactChangedDelegate = self
     
     self.present(addContactView, animated: true)
   }
+  
+  private func loadData() {
+    do {
+      let decoder = JSONDecoder()
+      guard let asset = NSDataAsset.init(name: "data") else { return }
+      self.contacts = try decoder.decode([Contact].self, from: asset.data)
+    } catch {
+      print(error.localizedDescription)
+    }
+  }
+  
+  private func getValidData(nameText: String?, ageText: String?, phoneText: String?) throws -> (String, Int, String) {
+    let name = try nameText.getValidName()
+    let age = try ageText.getValidAge()
+    let phone = try phoneText.getValidPhone()
+    
+    return (name: name, age: age, phone: phone)
+  }
 }
+
+//MARK: - UITableViewDataSource
 
 extension ContactManagerViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return manager.getContacts().count
+    return contacts.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell: ContactTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
-    let contacts = manager.getContacts()
     
     cell.configure(model: contacts[indexPath.row])
     return cell
+  }
+}
+
+//MARK: - ContactAddDelegate
+
+extension ContactManagerViewController: ContactAddDelegate {
+  func addContact(nameText: String?, ageText: String?, phoneText: String?) throws {
+    let (name, age, phone) = try getValidData(nameText: nameText, ageText: ageText, phoneText: phoneText)
+    let data = Contact(name: name, age: age, phone: phone)
+    contacts.append(data)
+  }
+}
+
+//MARK: - ContactChangedDelegate
+
+extension ContactManagerViewController: ContactChangedDelegate {
+  func reload() {
+    contactTableView.reloadData()
   }
 }

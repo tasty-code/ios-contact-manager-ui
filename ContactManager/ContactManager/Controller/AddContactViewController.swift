@@ -8,20 +8,12 @@
 import UIKit
 
 class AddContactViewController: UIViewController {
-  private var manager: ContactManager
-  private let alertViewController = AlertViewController()
+  var contactAddDelegate: ContactAddDelegate?
+  var contactChangedDelegate: ContactChangedDelegate?
+
   @IBOutlet private var nameTextField: UITextField!
   @IBOutlet private var ageTextField: UITextField!
   @IBOutlet private var phoneTextField: UITextField!
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  required init?(coder: NSCoder, manager: ContactManager) {
-    self.manager = manager
-    super.init(coder: coder)
-  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,9 +21,10 @@ class AddContactViewController: UIViewController {
   
   @IBAction private func saveButtonTapped(_ sender: UIButton) {
     do {
-      try manager.addContact(nameText: nameTextField.text,
-                             ageText: ageTextField.text,
-                             phoneText: phoneTextField.text)
+      try contactAddDelegate?.addContact(nameText: nameTextField.text,
+                              ageText: ageTextField.text,
+                              phoneText: phoneTextField.text)
+      contactChangedDelegate?.reload()
       dismiss(animated: true)
     } catch {
       AlertViewController.showAlert(viewController: self,
