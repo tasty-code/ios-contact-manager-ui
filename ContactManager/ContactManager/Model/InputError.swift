@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum InputError: Error, CustomDebugStringConvertible {
+enum InputError: Error, LocalizedError {
     case name
     case age
     case digits
     case exception
-    
-    var debugDescription: String {
+
+    var errorDescription: String? {
         switch self {
         case .name:
             return "입력한 이름정보가 잘못되었습니다"

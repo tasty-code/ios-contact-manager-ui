@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol SendPersonContactData {
-    func sendData(name: String, age: String, digits: String)
+protocol PersonContactSending: AnyObject {
+    func updateNewPersonContact(name: String, age: String, digits: String)
 }
 
 final class AddNewContactViewController: UIViewController {
     
-    var delegate: SendPersonContactData?
+    weak var delegate: PersonContactSending?
     
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputAge: UITextField!
@@ -31,35 +31,24 @@ final class AddNewContactViewController: UIViewController {
     @IBAction func saveNewPersonContact(_ sender: Any) {
         guard var name = inputName.text, let age = inputAge.text, let digits = inputDigits.text
         else {
-            return presentInputValidationAlert(.exception)
+            return presentInputValidationAlert(InputError.exception)
         }
         
         do {
             try hasText(name, age, digits)
             try isAgeLimitOver(age)
             try isDigitsProper(digits)
+            name = removeEmptySpace(name)
+            
+            delegate?.updateNewPersonContact(name: name, age: age, digits: digits)
+            self.dismiss(animated: true)
         } catch {
-            switch error {
-            case InputError.name:
-                presentInputValidationAlert(.name)
-            case InputError.age:
-                presentInputValidationAlert(.age)
-            case InputError.digits:
-                presentInputValidationAlert(.digits)
-            default:
-                presentInputValidationAlert(.exception)
-            }
-            return
+            presentInputValidationAlert(error)
         }
-        
-        name = removeEmptySpace(name)
-        
-        delegate?.sendData(name: name, age: age, digits: digits)
-        self.dismiss(animated: true)
     }
     
-    private func presentInputValidationAlert(_ errorType: InputError) {
-        let alert = UIAlertController(title: errorType.debugDescription, message: nil, preferredStyle: .alert)
+    private func presentInputValidationAlert(_ error: Error) {
+        let alert = UIAlertController(title: "\(error.localizedDescription)", message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)
         
         alert.addAction(okAction)
