@@ -25,43 +25,23 @@ class ContactManager {
   }
   
   func addContact(nameText: String?, ageText: String?, phoneText: String?) throws {
-    let name = try getValidName(nameText)
-    let age = try getValidAge(ageText)
-    let phone = try getValidPhone(phoneText)
-    
+    let (name, age, phone) = try getValidData(nameText: nameText, ageText: ageText, phoneText: phoneText)
     let data = Contact(name: name, age: age, phone: phone)
     contacts.append(data)
+    
     NotificationCenter.default.post(name: NSNotification.Name("AddContact"),
                                     object: self)
   }
   
+  func getValidData(nameText: String?, ageText: String?, phoneText: String?) throws -> (String, Int, String) {
+    let name = try nameText.getValidName()
+    let age = try ageText.getValidAge()
+    let phone = try phoneText.getValidPhone()
+    
+    return (name: name, age: age, phone: phone)
+  }
+  
   func getContacts() -> Array<Contact> {
     return self.contacts
-  }
-  
-  // MARK: - Validate
-  
-  private func getValidName(_ name: String?) throws -> String {
-    guard let name = name?.components(separatedBy: " ").joined() else { throw ValidationError.nameValidationError }
-    if name.isEmpty { throw ValidationError.nameValidationError }
-    
-    return name
-  }
-  
-  private func getValidAge(_ age: String?) throws -> Int {
-    let age = Int(age?.components(separatedBy: " ").joined() ?? "")
-    guard let age = age else { throw ValidationError.ageValidationError }
-    if (age > 999) || (age < 0) { throw ValidationError.ageValidationError }
-    
-    return age
-  }
-  
-  private func getValidPhone(_ phone: String?) throws -> String {
-    guard let phone = phone else { throw ValidationError.phoneValidationError }
-    let dashCount = phone.filter { ($0) == "-" }.count
-    if dashCount != 2 { throw ValidationError.phoneValidationError }
-    if (phone.count - dashCount) < 9 { throw ValidationError.phoneValidationError }
-    
-    return phone
   }
 }
