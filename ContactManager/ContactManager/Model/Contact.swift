@@ -10,8 +10,8 @@ import Foundation
 struct Contact: Codable {
   let uid: UUID = UUID()
   var name: String
-  var phone: String
   var age: Int
+  var phone: String
   var nameAndAge: String {
     return "\(name)(\(age))"
   }

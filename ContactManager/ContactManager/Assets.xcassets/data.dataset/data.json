@@ -5,13 +5,19 @@
       "age":10
    },
    {
-      "name":"Rarla1",
-      "phone":"010-1234-1234",
-      "age":10
+      "name":"Linsaeng",
+      "phone":"010-5213-1624",
+      "age":20
    },
    {
-      "name":"Rarla2",
-      "phone":"010-1234-1234",
-      "age":10
+      "name":"Yohan",
+      "phone":"010-1524-4124",
+      "age":30
+   },
+   {
+      "name":"Yohan",
+      "phone":"010-1524-4124",
+      "age":30,
+      "uid":"4952C685-66E0-4E5E-984F-0836C91E237A"
    }
 ]
