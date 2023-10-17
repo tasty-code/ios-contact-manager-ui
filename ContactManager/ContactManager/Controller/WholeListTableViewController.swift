@@ -15,24 +15,6 @@ final class WholeListTableViewController: UITableViewController {
         super.viewDidLoad()
         setPersonContactList()
     }
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactBook.rowCountContactList()
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactList", for: indexPath)
-        let personContact = contactBook.bringPersonContact(indexPath)
-        
-        cell.textLabel?.text = personContact.name + "(\(personContact.age))"
-        cell.detailTextLabel?.text = personContact.digits
-        
-        return cell
-    }
     
     @IBAction private func moveToAddNewContact(_ sender: Any) {
         guard let addNewContactVC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewContactViewController") as? AddNewContactViewController else { return }
@@ -58,5 +40,38 @@ extension WholeListTableViewController: SendPersonContactData {
         let newPersonContact = Person(name: name, age: age, digits: digits)
         contactBook.addPersonContact(newPersonContact)
         self.tableView.reloadData()
+    }
+}
+
+extension WholeListTableViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return contactBook.rowCountContactList()
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contactList", for: indexPath)
+        let personContact = contactBook.bringPersonContact(indexPath)
+        
+        cell.textLabel?.text = personContact.name + "(\(personContact.age))"
+        cell.detailTextLabel?.text = personContact.digits
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            contactBook.deletePersonContact(indexPath)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        }
     }
 }
