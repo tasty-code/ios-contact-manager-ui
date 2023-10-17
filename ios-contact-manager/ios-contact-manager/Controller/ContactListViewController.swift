@@ -6,6 +6,8 @@ final class ContactListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addObserver()
+        configureSearchController()
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -81,5 +83,26 @@ extension ContactListViewController {
             queue: nil) { [weak self] _ in
                 self?.tableView.reloadData()
             }
+    }
+}
+
+extension ContactListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        dump(searchController.searchBar.text)
+    }
+    
+    
+    func configureSearchController() {
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        
+        searchController.searchBar.placeholder = "연락처 검색"
+        searchController.searchResultsUpdater = self
+        
+        searchController.obscuresBackgroundDuringPresentation = false
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        
+        self.navigationItem.searchController = searchController
+        
     }
 }

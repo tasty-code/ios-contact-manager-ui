@@ -19,6 +19,13 @@ final class ContactEditViewController: ContactFormViewController {
         fatalError("Edit View Controller 생성 실패")
     }
     
+    override func configureViewComponents() {
+        guard let contact = self.temporaryContainer.contact else { return }
+        self.nameTextField.text = contact.name
+        self.ageTextField.text = "\(contact.age)"
+        self.phoneNumberTextField.text = contact.phoneNumber
+        super.configureViewComponents()
+    }
     override func touchSaveBarButton(_ sender: UIBarButtonItem) {
         let name = self.nameTextField.text
         let age = self.ageTextField.text

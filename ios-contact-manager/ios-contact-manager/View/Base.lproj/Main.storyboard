@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7xY-kp-Nv3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="seh-3s-KaA">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Contact List View Controller-->
+        <!--연락처-->
         <scene sceneID="rMl-Ry-esp">
             <objects>
                 <tableViewController id="7xY-kp-Nv3" customClass="ContactListViewController" customModule="ios_contact_manager" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="HAT-TH-1BJ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" id="HAT-TH-1BJ" customClass="ContactTableViewCell" customModule="ios_contact_manager" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HAT-TH-1BJ" id="zTG-e7-YFE">
@@ -32,10 +32,17 @@
                             <outlet property="delegate" destination="7xY-kp-Nv3" id="CAu-on-aEt"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="연락처" id="Xe9-yc-GfU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="T7w-JA-KAw">
+                            <connections>
+                                <action selector="touchAddBarButton:" destination="7xY-kp-Nv3" id="4Jd-kC-MpR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgi-v2-7HZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="778" y="-264"/>
+            <point key="canvasLocation" x="624" y="-249"/>
         </scene>
         <!--Contact Form View Controller-->
         <scene sceneID="FtE-UP-02Y">
@@ -132,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kUx-B7-S3P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1506" y="-264"/>
+            <point key="canvasLocation" x="1505" y="-555"/>
         </scene>
         <!--Contact Edit View Controller-->
         <scene sceneID="jtp-6i-N3b">
@@ -229,7 +236,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAQ-Zz-OuW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1505" y="406"/>
+            <point key="canvasLocation" x="1505" y="148"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eh8-tb-oqE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="seh-3s-KaA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ix9-VX-pFE">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7xY-kp-Nv3" kind="relationship" relationship="rootViewController" id="sAu-EN-odh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dYB-T7-ODf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-305" y="-249"/>
         </scene>
     </scenes>
     <resources>
