@@ -37,15 +37,20 @@ final class ContactsViewController: UIViewController {
 
 extension ContactsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactManager.contactsCount
+        return isSearching ? contactManager.fetchContactsContains(with: searchingName).count : contactManager.contactsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
-        let contact = contactManager.showContact(index: indexPath.row)
-        cell.textLabel?.text = "\(contact.name)(\(contact.age))"
-        cell.detailTextLabel?.text = "\(contact.phoneNumber)"
-        cell.accessoryType = .disclosureIndicator
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as? ContactCell else { return UITableViewCell() }
+        var contact: Contact
+        
+        if isSearching {
+            let contacts = contactManager.fetchContactsContains(with: searchingName)
+            contact = contacts[indexPath.row]
+        } else {
+            contact = contactManager.showContact(index: indexPath.row)
+        }
+        cell.configureCell(with: contact)
         
         return cell
     }
