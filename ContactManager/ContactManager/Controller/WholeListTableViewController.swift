@@ -53,12 +53,14 @@ extension WholeListTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactList", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomTableViewCell
         let personContact = contactBook.bringPersonContact(indexPath)
         
-        cell.textLabel?.text = personContact.name + "(\(personContact.age))"
-        cell.detailTextLabel?.text = personContact.digits
+        cell.name.text = personContact.name
+        cell.age.text = personContact.age
+        cell.digits.text = personContact.digits
         
+
         return cell
     }
     
