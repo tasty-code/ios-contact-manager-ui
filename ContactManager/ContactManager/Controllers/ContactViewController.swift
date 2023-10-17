@@ -3,15 +3,29 @@ final class ContactViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     private var contactDTOs: [ContactDTO] = []
-    private var filteredName: [String] = []
-    private var filteredAge: [String] = []
-    private var filteredPhoneNumber: [String] = []
-    private let alertController = UIAlertController()
+    private var filteredContact = FilteredContact()
     
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadJSON()
+        loadDelegate()
+    }
+    
+    @available(iOS 16.0, *)
+    @IBAction private func touchUpAddButton(_ sender: Any) {
+        guard let newContactViewController
+                = self.storyboard?.instantiateViewController(identifier: "NewContactViewController")
+                as? NewContactViewController else {
+            return
+        }
+        newContactViewController.delegate = self
+        present(newContactViewController, animated: true)
+    }
+    
+    private func loadJSON() {
+        let alertController = UIAlertController()
         do {
             if let dummyContactDTOs = try decodeJSON() {
                 contactDTOs = dummyContactDTOs
@@ -25,28 +39,20 @@ final class ContactViewController: UIViewController {
                                           destructiveAction: nil,
                                           viewController: self)
         }
+    }
+    
+    private func loadDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        searchBar.placeholder = "하이이이"
-    }
-    
-    @available(iOS 16.0, *)
-    @IBAction private func touchUpAddButton(_ sender: Any) {
-        guard let newContactViewController
-                = self.storyboard?.instantiateViewController(identifier: "NewContactViewController")
-                as? NewContactViewController else {
-            return
-        }
-        newContactViewController.delegate = self
-        present(newContactViewController, animated: true)
+        searchBar.placeholder = "찾을 사람을 검색하세요."
     }
 }
 
 extension ContactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if filteredName.count != 0 {
-            return filteredName.count
+        if filteredContact.names.count != 0 {
+            return filteredContact.names.count
         } else {
             return contactDTOs.count
         }
@@ -58,31 +64,16 @@ extension ContactViewController: UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
         var content = cell.defaultContentConfiguration()
         
-//        print(filteredName.count)
+        let name = filteredContact.names.count == 0 ? contactDTOs[indexPath.row].name : filteredContact.names[indexPath.row]
+        let age = contactDTOs[indexPath.row].age
+        let phoneNumber = filteredContact.phoneNumbers.count == 0 ? contactDTOs[indexPath.row].phoneNumber : filteredContact.phoneNumbers[indexPath.row]
         
-        if filteredName.count != 0 {
-            let name = filteredName[indexPath.row]
-            let age = filteredAge[indexPath.row]
-            let phoneNumber = filteredPhoneNumber[indexPath.row]
-            
-            content.text = "\(name) (\(age))"
-            content.secondaryText = phoneNumber
-            cell.contentConfiguration = content
-            
-            return cell
-        } else {
-            let contactDTOs = contactDTOs[indexPath.row]
-            
-            let name = contactDTOs.name
-            let age = contactDTOs.age
-            let phoneNumber = contactDTOs.phoneNumber
-            
-            content.text = "\(name) (\(age))"
-            content.secondaryText = phoneNumber
-            cell.contentConfiguration = content
-            
-            return cell
-        }
+        content.text = "\(name) (\(age))"
+        content.secondaryText = phoneNumber
+        cell.contentConfiguration = content
+        
+        return cell
+        
     }
     
     func tableView(_ tableView: UITableView, editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -108,46 +99,31 @@ extension ContactViewController: UITableViewDelegate { }
 extension ContactViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredName = []
-        filteredAge = []
-        filteredPhoneNumber = []
-        var names: [String] = []
-        var ages: [String] = []
-        var phoneNumbers: [String] = []
+        filteredContact.names = []
+        filteredContact.phoneNumbers = []
         
-        for element in contactDTOs {
-            names.append(element.name)
-            ages.append(element.age)
-            phoneNumbers.append(element.phoneNumber)
-        }
+        let names: [String] = contactDTOs.map { $0.name }
+        let ages: [String] = contactDTOs.map { $0.age }
+        let phoneNumbers: [String] = contactDTOs.map { $0.phoneNumber }
         
         if searchText.isEmpty {
-            filteredName = names
-            filteredAge = ages
-            filteredPhoneNumber = phoneNumbers
+            filteredContact.names = names
+            filteredContact.phoneNumbers = phoneNumbers
         }
-        
+    
         for (index, word) in names.enumerated() {
             if word.uppercased().contains(searchText.uppercased()) {
-                filteredName.append(word)
-                filteredAge.append(ages[index])
-                filteredPhoneNumber.append(phoneNumbers[index])
-            }
-        }
-        
-        for (index, word) in ages.enumerated() {
-            if word.uppercased().contains(searchText.uppercased()) {
-                filteredName.append(names[index])
-                filteredAge.append(word)
-                filteredPhoneNumber.append(phoneNumbers[index])
+                filteredContact.names.append(word)
+                filteredContact.ages.append(ages[index])
+                filteredContact.phoneNumbers.append(phoneNumbers[index])
             }
         }
         
         for (index, word) in phoneNumbers.enumerated() {
             if word.uppercased().contains(searchText.uppercased()) {
-                filteredName.append(names[index])
-                filteredAge.append(ages[index])
-                filteredPhoneNumber.append(word)
+                filteredContact.names.append(names[index])
+                filteredContact.ages.append(ages[index])
+                filteredContact.phoneNumbers.append(word)
             }
         }
         
