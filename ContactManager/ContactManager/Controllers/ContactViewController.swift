@@ -26,7 +26,7 @@ final class ContactViewController: UIViewController {
     
     @available(iOS 16.0, *)
     @IBAction private func touchUpAddButton(_ sender: Any) {
-        guard let newContactViewController 
+        guard let newContactViewController
                 = self.storyboard?.instantiateViewController(identifier: "NewContactViewController")
                 as? NewContactViewController else {
             return
@@ -42,8 +42,8 @@ extension ContactViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell 
-                = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell: UITableViewCell
+        = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.accessoryType = .disclosureIndicator
         var content = cell.defaultContentConfiguration()
         
@@ -58,6 +58,13 @@ extension ContactViewController: UITableViewDataSource {
         cell.contentConfiguration = content
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            contactDTOs.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
 
