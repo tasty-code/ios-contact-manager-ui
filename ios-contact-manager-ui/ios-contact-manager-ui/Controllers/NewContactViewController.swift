@@ -38,7 +38,16 @@ final class NewContactViewController: UIViewController {
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
-        showAlert(with: "정말로 취소하시겠습니까?")
+        let alertKind = AlertKind.cancel(
+            title: "정말로 취소하시겠습니까?",
+            actions: [
+                UIAlertAction(title: "예", style: .destructive, handler: { _ in
+                    self.dismiss(animated: true)
+                }),
+                UIAlertAction(title: "아니오", style: .cancel)
+            ]
+        )
+        present(alertKind.configureAlertController(), animated: true)
     }
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
@@ -51,29 +60,13 @@ final class NewContactViewController: UIViewController {
             delegate?.didContactsAdded(contactId)
             self.dismiss(animated: true)
         } catch {
-            showAlert(with: String(describing: error))
+            let alertKind = AlertKind.error(type: error, action: UIAlertAction(title: "예", style: .default))
+            present(alertKind.configureAlertController(), animated: true)
         }
     }
 }
 
 extension NewContactViewController {
-    private func showAlert(with title: String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        if title == "정말로 취소하시겠습니까?" {
-            let noAction = UIAlertAction(title: "아니오", style: .default)
-            alert.addAction(noAction)
-            
-            let yesAction = UIAlertAction(title: "예", style: .destructive) { _ in
-                self.dismiss(animated: true)
-            }
-            alert.addAction(yesAction)
-        } else {
-            let yesAction = UIAlertAction(title: "확인", style: .default)
-            alert.addAction(yesAction)
-        }
-        self.present(alert, animated: true)
-    }
-    
     func configureData(_ contactManager: ContactManager?, delegate: ContactsTableViewUpdateDelegate?) {
         self.contactManager = contactManager
         self.delegate = delegate
