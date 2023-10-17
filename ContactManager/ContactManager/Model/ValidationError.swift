@@ -10,7 +10,6 @@ import Foundation
 enum ValidationError: Error, LocalizedError {
   case nameValidationError, phoneValidationError, ageValidationError
 
-  
   var errorDescription: String? {
     switch self {
     case .nameValidationError: return NSLocalizedString("입력한 이름 정보가 잘못되었습니다", comment: "Invalid name")

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddContactViewController: UIViewController {
+final class AddContactViewController: UIViewController {
   var contactAddDelegate: ContactAddDelegate?
   var contactChangedDelegate: ContactChangedDelegate?
   

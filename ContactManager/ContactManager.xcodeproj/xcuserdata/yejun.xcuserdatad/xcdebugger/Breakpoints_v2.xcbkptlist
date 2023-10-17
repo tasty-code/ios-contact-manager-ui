@@ -30,8 +30,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
             endingLineNumber = "44"
-            landmarkName = "AddContactViewController"
-            landmarkType = "3">
+            landmarkName = "cancelButtonTapped(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -44,9 +44,9 @@
             filePath = "ContactManager/Controller/AlertViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "showAlert(on:message:defaultButtonTitle:destructiveButtonTitle:destructiveAction:)"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "show(on:message:defaultButtonTitle:destructiveButtonTitle:destructiveAction:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
