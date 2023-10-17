@@ -12,6 +12,10 @@ extension String {
         let count = self.count
         var temp = self
         
+        guard let _ = try? /[0-9]{1, 11}/.wholeMatch(in: temp) else {
+            return self
+        }
+        
         switch count {
         case 3...5:
             temp.insert(divider, at: temp.index(temp.startIndex, offsetBy: 2))
