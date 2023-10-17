@@ -9,19 +9,23 @@ import UIKit
 
 final class ContactListViewController: UIViewController {
     private let contactManager = ContactManager()
-    
+    private var filteredContacts = [Contact]()
+    private var isActive: Bool {
+        navigationItem.searchController?.isActive ?? false
+    }
     @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
-        self.tableView.dataSource = self
+        tableView.dataSource = self
         observeUpdatedContacts()
     }
     
     private func configureNavigationBar() {
         self.navigationItem.title = "연락처"
         self.navigationItem.rightBarButtonItem = buildAddButton()
+        self.navigationItem.searchController = makeSearchBar()
     }
     
     private func buildAddButton() -> UIBarButtonItem {
@@ -47,16 +51,23 @@ final class ContactListViewController: UIViewController {
     private func observeUpdatedContacts() {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadContacts(_:)), name: Notification.didUpdateContact, object: nil)
     }
+    
+    private func makeSearchBar() -> UISearchController {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        return searchController
+    }
 }
 
 extension ContactListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactManager.contacts.count
+        return isActive ? filteredContacts.count : contactManager.contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let id = "ContactCell"
-        let contact = contactManager.contacts[indexPath.row]
+        let contact = isActive ? filteredContacts[indexPath.row] : contactManager.contacts[indexPath.row]
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as? ContactCell else {
             let cell = ContactCell(style: .subtitle, reuseIdentifier: id)
@@ -66,5 +77,24 @@ extension ContactListViewController: UITableViewDataSource {
         cell.configureCell(contact)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            do {
+                try contactManager.delete(contactManager.contacts[indexPath.row])
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } catch {
+                return
+            }
+        }
+    }
 }
 
+extension ContactListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text{
+            filteredContacts = contactManager.contacts.filter { $0.name.localizedCaseInsensitiveContains(text) }
+            tableView.reloadData()
+        }
+    }
+}
