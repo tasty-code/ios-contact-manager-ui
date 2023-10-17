@@ -7,14 +7,15 @@
 
 import Foundation
 
-enum ValidationError: Error {
+enum ValidationError: Error, LocalizedError {
   case nameValidationError, phoneValidationError, ageValidationError
+
   
-  var errorMessage: String {
+  var errorDescription: String? {
     switch self {
-    case .nameValidationError: return "입력한 이름 정보가 잘못되었습니다"
-    case .phoneValidationError: return "입력한 연락처 정보가 잘못되었습니다"
-    case .ageValidationError: return "입력한 나이 정보가 잘못되었습니다"
+    case .nameValidationError: return NSLocalizedString("입력한 이름 정보가 잘못되었습니다", comment: "Invalid name")
+    case .phoneValidationError: return NSLocalizedString("입력한 연락처 정보가 잘못되었습니다", comment: "Invalid phone")
+    case .ageValidationError: return NSLocalizedString("입력한 나이 정보가 잘못되었습니다", comment: "Invalid age")
     }
   }
 }

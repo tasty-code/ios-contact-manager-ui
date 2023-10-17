@@ -17,7 +17,7 @@ final class ContactManagerTests: XCTestCase {
     
     // then
     XCTAssertThrowsError(try manager.addContact(nameText: input, ageText: "22", phoneText: "010-4234-6212")) { error in
-      XCTAssertEqual(error as! ValidationError, ValidationError.nameValidationError)
+      XCTAssertEqual(error.localizedDescription, ValidationError.nameValidationError.localizedDescription)
     }
   }
   
@@ -27,7 +27,7 @@ final class ContactManagerTests: XCTestCase {
     
     // then
     XCTAssertThrowsError(try manager.addContact(nameText: "yohan", ageText: input, phoneText: "010-4234-6212")) { error in
-      XCTAssertEqual(error as! ValidationError, ValidationError.ageValidationError)
+      XCTAssertEqual(error.localizedDescription, ValidationError.ageValidationError.localizedDescription)
     }
   }
   
@@ -37,7 +37,7 @@ final class ContactManagerTests: XCTestCase {
     
     // then
     XCTAssertThrowsError(try manager.addContact(nameText: "yohan", ageText: input, phoneText: "010-4234-6212")) { error in
-      XCTAssertEqual(error as! ValidationError, ValidationError.ageValidationError)
+      XCTAssertEqual(error.localizedDescription, ValidationError.ageValidationError.localizedDescription)
     }
   }
   
@@ -47,7 +47,7 @@ final class ContactManagerTests: XCTestCase {
     
     // then
     XCTAssertThrowsError(try manager.addContact(nameText: "yohan", ageText: "22", phoneText: input)) { error in
-      XCTAssertEqual(error as! ValidationError, ValidationError.phoneValidationError)
+      XCTAssertEqual(error.localizedDescription, ValidationError.phoneValidationError.localizedDescription)
     }
   }
   

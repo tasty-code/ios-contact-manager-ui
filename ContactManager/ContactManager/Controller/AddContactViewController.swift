@@ -34,12 +34,8 @@ class AddContactViewController: UIViewController {
                              phoneText: phoneTextField.text)
       dismiss(animated: true)
     } catch {
-      guard let errorType = error as? ValidationError else {
-        print(error.localizedDescription)
-        return
-      }
       AlertViewController.showAlert(viewController: self,
-                                    message: errorType.errorMessage,
+                                    message: error.localizedDescription,
                                     defaultButtonTitle: "확인")
     }
   }
