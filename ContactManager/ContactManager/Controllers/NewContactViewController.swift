@@ -24,17 +24,17 @@ final class NewContactViewController: UIViewController {
     
     @IBAction private func touchUpSaveButton(_ sender: Any) {
         do {
-            guard let name = try checkName(),
-                  let age = try checkAge(),
-                  let phoneNumber = try checkPhoneNumber() else {
+            guard let name = try Validation().check(name: nameTextField.text),
+                  let age = try Validation().check(age: ageTextField.text),
+                  let phoneNumber = try Validation().check(phoneNumber: phoneNumberTextField.text) else {
                 return
             }
             delegate?.send(ContactDTO(name: name, age: age, phoneNumber: phoneNumber))
             
             self.dismiss(animated: true)
         } catch {
-            let errorMessage 
-                = catcher(of: error as? CheckContactErrors ?? CheckContactErrors.unknown)
+            let errorMessage
+            = catcher(of: error as? CheckContactErrors ?? CheckContactErrors.unknown)
             alertController
                 .configureAlertController(title: errorMessage,
                                           message: nil,
@@ -51,36 +51,6 @@ final class NewContactViewController: UIViewController {
                                       defaultAction: "아니오",
                                       destructiveAction: "예",
                                       viewController: self)
-    }
-    
-    private func checkName() throws -> String? {
-        let regex = /^\S+(\s+\S+)*$/
-        if let name = nameTextField.text,
-           let _ = name.wholeMatch(of: regex) {
-            return name
-        } else {
-            throw CheckContactErrors.invalidName
-        }
-    }
-    
-    private func checkAge() throws -> String? {
-        let regex = /^\d+(\s\d+)?$/
-        if let age = ageTextField.text,
-           let _ = age.wholeMatch(of: regex) {
-            return age
-        } else {
-            throw CheckContactErrors.invaildAge
-        }
-    }
-    
-    private func checkPhoneNumber() throws -> String? {
-        let regex = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/
-        if let phoneNumber = phoneNumberTextField.text,
-           let _ = phoneNumber.wholeMatch(of: regex) {
-            return phoneNumber
-        } else {
-            throw CheckContactErrors.invalidPhoneNumber
-        }
     }
     
     private func catcher(of error: CheckContactErrors) -> String {
