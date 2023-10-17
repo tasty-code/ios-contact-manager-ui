@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ContactsViewController.swift
 //  ios-contact-manager-ui
 //
 //  Created by 김진웅 on 2023/10/04.
@@ -7,23 +7,31 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class ContactsViewController: UIViewController {
     
-    @IBOutlet weak var contactTableView: UITableView!
+    @IBOutlet weak var contactsTableView: UITableView!
     
     private let contactManager = ContactManager()
     private let cellIdentifier = "ContactCell"
+    private let newContactVCIdentifier = "NewContactViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setDummyData()
-        self.contactTableView.delegate = self
-        self.contactTableView.dataSource = self
+        self.contactsTableView.delegate = self
+        self.contactsTableView.dataSource = self
+    }
+    
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        guard let newContactVC = storyboard?.instantiateViewController(identifier: newContactVCIdentifier) as? NewContactViewController else { return }
+        newContactVC.configureData(self.contactManager, delegate: self)
+        let navigationVC = UINavigationController(rootViewController: newContactVC)
+        present(navigationVC, animated: true)
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension ContactsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactManager.contactsCount
     }
@@ -39,23 +47,21 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    
 }
 
-extension ViewController {
-    func setDummyData() {
+extension ContactsViewController {
+    private func setDummyData() {
         guard let path = Bundle.main.path(forResource: "Contacts", ofType: "json"),
               let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) else { return }
         let decoder = JSONDecoder()
-        
         do {
             let contacts = try decoder.decode([Contact].self, from: jsonData)
             for contact in contacts {
-                try contactManager.addContact(contact)
+                let _ = contactManager.addContact(contact)
             }
         } catch {
             print(error.localizedDescription)
@@ -63,4 +69,10 @@ extension ViewController {
     }
 }
 
-
+extension ContactsViewController: ContactsTableViewUpdateDelegate {
+    func didContactsAdded(_ contactId: ObjectIdentifier) {
+        guard let index = contactManager.fetchIndexOfContact(with: contactId) else { return }
+        let indexPath = IndexPath(row: index, section: 0)
+        self.contactsTableView.insertRows(at: [indexPath], with: .none)
+    }
+}

@@ -14,11 +14,11 @@ final class ContactManager {
         return contacts.count
     }
     
-    func addContact(_ contact: Contact) throws {
-        guard checkDuplicateNumber(contact.phoneNumber) else {
-            throw ContactsError.duplicateNumberFound
-        }
+    func addContact(_ contact: Contact) -> ObjectIdentifier {
         contacts.append(contact)
+        sortContactsByName()
+        
+        return contact.id
     }
     
     func deleteContact(index: Int) {
@@ -29,10 +29,11 @@ final class ContactManager {
         return contacts[index]
     }
     
-    private func checkDuplicateNumber(_ phoneNumber: String) -> Bool {
-        if contacts.contains(where: { $0.phoneNumber == phoneNumber }) {
-            return false
-        }
-        return true
+    func fetchIndexOfContact(with id: ObjectIdentifier) -> Int? {
+        return contacts.firstIndex { $0.id == id }
+    }
+    
+    private func sortContactsByName() {
+        contacts.sort { $0.name < $1.name }
     }
 }
