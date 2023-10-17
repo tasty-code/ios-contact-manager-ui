@@ -24,11 +24,10 @@ final class NewContactViewController: UIViewController {
     
     @IBAction private func touchUpSaveButton(_ sender: Any) {
         do {
-            guard let name = try Validation().check(name: nameTextField.text),
-                  let age = try Validation().check(age: ageTextField.text),
-                  let phoneNumber = try Validation().check(phoneNumber: phoneNumberTextField.text) else {
-                return
-            }
+            let name = try Validation().check(name: nameTextField.text)
+            let age = try Validation().check(age: ageTextField.text)
+            let phoneNumber = try Validation().check(phoneNumber: phoneNumberTextField.text)
+            
             delegate?.send(ContactDTO(name: name, age: age, phoneNumber: phoneNumber))
             
             self.dismiss(animated: true)
