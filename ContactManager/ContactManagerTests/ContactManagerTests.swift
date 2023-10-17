@@ -43,7 +43,6 @@ final class ContactManagerTests: XCTestCase {
             "5 2"
         ]
         
-        
         for age in ages {
             XCTAssertNoThrow(try Validation().check(age: age))
         }
@@ -63,8 +62,6 @@ final class ContactManagerTests: XCTestCase {
         ]
         
         for phoneNumber in phoneNumbers {
-            let result = try Validation().check(phoneNumber: phoneNumber)
-            
             XCTAssertNoThrow(try Validation().check(phoneNumber: phoneNumber))
         }
     }
@@ -86,10 +83,13 @@ final class ContactManagerTests: XCTestCase {
     
     func test_나이가_허용되지_않는_경우() throws {
         let ages = [
+            "",
+            " ",
             "-1",
             "-100",
             "1000",
             "912312",
+            "91 2312",
             "이름",
             "dada",
             "01011112222",
@@ -98,13 +98,15 @@ final class ContactManagerTests: XCTestCase {
         
         for age in ages {
             XCTAssertThrowsError(try Validation().check(age: age)) { error in
-                XCTAssertEqual(error as? CheckContactErrors, CheckContactErrors.invaildAge)
+                XCTAssertEqual(error as? CheckContactErrors, CheckContactErrors.invalidAge)
             }
         }
     }
     
     func test_전화번호가_허용되지_않는_경우() throws {
         let phoneNumbers = [
+            "",
+            " ",
             "30",
             "013-432-235",
             "119",

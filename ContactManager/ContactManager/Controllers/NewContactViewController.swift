@@ -32,8 +32,8 @@ final class NewContactViewController: UIViewController {
             
             self.dismiss(animated: true)
         } catch {
-            let errorMessage
-            = catcher(of: error as? CheckContactErrors ?? CheckContactErrors.unknown)
+            let errorMessage: String = (error as? CheckContactErrors ?? CheckContactErrors.unknown).description
+            
             alertController
                 .configureAlertController(title: errorMessage,
                                           message: nil,
@@ -50,18 +50,5 @@ final class NewContactViewController: UIViewController {
                                       defaultAction: "아니오",
                                       destructiveAction: "예",
                                       viewController: self)
-    }
-    
-    private func catcher(of error: CheckContactErrors) -> String {
-        switch error {
-        case .invalidName:
-            return "입력된 이름 정보가 잘못되었습니다"
-        case .invaildAge:
-            return "입력된 나이 정보가 잘못되었습니다"
-        case .invalidPhoneNumber:
-            return "입력된 연락처 정보가 잘못되었습니다"
-        case .unknown:
-            return "알 수 없는 에러입니다"
-        }
     }
 }

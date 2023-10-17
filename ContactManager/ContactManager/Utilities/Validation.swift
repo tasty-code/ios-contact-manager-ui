@@ -13,12 +13,12 @@ struct Validation {
     }
     
     func check(age: String?) throws -> String {
-        let regex = /^\d{1}+(\s\d{1})?+(\s\d{1})?$/
+        let regex = /^(?! )[0-9](?!.*\s$)(\d{0,2}( |$))*$/
         if let age = age,
            let _ = age.wholeMatch(of: regex) {
             return age
         } else {
-            throw CheckContactErrors.invaildAge
+            throw CheckContactErrors.invalidAge
         }
     }
     
