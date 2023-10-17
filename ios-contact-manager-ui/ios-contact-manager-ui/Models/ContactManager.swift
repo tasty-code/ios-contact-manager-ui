@@ -33,6 +33,11 @@ final class ContactManager {
         return contacts.firstIndex { $0.id == id }
     }
     
+    func fetchContactsContains(with name: String) -> [Contact] {
+        let temp = contacts.filter { $0.name.contains(name) }
+        return temp
+    }
+    
     private func sortContactsByName() {
         contacts.sort { $0.name < $1.name }
     }
