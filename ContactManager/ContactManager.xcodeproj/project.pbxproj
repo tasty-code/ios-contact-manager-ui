@@ -145,9 +145,9 @@
 		A62B6E932ACD6DF9005DC167 /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
-				A6911C742ADCE6BA009C1C4A /* Utilities */,
 				A62B6E942ACD6DF9005DC167 /* AppDelegate.swift */,
 				A62B6E962ACD6DF9005DC167 /* SceneDelegate.swift */,
+				A6911C742ADCE6BA009C1C4A /* Utilities */,
 				A61237C12ACFE7AD00CBCA0F /* Protocols */,
 				A61237BE2ACFE37500CBCA0F /* Extensions */,
 				A61237BA2ACFD9D900CBCA0F /* Models */,
