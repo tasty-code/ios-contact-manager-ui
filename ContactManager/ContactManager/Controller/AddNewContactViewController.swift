@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol PersonContactSending: AnyObject {
+protocol PersonContactUpdating: AnyObject {
     func updateNewPersonContact(name: String, age: String, digits: String)
 }
 
 final class AddNewContactViewController: UIViewController {
     
-    weak var delegate: PersonContactSending?
+    weak var delegate: PersonContactUpdating?
     
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputAge: UITextField!
