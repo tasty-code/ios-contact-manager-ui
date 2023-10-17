@@ -30,7 +30,9 @@ final class AddNewContactViewController: UIViewController {
     
     @IBAction func saveNewPersonContact(_ sender: Any) {
         guard var name = inputName.text, let age = inputAge.text, let digits = inputDigits.text
-        else { return }
+        else {
+            return presentInputValidationAlert(.exception)
+        }
         
         do {
             try hasText(name, age, digits)
@@ -39,18 +41,15 @@ final class AddNewContactViewController: UIViewController {
         } catch {
             switch error {
             case InputError.name:
-                presentInputValidationAlert("이름")
-                return
+                presentInputValidationAlert(.name)
             case InputError.age:
-                presentInputValidationAlert("나이")
-                return
+                presentInputValidationAlert(.age)
             case InputError.digits:
-                presentInputValidationAlert("연락처")
-                return
+                presentInputValidationAlert(.digits)
             default:
-                presentInputValidationAlert("")
-                return
+                presentInputValidationAlert(.exception)
             }
+            return
         }
         
         name = removeEmptySpace(name)
@@ -59,8 +58,8 @@ final class AddNewContactViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    private func presentInputValidationAlert(_ errorType: String) {        
-        let alert = UIAlertController(title: errorType == "" ? "입력한 정보가 잘못되었습니다" : "입력한 \(errorType)정보가 잘못되었습니다", message: nil, preferredStyle: .alert)
+    private func presentInputValidationAlert(_ errorType: InputError) {
+        let alert = UIAlertController(title: errorType.debugDescription, message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)
         
         alert.addAction(okAction)
@@ -84,6 +83,7 @@ final class AddNewContactViewController: UIViewController {
 
 extension AddNewContactViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxDigitsCount: Int = 13
         
         guard let inputDigitsText = inputDigits.text else { return false }
         
@@ -95,7 +95,7 @@ extension AddNewContactViewController: UITextFieldDelegate {
             }
         }
         
-        guard inputDigitsText.count < 13 else { return false }
+        guard inputDigitsText.count < maxDigitsCount else { return false }
         
         setHyphenInDigits(range: range, inputDigitsText: inputDigitsText, digitsCount: inputDigitsText.count)
         
