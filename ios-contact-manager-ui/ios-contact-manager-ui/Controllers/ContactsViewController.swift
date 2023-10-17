@@ -10,10 +10,13 @@ import UIKit
 final class ContactsViewController: UIViewController {
     
     @IBOutlet weak var contactsTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     private let contactManager = ContactManager()
     private let cellIdentifier = "ContactCell"
     private let newContactVCIdentifier = "NewContactViewController"
+    private var isSearching = false
+    private var searchingName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +24,7 @@ final class ContactsViewController: UIViewController {
         setDummyData()
         self.contactsTableView.delegate = self
         self.contactsTableView.dataSource = self
+        self.searchBar.delegate = self
     }
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
@@ -76,3 +80,16 @@ extension ContactsViewController: ContactsTableViewUpdateDelegate {
         self.contactsTableView.insertRows(at: [indexPath], with: .none)
     }
 }
+
+extension ContactsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            self.isSearching = false
+        } else {
+            self.isSearching = true
+            self.searchingName = searchText
+        }
+        self.contactsTableView.reloadData()
+    }
+}
+
