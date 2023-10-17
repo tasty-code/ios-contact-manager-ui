@@ -10,7 +10,7 @@ import UIKit
 class AddContactViewController: UIViewController {
   var contactAddDelegate: ContactAddDelegate?
   var contactChangedDelegate: ContactChangedDelegate?
-
+  
   @IBOutlet private var nameTextField: UITextField!
   @IBOutlet private var ageTextField: UITextField!
   @IBOutlet private var phoneTextField: UITextField!
@@ -22,25 +22,25 @@ class AddContactViewController: UIViewController {
   @IBAction private func saveButtonTapped(_ sender: UIButton) {
     do {
       try contactAddDelegate?.addContact(nameText: nameTextField.text,
-                              ageText: ageTextField.text,
-                              phoneText: phoneTextField.text)
+                                         ageText: ageTextField.text,
+                                         phoneText: phoneTextField.text)
       contactChangedDelegate?.reload()
       dismiss(animated: true)
     } catch {
-      AlertViewController.showAlert(viewController: self,
-                                    message: error.localizedDescription,
-                                    defaultButtonTitle: "확인")
+      AlertViewController.show(on: self, 
+                               message: error.localizedDescription,
+                               defaultButtonTitle: "확인")
     }
   }
   
   @IBAction private func cancelButtonTapped(_ sender: UIButton) {
-    AlertViewController.showAlert(viewController: self,
-                                  message: "정말로 취소하시겠습니까?",
-                                  defaultButtonTitle: "아니오",
-                                  destructiveButtonTitle: "예",
-                                  destructiveAction: {
-                                    self.dismiss(animated: true)
-                                  })
+    AlertViewController.show(on: self,
+                             message: "정말로 취소하시겠습니까?",
+                             defaultButtonTitle: "아니오",
+                             destructiveButtonTitle: "예",
+                             destructiveAction: {
+      self.dismiss(animated: true)
+    })
   }
   
   @IBAction private func phoneTextDidChanged(_ sender: UITextField) {
