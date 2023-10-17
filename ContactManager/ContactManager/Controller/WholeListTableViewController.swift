@@ -53,8 +53,8 @@ final class WholeListTableViewController: UITableViewController {
     }
 }
 
-extension WholeListTableViewController: SendPersonContactData {
-    func sendData(name: String, age: String, digits: String) {
+extension WholeListTableViewController: PersonContactSending {
+    func updateNewPersonContact(name: String, age: String, digits: String) {
         let newPersonContact = Person(name: name, age: age, digits: digits)
         contactBook.addPersonContact(newPersonContact)
         self.tableView.reloadData()
