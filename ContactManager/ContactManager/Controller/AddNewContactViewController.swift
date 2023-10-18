@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol SendPersonContactData {
-    func sendData(name: String, age: String, digits: String)
+protocol PersonContactUpdating: AnyObject {
+    func updateNewPersonContact(name: String, age: String, digits: String)
 }
 
 final class AddNewContactViewController: UIViewController {
     
-    var delegate: SendPersonContactData?
+    weak var delegate: PersonContactUpdating?
     
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputAge: UITextField!
@@ -30,37 +30,25 @@ final class AddNewContactViewController: UIViewController {
     
     @IBAction func saveNewPersonContact(_ sender: Any) {
         guard var name = inputName.text, let age = inputAge.text, let digits = inputDigits.text
-        else { return }
+        else {
+            return presentInputValidationAlert(InputError.exception)
+        }
         
         do {
             try hasText(name, age, digits)
             try isAgeLimitOver(age)
             try isDigitsProper(digits)
+            name = removeEmptySpace(name)
+            
+            delegate?.updateNewPersonContact(name: name, age: age, digits: digits)
+            self.dismiss(animated: true)
         } catch {
-            switch error {
-            case InputError.name:
-                presentInputValidationAlert("이름")
-                return
-            case InputError.age:
-                presentInputValidationAlert("나이")
-                return
-            case InputError.digits:
-                presentInputValidationAlert("연락처")
-                return
-            default:
-                presentInputValidationAlert("")
-                return
-            }
+            presentInputValidationAlert(error)
         }
-        
-        name = removeEmptySpace(name)
-        
-        delegate?.sendData(name: name, age: age, digits: digits)
-        self.dismiss(animated: true)
     }
     
-    private func presentInputValidationAlert(_ errorType: String) {        
-        let alert = UIAlertController(title: errorType == "" ? "입력한 정보가 잘못되었습니다" : "입력한 \(errorType)정보가 잘못되었습니다", message: nil, preferredStyle: .alert)
+    private func presentInputValidationAlert(_ error: Error) {
+        let alert = UIAlertController(title: "\(error.localizedDescription)", message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)
         
         alert.addAction(okAction)
@@ -84,6 +72,7 @@ final class AddNewContactViewController: UIViewController {
 
 extension AddNewContactViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxDigitsCount: Int = 13
         
         guard let inputDigitsText = inputDigits.text else { return false }
         
@@ -95,7 +84,7 @@ extension AddNewContactViewController: UITextFieldDelegate {
             }
         }
         
-        guard inputDigitsText.count < 13 else { return false }
+        guard inputDigitsText.count < maxDigitsCount else { return false }
         
         setHyphenInDigits(range: range, inputDigitsText: inputDigitsText, digitsCount: inputDigitsText.count)
         
