@@ -30,7 +30,7 @@ final class ContactListViewController: UIViewController {
     }
     
     private func configureTableView() {
-        tableView.register(UINib(nibName: "ContactCell", bundle: nil), forCellReuseIdentifier: "ContactCell")
+        tableView.register(UINib(nibName: UITableViewCell.contactCell, bundle: nil), forCellReuseIdentifier: UITableViewCell.contactCell)
         tableView.dataSource = self
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableView.automaticDimension
@@ -61,7 +61,9 @@ final class ContactListViewController: UIViewController {
     }
     
     private func makeSearchBar() {
-        guard let filteredViewController = storyboard?.instantiateViewController(identifier: "FilteredContactListViewController") as? FilteredContactListViewController else {
+        guard let filteredViewController = storyboard?.instantiateViewController(identifier: "FilteredContactListViewController",creator: { coder in
+            return FilteredContactListViewController(coder: coder, contactManager: self.contactManager)
+        }) else {
             return
         }
         
@@ -78,11 +80,10 @@ extension ContactListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let id = "ContactCell"
         let contact = contactManager.contacts[indexPath.row]
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as? ContactCell else {
-            let cell = ContactCell(style: .subtitle, reuseIdentifier: id)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.contactCell, for: indexPath) as? ContactCell else {
+            let cell = ContactCell(style: .subtitle, reuseIdentifier: UITableViewCell.contactCell)
             cell.configureCell(contact)
             return cell
         }
@@ -105,14 +106,14 @@ extension ContactListViewController: UITableViewDataSource {
 extension ContactListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text{
-            guard let filtered = searchController.searchResultsController as? FilteredContactListViewController else {
+            guard let viewController = searchController.searchResultsController as? FilteredContactListViewController else {
                 return
             }
             
-            filtered.filteredContacts = contactManager.contacts.filter {
+            viewController.setFilteredContacts(contactManager.contacts.filter {
                 $0.name.localizedCaseInsensitiveContains(text)
-            }
-            filtered.tableView.reloadData()
+            })
+            viewController.tableView.reloadData()
         }
     }
 }

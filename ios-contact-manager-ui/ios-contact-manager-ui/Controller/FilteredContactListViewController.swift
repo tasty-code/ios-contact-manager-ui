@@ -8,12 +8,21 @@
 import UIKit
 
 class FilteredContactListViewController: UITableViewController {
-    var filteredContacts = [Contact]()
-    let contactManager = ContactManager()
+    private(set) var filteredContacts = [Contact]()
+    private weak var contactManager: ContactManager?
+    
+    init?(coder: NSCoder, contactManager: ContactManager) {
+        self.contactManager = contactManager
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: "ContactCell", bundle: nil), forCellReuseIdentifier: "ContactCell")
+        tableView.register(UINib(nibName: UITableViewCell.contactCell, bundle: nil), forCellReuseIdentifier: UITableViewCell.contactCell)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -21,8 +30,8 @@ class FilteredContactListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath) as? ContactCell else {
-            let cell = ContactCell(style: .default, reuseIdentifier: "ContactCell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.contactCell, for: indexPath) as? ContactCell else {
+            let cell = ContactCell(style: .default, reuseIdentifier: UITableViewCell.contactCell)
             cell.configureCell(filteredContacts[indexPath.row])
             return cell
         }
@@ -34,7 +43,7 @@ class FilteredContactListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             do {
-                try contactManager.delete(filteredContacts[indexPath.row])
+                try contactManager?.delete(filteredContacts[indexPath.row])
                 filteredContacts.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 NotificationCenter.default.post(name: Notification.didUpdateContact, object: nil)
@@ -42,5 +51,9 @@ class FilteredContactListViewController: UITableViewController {
                 return
             }
         }
+    }
+    
+    func setFilteredContacts(_ contacts: [Contact]) {
+        filteredContacts = contacts
     }
 }

@@ -27,6 +27,7 @@
 		0DE003E72ADF71B8000D2BDD /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DE003E52ADF71B8000D2BDD /* ContactCell.xib */; };
 		0DE003E92ADF7875000D2BDD /* FilteredContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE003E82ADF7875000D2BDD /* FilteredContactListViewController.swift */; };
 		7F1336192AD92044004D0DFD /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1336182AD92044004D0DFD /* Notification+Extension.swift */; };
+		7F8E1E202ADFE51700DEABF2 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8E1E1F2ADFE51700DEABF2 /* UITableViewCell+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		0DE003E52ADF71B8000D2BDD /* ContactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
 		0DE003E82ADF7875000D2BDD /* FilteredContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredContactListViewController.swift; sourceTree = "<group>"; };
 		7F1336182AD92044004D0DFD /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		7F8E1E1F2ADFE51700DEABF2 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				7F1336182AD92044004D0DFD /* Notification+Extension.swift */,
+				7F8E1E1F2ADFE51700DEABF2 /* UITableViewCell+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				0DE003E92ADF7875000D2BDD /* FilteredContactListViewController.swift in Sources */,
 				0DA361A42AD62AE600A2AA25 /* EditContactViewController.swift in Sources */,
 				0D6F96F22ACCF0B5006EF067 /* SceneDelegate.swift in Sources */,
+				7F8E1E202ADFE51700DEABF2 /* UITableViewCell+Extension.swift in Sources */,
 				0DA361A02AD4DFF500A2AA25 /* ContactManager.swift in Sources */,
 				0DA361A72AD63D3B00A2AA25 /* ContactValidityChecker.swift in Sources */,
 				7F1336192AD92044004D0DFD /* Notification+Extension.swift in Sources */,
