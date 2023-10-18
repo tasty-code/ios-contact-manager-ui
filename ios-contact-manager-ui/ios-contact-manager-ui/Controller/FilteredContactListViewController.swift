@@ -9,7 +9,7 @@ import UIKit
 
 class FilteredContactListViewController: UITableViewController {
     var filteredContacts = [Contact]()
-    
+    let contactManager = ContactManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,5 +29,18 @@ class FilteredContactListViewController: UITableViewController {
         
         cell.configureCell(filteredContacts[indexPath.row])
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            do {
+                try contactManager.delete(filteredContacts[indexPath.row])
+                filteredContacts.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                NotificationCenter.default.post(name: Notification.didUpdateContact, object: nil)
+            } catch {
+                return
+            }
+        }
     }
 }
