@@ -21,6 +21,7 @@ struct ContactInfo: Codable {
         self.name = name
         self.age = age
         self.phoneNum = phoneNum
+        
         guard let identifier = uuid else {
             self.uuid = UUID()
             return

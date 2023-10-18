@@ -10,14 +10,14 @@ import Foundation
 extension String {
     enum TextFormatType {
         case phoneNum
-        case compress
+        case whiteSpaceRemoval
     }
     
     func formatter(type: TextFormatType) -> String {
         switch type {
         case .phoneNum:
             return phoneNumFomatter(self)
-        case .compress:
+        case .whiteSpaceRemoval:
             return self.replacingOccurrences(of: " ", with: "")
         }
     }
@@ -33,22 +33,25 @@ extension String {
     
     private func phoneNumFomatter(_ target: String) -> String {
         let sanitizedTarget = target.replacingOccurrences(of: "-", with: "")
-        let offset = sanitizedTarget.hasPrefix("02") ? 1 : 2
         var splited = Array(sanitizedTarget).map { String($0) }
 
         switch sanitizedTarget.count {
-        case 0..<offset + 1:
+        case 0..<2:
             break
-        case offset + 1..<offset + 4:
-            splited[offset] += "-"
+        case 2..<5:
+            splited[1] += "-"
             break
-        case offset + 4..<offset + 8:
-            splited[offset] += "-"
-            splited[offset + 3] += "-"
+        case 5..<9:
+            splited[1] += "-"
+            splited[4] += "-"
+            break
+        case 9..<10:
+            splited[2] += "-"
+            splited[5] += "-"
             break
         default:
-            splited[offset] += "-"
-            splited[offset + 4] += "-"
+            splited[2] += "-"
+            splited[6] += "-"
             break
         }
         
