@@ -41,6 +41,7 @@ final class ContactTableViewController: UITableViewController {
     @IBAction func addButtonTapped(_ sender: UIButton) {
         let contactCreationViewController = ContactCreationViewController()
         contactCreationViewController.delegate = self
+        
         present(contactCreationViewController, animated: true)
     }
     
@@ -62,9 +63,9 @@ extension ContactTableViewController {
     }
 }
 
-extension ContactTableViewController: ContactCreationVCDelegate {
+extension ContactTableViewController: ContactUpdatable {
     func addContact(_ contact: ContactInfo) {
         contactManager.add(contact)
-        self.tableView.insertRows(at: [IndexPath(row: contactManager.countOfContactList - 1, section: 0)], with: .automatic)
+        tableView.insertRows(at: [IndexPath(row: contactManager.countOfContactList - 1, section: 0)], with: .automatic)
     }
 }

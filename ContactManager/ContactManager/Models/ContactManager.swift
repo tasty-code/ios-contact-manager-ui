@@ -40,7 +40,3 @@ extension ContactManager {
         }
     }
 }
-
-extension ContactManager {
-    func checkValidate() {}
-}

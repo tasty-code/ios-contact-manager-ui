@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol ContactCreationVCDelegate: AnyObject {
+protocol ContactUpdatable: AnyObject {
     func addContact(_ contact: ContactInfo)
 }
 
 final class ContactCreationViewController: UIViewController {
-    public weak var delegate: ContactCreationVCDelegate?
+    public weak var delegate: ContactUpdatable?
     
     private let containerStackview: UIStackView = {
         let stackView = UIStackView()
@@ -28,30 +28,30 @@ final class ContactCreationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemBackground
         
-        nameStack.field.delegate = self
-        ageStack.field.delegate = self
-        phoneNumStack.field.delegate = self
-        
-        setupField()
+        setupLayout()
         setupAttributes()
         setupNavigationBar()
     }
     
-    private func setupField() {
-        ageStack.field.keyboardType = .numberPad
-        phoneNumStack.field.keyboardType = .phonePad
-        
+    private func setupLayout() {
         containerStackview.addArrangedSubviews(nameStack, ageStack, phoneNumStack)
-        self.view.addSubview(containerStackview)
+        view.addSubview(containerStackview)
     }
     
     private func setupAttributes() {
+        nameStack.field.delegate = self
+        ageStack.field.delegate = self
+        phoneNumStack.field.delegate = self
+        
+        ageStack.field.keyboardType = .numberPad
+        phoneNumStack.field.keyboardType = .phonePad
+        
         NSLayoutConstraint.activate([
-            containerStackview.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 100),
-            containerStackview.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            containerStackview.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            containerStackview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            containerStackview.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            containerStackview.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
         ])
     }
     
@@ -72,7 +72,7 @@ final class ContactCreationViewController: UIViewController {
         navItem.leftBarButtonItem = cancelButton
         navItem.rightBarButtonItem = saveButton
         navbar.setItems([navItem], animated: false)
-        self.view.addSubview(navbar)
+        view.addSubview(navbar)
     }
     
     
@@ -87,6 +87,7 @@ final class ContactCreationViewController: UIViewController {
         
         alert.addAction(cancel)
         alert.addAction(confirm)
+        
         present(alert, animated: true, completion: nil)
     }
     
@@ -98,8 +99,8 @@ final class ContactCreationViewController: UIViewController {
             return
         }
         
-        age = age.formatter(type: .compress)
-        name = name.formatter(type: .compress)
+        age = age.formatter(type: .whiteSpaceRemoval)
+        name = name.formatter(type: .whiteSpaceRemoval)
         
         let labels: [(String, ValidateType)] = [(age, .age),(name, .name),(phoneNum, .phoneNum)]
         
@@ -118,7 +119,7 @@ final class ContactCreationViewController: UIViewController {
         guard let ageToInt = Int(age) else { return }
         
         let newContact = ContactInfo(name: name, age: ageToInt, phoneNum: phoneNum)
-        self.delegate?.addContact(newContact)
+        delegate?.addContact(newContact)
         dismiss(animated: true)
     }
     
@@ -127,6 +128,7 @@ final class ContactCreationViewController: UIViewController {
         
         let confirm = UIAlertAction(title: "확인", style: .cancel, handler: nil)
         alert.addAction(confirm)
+        
         present(alert, animated: true, completion: nil)
     }
     
@@ -141,7 +143,6 @@ extension ContactCreationViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    
         switch textField {
         case ageStack.field:
             return isDigit(string)
@@ -157,19 +158,17 @@ extension ContactCreationViewController: UITextFieldDelegate {
             textField.text = text.formatter(type: .phoneNum)
             return true
         default:
-            break
+            return true
         }
-        
-        return true
     }
 }
 
-extension ContactCreationViewController {
-    private func hideKeyboard() {
-        self.view.endEditing(true)
+private extension ContactCreationViewController {
+    func hideKeyboard() {
+        view.endEditing(true)
     }
     
-    private func checkValidate(text: String, type: ValidateType) throws -> Void {
+    func checkValidate(text: String, type: ValidateType) throws {
         guard !text.isEmpty else {
             throw InvalidError.invalidInput(type)
         }
@@ -177,11 +176,9 @@ extension ContactCreationViewController {
         var isValidate: Bool = true
         switch type {
         case .age:
-            isValidate = !text.contains("-") && text.formatter(type: .compress).count < 4
-            break
+            isValidate = !text.contains("-") && text.formatter(type: .whiteSpaceRemoval).count < 4
         case .phoneNum:
             isValidate = text.replacingOccurrences(of: "-", with: "").count > 8
-            break
         default:
             break
         }
@@ -191,7 +188,7 @@ extension ContactCreationViewController {
         }
     }
     
-    private func isDigit(_ char: String) -> Bool {
+    func isDigit(_ char: String) -> Bool {
         let characters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: char)
         return characters.isSuperset(of: characterSet)
