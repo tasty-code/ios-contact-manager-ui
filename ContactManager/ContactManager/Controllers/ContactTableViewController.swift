@@ -17,7 +17,7 @@ final class ContactTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = contactManager.checkContactsListCount()
+        let count = contactManager.countOfContactList
         return count
     }
     
@@ -26,8 +26,8 @@ final class ContactTableViewController: UITableViewController {
         
         var content = cell.defaultContentConfiguration()
         
-        guard let name = contactManager.listOfContact[indexPath.row].name, let age = contactManager.listOfContact[indexPath.row].age,
-              let phoneNumber = contactManager.listOfContact[indexPath.row].phoneNum else {
+        guard let name = contactManager.contactsList[indexPath.row].name, let age = contactManager.contactsList[indexPath.row].age,
+              let phoneNumber = contactManager.contactsList[indexPath.row].phoneNum else {
             return cell
         }
 
@@ -36,6 +36,13 @@ final class ContactTableViewController: UITableViewController {
         cell.contentConfiguration = content
 
         return cell
+    }
+    
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+        let contactCreationViewController = ContactCreationViewController()
+        contactCreationViewController.delegate = self
+        
+        present(contactCreationViewController, animated: true)
     }
 }
 
@@ -48,9 +55,16 @@ extension ContactTableViewController {
         do {
             let data = try Data(contentsOf: jsonURL)
             let root = try JSONDecoder().decode(Root.self, from: data)
-            contactManager.listOfContact = root.data
+            contactManager.setContactsList(root.data)
         } catch {
             print(error)
         }
+    }
+}
+
+extension ContactTableViewController: ContactUpdatable {
+    func addContact(_ contact: ContactInfo) {
+        contactManager.add(contact)
+        tableView.insertRows(at: [IndexPath(row: contactManager.countOfContactList - 1, section: 0)], with: .automatic)
     }
 }
