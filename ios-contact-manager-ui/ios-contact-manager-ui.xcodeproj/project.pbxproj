@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5347C6282ACE537B00AD9D7B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347C6272ACE537B00AD9D7B /* Contact.swift */; };
+		E35C9F592AD66F7D00DB3344 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35C9F582AD66F7D00DB3344 /* NewContactViewController.swift */; };
 		E3914A442ACD5311000BF441 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3914A432ACD5311000BF441 /* AppDelegate.swift */; };
 		E3914A462ACD5311000BF441 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3914A452ACD5311000BF441 /* SceneDelegate.swift */; };
 		E3914A482ACD5311000BF441 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3914A472ACD5311000BF441 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		5347C6272ACE537B00AD9D7B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		E35C9F582AD66F7D00DB3344 /* NewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
 		E3914A402ACD5311000BF441 /* ios-contact-manager-ui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-contact-manager-ui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3914A432ACD5311000BF441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3914A452ACD5311000BF441 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				E3914A432ACD5311000BF441 /* AppDelegate.swift */,
 				E3914A452ACD5311000BF441 /* SceneDelegate.swift */,
 				E3914A472ACD5311000BF441 /* ViewController.swift */,
+				E35C9F582AD66F7D00DB3344 /* NewContactViewController.swift */,
 				E3914A492ACD5311000BF441 /* Main.storyboard */,
 				E3914A4C2ACD5312000BF441 /* Assets.xcassets */,
 				E3914A4E2ACD5312000BF441 /* LaunchScreen.storyboard */,
@@ -156,6 +159,7 @@
 				E3914A442ACD5311000BF441 /* AppDelegate.swift in Sources */,
 				E3914A462ACD5311000BF441 /* SceneDelegate.swift in Sources */,
 				5347C6282ACE537B00AD9D7B /* Contact.swift in Sources */,
+				E35C9F592AD66F7D00DB3344 /* NewContactViewController.swift in Sources */,
 				E3ABF50A2ACE5635000F3707 /* AddressBook.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,7 +312,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CX8P4D8Z7M;
+				DEVELOPMENT_TEAM = LYVG9RTN58;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ios-contact-manager-ui/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -336,7 +340,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CX8P4D8Z7M;
+				DEVELOPMENT_TEAM = LYVG9RTN58;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ios-contact-manager-ui/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

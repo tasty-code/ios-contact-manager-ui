@@ -17,21 +17,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initialSetting()
+    }
+    
+    func initialSetting() {
         self.tableView.dataSource = self
-        
-        addressBook.addContact(Contact(name: "dora", phoneNumber: "010-0000-0000", age: 100))
-        addressBook.addContact(Contact(name: "jaehyeok", phoneNumber: "010-1111-1111", age: 200))
     }
 }
 
 extension ViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return addressBook.getSectionSize()
+        addressBook.getSectionSize()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return addressBook.getRowSize(section)
+        addressBook.getRowSize(section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,9 +41,21 @@ extension ViewController: UITableViewDataSource {
         
         cell.textLabel?.text = contactData.name + "(\(contactData.age))"
         cell.detailTextLabel?.text = contactData.phoneNumber
-        
         return cell
     }
 }
 
+extension ViewController {
+    @IBAction func TappedAddButton(_ sender: UIBarButtonItem) {
+        guard let newContactViewController = storyboard?.instantiateViewController(withIdentifier: "NewContactViewController") as? NewContactViewController else { return }
+        newContactViewController.delegate = self
+        self.present(newContactViewController, animated: true)
+    }
+}
 
+extension ViewController: SendDelegate {
+    func sendContact(newContact: Contact) {
+        self.addressBook.addContact(newContact)
+        self.tableView.reloadData()
+    }
+}
