@@ -76,7 +76,7 @@ extension ContactViewController: UITableViewDataSource {
         
     }
     
-    func tableView(_ tableView: UITableView, editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             contactDTOs.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
