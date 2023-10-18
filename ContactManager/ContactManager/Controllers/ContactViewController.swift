@@ -3,7 +3,7 @@ final class ContactViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     private var contactDTOs: [ContactDTO] = []
-    private var filteredContact = FilteredContact()
+    private var filteredContact: [ContactDTO] = []
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -51,8 +51,8 @@ final class ContactViewController: UIViewController {
 
 extension ContactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if filteredContact.names.count != 0 {
-            return filteredContact.names.count
+        if filteredContact.count != 0 {
+            return filteredContact.count
         } else {
             return contactDTOs.count
         }
@@ -64,9 +64,11 @@ extension ContactViewController: UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
         var content = cell.defaultContentConfiguration()
         
-        let name = filteredContact.names.count == 0 ? contactDTOs[indexPath.row].name : filteredContact.names[indexPath.row]
-        let age = contactDTOs[indexPath.row].age
-        let phoneNumber = filteredContact.phoneNumbers.count == 0 ? contactDTOs[indexPath.row].phoneNumber : filteredContact.phoneNumbers[indexPath.row]
+        let contact = filteredContact.count == 0 ? contactDTOs[indexPath.row] : filteredContact[indexPath.row]
+        
+        let name = contact.name
+        let age = contact.age
+        let phoneNumber = contact.phoneNumber
         
         content.text = "\(name) (\(age))"
         content.secondaryText = phoneNumber
@@ -78,8 +80,24 @@ extension ContactViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            contactDTOs.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if filteredContact.count != 0 {
+                let contact = filteredContact.remove(at: indexPath.row)
+                for index in 0..<contactDTOs.count {
+                    if contactDTOs[index].name == contact.name {
+                        contactDTOs.remove(at: index)
+                        break
+                    }
+                }
+                
+                if filteredContact.isEmpty {
+                    searchBar.text = ""
+                }
+                
+                tableView.reloadData()
+            } else {
+                contactDTOs.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         }
     }
 }
@@ -99,34 +117,10 @@ extension ContactViewController: UITableViewDelegate { }
 extension ContactViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredContact.names = []
-        filteredContact.phoneNumbers = []
-        
-        let names: [String] = contactDTOs.map { $0.name }
-        let ages: [String] = contactDTOs.map { $0.age }
-        let phoneNumbers: [String] = contactDTOs.map { $0.phoneNumber }
-        
-        if searchText.isEmpty {
-            filteredContact.names = names
-            filteredContact.phoneNumbers = phoneNumbers
-        }
+        filteredContact = contactDTOs.filter({
+            $0.name.localizedCaseInsensitiveContains(searchText) ||  $0.phoneNumber.localizedCaseInsensitiveContains(searchText)
+        })
     
-        for (index, word) in names.enumerated() {
-            if word.uppercased().contains(searchText.uppercased()) {
-                filteredContact.names.append(word)
-                filteredContact.ages.append(ages[index])
-                filteredContact.phoneNumbers.append(phoneNumbers[index])
-            }
-        }
-        
-        for (index, word) in phoneNumbers.enumerated() {
-            if word.uppercased().contains(searchText.uppercased()) {
-                filteredContact.names.append(names[index])
-                filteredContact.ages.append(ages[index])
-                filteredContact.phoneNumbers.append(word)
-            }
-        }
-        
         tableView.reloadData()
     }
 }
