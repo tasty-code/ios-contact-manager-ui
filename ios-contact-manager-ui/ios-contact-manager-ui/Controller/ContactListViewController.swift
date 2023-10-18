@@ -9,10 +9,7 @@ import UIKit
 
 final class ContactListViewController: UIViewController {
     private let contactManager = ContactManager()
-    private var filteredContacts = [Contact]()
-    private var isActive: Bool {
-        navigationItem.searchController?.isActive ?? false
-    }
+    private var searchController: UISearchController!
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -22,15 +19,18 @@ final class ContactListViewController: UIViewController {
         configureNavigationBar()
         configureTableView()
         observeUpdatedContacts()
+        makeSearchBar()
+        
+        definesPresentationContext = true
     }
     
     private func configureNavigationBar() {
         self.navigationItem.title = "연락처"
         self.navigationItem.rightBarButtonItem = buildAddButton()
-        self.navigationItem.searchController = makeSearchBar()
     }
     
     private func configureTableView() {
+        tableView.register(UINib(nibName: "ContactCell", bundle: nil), forCellReuseIdentifier: "ContactCell")
         tableView.dataSource = self
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableView.automaticDimension
@@ -60,22 +60,26 @@ final class ContactListViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadContacts(_:)), name: Notification.didUpdateContact, object: nil)
     }
     
-    private func makeSearchBar() -> UISearchController {
-        let searchController = UISearchController(searchResultsController: nil)
+    private func makeSearchBar() {
+        guard let filteredViewController = storyboard?.instantiateViewController(identifier: "FilteredContactListViewController") as? FilteredContactListViewController else {
+            return
+        }
+        
+        searchController = UISearchController(searchResultsController: filteredViewController)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
-        return searchController
+        navigationItem.searchController = searchController
     }
 }
 
 extension ContactListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isActive ? filteredContacts.count : contactManager.contacts.count
+        return  contactManager.contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let id = "ContactCell"
-        let contact = isActive ? filteredContacts[indexPath.row] : contactManager.contacts[indexPath.row]
+        let contact = contactManager.contacts[indexPath.row]
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as? ContactCell else {
             let cell = ContactCell(style: .subtitle, reuseIdentifier: id)
@@ -101,8 +105,14 @@ extension ContactListViewController: UITableViewDataSource {
 extension ContactListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text{
-            filteredContacts = contactManager.contacts.filter { $0.name.localizedCaseInsensitiveContains(text) }
-            tableView.reloadData()
+            guard let filtered = searchController.searchResultsController as? FilteredContactListViewController else {
+                return
+            }
+            
+            filtered.filteredContacts = contactManager.contacts.filter {
+                $0.name.localizedCaseInsensitiveContains(text)
+            }
+            filtered.tableView.reloadData()
         }
     }
 }
