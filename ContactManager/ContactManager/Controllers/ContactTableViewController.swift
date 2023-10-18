@@ -44,7 +44,6 @@ final class ContactTableViewController: UITableViewController {
         
         present(contactCreationViewController, animated: true)
     }
-    
 }
 
 extension ContactTableViewController {

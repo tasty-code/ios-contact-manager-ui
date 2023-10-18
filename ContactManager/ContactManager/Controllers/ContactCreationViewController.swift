@@ -75,7 +75,6 @@ final class ContactCreationViewController: UIViewController {
         view.addSubview(navbar)
     }
     
-    
     @objc private func didTapCancelButton(_ sender: UINavigationItem) {
         hideKeyboard()
         let alert = UIAlertController(title: nil, message: "정말로 취소하시겠습니까?", preferredStyle: .alert)
@@ -131,11 +130,9 @@ final class ContactCreationViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
 }
 
 // MARK: - TextField delegate
-
 extension ContactCreationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -174,6 +171,7 @@ private extension ContactCreationViewController {
         }
         
         var isValidate: Bool = true
+        
         switch type {
         case .age:
             isValidate = !text.contains("-") && text.formatter(type: .whiteSpaceRemoval).count < 4
