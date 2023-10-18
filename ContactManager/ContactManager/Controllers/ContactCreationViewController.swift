@@ -11,10 +11,10 @@ protocol ContactCreationVCDelegate: AnyObject {
     func addContact(_ contact: ContactInfo)
 }
 
-class ContactCreationViewController: UIViewController {
+final class ContactCreationViewController: UIViewController {
     public weak var delegate: ContactCreationVCDelegate?
     
-    private let stackView: UIStackView = {
+    private let containerStackview: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -34,31 +34,28 @@ class ContactCreationViewController: UIViewController {
         ageStack.field.delegate = self
         phoneNumStack.field.delegate = self
         
-        addSubViews()
-        addConstraint()
-        addNavigationBar()
+        setupField()
+        setupAttributes()
+        setupNavigationBar()
     }
     
-    private func addSubViews() {
-        ageStack.field.borderStyle = .roundedRect
+    private func setupField() {
         ageStack.field.keyboardType = .numberPad
-        
-        phoneNumStack.field.borderStyle = .roundedRect
         phoneNumStack.field.keyboardType = .phonePad
         
-        stackView.addArrangedSubviews(nameStack, ageStack, phoneNumStack)
-        view.addSubview(stackView)
+        containerStackview.addArrangedSubviews(nameStack, ageStack, phoneNumStack)
+        self.view.addSubview(containerStackview)
     }
     
-    private func addConstraint() {
+    private func setupAttributes() {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 100),
-            stackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            containerStackview.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            containerStackview.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            containerStackview.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
         ])
     }
     
-    private func addNavigationBar() {
+    private func setupNavigationBar() {
         let navbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
         navbar.backgroundColor = .clear
         navbar.barTintColor = .systemBackground
@@ -70,7 +67,7 @@ class ContactCreationViewController: UIViewController {
         let navItem = UINavigationItem(title: "새 연락처")
         
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(didTapCancelButton))
-        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(didTapSaveButton))
+        let saveButton = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(didTapSaveButton))
         
         navItem.leftBarButtonItem = cancelButton
         navItem.rightBarButtonItem = saveButton
@@ -91,7 +88,6 @@ class ContactCreationViewController: UIViewController {
         alert.addAction(cancel)
         alert.addAction(confirm)
         present(alert, animated: true, completion: nil)
-        
     }
     
     @objc private func didTapSaveButton(_ sender: UINavigationItem) {
