@@ -12,7 +12,18 @@ final class ContactCreationStackView: UIStackView {
         let label = UILabel()
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        label.adjustsFontForContentSizeCategory = true
+        label.minimumScaleFactor = 0.5
+        
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        label.widthAnchor.constraint(greaterThanOrEqualToConstant: 70).isActive = true
+        
+        let textStyle = UIFont.TextStyle.body
+        label.font = UIFont.preferredFont(forTextStyle: textStyle)
+        
         return label
     }()
     
@@ -20,13 +31,22 @@ final class ContactCreationStackView: UIStackView {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.borderStyle = .roundedRect
+        
+        field.adjustsFontSizeToFitWidth = true
+        field.adjustsFontForContentSizeCategory = true
+        
+        let textStyle = UIFont.TextStyle.body
+        field.font = UIFont.preferredFont(forTextStyle: textStyle)
+        
         return field
     }()
     
     init(frame: CGRect, type: ValidateType) {
         super.init(frame: frame)
-        label.text = type.description
         addArrangedSubviews(label, field)
+        
+        label.text = type.description
+        spacing = 10
     }
     
     required init(coder: NSCoder) {

@@ -46,9 +46,11 @@ final class ContactCreationViewController: UIViewController {
     
     private func setupAttributes() {
         view.backgroundColor = .systemBackground
+        
         nameStack.field.delegate = self
         ageStack.field.delegate = self
         phoneNumStack.field.delegate = self
+        
         ageStack.field.keyboardType = .numberPad
         phoneNumStack.field.keyboardType = .phonePad
     }
