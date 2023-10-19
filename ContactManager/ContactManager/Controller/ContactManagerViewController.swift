@@ -48,6 +48,20 @@ final class ContactManagerViewController: UIViewController, UITableViewDelegate 
     
     return (name: name, age: age, phone: phone)
   }
+  
+  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      contacts.remove(at: indexPath.row)
+      reload()
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    return UISwipeActionsConfiguration()
+  }
 }
 
 //MARK: - UITableViewDataSource
