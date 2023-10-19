@@ -2,10 +2,9 @@ import UIKit
 final class ContactViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     private var contactDTOs: [ContactDTO] = []
     private var filteredContact: [ContactDTO] = []
-    
-    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,20 +58,15 @@ extension ContactViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell
-        = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.accessoryType = .disclosureIndicator
-        var content = cell.defaultContentConfiguration()
+        guard let cell: CustomTableViewCell
+                = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.customCellIdentifier, for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
+//        let content = cell.defaultContentConfiguration()
         
-        let contact = filteredContact.count == 0 ? contactDTOs[indexPath.row] : filteredContact[indexPath.row]
+        let contact = filteredContact.isEmpty ? contactDTOs[indexPath.row] : filteredContact[indexPath.row]
         
-        let name = contact.name
-        let age = contact.age
-        let phoneNumber = contact.phoneNumber
+        cell.configure(with: contact)
         
-        content.text = "\(name) (\(age))"
-        content.secondaryText = phoneNumber
-        cell.contentConfiguration = content
+//        cell.contentConfiguration = content
         
         return cell
         
@@ -120,7 +114,7 @@ extension ContactViewController: UISearchBarDelegate {
         filteredContact = contactDTOs.filter({
             $0.name.localizedCaseInsensitiveContains(searchText) ||  $0.phoneNumber.localizedCaseInsensitiveContains(searchText)
         })
-    
+        
         tableView.reloadData()
     }
 }
