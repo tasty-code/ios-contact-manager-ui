@@ -26,13 +26,29 @@ final class ContactTableViewController: UITableViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        let contactCreationViewController = ContactCreationViewController()
-        contactCreationViewController.delegate = self
+        let contactCreationViewController = ContactModifierViewController(delegate: self)
         
         present(contactCreationViewController, animated: true)
     }
     
-    // MARK: - Table view data source
+    private func loadJsonData() {
+        guard let jsonURL = Bundle.main.url(forResource: "mockData", withExtension: "json") else {
+            return
+        }
+        
+        do {
+            let data = try Data(contentsOf: jsonURL)
+            let root = try JSONDecoder().decode(Root.self, from: data)
+            contactManager.setContactsList(root.data)
+        } catch {
+            print(error)
+        }
+    }
+}
+
+// MARK: - TableView Data Source
+
+extension ContactTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = isFiltering ? contactManager.filteredList.count: contactManager.countOfContactList
         return count
@@ -54,36 +70,20 @@ final class ContactTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
-}
-
-extension ContactTableViewController {
-    func loadJsonData() {
-        guard let jsonURL = Bundle.main.url(forResource: "mockData", withExtension: "json") else {
-            return
-        }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contactModifierVC = ContactModifierViewController(delegate: self, current: contactManager.contactsList[indexPath.row])
         
-        do {
-            let data = try Data(contentsOf: jsonURL)
-            let root = try JSONDecoder().decode(Root.self, from: data)
-            contactManager.setContactsList(root.data)
-        } catch {
-            print(error)
-        }
+        present(contactModifierVC, animated: true)
     }
 }
 
-extension ContactTableViewController: ContactUpdatable {
-    func addContact(_ contact: ContactInfo) {
-        contactManager.add(contact)
-        tableView.insertRows(at: [IndexPath(row: contactManager.countOfContactList - 1, section: 0)], with: .automatic)
-    }
-}
+// MARK: - Search Delegate
 
 extension ContactTableViewController : UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         isFiltering = true
         searchBar.setShowsCancelButton(true, animated: true)
-        tableView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -95,7 +95,7 @@ extension ContactTableViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = self.searchBar.text else { return }
         contactManager.filterContactsList(by: text)
-        dismissKeyboard()
+        searchBar.resignFirstResponder()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -103,15 +103,24 @@ extension ContactTableViewController : UISearchBarDelegate {
         searchBar.text = nil
         searchBar.showsCancelButton = false
         contactManager.filterContactsList(by: "")
-        dismissKeyboard()
+        searchBar.resignFirstResponder()
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         tableView.reloadData()
     }
+}
+
+//MARK: - Contact Modifier Delegate
+
+extension ContactTableViewController: ContactUpdatable {
+    func addContact(_ contact: ContactInfo) {
+        contactManager.add(contact)
+        tableView.insertRows(at: [IndexPath(row: contactManager.countOfContactList - 1, section: 0)], with: .automatic)
+    }
     
-    func dismissKeyboard() {
-        searchBar.resignFirstResponder()
+    func updateContact(_ contact: ContactInfo, of uuid: UUID) {
+        contactManager.update(contact, of: uuid)
         tableView.reloadData()
     }
 }
