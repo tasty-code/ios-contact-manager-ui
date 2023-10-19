@@ -59,13 +59,16 @@ final class NewContactViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        guard let contactManager = contactManager,
-              let name = nameTextField.text,
-              let age = ageTextField.text,
-              let phoneNumber = phoneNumberTextField.text else { return }
+        guard let contactManager = contactManager else { return }
         do {
-            let contactId = contactManager.addContact(try Contact(name: name, age: age, phoneNumber: phoneNumber))
-            delegate?.didContactsAdded(contactId)
+            let info = try makeCheckedInfo()
+            if let contact = self.contact {
+                contactManager.update(for: contact.id, with: info)
+                delegate?.didContactsChanged(contact.id)
+            } else {
+                let contactId = contactManager.add(Contact(info: info))
+                delegate?.didContactsAdded(contactId)
+            }
             self.dismiss(animated: true)
         } catch {
             let alertKind = AlertKind.error(type: error, action: UIAlertAction(title: "예", style: .default))
