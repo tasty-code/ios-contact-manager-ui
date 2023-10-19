@@ -12,7 +12,20 @@ final class ContactTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupAttributes()
         loadJsonData()
+    }
+    
+    private func setupAttributes() {
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 300
+    }
+    
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+        let contactCreationViewController = ContactCreationViewController()
+        contactCreationViewController.delegate = self
+        
+        present(contactCreationViewController, animated: true)
     }
 
     // MARK: - Table view data source
@@ -22,27 +35,11 @@ final class ContactTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contactTableCell", for: indexPath) as! ContactTableViewCell
         
-        var content = cell.defaultContentConfiguration()
-        
-        guard let name = contactManager.contactsList[indexPath.row].name, let age = contactManager.contactsList[indexPath.row].age,
-              let phoneNumber = contactManager.contactsList[indexPath.row].phoneNum else {
-            return cell
-        }
-
-        content.text = "\(name) (\(age))"
-        content.secondaryText = phoneNumber
-        cell.contentConfiguration = content
-
+        let content = contactManager.contactsList[indexPath.row]
+        cell.configure(content: content)
         return cell
-    }
-    
-    @IBAction func addButtonTapped(_ sender: UIButton) {
-        let contactCreationViewController = ContactCreationViewController()
-        contactCreationViewController.delegate = self
-        
-        present(contactCreationViewController, animated: true)
     }
 }
 
