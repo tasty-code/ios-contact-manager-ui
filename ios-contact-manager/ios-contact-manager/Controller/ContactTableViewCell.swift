@@ -1,7 +1,7 @@
 import UIKit
 
 final class ContactTableViewCell: UITableViewCell, ContactCellConfigurable {
-    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet private weak var ageLabel: UILabel!
     @IBOutlet private weak var phoneNumberLabel: UILabel!
     
