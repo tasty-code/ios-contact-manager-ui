@@ -8,7 +8,7 @@
 import Foundation
 
 struct ContactBook {
-    private var personContactList: [Person] = []
+    var personContactList: [Person] = []
 }
 
 extension ContactBook {

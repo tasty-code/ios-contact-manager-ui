@@ -8,11 +8,21 @@
 import UIKit
 
 final class WholeListTableViewController: UITableViewController {
-
+    
     private var contactBook = ContactBook()
+    private var searchFilterdList: [Person] = []
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var isFiltering: Bool {
+        let isActive = searchController.isActive
+        let isSearchBarHasText = searchController.searchBar.text?.isEmpty == false
+        return isActive && isSearchBarHasText
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpSearchController()
         setPersonContactList()
     }
     
@@ -33,6 +43,16 @@ final class WholeListTableViewController: UITableViewController {
             Person(name: "JaeHyuk", age: "88", digits: "010-1234-1234")
         ])
     }
+    
+    private func setUpSearchController() {
+        tableView.tableHeaderView = searchController.searchBar
+        
+        searchController.searchBar.placeholder = "이름을 입력해주세요"
+        searchController.searchResultsUpdater  = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.searchBarStyle = UISearchBar.Style.prominent
+        searchController.searchBar.sizeToFit()
+    }
 }
 
 extension WholeListTableViewController: PersonContactUpdating {
@@ -47,20 +67,30 @@ extension WholeListTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactBook.rowCountContactList()
+        if isFiltering {
+            return searchFilterdList.count
+        } else {
+            return contactBook.rowCountContactList()
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomTableViewCell
         let personContact = contactBook.bringPersonContact(indexPath)
+        let searchedPersonContact = searchFilterdList
         
-    cell.name.text = personContact.name
-        cell.age.text = personContact.age
-        cell.digits.text = personContact.digits
+        if isFiltering {
+            cell.name.text = searchedPersonContact[indexPath.row].name
+            cell.age.text = searchedPersonContact[indexPath.row].age
+            cell.digits.text = searchedPersonContact[indexPath.row].digits
+        } else {
+            cell.name.text = personContact.name
+            cell.age.text = personContact.age
+            cell.digits.text = personContact.digits
+        }
         
-
         return cell
     }
     
@@ -75,5 +105,19 @@ extension WholeListTableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
         }
+    }
+}
+
+extension WholeListTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        
+        searchFilterdList = self.contactBook.personContactList.filter {
+            $0.name.localizedCaseInsensitiveContains(text)
+        }
+        
+        tableView.reloadData()
     }
 }
