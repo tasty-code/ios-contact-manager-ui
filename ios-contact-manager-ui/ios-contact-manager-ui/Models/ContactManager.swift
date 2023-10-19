@@ -14,7 +14,7 @@ final class ContactManager {
         return contacts.count
     }
     
-    func addContact(_ contact: Contact) -> ObjectIdentifier {
+    func add(_ contact: Contact) -> ObjectIdentifier {
         contacts.append(contact)
         sortContactsByName()
         
