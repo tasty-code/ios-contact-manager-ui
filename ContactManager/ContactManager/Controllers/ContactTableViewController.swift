@@ -41,6 +41,14 @@ final class ContactTableViewController: UITableViewController {
         cell.configure(content: content)
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let uuid = contactManager.contactsList[indexPath.row].uuid
+            contactManager.delete(uuid)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }
 
 extension ContactTableViewController {
