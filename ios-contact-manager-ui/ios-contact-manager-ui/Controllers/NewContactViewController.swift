@@ -19,6 +19,7 @@ final class NewContactViewController: UIViewController {
     
     private var contactManager: ContactManager?
     private weak var delegate: ContactsTableViewUpdateDelegate?
+    var contact: Contact?
     private let hyphen: Character = "-"
     
     override func viewDidLoad() {
@@ -67,8 +68,15 @@ final class NewContactViewController: UIViewController {
 }
 
 extension NewContactViewController {
-    func configureData(_ contactManager: ContactManager?, delegate: ContactsTableViewUpdateDelegate?) {
+    func configureData(_ contactManager: ContactManager?, delegate: ContactsTableViewUpdateDelegate?, contact: Contact? = nil) {
         self.contactManager = contactManager
         self.delegate = delegate
+        
+        if contact != nil {
+            self.navigationItem.title = "기존 연락처"
+            self.contact = contact
+        }
+    }
+}
     }
 }
