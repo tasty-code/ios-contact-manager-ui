@@ -123,7 +123,6 @@ extension NewContactViewController: UITextFieldDelegate {
         
         if range.location == 2 && number.last != "-" {
             number.insert("-", at: number.index(number.startIndex, offsetBy: 2))
-            print(number.count)
         }
         
         if range.location == 6 && number.last != "-" {

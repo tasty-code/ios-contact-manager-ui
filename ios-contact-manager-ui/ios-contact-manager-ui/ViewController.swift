@@ -10,9 +10,9 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var SearchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!
     
-   private let cellIdentifier: String = "cell"
+    private let cellIdentifier: String = "cell"
     var addressBook: AddressBook  = AddressBook()
     
     
@@ -20,13 +20,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         initialSetting()
-        addressBook.addContact(Contact(name: "mond", phoneNumber: "010-0000-0000", age: 100))
-        addressBook.addContact(Contact(name: "dora", phoneNumber: "010-0000-0000", age: 100))
-        addressBook.addContact(Contact(name: "bora", phoneNumber: "010-0000-0000", age: 100))
     }
     
     private func initialSetting() {
         self.tableView.dataSource = self
+        self.searchBar.delegate = self
     }
 }
 
@@ -64,5 +62,13 @@ extension ViewController {
 extension ViewController: SendDelegate {
     func sendContact(newContact: Contact) {
         self.addressBook.addContact(newContact)
+        tableView.reloadData()
+    }
+}
+
+extension ViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        addressBook.searchContact(searchText)
+        tableView.reloadData()
     }
 }
