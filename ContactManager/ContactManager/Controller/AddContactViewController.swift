@@ -11,12 +11,22 @@ final class AddContactViewController: UIViewController {
   var contactAddDelegate: ContactAddDelegate?
   var contactChangedDelegate: ContactChangedDelegate?
   
+  @IBOutlet weak var cancelButton: UIButton!
+  @IBOutlet weak var saveButton: UIButton!
+  
+  @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet private var nameTextField: UITextField!
   @IBOutlet private var ageTextField: UITextField!
   @IBOutlet private var phoneTextField: UITextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    let maxFontSize = 30
+    
+    if titleLabel.font.pointSize > 30 {
+      titleLabel.font = titleLabel.font.withSize(CGFloat(maxFontSize))
+    }
   }
   
   @IBAction private func saveButtonTapped(_ sender: UIButton) {
