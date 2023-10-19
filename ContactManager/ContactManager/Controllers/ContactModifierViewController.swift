@@ -9,10 +9,12 @@ import UIKit
 
 protocol ContactUpdatable: AnyObject {
     func addContact(_ contact: ContactInfo)
+    func updateContact(_ contact: ContactInfo, of uuid: UUID)
 }
 
-final class ContactCreationViewController: UIViewController {
-    public weak var delegate: ContactUpdatable?
+final class ContactModifierViewController: UIViewController {
+    private weak var delegate: ContactUpdatable?
+    private var currentContact: ContactInfo?
     
     private let containerStackview: UIStackView = {
         let stackView = UIStackView()
@@ -22,9 +24,19 @@ final class ContactCreationViewController: UIViewController {
         return stackView
     }()
     
-    private let nameStack = ContactCreationStackView(frame: CGRect(), type: .name)
-    private let ageStack = ContactCreationStackView(frame: CGRect(), type: .age)
-    private let phoneNumStack = ContactCreationStackView(frame: CGRect(), type: .phoneNum)
+    private let nameStack = ContactModifierStackView(frame: CGRect(), type: .name)
+    private let ageStack = ContactModifierStackView(frame: CGRect(), type: .age)
+    private let phoneNumStack = ContactModifierStackView(frame: CGRect(), type: .phoneNum)
+    
+    init(delegate: ContactUpdatable? = nil, current: ContactInfo? = nil) {
+        super.init(nibName: nil, bundle: nil)
+        self.delegate = delegate
+        self.currentContact = current
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +58,16 @@ final class ContactCreationViewController: UIViewController {
     
     private func setupAttributes() {
         view.backgroundColor = .systemBackground
+        
         nameStack.field.delegate = self
         ageStack.field.delegate = self
         phoneNumStack.field.delegate = self
+        
+        guard let current = currentContact, let age = current.age else { return }
+        nameStack.field.text = current.name
+        ageStack.field.text = String(age)
+        phoneNumStack.field.text = current.phoneNum
+        
         ageStack.field.keyboardType = .numberPad
         phoneNumStack.field.keyboardType = .phonePad
     }
@@ -62,7 +81,9 @@ final class ContactCreationViewController: UIViewController {
         navbar.layer.shadowColor = UIColor.clear.cgColor
         navbar.isTranslucent = true
         
-        let navItem = UINavigationItem(title: "새 연락처")
+        let title = currentContact == nil ? "새 연락처" : "기존 연락처"
+        
+        let navItem = UINavigationItem(title: title)
         
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(didTapCancelButton))
         let saveButton = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(didTapSaveButton))
@@ -116,7 +137,13 @@ final class ContactCreationViewController: UIViewController {
         guard let ageToInt = Int(age) else { return }
         
         let newContact = ContactInfo(name: name, age: ageToInt, phoneNum: phoneNum)
-        delegate?.addContact(newContact)
+        
+        if let current = currentContact {
+            delegate?.updateContact(newContact, of: current.uuid)
+        } else {
+            delegate?.addContact(newContact)
+        }
+        
         dismiss(animated: true)
     }
     
@@ -131,7 +158,7 @@ final class ContactCreationViewController: UIViewController {
 }
 
 // MARK: - TextField delegate
-extension ContactCreationViewController: UITextFieldDelegate {
+extension ContactModifierViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -158,7 +185,7 @@ extension ContactCreationViewController: UITextFieldDelegate {
     }
 }
 
-private extension ContactCreationViewController {
+private extension ContactModifierViewController {
     func hideKeyboard() {
         view.endEditing(true)
     }
