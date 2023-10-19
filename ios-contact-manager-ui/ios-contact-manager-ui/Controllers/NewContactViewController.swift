@@ -9,6 +9,7 @@ import UIKit
 
 protocol ContactsTableViewUpdateDelegate: AnyObject {
     func didContactsAdded(_ contactId: ObjectIdentifier)
+    func didContactsChanged(_ contactId: ObjectIdentifier)
 }
 
 final class NewContactViewController: UIViewController {

@@ -97,6 +97,10 @@ extension ContactsViewController {
 }
 
 extension ContactsViewController: ContactsTableViewUpdateDelegate {
+    func didContactsChanged(_ contactId: ObjectIdentifier) {
+        self.contactsTableView.reloadData()
+    }
+    
     func didContactsAdded(_ contactId: ObjectIdentifier) {
         guard let index = contactManager.fetchIndexOfContact(with: contactId) else { return }
         let indexPath = IndexPath(row: index, section: 0)
