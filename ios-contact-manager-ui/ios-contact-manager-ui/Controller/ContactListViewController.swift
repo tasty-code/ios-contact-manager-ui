@@ -15,13 +15,10 @@ final class ContactListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureNavigationBar()
         configureTableView()
         observeUpdatedContacts()
         makeSearchBar()
-        
-        definesPresentationContext = true
     }
     
     private func configureNavigationBar() {

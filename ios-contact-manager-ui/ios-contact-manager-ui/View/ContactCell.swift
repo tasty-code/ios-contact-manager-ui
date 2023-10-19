@@ -21,8 +21,8 @@ class ContactCell: UITableViewCell {
     
     func configureCell(_ contact: Contact) {
         thumbnailImage.image = UIImage(systemName: "person")
-        nameLabel.text = contact.name
-        ageLabel.text = "\(contact.age)"
-        phoneNumberLabel.text = contact.phoneNumber
+        nameLabel.text = contact.name.toNameText()
+        ageLabel.text = "\(contact.age)".toAgeText()
+        phoneNumberLabel.text = contact.phoneNumber.toPhoneNumberText()
     }
 }
