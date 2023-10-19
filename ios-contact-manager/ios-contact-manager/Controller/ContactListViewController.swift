@@ -11,14 +11,7 @@ final class ContactListViewController: UITableViewController {
         let isSearchBarHasText = searchController?.searchBar.text?.isEmpty == false
         
         return isActive && isSearchBarHasText
-        
-        
-//        guard let isActive = searchController?.isActive,
-//              let isSearchBarHasText = searchController?.searchBar.text?.isEmpty,
-//              isSearchBarHasText == false
-//        else { return false }
-//        return true
-       }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,7 +103,7 @@ extension ContactListViewController {
     }
 }
 
-extension ContactListViewController: UISearchResultsUpdating {
+extension ContactListViewController: UISearchResultsUpdating, UISearchControllerDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
         
