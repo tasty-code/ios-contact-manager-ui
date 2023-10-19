@@ -28,8 +28,6 @@ final class ContactCreationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        
         setupLayout()
         setupAttributes()
         setupNavigationBar()
@@ -38,21 +36,21 @@ final class ContactCreationViewController: UIViewController {
     private func setupLayout() {
         containerStackview.addArrangedSubviews(nameStack, ageStack, phoneNumStack)
         view.addSubview(containerStackview)
-    }
-    
-    private func setupAttributes() {
-        nameStack.field.delegate = self
-        ageStack.field.delegate = self
-        phoneNumStack.field.delegate = self
-        
-        ageStack.field.keyboardType = .numberPad
-        phoneNumStack.field.keyboardType = .phonePad
         
         NSLayoutConstraint.activate([
             containerStackview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
             containerStackview.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             containerStackview.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
         ])
+    }
+    
+    private func setupAttributes() {
+        view.backgroundColor = .systemBackground
+        nameStack.field.delegate = self
+        ageStack.field.delegate = self
+        phoneNumStack.field.delegate = self
+        ageStack.field.keyboardType = .numberPad
+        phoneNumStack.field.keyboardType = .phonePad
     }
     
     private func setupNavigationBar() {
