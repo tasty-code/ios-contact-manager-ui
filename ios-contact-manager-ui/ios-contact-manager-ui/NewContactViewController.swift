@@ -26,12 +26,12 @@ class NewContactViewController: UIViewController {
         phoneNumberTextField.delegate = self
     }
     
-    func navigationSetting() {
+    private func navigationSetting() {
         navigationBar.isTranslucent = false
         navigationBar.shadowImage = UIImage()
     }
     
-    func keyboardSetting() {
+    private func keyboardSetting() {
         nameTextField.keyboardType = .namePhonePad
         ageTextField.keyboardType = .numberPad
         phoneNumberTextField.keyboardType = .phonePad
@@ -39,11 +39,11 @@ class NewContactViewController: UIViewController {
 }
 
 extension NewContactViewController {
-    @IBAction func tappedCancelButton(_ sender: UIButton) {
+    @IBAction private func tappedCancelButton(_ sender: UIButton) {
         cancelAlert()
     }
     
-    @IBAction func tappedSaveButton(_ sender: UIButton) {
+    @IBAction private func tappedSaveButton(_ sender: UIButton) {
         guard let name = nameCheck() else {
             invalidAlert(invalid: nameTextField)
             return
@@ -59,14 +59,14 @@ extension NewContactViewController {
         saveAlert(Contact(name: name, phoneNumber: number, age: age))
     }
     
-    func cancelAlert() {
+    private func cancelAlert() {
         let alert = UIAlertController(title: title, message: "정말 취소하겠습니까?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "예", style: .destructive, handler: { _ in self.dismiss(animated: true)}))
         alert.addAction(UIAlertAction(title: "아니오", style: .default, handler: nil))
         present(alert, animated: true)
     }
     
-    func saveAlert(_ contact: Contact) {
+    private func saveAlert(_ contact: Contact) {
         let text: String = "이름: \(contact.name), \n 나이: \(contact.age), \n 연락처: \(contact.phoneNumber) \n 저장하시겠습니까?"
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "예", style: .default, handler: { _ in
@@ -76,28 +76,28 @@ extension NewContactViewController {
         present(alert, animated: true)
     }
     
-    func nameCheck() -> String? {
+    private func nameCheck() -> String? {
         guard let name = nameTextField.text else {
             return nil
         }
         return name == "" ? nil : name.components(separatedBy: " ").joined()
     }
     
-    func ageCheck() -> Int? {
+    private func ageCheck() -> Int? {
         guard let ageText = ageTextField.text, let age = Int(ageText) else {
             return nil
         }
         return age
     }
     
-    func numberCheck() -> String? {
+    private func numberCheck() -> String? {
         guard let number = phoneNumberTextField.text else {
             return nil
         }
         return number.count >= 11 && number.filter { $0 == "-" }.count == 2 ? number : nil
     }
     
-    func invalidAlert(invalid: UITextField) {
+    private func invalidAlert(invalid: UITextField) {
         var text: String
         
         switch invalid {
