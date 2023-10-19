@@ -56,7 +56,7 @@ extension WholeListTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomTableViewCell
         let personContact = contactBook.bringPersonContact(indexPath)
         
-        cell.name.text = personContact.name
+    cell.name.text = personContact.name
         cell.age.text = personContact.age
         cell.digits.text = personContact.digits
         
