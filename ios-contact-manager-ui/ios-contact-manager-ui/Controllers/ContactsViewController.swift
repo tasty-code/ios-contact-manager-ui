@@ -58,7 +58,12 @@ extension ContactsViewController: UITableViewDataSource {
 
 extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard let cell = tableView.cellForRow(at: indexPath) as? ContactCell,
+              let contact = cell.contact else { return }
+        guard let newContactVC = storyboard?.instantiateViewController(identifier: newContactVCIdentifier) as? NewContactViewController else { return }
+        newContactVC.configureData(self.contactManager, delegate: self, contact: contact)
+        let navigationVC = UINavigationController(rootViewController: newContactVC)
+        present(navigationVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
