@@ -50,7 +50,7 @@ final class ContactViewController: UIViewController {
 
 extension ContactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if filteredContact.count != 0 {
+        if !filteredContact.isEmpty {
             return filteredContact.count
         } else {
             return contactDTOs.count
@@ -60,38 +60,30 @@ extension ContactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell: CustomTableViewCell
                 = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.customCellIdentifier, for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
-//        let content = cell.defaultContentConfiguration()
         
         let contact = filteredContact.isEmpty ? contactDTOs[indexPath.row] : filteredContact[indexPath.row]
-        
         cell.configure(with: contact)
-        
-//        cell.contentConfiguration = content
-        
+                
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            if filteredContact.count != 0 {
-                let contact = filteredContact.remove(at: indexPath.row)
-                for index in 0..<contactDTOs.count {
-                    if contactDTOs[index].name == contact.name {
-                        contactDTOs.remove(at: index)
-                        break
-                    }
-                }
-                
-                if filteredContact.isEmpty {
-                    searchBar.text = ""
-                }
-                
-                tableView.reloadData()
-            } else {
-                contactDTOs.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
+        guard editingStyle == .delete else { return }
+
+        guard !filteredContact.isEmpty else {
+            contactDTOs.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            return
+        }
+        
+        let contact = filteredContact.remove(at: indexPath.row)
+        contactDTOs = contactDTOs.filter { $0.name != contact.name }
+        
+        if !filteredContact.isEmpty {
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else {
+            searchBar.text = ""
+            tableView.reloadData()
         }
     }
 }
@@ -109,10 +101,10 @@ extension ContactViewController: JSONCodable { }
 extension ContactViewController: UITableViewDelegate { }
 
 extension ContactViewController: UISearchBarDelegate {
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredContact = contactDTOs.filter({
-            $0.name.localizedCaseInsensitiveContains(searchText) ||  $0.phoneNumber.localizedCaseInsensitiveContains(searchText)
+            $0.name.localizedCaseInsensitiveContains(searchText) ||
+            $0.phoneNumber.localizedCaseInsensitiveContains(searchText)
         })
         
         tableView.reloadData()

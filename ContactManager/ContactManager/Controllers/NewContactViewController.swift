@@ -2,7 +2,6 @@ import UIKit
 
 @available(iOS 16.0, *)
 final class NewContactViewController: UIViewController {
-    
     @IBOutlet private weak var cancelButton: UIBarButtonItem!
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var ageTextField: UITextField!

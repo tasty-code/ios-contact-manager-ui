@@ -1,7 +1,6 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var nameAge: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
 
@@ -13,7 +12,6 @@ class CustomTableViewCell: UITableViewCell {
         phoneNumber.text = "\(contact.phoneNumber)"
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.accessoryType = .disclosureIndicator
@@ -22,5 +20,4 @@ class CustomTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }
