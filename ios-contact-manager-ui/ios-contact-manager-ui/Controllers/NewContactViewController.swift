@@ -32,6 +32,12 @@ final class NewContactViewController: UIViewController {
         nameTextField.autocapitalizationType = .sentences
         ageTextField.keyboardType = .numberPad
         phoneNumberTextField.keyboardType = .phonePad
+        
+        if let contact = contact {
+            nameTextField.text = contact.name
+            ageTextField.text = contact.age
+            phoneNumberTextField.text = contact.phoneNumber
+        }
     }
     
     @IBAction func phoneNumberTextFieldEditingChanged(_ sender: UITextField) {
