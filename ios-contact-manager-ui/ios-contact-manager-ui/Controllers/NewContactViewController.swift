@@ -85,5 +85,18 @@ extension NewContactViewController {
         }
     }
 }
+
+extension NewContactViewController: Validatable {
+    private func makeCheckedInfo() throws -> ContactInfo {
+        guard let name = nameTextField.text, verifyName(name) else {
+            throw ContactsError.invalidName
+        }
+        guard let age = ageTextField.text, verifyAge(age) else {
+            throw ContactsError.invalidAge
+        }
+        guard let phoneNumber = phoneNumberTextField.text, verifyNumber(phoneNumber) else {
+            throw ContactsError.invalidPhoneNumber
+        }
+        return (name, age, phoneNumber)
     }
 }
