@@ -21,6 +21,12 @@ final class ContactManager {
         return contact.id
     }
     
+    func update(for id: ObjectIdentifier, with info: ContactInfo) {
+        guard let contact = contacts.first(where: { $0.id == id }) else { return }
+        contact.update(with: info)
+        sortContactsByName()
+    }
+    
     func deleteContact(by id: ObjectIdentifier) {
         guard let index = contacts.firstIndex(where: { $0.id == id }) else { return }
         contacts.remove(at: index)
