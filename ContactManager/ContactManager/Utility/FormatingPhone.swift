@@ -9,15 +9,14 @@ import Foundation
 
 extension String {
   func formatingPhone() -> String {
-    let phoneNumber = self.replacingOccurrences(of: "-", with: "")
     if(self.count > 12) { return self }
     
+    let phoneNumber = self.replacingOccurrences(of: "-", with: "")
+    let prefix = phoneNumber.prefix(2)
     var regexPattern: String
-    if phoneNumber.count == 9 {
-      regexPattern = "([0-9]{0,2})([0-9]{0,3})([0-9]{0,4})"
-    } else {
-      regexPattern = "([0-9]{0,3})([0-9]{0,4})([0-9]{0,4})"
-    }
+    
+    regexPattern = prefix == "02" ? "([0-9]{0,2})" : "([0-9]{0,3})"
+    regexPattern += phoneNumber.count == 9 ? "([0-9]{0,3})([0-9]{0,4})" : "([0-9]{0,4})([0-9]{0,4})"
     
     if let regex = try? NSRegularExpression(pattern: regexPattern, options: .caseInsensitive) {
       let modString = regex.stringByReplacingMatches(in: phoneNumber,

@@ -21,7 +21,6 @@ final class AddContactViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     let maxFontSize = 30
     
     if titleLabel.font.pointSize > 30 {
