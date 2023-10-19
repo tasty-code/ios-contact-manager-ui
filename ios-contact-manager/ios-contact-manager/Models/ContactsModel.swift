@@ -1,7 +1,7 @@
 import Foundation
 
 final class ContactsModel {
-    private var contactsList = [Contact]() {
+     private var contactsList = [Contact]() {
         didSet {
             self.notifyContactsDidChange()
         }
@@ -16,6 +16,10 @@ final class ContactsModel {
 extension ContactsModel {
     func createContact(contact: Contact) {
         self.contactsList.append(contact)
+    }
+    
+    func  readContactList() -> [Contact] {
+        return contactsList
     }
     
     func readContact(index: Int) -> Contact {

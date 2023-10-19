@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		040766C72AD7E65100FA4CEE /* ContactsManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040766C62AD7E65100FA4CEE /* ContactsManagable.swift */; };
 		040766C92AD800CC00FA4CEE /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040766C82AD800CC00FA4CEE /* NotificationType.swift */; };
-		0422B07A2AD4E9F1001034DE /* ContactCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422B0792AD4E9F1001034DE /* ContactCreateViewController.swift */; };
+		0419A43B2ADE400F00E8AF40 /* ContactCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419A43A2ADE400F00E8AF40 /* ContactCreateViewController.swift */; };
+		0419A43D2ADE477E00E8AF40 /* TemporaryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419A43C2ADE477E00E8AF40 /* TemporaryContainer.swift */; };
+		0419A43F2ADE496E00E8AF40 /* ContactFormViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419A43E2ADE496E00E8AF40 /* ContactFormViewControllerDelegate.swift */; };
+		0422B07A2AD4E9F1001034DE /* ContactFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422B0792AD4E9F1001034DE /* ContactFormViewController.swift */; };
 		0422B07D2AD4EA2E001034DE /* UITableViewCellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422B07C2AD4EA2E001034DE /* UITableViewCellConfigurable.swift */; };
 		0422B0842AD501C4001034DE /* ContactError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422B0832AD501C4001034DE /* ContactError.swift */; };
 		04C21E8A2ACD744D00FD476E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C21E892ACD744D00FD476E /* AppDelegate.swift */; };
@@ -26,9 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		040766C62AD7E65100FA4CEE /* ContactsManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsManagable.swift; sourceTree = "<group>"; };
 		040766C82AD800CC00FA4CEE /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
-		0422B0792AD4E9F1001034DE /* ContactCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCreateViewController.swift; sourceTree = "<group>"; };
+		0419A43A2ADE400F00E8AF40 /* ContactCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCreateViewController.swift; sourceTree = "<group>"; };
+		0419A43C2ADE477E00E8AF40 /* TemporaryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryContainer.swift; sourceTree = "<group>"; };
+		0419A43E2ADE496E00E8AF40 /* ContactFormViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormViewControllerDelegate.swift; sourceTree = "<group>"; };
+		0422B0792AD4E9F1001034DE /* ContactFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormViewController.swift; sourceTree = "<group>"; };
 		0422B07C2AD4EA2E001034DE /* UITableViewCellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellConfigurable.swift; sourceTree = "<group>"; };
 		0422B0832AD501C4001034DE /* ContactError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactError.swift; sourceTree = "<group>"; };
 		04C21E862ACD744D00FD476E /* ios-contact-manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-contact-manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				0422B07C2AD4EA2E001034DE /* UITableViewCellConfigurable.swift */,
-				040766C62AD7E65100FA4CEE /* ContactsManagable.swift */,
+				0419A43E2ADE496E00E8AF40 /* ContactFormViewControllerDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -101,6 +105,7 @@
 			children = (
 				6B66FE112AD4D4A600BD711F /* Contact.swift */,
 				04C21EA02ACD74F300FD476E /* ContactsModel.swift */,
+				0419A43C2ADE477E00E8AF40 /* TemporaryContainer.swift */,
 				0422B0832AD501C4001034DE /* ContactError.swift */,
 				040766C82AD800CC00FA4CEE /* NotificationType.swift */,
 			);
@@ -131,7 +136,8 @@
 				04C21E8B2ACD744D00FD476E /* SceneDelegate.swift */,
 				04C21E9D2ACD74C400FD476E /* ContactListViewController.swift */,
 				04E10D1F2ACECC2E0037D2B5 /* ContactTableViewCell.swift */,
-				0422B0792AD4E9F1001034DE /* ContactCreateViewController.swift */,
+				0422B0792AD4E9F1001034DE /* ContactFormViewController.swift */,
+				0419A43A2ADE400F00E8AF40 /* ContactCreateViewController.swift */,
 				6BDA000F2ADCC24900AA33DB /* ContactEditViewController.swift */,
 			);
 			path = Controller;
@@ -213,14 +219,16 @@
 				04FF2A882AD6609E005EF657 /* String.swift in Sources */,
 				0422B0842AD501C4001034DE /* ContactError.swift in Sources */,
 				04C21E8A2ACD744D00FD476E /* AppDelegate.swift in Sources */,
+				0419A43D2ADE477E00E8AF40 /* TemporaryContainer.swift in Sources */,
+				0419A43B2ADE400F00E8AF40 /* ContactCreateViewController.swift in Sources */,
+				0419A43F2ADE496E00E8AF40 /* ContactFormViewControllerDelegate.swift in Sources */,
 				0422B07D2AD4EA2E001034DE /* UITableViewCellConfigurable.swift in Sources */,
 				04E10D202ACECC2E0037D2B5 /* ContactTableViewCell.swift in Sources */,
 				04C21E8C2ACD744D00FD476E /* SceneDelegate.swift in Sources */,
 				04C21E9E2ACD74C400FD476E /* ContactListViewController.swift in Sources */,
-				040766C72AD7E65100FA4CEE /* ContactsManagable.swift in Sources */,
 				6B66FE122AD4D4A600BD711F /* Contact.swift in Sources */,
 				040766C92AD800CC00FA4CEE /* NotificationType.swift in Sources */,
-				0422B07A2AD4E9F1001034DE /* ContactCreateViewController.swift in Sources */,
+				0422B07A2AD4E9F1001034DE /* ContactFormViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
