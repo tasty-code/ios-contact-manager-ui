@@ -9,16 +9,19 @@ import UIKit
 
 final class ContactListViewController: UIViewController {
     private let contactManager = ContactManager()
+    private let presenter: CellPresenter = ContactCellPresenter()
+    
     private var searchController: UISearchController!
     
     @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureNavigationBar()
         configureTableView()
         observeUpdatedContacts()
-        makeSearchBar()
+        configureSearchBar()
     }
     
     private func configureNavigationBar() {
@@ -57,9 +60,9 @@ final class ContactListViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadContacts(_:)), name: Notification.didUpdateContact, object: nil)
     }
     
-    private func makeSearchBar() {
+    private func configureSearchBar() {
         guard let filteredViewController = storyboard?.instantiateViewController(identifier: "FilteredContactListViewController",creator: { coder in
-            return FilteredContactListViewController(coder: coder, contactManager: self.contactManager)
+            return FilteredContactListViewController(coder: coder, contactManager: self.contactManager, presenter: self.presenter)
         }) else {
             return
         }
@@ -79,12 +82,10 @@ extension ContactListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let contact = contactManager.contacts[indexPath.row]
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.contactCell, for: indexPath) as? ContactCell else {
-            let cell = ContactCell(style: .subtitle, reuseIdentifier: UITableViewCell.contactCell)
-            cell.configureCell(contact)
-            return cell
-        }
-        cell.configureCell(contact)
+        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.contactCell, for: indexPath)
+        
+        presenter.setCell(cell)
+        presenter.formatContent(contact)
         return cell
     }
     

@@ -10,15 +10,18 @@ import UIKit
 class FilteredContactListViewController: UITableViewController {
     private(set) var filteredContacts = [Contact]()
     private weak var contactManager: ContactManager?
+    private weak var presenter: CellPresenter?
     
-    init?(coder: NSCoder, contactManager: ContactManager) {
+    init?(coder: NSCoder, contactManager: ContactManager, presenter: CellPresenter) {
         self.contactManager = contactManager
+        self.presenter = presenter
         super.init(coder: coder)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,13 +33,9 @@ class FilteredContactListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.contactCell, for: indexPath) as? ContactCell else {
-            let cell = ContactCell(style: .default, reuseIdentifier: UITableViewCell.contactCell)
-            cell.configureCell(filteredContacts[indexPath.row])
-            return cell
-        }
-        
-        cell.configureCell(filteredContacts[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.contactCell, for: indexPath)
+        presenter?.setCell(cell)
+        presenter?.formatContent(filteredContacts[indexPath.row])
         return cell
     }
     
