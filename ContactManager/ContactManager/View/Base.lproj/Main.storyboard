@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pi7-pp-vI3">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <accessibilityOverrides isEnabled="YES" dynamicTypePreference="1"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Contact Manager View Controller-->
+        <!--연락처-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ContactManagerViewController" customModule="ContactManager" customModuleProvider="target" sceneMemberID="viewController">
@@ -110,38 +110,30 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAF-ff-jUy">
-                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                                <items>
-                                    <navigationItem title="연락처" id="89a-tE-BX9">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dJN-ZW-JQ2">
-                                            <connections>
-                                                <action selector="addContactTapped:" destination="BYZ-38-t0r" id="hE7-er-ZbY"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oxb-BO-79f" secondAttribute="trailing" id="8Jk-6p-RHe"/>
-                            <constraint firstItem="qAF-ff-jUy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="8RV-rZ-FTP"/>
-                            <constraint firstItem="oxb-BO-79f" firstAttribute="top" secondItem="qAF-ff-jUy" secondAttribute="bottom" id="HL0-Ai-YRz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oxb-BO-79f" secondAttribute="bottom" id="IoQ-fN-r6e"/>
-                            <constraint firstItem="oxb-BO-79f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="J7N-z8-ghk"/>
-                            <constraint firstItem="qAF-ff-jUy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iMY-1K-Kez"/>
-                            <constraint firstItem="qAF-ff-jUy" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="nkh-88-Kei"/>
+                            <constraint firstItem="oxb-BO-79f" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="AlV-6i-9zN"/>
+                            <constraint firstItem="oxb-BO-79f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LQS-Aa-6J0"/>
+                            <constraint firstItem="oxb-BO-79f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V6i-Ku-de2"/>
+                            <constraint firstItem="oxb-BO-79f" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="hZV-r9-KJQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="연락처" id="AjJ-ep-Zck">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dJN-ZW-JQ2">
+                            <connections>
+                                <action selector="addContactTapped:" destination="BYZ-38-t0r" id="hE7-er-ZbY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contactTableView" destination="oxb-BO-79f" id="e1j-Rx-A53"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131" y="-27"/>
+            <point key="canvasLocation" x="1057.2519083969464" y="-27.464788732394368"/>
         </scene>
         <!--Add Contact View Controller-->
         <scene sceneID="32X-Ve-hey">
@@ -271,7 +263,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ev1-Vx-YP9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="920" y="-27"/>
+            <point key="canvasLocation" x="1846.564885496183" y="-27.464788732394368"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LbI-Ia-pKb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pi7-pp-vI3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FFt-Pl-V9E">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Gib-sF-tbV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uoi-nb-OPh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>

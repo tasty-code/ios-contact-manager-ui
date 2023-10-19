@@ -8,11 +8,11 @@
 import UIKit
 
 final class ContactManagerViewController: UIViewController, UITableViewDelegate {
-  
   // MARK: - Property
   
   @IBOutlet private weak var contactTableView: UITableView!
   private var contacts = [Contact]()
+  private var filteredContacts = [Contact]()
   
   // MARK: - Methods
   
@@ -21,6 +21,7 @@ final class ContactManagerViewController: UIViewController, UITableViewDelegate 
     contactTableView.delegate = self
     contactTableView.dataSource = self
     loadData()
+    setupSearchController()
   }
   
   @IBAction private func addContactTapped(_ sender: UIBarButtonItem) {
@@ -68,13 +69,14 @@ final class ContactManagerViewController: UIViewController, UITableViewDelegate 
 
 extension ContactManagerViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return contacts.count
+    return isFiltering ? filteredContacts.count : contacts.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell: ContactTableViewCell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
     
-    cell.configure(model: contacts[indexPath.row])
+    let model = isFiltering ? filteredContacts[indexPath.row] : contacts[indexPath.row]
+    cell.configure(model: model)
     return cell
   }
 }
@@ -94,5 +96,38 @@ extension ContactManagerViewController: ContactAddDelegate {
 extension ContactManagerViewController: ContactChangedDelegate {
   func reload() {
     contactTableView.reloadData()
+  }
+}
+
+//MARK: - SearchController
+
+extension ContactManagerViewController: UISearchBarDelegate, UISearchResultsUpdating {
+  private var isFiltering: Bool {
+    let searchController = self.navigationItem.searchController
+    let isActive = searchController?.isActive ?? false
+    let isSearchBarHasText = searchController?.searchBar.text?.isEmpty == false
+    return isActive && isSearchBarHasText
+  }
+  
+  private func setupSearchController() {
+    let searchController = UISearchController(searchResultsController: nil)
+    searchController.searchBar.placeholder = "검색할 이름이나 연락처를 입력하세요."
+    searchController.automaticallyShowsCancelButton = false
+    searchController.hidesNavigationBarDuringPresentation = false
+    searchController.searchResultsUpdater = self
+    
+    self.navigationItem.searchController = searchController
+  }
+  
+  func updateSearchResults(for searchController: UISearchController) {
+    guard let searchText = searchController.searchBar.text else { return }
+    
+    filteredContacts = contacts.filter { contact in
+      return contact.name.contains(searchText) ||
+      String(contact.age).contains(searchText) ||
+      contact.phone.contains(searchText)
+    }
+    
+    reload()
   }
 }
