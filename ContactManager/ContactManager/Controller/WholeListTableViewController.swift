@@ -68,7 +68,7 @@ extension WholeListTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactInformationCell", for: indexPath) as! ContactInformationTableViewCell
         let personContact = contactBook.bringPersonContact(indexPath)
         
         if isSearching {
