@@ -40,8 +40,14 @@ extension ContactManager {
     }
     
     func update(_ contact: ContactInfo, of uuid: UUID) {
-        if let targetIndex = contactsList.firstIndex(where: {$0.uuid == uuid}) {
-            contactsList[targetIndex] = contact
+        guard let targetIndex = contactsList.firstIndex(where: {$0.uuid == uuid}) else {
+            return
+        }
+        
+        contactsList[targetIndex] = contact
+        
+        if let filteredTargetIndex = filteredList.firstIndex(where: {$0.uuid == uuid}) {
+            filteredList[filteredTargetIndex] = contact
         }
     }
     
