@@ -2,26 +2,14 @@ import UIKit
 final class ContactViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     private var contactDTOs: [ContactDTO] = []
-    private let alertController = UIAlertController()
+    private var filteredContact: [ContactDTO] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            if let dummyContactDTOs = try decodeJSON() {
-                contactDTOs = dummyContactDTOs
-            }
-        }
-        catch {
-            alertController
-                .configureAlertController(title: "데이터 불러오기 실패",
-                                          message: nil,
-                                          defaultAction: "예",
-                                          destructiveAction: nil,
-                                          viewController: self)
-        }
-        tableView.delegate = self
-        tableView.dataSource = self
+        loadJSON()
+        loadDelegate()
     }
     
     @available(iOS 16.0, *)
@@ -34,36 +22,67 @@ final class ContactViewController: UIViewController {
         newContactViewController.delegate = self
         present(newContactViewController, animated: true)
     }
+    
+    private func loadJSON() {
+        do {
+            if let dummyContactDTOs = try decodeJSON() {
+                contactDTOs = dummyContactDTOs
+            }
+        }
+        catch {
+            let alertController = UIAlertController()
+            alertController
+                .configureAlertController(title: "데이터 불러오기 실패",
+                                          message: nil,
+                                          defaultAction: "예",
+                                          destructiveAction: nil,
+                                          viewController: self)
+        }
+    }
+    
+    private func loadDelegate() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        searchBar.delegate = self
+    }
 }
 
 extension ContactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactDTOs.count
+        if !filteredContact.isEmpty {
+            return filteredContact.count
+        } else {
+            return contactDTOs.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell
-        = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.accessoryType = .disclosureIndicator
-        var content = cell.defaultContentConfiguration()
+        guard let cell: CustomTableViewCell
+                = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.customCellIdentifier, for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
         
-        let contactDTOs = contactDTOs[indexPath.row]
-        
-        let name = contactDTOs.name
-        let age = contactDTOs.age
-        let phoneNumber = contactDTOs.phoneNumber
-        
-        content.text = "\(name) (\(age))"
-        content.secondaryText = phoneNumber
-        cell.contentConfiguration = content
-        
+        let contact = filteredContact.isEmpty ? contactDTOs[indexPath.row] : filteredContact[indexPath.row]
+        cell.configure(with: contact)
+                
         return cell
     }
     
-    func tableView(_ tableView: UITableView, editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+
+        guard !filteredContact.isEmpty else {
             contactDTOs.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            return
+        }
+        
+        let contact = filteredContact.remove(at: indexPath.row)
+        contactDTOs = contactDTOs.filter { $0.name != contact.name }
+        
+        if !filteredContact.isEmpty {
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else {
+            searchBar.text = ""
+            tableView.reloadData()
         }
     }
 }
@@ -79,3 +98,14 @@ extension ContactViewController: DataSendable {
 extension ContactViewController: JSONCodable { }
 
 extension ContactViewController: UITableViewDelegate { }
+
+extension ContactViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredContact = contactDTOs.filter({
+            $0.name.localizedCaseInsensitiveContains(searchText) ||
+            $0.phoneNumber.localizedCaseInsensitiveContains(searchText)
+        })
+        
+        tableView.reloadData()
+    }
+}

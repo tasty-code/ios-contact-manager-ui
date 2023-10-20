@@ -15,6 +15,7 @@
 		A62B6E9C2ACD6DF9005DC167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62B6E9A2ACD6DF9005DC167 /* Main.storyboard */; };
 		A62B6E9E2ACD6DFA005DC167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A62B6E9D2ACD6DFA005DC167 /* Assets.xcassets */; };
 		A62B6EA12ACD6DFA005DC167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62B6E9F2ACD6DFA005DC167 /* LaunchScreen.storyboard */; };
+		A62E4BAB2AE009D70017B3DC /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62E4BAA2AE009D70017B3DC /* CustomTableViewCell.swift */; };
 		A637B8482AD65D3E0070D080 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A637B8472AD65D3E0070D080 /* NewContactViewController.swift */; };
 		A68DBFA72AD8FF4400779ABD /* DataSendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68DBFA62AD8FF4400779ABD /* DataSendable.swift */; };
 		A6911C762ADCE6FE009C1C4A /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6911C752ADCE6FE009C1C4A /* Validation.swift */; };
@@ -48,6 +49,7 @@
 		A62B6E9D2ACD6DFA005DC167 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A62B6EA02ACD6DFA005DC167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A62B6EA22ACD6DFA005DC167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A62E4BAA2AE009D70017B3DC /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		A637B8472AD65D3E0070D080 /* NewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
 		A68DBFA62AD8FF4400779ABD /* DataSendable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSendable.swift; sourceTree = "<group>"; };
 		A6911C752ADCE6FE009C1C4A /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				A62B6E9A2ACD6DF9005DC167 /* Main.storyboard */,
+				A62E4BAA2AE009D70017B3DC /* CustomTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				A6911C762ADCE6FE009C1C4A /* Validation.swift in Sources */,
 				C3CF48022AD944BE007D5452 /* DecodingErrors.swift in Sources */,
 				A61237C32ACFE7C900CBCA0F /* JSONCodable.swift in Sources */,
+				A62E4BAB2AE009D70017B3DC /* CustomTableViewCell.swift in Sources */,
 				A637B8482AD65D3E0070D080 /* NewContactViewController.swift in Sources */,
 				C3CF48002AD93C93007D5452 /* String+Extension.swift in Sources */,
 				A6EF904A2AD2757E0008C0A9 /* ContactDTO.swift in Sources */,
@@ -394,7 +398,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -451,7 +455,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

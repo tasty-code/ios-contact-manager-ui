@@ -1,7 +1,6 @@
 import UIKit
 
 extension UIAlertController {
-    
     func configureAlertController(title: String, message: String?, defaultAction: String, destructiveAction: String?, viewController: UIViewController) {
         let alertController = UIAlertController(title: title,
                                                 message: message,

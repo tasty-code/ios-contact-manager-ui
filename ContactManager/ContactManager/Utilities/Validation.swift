@@ -1,5 +1,3 @@
-import Foundation
-
 @available(iOS 16.0, *)
 struct Validation {
     func check(name: String?) throws -> String {
