@@ -17,7 +17,7 @@ final class ContactTableViewController: UITableViewController {
         super.viewDidLoad()
         setupAttributes()
         loadJsonData()
-        self.searchBar.delegate = self
+        searchBar.delegate = self
     }
     
     private func setupAttributes() {
@@ -56,9 +56,8 @@ extension ContactTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactTableCell", for: indexPath) as! ContactTableViewCell
-        
-        let content = isFiltering ? contactManager.filteredList[indexPath.row] : contactManager.contactsList[indexPath.row]
-        
+                
+        let content = isFiltering && searchBar.text != "" ? contactManager.filteredList[indexPath.row] : contactManager.contactsList[indexPath.row]
         cell.configure(content: content)
         return cell
     }
@@ -83,18 +82,19 @@ extension ContactTableViewController {
 
 extension ContactTableViewController : UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        isFiltering = true
         searchBar.setShowsCancelButton(true, animated: true)
+        
+        isFiltering = true
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let text = self.searchBar.text else { return }
+        guard let text = searchBar.text else { return }
         contactManager.filterContactsList(by: text)
         tableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = self.searchBar.text else { return }
+        guard let text = searchBar.text else { return }
         contactManager.filterContactsList(by: text)
         searchBar.resignFirstResponder()
     }
