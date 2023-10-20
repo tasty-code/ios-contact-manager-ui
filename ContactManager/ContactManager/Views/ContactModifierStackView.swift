@@ -1,5 +1,5 @@
 //
-//  CreationStackView.swift
+//  ContactModifierStackView.swift
 //  ContactManager
 //
 //  Created by WonjiHa on 2023/10/16.
