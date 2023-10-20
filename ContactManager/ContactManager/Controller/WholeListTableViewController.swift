@@ -11,6 +11,7 @@ final class WholeListTableViewController: UITableViewController {
     
     private var contactBook = ContactBook()
     private var searchFilterdList: [Person] = []
+    private let contactCellIdentifier: String = "ContactInformationCell"
     
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -68,17 +69,15 @@ extension WholeListTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactInformationCell", for: indexPath) as! ContactInformationTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: contactCellIdentifier, for: indexPath) as? ContactInformationTableViewCell
+        else { return ContactInformationTableViewCell() }
         let personContact = contactBook.bringPersonContact(indexPath)
         
         if isSearching {
-            cell.name.text = searchFilterdList[indexPath.row].name
-            cell.age.text = searchFilterdList[indexPath.row].age
-            cell.digits.text = searchFilterdList[indexPath.row].digits
+            let personContactSearched = searchFilterdList[indexPath.row]
+            cell.drawCell(personContactSearched)
         } else {
-            cell.name.text = personContact.name
-            cell.age.text = personContact.age
-            cell.digits.text = personContact.digits
+            cell.drawCell(personContact)
         }
         
         return cell
