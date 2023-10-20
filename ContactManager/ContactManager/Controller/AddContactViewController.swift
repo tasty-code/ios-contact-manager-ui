@@ -7,28 +7,13 @@
 
 import UIKit
 
-final class AddContactViewController: UIViewController {
-  var contactAddDelegate: ContactAddDelegate?
-  var contactChangedDelegate: ContactChangedDelegate?
+final class AddContactViewController: FormViewController {
+
+  @IBOutlet private weak var nameTextField: UITextField!
+  @IBOutlet private weak var ageTextField: UITextField!
+  @IBOutlet private weak var phoneTextField: UITextField!
   
-  @IBOutlet weak var cancelButton: UIButton!
-  @IBOutlet weak var saveButton: UIButton!
-  
-  @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet private var nameTextField: UITextField!
-  @IBOutlet private var ageTextField: UITextField!
-  @IBOutlet private var phoneTextField: UITextField!
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    let maxFontSize = 30
-    
-    if titleLabel.font.pointSize > 30 {
-      titleLabel.font = titleLabel.font.withSize(CGFloat(maxFontSize))
-    }
-  }
-  
-  @IBAction private func saveButtonTapped(_ sender: UIButton) {
+  @IBAction override func saveButtonTapped(_ sender: UIButton) {
     do {
       try contactAddDelegate?.addContact(nameText: nameTextField.text,
                                          ageText: ageTextField.text,
@@ -36,23 +21,17 @@ final class AddContactViewController: UIViewController {
       contactChangedDelegate?.reload()
       dismiss(animated: true)
     } catch {
-      AlertViewController.show(on: self, 
+      AlertViewController.show(on: self,
                                message: error.localizedDescription,
                                defaultButtonTitle: "확인")
     }
   }
   
-  @IBAction private func cancelButtonTapped(_ sender: UIButton) {
-    AlertViewController.show(on: self,
-                             message: "정말로 취소하시겠습니까?",
-                             defaultButtonTitle: "아니오",
-                             destructiveButtonTitle: "예",
-                             destructiveAction: {
-      self.dismiss(animated: true)
-    })
+  @IBAction override func cancelButtonTapped(_ sender: UIButton) {
+    super.cancelButtonTapped(sender)
   }
   
-  @IBAction private func phoneTextDidChanged(_ sender: UITextField) {
-    sender.text = sender.text?.formatingPhone()
+  @IBAction override func phoneTextDidChanged(_ sender: UITextField) {
+    super.phoneTextDidChanged(sender)
   }
 }

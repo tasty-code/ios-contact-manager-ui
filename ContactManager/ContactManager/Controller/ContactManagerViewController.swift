@@ -85,13 +85,24 @@ extension ContactManagerViewController: UITableViewDelegate {
       } else {
         contacts.remove(at: indexPath.row)
       }
-      
-      reload()
     }
   }
   
   func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     return UISwipeActionsConfiguration()
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    guard let editView = storyboard?.instantiateViewController(withIdentifier: "editContactView") as? EditContactViewController else { return }
+    
+    editView.contactAddDelegate = self
+    editView.contactChangedDelegate = self
+    editView.editContactDelegate = self
+    
+    let contactData = isFiltering ? filteredContacts[indexPath.row] : contacts[indexPath.row]
+    editView.contactData = contactData
+    
+    self.present(editView, animated: true)
   }
 }
 
@@ -110,6 +121,24 @@ extension ContactManagerViewController: ContactAddDelegate {
 extension ContactManagerViewController: ContactChangedDelegate {
   func reload() {
     contactTableView.reloadData()
+  }
+}
+
+//MARK: - ContactEditDelegate
+
+extension ContactManagerViewController: ContactEditDelegate {
+  func editContact(uid: UUID, nameText: String?, ageText: String?, phoneText: String?) throws {
+    let (name, age, phone) = try getValidData(nameText: nameText, ageText: ageText, phoneText: phoneText)
+    
+    contacts = contacts.map { contact in
+      var newContact = contact
+      if contact.uid == uid {
+        newContact.name = name
+        newContact.age = age
+        newContact.phone = phone
+      }
+      return newContact
+    }
   }
 }
 

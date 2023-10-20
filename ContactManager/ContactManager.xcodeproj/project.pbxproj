@@ -18,6 +18,9 @@
 		66CD22552ACF905F00BE35F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66CD22542ACF905F00BE35F7 /* Assets.xcassets */; };
 		66CD22582ACF905F00BE35F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66CD22562ACF905F00BE35F7 /* LaunchScreen.storyboard */; };
 		66CD22602ACFD14F00BE35F7 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CD225F2ACFD14F00BE35F7 /* ContactTableViewCell.swift */; };
+		D0157FD42AE20B8F001F3ECB /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0157FD32AE20B8F001F3ECB /* FormViewController.swift */; };
+		D0157FD62AE20BE0001F3ECB /* EditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0157FD52AE20BE0001F3ECB /* EditContactViewController.swift */; };
+		D0157FD82AE21B48001F3ECB /* ContactEditDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0157FD72AE21B48001F3ECB /* ContactEditDelegate.swift */; };
 		D07AF2182ACFCAD700F7B1B8 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AF2172ACFCAD700F7B1B8 /* Contact.swift */; };
 		D07AF2822AD62F0300F7B1B8 /* ContactManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AF2812AD62F0300F7B1B8 /* ContactManagerTests.swift */; };
 		D07AF28D2AD6819A00F7B1B8 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AF28C2AD6819A00F7B1B8 /* ValidationError.swift */; };
@@ -49,6 +52,9 @@
 		66CD22572ACF905F00BE35F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66CD22592ACF905F00BE35F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66CD225F2ACFD14F00BE35F7 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		D0157FD32AE20B8F001F3ECB /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		D0157FD52AE20BE0001F3ECB /* EditContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewController.swift; sourceTree = "<group>"; };
+		D0157FD72AE21B48001F3ECB /* ContactEditDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditDelegate.swift; sourceTree = "<group>"; };
 		D07AF2172ACFCAD700F7B1B8 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		D07AF27F2AD62F0200F7B1B8 /* ContactManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07AF2812AD62F0300F7B1B8 /* ContactManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerTests.swift; sourceTree = "<group>"; };
@@ -122,10 +128,13 @@
 			children = (
 				66CD224F2ACF905E00BE35F7 /* ContactManagerViewController.swift */,
 				666502912AD65C550019A138 /* AddContactViewController.swift */,
+				D0157FD52AE20BE0001F3ECB /* EditContactViewController.swift */,
 				66CD225F2ACFD14F00BE35F7 /* ContactTableViewCell.swift */,
 				D07AF2CE2AD8E04800F7B1B8 /* AlertViewController.swift */,
 				6694F74E2ADE2BCD007EB6CE /* ContactAddDelegate.swift */,
+				D0157FD72AE21B48001F3ECB /* ContactEditDelegate.swift */,
 				6694F7502ADE2FA8007EB6CE /* ContactChangedDelegate.swift */,
+				D0157FD32AE20B8F001F3ECB /* FormViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -261,14 +270,17 @@
 				66CD22602ACFD14F00BE35F7 /* ContactTableViewCell.swift in Sources */,
 				6694F74D2ADE18D1007EB6CE /* Validation.swift in Sources */,
 				D07AF28D2AD6819A00F7B1B8 /* ValidationError.swift in Sources */,
+				D0157FD82AE21B48001F3ECB /* ContactEditDelegate.swift in Sources */,
 				666502922AD65C550019A138 /* AddContactViewController.swift in Sources */,
 				D07AF2CF2AD8E04800F7B1B8 /* AlertViewController.swift in Sources */,
 				66CD22502ACF905E00BE35F7 /* ContactManagerViewController.swift in Sources */,
 				66CD224C2ACF905E00BE35F7 /* AppDelegate.swift in Sources */,
 				6694F7512ADE2FA8007EB6CE /* ContactChangedDelegate.swift in Sources */,
+				D0157FD62AE20BE0001F3ECB /* EditContactViewController.swift in Sources */,
 				66CD224E2ACF905E00BE35F7 /* SceneDelegate.swift in Sources */,
 				D07AF2D22ADCC48500F7B1B8 /* FormatingPhone.swift in Sources */,
 				6694F74F2ADE2BCD007EB6CE /* ContactAddDelegate.swift in Sources */,
+				D0157FD42AE20B8F001F3ECB /* FormViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
