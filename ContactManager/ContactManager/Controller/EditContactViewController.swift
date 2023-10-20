@@ -9,12 +9,11 @@ import UIKit
 
 class EditContactViewController: FormViewController {
   var editContactDelegate: ContactEditDelegate?
+  var contactData: Contact?
   
   @IBOutlet weak private var nameTextField:UITextField!
   @IBOutlet weak private var ageTextField:UITextField!
   @IBOutlet weak private var phoneTextField:UITextField!
-  
-  var contactData: Contact?
   
   override func viewDidLoad() {
     nameTextField.text = contactData?.name
@@ -42,5 +41,4 @@ class EditContactViewController: FormViewController {
   @IBAction override func phoneTextDidChanged(_ sender: UITextField) {
     super.phoneTextDidChanged(sender)
   }
-
 }

@@ -86,6 +86,7 @@ extension ContactManagerViewController: UITableViewDelegate {
         contacts.remove(at: indexPath.row)
       }
     }
+    reload()
   }
   
   func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -129,6 +130,23 @@ extension ContactManagerViewController: ContactChangedDelegate {
 extension ContactManagerViewController: ContactEditDelegate {
   func editContact(uid: UUID, nameText: String?, ageText: String?, phoneText: String?) throws {
     let (name, age, phone) = try getValidData(nameText: nameText, ageText: ageText, phoneText: phoneText)
+    
+    filteredContacts = isFiltering ? filteredContacts.map {contact in
+      var newContact = contact
+      if contact.uid == uid {
+        newContact.name = name
+        newContact.age = age
+        newContact.phone = phone
+      }
+      return newContact
+    } : filteredContacts
+    
+    filteredContacts = filteredContacts.filter { filteredContact in
+      guard let searchText = self.navigationItem.searchController?.searchBar.text else { return true }
+      return filteredContact.name.contains(searchText) ||
+      String(filteredContact.age).contains(searchText) ||
+      filteredContact.phone.contains(searchText)
+    }
     
     contacts = contacts.map { contact in
       var newContact = contact
