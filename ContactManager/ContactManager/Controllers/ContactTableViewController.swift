@@ -64,11 +64,12 @@ extension ContactTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let uuid = contactManager.contactsList[indexPath.row].uuid
-            contactManager.delete(uuid)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
+        guard editingStyle == .delete else { return }
+        
+        let uuid = isFiltering ? contactManager.filteredList[indexPath.row].uuid : contactManager.contactsList[indexPath.row].uuid
+    
+        contactManager.delete(uuid)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -46,8 +46,14 @@ extension ContactManager {
     }
     
     func delete(_ uuid: UUID) {
-        if let targetIndex = contactsList.firstIndex(where: {$0.uuid == uuid}) {
-            contactsList.remove(at: targetIndex)
+        guard let targetIndex = contactsList.firstIndex(where: {$0.uuid == uuid}) else {
+            return
+        }
+        
+        contactsList.remove(at: targetIndex)
+        
+        if let filteredTargetIndex = filteredList.firstIndex(where: {$0.uuid == uuid}) {
+            filteredList.remove(at: filteredTargetIndex)
         }
     }
 }
