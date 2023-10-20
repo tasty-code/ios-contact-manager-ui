@@ -9,7 +9,7 @@ import UIKit
 
 final class AddContactViewController: FormViewController {
 
-  var contactAddDelegate: ContactAddDelegate?
+  weak var contactAddDelegate: ContactAddDelegate?
   
   @IBAction override func saveButtonTapped(_ sender: UIButton) {
     super.saveButtonTapped(sender)

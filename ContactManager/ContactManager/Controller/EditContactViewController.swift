@@ -8,7 +8,7 @@
 import UIKit
 
 final class EditContactViewController: FormViewController {
-  var editContactDelegate: ContactEditDelegate?
+  weak var editContactDelegate: ContactEditDelegate?
   var contactData: Contact?
   
   override func viewDidLoad() {

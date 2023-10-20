@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ContactEditDelegate {
+protocol ContactEditDelegate: AnyObject {
   func editContact(uid: UUID, name: String, age: Int, phone: String)
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class FormViewController: UIViewController {
   
-  var contactChangedDelegate: ContactChangedDelegate?
+  weak var contactChangedDelegate: ContactChangedDelegate?
   var validData: (String, Int, String)?
   
   @IBOutlet weak var nameTextField: UITextField!
