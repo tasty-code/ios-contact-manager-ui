@@ -61,12 +61,12 @@ final class NewContactViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         guard let contactManager = contactManager else { return }
         do {
-            let info = try makeCheckedInfo()
+            let (name, age, phoneNumber) = try makeCheckedInfo()
             if let contact = self.contact {
-                contactManager.update(for: contact.id, with: info)
+                contactManager.update(for: contact.id, name: name, age: age, phoneNumber: phoneNumber)
                 delegate?.didContactsChanged(contact.id)
             } else {
-                let contactId = contactManager.add(Contact(info: info))
+                let contactId = contactManager.add(Contact(name: name, age: age, phoneNumber: phoneNumber))
                 delegate?.didContactsAdded(contactId)
             }
             self.dismiss(animated: true)
@@ -90,7 +90,7 @@ extension NewContactViewController {
 }
 
 extension NewContactViewController: Validatable {
-    private func makeCheckedInfo() throws -> ContactInfo {
+    private func makeCheckedInfo() throws -> (String, String, String) {
         guard let name = nameTextField.text, verifyName(name) else {
             throw ContactsError.invalidName
         }

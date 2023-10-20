@@ -21,9 +21,9 @@ final class ContactManager {
         return contact.id
     }
     
-    func update(for id: ObjectIdentifier, with info: ContactInfo) {
+    func update(for id: ObjectIdentifier, name: String, age: String, phoneNumber: String) {
         guard let contact = contacts.first(where: { $0.id == id }) else { return }
-        contact.update(with: info)
+        contact.update(name: name, age: age, phoneNumber: phoneNumber)
         sortContactsByName()
     }
     
