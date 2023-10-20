@@ -129,11 +129,8 @@ extension ContactManagerViewController: ContactEditDelegate {
       return newContact
     } : filteredContacts
     
-    filteredContacts = filteredContacts.filter { filteredContact in
-      guard let searchText = self.navigationItem.searchController?.searchBar.text else { return true }
-      return filteredContact.name.contains(searchText) ||
-      String(filteredContact.age).contains(searchText) ||
-      filteredContact.phone.contains(searchText)
+    if let searchText = self.navigationItem.searchController?.searchBar.text {
+      setContactsFiltering(searchText: searchText)
     }
     
     contacts = contacts.map { contact in
@@ -170,13 +167,16 @@ extension ContactManagerViewController: UISearchBarDelegate, UISearchResultsUpda
   
   func updateSearchResults(for searchController: UISearchController) {
     guard let searchText = searchController.searchBar.text else { return }
+    setContactsFiltering(searchText: searchText)
     
+    reload()
+  }
+  
+  func setContactsFiltering(searchText: String) {
     filteredContacts = contacts.filter { contact in
       return contact.name.contains(searchText) ||
       String(contact.age).contains(searchText) ||
       contact.phone.contains(searchText)
     }
-    
-    reload()
   }
 }
