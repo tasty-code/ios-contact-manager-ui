@@ -66,7 +66,7 @@ extension NewContactViewController {
         present(alert, animated: true)
     }
     
-    private func saveAlert(_ contact: Contact) {
+    private func showSaveAlert(_ contact: Contact) {
         let text: String = "이름: \(contact.name), \n 나이: \(contact.age), \n 연락처: \(contact.phoneNumber) \n 저장하시겠습니까?"
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "예", style: .default, handler: { _ in
