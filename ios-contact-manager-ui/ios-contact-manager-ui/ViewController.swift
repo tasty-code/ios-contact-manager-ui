@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     private let cellIdentifier: String = "cell"
     var addressBook: AddressBook  = AddressBook()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,15 +28,14 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDataSource {
-        
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         addressBook.getRowSize()
     }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         let contactData: Contact = addressBook.showContact( indexPath.row)
-        
         cell.textLabel?.text = contactData.name + "(\(contactData.age))"
         cell.detailTextLabel?.text = contactData.phoneNumber
         return cell
@@ -46,7 +44,9 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             addressBook.deleteContact(indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            defer {
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
         }
     }
 }
