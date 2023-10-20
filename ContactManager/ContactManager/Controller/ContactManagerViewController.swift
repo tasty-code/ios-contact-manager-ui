@@ -120,8 +120,8 @@ extension ContactManagerViewController: ContactChangedDelegate {
 extension ContactManagerViewController: ContactEditDelegate {
   func editContact(uid: UUID, name: String, age: Int, phone: String) {
     let data = (uid: uid, name: name, age: age, phone: phone)
-    
     updateContacts(of: data)
+    
     if let searchText = self.navigationItem.searchController?.searchBar.text {
       setContactsFiltering(searchText: searchText)
     }

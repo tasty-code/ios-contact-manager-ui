@@ -19,6 +19,5 @@ final class AddContactViewController: FormViewController {
                                    phone: phone)
     contactChangedDelegate?.reload()
     dismiss(animated: true)
-    
   }
 }

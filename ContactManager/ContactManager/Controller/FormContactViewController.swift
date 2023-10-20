@@ -18,7 +18,9 @@ class FormViewController: UIViewController {
   
   @IBAction func saveButtonTapped(_ sender: UIButton) {
     do {
-      validData = try getValidData(nameText: nameTextField.text, ageText: ageTextField.text, phoneText: phoneTextField.text)
+      validData = try getValidData(nameText: nameTextField.text,
+                                   ageText: ageTextField.text,
+                                   phoneText: phoneTextField.text)
     } catch {
       AlertViewController.show(on: self,
                                message: error.localizedDescription,
