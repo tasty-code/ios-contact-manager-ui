@@ -26,6 +26,7 @@ final class ContactEditViewController: ContactFormViewController {
         self.phoneNumberTextField.text = contact.phoneNumber
         super.configureViewComponents()
     }
+    
     override func touchSaveBarButton(_ sender: UIBarButtonItem) {
         let name = self.nameTextField.text
         let age = self.ageTextField.text
