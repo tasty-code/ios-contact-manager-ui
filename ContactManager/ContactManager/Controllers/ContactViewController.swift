@@ -24,13 +24,13 @@ final class ContactViewController: UIViewController {
     }
     
     private func loadJSON() {
-        let alertController = UIAlertController()
         do {
             if let dummyContactDTOs = try decodeJSON() {
                 contactDTOs = dummyContactDTOs
             }
         }
         catch {
+            let alertController = UIAlertController()
             alertController
                 .configureAlertController(title: "데이터 불러오기 실패",
                                           message: nil,
@@ -44,7 +44,6 @@ final class ContactViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        searchBar.placeholder = "찾을 사람을 검색하세요."
     }
 }
 

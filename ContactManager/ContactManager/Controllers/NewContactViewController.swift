@@ -6,8 +6,7 @@ final class NewContactViewController: UIViewController {
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var ageTextField: UITextField!
     @IBOutlet private weak var phoneNumberTextField: UITextField!
-    private let alertController = UIAlertController()
-    
+
     weak var delegate: DataSendable?
     
     override func viewDidLoad() {
@@ -31,6 +30,7 @@ final class NewContactViewController: UIViewController {
             
             self.dismiss(animated: true)
         } catch {
+            let alertController = UIAlertController()
             let errorMessage: String = (error as? CheckContactErrors ?? CheckContactErrors.unknown).description
             
             alertController
@@ -43,6 +43,8 @@ final class NewContactViewController: UIViewController {
     }
     
     @IBAction private func touchUpCancelButton(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController()
+        
         alertController
             .configureAlertController(title: "정말로 취소하시겠습니까?",
                                       message: nil,
