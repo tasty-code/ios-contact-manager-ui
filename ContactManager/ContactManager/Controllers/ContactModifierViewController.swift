@@ -190,7 +190,7 @@ extension ContactModifierViewController: UITextFieldDelegate {
     }
 }
 
-extension ContactModifierViewController {
+private extension ContactModifierViewController {
     func hideKeyboard() {
         view.endEditing(true)
     }
