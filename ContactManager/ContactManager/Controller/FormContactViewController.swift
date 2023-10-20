@@ -9,16 +9,10 @@ import UIKit
 
 class FormViewController: UIViewController {
   
-  var contactAddDelegate: ContactAddDelegate?
   var contactChangedDelegate: ContactChangedDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    //    let maxFontSize = 30
-    //
-    //    if titleLabel.font.pointSize > 30 {
-    //      titleLabel.font = titleLabel.font.withSize(CGFloat(maxFontSize))
-    //    }
   }
   
   func saveButtonTapped(_ sender: UIButton) {

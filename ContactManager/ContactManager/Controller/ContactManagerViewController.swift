@@ -76,16 +76,15 @@ extension ContactManagerViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-      if isFiltering {
-        let removedContact = filteredContacts.remove(at: indexPath.row)
-        contacts = contacts.filter { contact in
-          contact.uid != removedContact.uid
-        }
-      } else {
-        contacts.remove(at: indexPath.row)
+    if editingStyle == .delete && isFiltering {
+      let removedContact = filteredContacts.remove(at: indexPath.row)
+      contacts = contacts.filter { contact in
+        contact.uid != removedContact.uid
       }
+    } else if editingStyle == .delete {
+      contacts.remove(at: indexPath.row)
     }
+    
     reload()
   }
   
@@ -96,9 +95,8 @@ extension ContactManagerViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let editView = storyboard?.instantiateViewController(withIdentifier: "editContactView") as? EditContactViewController else { return }
     
-    editView.contactAddDelegate = self
-    editView.contactChangedDelegate = self
     editView.editContactDelegate = self
+    editView.contactChangedDelegate = self
     
     let contactData = isFiltering ? filteredContacts[indexPath.row] : contacts[indexPath.row]
     editView.contactData = contactData

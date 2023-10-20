@@ -13,6 +13,8 @@ final class AddContactViewController: FormViewController {
   @IBOutlet private weak var ageTextField: UITextField!
   @IBOutlet private weak var phoneTextField: UITextField!
   
+  var contactAddDelegate: ContactAddDelegate?
+  
   @IBAction override func saveButtonTapped(_ sender: UIButton) {
     do {
       try contactAddDelegate?.addContact(nameText: nameTextField.text,
