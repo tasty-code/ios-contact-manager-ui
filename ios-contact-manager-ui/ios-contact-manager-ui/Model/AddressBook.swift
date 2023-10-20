@@ -9,39 +9,70 @@ import Foundation
 
 class AddressBook {
     
-    private var contacts: [[Contact]] = Array(repeating: [], count: 27)
-    private var contactsForDisplay: [[Contact]] = [[Contact]]()
-    
-    func getFirstLetterIndex(_ name: String) -> Int {
-        let firstLetter = Array(name)[0].uppercased()
-        let index = firstLetter.unicodeScalars.map { Int($0.value)}[0]
-        return index >= 65 && index <= 90 ? Int(index - 65) : 26
-    }
+    private var contacts = [Contact]()
+    private var filteredContacts: [Contact]?
+    private var searchText: String?
     
     func addContact(_ newContact: Contact) {
-        let index = getFirstLetterIndex(newContact.name)
-        contacts[index].append(newContact)
-        contacts[index].sort(by: {$0.name < $1.name})
+        contacts.append(newContact)
+        contacts.sort(by: {$0.name < $1.name})
     }
     
-    func deleteContact(_ section: Int, _ row: Int) {
-        contacts[section].remove(at: row)
+    func deleteContact(_ row: Int) {
+        contacts.remove(at: row)
     }
     
-    func changeContact(_ section: Int, _ row: Int, _ changedContact: Contact) {
-        contacts[section][row] = changedContact
+    func changeContact(_ row: Int, _ changedContact: Contact) {
+        contacts[row] = changedContact
     }
     
-    func showContact(_ section: Int, _ row: Int) -> Contact {
-        return contactsForDisplay[section][row]
+    func showContact(_ row: Int) -> Contact {
+        guard let input = searchText, let filtered = filteredContacts else {
+            return contacts[row]
+        }
+        
+        if filtered.isEmpty && input.isEmpty {
+            return contacts[row]
+        }
+        
+        if !input.isEmpty {
+            return filtered[row]
+        }
+        
+        return contacts[row]
     }
     
-    func getSectionSize() -> Int {
-        contactsForDisplay = contacts.filter{ !$0.isEmpty }
-        return contactsForDisplay.count
+    func getRowSize() -> Int {
+        
+        guard let input = searchText, let filtered = filteredContacts else {
+            return contacts.count
+        }
+        
+        if filtered.isEmpty && input.isEmpty {
+            return contacts.count
+        }
+        
+        if !input.isEmpty {
+            return filtered.count
+        }
+        
+        return contacts.count
     }
     
-    func getRowSize(_ section: Int) -> Int {
-        return contactsForDisplay[section].count
+    func searchContact(_ input: String) {
+        searchText = input
+        filteredContacts = []
+        
+        for contact in contacts {
+            if contact.name.lowercased().contains(input.lowercased()) {
+                filteredContacts?.append(contact)
+            }
+        }
+        
+        for contact in contacts {
+            if contact.phoneNumber.replacingOccurrences(of: "-", with: "").contains(input.replacingOccurrences(of: "-", with: "")){
+                filteredContacts?.append(contact)
+            }
+        }
     }
 }
