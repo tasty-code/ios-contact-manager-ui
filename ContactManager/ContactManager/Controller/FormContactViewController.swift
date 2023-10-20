@@ -16,10 +16,6 @@ class FormViewController: UIViewController {
   @IBOutlet weak var ageTextField: UITextField!
   @IBOutlet weak var phoneTextField: UITextField!
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-  }
-  
   @IBAction func saveButtonTapped(_ sender: UIButton) {
     do {
       validData = try getValidData(nameText: nameTextField.text, ageText: ageTextField.text, phoneText: phoneTextField.text)

@@ -119,26 +119,21 @@ extension ContactManagerViewController: ContactChangedDelegate {
 
 extension ContactManagerViewController: ContactEditDelegate {
   func editContact(uid: UUID, name: String, age: Int, phone: String) {
-    filteredContacts = isFiltering ? filteredContacts.map {contact in
-      var newContact = contact
-      if contact.uid == uid {
-        newContact.name = name
-        newContact.age = age
-        newContact.phone = phone
-      }
-      return newContact
-    } : filteredContacts
+    let data = (uid: uid, name: name, age: age, phone: phone)
     
+    updateContacts(of: data)
     if let searchText = self.navigationItem.searchController?.searchBar.text {
       setContactsFiltering(searchText: searchText)
     }
-    
+  }
+  
+  private func updateContacts(of data: (uid: UUID, name: String, age: Int, phone: String)) {
     contacts = contacts.map { contact in
       var newContact = contact
-      if contact.uid == uid {
-        newContact.name = name
-        newContact.age = age
-        newContact.phone = phone
+      if contact.uid == data.uid {
+        newContact.name = data.name
+        newContact.age = data.age
+        newContact.phone = data.phone
       }
       return newContact
     }
