@@ -63,13 +63,13 @@ final class ContactModifierViewController: UIViewController {
         ageStack.field.delegate = self
         phoneNumStack.field.delegate = self
         
+        ageStack.field.keyboardType = .numberPad
+        phoneNumStack.field.keyboardType = .phonePad
+        
         guard let current = currentContact, let age = current.age else { return }
         nameStack.field.text = current.name
         ageStack.field.text = String(age)
         phoneNumStack.field.text = current.phoneNum
-        
-        ageStack.field.keyboardType = .numberPad
-        phoneNumStack.field.keyboardType = .phonePad
     }
     
     private func setupNavigationBar() {
@@ -185,7 +185,7 @@ extension ContactModifierViewController: UITextFieldDelegate {
     }
 }
 
-private extension ContactModifierViewController {
+extension ContactModifierViewController {
     func hideKeyboard() {
         view.endEditing(true)
     }
