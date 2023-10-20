@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditContactViewController: FormViewController {
+final class EditContactViewController: FormViewController {
   var editContactDelegate: ContactEditDelegate?
   var contactData: Contact?
   
@@ -25,13 +25,5 @@ class EditContactViewController: FormViewController {
     editContactDelegate?.editContact(uid: uid, name: name, age: age, phone: phone)
     contactChangedDelegate?.reload()
     dismiss(animated: true)
-  }
-  
-  @IBAction override func cancelButtonTapped(_ sender: UIButton) {
-    super.cancelButtonTapped(sender)
-  }
-  
-  @IBAction override func phoneTextDidChanged(_ sender: UITextField) {
-    super.phoneTextDidChanged(sender)
   }
 }

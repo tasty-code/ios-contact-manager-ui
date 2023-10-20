@@ -213,7 +213,7 @@
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="cancelButtonTapped:" destination="H5h-6J-bat" eventType="touchUpInside" id="FWO-pi-QRM"/>
+                                            <action selector="cancelButtonTapped:" destination="H5h-6J-bat" eventType="touchUpInside" id="Lim-hs-Uou"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="250" text="새 연락처" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZgT-tR-Osy">
@@ -229,7 +229,7 @@
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="saveButtonTapped:" destination="H5h-6J-bat" eventType="touchUpInside" id="Hdu-uF-wC3"/>
+                                            <action selector="saveButtonTapped:" destination="H5h-6J-bat" eventType="touchUpInside" id="aeA-NZ-Acn"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -358,7 +358,7 @@
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="cancelButtonTapped:" destination="4gP-ok-cN7" eventType="touchUpInside" id="Kc6-uj-uog"/>
+                                            <action selector="cancelButtonTapped:" destination="4gP-ok-cN7" eventType="touchUpInside" id="c2d-S8-7RL"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="250" text="기존 연락처" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jbt-hJ-u1E">
@@ -374,7 +374,7 @@
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="saveButtonTapped:" destination="4gP-ok-cN7" eventType="touchUpInside" id="d7f-1j-TPX"/>
+                                            <action selector="saveButtonTapped:" destination="4gP-ok-cN7" eventType="touchUpInside" id="cc6-ZN-UfT"/>
                                         </connections>
                                     </button>
                                 </subviews>

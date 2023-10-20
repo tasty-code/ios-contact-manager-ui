@@ -20,7 +20,7 @@ class FormViewController: UIViewController {
     super.viewDidLoad()
   }
   
-  func saveButtonTapped(_ sender: UIButton) {
+  @IBAction func saveButtonTapped(_ sender: UIButton) {
     do {
       validData = try getValidData(nameText: nameTextField.text, ageText: ageTextField.text, phoneText: phoneTextField.text)
     } catch {
@@ -30,15 +30,7 @@ class FormViewController: UIViewController {
     }
   }
   
-  private func getValidData(nameText: String?, ageText: String?, phoneText: String?) throws -> (String, Int, String) {
-    let name = try nameText.getValidName()
-    let age = try ageText.getValidAge()
-    let phone = try phoneText.getValidPhone()
-    
-    return (name: name, age: age, phone: phone)
-  }
-  
-  func cancelButtonTapped(_ sender: UIButton) {
+  @IBAction func cancelButtonTapped(_ sender: UIButton) {
     AlertViewController.show(on: self,
                              message: "정말로 취소하시겠습니까?",
                              defaultButtonTitle: "아니오",
@@ -50,5 +42,13 @@ class FormViewController: UIViewController {
   
   @IBAction func phoneTextDidChanged(_ sender: UITextField) {
     sender.text = sender.text?.formatingPhone()
+  }
+  
+  private func getValidData(nameText: String?, ageText: String?, phoneText: String?) throws -> (String, Int, String) {
+    let name = try nameText.getValidName()
+    let age = try ageText.getValidAge()
+    let phone = try phoneText.getValidPhone()
+    
+    return (name: name, age: age, phone: phone)
   }
 }

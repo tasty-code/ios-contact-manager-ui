@@ -21,12 +21,4 @@ final class AddContactViewController: FormViewController {
     dismiss(animated: true)
     
   }
-  
-  @IBAction override func cancelButtonTapped(_ sender: UIButton) {
-    super.cancelButtonTapped(sender)
-  }
-  
-  @IBAction override func phoneTextDidChanged(_ sender: UITextField) {
-    super.phoneTextDidChanged(sender)
-  }
 }
