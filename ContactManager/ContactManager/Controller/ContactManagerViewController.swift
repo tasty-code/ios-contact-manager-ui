@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ContactManagerViewController: UIViewController, UITableViewDelegate {
+final class ContactManagerViewController: UIViewController {
   // MARK: - Property
   
   @IBOutlet private weak var contactTableView: UITableView!
@@ -49,23 +49,9 @@ final class ContactManagerViewController: UIViewController, UITableViewDelegate 
     
     return (name: name, age: age, phone: phone)
   }
-  
-  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-    return true
-  }
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-      contacts.remove(at: indexPath.row)
-      reload()
-    }
-  }
-  
-  func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-    return UISwipeActionsConfiguration()
-  }
 }
 
-//MARK: - UITableViewDataSource
+//MARK: - UITableViewDataSource methods
 
 extension ContactManagerViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,6 +64,34 @@ extension ContactManagerViewController: UITableViewDataSource {
     let model = isFiltering ? filteredContacts[indexPath.row] : contacts[indexPath.row]
     cell.configure(model: model)
     return cell
+  }
+}
+
+//MARK: - UITableViewDelegate methods
+
+extension ContactManagerViewController: UITableViewDelegate {
+  
+  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      if isFiltering {
+        let removedContact = filteredContacts.remove(at: indexPath.row)
+        contacts = contacts.filter { contact in
+          contact.uid != removedContact.uid
+        }
+      } else {
+        contacts.remove(at: indexPath.row)
+      }
+      
+      reload()
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    return UISwipeActionsConfiguration()
   }
 }
 
