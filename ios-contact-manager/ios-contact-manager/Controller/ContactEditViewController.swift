@@ -20,11 +20,11 @@ final class ContactEditViewController: ContactFormViewController {
     }
     
     override func configureViewComponents() {
+        super.configureViewComponents()
         guard let contact = self.temporaryContainer.contact else { return }
         self.nameTextField.text = contact.name
         self.ageTextField.text = "\(contact.age)"
         self.phoneNumberTextField.text = contact.phoneNumber
-        super.configureViewComponents()
     }
     
     override func touchSaveBarButton(_ sender: UIBarButtonItem) {
