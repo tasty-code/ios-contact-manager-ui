@@ -11,10 +11,6 @@ class EditContactViewController: FormViewController {
   var editContactDelegate: ContactEditDelegate?
   var contactData: Contact?
   
-  @IBOutlet weak private var nameTextField:UITextField!
-  @IBOutlet weak private var ageTextField:UITextField!
-  @IBOutlet weak private var phoneTextField:UITextField!
-  
   override func viewDidLoad() {
     nameTextField.text = contactData?.name
     ageTextField.text = contactData?.age.description
@@ -22,16 +18,13 @@ class EditContactViewController: FormViewController {
   }
   
   @IBAction override func saveButtonTapped(_ sender: UIButton) {
-    do {
-      guard let uid = contactData?.uid else { return }
-      try editContactDelegate?.editContact(uid: uid, nameText: nameTextField.text, ageText: ageTextField.text, phoneText: phoneTextField.text)
-      contactChangedDelegate?.reload()
-      dismiss(animated: true)
-    } catch {
-      AlertViewController.show(on: self,
-                               message: error.localizedDescription,
-                               defaultButtonTitle: "확인")
-    }
+    super.saveButtonTapped(sender)
+    
+    guard let uid = contactData?.uid else { return }
+    guard let (name, age, phone) = validData else { return }
+    editContactDelegate?.editContact(uid: uid, name: name, age: age, phone: phone)
+    contactChangedDelegate?.reload()
+    dismiss(animated: true)
   }
   
   @IBAction override func cancelButtonTapped(_ sender: UIButton) {

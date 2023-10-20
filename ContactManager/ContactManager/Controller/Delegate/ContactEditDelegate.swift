@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ContactEditDelegate {
-  func editContact(uid: UUID, nameText: String?, ageText: String?, phoneText: String?) throws
+  func editContact(uid: UUID, name: String, age: Int, phone: String)
 }

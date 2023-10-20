@@ -9,24 +9,17 @@ import UIKit
 
 final class AddContactViewController: FormViewController {
 
-  @IBOutlet private weak var nameTextField: UITextField!
-  @IBOutlet private weak var ageTextField: UITextField!
-  @IBOutlet private weak var phoneTextField: UITextField!
-  
   var contactAddDelegate: ContactAddDelegate?
   
   @IBAction override func saveButtonTapped(_ sender: UIButton) {
-    do {
-      try contactAddDelegate?.addContact(nameText: nameTextField.text,
-                                         ageText: ageTextField.text,
-                                         phoneText: phoneTextField.text)
-      contactChangedDelegate?.reload()
-      dismiss(animated: true)
-    } catch {
-      AlertViewController.show(on: self,
-                               message: error.localizedDescription,
-                               defaultButtonTitle: "확인")
-    }
+    super.saveButtonTapped(sender)
+    guard let (name, age, phone) = validData else { return }
+    contactAddDelegate?.addContact(name: name,
+                                   age: age,
+                                   phone: phone)
+    contactChangedDelegate?.reload()
+    dismiss(animated: true)
+    
   }
   
   @IBAction override func cancelButtonTapped(_ sender: UIButton) {

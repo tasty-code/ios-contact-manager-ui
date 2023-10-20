@@ -41,14 +41,6 @@ final class ContactManagerViewController: UIViewController {
       print(error.localizedDescription)
     }
   }
-  
-  private func getValidData(nameText: String?, ageText: String?, phoneText: String?) throws -> (String, Int, String) {
-    let name = try nameText.getValidName()
-    let age = try ageText.getValidAge()
-    let phone = try phoneText.getValidPhone()
-    
-    return (name: name, age: age, phone: phone)
-  }
 }
 
 //MARK: - UITableViewDataSource methods
@@ -108,8 +100,8 @@ extension ContactManagerViewController: UITableViewDelegate {
 //MARK: - ContactAddDelegate
 
 extension ContactManagerViewController: ContactAddDelegate {
-  func addContact(nameText: String?, ageText: String?, phoneText: String?) throws {
-    let (name, age, phone) = try getValidData(nameText: nameText, ageText: ageText, phoneText: phoneText)
+  
+  func addContact(name: String, age: Int, phone: String) {
     let data = Contact(name: name, age: age, phone: phone)
     contacts.append(data)
   }
@@ -126,9 +118,7 @@ extension ContactManagerViewController: ContactChangedDelegate {
 //MARK: - ContactEditDelegate
 
 extension ContactManagerViewController: ContactEditDelegate {
-  func editContact(uid: UUID, nameText: String?, ageText: String?, phoneText: String?) throws {
-    let (name, age, phone) = try getValidData(nameText: nameText, ageText: ageText, phoneText: phoneText)
-    
+  func editContact(uid: UUID, name: String, age: Int, phone: String) {
     filteredContacts = isFiltering ? filteredContacts.map {contact in
       var newContact = contact
       if contact.uid == uid {

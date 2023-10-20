@@ -10,12 +10,32 @@ import UIKit
 class FormViewController: UIViewController {
   
   var contactChangedDelegate: ContactChangedDelegate?
+  var validData: (String, Int, String)?
+  
+  @IBOutlet weak var nameTextField: UITextField!
+  @IBOutlet weak var ageTextField: UITextField!
+  @IBOutlet weak var phoneTextField: UITextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
   }
   
   func saveButtonTapped(_ sender: UIButton) {
+    do {
+      validData = try getValidData(nameText: nameTextField.text, ageText: ageTextField.text, phoneText: phoneTextField.text)
+    } catch {
+      AlertViewController.show(on: self,
+                               message: error.localizedDescription,
+                               defaultButtonTitle: "확인")
+    }
+  }
+  
+  private func getValidData(nameText: String?, ageText: String?, phoneText: String?) throws -> (String, Int, String) {
+    let name = try nameText.getValidName()
+    let age = try ageText.getValidAge()
+    let phone = try phoneText.getValidPhone()
+    
+    return (name: name, age: age, phone: phone)
   }
   
   func cancelButtonTapped(_ sender: UIButton) {

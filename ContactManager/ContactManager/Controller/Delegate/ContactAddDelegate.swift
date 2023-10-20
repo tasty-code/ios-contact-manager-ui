@@ -6,5 +6,5 @@
 //
 
 protocol ContactAddDelegate {
-  func addContact(nameText: String?, ageText: String?, phoneText: String?) throws
+  func addContact(name: String, age: Int, phone: String)
 }
