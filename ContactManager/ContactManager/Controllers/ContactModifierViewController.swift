@@ -40,9 +40,10 @@ final class ContactModifierViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
         setupLayout()
         setupAttributes()
-        setupNavigationBar()
+        
     }
     
     private func setupLayout() {
@@ -73,7 +74,8 @@ final class ContactModifierViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        let navbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
+        let navbar = UINavigationBar()
+        navbar.translatesAutoresizingMaskIntoConstraints = false
         navbar.backgroundColor = .clear
         navbar.barTintColor = .systemBackground
         navbar.setBackgroundImage(UIImage(), for: .default)
@@ -82,9 +84,7 @@ final class ContactModifierViewController: UIViewController {
         navbar.isTranslucent = true
         
         let title = currentContact == nil ? "새 연락처" : "기존 연락처"
-        
         let navItem = UINavigationItem(title: title)
-        
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(didTapCancelButton))
         let saveButton = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(didTapSaveButton))
         
@@ -92,6 +92,11 @@ final class ContactModifierViewController: UIViewController {
         navItem.rightBarButtonItem = saveButton
         navbar.setItems([navItem], animated: false)
         view.addSubview(navbar)
+        NSLayoutConstraint.activate([
+            navbar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            navbar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            navbar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+        ])
     }
     
     @objc private func didTapCancelButton(_ sender: UINavigationItem) {
