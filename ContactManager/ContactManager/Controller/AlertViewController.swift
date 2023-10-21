@@ -23,13 +23,15 @@ final class AlertViewController: UIAlertController {
   
   static func show(on viewController: UIViewController, message: String, defaultButtonTitle: String, destructiveButtonTitle: String,  destructiveAction: @escaping () -> ()) {
     let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
+    
     let alertOkAction = UIAlertAction(title: defaultButtonTitle, style: .default)
     alert.addAction(alertOkAction)
+    
     let alertNoAction = UIAlertAction(title: destructiveButtonTitle, style: .destructive) { _ in
       destructiveAction()
     }
-    
     alert.addAction(alertNoAction)
+    
     viewController.present(alert, animated: true)
   }
 }

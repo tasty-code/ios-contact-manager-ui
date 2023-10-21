@@ -8,11 +8,13 @@
 import UIKit
 
 final class ContactTableViewCell: UITableViewCell {
-  @IBOutlet private var nameAndAgeLabel: UILabel!
+  @IBOutlet private var nameLabel: UILabel!
+  @IBOutlet private var ageLabel: UILabel!
   @IBOutlet private var phoneLabel: UILabel!
   
   func configure(model: Contact) {
-    nameAndAgeLabel.text = model.nameAndAge
+    nameLabel.text = model.name
+    ageLabel.text = String(model.age)
     phoneLabel.text = model.phone
   }
 }
