@@ -7,26 +7,20 @@
 
 import Foundation
 
-final class Contact: Codable, Validatable, Identifiable {
-    var name: String
-    var age: String
-    var phoneNumber: String
+final class Contact: Codable, Identifiable {
+    private(set) var name: String
+    private(set) var age: String
+    private(set) var phoneNumber: String
     
-    init(name: String, age: String, phoneNumber: String) throws {
+    init(name: String, age: String, phoneNumber: String) {
         self.name = name
         self.age = age
         self.phoneNumber = phoneNumber
-        
-        guard verifyName(name) else {
-            throw ContactsError.invalidName
-        }
-        
-        guard verifyAge(age) else {
-            throw ContactsError.invalidAge
-        }
-        
-        guard verifyNumber(phoneNumber) else {
-            throw ContactsError.invalidPhoneNumber
-        }
+    }
+    
+    func update(name: String, age: String, phoneNumber: String) {
+        self.name = name
+        self.age = age
+        self.phoneNumber = phoneNumber
     }
 }

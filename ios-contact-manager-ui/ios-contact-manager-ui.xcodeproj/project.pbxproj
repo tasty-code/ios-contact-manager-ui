@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E8C29EF2ADE3C8300C7C9CF /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C29EE2ADE3C8300C7C9CF /* ContactCell.swift */; };
 		0EFDF97E2AD689EB0064C163 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFDF97D2AD689EA0064C163 /* StringExtension.swift */; };
 		DE56B7D02ACFCD9F00751829 /* ContactsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56B7CF2ACFCD9F00751829 /* ContactsError.swift */; };
 		DE56B7D22AD002E200751829 /* Contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = DE56B7D12AD002E200751829 /* Contacts.json */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E8C29EE2ADE3C8300C7C9CF /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		0EFDF97D2AD689EA0064C163 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		DE56B7CF2ACFCD9F00751829 /* ContactsError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsError.swift; sourceTree = "<group>"; };
 		DE56B7D12AD002E200751829 /* Contacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contacts.json; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		DE6D13002ACD113D00A43550 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0E8C29EE2ADE3C8300C7C9CF /* ContactCell.swift */,
 				DE6D12E52ACD0A2800A43550 /* Main.storyboard */,
 				DE6D12EA2ACD0A2800A43550 /* LaunchScreen.storyboard */,
 			);
@@ -201,6 +204,7 @@
 				DE6D12F42ACD0AE500A43550 /* Contact.swift in Sources */,
 				DE6D12E42ACD0A2800A43550 /* ContactsViewController.swift in Sources */,
 				DE6D12E02ACD0A2800A43550 /* AppDelegate.swift in Sources */,
+				0E8C29EF2ADE3C8300C7C9CF /* ContactCell.swift in Sources */,
 				0EFDF97E2AD689EB0064C163 /* StringExtension.swift in Sources */,
 				DE9585C32AD5417800183B37 /* Validatable.swift in Sources */,
 				DE7807382AD5381A00ECA110 /* NewContactViewController.swift in Sources */,

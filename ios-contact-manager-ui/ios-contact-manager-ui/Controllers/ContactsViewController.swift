@@ -10,6 +10,7 @@ import UIKit
 final class ContactsViewController: UIViewController {
     
     @IBOutlet weak var contactsTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     private let contactManager = ContactManager()
     private let cellIdentifier = "ContactCell"
@@ -21,6 +22,7 @@ final class ContactsViewController: UIViewController {
         setDummyData()
         self.contactsTableView.delegate = self
         self.contactsTableView.dataSource = self
+        self.searchBar.delegate = self
     }
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
@@ -33,15 +35,24 @@ final class ContactsViewController: UIViewController {
 
 extension ContactsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactManager.contactsCount
+        if let name = searchBar.text, !name.isEmpty {
+            return contactManager.fetchContactsContains(with: name).count
+        } else {
+            return contactManager.contactsCount
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
-        let contact = contactManager.showContact(index: indexPath.row)
-        cell.textLabel?.text = "\(contact.name)(\(contact.age))"
-        cell.detailTextLabel?.text = "\(contact.phoneNumber)"
-        cell.accessoryType = .disclosureIndicator
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as? ContactCell else { return UITableViewCell() }
+        var contact: Contact
+        
+        if let name = searchBar.text, !name.isEmpty {
+            let contacts = contactManager.fetchContactsContains(with: name)
+            contact = contacts[indexPath.row]
+        } else {
+            contact = contactManager.showContact(index: indexPath.row)
+        }
+        cell.configureCell(with: contact)
         
         return cell
     }
@@ -49,7 +60,25 @@ extension ContactsViewController: UITableViewDataSource {
 
 extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard let cell = tableView.cellForRow(at: indexPath) as? ContactCell,
+              let contact = cell.contact else { return }
+        guard let newContactVC = storyboard?.instantiateViewController(identifier: newContactVCIdentifier) as? NewContactViewController else { return }
+        newContactVC.configureData(self.contactManager, delegate: self, contact: contact)
+        let navigationVC = UINavigationController(rootViewController: newContactVC)
+        present(navigationVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let cell = tableView.cellForRow(at: indexPath) as? ContactCell,
+                    let contact = cell.contact else { return }
+            contactManager.deleteContact(by: contact.id)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
 
@@ -61,7 +90,7 @@ extension ContactsViewController {
         do {
             let contacts = try decoder.decode([Contact].self, from: jsonData)
             for contact in contacts {
-                let _ = contactManager.addContact(contact)
+                let _ = contactManager.add(contact)
             }
         } catch {
             print(error.localizedDescription)
@@ -70,9 +99,20 @@ extension ContactsViewController {
 }
 
 extension ContactsViewController: ContactsTableViewUpdateDelegate {
+    func didContactsChanged(_ contactId: ObjectIdentifier) {
+        self.contactsTableView.reloadData()
+    }
+    
     func didContactsAdded(_ contactId: ObjectIdentifier) {
         guard let index = contactManager.fetchIndexOfContact(with: contactId) else { return }
         let indexPath = IndexPath(row: index, section: 0)
         self.contactsTableView.insertRows(at: [indexPath], with: .none)
     }
 }
+
+extension ContactsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.contactsTableView.reloadData()
+    }
+}
+
