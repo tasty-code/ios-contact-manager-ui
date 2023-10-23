@@ -24,10 +24,6 @@ final class ContactTableViewCell: UITableViewCell {
         setAttributes()
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
     private func setAttributes() {
         nameLabel?.text = ValidateType.name.description + " :"
         ageLabel?.text = ValidateType.age.description + " :"
