@@ -1,5 +1,5 @@
 //
-//  ContactModifierViewController.swift
+//  ContactModifyViewController.swift
 //  ContactManager
 //
 //  Created by Wonji Ha on 2023/10/11.
@@ -8,11 +8,11 @@
 import UIKit
 
 protocol ContactUpdatable: AnyObject {
-    func addContact(_ contact: ContactInfo)
-    func updateContact(_ contact: ContactInfo, of uuid: UUID)
+    func add(_ contact: ContactInfo)
+    func update(_ contact: ContactInfo, of uuid: UUID)
 }
 
-final class ContactModifierViewController: UIViewController {
+final class ContactModifyViewController: UIViewController {
     private weak var delegate: ContactUpdatable?
     private var currentContact: ContactInfo?
     
@@ -141,12 +141,12 @@ final class ContactModifierViewController: UIViewController {
         
         guard let ageToInt = Int(age) else { return }
         
-        let newContact = ContactInfo(name: name, age: ageToInt, phoneNum: phoneNum)
+        let contact = ContactInfo(name: name, age: ageToInt, phoneNum: phoneNum)
         
         if let current = currentContact {
-            delegate?.updateContact(newContact, of: current.uuid)
+            delegate?.update(contact, of: current.uuid)
         } else {
-            delegate?.addContact(newContact)
+            delegate?.add(contact)
         }
         
         dismiss(animated: true)
@@ -163,7 +163,7 @@ final class ContactModifierViewController: UIViewController {
 }
 
 // MARK: - TextField delegate
-extension ContactModifierViewController: UITextFieldDelegate {
+extension ContactModifyViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -190,7 +190,7 @@ extension ContactModifierViewController: UITextFieldDelegate {
     }
 }
 
-private extension ContactModifierViewController {
+private extension ContactModifyViewController {
     func hideKeyboard() {
         view.endEditing(true)
     }

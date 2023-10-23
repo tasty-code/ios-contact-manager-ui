@@ -26,8 +26,8 @@ final class ContactManager {
     func filterContactsList(by text: String)  {
         let filtered = contactsList.filter {
             guard let name = $0.name,
-                    let age = $0.age,
-                    let phoneNum = $0.phoneNum else { return false }
+                  let age = $0.age,
+                  let phoneNum = $0.phoneNum else { return false }
             return name.localizedStandardContains(text) || String(age).localizedStandardContains(text) || phoneNum.replacingOccurrences(of: "-", with: "").contains(text.replacingOccurrences(of: "-", with: ""))
         }
         self.filteredList = filtered
