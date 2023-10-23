@@ -17,16 +17,17 @@ final class ContactTableViewController: UITableViewController {
         super.viewDidLoad()
         setupAttributes()
         loadJsonData()
-        searchBar.delegate = self
     }
     
     private func setupAttributes() {
+        searchBar.delegate = self
+        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 300
     }
     
-    @IBAction func addButtonTapped(_ sender: UIButton) {
-        let contactCreationViewController = ContactModifierViewController(delegate: self)
+    @IBAction private func addButtonTapped(_ sender: UIButton) {
+        let contactCreationViewController = ContactModifyViewController(delegate: self)
         
         present(contactCreationViewController, animated: true)
     }
@@ -57,7 +58,8 @@ extension ContactTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactTableCell", for: indexPath) as! ContactTableViewCell
                 
-        let content = isFiltering && searchBar.text != "" ? contactManager.filteredList[indexPath.row] : contactManager.contactsList[indexPath.row]
+        guard let content = isFiltering && searchBar.text != "" ? contactManager.filteredList[safeIndex: indexPath.row] : contactManager.contactsList[safeIndex: indexPath.row] else { return cell }
+        
         cell.configure(content: content)
         return cell
     }
@@ -65,16 +67,16 @@ extension ContactTableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         
-        let uuid = isFiltering ? contactManager.filteredList[indexPath.row].uuid : contactManager.contactsList[indexPath.row].uuid
+        guard let contact = isFiltering ? contactManager.filteredList[safeIndex: indexPath.row] : contactManager.contactsList[safeIndex: indexPath.row] else { return }
     
-        contactManager.delete(uuid)
+        contactManager.delete(contact.uuid)
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let contactModifierVC = ContactModifierViewController(delegate: self, current: contactManager.contactsList[indexPath.row])
+        let contactModifyVC = ContactModifyViewController(delegate: self, current: contactManager.contactsList[indexPath.row])
         
-        present(contactModifierVC, animated: true)
+        present(contactModifyVC, animated: true)
     }
 }
 
@@ -115,12 +117,12 @@ extension ContactTableViewController : UISearchBarDelegate {
 //MARK: - Contact Modifier Delegate
 
 extension ContactTableViewController: ContactUpdatable {
-    func addContact(_ contact: ContactInfo) {
+    func add(_ contact: ContactInfo) {
         contactManager.add(contact)
         tableView.insertRows(at: [IndexPath(row: contactManager.countOfContactList - 1, section: 0)], with: .automatic)
     }
     
-    func updateContact(_ contact: ContactInfo, of uuid: UUID) {
+    func update(_ contact: ContactInfo, of uuid: UUID) {
         contactManager.update(contact, of: uuid)
         tableView.reloadData()
     }
