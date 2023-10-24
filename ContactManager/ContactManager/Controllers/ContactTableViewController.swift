@@ -10,44 +10,29 @@ import UIKit
 final class ContactTableViewController: UITableViewController {
     private let contactManager = ContactManager()
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    var isFiltering = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupAttributes()
         loadJsonData()
     }
-
-    // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = contactManager.countOfContactList
-        return count
+    
+    private func setupAttributes() {
+        searchBar.delegate = self
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 300
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
-        
-        var content = cell.defaultContentConfiguration()
-        
-        guard let name = contactManager.contactsList[indexPath.row].name, let age = contactManager.contactsList[indexPath.row].age,
-              let phoneNumber = contactManager.contactsList[indexPath.row].phoneNum else {
-            return cell
-        }
-
-        content.text = "\(name) (\(age))"
-        content.secondaryText = phoneNumber
-        cell.contentConfiguration = content
-
-        return cell
-    }
-    
-    @IBAction func addButtonTapped(_ sender: UIButton) {
-        let contactCreationViewController = ContactCreationViewController()
-        contactCreationViewController.delegate = self
+    @IBAction private func addButtonTapped(_ sender: UIButton) {
+        let contactCreationViewController = ContactModifyViewController(delegate: self)
         
         present(contactCreationViewController, animated: true)
     }
-}
-
-extension ContactTableViewController {
-    func loadJsonData() {
+    
+    private func loadJsonData() {
         guard let jsonURL = Bundle.main.url(forResource: "mockData", withExtension: "json") else {
             return
         }
@@ -62,9 +47,83 @@ extension ContactTableViewController {
     }
 }
 
+// MARK: - TableView Data Source
+
+extension ContactTableViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let count = isFiltering ? contactManager.filteredList.count: contactManager.countOfContactList
+        return count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contactTableCell", for: indexPath) as! ContactTableViewCell
+                
+        guard let content = isFiltering && searchBar.text != "" ? contactManager.filteredList[safeIndex: indexPath.row] : contactManager.contactsList[safeIndex: indexPath.row] else { return cell }
+        
+        cell.configure(content: content)
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        
+        guard let contact = isFiltering ? contactManager.filteredList[safeIndex: indexPath.row] : contactManager.contactsList[safeIndex: indexPath.row] else { return }
+    
+        contactManager.delete(contact.uuid)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contactModifyVC = ContactModifyViewController(delegate: self, current: contactManager.contactsList[indexPath.row])
+        
+        present(contactModifyVC, animated: true)
+    }
+}
+
+// MARK: - Search Delegate
+
+extension ContactTableViewController : UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+        
+        isFiltering = true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let text = searchBar.text else { return }
+        contactManager.filterContactsList(by: text)
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+        contactManager.filterContactsList(by: text)
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isFiltering = false
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+        contactManager.filterContactsList(by: "")
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        tableView.reloadData()
+    }
+}
+
+//MARK: - Contact Modifier Delegate
+
 extension ContactTableViewController: ContactUpdatable {
-    func addContact(_ contact: ContactInfo) {
+    func add(_ contact: ContactInfo) {
         contactManager.add(contact)
         tableView.insertRows(at: [IndexPath(row: contactManager.countOfContactList - 1, section: 0)], with: .automatic)
+    }
+    
+    func update(_ contact: ContactInfo, of uuid: UUID) {
+        contactManager.update(contact, of: uuid)
+        tableView.reloadData()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ContactCreationViewController.swift
+//  ContactModifyViewController.swift
 //  ContactManager
 //
 //  Created by Wonji Ha on 2023/10/11.
@@ -8,11 +8,13 @@
 import UIKit
 
 protocol ContactUpdatable: AnyObject {
-    func addContact(_ contact: ContactInfo)
+    func add(_ contact: ContactInfo)
+    func update(_ contact: ContactInfo, of uuid: UUID)
 }
 
-final class ContactCreationViewController: UIViewController {
-    public weak var delegate: ContactUpdatable?
+final class ContactModifyViewController: UIViewController {
+    private weak var delegate: ContactUpdatable?
+    private var currentContact: ContactInfo?
     
     private let containerStackview: UIStackView = {
         let stackView = UIStackView()
@@ -22,31 +24,31 @@ final class ContactCreationViewController: UIViewController {
         return stackView
     }()
     
-    private let nameStack = ContactCreationStackView(frame: CGRect(), type: .name)
-    private let ageStack = ContactCreationStackView(frame: CGRect(), type: .age)
-    private let phoneNumStack = ContactCreationStackView(frame: CGRect(), type: .phoneNum)
+    private let nameStack = ContactModifierStackView(frame: CGRect(), type: .name)
+    private let ageStack = ContactModifierStackView(frame: CGRect(), type: .age)
+    private let phoneNumStack = ContactModifierStackView(frame: CGRect(), type: .phoneNum)
+    
+    init(delegate: ContactUpdatable? = nil, current: ContactInfo? = nil) {
+        super.init(nibName: nil, bundle: nil)
+        self.delegate = delegate
+        self.currentContact = current
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        
+        setupNavigationBar()
         setupLayout()
         setupAttributes()
-        setupNavigationBar()
+        
     }
     
     private func setupLayout() {
         containerStackview.addArrangedSubviews(nameStack, ageStack, phoneNumStack)
         view.addSubview(containerStackview)
-    }
-    
-    private func setupAttributes() {
-        nameStack.field.delegate = self
-        ageStack.field.delegate = self
-        phoneNumStack.field.delegate = self
-        
-        ageStack.field.keyboardType = .numberPad
-        phoneNumStack.field.keyboardType = .phonePad
         
         NSLayoutConstraint.activate([
             containerStackview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
@@ -55,8 +57,25 @@ final class ContactCreationViewController: UIViewController {
         ])
     }
     
+    private func setupAttributes() {
+        view.backgroundColor = .systemBackground
+        
+        nameStack.field.delegate = self
+        ageStack.field.delegate = self
+        phoneNumStack.field.delegate = self
+        
+        ageStack.field.keyboardType = .numberPad
+        phoneNumStack.field.keyboardType = .phonePad
+        
+        guard let current = currentContact, let age = current.age else { return }
+        nameStack.field.text = current.name
+        ageStack.field.text = String(age)
+        phoneNumStack.field.text = current.phoneNum
+    }
+    
     private func setupNavigationBar() {
-        let navbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
+        let navbar = UINavigationBar()
+        navbar.translatesAutoresizingMaskIntoConstraints = false
         navbar.backgroundColor = .clear
         navbar.barTintColor = .systemBackground
         navbar.setBackgroundImage(UIImage(), for: .default)
@@ -64,8 +83,8 @@ final class ContactCreationViewController: UIViewController {
         navbar.layer.shadowColor = UIColor.clear.cgColor
         navbar.isTranslucent = true
         
-        let navItem = UINavigationItem(title: "새 연락처")
-        
+        let title = currentContact == nil ? "새 연락처" : "기존 연락처"
+        let navItem = UINavigationItem(title: title)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(didTapCancelButton))
         let saveButton = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(didTapSaveButton))
         
@@ -73,6 +92,11 @@ final class ContactCreationViewController: UIViewController {
         navItem.rightBarButtonItem = saveButton
         navbar.setItems([navItem], animated: false)
         view.addSubview(navbar)
+        NSLayoutConstraint.activate([
+            navbar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            navbar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            navbar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+        ])
     }
     
     @objc private func didTapCancelButton(_ sender: UINavigationItem) {
@@ -117,8 +141,14 @@ final class ContactCreationViewController: UIViewController {
         
         guard let ageToInt = Int(age) else { return }
         
-        let newContact = ContactInfo(name: name, age: ageToInt, phoneNum: phoneNum)
-        delegate?.addContact(newContact)
+        let contact = ContactInfo(name: name, age: ageToInt, phoneNum: phoneNum)
+        
+        if let current = currentContact {
+            delegate?.update(contact, of: current.uuid)
+        } else {
+            delegate?.add(contact)
+        }
+        
         dismiss(animated: true)
     }
     
@@ -133,7 +163,7 @@ final class ContactCreationViewController: UIViewController {
 }
 
 // MARK: - TextField delegate
-extension ContactCreationViewController: UITextFieldDelegate {
+extension ContactModifyViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -160,7 +190,7 @@ extension ContactCreationViewController: UITextFieldDelegate {
     }
 }
 
-private extension ContactCreationViewController {
+private extension ContactModifyViewController {
     func hideKeyboard() {
         view.endEditing(true)
     }
