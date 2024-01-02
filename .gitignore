@@ -32,4 +32,7 @@ Temporary Items
 *.icloud
 
 
+*.xcuserstate
+
+
 contact-management/contact-management.xcodeproj/project.xcworkspace/xcuserdata/roh.xcuserdatad/
