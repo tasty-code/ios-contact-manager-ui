@@ -16,6 +16,8 @@
 		08E3AB972B43BB620083012B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E3AB962B43BB620083012B /* ViewController.swift */; };
 		08E3AB9C2B43BB650083012B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08E3AB9B2B43BB650083012B /* Assets.xcassets */; };
 		08E3AB9F2B43BB650083012B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08E3AB9D2B43BB650083012B /* LaunchScreen.storyboard */; };
+		89566E522B43FAF70085E2CF /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89566E502B43FAF70085E2CF /* TableViewCell.swift */; };
+		89566E532B43FAF70085E2CF /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89566E512B43FAF70085E2CF /* TableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		08E3AB9B2B43BB650083012B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08E3AB9E2B43BB650083012B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08E3ABA02B43BB650083012B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89566E502B43FAF70085E2CF /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		89566E512B43FAF70085E2CF /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 			isa = PBXGroup;
 			children = (
 				08D566562B43F8B200E75000 /* TableView.swift */,
+				89566E502B43FAF70085E2CF /* TableViewCell.swift */,
+				89566E512B43FAF70085E2CF /* TableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08E3AB9F2B43BB650083012B /* LaunchScreen.storyboard in Resources */,
+				89566E532B43FAF70085E2CF /* TableViewCell.xib in Resources */,
 				08E3AB9C2B43BB650083012B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08D566512B43E8E900E75000 /* User.swift in Sources */,
+				89566E522B43FAF70085E2CF /* TableViewCell.swift in Sources */,
 				08E3AB972B43BB620083012B /* ViewController.swift in Sources */,
 				08D566532B43EB7900E75000 /* Tag.swift in Sources */,
 				08D566572B43F8B200E75000 /* TableView.swift in Sources */,
@@ -328,7 +336,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VGM28F2FH7;
+				DEVELOPMENT_TEAM = WZFUFHJN8D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ios-contact-manager-ui/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -355,7 +363,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VGM28F2FH7;
+				DEVELOPMENT_TEAM = WZFUFHJN8D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ios-contact-manager-ui/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
