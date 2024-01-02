@@ -1,7 +1,7 @@
 
 import Foundation
 
-enum Tag{
+enum Tag {
     case friend
     case family
     case coworker
