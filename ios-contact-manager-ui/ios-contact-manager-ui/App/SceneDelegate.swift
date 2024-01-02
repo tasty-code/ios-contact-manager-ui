@@ -11,6 +11,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
         window?.rootViewController = ViewController()
-        
     }
 }
