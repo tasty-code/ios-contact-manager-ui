@@ -15,6 +15,7 @@ extension PhoneBookViewController {
     override func viewDidLoad() {
         setupTableView()
         setupUI()
+        setStatusBar()
     }
 }
 
@@ -27,6 +28,7 @@ private extension PhoneBookViewController {
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: TableViewCell.reuseID)
         tableView.tableFooterView = UIView()
+        tableView.backgroundColor = .lightGray
         setupTableHeaderView()
     }
     
@@ -44,6 +46,7 @@ private extension PhoneBookViewController {
 private extension PhoneBookViewController {
     func setupUI() {
         setupConstraints()
+        
     }
     
     func setupConstraints() {
@@ -51,7 +54,7 @@ private extension PhoneBookViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
@@ -66,7 +69,7 @@ extension PhoneBookViewController: UITableViewDelegate {
 
 extension PhoneBookViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return phoneBook?.categorizedBook.values.count ?? 0 //Dummy
+        return 100 //Dummy
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
