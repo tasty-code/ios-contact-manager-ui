@@ -22,9 +22,6 @@ private extension PhoneBookViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.reuseID)
         tableView.tableFooterView = UIView()
     }
@@ -37,6 +34,8 @@ private extension PhoneBookViewController {
     }
     
     func setupConstraints() {
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
