@@ -75,8 +75,8 @@
 			children = (
 				89566E542B4516F20085E2CF /* HeaderView.xib */,
 				89566E562B4519000085E2CF /* HeaderView.swift */,
-				89566E502B43FAF70085E2CF /* TableViewCell.swift */,
 				89566E512B43FAF70085E2CF /* TableViewCell.xib */,
+				89566E502B43FAF70085E2CF /* TableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
