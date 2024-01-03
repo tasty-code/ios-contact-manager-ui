@@ -27,18 +27,6 @@ class ViewController: UIViewController {
         contactListStorage.addContact(name: "hero", phoneNumber: "010-2222-2222", age: 18)
         contactListStorage.addContact(name: "billon", phoneNumber: "010-3333-3333", age: 17)
         
-        do {
-            let checkContact1 = try contactListStorage.showContact(who: "hero")
-            let checkContact2 = try contactListStorage.showContact(who: "noam")
-            let checkContact3 = try contactListStorage.showContact(who: "billon")
-//            print(checkContact1)
-//            print(checkContact2)
-//            print(checkContact3)
-//            try contactListStorage.deleteContact(name: "noam")
-        }
-        catch {
-            
-        }
     }
     
     private func showContact(who name: String) -> ContactList {
@@ -50,6 +38,7 @@ class ViewController: UIViewController {
         }
         return checkedContact!
     }
+    
 }
 
 extension ViewController: UITableViewDataSource {
@@ -59,15 +48,16 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
-        print("indexPath: \(indexPath)")
-        print(contactListStorage.contactList)
-        
-        var item = showContact(who: "noam")
+        guard let accessConact = contactListStorage.accessContact[indexPath.row] else {
+            cell?.textLabel?.text = nil
+            cell?.detailTextLabel?.text = nil
+            return cell!
+        }
+        let item = showContact(who: accessConact)
         cell?.textLabel?.text = item.name
         cell?.detailTextLabel?.text = item.phoneNumber
         return cell!
     }
-
 }
 
 extension ViewController: UITableViewDelegate {

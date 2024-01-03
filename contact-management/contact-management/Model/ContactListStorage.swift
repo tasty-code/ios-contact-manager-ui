@@ -10,12 +10,15 @@ import Foundation
 final class ContactListStorage {
     
     var contactList: [String: ContactList]
-//    private var contactListCnt: Int
+    var accessContact: [Int: String]
+    
+    private var contactListCnt: Int
     
     init() {
         // 이전 저장된 ContactList값을 저장
-//        contactListCnt = 0
-        contactList = [String: ContactList]()
+        contactListCnt = 0
+        self.accessContact = [Int: String]()
+        self.contactList = [String: ContactList]()
     }
     
     // 연락처 보기
@@ -34,6 +37,8 @@ final class ContactListStorage {
     ) {
         let addList = ContactList(name: name, phoneNumber: phoneNumber, age: age)
         contactList[name] = addList
+        accessContact[contactListCnt] = name
+        contactListCnt += 1
     }
     
     // 연락처 삭제
@@ -56,5 +61,6 @@ final class ContactListStorage {
         let addList = ContactList(name: name, phoneNumber: phoneNumber, age: age)
         contactList[name] = addList
     }
+    
     
 }
