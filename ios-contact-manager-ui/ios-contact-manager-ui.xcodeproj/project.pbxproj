@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0851E79E2B44FC7600FDFBF1 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0851E79D2B44FC7600FDFBF1 /* Container.swift */; };
 		08D566512B43E8E900E75000 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D566502B43E8E900E75000 /* User.swift */; };
 		08D566532B43EB7900E75000 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D566522B43EB7900E75000 /* Tag.swift */; };
 		08D566552B43ED3900E75000 /* PhoneBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D566542B43ED3900E75000 /* PhoneBook.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0851E79D2B44FC7600FDFBF1 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		08D566502B43E8E900E75000 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		08D566522B43EB7900E75000 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		08D566542B43ED3900E75000 /* PhoneBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneBook.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 				08E3AB9D2B43BB650083012B /* LaunchScreen.storyboard */,
 				08E3AB942B43BB620083012B /* SceneDelegate.swift */,
 				08E3AB922B43BB620083012B /* AppDelegate.swift */,
+				0851E79D2B44FC7600FDFBF1 /* Container.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				08D566572B43F8B200E75000 /* TableView.swift in Sources */,
 				08D566552B43ED3900E75000 /* PhoneBook.swift in Sources */,
 				08E3AB932B43BB620083012B /* AppDelegate.swift in Sources */,
+				0851E79E2B44FC7600FDFBF1 /* Container.swift in Sources */,
 				08E3AB952B43BB620083012B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
