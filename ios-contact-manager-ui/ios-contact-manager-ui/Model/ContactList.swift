@@ -19,14 +19,14 @@ struct ContactList {
     }
     
     mutating public func addContact(contact: Contact) {
-        contactList[contact.contact] = contact
+        contactList[contact.phoneNumber] = contact
     }
     
     mutating public func deleteContact(contact: Contact) {
-        contactList.removeValue(forKey: contact.contact)
+        contactList.removeValue(forKey: contact.phoneNumber)
     }
     
     mutating public func updateContact(contact: Contact) {
-        contactList[contact.contact] = contact
+        contactList[contact.phoneNumber] = contact
     }
 }

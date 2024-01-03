@@ -9,12 +9,12 @@ import Foundation
 
 struct Contact {
     var name: String
-    var contact: String
+    var phoneNumber: String
     var age: Int
     
     init(name: String, contact: String, age: Int) {
         self.name = name
-        self.contact = contact
+        self.phoneNumber = contact
         self.age = age
     }
 }
