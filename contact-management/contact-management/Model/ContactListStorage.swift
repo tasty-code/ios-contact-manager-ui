@@ -32,9 +32,8 @@ final class ContactListStorage {
         phoneNumber: String,
         age: Int
     ) {
-        let addList = ContactList(name: name, phoneNumber: phoneNumber, age: age, cnt: contactListCnt)
+        let addList = ContactList(name: name, phoneNumber: phoneNumber, age: age)
         contactList[name] = addList
-        contactListCnt += 1
     }
     
     // 연락처 삭제
@@ -54,9 +53,8 @@ final class ContactListStorage {
         guard let _ = contactList[name] else {
             throw ContactListError.ContactListNotFound
         }
-        let addList = ContactList(name: name, phoneNumber: phoneNumber, age: age, cnt: contactListCnt)
+        let addList = ContactList(name: name, phoneNumber: phoneNumber, age: age)
         contactList[name] = addList
-        contactListCnt += 1
     }
     
 }
