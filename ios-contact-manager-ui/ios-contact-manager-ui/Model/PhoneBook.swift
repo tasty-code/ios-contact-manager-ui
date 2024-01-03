@@ -4,12 +4,8 @@ import Foundation
 // MARK: - PhoneBooks Init & Deinit
 final class PhoneBook {
     
-    let categorizedPhoneBook: [Tag: User]
-    
-    init(categorizedPhoneBook: [Tag: User]) {
-        self.categorizedPhoneBook = categorizedPhoneBook
-    }
-    
+    let categorizedBook: [Tag: User] = [:]
+        
     deinit { print("PhoneBook has been deinit!!")}
 }
 

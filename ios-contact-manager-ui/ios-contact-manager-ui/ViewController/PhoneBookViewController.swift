@@ -5,7 +5,8 @@ import UIKit
 final class PhoneBookViewController: UIViewController {
     
     let tableView = UITableView()
-    
+    var phoneBook: PhoneBook? = nil
+            
     deinit {print("PhoneBookViewController has been deinit!!")}
 }
 
