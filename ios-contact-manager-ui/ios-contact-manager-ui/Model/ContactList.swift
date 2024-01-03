@@ -13,4 +13,8 @@ struct ContactList {
     init() {
         self.contactList = [:]
     }
+    
+    public func showContactList() -> Array<Contact> {
+        return contactList.sorted(by: { $0.value.name > $1.value.name }).map { $0.value }
+    }
 }
