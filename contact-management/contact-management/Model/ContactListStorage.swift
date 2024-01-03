@@ -9,12 +9,12 @@ import Foundation
 
 final class ContactListStorage {
     
-    private var contactList: [String: ContactList]
-    private var contactListCnt: Int
+    var contactList: [String: ContactList]
+//    private var contactListCnt: Int
     
     init() {
         // 이전 저장된 ContactList값을 저장
-        contactListCnt = 0
+//        contactListCnt = 0
         contactList = [String: ContactList]()
     }
     
