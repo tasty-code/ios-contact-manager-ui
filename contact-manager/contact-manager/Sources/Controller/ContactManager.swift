@@ -8,6 +8,7 @@ struct ContactManager {
         contactDictionary[contact.phoneNumber] = contact
     }
     
+    @discardableResult
     func getContact(phoneNumber: String) throws -> Contact {
         guard let contact = contactDictionary[phoneNumber] else {
             throw ContactManagerError.nonExistentContact
@@ -16,21 +17,14 @@ struct ContactManager {
     }
     
     mutating func updateContact(_ contact: Contact) throws {
-        try validateContactExists(phoneNumber: contact.phoneNumber)
+        try getContact(phoneNumber: contact.phoneNumber)
         contactDictionary[contact.phoneNumber] = contact
     }
     
     mutating func deleteContact(phoneNumber: String) throws {
-        try validateContactExists(phoneNumber: phoneNumber)
+        try getContact(phoneNumber: phoneNumber)
         contactDictionary.removeValue(forKey: phoneNumber)
     }
-    
-    private func validateContactExists(phoneNumber: String) throws {
-        if contactDictionary[phoneNumber] != nil {
-            throw ContactManagerError.nonExistentContact
-        }
-    }
-
 }
 
 enum ContactManagerError: Error {
