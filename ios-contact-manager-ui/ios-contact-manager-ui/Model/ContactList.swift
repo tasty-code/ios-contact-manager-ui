@@ -22,5 +22,7 @@ struct ContactList {
         contactList[contact.contact] = contact
     }
     
-    
+    mutating public func deleteContact(contact: Contact) {
+        contactList.removeValue(forKey: contact.contact)
+    }
 }
