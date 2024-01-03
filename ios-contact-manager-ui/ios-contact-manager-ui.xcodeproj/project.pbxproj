@@ -13,7 +13,7 @@
 		08D566552B43ED3900E75000 /* PhoneBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D566542B43ED3900E75000 /* PhoneBook.swift */; };
 		08E3AB932B43BB620083012B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E3AB922B43BB620083012B /* AppDelegate.swift */; };
 		08E3AB952B43BB620083012B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E3AB942B43BB620083012B /* SceneDelegate.swift */; };
-		08E3AB972B43BB620083012B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E3AB962B43BB620083012B /* ViewController.swift */; };
+		08E3AB972B43BB620083012B /* PhoneBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E3AB962B43BB620083012B /* PhoneBookViewController.swift */; };
 		08E3AB9C2B43BB650083012B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08E3AB9B2B43BB650083012B /* Assets.xcassets */; };
 		08E3AB9F2B43BB650083012B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08E3AB9D2B43BB650083012B /* LaunchScreen.storyboard */; };
 		89566E522B43FAF70085E2CF /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89566E502B43FAF70085E2CF /* TableViewCell.swift */; };
@@ -30,7 +30,7 @@
 		08E3AB8F2B43BB620083012B /* ios-contact-manager-ui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-contact-manager-ui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		08E3AB922B43BB620083012B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08E3AB942B43BB620083012B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		08E3AB962B43BB620083012B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		08E3AB962B43BB620083012B /* PhoneBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneBookViewController.swift; sourceTree = "<group>"; };
 		08E3AB9B2B43BB650083012B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08E3AB9E2B43BB650083012B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08E3ABA02B43BB650083012B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		08D5664D2B43E89000E75000 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				08E3AB962B43BB620083012B /* ViewController.swift */,
+				08E3AB962B43BB620083012B /* PhoneBookViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -194,7 +194,7 @@
 			files = (
 				08D566512B43E8E900E75000 /* User.swift in Sources */,
 				89566E522B43FAF70085E2CF /* TableViewCell.swift in Sources */,
-				08E3AB972B43BB620083012B /* ViewController.swift in Sources */,
+				08E3AB972B43BB620083012B /* PhoneBookViewController.swift in Sources */,
 				08D566532B43EB7900E75000 /* Tag.swift in Sources */,
 				89566E572B4519000085E2CF /* HeaderView.swift in Sources */,
 				08D566552B43ED3900E75000 /* PhoneBook.swift in Sources */,
