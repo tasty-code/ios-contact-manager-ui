@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  contact-manager
-//
-//  Created by 이주상 on 1/2/24.
-//
-
 import UIKit
 
 @main

@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  contact-manager
-//
-//  Created by 이주상 on 1/2/24.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
