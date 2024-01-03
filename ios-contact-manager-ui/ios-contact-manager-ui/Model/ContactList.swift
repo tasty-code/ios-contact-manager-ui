@@ -18,7 +18,7 @@ struct ContactList {
         return contactList.sorted(by: { $0.value.name > $1.value.name }).map { $0.value }
     }
     
-    public func addContact(contact: Contact) {
+    mutating public func addContact(contact: Contact) {
         contactList[contact.contact] = contact
     }
     
