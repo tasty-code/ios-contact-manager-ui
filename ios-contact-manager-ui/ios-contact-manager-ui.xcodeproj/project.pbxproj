@@ -16,6 +16,7 @@
 		8A5AA5A62B44EBB90097410E /* ios_contact_manager_uiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5A52B44EBB90097410E /* ios_contact_manager_uiTests.swift */; };
 		8A5AA5B02B44EBB90097410E /* ios_contact_manager_uiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5AF2B44EBB90097410E /* ios_contact_manager_uiUITests.swift */; };
 		8A5AA5B22B44EBB90097410E /* ios_contact_manager_uiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5B12B44EBB90097410E /* ios_contact_manager_uiUITestsLaunchTests.swift */; };
+		8A5AA5C22B44EF0C0097410E /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5C12B44EF0C0097410E /* Contact.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		8A5AA5AB2B44EBB90097410E /* ios-contact-manager-uiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-contact-manager-uiUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5AA5AF2B44EBB90097410E /* ios_contact_manager_uiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITests.swift; sourceTree = "<group>"; };
 		8A5AA5B12B44EBB90097410E /* ios_contact_manager_uiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8A5AA5C12B44EF0C0097410E /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +101,9 @@
 		8A5AA58D2B44EBB70097410E /* ios-contact-manager-ui */ = {
 			isa = PBXGroup;
 			children = (
-				8A5AA58E2B44EBB70097410E /* AppDelegate.swift */,
-				8A5AA5902B44EBB80097410E /* SceneDelegate.swift */,
-				8A5AA5922B44EBB80097410E /* ViewController.swift */,
-				8A5AA5942B44EBB80097410E /* Main.storyboard */,
-				8A5AA5972B44EBB90097410E /* Assets.xcassets */,
-				8A5AA5992B44EBB90097410E /* LaunchScreen.storyboard */,
-				8A5AA59C2B44EBB90097410E /* Info.plist */,
+				8A5AA5C02B44EEDC0097410E /* Controller */,
+				8A5AA5BF2B44EECE0097410E /* View */,
+				8A5AA5BE2B44EEC40097410E /* Model */,
 			);
 			path = "ios-contact-manager-ui";
 			sourceTree = "<group>";
@@ -125,6 +123,35 @@
 				8A5AA5B12B44EBB90097410E /* ios_contact_manager_uiUITestsLaunchTests.swift */,
 			);
 			path = "ios-contact-manager-uiUITests";
+			sourceTree = "<group>";
+		};
+		8A5AA5BE2B44EEC40097410E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8A5AA5C12B44EF0C0097410E /* Contact.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8A5AA5BF2B44EECE0097410E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A5AA5942B44EBB80097410E /* Main.storyboard */,
+				8A5AA5972B44EBB90097410E /* Assets.xcassets */,
+				8A5AA5992B44EBB90097410E /* LaunchScreen.storyboard */,
+				8A5AA59C2B44EBB90097410E /* Info.plist */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8A5AA5C02B44EEDC0097410E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8A5AA58E2B44EBB70097410E /* AppDelegate.swift */,
+				8A5AA5902B44EBB80097410E /* SceneDelegate.swift */,
+				8A5AA5922B44EBB80097410E /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A5AA5C22B44EF0C0097410E /* Contact.swift in Sources */,
 				8A5AA5932B44EBB80097410E /* ViewController.swift in Sources */,
 				8A5AA58F2B44EBB70097410E /* AppDelegate.swift in Sources */,
 				8A5AA5912B44EBB80097410E /* SceneDelegate.swift in Sources */,
