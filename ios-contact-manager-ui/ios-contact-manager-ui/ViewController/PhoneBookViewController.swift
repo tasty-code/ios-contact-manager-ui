@@ -23,7 +23,9 @@ private extension PhoneBookViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.reuseID)
+        
+        let nib = UINib(nibName: "TableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: TableViewCell.reuseID)
         tableView.tableFooterView = UIView()
         setupTableHeaderView()
     }
@@ -64,11 +66,13 @@ extension PhoneBookViewController: UITableViewDelegate {
 
 extension PhoneBookViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 //Dummy
+        return phoneBook?.categorizedBook.values.count ?? 0 //Dummy
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseID, for: indexPath) as! TableViewCell
+        let user = phoneBook?.categorizedBook.values.first
+        cell.nameLabel.text = user?.name
         return cell
     }
 }
