@@ -91,13 +91,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		2A63FFFC2B44F3D3001CC5B9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		2A63FFFD2B44F468001CC5B9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +106,6 @@
 				2A63FFFA2B44F3AC001CC5B9 /* Application */,
 				2A63FFF92B44F392001CC5B9 /* Model */,
 				2A63FFFB2B44F3C4001CC5B9 /* Controller */,
-				2A63FFFC2B44F3D3001CC5B9 /* View */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
