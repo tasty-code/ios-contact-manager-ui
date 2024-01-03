@@ -103,6 +103,7 @@
 		8A5AA58D2B44EBB70097410E /* ios-contact-manager-ui */ = {
 			isa = PBXGroup;
 			children = (
+				8A5AA59C2B44EBB90097410E /* Info.plist */,
 				8A5AA5C02B44EEDC0097410E /* Controller */,
 				8A5AA5BF2B44EECE0097410E /* View */,
 				8A5AA5BE2B44EEC40097410E /* Model */,
@@ -142,7 +143,6 @@
 				8A5AA5942B44EBB80097410E /* Main.storyboard */,
 				8A5AA5972B44EBB90097410E /* Assets.xcassets */,
 				8A5AA5992B44EBB90097410E /* LaunchScreen.storyboard */,
-				8A5AA59C2B44EBB90097410E /* Info.plist */,
 			);
 			path = View;
 			sourceTree = "<group>";
