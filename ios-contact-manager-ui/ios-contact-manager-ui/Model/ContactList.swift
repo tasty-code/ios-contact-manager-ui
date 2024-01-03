@@ -15,18 +15,14 @@ struct ContactList {
     }
     
     public func showContactList() -> Array<Contact> {
-        return contactList.sorted(by: { $0.value.name > $1.value.name }).map { $0.value }
-    }
-    
-    mutating public func addContact(contact: Contact) {
-        contactList[contact.phoneNumber] = contact
+        return contactList.sorted(by: { $0.value.name < $1.value.name }).map { $0.value }
     }
     
     mutating public func deleteContact(contact: Contact) {
         contactList.removeValue(forKey: contact.phoneNumber)
     }
     
-    mutating public func updateContact(contact: Contact) {
+    mutating public func updateContactList(contact: Contact) {
         contactList[contact.phoneNumber] = contact
     }
 }
