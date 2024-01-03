@@ -1,5 +1,5 @@
 struct ContactManager {
-    private(set) var contactDictionary: [String: Contact]
+    private(set) var contactDictionary = [String: Contact]()
     
     mutating func addContact(_ contact: Contact) throws {
         guard contactDictionary[contact.phoneNumber] == nil else {
