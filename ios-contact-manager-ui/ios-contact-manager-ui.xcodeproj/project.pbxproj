@@ -17,6 +17,7 @@
 		8A5AA5B02B44EBB90097410E /* ios_contact_manager_uiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5AF2B44EBB90097410E /* ios_contact_manager_uiUITests.swift */; };
 		8A5AA5B22B44EBB90097410E /* ios_contact_manager_uiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5B12B44EBB90097410E /* ios_contact_manager_uiUITestsLaunchTests.swift */; };
 		8A5AA5C22B44EF0C0097410E /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5C12B44EF0C0097410E /* Contact.swift */; };
+		8A5AA5C42B44F10E0097410E /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5C32B44F10E0097410E /* ContactList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		8A5AA5AF2B44EBB90097410E /* ios_contact_manager_uiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITests.swift; sourceTree = "<group>"; };
 		8A5AA5B12B44EBB90097410E /* ios_contact_manager_uiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A5AA5C12B44EF0C0097410E /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		8A5AA5C32B44F10E0097410E /* ContactList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				8A5AA5C12B44EF0C0097410E /* Contact.swift */,
+				8A5AA5C32B44F10E0097410E /* ContactList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				8A5AA5932B44EBB80097410E /* ViewController.swift in Sources */,
 				8A5AA58F2B44EBB70097410E /* AppDelegate.swift in Sources */,
 				8A5AA5912B44EBB80097410E /* SceneDelegate.swift in Sources */,
+				8A5AA5C42B44F10E0097410E /* ContactList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
