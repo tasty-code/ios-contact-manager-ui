@@ -41,14 +41,16 @@ class ViewController: UIViewController {
     
 }
 
+
+// MARK: TableView
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactListStorage.contactList.count
+        return contactListStorage.sizeContactList()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
-        guard let accessConact = contactListStorage.accessContact[indexPath.row] else {
+        guard let accessConact = contactListStorage.accessContactList(pos: indexPath.row) else {
             cell?.textLabel?.text = nil
             cell?.detailTextLabel?.text = nil
             return cell!

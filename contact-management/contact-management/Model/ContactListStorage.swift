@@ -9,8 +9,8 @@ import Foundation
 
 final class ContactListStorage {
     
-    var contactList: [String: ContactList]
-    var accessContact: [Int: String]
+    private var contactList: [String: ContactList]
+    private var accessContact: [Int: String]
     
     private var contactListCnt: Int
     
@@ -21,7 +21,6 @@ final class ContactListStorage {
         self.contactList = [String: ContactList]()
     }
     
-    // 연락처 보기
     func showContact(who name: String) throws -> ContactList {
         guard let newList: ContactList = contactList[name] else {
             throw ContactListError.ContactListNotFound
@@ -29,7 +28,6 @@ final class ContactListStorage {
         return newList
     }
     
-    // 연락처 추가
     func addContact(
         name: String,
         phoneNumber: String,
@@ -41,7 +39,6 @@ final class ContactListStorage {
         contactListCnt += 1
     }
     
-    // 연락처 삭제
     func deleteContact(name: String) throws {
         guard let _ = contactList[name] else {
             throw ContactListError.ContactListNotFound
@@ -49,7 +46,6 @@ final class ContactListStorage {
         contactList[name] = nil
     }
     
-    // 연락처 변경
     func changeContact(
         name: String,
         phoneNumber: String,
@@ -62,5 +58,12 @@ final class ContactListStorage {
         contactList[name] = addList
     }
     
+    func accessContactList(pos: Int) -> String? {
+        return accessContact[pos]
+    }
+    
+    func sizeContactList() -> Int {
+        return contactList.count
+    }
     
 }
