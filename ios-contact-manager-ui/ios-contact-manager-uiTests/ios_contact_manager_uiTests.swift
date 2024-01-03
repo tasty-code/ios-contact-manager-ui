@@ -33,6 +33,19 @@ final class ios_contact_manager_uiTests: XCTestCase {
     
 //    func test_showContactList_호출시_
 
+    func test_deleteContactList_호출시_제대로삭제되나요() {
+        //given
+        let input: Array<Contact> = [Contact(name: "댄", contact: "010-1111-2222", age: 35), Contact(name: "Sidi", contact: "010-2222-1111", age: 36)]
+        let expectation: Array<Contact> = [Contact(name: "댄", contact: "010-1111-2222", age: 35)]
+        //when
+        for contact in input {
+            sut.updateContactList(contact: contact)
+        }
+        sut.deleteContact(contact: Contact(name: "Sidi", contact: "010-2222-1111", age: 36))
+        //then
+        XCTAssertEqual(sut.showContactList(), expectation)
+    }
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
