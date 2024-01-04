@@ -19,14 +19,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "연락처"
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
         // test 코드
         contactListStorage.addContact(name: "noam", phoneNumber: "010-1111-1111", age: 28)
         contactListStorage.addContact(name: "hero", phoneNumber: "010-2222-2222", age: 18)
         contactListStorage.addContact(name: "billon", phoneNumber: "010-3333-3333", age: 17)
-        
     }
     
     private func showContact(who id: Int) -> ContactList {
