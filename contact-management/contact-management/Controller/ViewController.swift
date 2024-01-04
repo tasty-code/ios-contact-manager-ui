@@ -29,10 +29,10 @@ class ViewController: UIViewController {
         
     }
     
-    private func showContact(who name: String) -> ContactList {
+    private func showContact(who id: Int) -> ContactList {
         var checkedContact: ContactList?
         do {
-            checkedContact = try contactListStorage.showContact(who: name)
+            checkedContact = try contactListStorage.showContact(who: id)
         } catch {
             checkedContact = nil
         }
@@ -50,12 +50,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
-        guard let accessConact = contactListStorage.accessContactList(pos: indexPath.row) else {
-            cell?.textLabel?.text = nil
-            cell?.detailTextLabel?.text = nil
-            return cell!
-        }
-        let item = showContact(who: accessConact)
+        let item = showContact(who: indexPath.row)
         cell?.textLabel?.text = item.name
         cell?.detailTextLabel?.text = item.phoneNumber
         return cell!

@@ -9,23 +9,15 @@ import Foundation
 
 final class ContactListStorage {
     
-    private var contactList: [String: ContactList]
-    private var accessContact: [Int: String]
-    
-    private var contactListCnt: Int
+    private var contactList: [ContactList]
     
     init() {
         // 이전 저장된 ContactList값을 저장
-        contactListCnt = 0
-        self.accessContact = [Int: String]()
-        self.contactList = [String: ContactList]()
+        self.contactList = [ContactList]()
     }
     
-    func showContact(who name: String) throws -> ContactList {
-        guard let newList: ContactList = contactList[name] else {
-            throw ContactListError.ContactListNotFound
-        }
-        return newList
+    func showContact(who pos: Int) throws -> ContactList {
+        contactList[pos]
     }
     
     func addContact(
@@ -34,32 +26,21 @@ final class ContactListStorage {
         age: Int
     ) {
         let addList = ContactList(name: name, phoneNumber: phoneNumber, age: age)
-        contactList[name] = addList
-        accessContact[contactListCnt] = name
-        contactListCnt += 1
+        contactList.append(addList)
     }
     
-    func deleteContact(name: String) throws {
-        guard let _ = contactList[name] else {
-            throw ContactListError.ContactListNotFound
-        }
-        contactList[name] = nil
+    func deleteContact(pos: Int) throws {
+        contactList.remove(at: pos)
     }
     
     func changeContact(
+        pos: Int,
         name: String,
         phoneNumber: String,
         age: Int
     ) throws {
-        guard let _ = contactList[name] else {
-            throw ContactListError.ContactListNotFound
-        }
         let addList = ContactList(name: name, phoneNumber: phoneNumber, age: age)
-        contactList[name] = addList
-    }
-    
-    func accessContactList(pos: Int) -> String? {
-        return accessContact[pos]
+        contactList[pos] = addList
     }
     
     func sizeContactList() -> Int {
