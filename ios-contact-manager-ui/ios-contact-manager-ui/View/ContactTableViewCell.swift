@@ -28,6 +28,16 @@ final class ContactTableViewCell: UITableViewCell {
         sv.alignment = .fill
         return sv
     }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        setupStackView()
+        setConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 extension ContactTableViewCell {
@@ -35,5 +45,25 @@ extension ContactTableViewCell {
         self.contentView.addSubview(stackView)
         stackView.addArrangedSubview(nameLabel)
         stackView.addArrangedSubview(phoneNumberLabel)
+    }
+    
+    private func setConstraints() {
+        setNameLabelConstraints()
+        setStackViewConstraints()
+    }
+    
+    private func setNameLabelConstraints() {
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 3),
+            nameLabel.heightAnchor.constraint(equalToConstant: 22)
+        ])
+    }
+    
+    private func setStackViewConstraints() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10)
+        ])
     }
 }
