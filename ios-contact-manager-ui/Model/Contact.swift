@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Manager {
+struct Contact {
     var name: String
     var age: Int
-    var number: Int
+    var phoneNumber: Int
 }
