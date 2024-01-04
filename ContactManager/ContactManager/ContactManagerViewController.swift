@@ -39,6 +39,12 @@ extension ContactManagerViewController: UITableViewDataSource {
         
         cell.setUpData(data: ContactInfoModel.sampleData[indexPath.row])
         
+        let image = UIImage(systemName: "chevron.right")
+        let rightImageView = UIImageView(image: image)
+        
+        rightImageView.tintColor = .gray
+        cell.accessoryView = rightImageView
+        
         return cell
     }
 }
