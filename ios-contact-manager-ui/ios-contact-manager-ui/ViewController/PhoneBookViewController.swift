@@ -18,7 +18,7 @@ extension PhoneBookViewController {
     }
 }
 
-//MARK: - Setup TableView
+// MARK: - Setup TableView
 private extension PhoneBookViewController {
     func setupTableView() {
         tableView.delegate = self
@@ -26,7 +26,6 @@ private extension PhoneBookViewController {
         
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: TableViewCell.reuseID)
-        tableView.tableFooterView = UIView()
         tableView.backgroundColor = .lightGray
         setupTableHeaderView()
     }
@@ -41,11 +40,10 @@ private extension PhoneBookViewController {
 
 }
 
-//MARK: - SetupUI
+// MARK: - SetupUI
 private extension PhoneBookViewController {
     func setupUI() {
         setupConstraints()
-        
     }
     
     func setupConstraints() {
