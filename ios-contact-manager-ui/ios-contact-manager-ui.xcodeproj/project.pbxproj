@@ -19,6 +19,7 @@
 		8A5AA5C42B44F10E0097410E /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5C32B44F10E0097410E /* ContactList.swift */; };
 		8A7F879A2B463F2B00EABB4A /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F87992B463F2B00EABB4A /* ContactTableViewCell.swift */; };
 		8A7F879C2B46462E00EABB4A /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F879B2B46462E00EABB4A /* ContactListViewController.swift */; };
+		BDBCCFE62B4671BE00F8665A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBCCFE52B4671BD00F8665A /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		8A5AA5C32B44F10E0097410E /* ContactList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactList.swift; sourceTree = "<group>"; };
 		8A7F87992B463F2B00EABB4A /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		8A7F879B2B46462E00EABB4A /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
+		BDBCCFE52B4671BD00F8665A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				8A5AA58E2B44EBB70097410E /* AppDelegate.swift */,
 				8A5AA5902B44EBB80097410E /* SceneDelegate.swift */,
 				8A7F879B2B46462E00EABB4A /* ContactListViewController.swift */,
+				BDBCCFE52B4671BD00F8665A /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				8A5AA5C22B44EF0C0097410E /* Contact.swift in Sources */,
 				8A5AA58F2B44EBB70097410E /* AppDelegate.swift in Sources */,
 				8A5AA5912B44EBB80097410E /* SceneDelegate.swift in Sources */,
+				BDBCCFE62B4671BE00F8665A /* ViewController.swift in Sources */,
 				8A5AA5C42B44F10E0097410E /* ContactList.swift in Sources */,
 				8A7F879C2B46462E00EABB4A /* ContactListViewController.swift in Sources */,
 			);
