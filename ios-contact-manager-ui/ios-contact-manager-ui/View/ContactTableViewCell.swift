@@ -19,4 +19,8 @@ final class ContactTableViewCell: UITableViewCell {
         return label
     }()
     
+    let stackView: UIStackView = {
+        let sv: UIStackView = UIStackView()
+        return sv
+    }()
 }
