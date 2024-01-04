@@ -49,6 +49,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		2A6300092B469839001CC5B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A6300042B464B4A001CC5B9 /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2A63FFD92B43FB17001CC5B9 = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +121,7 @@
 		2A63FFFE2B44F476001CC5B9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				2A6300042B464B4A001CC5B9 /* Cells */,
+				2A6300092B469839001CC5B9 /* View */,
 				2A63FFFA2B44F3AC001CC5B9 /* Application */,
 				2A63FFF92B44F392001CC5B9 /* Model */,
 				2A63FFFB2B44F3C4001CC5B9 /* Controller */,
