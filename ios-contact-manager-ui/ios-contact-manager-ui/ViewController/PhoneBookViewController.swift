@@ -15,7 +15,6 @@ extension PhoneBookViewController {
     override func viewDidLoad() {
         setupTableView()
         setupUI()
-        setStatusBar()
     }
 }
 
