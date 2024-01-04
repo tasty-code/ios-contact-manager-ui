@@ -8,7 +8,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let contactManager = ContactManager(contactDictionary: ["010-1234-5678": Contact(phoneNumber: "010-1234-5678", name: "minsu", age: 30), "010-2234-5678": Contact(phoneNumber: "010-2234-5678", name: "james", age: 21), "010-3234-5678": Contact(phoneNumber: "010-3234-5678", name: "scott", age: 32), "010-4234-5678": Contact(phoneNumber: "010-4234-5678", name: "paul", age: 40), "010-5234-5678": Contact(phoneNumber: "010-5234-5678", name: "pepp", age: 47)])
+        let contactManager = ContactManager(contactDictionary: contactData)
         window.rootViewController = ViewController(contactManager: contactManager)
         self.window = window
         window.makeKeyAndVisible()

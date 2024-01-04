@@ -10,6 +10,7 @@
 		220F737A2B44F8FD00295EA9 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F73792B44F8FD00295EA9 /* ContactManager.swift */; };
 		2A6300002B44F5B0001CC5B9 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63FFFF2B44F5B0001CC5B9 /* Contact.swift */; };
 		2A6300062B464B5B001CC5B9 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6300052B464B5B001CC5B9 /* ContactCell.swift */; };
+		2A63000C2B4698D0001CC5B9 /* ContactData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63000B2B4698D0001CC5B9 /* ContactData.swift */; };
 		2A63FFE62B43FB17001CC5B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63FFE52B43FB17001CC5B9 /* AppDelegate.swift */; };
 		2A63FFE82B43FB17001CC5B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63FFE72B43FB17001CC5B9 /* SceneDelegate.swift */; };
 		2A63FFEA2B43FB17001CC5B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63FFE92B43FB17001CC5B9 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		220F73792B44F8FD00295EA9 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		2A6300052B464B5B001CC5B9 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		2A63000B2B4698D0001CC5B9 /* ContactData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactData.swift; sourceTree = "<group>"; };
 		2A63FFE22B43FB17001CC5B9 /* contact-manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "contact-manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A63FFE52B43FB17001CC5B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A63FFE72B43FB17001CC5B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 				2A6300042B464B4A001CC5B9 /* Cells */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2A63000A2B4698B7001CC5B9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2A63000B2B4698D0001CC5B9 /* ContactData.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		2A63FFD92B43FB17001CC5B9 = {
@@ -121,6 +131,7 @@
 		2A63FFFE2B44F476001CC5B9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				2A63000A2B4698B7001CC5B9 /* Utils */,
 				2A6300092B469839001CC5B9 /* View */,
 				2A63FFFA2B44F3AC001CC5B9 /* Application */,
 				2A63FFF92B44F392001CC5B9 /* Model */,
@@ -200,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A6300062B464B5B001CC5B9 /* ContactCell.swift in Sources */,
+				2A63000C2B4698D0001CC5B9 /* ContactData.swift in Sources */,
 				220F737A2B44F8FD00295EA9 /* ContactManager.swift in Sources */,
 				2A6300002B44F5B0001CC5B9 /* Contact.swift in Sources */,
 				2A63FFEA2B43FB17001CC5B9 /* ViewController.swift in Sources */,
