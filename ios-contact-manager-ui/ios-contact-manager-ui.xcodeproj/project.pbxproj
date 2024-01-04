@@ -18,6 +18,7 @@
 		8A5AA5B22B44EBB90097410E /* ios_contact_manager_uiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5B12B44EBB90097410E /* ios_contact_manager_uiUITestsLaunchTests.swift */; };
 		8A5AA5C22B44EF0C0097410E /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5C12B44EF0C0097410E /* Contact.swift */; };
 		8A5AA5C42B44F10E0097410E /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5C32B44F10E0097410E /* ContactList.swift */; };
+		8A7F879A2B463F2B00EABB4A /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F87992B463F2B00EABB4A /* ContactTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		8A5AA5B12B44EBB90097410E /* ios_contact_manager_uiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A5AA5C12B44EF0C0097410E /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		8A5AA5C32B44F10E0097410E /* ContactList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactList.swift; sourceTree = "<group>"; };
+		8A7F87992B463F2B00EABB4A /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				8A5AA5942B44EBB80097410E /* Main.storyboard */,
 				8A5AA5972B44EBB90097410E /* Assets.xcassets */,
 				8A5AA5992B44EBB90097410E /* LaunchScreen.storyboard */,
+				8A7F87992B463F2B00EABB4A /* ContactTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A7F879A2B463F2B00EABB4A /* ContactTableViewCell.swift in Sources */,
 				8A5AA5C22B44EF0C0097410E /* Contact.swift in Sources */,
 				8A5AA5932B44EBB80097410E /* ViewController.swift in Sources */,
 				8A5AA58F2B44EBB70097410E /* AppDelegate.swift in Sources */,
