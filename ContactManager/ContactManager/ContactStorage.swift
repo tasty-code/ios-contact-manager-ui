@@ -11,6 +11,10 @@ class ContactStorage {
     
     private var contactStorage: [Contact] = []
     
+    var contacteCount: Int {
+        return contactStorage.count
+    }
+    
     func addContact(newName: String, newAge: Int, newPhoneNumber: String) {
         contactStorage.append(Contact(name: newName, age: newAge, phoneNumber: newPhoneNumber))
     }

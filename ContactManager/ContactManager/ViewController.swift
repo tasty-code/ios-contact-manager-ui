@@ -8,12 +8,29 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let contactStorage = ContactStorage()
+    let cellIdentifier = "contactCell"
 
+    @IBOutlet weak var contactTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        configure()
     }
-
-
+    
+    private func configure() {
+        self.contactTableView.dataSource = self
+    }
 }
 
+extension ViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return contactStorage.contacteCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+}
