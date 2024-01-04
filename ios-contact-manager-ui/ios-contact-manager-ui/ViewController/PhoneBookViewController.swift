@@ -73,6 +73,7 @@ extension PhoneBookViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseID, for: indexPath) as! TableViewCell
         let user = phoneBook?.categorizedBook.values.first
         cell.nameLabel.text = user?.name
+        cell.phoneNumberLabel.text = user?.phoneNumber
         return cell
     }
 }
