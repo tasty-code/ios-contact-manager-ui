@@ -9,6 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let contactList: [Contact] = [
+        Contact(name: "Harry", age: 20, phoneNumber: "010-1234-5678"),
+        Contact(name: "Hoi", age: 20, phoneNumber: "010-0000-0000"),
+        Contact(name: "Dio", age: 20, phoneNumber: "010-1111-1111")
+    ]
+    
     @IBOutlet weak var contactTableView: UITableView!
 
     override func viewDidLoad() {
@@ -21,13 +27,13 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        return contactList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = contactTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "테스트1"
-        cell.detailTextLabel?.text = "테스트2"
+        cell.textLabel?.text = String("\(contactList[indexPath.row].name)" + "(\(contactList[indexPath.row].age))")
+        cell.detailTextLabel?.text = contactList[indexPath.row].phoneNumber
         return cell
     }
 }

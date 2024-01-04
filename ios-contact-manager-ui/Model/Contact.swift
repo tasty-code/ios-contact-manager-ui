@@ -10,5 +10,5 @@ import Foundation
 struct Contact {
     var name: String
     var age: Int
-    var phoneNumber: Int
+    var phoneNumber: String
 }
