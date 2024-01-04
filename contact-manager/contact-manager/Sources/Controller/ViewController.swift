@@ -20,7 +20,6 @@ final class ViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ContactCell.self, forCellReuseIdentifier: ContactCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,10 +38,6 @@ extension ViewController {
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
-}
-
-extension ViewController: UITableViewDelegate {
-    
 }
 
 extension ViewController: UITableViewDataSource {
