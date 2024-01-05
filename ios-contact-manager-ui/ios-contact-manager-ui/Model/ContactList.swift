@@ -15,7 +15,7 @@ struct ContactList {
     }
     
     public func showContactList() -> Array<Contact> {
-        return contactList.sorted(by: { $0.value.name < $1.value.name }).map { $0.value }
+        return contactList.sorted(by: { $0.value.name.uppercased() < $1.value.name.uppercased() }).map { $0.value }
     }
     
     mutating public func deleteContact(contact: Contact) {
