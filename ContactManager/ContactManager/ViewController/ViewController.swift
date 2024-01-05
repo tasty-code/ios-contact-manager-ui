@@ -9,8 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let contactManager = ContactMananger()
-    let cellIdentifier = "contactCell"
+    private let contactManager = ContactMananger()
+    private let cellIdentifier = "contactCell"
 
     @IBOutlet weak var contactTableView: UITableView!
     
