@@ -69,13 +69,13 @@ extension PhoneBookViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return phoneBook?.categorizedBook[section]?.count ?? 0
+        return phoneBook?.categorizedContactInfo[section]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseID, for: indexPath) as! TableViewCell
         
-        let user = phoneBook?.categorizedBook[indexPath.section]
+        let user = phoneBook?.categorizedContactInfo[indexPath.section]
         guard let userName = user?[indexPath.row].name else {return UITableViewCell() }
         guard let userAge = user?[indexPath.row].age else { return UITableViewCell() }
         let userNumber = user?[indexPath.row].phoneNumber

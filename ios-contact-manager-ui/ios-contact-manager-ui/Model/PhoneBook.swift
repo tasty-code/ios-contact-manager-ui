@@ -4,10 +4,10 @@ import Foundation
 // MARK: - PhoneBooks Init & Deinit
 final class PhoneBook {
 
-    let nameIndex = ["가", "나", "다", "라", "마", "바", "사", "아", "자", "차", "카", "타", "파", "하"]
+    let nameIndex = ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
 
     // Key값은 nameIndex의 순서와 동일
-    var categorizedBook = [
+    var categorizedContactInfo = [
         0: [
             User(userID: UUID(), name: "김철수", phoneNumber: "010-1111-2223", age: 10),
             User(userID: UUID(), name: "강철수", phoneNumber: "010-1111-2224", age: 20)
