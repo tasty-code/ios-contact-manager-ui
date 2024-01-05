@@ -10,7 +10,7 @@ import UIKit
 class ContactsViewController: UIViewController {
     
     //MARK: - Property
-    private let contactManager: ContactManagerImpl = ContactManagerImpl()
+    private let contactManager: ContactManager = ContactManagerMock()
     private let contactsView: ContactsView = ContactsView()
     
     
@@ -46,7 +46,7 @@ extension ContactsViewController: UITableViewDataSource {
         let contact = contactManager.showUpAllContacts()[indexPath.row]
         
         cell.textLabel?.text = "\(contact.name ?? "알수없는 사용자")(\(contact.age ?? "0"))"
-        cell.detailTextLabel?.text = contact.contctNumber
+        cell.detailTextLabel?.text = contact.contactNumber
         cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16)
         cell.accessoryType = .disclosureIndicator
