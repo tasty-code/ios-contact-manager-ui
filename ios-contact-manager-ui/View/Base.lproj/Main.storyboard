@@ -17,11 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0NE-IB-F4K">
-<<<<<<< HEAD
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-=======
                                 <rect key="frame" x="0.0" y="99" width="393" height="719"/>
->>>>>>> 34b8a4b (design: 테이블뷰셀 추가 삭제 수정 검증용 UI구현 (#1))
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="r10-RW-tFl" detailTextLabel="ESs-l4-SzL" style="IBUITableViewCellStyleSubtitle" id="7EK-JI-2ie">
@@ -50,8 +46,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-<<<<<<< HEAD
-=======
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5tw-l9-C21">
                                 <rect key="frame" x="0.0" y="59" width="393" height="40"/>
                                 <subviews>
@@ -88,24 +82,17 @@
                                     <constraint firstItem="Zh3-0k-dr5" firstAttribute="top" secondItem="5tw-l9-C21" secondAttribute="top" constant="5" id="ziM-Th-pWF"/>
                                 </constraints>
                             </view>
->>>>>>> 34b8a4b (design: 테이블뷰셀 추가 삭제 수정 검증용 UI구현 (#1))
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0NE-IB-F4K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AM9-wB-Zzb"/>
-<<<<<<< HEAD
-                            <constraint firstItem="0NE-IB-F4K" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="VA3-tJ-0PX"/>
-                            <constraint firstItem="0NE-IB-F4K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Xpg-kE-w1O"/>
-                            <constraint firstItem="0NE-IB-F4K" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="YXK-te-AVX"/>
-=======
                             <constraint firstItem="5tw-l9-C21" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FcC-Hz-QzB"/>
                             <constraint firstItem="0NE-IB-F4K" firstAttribute="top" secondItem="5tw-l9-C21" secondAttribute="bottom" id="Pfl-lm-xor"/>
                             <constraint firstItem="0NE-IB-F4K" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="VA3-tJ-0PX"/>
                             <constraint firstItem="0NE-IB-F4K" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="YXK-te-AVX"/>
                             <constraint firstItem="5tw-l9-C21" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gnK-DK-bMz"/>
                             <constraint firstItem="5tw-l9-C21" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yuS-vF-TRQ"/>
->>>>>>> 34b8a4b (design: 테이블뷰셀 추가 삭제 수정 검증용 UI구현 (#1))
                         </constraints>
                     </view>
                     <connections>
