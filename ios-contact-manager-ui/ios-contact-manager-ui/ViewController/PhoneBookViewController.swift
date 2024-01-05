@@ -85,11 +85,11 @@ extension PhoneBookViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseID, for: indexPath) as! TableViewCell
         
         let user = phoneBook?.categorizedBook[indexPath.section]
-        let userName = user?[indexPath.row].name
-        let userage = user?[indexPath.row].age
+        guard let userName = user?[indexPath.row].name else {return UITableViewCell() }
+        guard let userage = user?[indexPath.row].age else { return UITableViewCell() }
         let userNumber = user?[indexPath.row].phoneNumber
         
-        cell.nameLabel.text = "\(userName)(\(userage)))"
+        cell.nameLabel.text = "\(userName)(\(userage))"
         cell.phoneNumberLabel.text = userNumber
         
         return cell

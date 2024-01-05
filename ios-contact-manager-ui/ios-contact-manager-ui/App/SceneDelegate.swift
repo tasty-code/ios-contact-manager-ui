@@ -24,6 +24,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
         window?.rootViewController = phoneBookViewController
-        window?.backgroundColor = .lightGray
+        window?.backgroundColor = .white
     }
 }
