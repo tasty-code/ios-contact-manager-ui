@@ -14,8 +14,8 @@
 		E461E1002B44037200469E94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E461E0FE2B44037200469E94 /* Main.storyboard */; };
 		E461E1022B44037300469E94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E461E1012B44037300469E94 /* Assets.xcassets */; };
 		E461E1052B44037300469E94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E461E1032B44037300469E94 /* LaunchScreen.storyboard */; };
-		E461E1152B453BFA00469E94 /* ContactManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461E1142B453BFA00469E94 /* ContactManagerTableViewCell.swift */; };
-		E4C7DB392B4548E8008DC50F /* ContactManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C7DB382B4548E8008DC50F /* ContactManagerViewController.swift */; };
+		E461E1152B453BFA00469E94 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461E1142B453BFA00469E94 /* ContactTableViewCell.swift */; };
+		E4C7DB392B4548E8008DC50F /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C7DB382B4548E8008DC50F /* ContactListViewController.swift */; };
 		E4FF94E02B45648300F66AB1 /* ContactInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FF94DF2B45648300F66AB1 /* ContactInfoModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,8 +29,8 @@
 		E461E1012B44037300469E94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E461E1042B44037300469E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E461E1062B44037300469E94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E461E1142B453BFA00469E94 /* ContactManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerTableViewCell.swift; sourceTree = "<group>"; };
-		E4C7DB382B4548E8008DC50F /* ContactManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerViewController.swift; sourceTree = "<group>"; };
+		E461E1142B453BFA00469E94 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		E4C7DB382B4548E8008DC50F /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		E4FF94DF2B45648300F66AB1 /* ContactInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,7 +112,7 @@
 		774781F52B479C3400B1159C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E4C7DB382B4548E8008DC50F /* ContactManagerViewController.swift */,
+				E4C7DB382B4548E8008DC50F /* ContactListViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -120,7 +120,7 @@
 		774781F62B479C4300B1159C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				E461E1142B453BFA00469E94 /* ContactManagerTableViewCell.swift */,
+				E461E1142B453BFA00469E94 /* ContactTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -234,9 +234,9 @@
 				E461E0FB2B44037200469E94 /* SceneDelegate.swift in Sources */,
 				774781FB2B479F5B00B1159C /* UITableViewCell+.swift in Sources */,
 				774781F92B479F0300B1159C /* UIViewController+.swift in Sources */,
-				E461E1152B453BFA00469E94 /* ContactManagerTableViewCell.swift in Sources */,
+				E461E1152B453BFA00469E94 /* ContactTableViewCell.swift in Sources */,
 				E4FF94E02B45648300F66AB1 /* ContactInfoModel.swift in Sources */,
-				E4C7DB392B4548E8008DC50F /* ContactManagerViewController.swift in Sources */,
+				E4C7DB392B4548E8008DC50F /* ContactListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

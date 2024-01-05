@@ -1,5 +1,5 @@
 //
-//  ContactManagerTableViewCell.swift
+//  ContactTableViewCell.swift
 //  ContactManager
 //
 //  Created by 둘리 on 2024/01/03.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ContactManagerTableViewCell: UITableViewCell {
+final class ContactTableViewCell: UITableViewCell {
     
     // MARK: @IBOutlet
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var subtitleLabel: UILabel!
     
     // MARK: Custom Methods
     func setUpData(data: ContactInfoModel) {
