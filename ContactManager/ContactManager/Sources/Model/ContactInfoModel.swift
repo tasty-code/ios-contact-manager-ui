@@ -8,12 +8,14 @@
 import Foundation
 
 struct ContactInfoModel {
+    
     var name: String
     var age: Int
     var phoneNumber: String
 }
 
 extension ContactInfoModel {
+    
     static let sampleData: [ContactInfoModel] = [
         ContactInfoModel(name: "james", age: 30, phoneNumber: "05-343-2234"),
         ContactInfoModel(name: "steven", age: 100, phoneNumber: "047-221-3432"),

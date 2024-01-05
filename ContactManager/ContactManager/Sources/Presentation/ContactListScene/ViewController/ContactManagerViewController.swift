@@ -9,27 +9,34 @@ import UIKit
 
 class ContactManagerViewController: UIViewController {
     
+    // MARK: @IBOutlet
     @IBOutlet private weak var contactTableView: UITableView!
     
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpTableView()
     }
     
+    // MARK: Custom Methods
     private func setUpTableView() {
         contactTableView.delegate = self
         contactTableView.dataSource = self
     }
 }
 
+// MARK: - UITableViewDelegate
 extension ContactManagerViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
 }
 
+// MARK: - UITableViewDataSource
 extension ContactManagerViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ContactInfoModel.sampleData.count
     }

@@ -9,6 +9,7 @@ import UIKit
 
 extension UITableViewCell {
     
+    // MARK: Properties
     static var className: String {
         NSStringFromClass(self.classForCoder()).components(separatedBy: ".").last!
     }
