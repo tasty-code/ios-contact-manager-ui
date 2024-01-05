@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        
     }
     
     private func configure() {
@@ -31,6 +32,10 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        cell.textLabel?.text = contactStorage.contactStorage[indexPath.row].nameAndAge
+        cell.detailTextLabel?.text = contactStorage.contactStorage[indexPath.row].phoneNumber
+        
+        return cell
     }
 }

@@ -13,6 +13,10 @@ struct Contact {
     var age: Int
     var phoneNumber: String
     
+    var nameAndAge: String {
+        return name + "(\(age))"
+    }
+    
     init(name: String, age: Int, phoneNumber: String) {
         self.name = name
         self.age = age
