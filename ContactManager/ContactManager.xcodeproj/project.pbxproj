@@ -14,6 +14,7 @@
 		9948A3BE2B4542CF00422296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9948A3BD2B4542CF00422296 /* Assets.xcassets */; };
 		9948A3C12B4542CF00422296 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9948A3BF2B4542CF00422296 /* LaunchScreen.storyboard */; };
 		9948A3EF2B47C24500422296 /* ContactFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9948A3EE2B47C24500422296 /* ContactFileManager.swift */; };
+		9948A3F12B47E9FA00422296 /* ContactManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9948A3F02B47E9FA00422296 /* ContactManagerError.swift */; };
 		9B07363C2B479A02004556B8 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07363B2B479A02004556B8 /* Contact.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		9948A3C02B4542CF00422296 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9948A3C22B4542CF00422296 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9948A3EE2B47C24500422296 /* ContactFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFileManager.swift; sourceTree = "<group>"; };
+		9948A3F02B47E9FA00422296 /* ContactManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerError.swift; sourceTree = "<group>"; };
 		9B07363B2B479A02004556B8 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 			children = (
 				9B07363B2B479A02004556B8 /* Contact.swift */,
 				9948A3EE2B47C24500422296 /* ContactFileManager.swift */,
+				9948A3F02B47E9FA00422296 /* ContactManagerError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 				9948A3EF2B47C24500422296 /* ContactFileManager.swift in Sources */,
 				9B07363C2B479A02004556B8 /* Contact.swift in Sources */,
 				9948A3B92B4542CD00422296 /* ViewController.swift in Sources */,
+				9948A3F12B47E9FA00422296 /* ContactManagerError.swift in Sources */,
 				9948A3B52B4542CD00422296 /* AppDelegate.swift in Sources */,
 				9948A3B72B4542CD00422296 /* SceneDelegate.swift in Sources */,
 			);

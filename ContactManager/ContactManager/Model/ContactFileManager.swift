@@ -2,7 +2,7 @@
 //  ContactFileManager.swift
 //  ContactManager
 //
-//  Created by 윤진영 on 1/5/24.
+//  Created by 유니 & L on 1/5/24.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ final class ContactFileManager {
     func loadJson() {
         let jsonDecoder: JSONDecoder = JSONDecoder()
         guard let dataAsset: NSDataAsset = NSDataAsset(name: "contact") else {
-            print("File Not Found Error")
+            print(ContactManagerError.fileNotFound.errorDescription)
             return
         }
         do {
@@ -32,12 +32,12 @@ final class ContactFileManager {
         contacts.remove(at: indexInt)
     }
     
-    func updateContact(indexInt: Int, newContact: Contact) {
+    func updateContact(_ indexInt: Int, _ newContact: Contact) {
         guard indexInt >= 0 && indexInt < contacts.count else {
-            print("해당 인덱스를 찾을 수 없습니다.")
+            print(ContactManagerError.indexNotFound.errorDescription)
             return
         }
         contacts[indexInt] = newContact
     }
-    
 }
+
