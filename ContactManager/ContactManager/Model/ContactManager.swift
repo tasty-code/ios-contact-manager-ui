@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ContactMananger {
+final class ContactMananger {
     
     private var storage: [Contact] = []
     
