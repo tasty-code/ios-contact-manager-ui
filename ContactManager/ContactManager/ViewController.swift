@@ -28,12 +28,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactFileManager.contact.count
+        return contactFileManager.contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let contact = contactFileManager.contact[indexPath.row]
+        let contact = contactFileManager.contacts[indexPath.row]
         cell.textLabel?.text = contact.nameAndAge
         cell.detailTextLabel?.text = contact.phoneNumber
         return cell
@@ -41,6 +41,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.contactFileManager.removeContact(indexPath.row)
+            tableView.reloadData()
             success(true)
         }
         return UISwipeActionsConfiguration(actions: [delete])
