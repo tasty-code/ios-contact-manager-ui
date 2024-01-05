@@ -20,24 +20,24 @@ final class ContactFileManager {
         do {
             self.contacts = try jsonDecoder.decode([Contact].self, from: dataAsset.data)
         } catch {
-            print(error)
+            print(error.localizedDescription)
         }
     }
     
-    func insertContact(contact: Contact) {
+    func addContact(contact: Contact) {
         contacts.append(contact)
     }
     
-    func removeContact(_ indexInt: Int) {
-        contacts.remove(at: indexInt)
+    func removeContact(_ index: Int) {
+        contacts.remove(at: index)
     }
     
-    func updateContact(_ indexInt: Int, _ newContact: Contact) {
-        guard indexInt >= 0 && indexInt < contacts.count else {
+    func updateContact(_ index: Int, _ newContact: Contact) throws {
+        guard index >= 0 && index < contacts.count else {
             print(ContactManagerError.indexNotFound.errorDescription)
             return
         }
-        contacts[indexInt] = newContact
+        contacts[index] = newContact
     }
 }
 

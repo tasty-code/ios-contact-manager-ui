@@ -11,7 +11,12 @@ final class ContactListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let contactFileManager = ContactFileManager()
+    private let contactFileManager: ContactFileManager
+    
+    required init?(coder: NSCoder) {
+        self.contactFileManager = ContactFileManager()
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
