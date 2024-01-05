@@ -10,13 +10,13 @@ import UIKit
 final class ContactListViewController: UIViewController {
 
     private let tableView: UITableView
-    private var contactList: ContactList
+    private var contactListModel: ContactListModel
     private var contactArray: Array<Contact>
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         tableView = UITableView()
-        contactList = ContactList()
-        contactArray = contactList.showContactList()
+        contactListModel = ContactListModel()
+        contactArray = contactListModel.showContactList()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     

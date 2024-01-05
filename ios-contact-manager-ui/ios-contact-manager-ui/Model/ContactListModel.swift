@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ContactList {
+struct ContactListModel {
     private var contactList: Dictionary<String, Contact>
     
     init() {
