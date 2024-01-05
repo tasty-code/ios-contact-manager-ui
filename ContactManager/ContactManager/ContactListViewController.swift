@@ -42,7 +42,7 @@ extension ContactListViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.contactFileManager.removeContact(indexPath.row)
-            tableView.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
             success(true)
         }
         return UISwipeActionsConfiguration(actions: [delete])
