@@ -22,12 +22,10 @@ extension PhoneBookViewController {
 // MARK: - Setup TableView
 private extension PhoneBookViewController {
     func setupTableView() {
-        tableView.delegate = self
         tableView.dataSource = self
         
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: TableViewCell.reuseID)
-//        tableView.backgroundColor = .lightGray
         setupTableHeaderView()
     }
     
@@ -61,19 +59,13 @@ private extension PhoneBookViewController {
 
 
 // MARK: - TableView Delegate
-extension PhoneBookViewController: UITableViewDelegate {
-    
-}
-
 extension PhoneBookViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        let hangulChosungCount = 14
-        return hangulChosungCount
+        return phoneBook?.nameIndex.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let stringArray = ["가", "나", "다", "라", "마", "바", "사", "아", "자", "차", "카", "타", "파", "하"]
-        return stringArray[section]
+        return phoneBook?.nameIndex[section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,17 +73,15 @@ extension PhoneBookViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseID, for: indexPath) as! TableViewCell
         
         let user = phoneBook?.categorizedBook[indexPath.section]
         guard let userName = user?[indexPath.row].name else {return UITableViewCell() }
-        guard let userage = user?[indexPath.row].age else { return UITableViewCell() }
+        guard let userAge = user?[indexPath.row].age else { return UITableViewCell() }
         let userNumber = user?[indexPath.row].phoneNumber
         
-        cell.nameLabel.text = "\(userName)(\(userage))"
+        cell.nameLabel.text = "\(userName)(\(userAge))"
         cell.phoneNumberLabel.text = userNumber
-        
         return cell
     }
 }
