@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
-    }채ㅜ
+    }
     
     func layout() {
         view.addSubview(table)
