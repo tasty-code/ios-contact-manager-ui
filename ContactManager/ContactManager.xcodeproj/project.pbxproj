@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		774781F92B479F0300B1159C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774781F82B479F0300B1159C /* UIViewController+.swift */; };
+		774781FB2B479F5B00B1159C /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774781FA2B479F5B00B1159C /* UITableViewCell+.swift */; };
 		E461E0F92B44037200469E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461E0F82B44037200469E94 /* AppDelegate.swift */; };
 		E461E0FB2B44037200469E94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461E0FA2B44037200469E94 /* SceneDelegate.swift */; };
 		E461E1002B44037200469E94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E461E0FE2B44037200469E94 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		774781F82B479F0300B1159C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		774781FA2B479F5B00B1159C /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
 		E461E0F52B44037200469E94 /* ContactManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E461E0F82B44037200469E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E461E0FA2B44037200469E94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			files = (
 				E461E0F92B44037200469E94 /* AppDelegate.swift in Sources */,
 				E461E0FB2B44037200469E94 /* SceneDelegate.swift in Sources */,
+				774781FB2B479F5B00B1159C /* UITableViewCell+.swift in Sources */,
 				774781F92B479F0300B1159C /* UIViewController+.swift in Sources */,
 				E461E1152B453BFA00469E94 /* ContactManagerTableViewCell.swift in Sources */,
 				E4FF94E02B45648300F66AB1 /* ContactInfoModel.swift in Sources */,
