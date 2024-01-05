@@ -67,7 +67,7 @@ extension PhoneBookViewController: UITableViewDelegate {
 
 extension PhoneBookViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return phoneBook?.categorizedBook.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -81,8 +81,14 @@ extension PhoneBookViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseID, for: indexPath) as! TableViewCell
-        cell.nameLabel.text = "이름"
-        cell.phoneNumberLabel.text = "010-1000-0000"
+        let num = indexPath.section
+        let phoneSection = phoneBook?.categorizedBook[num]
+        
+        for index in 0..<indexPath.count {
+            cell.nameLabel.text = phoneSection?[index].name
+            cell.phoneNumberLabel.text = phoneSection?[index].phoneNumber
+        }
+        
         return cell
     }
 }
