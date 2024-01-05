@@ -41,6 +41,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F3E3251A2B47DED3004AA7E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F3E9AF7E2B46459E0003FDBE /* Contact.swift */,
+				15A568532B464B1600A363DA /* ContactStorage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F3E3251B2B47DEF3004AA7E0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F3E9AF6E2B4643C50003FDBE /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F3E3251C2B47DF29004AA7E0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3E9AF702B4643C50003FDBE /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F3E9AF5E2B4643C50003FDBE = {
 			isa = PBXGroup;
 			children = (
@@ -62,10 +87,9 @@
 			children = (
 				F3E9AF6A2B4643C50003FDBE /* AppDelegate.swift */,
 				F3E9AF6C2B4643C50003FDBE /* SceneDelegate.swift */,
-				F3E9AF6E2B4643C50003FDBE /* ViewController.swift */,
-				F3E9AF7E2B46459E0003FDBE /* Contact.swift */,
-				15A568532B464B1600A363DA /* ContactStorage.swift */,
-				F3E9AF702B4643C50003FDBE /* Main.storyboard */,
+				F3E3251A2B47DED3004AA7E0 /* Model */,
+				F3E3251B2B47DEF3004AA7E0 /* ViewController */,
+				F3E3251C2B47DF29004AA7E0 /* View */,
 				F3E9AF732B4643C80003FDBE /* Assets.xcassets */,
 				F3E9AF752B4643C80003FDBE /* LaunchScreen.storyboard */,
 				F3E9AF782B4643C80003FDBE /* Info.plist */,
