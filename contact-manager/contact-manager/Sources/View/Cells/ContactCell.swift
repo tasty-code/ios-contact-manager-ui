@@ -14,10 +14,8 @@ final class ContactCell: UITableViewCell {
 extension ContactCell {
     func configure(with contact: Contact) {
         var defaultContentConfiguration = defaultContentConfiguration()
-        let text = "\(contact.name)(\(contact.age))"
-        let secondaryText = contact.phoneNumber
-        defaultContentConfiguration.text = text
-        defaultContentConfiguration.secondaryText = secondaryText
+        defaultContentConfiguration.text = "\(contact.name)(\(contact.age))"
+        defaultContentConfiguration.secondaryText = contact.phoneNumber
         contentConfiguration = defaultContentConfiguration
     }
 }
