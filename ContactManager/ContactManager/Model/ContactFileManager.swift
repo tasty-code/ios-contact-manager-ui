@@ -9,7 +9,7 @@ import UIKit
 
 final class ContactFileManager {
     
-    var contact: [Contact] = []
+    var contacts: [Contact] = []
     
     func loadJson() {
         let jsonDecoder: JSONDecoder = JSONDecoder()
@@ -18,9 +18,26 @@ final class ContactFileManager {
             return
         }
         do {
-            self.contact = try jsonDecoder.decode([Contact].self, from: dataAsset.data)
+            self.contacts = try jsonDecoder.decode([Contact].self, from: dataAsset.data)
         } catch {
             print(error)
         }
     }
+    
+    func insertContact(contact: Contact) {
+        contacts.append(contact)
+    }
+    
+    func removeContact(_ indexInt: Int) {
+        contacts.remove(at: indexInt)
+    }
+    
+    func updateContact(indexInt: Int, newContact: Contact) {
+        guard indexInt >= 0 && indexInt < contacts.count else {
+            print("해당 인덱스를 찾을 수 없습니다.")
+            return
+        }
+        contacts[indexInt] = newContact
+    }
+    
 }
