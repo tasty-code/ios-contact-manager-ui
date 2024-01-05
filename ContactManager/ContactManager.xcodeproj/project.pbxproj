@@ -41,6 +41,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		774781ED2B4798FE00B1159C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E461E1062B44037300469E94 /* Info.plist */,
+				E461E1012B44037300469E94 /* Assets.xcassets */,
+				E461E1032B44037300469E94 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		774781EE2B47993E00B1159C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E4FF94DF2B45648300F66AB1 /* ContactInfoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		774781F02B479A1B00B1159C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				774781EE2B47993E00B1159C /* Model */,
+				774781F12B479A6500B1159C /* Application */,
+				774781F22B479BB600B1159C /* Presentation */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		774781F12B479A6500B1159C /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E461E0FA2B44037200469E94 /* SceneDelegate.swift */,
+				E461E0F82B44037200469E94 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		774781F22B479BB600B1159C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				774781F32B479BD100B1159C /* ContactListScene */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		774781F32B479BD100B1159C /* ContactListScene */ = {
+			isa = PBXGroup;
+			children = (
+				774781F42B479C2400B1159C /* Storyboard */,
+				774781F52B479C3400B1159C /* ViewController */,
+				774781F62B479C4300B1159C /* Cell */,
+			);
+			path = ContactListScene;
+			sourceTree = "<group>";
+		};
+		774781F42B479C2400B1159C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				E461E0FE2B44037200469E94 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		774781F52B479C3400B1159C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E4C7DB382B4548E8008DC50F /* ContactManagerViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		774781F62B479C4300B1159C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E461E1142B453BFA00469E94 /* ContactManagerTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		E461E0EC2B44037200469E94 = {
 			isa = PBXGroup;
 			children = (
@@ -60,15 +139,8 @@
 		E461E0F72B44037200469E94 /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
-				E461E0F82B44037200469E94 /* AppDelegate.swift */,
-				E461E0FA2B44037200469E94 /* SceneDelegate.swift */,
-				E4C7DB382B4548E8008DC50F /* ContactManagerViewController.swift */,
-				E461E0FE2B44037200469E94 /* Main.storyboard */,
-				E461E1142B453BFA00469E94 /* ContactManagerTableViewCell.swift */,
-				E461E1012B44037300469E94 /* Assets.xcassets */,
-				E461E1032B44037300469E94 /* LaunchScreen.storyboard */,
-				E461E1062B44037300469E94 /* Info.plist */,
-				E4FF94DF2B45648300F66AB1 /* ContactInfoModel.swift */,
+				774781F02B479A1B00B1159C /* Sources */,
+				774781ED2B4798FE00B1159C /* Resources */,
 			);
 			path = ContactManager;
 			sourceTree = "<group>";
