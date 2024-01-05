@@ -27,7 +27,7 @@ private extension PhoneBookViewController {
         
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: TableViewCell.reuseID)
-        tableView.backgroundColor = .lightGray
+//        tableView.backgroundColor = .lightGray
         setupTableHeaderView()
     }
     
@@ -67,7 +67,8 @@ extension PhoneBookViewController: UITableViewDelegate {
 
 extension PhoneBookViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return phoneBook?.categorizedBook.count ?? 0
+        let hangulChosungCount = 14
+        return hangulChosungCount
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -80,14 +81,16 @@ extension PhoneBookViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseID, for: indexPath) as! TableViewCell
-        let num = indexPath.section
-        let phoneSection = phoneBook?.categorizedBook[num]
         
-        for index in 0..<indexPath.count {
-            cell.nameLabel.text = phoneSection?[index].name
-            cell.phoneNumberLabel.text = phoneSection?[index].phoneNumber
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseID, for: indexPath) as! TableViewCell
+        
+        let user = phoneBook?.categorizedBook[indexPath.section]
+        let userName = user?[indexPath.row].name
+        let userage = user?[indexPath.row].age
+        let userNumber = user?[indexPath.row].phoneNumber
+        
+        cell.nameLabel.text = "\(userName)(\(userage)))"
+        cell.phoneNumberLabel.text = userNumber
         
         return cell
     }

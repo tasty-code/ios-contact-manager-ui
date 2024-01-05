@@ -28,7 +28,6 @@ private extension HeaderView {
         bundle.loadNibNamed("HeaderView", owner: self, options: nil)
         addSubview(contentView)
         
-        contentView.backgroundColor = .lightGray
         contentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: self.topAnchor),
