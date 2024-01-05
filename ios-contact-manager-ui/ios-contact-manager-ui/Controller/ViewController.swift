@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
+        table.dataSource = self
+        table.register(CustomCell.self, forCellReuseIdentifier: "cell")
+        parse()
     }
     
     func layout() {
@@ -34,8 +37,26 @@ class ViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
-
 }
 
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return contacts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell" , for: indexPath)
+        let item = contacts[indexPath.row]
+        
+        var content = cell.defaultContentConfiguration()
+        
+        content.text = item.nameAge
+        content.secondaryText = item.phoneNumber
+        
+        cell.contentConfiguration = content
+        
+        return cell
+    }
+}
 
 

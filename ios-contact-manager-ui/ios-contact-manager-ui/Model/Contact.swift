@@ -11,4 +11,8 @@ struct Contact: Decodable {
     let name: String
     let phoneNumber: String
     let age: String
+    
+    var nameAge: String {
+        return "\(name)(\(age))"
+    }
 }
