@@ -12,6 +12,12 @@ struct ContactList {
     
     init() {
         self.contactList = [:]
+        if let loadedContacts = loadContactsJson() {
+            contactList = loadedContacts.reduce(into: [:]) {
+                partialResult, contact in
+                partialResult[contact.phoneNumber] = contact
+            }
+        }
     }
     
     public func showContactList() -> Array<Contact> {
@@ -24,5 +30,20 @@ struct ContactList {
     
     mutating public func updateContactList(contact: Contact) {
         contactList[contact.phoneNumber] = contact
+    }
+    
+    private func loadContactsJson() -> Array<Contact>? {
+        guard let fileLocation = Bundle.main.url(forResource: "contacts", withExtension: "json") else {
+            return nil
+        }
+        do {
+            let jsonData = try Data(contentsOf: fileLocation)
+            let decoder = JSONDecoder()
+            let dataFromJson = try decoder.decode([Contact].self, from: jsonData)
+            return dataFromJson
+        } catch {
+            print(error)
+            return nil
+        }
     }
 }
