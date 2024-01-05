@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     let table = UITableView()
+    var contacts: [Contact] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,17 @@ class ViewController: UIViewController {
         table.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         table.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
+    
+    func parse() {
+        guard let asset = NSDataAsset(name: "data") else { return }
+        
+        do {
+            contacts = try JSONDecoder().decode([Contact].self, from: asset.data)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
 }
 
 
