@@ -8,18 +8,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let table = UITableView()
-    var contacts: [Contact] = []
+    private let table = UITableView()
+    private var contacts: [Contact] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
-        table.dataSource = self
-        table.register(CustomCell.self, forCellReuseIdentifier: "cell")
         parse()
+        configure()
     }
     
-    func layout() {
+    private func layout() {
         view.addSubview(table)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -28,7 +27,13 @@ class ViewController: UIViewController {
         table.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
     
-    func parse() {
+    private func configure() {
+        table.dataSource = self
+        table.delegate = self
+        table.register(CustomCell.self, forCellReuseIdentifier: "cell")
+    }
+    
+    private func parse() {
         guard let asset = NSDataAsset(name: "data") else { return }
         
         do {
@@ -54,8 +59,15 @@ extension ViewController: UITableViewDataSource {
         content.secondaryText = item.phoneNumber
         
         cell.contentConfiguration = content
+        cell.accessoryType = .disclosureIndicator
         
         return cell
+    }
+}
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
