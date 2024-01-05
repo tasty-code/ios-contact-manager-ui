@@ -49,7 +49,7 @@ extension ViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactCell.identifier, for: indexPath) as? ContactCell else {
             preconditionFailure("ContactCell load Failed")
         }
-        let contact = Array(contactManager.contactDictionary.values)[indexPath.item]
+        let contact = Array(contactManager.contactDictionary.values)[indexPath.row]
         cell.configure(with: contact)
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .none
