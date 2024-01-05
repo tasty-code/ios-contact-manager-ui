@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		774781F92B479F0300B1159C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774781F82B479F0300B1159C /* UIViewController+.swift */; };
 		E461E0F92B44037200469E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461E0F82B44037200469E94 /* AppDelegate.swift */; };
 		E461E0FB2B44037200469E94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461E0FA2B44037200469E94 /* SceneDelegate.swift */; };
 		E461E1002B44037200469E94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E461E0FE2B44037200469E94 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		774781F82B479F0300B1159C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		E461E0F52B44037200469E94 /* ContactManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E461E0F82B44037200469E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E461E0FA2B44037200469E94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		774781F02B479A1B00B1159C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				774781F72B479ED800B1159C /* Extension */,
 				774781EE2B47993E00B1159C /* Model */,
 				774781F12B479A6500B1159C /* Application */,
 				774781F22B479BB600B1159C /* Presentation */,
@@ -118,6 +121,15 @@
 				E461E1142B453BFA00469E94 /* ContactManagerTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		774781F72B479ED800B1159C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				774781F82B479F0300B1159C /* UIViewController+.swift */,
+				774781FA2B479F5B00B1159C /* UITableViewCell+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		E461E0EC2B44037200469E94 = {
@@ -218,6 +230,7 @@
 			files = (
 				E461E0F92B44037200469E94 /* AppDelegate.swift in Sources */,
 				E461E0FB2B44037200469E94 /* SceneDelegate.swift in Sources */,
+				774781F92B479F0300B1159C /* UIViewController+.swift in Sources */,
 				E461E1152B453BFA00469E94 /* ContactManagerTableViewCell.swift in Sources */,
 				E4FF94E02B45648300F66AB1 /* ContactInfoModel.swift in Sources */,
 				E4C7DB392B4548E8008DC50F /* ContactManagerViewController.swift in Sources */,
