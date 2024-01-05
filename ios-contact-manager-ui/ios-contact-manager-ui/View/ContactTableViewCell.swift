@@ -9,6 +9,8 @@ import UIKit
 
 final class ContactTableViewCell: UITableViewCell {
     
+    static let identifier: String = "ContactCell"
+    
     let nameLabel: UILabel = {
         let label: UILabel = UILabel()
         label.font = UIFont.systemFont(ofSize: 17)

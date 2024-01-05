@@ -38,7 +38,7 @@ extension ContactListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath) as! ContactTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.identifier, for: indexPath) as! ContactTableViewCell
         let contact = contactArray[indexPath.row]
         
         cell.nameLabel.text = "\(contact.name)(\(contact.age))"
@@ -53,7 +53,7 @@ extension ContactListViewController {
     private func setupTableView() {
         tableView.dataSource = self
         tableView.rowHeight = 50
-        tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: "ContactCell")
+        tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: ContactTableViewCell.identifier)
     }
     
     private func setupTableViewConstraints() {
