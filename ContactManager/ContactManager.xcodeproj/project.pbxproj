@@ -56,15 +56,39 @@
 		F48AB72F2B47C96100A07C9D /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
-				F48AB7302B47C96100A07C9D /* AppDelegate.swift */,
-				F48AB7322B47C96100A07C9D /* SceneDelegate.swift */,
-				F48AB7342B47C96100A07C9D /* ViewController.swift */,
+				F48AB7452B47CB2800A07C9D /* App */,
+				F48AB7442B47CB0F00A07C9D /* ViewController */,
+				F48AB7462B47CB8500A07C9D /* Resource */,
 				F48AB7362B47C96100A07C9D /* Main.storyboard */,
-				F48AB7392B47C96300A07C9D /* Assets.xcassets */,
-				F48AB73B2B47C96300A07C9D /* LaunchScreen.storyboard */,
-				F48AB73E2B47C96300A07C9D /* Info.plist */,
 			);
 			path = ContactManager;
+			sourceTree = "<group>";
+		};
+		F48AB7442B47CB0F00A07C9D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F48AB7342B47C96100A07C9D /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F48AB7452B47CB2800A07C9D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F48AB73B2B47C96300A07C9D /* LaunchScreen.storyboard */,
+				F48AB73E2B47C96300A07C9D /* Info.plist */,
+				F48AB7302B47C96100A07C9D /* AppDelegate.swift */,
+				F48AB7322B47C96100A07C9D /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F48AB7462B47CB8500A07C9D /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F48AB7392B47C96300A07C9D /* Assets.xcassets */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
