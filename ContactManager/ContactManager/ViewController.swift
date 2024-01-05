@@ -45,8 +45,8 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = contactStorage.fetchContact(index: indexPath.row).nameAndAge
-        cell.detailTextLabel?.text = contactStorage.fetchContact(index: indexPath.row).phoneNumber
+        cell.textLabel?.text = contactStorage.fetchContact(index: indexPath.row).fetchNameAndAge
+        cell.detailTextLabel?.text = contactStorage.fetchContact(index: indexPath.row).fetchPhoneNumber
         
         return cell
     }

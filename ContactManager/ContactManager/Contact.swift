@@ -9,12 +9,16 @@ import Foundation
 
 struct Contact: Codable {
     
-    var name: String
-    var age: Int
-    var phoneNumber: String
+    private var name: String
+    private var age: Int
+    private var phoneNumber: String
     
-    var nameAndAge: String {
+    var fetchNameAndAge: String {
         return name + "(\(age))"
+    }
+    
+    var fetchPhoneNumber: String {
+        return phoneNumber
     }
     
     init(name: String, age: Int, phoneNumber: String) {
