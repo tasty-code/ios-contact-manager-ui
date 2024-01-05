@@ -49,7 +49,7 @@ extension ContactManagerViewController: UITableViewDataSource {
         let image = UIImage(systemName: "chevron.right")
         let rightImageView = UIImageView(image: image)
         
-        rightImageView.tintColor = .gray
+        rightImageView.tintColor = .systemGray3
         cell.accessoryView = rightImageView
         
         return cell
