@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactsViewController: UIViewController {
+final class ContactsViewController: UIViewController {
     
     //MARK: - Property
     private let contactManager: ContactManager = ContactManagerMock()

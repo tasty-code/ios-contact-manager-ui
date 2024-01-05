@@ -7,7 +7,7 @@
 
 protocol ContactManager {
     func showUpAllContacts() -> [Contact]
-    func addNewContacts(contact: Contact)
+    func addNewContact(contact: Contact)
     func deleteContact(at index: Int)
     func updateContact(at index: Int, with updateContact: Contact)
 }

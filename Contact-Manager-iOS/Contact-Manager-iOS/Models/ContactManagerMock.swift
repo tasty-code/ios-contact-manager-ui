@@ -5,7 +5,7 @@
 //  Created by Doyoung An on 1/5/24.
 //
 
-class ContactManagerMock: ContactManager {
+final class ContactManagerMock: ContactManager {
     
     // MARK: - Property
     private var contactList: [Contact] = [
@@ -21,7 +21,7 @@ class ContactManagerMock: ContactManager {
         return contactList
     }
     
-    func addNewContacts(contact: Contact) {
+    func addNewContact(contact: Contact) {
         contactList.append(contact)
     }
     

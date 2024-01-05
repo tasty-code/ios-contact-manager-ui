@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactsView: UIView {
+final class ContactsView: UIView {
     
     //MARK: - Property
     let contactsTableView: UITableView = {
@@ -31,7 +31,7 @@ class ContactsView: UIView {
     
     
     //MARK: - Method
-    func configureContactsTableView() {
+    private func configureContactsTableView() {
         self.addSubview(contactsTableView)
         
         NSLayoutConstraint.activate([

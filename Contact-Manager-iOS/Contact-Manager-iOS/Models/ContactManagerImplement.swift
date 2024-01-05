@@ -4,7 +4,7 @@
 //
 //  Created by nayeon  on 2024/01/05.
 //
-class ContactManagerImpl: ContactManager {
+final class ContactManagerImplement: ContactManager {
     
     // MARK: - Property
     private var contactList: [Contact] = []
@@ -15,7 +15,7 @@ class ContactManagerImpl: ContactManager {
         return contactList
     }
     
-    func addNewContacts(contact: Contact) {
+    func addNewContact(contact: Contact) {
         contactList.append(contact)
     }
     

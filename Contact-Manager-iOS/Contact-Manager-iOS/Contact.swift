@@ -8,11 +8,11 @@
 struct Contact {
     var name: String?
     var age: String?
-    var contctNumber: String?
+    var contactNumber: String?
     
-    init(name: String? = nil, age: String? = nil, contctNumber: String? = nil) {
+    init(name: String? = nil, age: String? = nil, contactNumber: String? = nil) {
         self.name = name
         self.age = age
-        self.contctNumber = contctNumber
+        self.contactNumber = contactNumber
     }
 }
