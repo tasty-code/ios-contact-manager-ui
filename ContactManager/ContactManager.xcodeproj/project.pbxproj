@@ -11,7 +11,7 @@
 		774781FB2B479F5B00B1159C /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774781FA2B479F5B00B1159C /* UITableViewCell+.swift */; };
 		E461E0F92B44037200469E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461E0F82B44037200469E94 /* AppDelegate.swift */; };
 		E461E0FB2B44037200469E94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461E0FA2B44037200469E94 /* SceneDelegate.swift */; };
-		E461E1002B44037200469E94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E461E0FE2B44037200469E94 /* Main.storyboard */; };
+		E461E1002B44037200469E94 /* ContactList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E461E0FE2B44037200469E94 /* ContactList.storyboard */; };
 		E461E1022B44037300469E94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E461E1012B44037300469E94 /* Assets.xcassets */; };
 		E461E1052B44037300469E94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E461E1032B44037300469E94 /* LaunchScreen.storyboard */; };
 		E461E1152B453BFA00469E94 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461E1142B453BFA00469E94 /* ContactTableViewCell.swift */; };
@@ -25,7 +25,7 @@
 		E461E0F52B44037200469E94 /* ContactManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E461E0F82B44037200469E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E461E0FA2B44037200469E94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E461E0FF2B44037200469E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E461E0FF2B44037200469E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ContactList.storyboard; sourceTree = "<group>"; };
 		E461E1012B44037300469E94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E461E1042B44037300469E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E461E1062B44037300469E94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		774781F42B479C2400B1159C /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				E461E0FE2B44037200469E94 /* Main.storyboard */,
+				E461E0FE2B44037200469E94 /* ContactList.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -219,7 +219,7 @@
 			files = (
 				E461E1052B44037300469E94 /* LaunchScreen.storyboard in Resources */,
 				E461E1022B44037300469E94 /* Assets.xcassets in Resources */,
-				E461E1002B44037200469E94 /* Main.storyboard in Resources */,
+				E461E1002B44037200469E94 /* ContactList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,12 +243,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E461E0FE2B44037200469E94 /* Main.storyboard */ = {
+		E461E0FE2B44037200469E94 /* ContactList.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E461E0FF2B44037200469E94 /* Base */,
 			);
-			name = Main.storyboard;
+			name = ContactList.storyboard;
 			sourceTree = "<group>";
 		};
 		E461E1032B44037300469E94 /* LaunchScreen.storyboard */ = {
@@ -313,6 +313,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = ContactManager/Resources/Info.plist;
+				INFOPLIST_KEY_UIMainStoryboardFile = ContactList;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -368,6 +369,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = ContactManager/Resources/Info.plist;
+				INFOPLIST_KEY_UIMainStoryboardFile = ContactList;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -389,7 +391,7 @@
 				INFOPLIST_FILE = ContactManager/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = ContactList;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -417,7 +419,7 @@
 				INFOPLIST_FILE = ContactManager/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = ContactList;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
