@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D7101CF2B479969006F2649 /* UiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7101CE2B479969006F2649 /* UiTest.swift */; };
 		CCADE2FE2B43A91C00E4EE30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE2FD2B43A91C00E4EE30 /* AppDelegate.swift */; };
 		CCADE3002B43A91C00E4EE30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE2FF2B43A91C00E4EE30 /* SceneDelegate.swift */; };
 		CCADE3022B43A91C00E4EE30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE3012B43A91C00E4EE30 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D7101CE2B479969006F2649 /* UiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiTest.swift; sourceTree = "<group>"; };
 		CCADE2FA2B43A91C00E4EE30 /* contact-management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "contact-management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCADE2FD2B43A91C00E4EE30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCADE2FF2B43A91C00E4EE30 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D7101D02B47997D006F2649 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				1D7101CE2B479969006F2649 /* UiTest.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		CCADE2F12B43A91C00E4EE30 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 		CCADE2FC2B43A91C00E4EE30 /* contact-management */ = {
 			isa = PBXGroup;
 			children = (
+				1D7101D02B47997D006F2649 /* Test */,
 				CCD4C8CC2B44ECAE00B69E9F /* App */,
 				CCD4C8CD2B44ECFB00B69E9F /* Controller */,
 				CCD4C8CF2B44ED6500B69E9F /* Model */,
@@ -304,6 +315,7 @@
 				CCE27A8F2B44F2140051FFA8 /* ContactListStorage.swift in Sources */,
 				CCADE3022B43A91C00E4EE30 /* ViewController.swift in Sources */,
 				CCADE2FE2B43A91C00E4EE30 /* AppDelegate.swift in Sources */,
+				1D7101CF2B479969006F2649 /* UiTest.swift in Sources */,
 				CCADE3002B43A91C00E4EE30 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
