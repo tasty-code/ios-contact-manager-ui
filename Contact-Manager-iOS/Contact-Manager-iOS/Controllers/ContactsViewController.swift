@@ -10,7 +10,7 @@ import UIKit
 class ContactsViewController: UIViewController {
     
     //MARK: - Property
-    private let contactManager: ContactManager = ContactManager()
+    private let contactManager: ContactManagerImpl = ContactManagerImpl()
     private let contactsView: ContactsView = ContactsView()
     
     
