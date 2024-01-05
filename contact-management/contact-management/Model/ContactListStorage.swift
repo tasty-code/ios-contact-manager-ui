@@ -11,7 +11,7 @@ final class ContactListStorage {
     
     private var contactList: [ContactList] = [ContactList]()
     
-    func showContact(who pos: Int) throws -> ContactList {
+    func showContact(who pos: Int) -> ContactList {
         self.contactList[pos]
     }
     
@@ -19,7 +19,7 @@ final class ContactListStorage {
         self.contactList.append(contacts)
     }
     
-    func deleteContact(pos: Int) throws {
+    func deleteContact(pos: Int) {
         self.contactList.remove(at: pos)
     }
     

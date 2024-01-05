@@ -25,14 +25,8 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     
-    private func showContact(who id: Int) -> ContactList {
-        var checkedContact: ContactList?
-        do {
-            checkedContact = try contactListStorage.showContact(who: id)
-        } catch {
-            checkedContact = nil
-        }
-        return checkedContact!
+    private func contact(forID id: Int) -> ContactList {
+        return contactListStorage.showContact(who: id)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,7 +35,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        let item = showContact(who: indexPath.row)
+        let item = contact(forID: indexPath.row)
         
         cell.textLabel?.text = "\(item.name) (\(item.age))"
         cell.detailTextLabel?.text = item.phoneNumber
