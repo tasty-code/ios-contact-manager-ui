@@ -2,7 +2,7 @@
 //  Contact.swift
 //  ContactManager
 //
-//  Created by LeeSeongYeon on 2024/01/05.
+//  Created by 유니 & L on 2024/01/05.
 //
 
 import Foundation
