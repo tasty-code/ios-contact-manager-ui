@@ -9,8 +9,6 @@ import UIKit
 
 class ContactManagerTableViewCell: UITableViewCell {
     
-    static let identifier = "ContactManagerTableViewCell"
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     

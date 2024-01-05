@@ -35,7 +35,7 @@ extension ContactManagerViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactManagerTableViewCell.identifier, for: indexPath) as? ContactManagerTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactManagerTableViewCell.className, for: indexPath) as? ContactManagerTableViewCell else { return UITableViewCell() }
         
         cell.setUpData(data: ContactInfoModel.sampleData[indexPath.row])
         
