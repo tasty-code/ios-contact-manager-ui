@@ -12,34 +12,23 @@ final class ContactListStorage {
     private var contactList: [ContactList] = [ContactList]()
     
     func showContact(who pos: Int) throws -> ContactList {
-        contactList[pos]
+        self.contactList[pos]
     }
     
-    func addContact(
-        name: String,
-        phoneNumber: String,
-        age: Int
-    ) {
-        let addList = ContactList(name: name, phoneNumber: phoneNumber, age: age)
-        contactList.append(addList)
+    func addContact(_ contacts: ContactList) {
+        self.contactList.append(contacts)
     }
     
     func deleteContact(pos: Int) throws {
-        contactList.remove(at: pos)
+        self.contactList.remove(at: pos)
     }
     
-    func changeContact(
-        pos: Int,
-        name: String,
-        phoneNumber: String,
-        age: Int
-    ) throws {
-        let addList = ContactList(name: name, phoneNumber: phoneNumber, age: age)
-        contactList[pos] = addList
+    func changeContact(_ pos: Int, contacts: ContactList) {
+        self.contactList[pos] = contacts
     }
     
     func sizeContactList() -> Int {
-        return contactList.count
+        return self.contactList.count
     }
     
 }
