@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class ContactListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,7 +22,7 @@ final class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension ContactListViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
