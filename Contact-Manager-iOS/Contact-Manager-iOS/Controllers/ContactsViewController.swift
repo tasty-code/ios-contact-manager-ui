@@ -29,7 +29,7 @@ final class ContactsViewController: UIViewController {
     //MARK: - Method
     private func configureTableView() {
         contactsView.contactsTableView.dataSource = self
-        contactsView.contactsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ContactTableViewCell")
+        contactsView.contactsTableView.register(ContactTableViewCell.self, forCellReuseIdentifier: ContactTableViewCell.reuseIdentifier)
     }
     
 }
@@ -42,15 +42,13 @@ extension ContactsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "ContactTableViewCell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.reuseIdentifier, for: indexPath) as? ContactTableViewCell else {
+            fatalError("cell is not an instance of TableViewCell")
+        }
+
         let contact = contactManager.showUpAllContacts()[indexPath.row]
-        
-        cell.textLabel?.text = "\(contact.name ?? "알수없는 사용자")(\(contact.age ?? "0"))"
-        cell.detailTextLabel?.text = contact.contactNumber
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
-        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16)
-        cell.accessoryType = .disclosureIndicator
-        
+        cell.configureTableViewCell(with: contact)
+
         return cell
     }
     
