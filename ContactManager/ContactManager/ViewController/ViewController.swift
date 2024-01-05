@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let contactStorage = ContactMananger()
+    let contactManager = ContactMananger()
     let cellIdentifier = "contactCell"
 
     @IBOutlet weak var contactTableView: UITableView!
@@ -24,13 +24,13 @@ class ViewController: UIViewController {
         self.contactTableView.dataSource = self
     }
     
-    func jsonDecoder() {
+    private func jsonDecoder() {
         let decoder = JSONDecoder()
         guard let dataAssets: NSDataAsset = NSDataAsset(name: "Dummy") else { return }
         
         do {
             let dummyData = try decoder.decode([Contact].self, from: dataAssets.data)
-            contactStorage.initalContact(contactData: dummyData)
+            contactManager.initalContact(contactData: dummyData)
         } catch {
             print(error.localizedDescription)
         }
@@ -40,13 +40,13 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactStorage.contacteCount
+        return contactManager.contacteCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = contactStorage.fetchContact(index: indexPath.row).fetchNameAndAge
-        cell.detailTextLabel?.text = contactStorage.fetchContact(index: indexPath.row).fetchPhoneNumber
+        cell.textLabel?.text = contactManager.fetchContact(index: indexPath.row).fetchNameAndAge
+        cell.detailTextLabel?.text = contactManager.fetchContact(index: indexPath.row).fetchPhoneNumber
         
         return cell
     }
