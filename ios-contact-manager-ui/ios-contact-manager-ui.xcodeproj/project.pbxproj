@@ -20,6 +20,7 @@
 		8A7F879A2B463F2B00EABB4A /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F87992B463F2B00EABB4A /* ContactTableViewCell.swift */; };
 		8A7F879C2B46462E00EABB4A /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F879B2B46462E00EABB4A /* ContactListViewController.swift */; };
 		BDBCCFE62B4671BE00F8665A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBCCFE52B4671BD00F8665A /* ViewController.swift */; };
+		BDBCD00A2B478B6100F8665A /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = BDBCD0092B478B6100F8665A /* contacts.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		8A7F87992B463F2B00EABB4A /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		8A7F879B2B46462E00EABB4A /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		BDBCCFE52B4671BD00F8665A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BDBCD0092B478B6100F8665A /* contacts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = contacts.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				8A5AA5C12B44EF0C0097410E /* Contact.swift */,
 				8A5AA5C32B44F10E0097410E /* ContactList.swift */,
+				BDBCD0092B478B6100F8665A /* contacts.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDBCD00A2B478B6100F8665A /* contacts.json in Resources */,
 				8A5AA59B2B44EBB90097410E /* LaunchScreen.storyboard in Resources */,
 				8A5AA5982B44EBB90097410E /* Assets.xcassets in Resources */,
 				8A5AA5962B44EBB80097410E /* Main.storyboard in Resources */,
