@@ -6,13 +6,14 @@ final class PhoneBookViewController: UIViewController {
     
     let tableView = UITableView()
     var phoneBook: PhoneBook? = nil
-            
+    
     deinit {print("PhoneBookViewController has been deinit!!")}
 }
 
 // MARK: - LifeCycle
 extension PhoneBookViewController {
     override func viewDidLoad() {
+        super.viewDidLoad()
         setupTableView()
         setupUI()
     }
@@ -66,21 +67,20 @@ extension PhoneBookViewController: UITableViewDelegate {
 
 extension PhoneBookViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return Tag.allCases.count
+        return 10
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var sections = Tag.allCases.map { $0.rawValue }
-        return sections[section]
+        let stringArray = ["가", "나", "다", "라", "마", "바", "사", "아", "자", "차", "카", "타", "파", "하"]
+        return stringArray[section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return phoneBook?.categorizedBook[section]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseID, for: indexPath) as! TableViewCell
-        let user = phoneBook?.categorizedBook.values.first
         cell.nameLabel.text = "이름"
         cell.phoneNumberLabel.text = "010-1000-0000"
         return cell
