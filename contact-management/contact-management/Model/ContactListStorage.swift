@@ -27,7 +27,7 @@ final class ContactListStorage {
         self.contactList[pos] = contacts
     }
     
-    func sizeContactList() -> Int {
+    func countContactList() -> Int {
         return self.contactList.count
     }
     
