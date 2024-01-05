@@ -21,14 +21,14 @@ struct ContactManager {
         contactDictionary.removeValue(forKey: phoneNumber)
     }
     
-    mutating func updateContact(phoneNumber: String, _ contact: Contact) throws {
-        try findContact(phoneNumber: phoneNumber)
+    mutating func updateContact(existingPhoneNumber: String, _ newContact: Contact) throws {
+        try findContact(phoneNumber: existingPhoneNumber)
         
-        if (phoneNumber == contact.phoneNumber) {
-            contactDictionary[phoneNumber] = contact
+        if (existingPhoneNumber == newContact.phoneNumber) {
+            contactDictionary[existingPhoneNumber] = newContact
         } else {
-            try addContact(contact)
-            try deleteContact(phoneNumber: phoneNumber)
+            try addContact(newContact)
+            contactDictionary.removeValue(forKey: existingPhoneNumber)
         }
     }
 }
