@@ -8,7 +8,7 @@
 import Foundation
 
 struct Contact: Codable {
-    var id: String
+    var id = UUID().uuidString
     var name: String
     var age: Int
     var phoneNumber: String
