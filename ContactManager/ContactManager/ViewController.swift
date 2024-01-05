@@ -17,11 +17,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        
+        jsonDecoder()
     }
     
     private func configure() {
         self.contactTableView.dataSource = self
+    }
+    
+    func jsonDecoder() {
+        let decoder = JSONDecoder()
+        guard let dataAssets: NSDataAsset = NSDataAsset(name: "Dummy") else { return }
+        
+        do {
+            let dummyData = try decoder.decode([Contact].self, from: dataAssets.data)
+            contactStorage.initalContact(contactData: dummyData)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
 
@@ -33,8 +45,8 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = contactStorage.contactStorage[indexPath.row].nameAndAge
-        cell.detailTextLabel?.text = contactStorage.contactStorage[indexPath.row].phoneNumber
+        cell.textLabel?.text = contactStorage.fetchContact(index: indexPath.row).nameAndAge
+        cell.detailTextLabel?.text = contactStorage.fetchContact(index: indexPath.row).phoneNumber
         
         return cell
     }

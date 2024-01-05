@@ -15,6 +15,14 @@ class ContactStorage {
         return contactStorage.count
     }
     
+    func initalContact(contactData: [Contact]) {
+        contactStorage = contactData
+    }
+    
+    func fetchContact(index: Int) -> Contact {
+        return contactStorage[index]
+    }
+    
     func addContact(newName: String, newAge: Int, newPhoneNumber: String) {
         contactStorage.append(Contact(name: newName, age: newAge, phoneNumber: newPhoneNumber))
     }
