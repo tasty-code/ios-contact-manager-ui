@@ -20,10 +20,16 @@ final class ContactManagerImplement: ContactManager {
     }
     
     func deleteContact(at index: Int) {
+        guard index >= 0 && index < contactList.count else {
+            return
+        }
         contactList.remove(at: index)
     }
     
     func updateContact(at index: Int, with updateContact: Contact) {
+        guard index >= 0 && index < contactList.count else {
+            return
+        }
         contactList[index] = updateContact
     }
 }
