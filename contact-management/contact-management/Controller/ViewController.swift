@@ -43,6 +43,7 @@ class ViewController: UIViewController {
 
 // MARK: TableView
 extension ViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactListStorage.sizeContactList()
     }

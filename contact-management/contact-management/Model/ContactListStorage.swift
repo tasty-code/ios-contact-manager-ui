@@ -9,12 +9,7 @@ import Foundation
 
 final class ContactListStorage {
     
-    private var contactList: [ContactList]
-    
-    init() {
-        // 이전 저장된 ContactList값을 저장
-        self.contactList = [ContactList]()
-    }
+    private var contactList: [ContactList] = [ContactList]()
     
     func showContact(who pos: Int) throws -> ContactList {
         contactList[pos]
