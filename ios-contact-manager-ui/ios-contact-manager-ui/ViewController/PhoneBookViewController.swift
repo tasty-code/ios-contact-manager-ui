@@ -61,19 +61,28 @@ private extension PhoneBookViewController {
 
 // MARK: - TableView Delegate
 extension PhoneBookViewController: UITableViewDelegate {
-    //Action
+    
 }
 
 extension PhoneBookViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return Tag.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var sections = Tag.allCases.map { $0.rawValue }
+        return sections[section]
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100 //Dummy
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseID, for: indexPath) as! TableViewCell
         let user = phoneBook?.categorizedBook.values.first
-        cell.nameLabel.text = user?.name
-        cell.phoneNumberLabel.text = user?.phoneNumber
+        cell.nameLabel.text = "이름"
+        cell.phoneNumberLabel.text = "010-1000-0000"
         return cell
     }
 }
