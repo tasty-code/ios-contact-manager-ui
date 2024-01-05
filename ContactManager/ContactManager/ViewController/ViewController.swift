@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let contactStorage = ContactStorage()
+    let contactStorage = ContactMananger()
     let cellIdentifier = "contactCell"
 
     @IBOutlet weak var contactTableView: UITableView!

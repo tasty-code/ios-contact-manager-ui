@@ -7,27 +7,27 @@
 
 import Foundation
 
-class ContactStorage {
+class ContactMananger {
     
-    private var contactStorage: [Contact] = []
+    private var storage: [Contact] = []
     
     var contacteCount: Int {
-        return contactStorage.count
+        return storage.count
     }
     
     func initalContact(contactData: [Contact]) {
-        contactStorage = contactData
+        storage = contactData
     }
     
     func fetchContact(index: Int) -> Contact {
-        return contactStorage[index]
+        return storage[index]
     }
     
     func addContact(newName: String, newAge: Int, newPhoneNumber: String) {
-        contactStorage.append(Contact(name: newName, age: newAge, phoneNumber: newPhoneNumber))
+        storage.append(Contact(name: newName, age: newAge, phoneNumber: newPhoneNumber))
     }
     
     func deleteContact(index: Int) {
-        contactStorage.remove(at: index)
+        storage.remove(at: index)
     }
 }
