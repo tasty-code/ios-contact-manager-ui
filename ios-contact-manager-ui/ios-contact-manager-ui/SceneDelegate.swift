@@ -1,9 +1,3 @@
-//
-//  SceneDelegate.swift
-//  ios-contact-manager-ui
-//
-//  Created by NERO on 1/3/24.
-//
 
 import UIKit
 
