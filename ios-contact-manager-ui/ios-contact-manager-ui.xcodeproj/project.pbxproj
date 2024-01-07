@@ -41,6 +41,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE5311F22B4AAF2C007F6D68 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEB8D4F42B49250E0067B5DB /* Person.swift */,
+				CEB8D4F62B4927380067B5DB /* ContactManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE5311F32B4AAFB3007F6D68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE5EDCFD2B453326001E0218 /* Main.storyboard */,
+				CE5EDD022B453328001E0218 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE5311F42B4AB022007F6D68 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CE5EDD002B453328001E0218 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		CE5311F52B4AB047007F6D68 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE5EDCFB2B453326001E0218 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		CE5EDCEB2B453325001E0218 = {
 			isa = PBXGroup;
 			children = (
@@ -62,12 +96,10 @@
 			children = (
 				CE5EDCF72B453326001E0218 /* AppDelegate.swift */,
 				CE5EDCF92B453326001E0218 /* SceneDelegate.swift */,
-				CE5EDCFB2B453326001E0218 /* ViewController.swift */,
-				CEB8D4F42B49250E0067B5DB /* Person.swift */,
-				CEB8D4F62B4927380067B5DB /* ContactManager.swift */,
-				CE5EDCFD2B453326001E0218 /* Main.storyboard */,
-				CE5EDD002B453328001E0218 /* Assets.xcassets */,
-				CE5EDD022B453328001E0218 /* LaunchScreen.storyboard */,
+				CE5311F22B4AAF2C007F6D68 /* Model */,
+				CE5311F32B4AAFB3007F6D68 /* View */,
+				CE5311F52B4AB047007F6D68 /* Controller */,
+				CE5311F42B4AB022007F6D68 /* Resource */,
 				CE5EDD052B453328001E0218 /* Info.plist */,
 			);
 			path = "ios-contact-manager-ui";
