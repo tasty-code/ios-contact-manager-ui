@@ -16,6 +16,9 @@
 		4E1950F82B439D9300031A6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E1950F72B439D9300031A6B /* Assets.xcassets */; };
 		4E1950FB2B439D9300031A6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E1950F92B439D9300031A6B /* LaunchScreen.storyboard */; };
 		4E43646B2B47BE55002E5D43 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43646A2B47BE55002E5D43 /* Contact.swift */; };
+		4E4364A42B4BA9EC002E5D43 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4364A32B4BA9EC002E5D43 /* Error.swift */; };
+		4E4364A62B4BAC57002E5D43 /* AssetDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4364A52B4BAC57002E5D43 /* AssetDecoder.swift */; };
+		4E96035B2B4BD7AE00DC7DD6 /* ViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E96035A2B4BD7AE00DC7DD6 /* ViewController+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		4E1950FA2B439D9300031A6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E1950FC2B439D9300031A6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E43646A2B47BE55002E5D43 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		4E4364A32B4BA9EC002E5D43 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		4E4364A52B4BAC57002E5D43 /* AssetDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDecoder.swift; sourceTree = "<group>"; };
+		4E96035A2B4BD7AE00DC7DD6 /* ViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				4E1950F22B439D9100031A6B /* ContactViewController.swift */,
+				4E96035A2B4BD7AE00DC7DD6 /* ViewController+.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -96,6 +103,8 @@
 			children = (
 				4E43646A2B47BE55002E5D43 /* Contact.swift */,
 				226E5C0A2B47CAAB005D3DF5 /* ContactManager.swift */,
+				4E4364A52B4BAC57002E5D43 /* AssetDecoder.swift */,
+				4E4364A32B4BA9EC002E5D43 /* Error.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,8 +183,11 @@
 				4E43646B2B47BE55002E5D43 /* Contact.swift in Sources */,
 				4E1950F32B439D9100031A6B /* ContactViewController.swift in Sources */,
 				226E5C092B47C319005D3DF5 /* CustomCell.swift in Sources */,
+				4E96035B2B4BD7AE00DC7DD6 /* ViewController+.swift in Sources */,
+				4E4364A62B4BAC57002E5D43 /* AssetDecoder.swift in Sources */,
 				4E1950EF2B439D9100031A6B /* AppDelegate.swift in Sources */,
 				226E5C0B2B47CAAB005D3DF5 /* ContactManager.swift in Sources */,
+				4E4364A42B4BA9EC002E5D43 /* Error.swift in Sources */,
 				4E1950F12B439D9100031A6B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

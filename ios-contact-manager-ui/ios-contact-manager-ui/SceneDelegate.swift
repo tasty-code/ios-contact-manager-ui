@@ -12,7 +12,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windwScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windwScene)
+        
+        let neviVC = UINavigationController(rootViewController: ContactViewController())
+        
+        window?.rootViewController = neviVC
+        window?.makeKeyAndVisible()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) { }

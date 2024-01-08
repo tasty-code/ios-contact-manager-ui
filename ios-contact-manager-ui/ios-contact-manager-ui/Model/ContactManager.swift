@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class ContactManager {
     var contacts: [Contact] = []
@@ -26,3 +27,4 @@ final class ContactManager {
         contacts[indexPath.row] = contact
     }
 }
+

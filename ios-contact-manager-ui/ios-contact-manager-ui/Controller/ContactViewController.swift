@@ -40,12 +40,11 @@ final class ContactViewController: UIViewController {
     }
     
     private func parse() {
-        guard let asset = NSDataAsset(name: "data") else { return }
-        
         do {
-            contacts = try JSONDecoder().decode([Contact].self, from: asset.data)
+            contacts = try AssetDecoder<[Contact]>().parse(assetName: "data")
         } catch {
-            print(error.localizedDescription)
+             showErrorAlert(error)
+            
         }
     }
 }
