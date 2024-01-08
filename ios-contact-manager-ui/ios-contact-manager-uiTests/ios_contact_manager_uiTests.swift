@@ -10,11 +10,11 @@ import XCTest
 
 final class ios_contact_manager_uiTests: XCTestCase {
     
-    var sut: ContactList!
+    var sut: ContactListModel!
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        sut = ContactList()
+        sut = ContactListModel()
     }
 
     override func tearDownWithError() throws {
@@ -39,7 +39,7 @@ final class ios_contact_manager_uiTests: XCTestCase {
             sut.updateContactList(contact: contact)
         }
         //when
-        sut.deleteContact(contact: Contact(name: "Sidi", contact: "010-2222-1111", age: 36))
+        sut.delete(Contact(name: "Sidi", contact: "010-2222-1111", age: 36))
         //then
         XCTAssertEqual(sut.showContactList(), expectation)
     }
