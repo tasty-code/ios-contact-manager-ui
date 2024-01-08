@@ -24,13 +24,13 @@ private extension PhoneBookViewController {
     func setupTableView() {
         tableView.dataSource = self
         
-        let nib = UINib(nibName: "TableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: TableViewCell.reuseID)
+        let nib = UINib(nibName: "PhoneBookTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: PhoneBookTableViewCell.reuseID)
         setupTableHeaderView()
     }
     
     func setupTableHeaderView() {
-        let header = HeaderView(frame: .zero)
+        let header = PhoneBookHeaderView(frame: .zero)
         var size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         size.width = UIScreen.main.bounds.width
         header.frame.size = size
@@ -73,7 +73,7 @@ extension PhoneBookViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseID, for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: PhoneBookTableViewCell.reuseID, for: indexPath) as! PhoneBookTableViewCell
         
         let user = phoneBook?.categorizedContactInfo[indexPath.section]
         guard let userName = user?[indexPath.row].name else {return UITableViewCell() }

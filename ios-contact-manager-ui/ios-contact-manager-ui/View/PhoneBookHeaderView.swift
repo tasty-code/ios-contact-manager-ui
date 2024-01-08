@@ -2,7 +2,7 @@
 import UIKit
 
 // MARK: - HeaderView init & deinit
-class HeaderView: UIView {
+class PhoneBookHeaderView: UIView {
     
     @IBOutlet var contentView: UIView!
     
@@ -22,10 +22,10 @@ class HeaderView: UIView {
 }
 
 // MARK: - Setup HeaderView
-private extension HeaderView {
+private extension PhoneBookHeaderView {
     func setupHeaderView() {
-        let bundle = Bundle(for: HeaderView.self)
-        bundle.loadNibNamed("HeaderView", owner: self, options: nil)
+        let bundle = Bundle(for: PhoneBookHeaderView.self)
+        bundle.loadNibNamed("PhoneBookHeaderView", owner: self, options: nil)
         addSubview(contentView)
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
