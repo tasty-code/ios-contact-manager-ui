@@ -44,14 +44,9 @@ extension ContactListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.className, for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
         
+        cell.configureUI()
         cell.setUpData(data: ContactInfoModel.sampleData[indexPath.row])
-        
-        let image = UIImage(systemName: "chevron.right")
-        let rightImageView = UIImageView(image: image)
-        
-        rightImageView.tintColor = .systemGray3
-        cell.accessoryView = rightImageView
-        
+
         return cell
     }
 }

@@ -14,8 +14,15 @@ final class ContactTableViewCell: UITableViewCell {
     @IBOutlet private weak var subtitleLabel: UILabel!
     
     // MARK: Custom Methods
+    func configureUI() {
+        let image = UIImage(systemName: "chevron.right")
+        let rightImageView = UIImageView(image: image)
+        rightImageView.tintColor = .systemGray3
+        accessoryView = rightImageView
+    }
+    
     func setUpData(data: ContactInfoModel) {
         titleLabel.text = "\(data.name)(\(data.age))"
         subtitleLabel.text = data.phoneNumber
-    } 
+    }
 }
