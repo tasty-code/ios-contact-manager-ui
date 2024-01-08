@@ -24,7 +24,7 @@ final class ContactListView: UIViewController {
 
 extension ContactListView: UITableViewDataSource {
     private func contact(forID id: Int) -> ContactList {
-        return contactListStorage.showContact(who: id)
+        return contactListStorage.showContact(id)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
