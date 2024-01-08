@@ -36,7 +36,7 @@ final class ContactViewController: UIViewController {
     private func configure() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
     }
     
     private func parse() {
@@ -50,13 +50,15 @@ final class ContactViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
+
 extension ContactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell" , for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier , for: indexPath)
         let item = contacts[indexPath.row]
         
         var content = cell.defaultContentConfiguration()
@@ -70,6 +72,8 @@ extension ContactViewController: UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension ContactViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -7,7 +7,8 @@
 
 import UIKit
 
-class CustomCell: UITableViewCell {
-    static let identifier = "cell"
-    
+final class CustomCell: UITableViewCell {
+    static var identifier: String {
+        return String(describing: self)
+    }
 }
