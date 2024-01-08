@@ -67,7 +67,7 @@ extension ContactListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.className, for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
         
         cell.configureUI()
-        cell.setUpData(data: ContactInfoModel.sampleData[indexPath.row])
+        cell.setUpData(data: sampleData[indexPath.row])
 
         return cell
     }
