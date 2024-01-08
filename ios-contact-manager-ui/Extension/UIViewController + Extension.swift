@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - Alert 재사용 method 구현 
 extension UIViewController {
     /// 확인버튼 하나만 있는 Alert 메서드
     func presentAlert(title: String,
@@ -15,8 +16,10 @@ extension UIViewController {
                       confirmAction: ((UIAlertAction) -> Void)? = nil,
                       completion: (() -> Void)? = nil) {
         let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
         let confirmAction = UIAlertAction(title: confirmTitle, style: .default)
         alertViewController.addAction(confirmAction)
+        
         self.present(alertViewController, animated: true, completion: completion)
     }
     
@@ -48,7 +51,6 @@ extension UIViewController {
                                             confirmAction: ((String) -> Void)? = nil,
                                             cancelAction: ((UIAlertAction) -> Void)? = nil,
                                             completion: (() -> Void)? = nil) {
-        
         let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         alertViewController.addTextField { textField in
@@ -60,7 +62,6 @@ extension UIViewController {
                 confirmAction?(text)
             }
         }
-        
         alertViewController.addAction(confirmAction)
         
         let cancelAction = UIAlertAction(title: cancelTitle, style: .default, handler: cancelAction)
