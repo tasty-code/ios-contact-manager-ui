@@ -11,10 +11,10 @@ extension UIViewController {
     
     // MARK: Properties
     static var className: String {
-        NSStringFromClass(self.classForCoder()).components(separatedBy: ".").last!
+        NSStringFromClass(self.classForCoder()).components(separatedBy: ".").last ?? ""
     }
     
     var className: String {
-        NSStringFromClass(self.classForCoder).components(separatedBy: ".").last!
+        NSStringFromClass(self.classForCoder).components(separatedBy: ".").last ?? ""
     }
 }
