@@ -73,15 +73,14 @@ extension PhoneBookViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PhoneBookTableViewCell.reuseID, for: indexPath) as! PhoneBookTableViewCell
-        
-        let user = phoneBook?.categorizedContactInfo[indexPath.section]
-        guard let userName = user?[indexPath.row].name else {return UITableViewCell() }
-        guard let userAge = user?[indexPath.row].age else { return UITableViewCell() }
-        let userNumber = user?[indexPath.row].phoneNumber
-        
-        cell.nameLabel.text = "\(userName)(\(userAge))"
-        cell.phoneNumberLabel.text = userNumber
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PhoneBookTableViewCell.reuseID, for: indexPath) as? PhoneBookTableViewCell,
+              let user = phoneBook?.categorizedContactInfo[indexPath.section]?[indexPath.row]
+        else {
+            return UITableViewCell()
+        }
+                
+        cell.nameLabel.text = "\(user.name)(\(user.age))"
+        cell.phoneNumberLabel.text = user.phoneNumber
         return cell
     }
 }
