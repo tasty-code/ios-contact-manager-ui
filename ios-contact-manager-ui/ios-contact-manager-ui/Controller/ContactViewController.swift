@@ -55,7 +55,7 @@ extension ContactViewController: UITableViewDataSource {
         
         var content = cell.defaultContentConfiguration()
         
-        content.text = item.nameAge
+        content.text = item.nameAndAge
         content.secondaryText = item.phoneNumber
         
         cell.contentConfiguration = content

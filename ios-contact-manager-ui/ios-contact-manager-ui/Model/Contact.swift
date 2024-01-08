@@ -12,7 +12,7 @@ struct Contact: Decodable {
     let phoneNumber: String
     let age: String
     
-    var nameAge: String {
+    var nameAndAge: String {
         return "\(name)(\(age))"
     }
 }
