@@ -25,9 +25,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.contactTableView.delegate = self
-        self.contactTableView.dataSource = self
         loadData()
+        configureTableView()
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -53,6 +52,11 @@ class ViewController: UIViewController {
                                           cancelTitle: "취소") { [weak self] enteredText in
            self?.modifyTableCell(of: enteredText)
        }
+    }
+    
+    func configureTableView() {
+        self.contactTableView.delegate = self
+        self.contactTableView.dataSource = self
     }
     
     func loadData() {
@@ -90,7 +94,7 @@ class ViewController: UIViewController {
             
     func addMockData() {
         contactList.append(mockData[0])
-        self.contactTableView.reloadData()
+        self.contactTableView.insertRows(at: [IndexPath(row: numberOfLastRow, section: 0)], with: .automatic)
     }
     
     func scrollToBottom() {
