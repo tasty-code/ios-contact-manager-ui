@@ -8,7 +8,6 @@
 import Foundation
 
 final class ContactListStorage {
-    
     private var contactList: [ContactList] = [ContactList]()
     
     func showContact(_ pos: Int) -> ContactList {
@@ -30,5 +29,4 @@ final class ContactListStorage {
     func countContactList() -> Int {
         return self.contactList.count
     }
-    
 }
