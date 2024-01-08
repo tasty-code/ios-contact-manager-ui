@@ -49,46 +49,43 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5tw-l9-C21">
                                 <rect key="frame" x="0.0" y="59" width="393" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zh3-0k-dr5">
-                                        <rect key="frame" x="159" y="5" width="74" height="35"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Delete"/>
-                                        <connections>
-                                            <action selector="deleteButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NQk-iz-Zke"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1d-zO-bHm">
-                                        <rect key="frame" x="27" y="8" width="55" height="32"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Add"/>
-                                        <connections>
-                                            <action selector="addButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XTc-ii-K2Q"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ke-SW-d8h">
-                                        <rect key="frame" x="317" y="5" width="54" height="35"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Edit"/>
-                                        <connections>
-                                            <action selector="editButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eCX-u9-kgY"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="RyO-mO-Y7Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1d-zO-bHm">
+                                                <rect key="frame" x="0.0" y="0.0" width="77.666666666666671" height="40"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                                                <connections>
+                                                    <action selector="addButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XTc-ii-K2Q"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zh3-0k-dr5">
+                                                <rect key="frame" x="157.66666666666666" y="0.0" width="77.666666666666657" height="40"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Delete"/>
+                                                <connections>
+                                                    <action selector="deleteButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NQk-iz-Zke"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ke-SW-d8h">
+                                                <rect key="frame" x="315.33333333333331" y="0.0" width="77.666666666666686" height="40"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Edit"/>
+                                                <connections>
+                                                    <action selector="editButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eCX-u9-kgY"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="6ke-SW-d8h" firstAttribute="leading" secondItem="Zh3-0k-dr5" secondAttribute="trailing" constant="84" id="2z4-tJ-qjg"/>
-                                    <constraint firstItem="N1d-zO-bHm" firstAttribute="top" secondItem="5tw-l9-C21" secondAttribute="top" constant="8" id="6aS-gv-Tke"/>
-                                    <constraint firstItem="6ke-SW-d8h" firstAttribute="top" secondItem="5tw-l9-C21" secondAttribute="top" constant="5" id="70b-OX-z4Q"/>
-                                    <constraint firstItem="6ke-SW-d8h" firstAttribute="leading" secondItem="Zh3-0k-dr5" secondAttribute="trailing" constant="84" id="GBE-pU-B2n"/>
-                                    <constraint firstAttribute="trailing" secondItem="6ke-SW-d8h" secondAttribute="trailing" constant="22" id="J0g-zr-1l1"/>
-                                    <constraint firstItem="Zh3-0k-dr5" firstAttribute="leading" secondItem="N1d-zO-bHm" secondAttribute="trailing" constant="77" id="T5k-HC-JA8"/>
-                                    <constraint firstAttribute="bottom" secondItem="Zh3-0k-dr5" secondAttribute="bottom" id="VmR-98-NUp"/>
-                                    <constraint firstItem="N1d-zO-bHm" firstAttribute="leading" secondItem="5tw-l9-C21" secondAttribute="leading" constant="27" id="XB8-s0-fDa"/>
-                                    <constraint firstItem="Zh3-0k-dr5" firstAttribute="leading" secondItem="N1d-zO-bHm" secondAttribute="trailing" constant="77" id="fII-Bj-IAc"/>
-                                    <constraint firstAttribute="bottom" secondItem="6ke-SW-d8h" secondAttribute="bottom" id="fzX-oN-dej"/>
-                                    <constraint firstAttribute="bottom" secondItem="N1d-zO-bHm" secondAttribute="bottom" id="jlM-Nt-ndm"/>
+                                    <constraint firstAttribute="trailing" secondItem="RyO-mO-Y7Y" secondAttribute="trailing" id="BNt-P1-85H"/>
+                                    <constraint firstItem="RyO-mO-Y7Y" firstAttribute="top" secondItem="5tw-l9-C21" secondAttribute="top" id="dfV-QQ-0Ly"/>
+                                    <constraint firstAttribute="bottom" secondItem="RyO-mO-Y7Y" secondAttribute="bottom" id="hMe-Vf-cIO"/>
+                                    <constraint firstItem="RyO-mO-Y7Y" firstAttribute="leading" secondItem="5tw-l9-C21" secondAttribute="leading" id="ldp-NF-1ex"/>
                                     <constraint firstAttribute="height" constant="40" id="wO0-fD-suR"/>
-                                    <constraint firstItem="Zh3-0k-dr5" firstAttribute="top" secondItem="5tw-l9-C21" secondAttribute="top" constant="5" id="ziM-Th-pWF"/>
                                 </constraints>
                             </view>
                         </subviews>
