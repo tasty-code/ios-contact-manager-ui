@@ -43,28 +43,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A6300042B464B4A001CC5B9 /* Cells */ = {
+		2A6300092B469839001CC5B9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				2A6300052B464B5B001CC5B9 /* ContactCell.swift */,
 			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		2A6300092B469839001CC5B9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				2A6300042B464B4A001CC5B9 /* Cells */,
-			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		2A63000A2B4698B7001CC5B9 /* Utils */ = {
+		2A63000A2B4698B7001CC5B9 /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				2A63000B2B4698D0001CC5B9 /* ContactData.swift */,
 			);
-			path = Utils;
+			path = Util;
 			sourceTree = "<group>";
 		};
 		2A63FFD92B43FB17001CC5B9 = {
@@ -97,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				2A63FFFF2B44F5B0001CC5B9 /* Contact.swift */,
+				220F73792B44F8FD00295EA9 /* ContactManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -114,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				2A63FFE92B43FB17001CC5B9 /* ViewController.swift */,
-				220F73792B44F8FD00295EA9 /* ContactManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -131,7 +123,7 @@
 		2A63FFFE2B44F476001CC5B9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				2A63000A2B4698B7001CC5B9 /* Utils */,
+				2A63000A2B4698B7001CC5B9 /* Util */,
 				2A6300092B469839001CC5B9 /* View */,
 				2A63FFFA2B44F3AC001CC5B9 /* Application */,
 				2A63FFF92B44F392001CC5B9 /* Model */,
