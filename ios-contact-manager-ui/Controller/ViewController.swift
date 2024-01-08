@@ -9,18 +9,33 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let contactList: [Contact] = [
+    var contactList: [Contact] = [
         Contact(name: "Harry", age: 20, phoneNumber: "010-1234-5678"),
         Contact(name: "Hoi", age: 20, phoneNumber: "010-0000-0000"),
         Contact(name: "Dio", age: 20, phoneNumber: "010-1111-1111")
     ]
     
+    var mockData: [Contact] = [ Contact(name: "목업", age: 99, phoneNumber: "010-9999-9999") ]
+    
     @IBOutlet weak var contactTableView: UITableView!
 
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.contactTableView.delegate = self
         self.contactTableView.dataSource = self
+    }
+    
+    @IBAction func addButtonTapped() {
+        addMockData()
+    }
+            
+    func addMockData() {
+        contactList.append(mockData[0])
+        self.contactTableView.reloadData()
     }
 }
 

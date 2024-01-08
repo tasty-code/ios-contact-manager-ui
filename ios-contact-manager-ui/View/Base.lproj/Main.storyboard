@@ -58,6 +58,9 @@
                                         <rect key="frame" x="27" y="8" width="55" height="32"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                                        <connections>
+                                            <action selector="addButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="HZ6-rV-2D2"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ke-SW-d8h">
                                         <rect key="frame" x="317" y="5" width="54" height="35"/>
@@ -96,7 +99,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="N1d-zO-bHm" id="NY2-Ve-rHL"/>
                         <outlet property="contactTableView" destination="0NE-IB-F4K" id="4H5-lh-zew"/>
+                        <outlet property="deleteButton" destination="Zh3-0k-dr5" id="nQ9-Xl-3rJ"/>
+                        <outlet property="editButton" destination="6ke-SW-d8h" id="PiG-Hw-uE6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
