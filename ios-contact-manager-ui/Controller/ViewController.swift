@@ -47,6 +47,29 @@ class ViewController: UIViewController {
             self.contactTableView.setEditing(true, animated: true)
         }
     }
+    
+    @IBAction func editButtonTapped(_ sender: UIButton) {
+       presentAlertWithTextfieldAndCancel(title: "입력한 번호의 셀을 목업으로 수정합니다.",
+                                          message: "확인을 누르면 수정됩니다.",
+                                          placeholder: "수정할 셀 번호",
+                                          confirmTitle: "확인",
+                                          cancelTitle: "취소") { [weak self] enteredText in
+           self?.modifyTableCell(of: enteredText)
+       }
+    }
+    
+    func modifyTableCell(of selectedCell: String) {
+        guard let selectedCellNumber = Int(selectedCell) else { return }
+        let selectedCellIndex: Int
+        if selectedCellNumber <= 0 || selectedCellNumber > numberOfLastRow {
+            return
+        } else {
+            selectedCellIndex = selectedCellNumber - 1
+        }
+        contactList[selectedCellIndex] = mockData[0]
+        contactTableView.reloadRows(at: [IndexPath(row: selectedCellIndex, section: 0)], with: .fade)
+        scrollToBottom()
+    }
             
     func addMockData() {
         contactList.append(mockData[0])

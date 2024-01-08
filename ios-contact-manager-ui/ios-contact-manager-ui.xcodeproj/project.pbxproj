@@ -13,6 +13,7 @@
 		709F65D72B45549F00EC7105 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 709F65D52B45549F00EC7105 /* Main.storyboard */; };
 		709F65D92B4554A100EC7105 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 709F65D82B4554A100EC7105 /* Assets.xcassets */; };
 		709F65DC2B4554A100EC7105 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 709F65DA2B4554A100EC7105 /* LaunchScreen.storyboard */; };
+		70D0B73B2B4B98AE00998F25 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D0B73A2B4B98AE00998F25 /* UIViewController + Extension.swift */; };
 		C7A34A962B46A27200314592 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A34A952B46A27200314592 /* Contact.swift */; };
 		C7F8C5F12B47EEF7001FCF05 /* mockJson.json in Resources */ = {isa = PBXBuildFile; fileRef = C7F8C5F02B47EEF7001FCF05 /* mockJson.json */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		709F65D82B4554A100EC7105 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		709F65DB2B4554A100EC7105 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		709F65DD2B4554A100EC7105 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70D0B73A2B4B98AE00998F25 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		C7A34A952B46A27200314592 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		C7F8C5F02B47EEF7001FCF05 /* mockJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockJson.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +67,7 @@
 		709F65C32B45549E00EC7105 = {
 			isa = PBXGroup;
 			children = (
+				70D0B7392B4B97E700998F25 /* Extension */,
 				C7A34A942B46A26300314592 /* Model */,
 				7002F04E2B46A07100188320 /* Controller */,
 				7002F04D2B46A06D00188320 /* View */,
@@ -87,6 +90,14 @@
 				709F65DD2B4554A100EC7105 /* Info.plist */,
 			);
 			path = "ios-contact-manager-ui";
+			sourceTree = "<group>";
+		};
+		70D0B7392B4B97E700998F25 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				70D0B73A2B4B98AE00998F25 /* UIViewController + Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		C7A34A942B46A26300314592 /* Model */ = {
@@ -170,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				709F65D42B45549F00EC7105 /* ViewController.swift in Sources */,
+				70D0B73B2B4B98AE00998F25 /* UIViewController + Extension.swift in Sources */,
 				709F65D02B45549F00EC7105 /* AppDelegate.swift in Sources */,
 				709F65D22B45549F00EC7105 /* SceneDelegate.swift in Sources */,
 				C7A34A962B46A27200314592 /* Contact.swift in Sources */,
