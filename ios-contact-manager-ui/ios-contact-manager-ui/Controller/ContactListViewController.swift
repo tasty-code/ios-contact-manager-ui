@@ -9,12 +9,12 @@ import UIKit
 
 final class ContactListViewController: UIViewController {
 
-    private let tableView: UITableView
+    private let contactsTableView: ContactsTableView
     private var contactListModel: ContactListModel
     private var contactArray: Array<Contact>
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        tableView = UITableView()
+        contactsTableView = ContactsTableView()
         contactListModel = ContactListModel()
         contactArray = contactListModel.showSortedContactList()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -26,8 +26,8 @@ final class ContactListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
-        setupTableViewConstraints()
+        view = contactsTableView
+        contactsTableView.tableView.dataSource = self
     }
 }
 
@@ -38,11 +38,13 @@ extension ContactListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.identifier, for: indexPath) as! ContactTableViewCell
-        let contact = contactArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
+        let contact: Contact = contactArray[indexPath.row]
+        var content = cell.defaultContentConfiguration()
         
-        cell.nameLabel.text = "\(contact.name)(\(contact.age))"
-        cell.phoneNumberLabel.text = contact.phoneNumber
+        content.text = "\(contact.name)(\(contact.age))"
+        content.secondaryText = contact.phoneNumber
+        cell.contentConfiguration = content
         cell.accessoryType = .disclosureIndicator
         
         return cell
@@ -50,20 +52,11 @@ extension ContactListViewController: UITableViewDataSource {
 }
 
 extension ContactListViewController {
-    private func setupTableView() {
-        tableView.dataSource = self
-        tableView.rowHeight = 50
-        tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: ContactTableViewCell.identifier)
-    }
-    
-    private func setupTableViewConstraints() {
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupContactsTableViewConstraints() {
+        contactsTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)
+            contactsTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            contactsTableView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
         ])
     }
 }
