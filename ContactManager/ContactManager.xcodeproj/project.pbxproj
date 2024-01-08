@@ -69,7 +69,7 @@
 				774781F72B479ED800B1159C /* Extension */,
 				774781EE2B47993E00B1159C /* Model */,
 				774781F12B479A6500B1159C /* Application */,
-				774781F22B479BB600B1159C /* Presentation */,
+				774781F22B479BB600B1159C /* Scene */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -83,46 +83,22 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		774781F22B479BB600B1159C /* Presentation */ = {
+		774781F22B479BB600B1159C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
 				774781F32B479BD100B1159C /* ContactListScene */,
 			);
-			path = Presentation;
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		774781F32B479BD100B1159C /* ContactListScene */ = {
 			isa = PBXGroup;
 			children = (
-				774781F42B479C2400B1159C /* Storyboard */,
-				774781F52B479C3400B1159C /* ViewController */,
-				774781F62B479C4300B1159C /* Cell */,
-			);
-			path = ContactListScene;
-			sourceTree = "<group>";
-		};
-		774781F42B479C2400B1159C /* Storyboard */ = {
-			isa = PBXGroup;
-			children = (
 				E461E0FE2B44037200469E94 /* ContactList.storyboard */,
-			);
-			path = Storyboard;
-			sourceTree = "<group>";
-		};
-		774781F52B479C3400B1159C /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
 				E4C7DB382B4548E8008DC50F /* ContactListViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		774781F62B479C4300B1159C /* Cell */ = {
-			isa = PBXGroup;
-			children = (
 				E461E1142B453BFA00469E94 /* ContactTableViewCell.swift */,
 			);
-			path = Cell;
+			path = ContactListScene;
 			sourceTree = "<group>";
 		};
 		774781F72B479ED800B1159C /* Extension */ = {
