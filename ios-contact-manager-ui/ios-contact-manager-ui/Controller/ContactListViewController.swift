@@ -44,9 +44,11 @@ extension ContactListViewController: UITableViewDataSource {
         
         content.text = "\(contact.name)(\(contact.age))"
         content.secondaryText = contact.phoneNumber
+        content.secondaryTextProperties.font = .preferredFont(forTextStyle: .body)
+        
         cell.contentConfiguration = content
         cell.accessoryType = .disclosureIndicator
-        
+
         return cell
     }
 }
