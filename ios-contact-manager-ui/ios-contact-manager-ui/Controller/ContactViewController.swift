@@ -8,7 +8,13 @@
 import UIKit
 
 final class ContactViewController: UIViewController {
-    private let table = UITableView()
+    
+    private let tableView: UITableView = {
+      let view = UITableView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private var contacts: [Contact] = []
     
     override func viewDidLoad() {
@@ -19,18 +25,18 @@ final class ContactViewController: UIViewController {
     }
     
     private func layout() {
-        view.addSubview(table)
-        table.translatesAutoresizingMaskIntoConstraints = false
-        table.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        table.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        table.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        table.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+                                     tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+                                     tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+                                     tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)])
     }
     
     private func configure() {
-        table.dataSource = self
-        table.delegate = self
-        table.register(CustomCell.self, forCellReuseIdentifier: "cell")
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
     }
     
     private func parse() {
