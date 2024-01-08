@@ -7,8 +7,7 @@
 
 import UIKit
 
-class ContactListView: UIViewController {
-
+final class ContactListView: UIViewController {
     private var contactListStorage = ContactListStorage()
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,7 +23,6 @@ class ContactListView: UIViewController {
 }
 
 extension ContactListView: UITableViewDataSource {
-    
     private func contact(forID id: Int) -> ContactList {
         return contactListStorage.showContact(who: id)
     }
