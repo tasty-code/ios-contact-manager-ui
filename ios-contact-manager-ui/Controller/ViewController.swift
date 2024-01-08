@@ -9,11 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var contactList: [Contact] = [
-        Contact(name: "Harry", age: 20, phoneNumber: "010-1234-5678"),
-        Contact(name: "Hoi", age: 20, phoneNumber: "010-0000-0000"),
-        Contact(name: "Dio", age: 20, phoneNumber: "010-1111-1111")
-    ]
+    var contactList: [Contact] = []
     
     var mockData: [Contact] = [ Contact(name: "목업", age: 99, phoneNumber: "010-9999-9999") ]
     
@@ -31,6 +27,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.contactTableView.delegate = self
         self.contactTableView.dataSource = self
+        loadData()
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -56,6 +53,26 @@ class ViewController: UIViewController {
                                           cancelTitle: "취소") { [weak self] enteredText in
            self?.modifyTableCell(of: enteredText)
        }
+    }
+    
+    func loadData() {
+        guard let filePath = Bundle.main.path(forResource: "mockJson", ofType: "json") else { return }
+        let decoder = JSONDecoder()
+        var content: String = ""
+        
+        do {
+            content = try String(contentsOfFile: filePath)
+        } catch {
+            print("Error")
+        }
+        
+        let data = content.data(using: .utf8)
+        
+        do {
+            contactList = try decoder.decode(Array<Contact>.self, from: data!)
+        } catch {
+            print("Error")
+        }
     }
     
     func modifyTableCell(of selectedCell: String) {
