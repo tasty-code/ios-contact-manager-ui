@@ -26,7 +26,13 @@ private extension PhoneBookViewController {
         
         let nib = UINib(nibName: "PhoneBookTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PhoneBookTableViewCell.reuseID)
+        reloadTableView()
         setupTableHeaderView()
+    }
+    
+    func reloadTableView() {
+        phoneBook?.sortByName()
+        tableView.reloadData()
     }
     
     func setupTableHeaderView() {
@@ -36,7 +42,7 @@ private extension PhoneBookViewController {
         header.frame.size = size
         tableView.tableHeaderView = header
     }
-
+    
 }
 
 // MARK: - SetupUI
@@ -60,6 +66,7 @@ private extension PhoneBookViewController {
 
 // MARK: - TableView Delegate
 extension PhoneBookViewController: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return phoneBook?.nameIndex.count ?? 0
     }
@@ -78,11 +85,9 @@ extension PhoneBookViewController: UITableViewDataSource {
         else {
             return UITableViewCell()
         }
-                
+        
         cell.nameLabel.text = "\(user.name)(\(user.age))"
         cell.phoneNumberLabel.text = user.phoneNumber
         return cell
     }
 }
-
-

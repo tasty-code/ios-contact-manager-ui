@@ -3,14 +3,14 @@ import Foundation
 
 // MARK: - PhoneBooks Init & Deinit
 final class PhoneBook {
-
+    
     let nameIndex = ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
 
     // Key값은 nameIndex의 순서와 동일
     var categorizedContactInfo = [
         0: [
+            User(userID: UUID(), name: "강철수", phoneNumber: "010-1111-2224", age: 20),
             User(userID: UUID(), name: "김철수", phoneNumber: "010-1111-2223", age: 10),
-            User(userID: UUID(), name: "강철수", phoneNumber: "010-1111-2224", age: 20)
         ],
         1 :[
             User(userID: UUID(), name: "나철수", phoneNumber: "010-1112-2223", age: 10),
@@ -35,6 +35,12 @@ final class PhoneBook {
 
 // MARK: - PhoneBook Method
 extension PhoneBook {
+    
+    func sortByName() {
+        for (index, _) in categorizedContactInfo {
+            categorizedContactInfo[index]?.sort(by: { $0.name < $1.name })
+        }
+    }
     
     func add(user: User) {
         
