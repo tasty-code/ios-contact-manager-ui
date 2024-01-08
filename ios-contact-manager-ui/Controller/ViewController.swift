@@ -17,6 +17,10 @@ class ViewController: UIViewController {
     
     var mockData: [Contact] = [ Contact(name: "목업", age: 99, phoneNumber: "010-9999-9999") ]
     
+    var numberOfLastRow: Int {
+        contactTableView.numberOfRows(inSection: 0)
+    }
+    
     @IBOutlet weak var contactTableView: UITableView!
 
     @IBOutlet weak var addButton: UIButton!
@@ -31,11 +35,21 @@ class ViewController: UIViewController {
     
     @IBAction func addButtonTapped() {
         addMockData()
+        scrollToBottom()
     }
             
     func addMockData() {
         contactList.append(mockData[0])
         self.contactTableView.reloadData()
+    }
+    
+    func scrollToBottom() {
+        let lastRowOfIndexPath = numberOfLastRow - 1
+        
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: lastRowOfIndexPath, section: 0)
+            self.contactTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
 }
 
