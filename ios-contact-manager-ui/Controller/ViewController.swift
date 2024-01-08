@@ -33,9 +33,19 @@ class ViewController: UIViewController {
         self.contactTableView.dataSource = self
     }
     
-    @IBAction func addButtonTapped() {
+    @IBAction func addButtonTapped(_ sender: UIButton) {
         addMockData()
         scrollToBottom()
+    }
+    
+    @IBAction func deleteButtonTapped(_ sender: UIButton) {
+        if self.contactTableView.isEditing {
+            self.deleteButton.setTitle("Delete", for: .normal)
+            self.contactTableView.setEditing(false, animated: true)
+        } else {
+            self.deleteButton.setTitle("Done", for: .normal)
+            self.contactTableView.setEditing(true, animated: true)
+        }
     }
             
     func addMockData() {
@@ -51,6 +61,7 @@ class ViewController: UIViewController {
             self.contactTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
+    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -64,6 +75,15 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = String("\(contactList[indexPath.row].name)" + "(\(contactList[indexPath.row].age))")
         cell.detailTextLabel?.text = contactList[indexPath.row].phoneNumber
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        self.contactList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }
 
