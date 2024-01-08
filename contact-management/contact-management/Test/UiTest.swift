@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension ViewController {
+extension ContactListView {
     func UI_테스트(Storage contactListStorage: ContactListStorage) {
         contactListStorage.addContact(ContactList(name: "노움", phoneNumber: "010-1111-1111", age: 20))
         contactListStorage.addContact(ContactList(name: "샘", phoneNumber: "010-2222-2222", age: 21))

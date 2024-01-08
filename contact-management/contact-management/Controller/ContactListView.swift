@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ContactListView: UIViewController {
 
     private var contactListStorage = ContactListStorage()
     @IBOutlet weak var tableView: UITableView!
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension ContactListView: UITableViewDataSource {
     
     private func contact(forID id: Int) -> ContactList {
         return contactListStorage.showContact(who: id)
@@ -43,7 +43,7 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension ContactListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
