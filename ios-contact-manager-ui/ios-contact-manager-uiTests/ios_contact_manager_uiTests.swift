@@ -21,7 +21,7 @@ final class ios_contact_manager_uiTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func test_updateContactList_호출시_제대로추가가되나요() {
+    func test_updateContactList_호출시_내부_딕셔너리에_제대로_추가될까요() {
         //given
         let input: Contact = Contact(name: "댄", contact: "010-1111-2222", age: 35)
         let expectation: Array<Contact> = [Contact(name: "댄", contact: "010-1111-2222", age: 35)]
@@ -35,10 +35,10 @@ final class ios_contact_manager_uiTests: XCTestCase {
         //given
         let input: Array<Contact> = [Contact(name: "댄", contact: "010-1111-2222", age: 35), Contact(name: "Sidi", contact: "010-2222-1111", age: 36)]
         let expectation: Array<Contact> = [Contact(name: "댄", contact: "010-1111-2222", age: 35)]
-        //when
         for contact in input {
             sut.updateContactList(contact: contact)
         }
+        //when
         sut.deleteContact(contact: Contact(name: "Sidi", contact: "010-2222-1111", age: 36))
         //then
         XCTAssertEqual(sut.showContactList(), expectation)
