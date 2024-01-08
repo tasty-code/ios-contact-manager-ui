@@ -67,21 +67,14 @@ private extension PhoneBookViewController {
 // MARK: - TableView Delegate
 extension PhoneBookViewController: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return phoneBook?.nameIndex.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return phoneBook?.nameIndex[section]
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return phoneBook?.categorizedContactInfo[section]?.count ?? 0
+        return phoneBook?.categorizedContactInfo.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PhoneBookTableViewCell.reuseID, for: indexPath) as? PhoneBookTableViewCell,
-              let user = phoneBook?.categorizedContactInfo[indexPath.section]?[indexPath.row]
+              let user = phoneBook?.categorizedContactInfo[indexPath.row]
         else {
             return UITableViewCell()
         }
