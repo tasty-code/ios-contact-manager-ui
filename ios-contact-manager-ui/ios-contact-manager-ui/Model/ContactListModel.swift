@@ -20,11 +20,11 @@ struct ContactListModel {
         }
     }
     
-    public func showContactList() -> Array<Contact> {
+    public func showSortedContactList() -> Array<Contact> {
         return contactList.sorted(by: { $0.value.name.uppercased() < $1.value.name.uppercased() }).map { $0.value }
     }
     
-    mutating public func deleteContact(contact: Contact) {
+    mutating public func delete(_ contact: Contact) {
         contactList.removeValue(forKey: contact.phoneNumber)
     }
     
