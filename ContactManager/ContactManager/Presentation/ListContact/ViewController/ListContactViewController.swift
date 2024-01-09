@@ -18,8 +18,9 @@ final class ListContactViewController: UIViewController {
     
     private lazy var contactListDataSource: ContactListDataSource = ContactListDataSource(self.contactListView)
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     init(useCase: ListContactUseCase) {
