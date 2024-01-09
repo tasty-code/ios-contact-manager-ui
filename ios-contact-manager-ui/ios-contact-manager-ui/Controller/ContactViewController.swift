@@ -15,7 +15,11 @@ final class ContactViewController: UIViewController {
         return view
     }()
     
-    private var contacts: [Contact] = []
+    private var contacts: [Contact] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
