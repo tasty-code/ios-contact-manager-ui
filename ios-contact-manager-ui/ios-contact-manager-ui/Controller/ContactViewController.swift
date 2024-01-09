@@ -41,7 +41,7 @@ final class ContactViewController: UIViewController {
     
     private func parse() {
         do {
-            contacts = try AssetDecoder<[Contact]>().parse(assetName: "data")
+            contacts = try AssetDecoder<[Contact]>().parse(assetName: "MOCK_DATA")
         } catch {
              showErrorAlert(error)
             

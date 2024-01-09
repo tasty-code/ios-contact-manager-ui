@@ -23,8 +23,10 @@ final class ContactManager {
         return contacts[index.row]
     }
     
-    func modify(contact: Contact, indexPath: IndexPath) {
-        contacts[indexPath.row] = contact
+    func update(contact: Contact) {
+        let contactIndices = contacts.indices
+        let editContact = contactIndices.filter { contacts[$0].id == contact.id }
+        editContact.forEach { contacts[$0] = contact }
     }
 }
 
