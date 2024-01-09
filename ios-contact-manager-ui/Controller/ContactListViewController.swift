@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class ContactListViewController: UIViewController {
     
 //MARK: - Properties
     private var contactList: [Contact] = []
@@ -112,7 +112,7 @@ final class ViewController: UIViewController {
 }
 
 //MARK: - UITableViewDataSource Extension
-extension ViewController: UITableViewDataSource {
+extension ContactListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactList.count
@@ -132,7 +132,7 @@ extension ViewController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate Extension
-extension ViewController: UITableViewDelegate {
+extension ContactListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
