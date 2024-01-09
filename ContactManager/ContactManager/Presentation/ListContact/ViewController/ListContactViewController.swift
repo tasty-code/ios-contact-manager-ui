@@ -47,12 +47,12 @@ extension ListContactViewController {
 }
 
 extension ListContactViewController: ListContactPresentable {
-    func presentListContact(result: ListContactModel.Result) {
+    func presentListContact(result: Result<ListContactModel.SuccessInfo, Error>) {
         switch result {
         case .success(let successInfo):
             let newContacts = successInfo.contacts
             self.contactListView.update(with: newContacts)
-        case .fail:
+        case .failure(let error):
             print("no such file")
         }
     }
