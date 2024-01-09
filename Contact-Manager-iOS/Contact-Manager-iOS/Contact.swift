@@ -6,11 +6,11 @@
 //
 
 struct Contact {
-    var name: String?
+    var name: String
     var age: String?
     var contactNumber: String?
     
-    init(name: String? = nil, age: String? = nil, contactNumber: String? = nil) {
+    init(name: String, age: String? = nil, contactNumber: String? = nil) {
         self.name = name
         self.age = age
         self.contactNumber = contactNumber
