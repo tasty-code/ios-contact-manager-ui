@@ -12,7 +12,13 @@ protocol ContactRepository {
 }
 
 struct ContactRepositoryImpl: ContactRepository {
+    private let targetBundle: Bundle
+    
     private let jsonDecoder: JSONDecoder = .init()
+    
+    init(targetBundle: Bundle = Bundle.main) {
+        self.targetBundle = targetBundle
+    }
     
     func requestContacts() throws -> [Contact] {
         do {
@@ -29,6 +35,6 @@ struct ContactRepositoryImpl: ContactRepository {
 extension ContactRepositoryImpl {
     private func getContactsFromBundle() throws -> Data {
         let fileName = "contacts"
-        return try BundleResourceManager().getData(from: fileName, extension: .json)
+        return try BundleResourceManager(target: self.targetBundle).getData(from: fileName, extension: .json)
     }
 }
