@@ -47,8 +47,7 @@ final class ContactViewController: UIViewController {
         do {
             contacts = try AssetDecoder<[Contact]>().parse(assetName: "MOCK_DATA")
         } catch {
-            showErrorAlert(error)
-            
+            present(showErrorAlert(title: nil, error, action: UIAlertAction(title: "취소", style: .default)), animated: true)
         }
     }
 }
