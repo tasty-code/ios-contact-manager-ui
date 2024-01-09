@@ -20,7 +20,7 @@ final class ContactManager {
         ]
     }
     
-    func showUpAllContacts() -> [Contact] {
+    func fetchAllContacts() -> [Contact] {
         return contactList
     }
     
@@ -35,7 +35,7 @@ final class ContactManager {
         contactList.remove(at: index)
     }
     
-    func updateContact(at index: Int, with updateContact: Contact) {
+    func updatedContact(at index: Int, with updateContact: Contact) {
         guard index >= 0 && index < contactList.count else {
             return
         }

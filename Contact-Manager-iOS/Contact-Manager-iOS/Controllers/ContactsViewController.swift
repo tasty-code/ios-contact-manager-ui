@@ -39,7 +39,7 @@ final class ContactsViewController: UIViewController {
 //MARK: - Extension
 extension ContactsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactManager.showUpAllContacts().count
+        return contactManager.fetchAllContacts().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,8 +47,8 @@ extension ContactsViewController: UITableViewDataSource {
             fatalError("cell is not an instance of TableViewCell")
         }
 
-        let contact = contactManager.showUpAllContacts()[indexPath.row]
-        cell.configureTableViewCell(with: contact)
+        let contact = contactManager.fetchAllContacts()[indexPath.row]
+        cell.configure(with: contact)
 
         return cell
     }
