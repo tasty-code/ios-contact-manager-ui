@@ -11,8 +11,6 @@ final class ContactListTableView: UITableView {
     typealias ContactCell = ContactListCell
     typealias DataSource = ContactListDataSource
     
-    private lazy var contactListDataSource: DataSource = .init(self)
-    
     convenience init() {
         self.init(frame: .zero, style: .plain)
         setCollection()
@@ -20,9 +18,5 @@ final class ContactListTableView: UITableView {
     
     private func setCollection() {
         register(ContactCell.self, forCellReuseIdentifier: ContactCell.reuseIdentifier)
-    }
-    
-    func update(with contact: [Contact]) {
-        self.contactListDataSource.update(with: contact)
     }
 }
