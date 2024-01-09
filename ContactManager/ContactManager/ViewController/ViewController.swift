@@ -45,8 +45,15 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = contactManager.fetchContact(index: indexPath.row).fetchNameAndAge
-        cell.detailTextLabel?.text = contactManager.fetchContact(index: indexPath.row).fetchPhoneNumber
+        let contact = contactManager.fetchContact(index: indexPath.row)
+        
+        switch contact {
+        case .success(let data):
+            cell.textLabel?.text = data.fetchNameAndAge
+            cell.detailTextLabel?.text = data.fetchPhoneNumber
+        case .failure(let error):
+            showAlert(title: "알림", message: error.errorMessage)
+        }
         
         return cell
     }

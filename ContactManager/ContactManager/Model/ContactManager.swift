@@ -19,8 +19,10 @@ final class ContactMananger {
         storage = contactData
     }
     
-    func fetchContact(index: Int) -> Contact {
-        return storage[index]
+    func fetchContact(index: Int) -> Result<Contact, ContactManangerError> {
+        if storage.isEmpty { return .failure(.contactEmpty) }
+        if (0 > index || storage.count <= index) { return .failure(.contactExist) }
+        return .success(storage[index])
     }
     
     func addContact(newName: String, newAge: Int, newPhoneNumber: String) {
