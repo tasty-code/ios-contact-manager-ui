@@ -83,28 +83,15 @@ final class ContactListViewController: UIViewController {
                 self.contactTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }
         } else {
-            print("indexPath가 유효하지 않음")
+            print("indexPath가 유효하지 않습니다.")
         }
     }
     
     private func loadData() {
-        guard let filePath = Bundle.main.path(forResource: "mockJson", ofType: "json") else { return }
-        
-        let decoder = JSONDecoder()
-        var content: String = ""
-        
         do {
-            content = try String(contentsOfFile: filePath)
+            contactList = try JsonDecoder<[Contact]>().loadData(from: "mockJson", of: "json")
         } catch {
-            print("Error")
-        }
-        
-        guard let data = content.data(using: .utf8) else { return }
-        
-        do {
-            contactList = try decoder.decode(Array<Contact>.self, from: data)
-        } catch {
-            print("Error")
+            print("loadData() 에러가 발생했습니다.")
         }
     }
     
