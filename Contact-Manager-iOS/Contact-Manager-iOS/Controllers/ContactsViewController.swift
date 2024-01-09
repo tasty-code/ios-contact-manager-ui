@@ -10,7 +10,7 @@ import UIKit
 final class ContactsViewController: UIViewController {
     
     //MARK: - Property
-    private let contactManager: ContactManager = ContactManagerMock()
+    private let contactManager: ContactManager = ContactManager()
     private let contactsView: ContactsView = ContactsView()
     
     
@@ -23,6 +23,7 @@ final class ContactsViewController: UIViewController {
         super.viewDidLoad()
         
         configureTableView()
+        contactManager.makeMockContactListData()
     }
     
     

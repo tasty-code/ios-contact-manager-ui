@@ -35,7 +35,7 @@ class ContactTableViewCell: UITableViewCell {
     }
 
     func configureTableViewCell(with contact: Contact) {
-        textLabel?.text = "\(contact.name ?? "알수없는 사용자")(\(contact.age ?? "0"))"
+        textLabel?.text = "\(contact.name)(\(contact.age ?? "0"))"
         detailTextLabel?.text = contact.contactNumber
     }
 }
