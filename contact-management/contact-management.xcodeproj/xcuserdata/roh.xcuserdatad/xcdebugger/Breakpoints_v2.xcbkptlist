@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "9A9B99CF-3EE4-45E7-8367-BA7D4C2F8EC1"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43B90F2A-D9DF-4738-ACC1-F2E6A138775E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "contact-management/Controller/ContactListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "init?(coder:contactListStorage:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C1B3BC2-1714-4DF3-A278-DE8BF2ABFFFD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "contact-management/Controller/ContactListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB749C6B-6E77-4EBF-AB7E-3AE627948A26"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "contact-management/Controller/ContactListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "init?(coder:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AB749C6B-6E77-4EBF-AB7E-3AE627948A26 - 3080c46ffd366863"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "contact_management.ContactListView.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;contact_management.ContactListView&gt;"
+                  moduleName = "contact-management"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roh/noam/ios-contact-manager-ui/contact-management/contact-management/Controller/ContactListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "AB749C6B-6E77-4EBF-AB7E-3AE627948A26 - 3080c46ffd366863"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "contact_management.ContactListView.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;contact_management.ContactListView&gt;"
+                  moduleName = "contact-management"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roh/noam/ios-contact-manager-ui/contact-management/contact-management/Controller/ContactListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  uuid = "AB749C6B-6E77-4EBF-AB7E-3AE627948A26 - 3080c46ffd366863"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "contact_management.ContactListView.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;contact_management.ContactListView&gt;"
+                  moduleName = "contact-management"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roh/noam/ios-contact-manager-ui/contact-management/contact-management/Controller/ContactListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "208">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

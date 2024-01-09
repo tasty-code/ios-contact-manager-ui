@@ -8,33 +8,49 @@
 import UIKit
 
 final class ContactListView: UIViewController {
-    private var contactListStorage = ContactListStorage()
+    private var contactListStorage: ContactListStorage?
     @IBOutlet weak var tableView: UITableView!
     
+    required init?(coder: NSCoder) {
+        self.contactListStorage = nil
+        super.init(coder: coder)
+    }
+    
+    init?(coder: NSCoder, contactListStorage: ContactListStorage) {
+        print(contactListStorage.showContact(0))
+        self.contactListStorage = contactListStorage
+        print(self.contactListStorage!.showContact(2))
+        super.init(coder: coder)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "연락처"
-        
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-
-        UI_테스트(Storage: contactListStorage)
+        self.view.backgroundColor = .systemBackground
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 }
 
+
+
 extension ContactListView: UITableViewDataSource {
-    private func contact(forID id: Int) -> ContactList {
-        return contactListStorage.showContact(id)
+    private func contact(forID id: Int) -> ContactList? {
+        guard let result = self.contactListStorage else {
+            return nil
+        }
+        return result.showContact(id)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactListStorage.countContactList()
+        return contactListStorage!.countContactList()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        let item = contact(forID: indexPath.row)
-        
+        guard let item = contact(forID: indexPath.row) else {
+            return UITableViewCell()
+        }
         cell.textLabel?.text = "\(item.name) (\(item.age))"
         cell.detailTextLabel?.text = item.phoneNumber
         return cell
