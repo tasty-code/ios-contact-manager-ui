@@ -17,6 +17,6 @@ final class ContactListTableView: UITableView {
     }
     
     private func setCollection() {
-        register(ContactCell.self, forCellReuseIdentifier: ContactCell.reuseIdentifier)
+        register(ContactCell.self)
     }
 }
