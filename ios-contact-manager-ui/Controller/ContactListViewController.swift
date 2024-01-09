@@ -100,7 +100,7 @@ final class ContactListViewController: UIViewController {
     private func modifyTableCell(of selectedCell: String) {
         guard let selectedCellNumber = Int(selectedCell) else { return }
         let selectedCellIndex: Int
-        guard selectedCellNumber <= 0 || selectedCellNumber > numberOfLastRow else  { return }
+        guard selectedCellNumber >= 0 && selectedCellNumber < numberOfLastRow else { return }
         selectedCellIndex = selectedCellNumber - 1
         contactList[selectedCellIndex] = mockData[0]
         contactTableView.reloadRows(at: [IndexPath(row: selectedCellIndex, section: 0)], with: .fade)
