@@ -10,7 +10,7 @@ import UIKit
 final class ContactViewController: UIViewController {
     
     private let tableView: UITableView = {
-      let view = UITableView()
+        let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -26,6 +26,7 @@ final class ContactViewController: UIViewController {
         layout()
         parse()
         configure()
+        registerCell()
     }
     
     private func layout() {
@@ -40,16 +41,21 @@ final class ContactViewController: UIViewController {
     private func configure() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
     }
     
     private func parse() {
         do {
             contacts = try AssetDecoder<[Contact]>().parse(assetName: "MOCK_DATA")
         } catch {
-             showErrorAlert(error)
+            showErrorAlert(error)
             
         }
+    }
+}
+
+extension ContactViewController {
+    private func registerCell() {
+        tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
     }
 }
 
