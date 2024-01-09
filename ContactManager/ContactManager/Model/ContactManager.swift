@@ -11,11 +11,11 @@ final class ContactMananger {
     
     private var storage: [Contact] = []
     
-    var contacteCount: Int {
+    var contactCount: Int {
         return storage.count
     }
     
-    func initalContact(contactData: [Contact]) {
+    func initializeContact(contactData: [Contact]) {
         storage = contactData
     }
     
