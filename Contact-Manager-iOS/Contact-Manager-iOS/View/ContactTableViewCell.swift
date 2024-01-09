@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactTableViewCell: UITableViewCell {
+final class ContactTableViewCell: UITableViewCell {
     
     //MARK: - Property
     static let reuseIdentifier = "ContactTableViewCell"
