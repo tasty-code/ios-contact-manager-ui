@@ -1,5 +1,5 @@
 //
-//  ContactListView.swift
+//  ContactListTableView .swift
 //  ContactManager
 //
 //  Created by Effie on 1/6/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ContactListView: UITableView {
+final class ContactListTableView: UITableView {
     typealias ContactCell = ContactListCell
     typealias DataSource = ContactListDataSource
     

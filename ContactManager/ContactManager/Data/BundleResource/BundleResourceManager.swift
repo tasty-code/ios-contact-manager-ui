@@ -14,7 +14,7 @@ struct BundleResourceManager {
             forResource: fileName,
             withExtension: fileExtension.string
         ) else {
-            throw BundleResourseError.notFound
+            throw BundleResourceError.notFound
         }
         return try Data(contentsOf: url)
     }

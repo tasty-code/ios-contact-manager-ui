@@ -10,8 +10,8 @@ import UIKit
 final class ListContactViewController: UIViewController {
     private var listContactUseCase: ListContactUseCase?
     
-    private let contactListView: ContactListView = {
-        let tableView = ContactListView()
+    private let contactListView: ContactListTableView = {
+        let tableView = ContactListTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()

@@ -18,7 +18,7 @@ struct ContactRepositoryImpl: ContactRepository {
         do {
             let data = try getContactsFromBundle()
             return try self.jsonDecoder.decode([Contact].self, from: data)
-        } catch BundleResourseError.notFound {
+        } catch BundleResourceError.notFound {
             throw ContactRepositoryError.notFoundAtBundle
         } catch {
             throw ContactRepositoryError.cannotDecode
