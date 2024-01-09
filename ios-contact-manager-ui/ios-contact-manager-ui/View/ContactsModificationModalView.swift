@@ -23,7 +23,7 @@ class ContactsModificationModalView: UIView {
     let cancelButton: UIButton = {
         let cancelButton = UIButton()
         cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.setTitleColor(.blue, for: .normal)
+        cancelButton.setTitleColor(.systemBlue, for: .normal)
         return cancelButton
     }()
     let titleLabel: UILabel = {
@@ -36,7 +36,7 @@ class ContactsModificationModalView: UIView {
     let saveButton: UIButton = {
         let saveButton = UIButton()
         saveButton.setTitle("Save", for: .normal)
-        saveButton.setTitleColor(.blue, for: .normal)
+        saveButton.setTitleColor(.systemBlue, for: .normal)
         return saveButton
     }()
     
