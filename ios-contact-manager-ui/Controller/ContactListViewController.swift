@@ -9,27 +9,27 @@ import UIKit
 
 final class ContactListViewController: UIViewController {
     
-//MARK: - Properties
+    //MARK: - Properties
     private var contactList: [Contact] = []
     private var mockData: [Contact] = [ Contact(name: "목업", age: 99, phoneNumber: "010-9999-9999") ]
     private var numberOfLastRow: Int {
         contactTableView.numberOfRows(inSection: 0)
     }
     
-//MARK: - @IBOutlet
+    //MARK: - @IBOutlet
     @IBOutlet private weak var contactTableView: UITableView!
     @IBOutlet private weak var addButton: UIButton!
     @IBOutlet private weak var deleteButton: UIButton!
     @IBOutlet private weak var editButton: UIButton!
     
-//MARK: - Life Cycle
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         configureTableView()
     }
     
-//MARK: - @IBAction
+    //MARK: - @IBAction
     @IBAction private func addButtonTapped(_ sender: UIButton) {
         addMockData()
         scrollToBottom()
@@ -46,16 +46,16 @@ final class ContactListViewController: UIViewController {
     }
     
     @IBAction private func editButtonTapped(_ sender: UIButton) {
-       presentAlertWithTextfieldAndCancel(title: "입력한 번호의 셀을 목업으로 수정합니다.",
-                                          message: "확인을 누르면 수정됩니다.",
-                                          placeholder: "수정할 셀 번호",
-                                          confirmTitle: "확인",
-                                          cancelTitle: "취소") { [weak self] enteredText in
-           self?.modifyTableCell(of: enteredText)
-       }
+        presentAlertWithTextfieldAndCancel(title: "입력한 번호의 셀을 목업으로 수정합니다.",
+                                           message: "확인을 누르면 수정됩니다.",
+                                           placeholder: "수정할 셀 번호",
+                                           confirmTitle: "확인",
+                                           cancelTitle: "취소") { [weak self] enteredText in
+            self?.modifyTableCell(of: enteredText)
+        }
     }
     
-//MARK: - Custom Methods
+    //MARK: - Custom Methods
     private func configureTableView() {
         self.contactTableView.delegate = self
         self.contactTableView.dataSource = self
@@ -67,12 +67,23 @@ final class ContactListViewController: UIViewController {
     }
     
     private func scrollToBottom() {
-        let lastRowOfIndexPath = numberOfLastRow - 1
-        if lastRowOfIndexPath >= 0 {
+        let lastRowOfIndexPath: Int?
+        
+        if numberOfLastRow <= 0 {
+            lastRowOfIndexPath = NSNotFound
+        } else {
+            lastRowOfIndexPath = numberOfLastRow - 1
+        }
+        
+        guard let lastRow = lastRowOfIndexPath else { return }
+
+        if lastRow != NSNotFound {
             DispatchQueue.main.async {
-                let indexPath = IndexPath(row: lastRowOfIndexPath, section: 0)
+                let indexPath = IndexPath(row: lastRow, section: 0)
                 self.contactTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }
+        } else {
+            print("indexPath가 유효하지 않음")
         }
     }
     
