@@ -24,9 +24,9 @@ final class ContactManager {
     }
     
     func update(contact: Contact) {
-        let contactIndices = contacts.indices
-        let editContact = contactIndices.filter { contacts[$0].id == contact.id }
-        editContact.forEach { contacts[$0] = contact }
+        guard let targetIndex = contacts.firstIndex(where: { $0.id == contact.id }) else { return }
+        
+        contacts[targetIndex] = contact
     }
 }
 
