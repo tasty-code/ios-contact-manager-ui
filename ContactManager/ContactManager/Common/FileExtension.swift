@@ -5,12 +5,12 @@
 //  Created by Effie on 1/8/24.
 //
 
-enum FileExtension {
-    case json
-    
-    var string: String {
-        switch self {
-        case .json: return "json"
-        }
+struct FileExtension: RawRepresentable {
+    static let json = Self(rawValue: "json")
+
+    let rawValue: String
+
+    init(rawValue: String) {
+       self.rawValue = rawValue
     }
 }

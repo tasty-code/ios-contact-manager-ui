@@ -38,6 +38,6 @@ final class ContactList {
 
 extension ContactList {
     private func validateIndex(_ index: Index) -> Bool {
-        return (0 ..< self.contacts.count).contains(index)
+        return self.contacts.indices.contains(index)
     }
 }

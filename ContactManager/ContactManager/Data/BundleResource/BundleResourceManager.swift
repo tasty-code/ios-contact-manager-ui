@@ -18,7 +18,7 @@ struct BundleResourceManager {
         let target = Bundle.main
         guard let url = target.url(
             forResource: fileName,
-            withExtension: fileExtension.string
+            withExtension: fileExtension.rawValue
         ) else {
             throw BundleResourceError.notFound
         }

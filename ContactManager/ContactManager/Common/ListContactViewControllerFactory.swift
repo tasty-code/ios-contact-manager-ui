@@ -5,7 +5,7 @@
 //  Created by Effie on 1/7/24.
 //
 
-struct ListContactViewControllerFactory {
+enum ListContactViewControllerFactory {
     static func make() -> ListContactViewController {
         let useCase = Self.makeUseCase()
         return ListContactViewController(useCase: useCase)

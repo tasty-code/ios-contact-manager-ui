@@ -35,6 +35,6 @@ struct ContactRepositoryImpl: ContactRepository {
 extension ContactRepositoryImpl {
     private func getContactsFromBundle() throws -> Data {
         let fileName = "contacts"
-        return try BundleResourceManager(target: self.targetBundle).getData(from: fileName, extension: .json)
+        return try BundleResourceManager(target: self.targetBundle).getData(from: fileName, extension: FileExtension.json)
     }
 }

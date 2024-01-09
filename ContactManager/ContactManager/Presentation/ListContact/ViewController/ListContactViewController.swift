@@ -55,7 +55,7 @@ extension ListContactViewController: ListContactPresentable {
         snapshot.appendSections([.contact])
         switch result {
         case .success(let successInfo):
-            let contacts = successInfo.contacts.map { contact in ContactListItem.contact(contact) }
+            let contacts = successInfo.contacts.map(ContactListItem.contact)    
             snapshot.appendItems(contacts, toSection: .contact)
         case .failure(let error):
             print("no such file")
