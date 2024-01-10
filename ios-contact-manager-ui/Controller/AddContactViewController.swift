@@ -11,18 +11,23 @@ class AddContactViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        configureNavigationItem()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configureNavigationItem() {
+        let dismissButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
+        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
+        
+        navigationItem.leftBarButtonItem = dismissButton
+        navigationItem.rightBarButtonItem = saveButton
+        navigationItem.title = "새 연락처"
     }
-    */
 
+    @objc func cancelButtonTapped() {
+        self.dismiss(animated: true)
+    }
+    
+    @objc func saveButtonTapped() {
+        self.dismiss(animated: true)
+    }
 }
