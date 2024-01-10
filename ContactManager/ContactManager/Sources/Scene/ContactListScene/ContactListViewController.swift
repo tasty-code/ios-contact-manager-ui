@@ -46,6 +46,14 @@ final class ContactListViewController: UIViewController {
         contactTableView.delegate = self
         contactTableView.dataSource = self
     }
+    
+    // MARK: @IBAction
+    @IBAction private func tapAddContactButton(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "NewContact", bundle: nil)
+        guard let newContactViewController =
+                storyboard.instantiateViewController(identifier: NewContactViewController.className) as? NewContactViewController else { return }
+        self.present(newContactViewController, animated: true)
+    }
 }
 
 // MARK: - UITableViewDelegate
