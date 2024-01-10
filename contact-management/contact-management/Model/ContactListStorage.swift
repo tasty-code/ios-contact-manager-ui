@@ -10,7 +10,7 @@ import Foundation
 final class ContactListStorage {
     private var contactList: [ContactList] = [ContactList]()
     
-    func showContact(_ pos: Int) -> ContactList {
+    func getContact(_ pos: Int) -> ContactList {
         self.contactList[pos]
     }
     

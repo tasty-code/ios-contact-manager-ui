@@ -22,12 +22,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let contactListStorage = ContactListStorage()
         더미데이터(Storage: contactListStorage)
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(identifier: "ContactListView") { coder in
+        let firstViewController = storyBoard.instantiateViewController(identifier: "ContactListView") { coder in
             return ContactListView.init(coder: coder, contactListStorage: contactListStorage)
         }
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = vc
+        window.rootViewController = firstViewController
         window.makeKeyAndVisible()
         self.window = window
     }

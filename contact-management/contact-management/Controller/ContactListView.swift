@@ -17,29 +17,24 @@ final class ContactListView: UIViewController {
     }
     
     init?(coder: NSCoder, contactListStorage: ContactListStorage) {
-        print(contactListStorage.showContact(0))
         self.contactListStorage = contactListStorage
-        print(self.contactListStorage!.showContact(2))
         super.init(coder: coder)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "연락처"
-        self.view.backgroundColor = .systemBackground
         tableView.dataSource = self
         tableView.delegate = self
     }
 }
 
-
-
 extension ContactListView: UITableViewDataSource {
-    private func contact(forID id: Int) -> ContactList? {
+    private func getContact(forID id: Int) -> ContactList? {
         guard let result = self.contactListStorage else {
             return nil
         }
-        return result.showContact(id)
+        return result.getContact(id)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,7 +43,7 @@ extension ContactListView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        guard let item = contact(forID: indexPath.row) else {
+        guard let item = getContact(forID: indexPath.row) else {
             return UITableViewCell()
         }
         cell.textLabel?.text = "\(item.name) (\(item.age))"

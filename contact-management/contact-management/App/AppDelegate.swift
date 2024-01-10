@@ -9,33 +9,10 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
-    
-    private func 더미데이터(Storage contactListStorage: ContactListStorage) {
-        contactListStorage.addContact(ContactList(name: "노움", phoneNumber: "010-1111-1111", age: 20))
-        contactListStorage.addContact(ContactList(name: "샘", phoneNumber: "010-2222-2222", age: 21))
-        contactListStorage.addContact(ContactList(name: "폴", phoneNumber: "010-3333-3333", age: 22))
-    }
-    
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        
-        let contactListStorage = ContactListStorage()
-        더미데이터(Storage: contactListStorage)
-        
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(identifier: "ContactListView") { coder in
-            
-            return ContactListView.init(coder: coder, contactListStorage: contactListStorage)
-        }
-    
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = vc
-        window.makeKeyAndVisible()
-        self.window = window
-        
         return true
     }
 }
