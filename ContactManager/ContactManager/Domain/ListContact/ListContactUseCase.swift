@@ -17,10 +17,10 @@ struct ListContactUseCase {
     func fetchAllContacts() {
         do {
             let contacts = try repository.requestContacts()
-            let result = ListContactModel.Result.SuccessInfo(contacts: contacts)
-            presenter?.presentListContact(result: .success(result))
+            let successInfo = ListContactModel.SuccessInfo(contacts: contacts)
+            presenter?.presentListContact(result: .success(successInfo))
         } catch {
-            presenter?.presentListContact(result: .fail(error))
+            presenter?.presentListContact(result: .failure(error))
         }
     }
 }
@@ -28,5 +28,5 @@ struct ListContactUseCase {
 import Foundation
 
 protocol ListContactPresentable: NSObjectProtocol {
-    func presentListContact(result: ListContactModel.Result)
+    func presentListContact(result: Result<ListContactModel.SuccessInfo, Error>)
 }

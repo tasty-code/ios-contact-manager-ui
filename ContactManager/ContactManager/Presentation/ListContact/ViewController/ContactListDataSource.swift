@@ -15,8 +15,10 @@ enum ContactListItem: Hashable {
     case contact(Contact)
 }
 
+typealias ContactListSnapShot = NSDiffableDataSourceSnapshot<ContactListSection, ContactListItem>
+
 final class ContactListDataSource: UITableViewDiffableDataSource<ContactListSection, ContactListItem> {
-    typealias TableView = ContactListView
+    typealias TableView = ContactListTableView 
     typealias ContactCell = ContactListCell
     
     static let cellProvider: CellProvider = { tableview, indexPath, itemIdentifier in

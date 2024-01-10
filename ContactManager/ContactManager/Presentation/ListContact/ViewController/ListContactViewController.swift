@@ -10,16 +10,17 @@ import UIKit
 final class ListContactViewController: UIViewController {
     private var listContactUseCase: ListContactUseCase?
     
-    private let contactListView: ContactListView = {
-        let tableView = ContactListView()
+    private let contactListView: ContactListTableView = {
+        let tableView = ContactListTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
     private lazy var contactListDataSource: ContactListDataSource = ContactListDataSource(self.contactListView)
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     init(useCase: ListContactUseCase) {
@@ -48,19 +49,38 @@ extension ListContactViewController {
     }
 }
 
-typealias ContactListSnapShot = NSDiffableDataSourceSnapshot<ContactListSection, ContactListItem>
-
 extension ListContactViewController: ListContactPresentable {
-    func presentListContact(result: ListContactModel.Result) {
+    func presentListContact(result: Result<ListContactModel.SuccessInfo, Error>) {
         var snapshot = ContactListSnapShot()
         snapshot.appendSections([.contact])
         switch result {
         case .success(let successInfo):
-            let contacts = successInfo.contacts.map { contact in ContactListItem.contact(contact) }
+            let contacts = successInfo.contacts.map(ContactListItem.contact)    
             snapshot.appendItems(contacts, toSection: .contact)
-        case .fail:
-            print("no such file")
+        case .failure(let error):
+            if let error = error as? LocalizedError {
+                print(error.localizedDescription)
+            }
+            if let error = error as? AlertableError {
+                showErrorAlert(error: error)
+            }
         }
         self.contactListDataSource.apply(snapshot)
+    }
+}
+
+extension ListContactViewController: ErrorAlertPresentableViewController {
+    private func showErrorAlert(error: AlertableError) {
+        switch error {
+        case ContactRepositoryError.notFoundAtBundle:
+            let action = UIAlertAction(title: "재시도", style: .cancel) { [weak self] _ in
+                self?.listContactUseCase?.fetchAllContacts()
+            }
+            self.presentErrorAlert(error: error, additionalAction: action)
+        case ContactRepositoryError.cannotDecode:
+            self.presentErrorAlert(error: error)
+        default:
+            return
+        }
     }
 }
