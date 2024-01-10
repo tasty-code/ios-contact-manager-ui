@@ -126,7 +126,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="e89-QO-Fc4">
                                 <rect key="frame" x="15" y="103" width="363" height="158"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="N1f-nB-qSH">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="N1f-nB-qSH" userLabel="TextLabel Stack View">
                                         <rect key="frame" x="0.0" y="18" width="70" height="122"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEa-GO-CjQ">
@@ -154,7 +154,7 @@
                                             <constraint firstItem="Ehz-CH-95B" firstAttribute="height" secondItem="cq7-PX-KEq" secondAttribute="height" id="duL-em-JSH"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wRy-9i-7CY">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wRy-9i-7CY" userLabel="TextField Stack View">
                                         <rect key="frame" x="75" y="18" width="288" height="122"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6GV-nb-TkY">
@@ -190,6 +190,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aaW-rA-Fq7"/>
+                    <connections>
+                        <outlet property="ageTextField" destination="RCn-kP-BD7" id="a94-dr-a5d"/>
+                        <outlet property="nameTextField" destination="6GV-nb-TkY" id="JvO-7T-3O4"/>
+                        <outlet property="phoneNumberTextField" destination="Ckl-Zc-IVa" id="JnR-7D-G7S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBY-LW-oKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

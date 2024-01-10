@@ -8,7 +8,14 @@
 import UIKit
 
 class AddContactViewController: UIViewController {
+    
+    var addedContactList: [Contact] = []
 
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationItem()
@@ -32,6 +39,11 @@ class AddContactViewController: UIViewController {
     }
     
     @objc func saveButtonTapped() {
+        guard let addedName = nameTextField.text else { return }
+        guard let addedAge = ageTextField.text else { return }
+        guard let addedPhoneNumber = phoneNumberTextField.text else { return }
+        addedContactList.append(Contact(name: addedName, age: (addedAge), phoneNumber: addedPhoneNumber))
+        print(addedContactList)
         self.dismiss(animated: true)
     }
 }

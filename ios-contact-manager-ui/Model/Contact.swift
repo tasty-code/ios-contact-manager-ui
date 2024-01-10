@@ -9,6 +9,6 @@ import Foundation
 
 struct Contact: Codable {
     var name: String
-    var age: Int
+    var age: String
     var phoneNumber: String
 }

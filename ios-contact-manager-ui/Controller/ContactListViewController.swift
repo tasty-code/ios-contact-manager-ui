@@ -11,7 +11,7 @@ final class ContactListViewController: UIViewController {
     
     //MARK: - Properties
     private var contactList: [Contact] = []
-    private var mockData: [Contact] = [ Contact(name: "목업", age: 99, phoneNumber: "010-9999-9999") ]
+    private var mockData: [Contact] = [ Contact(name: "목업", age: "99", phoneNumber: "010-9999-9999") ]
     private var numberOfLastRow: Int {
         contactTableView.numberOfRows(inSection: 0)
     }
