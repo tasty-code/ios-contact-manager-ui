@@ -27,6 +27,7 @@ final class ContactListViewController: UIViewController {
         super.viewDidLoad()
         loadData()
         configureTableView()
+        configureNavigationItem()
     }
     
     //MARK: - @IBAction
@@ -56,6 +57,17 @@ final class ContactListViewController: UIViewController {
     }
     
     //MARK: - Custom Methods
+    
+    private func configureNavigationItem() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addContactButtonTapped(_:)))
+    }
+    
+    @objc func addContactButtonTapped(_ sender: UIButton) {
+        guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "modal") else { return }
+        nextViewController.modalPresentationStyle = .automatic
+        self.present(nextViewController, animated: true)
+    }
+    
     private func configureTableView() {
         self.contactTableView.delegate = self
         self.contactTableView.dataSource = self

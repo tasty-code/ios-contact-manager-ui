@@ -14,7 +14,6 @@
 		709F65D92B4554A100EC7105 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 709F65D82B4554A100EC7105 /* Assets.xcassets */; };
 		709F65DC2B4554A100EC7105 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 709F65DA2B4554A100EC7105 /* LaunchScreen.storyboard */; };
 		70D0B73B2B4B98AE00998F25 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D0B73A2B4B98AE00998F25 /* UIViewController + Extension.swift */; };
-		C71032E52B4E880C0072DA53 /* AddContanctViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71032E42B4E880C0072DA53 /* AddContanctViewController.swift */; };
 		C71032E72B4E88110072DA53 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71032E62B4E88110072DA53 /* AddContactViewController.swift */; };
 		C779964E2B4D24FC00196BE3 /* JsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C779964D2B4D24FC00196BE3 /* JsonDecoder.swift */; };
 		C77996512B4D25EB00196BE3 /* JsonParsingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77996502B4D25EB00196BE3 /* JsonParsingError.swift */; };
@@ -32,7 +31,6 @@
 		709F65DB2B4554A100EC7105 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		709F65DD2B4554A100EC7105 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70D0B73A2B4B98AE00998F25 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
-		C71032E42B4E880C0072DA53 /* AddContanctViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddContanctViewController.swift; path = "../../../../../../.Trash/ios-contact-manager-ui/ios-contact-manager-ui/View/AddContanctViewController.swift"; sourceTree = "<group>"; };
 		C71032E62B4E88110072DA53 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		C779964D2B4D24FC00196BE3 /* JsonDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecoder.swift; sourceTree = "<group>"; };
 		C77996502B4D25EB00196BE3 /* JsonParsingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParsingError.swift; sourceTree = "<group>"; };
@@ -55,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				709F65D52B45549F00EC7105 /* Main.storyboard */,
-				C71032E42B4E880C0072DA53 /* AddContanctViewController.swift */,
 				709F65D82B4554A100EC7105 /* Assets.xcassets */,
 				709F65DA2B4554A100EC7105 /* LaunchScreen.storyboard */,
 			);
@@ -205,7 +202,6 @@
 				709F65D42B45549F00EC7105 /* ContactListViewController.swift in Sources */,
 				70D0B73B2B4B98AE00998F25 /* UIViewController + Extension.swift in Sources */,
 				C779964E2B4D24FC00196BE3 /* JsonDecoder.swift in Sources */,
-				C71032E52B4E880C0072DA53 /* AddContanctViewController.swift in Sources */,
 				709F65D02B45549F00EC7105 /* AppDelegate.swift in Sources */,
 				709F65D22B45549F00EC7105 /* SceneDelegate.swift in Sources */,
 				C7A34A962B46A27200314592 /* Contact.swift in Sources */,
