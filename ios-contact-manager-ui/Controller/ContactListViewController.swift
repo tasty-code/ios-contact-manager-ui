@@ -32,7 +32,7 @@ final class ContactListViewController: UIViewController {
     
     //MARK: - @IBAction
     @IBAction private func addButtonTapped(_ sender: UIButton) {
-        addMockData()
+        addData(with: mockData[0])
         scrollToBottom()
     }
     
@@ -63,9 +63,11 @@ final class ContactListViewController: UIViewController {
     }
     
     @objc func addContactButtonTapped(_ sender: UIButton) {
-        guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "modal") else { return }
-        nextViewController.modalPresentationStyle = .automatic
-        self.present(nextViewController, animated: true)
+        guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddContactViewController") as? AddContactViewController else { return }
+        nextViewController.delegate = self
+        let navigationViewController = UINavigationController(rootViewController: nextViewController)
+        navigationViewController.modalPresentationStyle = .automatic
+        self.present(navigationViewController, animated: true)
     }
     
     private func configureTableView() {
@@ -73,8 +75,8 @@ final class ContactListViewController: UIViewController {
         self.contactTableView.dataSource = self
     }
     
-    private func addMockData() {
-        contactList.append(mockData[0])
+    private func addData(with data: Contact) {
+        contactList.append(data)
         self.contactTableView.insertRows(at: [IndexPath(row: numberOfLastRow, section: 0)], with: .automatic)
     }
     
@@ -118,6 +120,13 @@ final class ContactListViewController: UIViewController {
     }
 }
 
+extension ContactListViewController: SendDataDelegate {
+    
+    func updateContactList(with contact: Contact) {
+        addData(with: contact)
+    }
+}
+
 //MARK: - UITableViewDataSource Extension
 extension ContactListViewController: UITableViewDataSource {
     
@@ -145,4 +154,5 @@ extension ContactListViewController: UITableViewDelegate {
         return .delete
     }
 }
+
 

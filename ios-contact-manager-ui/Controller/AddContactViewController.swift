@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol SendDataDelegate: AnyObject {
+    func updateContactList(with contact: Contact)
+}
+
 class AddContactViewController: UIViewController {
     
     var addedContactList: [Contact] = []
+    weak var delegate: SendDataDelegate?
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
@@ -39,11 +44,12 @@ class AddContactViewController: UIViewController {
     }
     
     @objc func saveButtonTapped() {
-        guard let addedName = nameTextField.text else { return }
-        guard let addedAge = ageTextField.text else { return }
-        guard let addedPhoneNumber = phoneNumberTextField.text else { return }
-        addedContactList.append(Contact(name: addedName, age: (addedAge), phoneNumber: addedPhoneNumber))
-        print(addedContactList)
+        guard let name = nameTextField.text,
+              let age = ageTextField.text,
+              let phoneNumber = phoneNumberTextField.text else { return }
+        
+        let newContact = Contact(name: name, age: age, phoneNumber: phoneNumber)
+        delegate?.updateContactList(with: newContact)
         self.dismiss(animated: true)
     }
 }
