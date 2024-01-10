@@ -19,6 +19,8 @@
 		89566E532B43FAF70085E2CF /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89566E512B43FAF70085E2CF /* TableViewCell.xib */; };
 		89566E552B4516F20085E2CF /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89566E542B4516F20085E2CF /* HeaderView.xib */; };
 		89566E572B4519000085E2CF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89566E562B4519000085E2CF /* HeaderView.swift */; };
+		89D579A22B4E290500FC31A1 /* RegisterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89D579A12B4E290500FC31A1 /* RegisterViewController.storyboard */; };
+		89D579A42B4E291700FC31A1 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D579A32B4E291700FC31A1 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		89566E512B43FAF70085E2CF /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		89566E542B4516F20085E2CF /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		89566E562B4519000085E2CF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		89D579A12B4E290500FC31A1 /* RegisterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterViewController.storyboard; sourceTree = "<group>"; };
+		89D579A32B4E291700FC31A1 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 		08D5664D2B43E89000E75000 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				89D579A12B4E290500FC31A1 /* RegisterViewController.storyboard */,
+				89D579A32B4E291700FC31A1 /* RegisterViewController.swift */,
 				08E3AB962B43BB620083012B /* PhoneBookViewController.swift */,
 			);
 			path = ViewController;
@@ -177,6 +183,7 @@
 			files = (
 				08E3AB9F2B43BB650083012B /* LaunchScreen.storyboard in Resources */,
 				89566E532B43FAF70085E2CF /* TableViewCell.xib in Resources */,
+				89D579A22B4E290500FC31A1 /* RegisterViewController.storyboard in Resources */,
 				08E3AB9C2B43BB650083012B /* Assets.xcassets in Resources */,
 				89566E552B4516F20085E2CF /* HeaderView.xib in Resources */,
 			);
@@ -189,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89D579A42B4E291700FC31A1 /* RegisterViewController.swift in Sources */,
 				08D566512B43E8E900E75000 /* User.swift in Sources */,
 				89566E522B43FAF70085E2CF /* TableViewCell.swift in Sources */,
 				08E3AB972B43BB620083012B /* PhoneBookViewController.swift in Sources */,
