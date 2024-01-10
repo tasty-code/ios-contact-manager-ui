@@ -17,6 +17,11 @@ enum ListContactViewControllerFactory {
     }
     
     private static func makeRepository() -> ContactRepository {
-        return ContactRepositoryImpl()
+        let contactList = makeContactList()
+        return ContactRepositoryImpl(contactList: contactList)
+    }
+    
+    private static func makeContactList() -> ContactList {
+        return ContactList()
     }
 }

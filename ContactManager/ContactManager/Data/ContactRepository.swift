@@ -12,18 +12,26 @@ protocol ContactRepository {
 }
 
 struct ContactRepositoryImpl: ContactRepository {
+    private let contactList: ContactList
+    
     private let targetBundle: Bundle
     
     private let jsonDecoder: JSONDecoder = .init()
     
-    init(targetBundle: Bundle = Bundle.main) {
+    init(
+        contactList: ContactList,
+        targetBundle: Bundle = Bundle.main
+    ) {
+        self.contactList = contactList
         self.targetBundle = targetBundle
     }
     
     func requestContacts() throws -> [Contact] {
         do {
             let data = try getContactsFromBundle()
-            return try self.jsonDecoder.decode([Contact].self, from: data)
+            let contacts = try self.jsonDecoder.decode([Contact].self, from: data)
+            self.contactList.addContacts(contacts)
+            return self.contactList.getContacts()
         } catch BundleResourceError.notFound {
             throw ContactRepositoryError.notFoundAtBundle
         } catch {
