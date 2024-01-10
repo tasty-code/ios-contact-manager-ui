@@ -14,16 +14,16 @@ protocol ContactRepository {
 struct ContactRepositoryImpl: ContactRepository {
     private let contactList: ContactList
     
-    private let targetBundle: Bundle
+    private let fileProvider: FileProvidable
     
     private let jsonDecoder: JSONDecoder = .init()
     
     init(
         contactList: ContactList,
-        targetBundle: Bundle = Bundle.main
+        fileProvider: FileProvidable
     ) {
         self.contactList = contactList
-        self.targetBundle = targetBundle
+        self.fileProvider = fileProvider
     }
     
     func requestContacts() throws -> [Contact] {
@@ -43,6 +43,7 @@ struct ContactRepositoryImpl: ContactRepository {
 extension ContactRepositoryImpl {
     private func getContactsFromBundle() throws -> Data {
         let fileName = "contacts"
-        return try BundleResourceManager(target: self.targetBundle).getData(from: fileName, extension: FileExtension.json)
+        return try fileProvider.getData(from: fileName, extension: FileExtension.json)
     }
 }
+
