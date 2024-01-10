@@ -8,10 +8,9 @@
 import Foundation
 
 final class ContactListStorage {
-    
     private var contactList: [ContactList] = [ContactList]()
     
-    func showContact(who pos: Int) -> ContactList {
+    func getContact(_ pos: Int) -> ContactList {
         self.contactList[pos]
     }
     
@@ -19,16 +18,15 @@ final class ContactListStorage {
         self.contactList.append(contacts)
     }
     
-    func deleteContact(pos: Int) {
+    func deleteContact(_ pos: Int) {
         self.contactList.remove(at: pos)
     }
     
-    func changeContact(_ pos: Int, contacts: ContactList) {
+    func changeContact(_ pos: Int, _ contacts: ContactList) {
         self.contactList[pos] = contacts
     }
     
     func countContactList() -> Int {
         return self.contactList.count
     }
-    
 }

@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D7101CF2B479969006F2649 /* UiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7101CE2B479969006F2649 /* UiTest.swift */; };
 		CCADE2FE2B43A91C00E4EE30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE2FD2B43A91C00E4EE30 /* AppDelegate.swift */; };
 		CCADE3002B43A91C00E4EE30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE2FF2B43A91C00E4EE30 /* SceneDelegate.swift */; };
-		CCADE3022B43A91C00E4EE30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE3012B43A91C00E4EE30 /* ViewController.swift */; };
+		CCADE3022B43A91C00E4EE30 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE3012B43A91C00E4EE30 /* ContactListView.swift */; };
 		CCADE3052B43A91C00E4EE30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCADE3032B43A91C00E4EE30 /* Main.storyboard */; };
 		CCADE3072B43A91D00E4EE30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCADE3062B43A91D00E4EE30 /* Assets.xcassets */; };
 		CCADE30A2B43A91D00E4EE30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCADE3082B43A91D00E4EE30 /* LaunchScreen.storyboard */; };
@@ -40,11 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1D7101CE2B479969006F2649 /* UiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiTest.swift; sourceTree = "<group>"; };
 		CCADE2FA2B43A91C00E4EE30 /* contact-management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "contact-management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCADE2FD2B43A91C00E4EE30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCADE2FF2B43A91C00E4EE30 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CCADE3012B43A91C00E4EE30 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CCADE3012B43A91C00E4EE30 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		CCADE3042B43A91C00E4EE30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CCADE3062B43A91D00E4EE30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCADE3092B43A91D00E4EE30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,14 +82,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1D7101D02B47997D006F2649 /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				1D7101CE2B479969006F2649 /* UiTest.swift */,
-			);
-			path = Test;
-			sourceTree = "<group>";
-		};
 		CCADE2F12B43A91C00E4EE30 = {
 			isa = PBXGroup;
 			children = (
@@ -115,7 +105,6 @@
 		CCADE2FC2B43A91C00E4EE30 /* contact-management */ = {
 			isa = PBXGroup;
 			children = (
-				1D7101D02B47997D006F2649 /* Test */,
 				CCD4C8CC2B44ECAE00B69E9F /* App */,
 				CCD4C8CD2B44ECFB00B69E9F /* Controller */,
 				CCD4C8CF2B44ED6500B69E9F /* Model */,
@@ -154,7 +143,7 @@
 		CCD4C8CD2B44ECFB00B69E9F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CCADE3012B43A91C00E4EE30 /* ViewController.swift */,
+				CCADE3012B43A91C00E4EE30 /* ContactListView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -313,9 +302,8 @@
 				CCD4C8D12B44EF3300B69E9F /* ContactList.swift in Sources */,
 				CCE27A912B4502060051FFA8 /* ContactListError.swift in Sources */,
 				CCE27A8F2B44F2140051FFA8 /* ContactListStorage.swift in Sources */,
-				CCADE3022B43A91C00E4EE30 /* ViewController.swift in Sources */,
+				CCADE3022B43A91C00E4EE30 /* ContactListView.swift in Sources */,
 				CCADE2FE2B43A91C00E4EE30 /* AppDelegate.swift in Sources */,
-				1D7101CF2B479969006F2649 /* UiTest.swift in Sources */,
 				CCADE3002B43A91C00E4EE30 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
