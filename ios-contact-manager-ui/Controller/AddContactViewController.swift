@@ -24,7 +24,7 @@ class AddContactViewController: UIViewController {
     }
 
     @objc func cancelButtonTapped() {
-        presentAlertWithCancel(title: "", message: "정말로 취소하시겠습니까?", confirmTitle: "예", cancelTitle: "아니오") { [weak self] _ in self?.dismissModal() }
+        presentAlertWithCancel(title: "정말로 취소하시겠습니까?", message: "", confirmTitle: "예", cancelTitle: "아니오") { [weak self] _ in self?.dismissModal() }
     }
     
     func dismissModal() {
