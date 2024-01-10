@@ -19,7 +19,7 @@ final class ContactList {
     }
     
     func addContacts(_ newContacts: [Contact]) {
-        self.contacts.append(contentsOf: contacts)
+        self.contacts.append(contentsOf: newContacts)
     }
     
     func addContact(_ newContact: Contact) {
