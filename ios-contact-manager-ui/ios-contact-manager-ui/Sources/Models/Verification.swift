@@ -15,12 +15,12 @@ protocol Verification {
 
 extension Verification {
     func setName(_ name: String) -> Bool {
-        let setName = name.split(separator: " ").map { $0 }.reduce("") { $0 + $1 }
+        let setName = name.split(separator: " ").reduce("") { $0 + $1 }
         return !setName.isEmpty
     }
     
     func setAge(_ age: String) -> Bool {
-        let regex = "^([1-9]{1}) ?([0-9]{1,2})$"
+        let regex = "^([1-9]{1})?([0-9]{1,2})$"
         return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: age)
     }
     

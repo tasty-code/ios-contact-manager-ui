@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ContactDelegate: AnyObject {
+    func add(contact: Contact)
+}
+
 final class ContactViewController: UIViewController {
     
     private let tableView: UITableView = {
@@ -20,11 +24,7 @@ final class ContactViewController: UIViewController {
         return button
     }()
     
-    private var contacts: [Contact] = [] {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
+    private let contactManger = ContactManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,7 @@ final class ContactViewController: UIViewController {
     
     private func parse() {
         do {
-            contacts = try AssetDecoder<[Contact]>().parse(assetName: "MOCK_DATA")
+            contactManger.contacts = try AssetDecoder<[Contact]>().parse(assetName: "MOCK_DATA")
         } catch {
             let alert = showErrorAlert(title: nil, error, actions: [UIAlertAction(title: "취소", style: .default), UIAlertAction(title: "재시도", style: .default)])
             present(alert, animated: true)
@@ -70,6 +70,8 @@ final class ContactViewController: UIViewController {
     @objc func plusButtonTapped() {
         let detailVC = ContactDetailViewController()
         detailVC.modalPresentationStyle = UIModalPresentationStyle.automatic
+        
+        detailVC.delegate = self
         
         self.present(detailVC, animated: true)
     }
@@ -85,12 +87,12 @@ extension ContactViewController {
 
 extension ContactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contacts.count
+        return contactManger.contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier , for: indexPath)
-        let item = contacts[indexPath.row]
+        let item = contactManger.contacts[indexPath.row]
         
         var content = cell.defaultContentConfiguration()
         
@@ -109,5 +111,12 @@ extension ContactViewController: UITableViewDataSource {
 extension ContactViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension ContactViewController: ContactDelegate {
+    func add(contact: Contact) {
+        contactManger.add(contact: contact)
+        tableView.reloadData()
     }
 }

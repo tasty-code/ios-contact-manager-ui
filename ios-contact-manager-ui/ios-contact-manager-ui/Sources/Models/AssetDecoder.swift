@@ -11,9 +11,9 @@ import UIKit
 struct AssetDecoder<Element: Decodable> {
     func parse(assetName: String) throws -> Element {
         
-        guard let asset = NSDataAsset(name: assetName) else { throw DecoderError.assetName }
+        guard let asset = NSDataAsset(name: assetName) else { throw ContactError.assetName }
         
-        guard let jsonData = try? JSONDecoder().decode(Element.self, from: asset.data) else { throw DecoderError.jsonData }
+        guard let jsonData = try? JSONDecoder().decode(Element.self, from: asset.data) else { throw ContactError.jsonData }
         
         return jsonData
     }

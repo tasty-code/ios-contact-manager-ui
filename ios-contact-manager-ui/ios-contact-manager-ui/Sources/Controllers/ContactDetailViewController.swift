@@ -11,6 +11,7 @@ class ContactDetailViewController: UIViewController {
 
     private let detailView = DetailView()
     var contact: Contact?
+    weak var delegate: ContactDelegate?
     
     lazy var navigationBar: UINavigationBar = {
         let nvBar = UINavigationBar()
@@ -54,17 +55,24 @@ class ContactDetailViewController: UIViewController {
     }
     
     @objc func setupButtonAction() {
-        let (name, age, phone) = makeInfo()
-        let new = Contact(name: name, phoneNumber: phone, age: age)
+        do {
+            let (name, age, phone) = try makeInfo()
+            let new = Contact(name: name, phoneNumber: phone, age: age)
+            delegate?.add(contact: new)
+            self.dismiss(animated: true)
+        } catch {
+            let alert = showErrorAlert(title: nil, error, actions: [UIAlertAction(title: "확인", style: .default)])
+            present(alert, animated: true)
+        }
     }
 }
 
 // MARK: - Verification
 extension ContactDetailViewController: Verification {
-    func makeInfo() -> (String, String, String) {
-        guard let name = detailView.nameTextField.text, setName(name) else { return ("","","") }
-        guard let age = detailView.ageTextField.text, setAge(age) else { return ("","","") }
-        guard let phone = detailView.phoneNumberTextField.text, setNumber(phone) else { return ("","","") }
+    func makeInfo() throws -> (String, String, String) {
+        guard let name = detailView.nameTextField.text, setName(name) else { throw ContactError.errorName }
+        guard let age = detailView.ageTextField.text, setAge(age) else { throw ContactError.errorAge }
+        guard let phone = detailView.phoneNumberTextField.text, setNumber(phone) else { throw ContactError.errorNumber }
         
         return (name, age, phone)
     }
