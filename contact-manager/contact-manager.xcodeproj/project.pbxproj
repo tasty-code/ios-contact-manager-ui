@@ -54,7 +54,6 @@
 		2A63000A2B4698B7001CC5B9 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				2A63000B2B4698D0001CC5B9 /* ContactData.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -89,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				2A63FFFF2B44F5B0001CC5B9 /* Contact.swift */,
+				2A63000B2B4698D0001CC5B9 /* ContactData.swift */,
 				220F73792B44F8FD00295EA9 /* ContactManager.swift */,
 			);
 			path = Model;
