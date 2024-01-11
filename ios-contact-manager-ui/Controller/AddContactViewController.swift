@@ -24,6 +24,13 @@ class AddContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationItem()
+        configureTextField()
+    }
+    
+    func configureTextField() {
+        nameTextField.keyboardType = .emailAddress
+        ageTextField.keyboardType = .numberPad
+        phoneNumberTextField.keyboardType = .numbersAndPunctuation
     }
     
     func configureNavigationItem() {
