@@ -31,6 +31,12 @@ final class ContactListViewController: UIViewController {
     }
 }
 
+extension ContactListViewController {
+    @objc func presentContactsAdditionModalView() {
+        present(ContactsAdditionModalViewController(), animated: true)
+    }
+}
+
 extension ContactListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

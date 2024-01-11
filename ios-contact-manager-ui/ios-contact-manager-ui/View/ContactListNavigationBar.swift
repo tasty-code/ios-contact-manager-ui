@@ -11,6 +11,7 @@ class ContactListNavigationBar: UINavigationBar {
     private let addtionButton: UIBarButtonItem = {
         let addtionButton = UIBarButtonItem()
         addtionButton.image = UIImage(systemName: "plus")
+        addtionButton.action = #selector(ContactListViewController.presentContactsAdditionModalView)
         return addtionButton
     }()
     private let titleItem: UINavigationItem = {
