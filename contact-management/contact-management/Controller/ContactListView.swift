@@ -27,6 +27,15 @@ final class ContactListView: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
+    @IBAction func addContact(_ sender: Any) {
+        let secondViewController = storyboard?.instantiateViewController(identifier: "AddContactView") { coder in
+            return addContactView.init(coder: coder, contactListStorage: self.contactListStorage!)
+        }
+        secondViewController?.modalTransitionStyle = .coverVertical
+        secondViewController?.modalPresentationStyle = .automatic
+        let secondNavigationController = UINavigationController(rootViewController: secondViewController!)
+        present(secondNavigationController, animated: true)
+    }
 }
 
 extension ContactListView: UITableViewDataSource {

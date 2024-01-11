@@ -25,9 +25,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let firstViewController = storyBoard.instantiateViewController(identifier: "ContactListView") { coder in
             return ContactListView.init(coder: coder, contactListStorage: contactListStorage)
         }
+        let firstNavigationController = UINavigationController(rootViewController: firstViewController)
+        
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = firstViewController
+        window.rootViewController = firstNavigationController
         window.makeKeyAndVisible()
         self.window = window
     }
