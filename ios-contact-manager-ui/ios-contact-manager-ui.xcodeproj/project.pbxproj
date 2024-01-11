@@ -15,6 +15,7 @@
 		CE5EDD042B453328001E0218 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5EDD022B453328001E0218 /* LaunchScreen.storyboard */; };
 		CEB8D4F52B49250E0067B5DB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8D4F42B49250E0067B5DB /* Person.swift */; };
 		CEB8D4F72B4927380067B5DB /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8D4F62B4927380067B5DB /* ContactManager.swift */; };
+		CEC709D42B50106F00E9B5F1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC709D32B50106F00E9B5F1 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CE5EDD052B453328001E0218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEB8D4F42B49250E0067B5DB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CEB8D4F62B4927380067B5DB /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
+		CEC709D32B50106F00E9B5F1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				CE5EDCFB2B453326001E0218 /* ViewController.swift */,
+				CEC709D32B50106F00E9B5F1 /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				CEB8D4F72B4927380067B5DB /* ContactManager.swift in Sources */,
 				CEB8D4F52B49250E0067B5DB /* Person.swift in Sources */,
 				CE5EDCFC2B453326001E0218 /* ViewController.swift in Sources */,
+				CEC709D42B50106F00E9B5F1 /* DetailViewController.swift in Sources */,
 				CE5EDCF82B453326001E0218 /* AppDelegate.swift in Sources */,
 				CE5EDCFA2B453326001E0218 /* SceneDelegate.swift in Sources */,
 			);
