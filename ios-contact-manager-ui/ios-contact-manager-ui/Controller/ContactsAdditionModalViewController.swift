@@ -15,4 +15,8 @@ class ContactsAdditionModalViewController: UIViewController {
         super.viewDidLoad()
         view = contactsModificationModalView
     }
+    
+    @objc func dismissContactsAdditionModalView() {
+        self.dismiss(animated: true)
+    }
 }

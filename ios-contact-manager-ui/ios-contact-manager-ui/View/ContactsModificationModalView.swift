@@ -24,6 +24,7 @@ class ContactsModificationModalView: UIView {
         let cancelButton = UIButton()
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.setTitleColor(.systemBlue, for: .normal)
+        cancelButton.addTarget(self, action: #selector(ContactsAdditionModalViewController.dismissContactsAdditionModalView), for: .touchUpInside)
         return cancelButton
     }()
     let titleLabel: UILabel = {
