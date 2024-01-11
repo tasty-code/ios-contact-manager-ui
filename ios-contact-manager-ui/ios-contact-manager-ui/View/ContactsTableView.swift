@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactsTableView: UIView {
+final class ContactsTableView: UIView {
 
     let tableView: UITableView
     private let navigationBar: ContactListNavigationBar

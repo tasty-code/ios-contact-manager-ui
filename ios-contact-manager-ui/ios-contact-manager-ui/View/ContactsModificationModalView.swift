@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactsModificationModalView: UIView {
+final class ContactsModificationModalView: UIView {
     
     let modalStackView: UIStackView = {
         let modalStackView = UIStackView()

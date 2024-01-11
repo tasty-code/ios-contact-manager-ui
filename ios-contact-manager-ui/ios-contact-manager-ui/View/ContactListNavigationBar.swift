@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactListNavigationBar: UINavigationBar {
+final class ContactListNavigationBar: UINavigationBar {
     private let additionButton: UIBarButtonItem = {
         let additionButton = UIBarButtonItem()
         additionButton.image = UIImage(systemName: "plus")

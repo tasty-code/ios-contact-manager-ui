@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactsAdditionModalViewController: UIViewController {
+final class ContactsAdditionModalViewController: UIViewController {
 
     private let contactsModificationModalView: ContactsModificationModalView = ContactsModificationModalView()
     
