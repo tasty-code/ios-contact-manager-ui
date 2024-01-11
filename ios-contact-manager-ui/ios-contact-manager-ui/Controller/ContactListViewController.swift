@@ -10,13 +10,13 @@ import UIKit
 final class ContactListViewController: UIViewController {
 
     private let contactsTableView: ContactsTableView
-    private var contactListModel: ContactListModel
     private var contactArray: Array<Contact>
+    var delegate: ContactsViewer?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         contactsTableView = ContactsTableView()
-        contactListModel = ContactListModel()
-        contactArray = contactListModel.sortedContacts()
+        delegate = ContactListModel()
+        contactArray = []
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -26,6 +26,7 @@ final class ContactListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        contactArray = delegate?.sortedContacts() ?? []
         view = contactsTableView
         contactsTableView.tableView.dataSource = self
     }
@@ -33,7 +34,9 @@ final class ContactListViewController: UIViewController {
 
 extension ContactListViewController {
     @objc func presentContactsAdditionModalView() {
-        present(ContactsAdditionModalViewController(), animated: true)
+        let contactsAdditionModalViewController = ContactsAdditionModalViewController()
+        contactsAdditionModalViewController.delegate = delegate as? any ContactsRepository
+        present(contactsAdditionModalViewController, animated: true)
     }
 }
 

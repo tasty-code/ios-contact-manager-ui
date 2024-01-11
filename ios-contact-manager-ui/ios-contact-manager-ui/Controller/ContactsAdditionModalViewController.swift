@@ -8,6 +8,7 @@
 import UIKit
 
 final class ContactsAdditionModalViewController: UIViewController {
+    var delegate: ContactsRepository?
 
     private let contactsModificationModalView: ContactsModificationModalView = ContactsModificationModalView()
     

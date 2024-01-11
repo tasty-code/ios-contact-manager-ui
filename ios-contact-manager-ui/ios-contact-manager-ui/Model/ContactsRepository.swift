@@ -8,9 +8,13 @@
 import Foundation
 
 protocol ContactsRepository {
-    var contactsRepository: Dictionary<Int, Contact> { get }
-    
     mutating func create(_ contact: Contact)
     mutating func update(_ contact: Contact)
     mutating func delete(_ contact: Contact)
+}
+
+protocol ContactsViewer {
+//    var contactsRepository: Dictionary<Int, Contact> { get }
+    
+    func sortedContacts() -> Array<Contact>
 }

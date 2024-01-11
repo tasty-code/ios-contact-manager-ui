@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ContactListModel: ContactsRepository {
+struct ContactListModel: ContactsRepository, ContactsViewer{
     
     var contactsRepository: Dictionary<Int, Contact>
     
