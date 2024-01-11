@@ -16,7 +16,7 @@ final class ContactListViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         contactsTableView = ContactsTableView()
         contactListModel = ContactListModel()
-        contactArray = contactListModel.showSortedContactList()
+        contactArray = contactListModel.sortedContacts()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     

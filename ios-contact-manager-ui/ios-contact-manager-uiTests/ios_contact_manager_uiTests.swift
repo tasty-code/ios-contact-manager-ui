@@ -28,7 +28,7 @@ final class ios_contact_manager_uiTests: XCTestCase {
         //when
         sut.updateContactList(contact: input)
         //then
-        XCTAssertEqual(sut.showContactList(), expectation)
+        XCTAssertEqual(sut.sortedContacts(), expectation)
     }
 
     func test_deleteContactList_호출시_제대로삭제되나요() {
@@ -41,7 +41,7 @@ final class ios_contact_manager_uiTests: XCTestCase {
         //when
         sut.delete(Contact(name: "Sidi", contact: "010-2222-1111", age: 36))
         //then
-        XCTAssertEqual(sut.showContactList(), expectation)
+        XCTAssertEqual(sut.sortedContacts(), expectation)
     }
     
     func test_showContactList_호출시_정렬이오름차순으로잘되나요() {
@@ -53,7 +53,7 @@ final class ios_contact_manager_uiTests: XCTestCase {
             sut.updateContactList(contact: contact)
         }
         //then
-        XCTAssertEqual(sut.showContactList(), expectation)
+        XCTAssertEqual(sut.sortedContacts(), expectation)
     }
     
     func testPerformanceExample() throws {
