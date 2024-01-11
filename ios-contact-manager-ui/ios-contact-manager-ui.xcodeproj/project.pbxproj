@@ -47,22 +47,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2290493F2B47265B001E938F /* View */ = {
+		2290493F2B47265B001E938F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4E1950F92B439D9300031A6B /* LaunchScreen.storyboard */,
 				226E5C082B47C319005D3DF5 /* CustomCell.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		229049402B472665001E938F /* Controller */ = {
+		229049402B472665001E938F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				4E1950F22B439D9100031A6B /* ContactViewController.swift */,
 				4E96035A2B4BD7AE00DC7DD6 /* ViewController+.swift */,
 			);
-			path = Controller;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		22C842BD2B4FBD5D00279FDB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4E4364692B47BE1E002E5D43 /* Models */,
+				2290493F2B47265B001E938F /* Views */,
+				229049402B472665001E938F /* Controllers */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		22C842BE2B4FBD6D00279FDB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				22C842BF2B4FBDA200279FDB /* Storyboards */,
+				4E1950EE2B439D9100031A6B /* AppDelegate.swift */,
+				4E1950F02B439D9100031A6B /* SceneDelegate.swift */,
+				4E1950F72B439D9300031A6B /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		22C842BF2B4FBDA200279FDB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				4E1950F92B439D9300031A6B /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		4E1950E22B439D9100031A6B = {
@@ -84,18 +112,14 @@
 		4E1950ED2B439D9100031A6B /* ios-contact-manager-ui */ = {
 			isa = PBXGroup;
 			children = (
-				4E4364692B47BE1E002E5D43 /* Model */,
-				2290493F2B47265B001E938F /* View */,
-				229049402B472665001E938F /* Controller */,
-				4E1950EE2B439D9100031A6B /* AppDelegate.swift */,
-				4E1950F02B439D9100031A6B /* SceneDelegate.swift */,
-				4E1950F72B439D9300031A6B /* Assets.xcassets */,
+				22C842BE2B4FBD6D00279FDB /* Resources */,
+				22C842BD2B4FBD5D00279FDB /* Sources */,
 				4E1950FC2B439D9300031A6B /* Info.plist */,
 			);
 			path = "ios-contact-manager-ui";
 			sourceTree = "<group>";
 		};
-		4E4364692B47BE1E002E5D43 /* Model */ = {
+		4E4364692B47BE1E002E5D43 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				4E43646A2B47BE55002E5D43 /* Contact.swift */,
@@ -103,7 +127,7 @@
 				4E4364A52B4BAC57002E5D43 /* AssetDecoder.swift */,
 				4E4364A32B4BA9EC002E5D43 /* Error.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
