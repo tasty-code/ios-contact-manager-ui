@@ -29,7 +29,7 @@ extension NewContactViewController {
     private func setupLayout() {
         view.backgroundColor = .white
         setupNavigationBar()
-        setupInputForm()
+        setupInputForms()
     }
     
     private func setupNavigationBar() {
@@ -41,7 +41,7 @@ extension NewContactViewController {
         ])
     }
     
-    private func setupInputForm() {
+    private func setupInputForms() {
         
     }
 }
