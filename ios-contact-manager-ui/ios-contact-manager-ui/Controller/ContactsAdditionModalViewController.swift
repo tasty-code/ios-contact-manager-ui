@@ -17,6 +17,6 @@ class ContactsAdditionModalViewController: UIViewController {
     }
     
     @objc func dismissContactsAdditionModalView() {
-        self.dismiss(animated: true)
+        makeCancelAlert(message: "정말로 취소하시겠습니까?", destructiveAction: { _ in self.dismiss(animated: true) })
     }
 }
