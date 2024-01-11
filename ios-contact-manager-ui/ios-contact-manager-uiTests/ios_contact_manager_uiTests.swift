@@ -10,11 +10,11 @@ import XCTest
 
 final class ios_contact_manager_uiTests: XCTestCase {
     
-    var sut: ContactListModel!
+    var sut: Contacts!
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        sut = ContactListModel()
+        sut = Contacts()
     }
 
     override func tearDownWithError() throws {
@@ -28,7 +28,7 @@ final class ios_contact_manager_uiTests: XCTestCase {
         //when
         sut.updateContactList(contact: input)
         //then
-        XCTAssertEqual(sut.sortedContacts(), expectation)
+        XCTAssertEqual(sut.sort(), expectation)
     }
 
     func test_deleteContactList_호출시_제대로삭제되나요() {
@@ -38,11 +38,11 @@ final class ios_contact_manager_uiTests: XCTestCase {
         for contact in input {
             sut.updateContactList(contact: contact)
         }
-        let contactToBeDeleted: Contact = sut.sortedContacts()[0]
+        let contactToBeDeleted: Contact = sut.sort()[0]
         //when
         sut.delete(contactToBeDeleted)
         //then
-        XCTAssertEqual(sut.sortedContacts(), expectation)
+        XCTAssertEqual(sut.sort(), expectation)
     }
     
     func test_showContactList_호출시_정렬이오름차순으로잘되나요() {
@@ -54,7 +54,7 @@ final class ios_contact_manager_uiTests: XCTestCase {
             sut.updateContactList(contact: contact)
         }
         //then
-        XCTAssertEqual(sut.sortedContacts(), expectation)
+        XCTAssertEqual(sut.sort(), expectation)
     }
     
     func testPerformanceExample() throws {

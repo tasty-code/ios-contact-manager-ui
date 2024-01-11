@@ -10,11 +10,11 @@ import UIKit
 final class ContactsTableView: UIView {
 
     let tableView: UITableView
-    private let navigationBar: ContactListNavigationBar
+    private let navigationBar: ContactsNavigationBar
     
     override init(frame: CGRect) {
         self.tableView = UITableView()
-        navigationBar = ContactListNavigationBar()
+        navigationBar = ContactsNavigationBar()
         super.init(frame: frame)
         setupView()
         setupTableView()

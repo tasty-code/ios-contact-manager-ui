@@ -8,13 +8,13 @@
 import UIKit
 
 final class ContactsAdditionModalViewController: UIViewController {
-    var delegate: ContactsRepository?
+    var delegate: ContactsManageable?
 
-    private let contactsModificationModalView: ContactsModificationModalView = ContactsModificationModalView()
+    private let contactsAdditionModalView: ContactsAddtionModalView = ContactsAddtionModalView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view = contactsModificationModalView
+        view = contactsAdditionModalView
     }
     
     @objc func dismissContactsAdditionModalView() {

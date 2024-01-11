@@ -7,16 +7,15 @@
 
 import UIKit
 
-final class ContactListViewController: UIViewController {
+final class ContactsViewController: UIViewController {
 
     private let contactsTableView: ContactsTableView
-    private var contactArray: Array<Contact>
-    var delegate: ContactsViewer?
+    private var contacts: Array<Contact>
+    var delegate: ContactsApproachable?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         contactsTableView = ContactsTableView()
-        delegate = ContactListModel()
-        contactArray = []
+        contacts = []
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -26,29 +25,29 @@ final class ContactListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        contactArray = delegate?.sortedContacts() ?? []
+        contacts = delegate?.sort() ?? []
         view = contactsTableView
         contactsTableView.tableView.dataSource = self
     }
 }
 
-extension ContactListViewController {
+extension ContactsViewController {
     @objc func presentContactsAdditionModalView() {
         let contactsAdditionModalViewController = ContactsAdditionModalViewController()
-        contactsAdditionModalViewController.delegate = delegate as? any ContactsRepository
+        contactsAdditionModalViewController.delegate = delegate as? any ContactsManageable
         present(contactsAdditionModalViewController, animated: true)
     }
 }
 
-extension ContactListViewController: UITableViewDataSource {
+extension ContactsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactArray.count
+        return contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
-        let contact: Contact = contactArray[indexPath.row]
+        let contact: Contact = contacts[indexPath.row]
         var content = cell.defaultContentConfiguration()
         
         content.text = "\(contact.name)(\(contact.age))"
@@ -62,7 +61,7 @@ extension ContactListViewController: UITableViewDataSource {
     }
 }
 
-extension ContactListViewController {
+extension ContactsViewController {
     private func setupContactsTableViewConstraints() {
         contactsTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

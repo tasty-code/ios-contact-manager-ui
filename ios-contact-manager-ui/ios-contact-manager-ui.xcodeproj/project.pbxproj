@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A37971D2B4FAAA8001D9B7E /* ContactListNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37971C2B4FAAA8001D9B7E /* ContactListNavigationBar.swift */; };
+		8A37971D2B4FAAA8001D9B7E /* ContactsNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37971C2B4FAAA8001D9B7E /* ContactsNavigationBar.swift */; };
 		8A5AA58F2B44EBB70097410E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA58E2B44EBB70097410E /* AppDelegate.swift */; };
 		8A5AA5912B44EBB80097410E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5902B44EBB80097410E /* SceneDelegate.swift */; };
 		8A5AA5962B44EBB80097410E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5AA5942B44EBB80097410E /* Main.storyboard */; };
@@ -17,13 +17,13 @@
 		8A5AA5B02B44EBB90097410E /* ios_contact_manager_uiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5AF2B44EBB90097410E /* ios_contact_manager_uiUITests.swift */; };
 		8A5AA5B22B44EBB90097410E /* ios_contact_manager_uiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5B12B44EBB90097410E /* ios_contact_manager_uiUITestsLaunchTests.swift */; };
 		8A5AA5C22B44EF0C0097410E /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5C12B44EF0C0097410E /* Contact.swift */; };
-		8A5AA5C42B44F10E0097410E /* ContactListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5C32B44F10E0097410E /* ContactListModel.swift */; };
+		8A5AA5C42B44F10E0097410E /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5C32B44F10E0097410E /* Contacts.swift */; };
 		8A6AE6F02B4BCA0100EE88EF /* ContactsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6AE6EF2B4BCA0100EE88EF /* ContactsTableView.swift */; };
-		8A7F879C2B46462E00EABB4A /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F879B2B46462E00EABB4A /* ContactListViewController.swift */; };
-		8A8072342B4CD09200BE1ACD /* ContactsModificationModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8072332B4CD09200BE1ACD /* ContactsModificationModalView.swift */; };
+		8A7F879C2B46462E00EABB4A /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F879B2B46462E00EABB4A /* ContactsViewController.swift */; };
+		8A8072342B4CD09200BE1ACD /* ContactsAddtionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8072332B4CD09200BE1ACD /* ContactsAddtionModalView.swift */; };
 		8A8072362B4CE56500BE1ACD /* ContactsAdditionModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8072352B4CE56500BE1ACD /* ContactsAdditionModalViewController.swift */; };
 		8A8A3BEF2B4FC1030026A27C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8A3BEE2B4FC1030026A27C /* UIViewControllerExtension.swift */; };
-		BD8CA9C92B4FA5900002A506 /* ContactsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8CA9C82B4FA5900002A506 /* ContactsRepository.swift */; };
+		BD8CA9C92B4FA5900002A506 /* ContactsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8CA9C82B4FA5900002A506 /* ContactsProtocol.swift */; };
 		BDBCCFE62B4671BE00F8665A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBCCFE52B4671BD00F8665A /* ViewController.swift */; };
 		BDBCD00A2B478B6100F8665A /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = BDBCD0092B478B6100F8665A /* contacts.json */; };
 /* End PBXBuildFile section */
@@ -46,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8A37971C2B4FAAA8001D9B7E /* ContactListNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListNavigationBar.swift; sourceTree = "<group>"; };
+		8A37971C2B4FAAA8001D9B7E /* ContactsNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsNavigationBar.swift; sourceTree = "<group>"; };
 		8A5AA58B2B44EBB70097410E /* ios-contact-manager-ui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-contact-manager-ui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5AA58E2B44EBB70097410E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5AA5902B44EBB80097410E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,13 +60,13 @@
 		8A5AA5AF2B44EBB90097410E /* ios_contact_manager_uiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITests.swift; sourceTree = "<group>"; };
 		8A5AA5B12B44EBB90097410E /* ios_contact_manager_uiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_contact_manager_uiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A5AA5C12B44EF0C0097410E /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		8A5AA5C32B44F10E0097410E /* ContactListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListModel.swift; sourceTree = "<group>"; };
+		8A5AA5C32B44F10E0097410E /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		8A6AE6EF2B4BCA0100EE88EF /* ContactsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableView.swift; sourceTree = "<group>"; };
-		8A7F879B2B46462E00EABB4A /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
-		8A8072332B4CD09200BE1ACD /* ContactsModificationModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsModificationModalView.swift; sourceTree = "<group>"; };
+		8A7F879B2B46462E00EABB4A /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		8A8072332B4CD09200BE1ACD /* ContactsAddtionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsAddtionModalView.swift; sourceTree = "<group>"; };
 		8A8072352B4CE56500BE1ACD /* ContactsAdditionModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsAdditionModalViewController.swift; sourceTree = "<group>"; };
 		8A8A3BEE2B4FC1030026A27C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
-		BD8CA9C82B4FA5900002A506 /* ContactsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRepository.swift; sourceTree = "<group>"; };
+		BD8CA9C82B4FA5900002A506 /* ContactsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsProtocol.swift; sourceTree = "<group>"; };
 		BDBCCFE52B4671BD00F8665A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BDBCD0092B478B6100F8665A /* contacts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = contacts.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,9 +148,9 @@
 			isa = PBXGroup;
 			children = (
 				8A5AA5C12B44EF0C0097410E /* Contact.swift */,
-				8A5AA5C32B44F10E0097410E /* ContactListModel.swift */,
+				8A5AA5C32B44F10E0097410E /* Contacts.swift */,
 				BDBCD0092B478B6100F8665A /* contacts.json */,
-				BD8CA9C82B4FA5900002A506 /* ContactsRepository.swift */,
+				BD8CA9C82B4FA5900002A506 /* ContactsProtocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -162,8 +162,8 @@
 				8A5AA5972B44EBB90097410E /* Assets.xcassets */,
 				8A5AA5992B44EBB90097410E /* LaunchScreen.storyboard */,
 				8A6AE6EF2B4BCA0100EE88EF /* ContactsTableView.swift */,
-				8A8072332B4CD09200BE1ACD /* ContactsModificationModalView.swift */,
-				8A37971C2B4FAAA8001D9B7E /* ContactListNavigationBar.swift */,
+				8A8072332B4CD09200BE1ACD /* ContactsAddtionModalView.swift */,
+				8A37971C2B4FAAA8001D9B7E /* ContactsNavigationBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,7 +173,7 @@
 			children = (
 				8A5AA58E2B44EBB70097410E /* AppDelegate.swift */,
 				8A5AA5902B44EBB80097410E /* SceneDelegate.swift */,
-				8A7F879B2B46462E00EABB4A /* ContactListViewController.swift */,
+				8A7F879B2B46462E00EABB4A /* ContactsViewController.swift */,
 				BDBCCFE52B4671BD00F8665A /* ViewController.swift */,
 				8A8072352B4CE56500BE1ACD /* ContactsAdditionModalViewController.swift */,
 				8A8A3BEE2B4FC1030026A27C /* UIViewControllerExtension.swift */,
@@ -314,17 +314,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A5AA5C22B44EF0C0097410E /* Contact.swift in Sources */,
-				8A8072342B4CD09200BE1ACD /* ContactsModificationModalView.swift in Sources */,
+				8A8072342B4CD09200BE1ACD /* ContactsAddtionModalView.swift in Sources */,
 				8A5AA58F2B44EBB70097410E /* AppDelegate.swift in Sources */,
-				8A37971D2B4FAAA8001D9B7E /* ContactListNavigationBar.swift in Sources */,
+				8A37971D2B4FAAA8001D9B7E /* ContactsNavigationBar.swift in Sources */,
 				8A5AA5912B44EBB80097410E /* SceneDelegate.swift in Sources */,
 				8A8072362B4CE56500BE1ACD /* ContactsAdditionModalViewController.swift in Sources */,
 				8A6AE6F02B4BCA0100EE88EF /* ContactsTableView.swift in Sources */,
-				BD8CA9C92B4FA5900002A506 /* ContactsRepository.swift in Sources */,
+				BD8CA9C92B4FA5900002A506 /* ContactsProtocol.swift in Sources */,
 				8A8A3BEF2B4FC1030026A27C /* UIViewControllerExtension.swift in Sources */,
 				BDBCCFE62B4671BE00F8665A /* ViewController.swift in Sources */,
-				8A5AA5C42B44F10E0097410E /* ContactListModel.swift in Sources */,
-				8A7F879C2B46462E00EABB4A /* ContactListViewController.swift in Sources */,
+				8A5AA5C42B44F10E0097410E /* Contacts.swift in Sources */,
+				8A7F879C2B46462E00EABB4A /* ContactsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

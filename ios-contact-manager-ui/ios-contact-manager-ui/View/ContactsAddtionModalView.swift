@@ -1,5 +1,5 @@
 //
-//  ContactsModificationModalView.swift
+//  ContactsAddtionModalView.swift
 //  ios-contact-manager-ui
 //
 //  Created by Kim EenSung on 1/9/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ContactsModificationModalView: UIView {
+final class ContactsAddtionModalView: UIView {
     
     let modalStackView: UIStackView = {
         let modalStackView = UIStackView()
@@ -113,7 +113,7 @@ final class ContactsModificationModalView: UIView {
     }
 }
 
-extension ContactsModificationModalView {
+extension ContactsAddtionModalView {
     private func setupStackViews() {
         self.addSubview(modalStackView)
         

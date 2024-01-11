@@ -1,5 +1,5 @@
 //
-//  ContactList.swift
+//  Contacts.swift
 //  ios-contact-manager-ui
 //
 //  Created by Kim EenSung on 1/3/24.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct ContactListModel: ContactsRepository, ContactsViewer{
+struct Contacts: ContactsManageable, ContactsApproachable{
     
-    var contactsRepository: Dictionary<Int, Contact>
+    private var contactsRepository: Dictionary<Int, Contact>
     
     init() {
         self.contactsRepository = [:]
@@ -21,7 +21,7 @@ struct ContactListModel: ContactsRepository, ContactsViewer{
         }
     }
     
-    public func sortedContacts() -> Array<Contact> {
+    public func sort() -> Array<Contact> {
         return contactsRepository.sorted(by: { $0.value.name.uppercased() < $1.value.name.uppercased() }).map { $0.value }
     }
     
