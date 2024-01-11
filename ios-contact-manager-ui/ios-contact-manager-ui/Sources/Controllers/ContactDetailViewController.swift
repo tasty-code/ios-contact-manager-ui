@@ -49,7 +49,9 @@ class ContactDetailViewController: UIViewController {
     }
     
     @objc func cancelButtonTapped() {
-        
+        present(showErrorAlert(title: "정말 취소하시겠습니까?", nil, actions: [UIAlertAction(title: "예", style: .cancel, handler: { _ in
+            self.dismiss(animated: true)
+        }), UIAlertAction(title: "아니오", style: .destructive)]), animated: true)
     }
     
     @objc func setupButtonAction() {
