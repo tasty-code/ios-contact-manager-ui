@@ -20,10 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let phoneBookViewController = Container.shared.resolve(PhoneBookViewController.self)
+        let navigationViewController = UINavigationController(rootViewController: phoneBookViewController)
         
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
-        window?.rootViewController = phoneBookViewController
+        window?.rootViewController = navigationViewController
         window?.backgroundColor = .white
     }
 }

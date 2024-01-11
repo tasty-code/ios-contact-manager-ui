@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,17 +17,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Deg-7G-bMT">
-                                <rect key="frame" x="0.0" y="81" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="새 연락처" style="editor" id="iW8-nL-Akw">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Sqd-cs-pim"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Sqd-cs-pim">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="Y6W-OH-hqX" id="Z5b-Ki-epT"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="IUQ-6f-D4S"/>
                                     </navigationItem>
                                 </items>
                                 <navigationBarAppearance key="standardAppearance"/>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xfM-Lk-Q2i">
-                                <rect key="frame" x="10" y="155" width="394" height="142"/>
+                                <rect key="frame" x="10" y="122" width="394" height="142"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3sH-PF-kcl">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="34"/>
@@ -96,7 +100,7 @@
                             <constraint firstItem="Deg-7G-bMT" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Ebx-A2-JF6"/>
                             <constraint firstItem="xfM-Lk-Q2i" firstAttribute="top" secondItem="Deg-7G-bMT" secondAttribute="bottom" constant="30" id="KzO-7o-hFl"/>
                             <constraint firstItem="Deg-7G-bMT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="OXs-Lk-imm"/>
-                            <constraint firstItem="Deg-7G-bMT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="33" id="SAr-Tc-5FF"/>
+                            <constraint firstItem="Deg-7G-bMT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="SAr-Tc-5FF"/>
                             <constraint firstItem="xfM-Lk-Q2i" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="mhv-s4-lbV"/>
                         </constraints>
                     </view>

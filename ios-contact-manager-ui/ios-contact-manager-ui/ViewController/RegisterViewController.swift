@@ -12,6 +12,9 @@ final class RegisterViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     deinit {print("RegisterViewController has been deinit!!")}
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) { 
+        dismiss(animated: true)
+    }
 }
 
 // MARK: - LifeCycle
