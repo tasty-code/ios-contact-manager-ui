@@ -18,6 +18,8 @@
 		4E4364A42B4BA9EC002E5D43 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4364A32B4BA9EC002E5D43 /* Error.swift */; };
 		4E4364A62B4BAC57002E5D43 /* AssetDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4364A52B4BAC57002E5D43 /* AssetDecoder.swift */; };
 		4E96035B2B4BD7AE00DC7DD6 /* ViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E96035A2B4BD7AE00DC7DD6 /* ViewController+.swift */; };
+		4E9603702B4FBFF600DC7DD6 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E96036F2B4FBFF600DC7DD6 /* ContactDetailViewController.swift */; };
+		4E9603722B4FC0E600DC7DD6 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9603712B4FC0E600DC7DD6 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		4E4364A32B4BA9EC002E5D43 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		4E4364A52B4BAC57002E5D43 /* AssetDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDecoder.swift; sourceTree = "<group>"; };
 		4E96035A2B4BD7AE00DC7DD6 /* ViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+.swift"; sourceTree = "<group>"; };
+		4E96036F2B4FBFF600DC7DD6 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		4E9603712B4FC0E600DC7DD6 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				226E5C082B47C319005D3DF5 /* CustomCell.swift */,
+				4E9603712B4FC0E600DC7DD6 /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -59,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				4E1950F22B439D9100031A6B /* ContactViewController.swift */,
+				4E96036F2B4FBFF600DC7DD6 /* ContactDetailViewController.swift */,
 				4E96035A2B4BD7AE00DC7DD6 /* ViewController+.swift */,
 			);
 			path = Controllers;
@@ -205,7 +211,9 @@
 				226E5C092B47C319005D3DF5 /* CustomCell.swift in Sources */,
 				4E96035B2B4BD7AE00DC7DD6 /* ViewController+.swift in Sources */,
 				4E4364A62B4BAC57002E5D43 /* AssetDecoder.swift in Sources */,
+				4E9603722B4FC0E600DC7DD6 /* DetailView.swift in Sources */,
 				4E1950EF2B439D9100031A6B /* AppDelegate.swift in Sources */,
+				4E9603702B4FBFF600DC7DD6 /* ContactDetailViewController.swift in Sources */,
 				226E5C0B2B47CAAB005D3DF5 /* ContactManager.swift in Sources */,
 				4E4364A42B4BA9EC002E5D43 /* Error.swift in Sources */,
 				4E1950F12B439D9100031A6B /* SceneDelegate.swift in Sources */,

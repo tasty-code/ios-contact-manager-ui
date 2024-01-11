@@ -15,6 +15,11 @@ final class ContactViewController: UIViewController {
         return view
     }()
     
+    lazy var plusButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plusButtonTapped))
+        return button
+    }()
+    
     private var contacts: [Contact] = [] {
         didSet {
             self.tableView.reloadData()
@@ -27,6 +32,7 @@ final class ContactViewController: UIViewController {
         parse()
         configure()
         registerCell()
+        setUpNaviBar()
     }
     
     private func layout() {
@@ -43,6 +49,15 @@ final class ContactViewController: UIViewController {
         tableView.delegate = self
     }
     
+    private func setUpNaviBar() {
+        title = "연락처"
+        
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        self.navigationItem.rightBarButtonItem = self.plusButton
+    }
+    
     private func parse() {
         do {
             contacts = try AssetDecoder<[Contact]>().parse(assetName: "MOCK_DATA")
@@ -50,6 +65,13 @@ final class ContactViewController: UIViewController {
             let alert = showErrorAlert(title: nil, error, actions: [UIAlertAction(title: "취소", style: .default), UIAlertAction(title: "재시도", style: .default)])
             present(alert, animated: true)
         }
+    }
+    
+    @objc func plusButtonTapped() {
+        let detailVC = ContactDetailViewController()
+        detailVC.modalPresentationStyle = UIModalPresentationStyle.automatic
+        
+        self.present(detailVC, animated: true)
     }
 }
 
