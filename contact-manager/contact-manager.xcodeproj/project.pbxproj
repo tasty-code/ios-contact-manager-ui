@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		220F737A2B44F8FD00295EA9 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F73792B44F8FD00295EA9 /* ContactManager.swift */; };
+		2219C7492B4FAE5D006D7A2D /* RegexHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219C7482B4FAE5D006D7A2D /* RegexHelper.swift */; };
 		2A6300002B44F5B0001CC5B9 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63FFFF2B44F5B0001CC5B9 /* Contact.swift */; };
 		2A6300062B464B5B001CC5B9 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6300052B464B5B001CC5B9 /* ContactCell.swift */; };
 		2A63000C2B4698D0001CC5B9 /* ContactData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63000B2B4698D0001CC5B9 /* ContactData.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		220F73792B44F8FD00295EA9 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
+		2219C7482B4FAE5D006D7A2D /* RegexHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexHelper.swift; sourceTree = "<group>"; };
 		2A6300052B464B5B001CC5B9 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		2A63000B2B4698D0001CC5B9 /* ContactData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactData.swift; sourceTree = "<group>"; };
 		2A63FFE22B43FB17001CC5B9 /* contact-manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "contact-manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +56,7 @@
 		2A63000A2B4698B7001CC5B9 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				2219C7482B4FAE5D006D7A2D /* RegexHelper.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				2A63FFEA2B43FB17001CC5B9 /* ViewController.swift in Sources */,
 				2A63FFE62B43FB17001CC5B9 /* AppDelegate.swift in Sources */,
 				2A63FFE82B43FB17001CC5B9 /* SceneDelegate.swift in Sources */,
+				2219C7492B4FAE5D006D7A2D /* RegexHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
