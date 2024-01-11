@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A37971D2B4FAAA8001D9B7E /* ContactListNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37971C2B4FAAA8001D9B7E /* ContactListNavigationBar.swift */; };
 		8A5AA58F2B44EBB70097410E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA58E2B44EBB70097410E /* AppDelegate.swift */; };
 		8A5AA5912B44EBB80097410E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5902B44EBB80097410E /* SceneDelegate.swift */; };
 		8A5AA5962B44EBB80097410E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5AA5942B44EBB80097410E /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A37971C2B4FAAA8001D9B7E /* ContactListNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListNavigationBar.swift; sourceTree = "<group>"; };
 		8A5AA58B2B44EBB70097410E /* ios-contact-manager-ui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-contact-manager-ui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5AA58E2B44EBB70097410E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5AA5902B44EBB80097410E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				8A5AA5992B44EBB90097410E /* LaunchScreen.storyboard */,
 				8A6AE6EF2B4BCA0100EE88EF /* ContactsTableView.swift */,
 				8A8072332B4CD09200BE1ACD /* ContactsModificationModalView.swift */,
+				8A37971C2B4FAAA8001D9B7E /* ContactListNavigationBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				8A5AA5C22B44EF0C0097410E /* Contact.swift in Sources */,
 				8A8072342B4CD09200BE1ACD /* ContactsModificationModalView.swift in Sources */,
 				8A5AA58F2B44EBB70097410E /* AppDelegate.swift in Sources */,
+				8A37971D2B4FAAA8001D9B7E /* ContactListNavigationBar.swift in Sources */,
 				8A5AA5912B44EBB80097410E /* SceneDelegate.swift in Sources */,
 				8A8072362B4CE56500BE1ACD /* ContactsAdditionModalViewController.swift in Sources */,
 				8A6AE6F02B4BCA0100EE88EF /* ContactsTableView.swift in Sources */,
