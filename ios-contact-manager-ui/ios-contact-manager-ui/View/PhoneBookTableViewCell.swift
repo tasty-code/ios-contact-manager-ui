@@ -1,9 +1,9 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class PhoneBookTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     
-    static let reuseID = "TableViewCell"
+    static let reuseID = "PhoneBookTableViewCell"
 }

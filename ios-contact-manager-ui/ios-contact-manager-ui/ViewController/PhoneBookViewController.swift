@@ -24,8 +24,8 @@ private extension PhoneBookViewController {
     func setupTableView() {
         tableView.dataSource = self
         
-        let nib = UINib(nibName: "TableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: TableViewCell.reuseID)
+        let nib = UINib(nibName: "PhoneBookTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: PhoneBookTableViewCell.reuseID)
         setupTableHeaderView()
     }
     
@@ -60,34 +60,25 @@ private extension PhoneBookViewController {
 
 
 // MARK: - TableView Delegate
+// MARK: - TableView Delegate
 extension PhoneBookViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return phoneBook?.nameIndex.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return phoneBook?.nameIndex[section]
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return phoneBook?.categorizedContactInfo[section]?.count ?? 0
+        return phoneBook?.categorizedContactInfo.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseID, for: indexPath) as! TableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PhoneBookTableViewCell.reuseID, for: indexPath) as? PhoneBookTableViewCell,
+              let user = phoneBook?.categorizedContactInfo[indexPath.row]
+        else {
+            return UITableViewCell()
+        }
         
-        let user = phoneBook?.categorizedContactInfo[indexPath.section]
-        guard let userName = user?[indexPath.row].name else {return UITableViewCell() }
-        guard let userAge = user?[indexPath.row].age else { return UITableViewCell() }
-        let userNumber = user?[indexPath.row].phoneNumber
-        
-        cell.nameLabel.text = "\(userName)(\(userAge))"
-        cell.phoneNumberLabel.text = userNumber
+        cell.nameLabel.text = "\(user.name)(\(user.age))"
+        cell.phoneNumberLabel.text = user.phoneNumber
         return cell
     }
 }
-
-
 // MARK: - View Transition
 extension PhoneBookViewController {
     @objc func addButtonTapped() {
@@ -95,5 +86,12 @@ extension PhoneBookViewController {
         guard let registerViewController = storyboard.instantiateViewController(identifier: "RegisterViewController") as? RegisterViewController else {return}
         registerViewController.modalPresentationStyle = .formSheet
         self.present(registerViewController, animated: true)
+    }
+}
+
+
+extension PhoneBookViewController: ResponderAction {
+    func fetchWeather(sender: Any?) {
+        print("werughreakughar")
     }
 }
