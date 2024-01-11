@@ -56,12 +56,37 @@ class AddContactViewController: UIViewController {
     }
     
     @objc func saveButtonTapped() {
-        guard let name = removeEmptySpaceCharacter(nameTextField),
-              let age = removeEmptySpaceCharacter(ageTextField),
-              let phoneNumber = removeEmptySpaceCharacter(phoneNumberTextField) else { return }
+        guard let name = removeEmptySpaceCharacter(nameTextField), !name.isEmpty else { return presentNameAlert() }
+        guard let age = removeEmptySpaceCharacter(ageTextField), !age.isEmpty else { return presentAgeAlert() }
+        guard let phoneNumber = removeEmptySpaceCharacter(phoneNumberTextField), !phoneNumber.isEmpty else { return presentPhoneNumberAlert() }
+            
+        if !checkAgeTextField(age: age) {
+            return presentAgeAlert()
+        }
         
         let newContact = Contact(name: name, age: age, phoneNumber: phoneNumber)
         delegate?.updateContactList(with: newContact)
         self.dismiss(animated: true)
+    }
+    
+    func checkAgeTextField(age: String) -> Bool {
+        if let ageNumber = Int(age) {
+            return ageNumber > 0 && ageNumber <= 999
+        }
+        
+        return false
+    }
+    
+    //MARK: - Alert 구현
+    func presentNameAlert() {
+        presentAlert(title: "입력한 이름 정보가 잘못되었습니다.", message: "", confirmTitle: "확인")
+    }
+    
+    func presentAgeAlert() {
+        presentAlert(title: "입력한 나이 정보가 잘못되었습니다.", message: "", confirmTitle: "확인")
+    }
+    
+    func presentPhoneNumberAlert() {
+        presentAlert(title: "입력한 연락처 정보가 잘못되었습니다.", message: "", confirmTitle: "확인")
     }
 }
