@@ -90,10 +90,8 @@ extension PhoneBookViewController: UITableViewDataSource {
 
 // MARK: - View Transition
 extension PhoneBookViewController {
-    
     @objc func addButtonTapped() {
         let storyboard = UIStoryboard(name: "RegisterViewController", bundle: nil)
-        
         guard let registerViewController = storyboard.instantiateViewController(identifier: "RegisterViewController") as? RegisterViewController else {return}
         registerViewController.modalPresentationStyle = .formSheet
         self.present(registerViewController, animated: true)
