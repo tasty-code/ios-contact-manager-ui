@@ -21,7 +21,7 @@ struct Contacts: ContactsManageable, ContactsApproachable{
         }
     }
     
-    public func sort() -> Array<Contact> {
+    public func sorted() -> Array<Contact> {
         return contactsRepository.sorted(by: { $0.value.name.uppercased() < $1.value.name.uppercased() }).map { $0.value }
     }
     

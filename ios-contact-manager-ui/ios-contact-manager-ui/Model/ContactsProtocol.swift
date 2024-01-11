@@ -14,5 +14,5 @@ protocol ContactsManageable {
 }
 
 protocol ContactsApproachable {
-    func sort() -> Array<Contact>
+    func sorted() -> Array<Contact>
 }

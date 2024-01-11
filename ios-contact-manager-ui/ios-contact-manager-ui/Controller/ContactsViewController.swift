@@ -25,7 +25,7 @@ final class ContactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        contacts = delegate?.sort() ?? []
+        contacts = delegate?.sorted() ?? []
         view = contactsTableView
         contactsTableView.tableView.dataSource = self
     }
