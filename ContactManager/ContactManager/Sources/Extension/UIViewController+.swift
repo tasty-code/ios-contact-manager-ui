@@ -18,3 +18,40 @@ extension UIViewController {
         NSStringFromClass(self.classForCoder).components(separatedBy: ".").last ?? ""
     }
 }
+
+extension UIViewController {
+    
+    /// 확인 버튼 Alert
+    func presentAlert(title: String,
+                      message: String? = nil,
+                      okButtonTitle: String,
+                      okAction: ((UIAlertAction) -> ())? = nil,
+                      completion: (() -> ())? = nil) {
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: okButtonTitle, style: .destructive, handler: okAction)
+        alertViewController.addAction(okAction)
+        
+        self.present(alertViewController, animated: true, completion: completion)
+    }
+    
+    /// 확인, 취소 버튼이 있는 Alert
+    func presentAlertWithCancel(title: String,
+                                message: String? = nil,
+                                okButtonTitle: String,
+                                cancelButtonTitle: String,
+                                okAction: ((UIAlertAction) -> ())? = nil,
+                                cancelAction: ((UIAlertAction) -> ())? = nil,
+                                completion: (() -> ())? = nil) {
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .cancel, handler: cancelAction)
+        alertViewController.addAction(cancelAction)
+        
+        let okAction = UIAlertAction(title: okButtonTitle, style: .destructive, handler: okAction)
+        alertViewController.addAction(okAction)
+        
+        self.present(alertViewController, animated: true, completion: completion)
+    }
+    
+}
