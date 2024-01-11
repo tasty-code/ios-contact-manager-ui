@@ -33,6 +33,11 @@ class AddContactViewController: UIViewController {
         phoneNumberTextField.keyboardType = .numbersAndPunctuation
     }
     
+    func removeEmptySpaceCharacter(_ textField: UITextField) -> String? {
+
+        return textField.text?.filter { !$0.isWhitespace }
+    }
+    
     func configureNavigationItem() {
         let dismissButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
         let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
@@ -51,9 +56,9 @@ class AddContactViewController: UIViewController {
     }
     
     @objc func saveButtonTapped() {
-        guard let name = nameTextField.text,
-              let age = ageTextField.text,
-              let phoneNumber = phoneNumberTextField.text else { return }
+        guard let name = removeEmptySpaceCharacter(nameTextField),
+              let age = removeEmptySpaceCharacter(ageTextField),
+              let phoneNumber = removeEmptySpaceCharacter(phoneNumberTextField) else { return }
         
         let newContact = Contact(name: name, age: age, phoneNumber: phoneNumber)
         delegate?.updateContactList(with: newContact)
