@@ -7,13 +7,14 @@
 
 import Foundation
 
-struct ContactListModel {
-    private var contactList: Dictionary<Int, Contact>
+struct ContactListModel: ContactsRepository {
+    
+    var contactsRepository: Dictionary<Int, Contact>
     
     init() {
-        self.contactList = [:]
+        self.contactsRepository = [:]
         if let loadedContacts = loadContactsJson() {
-            contactList = loadedContacts.reduce(into: [:]) {
+            contactsRepository = loadedContacts.reduce(into: [:]) {
                 partialResult, contact in
                 partialResult[contact.hashValue] = contact
             }
@@ -21,15 +22,19 @@ struct ContactListModel {
     }
     
     public func sortedContacts() -> Array<Contact> {
-        return contactList.sorted(by: { $0.value.name.uppercased() < $1.value.name.uppercased() }).map { $0.value }
+        return contactsRepository.sorted(by: { $0.value.name.uppercased() < $1.value.name.uppercased() }).map { $0.value }
+    }
+    
+    mutating public func create(_ contact: Contact) {
+        contactsRepository[contact.hashValue] = contact
     }
     
     mutating public func delete(_ contact: Contact) {
-        contactList.removeValue(forKey: contact.hashValue)
+        contactsRepository.removeValue(forKey: contact.hashValue)
     }
     
-    mutating public func updateContactList(contact: Contact) {
-        contactList[contact.hashValue] = contact
+    mutating public func update(_ contact: Contact) {
+        contactsRepository[contact.hashValue] = contact
     }
     
     private func loadContactsJson() -> Array<Contact>? {
