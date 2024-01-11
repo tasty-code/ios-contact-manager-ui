@@ -26,7 +26,6 @@ class ContactDetailViewController: UIViewController {
         super.viewDidLoad()
         setupnvBar()
         detailView.contact = contact
-
     }
 
     func setupnvBar() {
@@ -55,6 +54,18 @@ class ContactDetailViewController: UIViewController {
     }
     
     @objc func setupButtonAction() {
+        let (name, age, phone) = makeInfo()
+        let new = Contact(name: name, phoneNumber: phone, age: age)
+    }
+}
+
+// MARK: - Verification
+extension ContactDetailViewController: Verification {
+    func makeInfo() -> (String, String, String) {
+        guard let name = detailView.nameTextField.text, setName(name) else { return ("","","") }
+        guard let age = detailView.ageTextField.text, setAge(age) else { return ("","","") }
+        guard let phone = detailView.phoneNumberTextField.text, setNumber(phone) else { return ("","","") }
         
+        return (name, age, phone)
     }
 }
