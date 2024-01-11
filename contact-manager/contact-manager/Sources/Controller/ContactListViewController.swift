@@ -3,9 +3,11 @@ import UIKit
 final class ContactListViewController: UIViewController {
     
     private let contactManager: ContactListProvider
+    private let tableViewDataSource: ContactListTableViewDataSource
     
     init(contactManager: ContactListProvider) {
         self.contactManager = contactManager
+        self.tableViewDataSource = ContactListTableViewDataSource(contacts: contactManager.contacts)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -15,12 +17,31 @@ final class ContactListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+        setupLayout()
     }
     
-    private lazy var tableView: UITableView = {
+    private func setupLayout() {
+        view.backgroundColor = .white
+        setupNavigationBar()
+        setupTableView()
+        view.bringSubviewToFront(navigationBar)
+    }
+    
+    private lazy var navigationBar: UINavigationBar = {
+        let navigationBar = UINavigationBar()
+        navigationBar.translatesAutoresizingMaskIntoConstraints = false
+        let navigationItem = UINavigationItem(title: "연락처")
+        let addContactButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addContactButtonTapped))
+        navigationItem.rightBarButtonItem = addContactButton
+        navigationBar.setItems([navigationItem], animated: false)
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backgroundColor = .white
+        navigationBar.standardAppearance = navigationBarAppearance
+        return navigationBar
+    }()
+    
+    private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.dataSource = self
         tableView.register(ContactCell.self, forCellReuseIdentifier: ContactCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -28,31 +49,29 @@ final class ContactListViewController: UIViewController {
 }
 
 extension ContactListViewController {
-    private func setUI() {
-        view.backgroundColor = .white
+    private func setupNavigationBar() {
+        view.addSubview(navigationBar)
+        NSLayoutConstraint.activate([
+            navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            navigationBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            navigationBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
+    }
+    
+    @objc private func addContactButtonTapped() {
+        
+//        present(newContactViewController, animated: true)
+    }
+    
+    private func setupTableView() {
+        tableView.dataSource = tableViewDataSource
+        
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
-    }
-}
-
-extension ContactListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactManager.contacts.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactCell.identifier, for: indexPath) as? ContactCell else {
-            preconditionFailure("ContactCell load Failed")
-        }
-        let contact = contactManager.contacts[indexPath.row]
-        cell.configure(with: contact)
-        cell.accessoryType = .disclosureIndicator
-        cell.selectionStyle = .none
-        return cell
     }
 }
