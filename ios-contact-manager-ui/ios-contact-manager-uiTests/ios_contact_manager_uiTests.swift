@@ -38,8 +38,9 @@ final class ios_contact_manager_uiTests: XCTestCase {
         for contact in input {
             sut.updateContactList(contact: contact)
         }
+        let contactToBeDeleted: Contact = sut.sortedContacts()[0]
         //when
-        sut.delete(Contact(name: "Sidi", contact: "010-2222-1111", age: 36))
+        sut.delete(contactToBeDeleted)
         //then
         XCTAssertEqual(sut.sortedContacts(), expectation)
     }
