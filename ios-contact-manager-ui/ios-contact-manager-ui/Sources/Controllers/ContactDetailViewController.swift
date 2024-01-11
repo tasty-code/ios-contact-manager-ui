@@ -27,6 +27,7 @@ class ContactDetailViewController: UIViewController {
         super.viewDidLoad()
         setupnvBar()
         detailView.contact = contact
+        detailView.phoneNumberTextField.addTarget(self, action: #selector(edit), for: .editingChanged)
     }
 
     func setupnvBar() {
@@ -74,6 +75,48 @@ extension ContactDetailViewController: Verification {
         guard let age = detailView.ageTextField.text, setAge(age) else { throw ContactError.errorAge }
         guard let phone = detailView.phoneNumberTextField.text, setNumber(phone) else { throw ContactError.errorNumber }
         
-        return (name, age, phone)
+        return (name.removeBlank, age.removeBlank, phone)
+    }
+}
+
+extension ContactDetailViewController {
+    @objc func edit() {
+        guard let text = detailView.phoneNumberTextField.text?.replacingOccurrences(of: "-", with: "") else {
+            return
+        }
+
+        detailView.phoneNumberTextField.text = text.formmater
+    }
+}
+
+
+extension String {
+    var removeBlank: String {
+        let blanck = self
+        let name = blanck.split(separator: " ").reduce("") { $0 + $1 }
+        
+        return name
+    }
+    
+    public var formmater: String {
+        var stringWithhypen: String = self
+        
+        switch stringWithhypen.count {
+        case 3...5:
+            stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 2))
+        case 6...9:
+            stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 2))
+            stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.endIndex, offsetBy: 5 - count))
+        case 10:
+            stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 3))
+            stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.endIndex, offsetBy: -4))
+        case 11:
+            stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 3))
+            stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.endIndex, offsetBy: -4))
+        default:
+            break
+        }
+        
+        return stringWithhypen
     }
 }
