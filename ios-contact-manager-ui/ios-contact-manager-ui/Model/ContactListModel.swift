@@ -8,14 +8,14 @@
 import Foundation
 
 struct ContactListModel {
-    private var contactList: Dictionary<String, Contact>
+    private var contactList: Dictionary<Int, Contact>
     
     init() {
         self.contactList = [:]
         if let loadedContacts = loadContactsJson() {
             contactList = loadedContacts.reduce(into: [:]) {
                 partialResult, contact in
-                partialResult[contact.phoneNumber] = contact
+                partialResult[contact.hashValue] = contact
             }
         }
     }
@@ -25,11 +25,11 @@ struct ContactListModel {
     }
     
     mutating public func delete(_ contact: Contact) {
-        contactList.removeValue(forKey: contact.phoneNumber)
+        contactList.removeValue(forKey: contact.hashValue)
     }
     
     mutating public func updateContactList(contact: Contact) {
-        contactList[contact.phoneNumber] = contact
+        contactList[contact.hashValue] = contact
     }
     
     private func loadContactsJson() -> Array<Contact>? {
