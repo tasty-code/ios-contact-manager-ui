@@ -15,9 +15,6 @@ final class InputView: UIView {
     
     private lazy var textField: UITextField = {
         let textField = UITextField()
-        textField.layer.cornerRadius = 8.0
-        textField.layer.borderWidth = 1.0
-        textField.layer.borderColor = UIColor.gray.cgColor
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -25,7 +22,7 @@ final class InputView: UIView {
     private lazy var hStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [label, textField])
         stackView.axis = .horizontal
-        stackView.spacing = 30
+        stackView.spacing = 10
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView

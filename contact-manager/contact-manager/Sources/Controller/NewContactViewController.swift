@@ -2,6 +2,18 @@ import UIKit
 
 final class NewContactViewController: UIViewController {
     
+    private let nameInputView = InputView(config: InputViewConfiguration(labelText: "이름", keyboardType: .default))
+    private let ageInputView = InputView(config: InputViewConfiguration(labelText: "나이", keyboardType: .decimalPad))
+    private let phoneNumberInputView = InputView(config: InputViewConfiguration(labelText: "연락처", keyboardType: .decimalPad))
+    
+    private lazy var inputForms: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [nameInputView, ageInputView, phoneNumberInputView])
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
@@ -42,8 +54,14 @@ extension NewContactViewController {
     }
     
     private func setupInputForms() {
-        
+        view.addSubview(inputForms)
+        NSLayoutConstraint.activate([
+            inputForms.topAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: 10),
+            inputForms.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            inputForms.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+        ])
     }
+
 }
 
 extension NewContactViewController {
