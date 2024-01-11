@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Contacts: ContactsManageable, ContactsApproachable{
+struct Contacts: ContactsManageable, ContactsApproachable {
     
     private var contactsRepository: Dictionary<Int, Contact>
     
