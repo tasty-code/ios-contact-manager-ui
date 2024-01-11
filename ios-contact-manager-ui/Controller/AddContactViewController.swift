@@ -64,9 +64,41 @@ class AddContactViewController: UIViewController {
             return presentAgeAlert()
         }
         
+        if !checkPhoneNumberTextField(for: phoneNumber) {
+            return presentPhoneNumberAlert()
+        }
+        
         let newContact = Contact(name: name, age: age, phoneNumber: phoneNumber)
         delegate?.updateContactList(with: newContact)
         self.dismiss(animated: true)
+    }
+    
+    func checkDigitsOver(number: Int, for phoneNumber: String) -> Bool {
+        if phoneNumber.count < number {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func checkPhoneNumberTextField(for phoneNumber: String) -> Bool {
+        let onlyNumber = phoneNumber.replacingOccurrences(of: "-", with: "")
+        let isNumberOkay = checkDigitsOver(number: 9, for: onlyNumber)
+        let regexPattern = "^[0-9]+-[0-9]+-[0-9]+$"
+        
+        if isNumberOkay {
+            do {
+                let regex = try NSRegularExpression(pattern: regexPattern)
+                if let _ = regex.firstMatch(in: phoneNumber, options: [], range: NSRange(location: 0, length: phoneNumber.count)) {
+                    return true
+                }
+            } catch {
+                print("에러: 전화번호 정상 아님")
+            }
+        } else {
+            print("에러: 자리수가 9개 미만입니다.")
+        }
+        return false
     }
     
     func checkAgeTextField(age: String) -> Bool {
