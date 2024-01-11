@@ -11,6 +11,7 @@ final class ContactCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 extension ContactCell {
     func configure(with contact: Contact) {
         var defaultContentConfiguration = defaultContentConfiguration()

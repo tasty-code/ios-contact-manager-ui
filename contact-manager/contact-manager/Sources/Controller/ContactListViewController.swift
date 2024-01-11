@@ -1,10 +1,10 @@
 import UIKit
 
-final class ViewController: UIViewController {
+final class ContactListViewController: UIViewController {
     
-    private let contactManager: ContactManager
+    private let contactManager: ContactListProvider
     
-    init(contactManager: ContactManager) {
+    init(contactManager: ContactListProvider) {
         self.contactManager = contactManager
         super.init(nibName: nil, bundle: nil)
     }
@@ -27,7 +27,7 @@ final class ViewController: UIViewController {
     }()
 }
 
-extension ViewController {
+extension ContactListViewController {
     private func setUI() {
         view.backgroundColor = .white
         view.addSubview(tableView)
@@ -40,16 +40,16 @@ extension ViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension ContactListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactManager.contactDictionary.count
+        return contactManager.contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactCell.identifier, for: indexPath) as? ContactCell else {
             preconditionFailure("ContactCell load Failed")
         }
-        let contact = Array(contactManager.contactDictionary.values)[indexPath.row]
+        let contact = contactManager.contacts[indexPath.row]
         cell.configure(with: contact)
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .none

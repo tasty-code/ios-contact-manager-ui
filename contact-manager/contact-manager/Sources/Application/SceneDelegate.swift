@@ -9,7 +9,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let contactManager = ContactManager(contactDictionary: contactData)
-        window?.rootViewController = ViewController(contactManager: contactManager)
+        window?.rootViewController = ContactListViewController(contactManager: contactManager)
         window?.makeKeyAndVisible()
     }
 }

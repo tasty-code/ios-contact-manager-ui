@@ -1,9 +1,13 @@
 struct ContactManager {
-    private(set) var contactDictionary = [String: Contact]()
+    private var contactDictionary: [String: Contact]
+    
+    init(contactDictionary: [String : Contact] = [String: Contact]()) {
+        self.contactDictionary = contactDictionary
+    }
     
     mutating func addContact(_ contact: Contact) throws {
         guard contactDictionary[contact.phoneNumber] == nil else {
-            throw ContactManagerError.duplicateContact
+            throw ContactManager.ContactError.duplicateContact
         }
         contactDictionary[contact.phoneNumber] = contact
     }
@@ -11,7 +15,7 @@ struct ContactManager {
     @discardableResult
     func findContact(phoneNumber: String) throws -> Contact {
         guard let contact = contactDictionary[phoneNumber] else {
-            throw ContactManagerError.nonExistentContact
+            throw ContactManager.ContactError.nonExistentContact
         }
         return contact
     }
@@ -33,7 +37,19 @@ struct ContactManager {
     }
 }
 
-enum ContactManagerError: Error {
-    case nonExistentContact
-    case duplicateContact
+extension ContactManager: ContactListProvider {
+    var contacts: [Contact] {
+        return Array(contactDictionary.values)
+    }
+}
+
+extension ContactManager {
+    enum ContactError: Error {
+        case nonExistentContact
+        case duplicateContact
+    }
+}
+
+protocol ContactListProvider {
+    var contacts: [Contact] { get }
 }
