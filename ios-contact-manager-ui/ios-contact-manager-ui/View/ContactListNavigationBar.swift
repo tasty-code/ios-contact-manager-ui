@@ -8,11 +8,11 @@
 import UIKit
 
 class ContactListNavigationBar: UINavigationBar {
-    private let addtionButton: UIBarButtonItem = {
-        let addtionButton = UIBarButtonItem()
-        addtionButton.image = UIImage(systemName: "plus")
-        addtionButton.action = #selector(ContactListViewController.presentContactsAdditionModalView)
-        return addtionButton
+    private let additionButton: UIBarButtonItem = {
+        let additionButton = UIBarButtonItem()
+        additionButton.image = UIImage(systemName: "plus")
+        additionButton.action = #selector(ContactListViewController.presentContactsAdditionModalView)
+        return additionButton
     }()
     private let titleItem: UINavigationItem = {
         let titleItem = UINavigationItem(title: "연락처")
@@ -21,7 +21,7 @@ class ContactListNavigationBar: UINavigationBar {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        titleItem.rightBarButtonItem = addtionButton
+        titleItem.rightBarButtonItem = additionButton
         self.pushItem(titleItem, animated: true)
     }
     
