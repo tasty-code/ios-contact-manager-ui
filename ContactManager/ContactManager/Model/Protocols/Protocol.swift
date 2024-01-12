@@ -1,8 +1,8 @@
 //
-//  Protocol.swift
+//  CustomAlert.swift
 //  ContactManager
 //
-//  Created by 윤진영 on 1/12/24.
+//  Created by 유니 & L on 1/12/24.
 //
 
 import UIKit
