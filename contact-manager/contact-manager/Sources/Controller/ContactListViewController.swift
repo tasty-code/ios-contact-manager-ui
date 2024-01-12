@@ -7,14 +7,8 @@ final class ContactListViewController: UIViewController {
     
     private lazy var navigationBar: UINavigationBar = {
         let navigationBar = UINavigationBar()
-        navigationBar.translatesAutoresizingMaskIntoConstraints = false
-        let navigationItem = UINavigationItem(title: "연락처")
         let addContactButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addContactButtonTapped))
-        navigationItem.rightBarButtonItem = addContactButton
-        navigationBar.setItems([navigationItem], animated: false)
-        let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.backgroundColor = .white
-        navigationBar.standardAppearance = navigationBarAppearance
+        configureNavigationBar(on: navigationBar, title: "연락처", rightButton: addContactButton)
         return navigationBar
     }()
     
