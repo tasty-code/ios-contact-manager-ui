@@ -97,12 +97,12 @@
                                     <navigationItem title="새 연락처" id="7os-zx-Bv8">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="f2v-Lv-6nb">
                                             <connections>
-                                                <action selector="cancelButtonTapped:" destination="sV4-fb-aGo" id="7Vo-t5-dz5"/>
+                                                <action selector="cancelButtonTapped:" destination="sV4-fb-aGo" id="Zb6-NI-m37"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Lv2-Fb-zrr">
                                             <connections>
-                                                <action selector="saveButtonTapped:" destination="sV4-fb-aGo" id="is4-Bk-KA0"/>
+                                                <action selector="saveButtonTapped:" destination="sV4-fb-aGo" id="sUc-B8-7f6"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

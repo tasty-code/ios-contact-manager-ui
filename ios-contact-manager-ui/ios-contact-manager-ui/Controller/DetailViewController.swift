@@ -2,10 +2,6 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
-    }
-    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-    }
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
@@ -15,6 +11,12 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         keyboardSetUp()
     }
+    
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+    }
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+    }
+    
 }
 
 extension DetailViewController: UITextFieldDelegate {
