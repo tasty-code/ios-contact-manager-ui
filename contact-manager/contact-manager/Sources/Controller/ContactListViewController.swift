@@ -2,7 +2,7 @@ import UIKit
 
 final class ContactListViewController: UIViewController {
     
-    private var contactManager: ContactManager
+    private let contactManager: ContactManager
     private let tableViewDataSource: ContactListTableViewDataSource
     
     private lazy var navigationBar: UINavigationBar = {
