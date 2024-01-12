@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Contacts: ContactsManageable, ContactsApproachable {
+final class Contacts: ContactsManageable, ContactsApproachable {
     
-    private var contactsRepository: Dictionary<Int, Contact>
+    var contactsRepository: Dictionary<Int, Contact>
     
     init() {
         self.contactsRepository = [:]
@@ -25,15 +25,15 @@ struct Contacts: ContactsManageable, ContactsApproachable {
         return contactsRepository.sorted(by: { $0.value.name.uppercased() < $1.value.name.uppercased() }).map { $0.value }
     }
     
-    mutating public func create(_ contact: Contact) {
+    public func create(_ contact: Contact) {
         contactsRepository[contact.hashValue] = contact
     }
     
-    mutating public func delete(_ contact: Contact) {
+    public func delete(_ contact: Contact) {
         contactsRepository.removeValue(forKey: contact.hashValue)
     }
     
-    mutating public func update(_ contact: Contact) {
+    public func update(_ contact: Contact) {
         contactsRepository[contact.hashValue] = contact
     }
     

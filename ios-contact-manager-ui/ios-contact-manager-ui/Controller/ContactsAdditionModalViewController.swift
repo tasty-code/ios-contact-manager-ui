@@ -8,11 +8,12 @@
 import UIKit
 
 final class ContactsAdditionModalViewController: UIViewController {
-    var delegate: ContactsManageable?
+    weak var delegate: ContactsManageable?
     private var regexByTextField: Dictionary<UITextField, String>
     private var invalidationByTextField: Dictionary<UITextField, InvalidationInput>
     private let contactsAdditionModalView: ContactsAddtionModalView
     private var sortedTextField: Array<UITextField>
+    var reloadData: (() -> Void)?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         regexByTextField = [:]
@@ -67,11 +68,26 @@ extension ContactsAdditionModalViewController {
     }
     
     @objc func saveButtonDidTapped() {
-        guard let invalidationInput = validateTextFields() else {
+        if let invalidationInput = validateTextFields() {
+            makeAlert(message: invalidationInput.message, confirmAction: nil)
             return
         }
-        
-        makeAlert(message: invalidationInput.message, confirmAction: nil)
+        guard let contact = newContact() else {
+            return
+        }
+        delegate?.create(contact)
+        reloadData?()
+        self.dismiss(animated: true)
+    }
+    
+    private func newContact() -> Contact? {
+        guard let name = contactsAdditionModalView.nameTextField.text,
+              let ageString = contactsAdditionModalView.ageTextField.text,
+              let age = Int(ageString),
+              let phoneNumber = contactsAdditionModalView.phoneNumberTextField.text else {
+            return nil
+        }
+        return Contact(name: name, contact: phoneNumber, age: age)
     }
 }
 

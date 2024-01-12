@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol ContactsManageable {
-    mutating func create(_ contact: Contact)
-    mutating func update(_ contact: Contact)
-    mutating func delete(_ contact: Contact)
+protocol ContactsManageable: AnyObject {
+    func create(_ contact: Contact)
+    func update(_ contact: Contact)
+    func delete(_ contact: Contact)
 }
 
-protocol ContactsApproachable {
+protocol ContactsApproachable: AnyObject {
     func sorted() -> Array<Contact>
 }
