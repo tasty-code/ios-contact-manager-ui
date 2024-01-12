@@ -6,6 +6,11 @@ class ContactListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func addContectButton(_ sender: UIBarButtonItem) {
+        let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        present(detailVC, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self

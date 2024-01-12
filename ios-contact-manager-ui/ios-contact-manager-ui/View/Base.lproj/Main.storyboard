@@ -12,7 +12,7 @@
         <!--Contact List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ContactListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ContactListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ContactListViewController" customModule="ios_contact_manager_ui" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,11 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <items>
                                     <navigationItem title="연락처" id="DUq-gO-XkZ">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="K6a-kG-TOv"/>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="K6a-kG-TOv">
+                                            <connections>
+                                                <action selector="addContectButton:" destination="BYZ-38-t0r" id="OIt-Jh-vSB"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                                 <navigationBarAppearance key="standardAppearance">
@@ -72,7 +76,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="3eG-qt-inl" id="R6e-hn-3uV"/>
+                        <outlet property="tableView" destination="3eG-qt-inl" id="FhD-eD-4Hw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -91,8 +95,16 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <items>
                                     <navigationItem title="새 연락처" id="7os-zx-Bv8">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="f2v-Lv-6nb"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Lv2-Fb-zrr"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="f2v-Lv-6nb">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="sV4-fb-aGo" id="7Vo-t5-dz5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Lv2-Fb-zrr">
+                                            <connections>
+                                                <action selector="saveButtonTapped:" destination="sV4-fb-aGo" id="is4-Bk-KA0"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                                 <navigationBarAppearance key="standardAppearance">
@@ -173,6 +185,11 @@
                             <constraint firstItem="fiZ-Yi-Fsm" firstAttribute="top" secondItem="yr8-yc-4CC" secondAttribute="top" id="iNX-yg-yyi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ageTextField" destination="58r-s6-GOJ" id="fYu-Yf-CDB"/>
+                        <outlet property="nameTextField" destination="vpL-sT-qhm" id="rel-ds-bsf"/>
+                        <outlet property="phoneNumberTextField" destination="N89-KN-kdL" id="XCH-N5-Ijs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntL-Ks-2Jo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
