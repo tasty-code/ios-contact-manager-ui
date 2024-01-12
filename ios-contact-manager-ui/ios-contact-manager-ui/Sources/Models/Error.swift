@@ -7,14 +7,15 @@
 
 import Foundation
 
-enum ContactError: Error, CustomStringConvertible {
+enum ContactError: LocalizedError {
     case assetName
     case jsonData
     case errorName
     case errorAge
     case errorNumber
+    case systemError
     
-    var description: String {
+    var errorDescription: String? {
         switch self {
         case .assetName:
             return "에셋네임을 알수 없습니다."
@@ -26,6 +27,8 @@ enum ContactError: Error, CustomStringConvertible {
             return "입력한 나이정보가 잘못되었습니다."
         case .errorNumber:
             return "입력한 연락처 정보가 잘못되었습니다."
+        case .systemError:
+            return "시스템오류"
         }
     }
 }

@@ -5,7 +5,6 @@
 //  Created by 미르, 루피 on 1/5/24.
 //
 
-import Foundation
 import UIKit
 
 final class ContactManager {
@@ -19,8 +18,8 @@ final class ContactManager {
         contacts.remove(at: index.row)
     }
     
-    func show(index: IndexPath) -> Contact {
-        return contacts[index.row]
+    func show() -> [Contact] {
+        return contacts
     }
     
     func update(contact: Contact) {

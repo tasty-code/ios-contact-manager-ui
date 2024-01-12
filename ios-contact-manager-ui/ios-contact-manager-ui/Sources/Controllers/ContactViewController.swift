@@ -62,7 +62,7 @@ final class ContactViewController: UIViewController {
         do {
             contactManger.contacts = try AssetDecoder<[Contact]>().parse(assetName: "MOCK_DATA")
         } catch {
-            let alert = showErrorAlert(title: nil, error, actions: [UIAlertAction(title: "취소", style: .default), UIAlertAction(title: "재시도", style: .default)])
+            let alert = showErrorAlert(title: nil, error.localizedDescription, actions: [UIAlertAction(title: "취소", style: .default)])
             present(alert, animated: true)
         }
     }

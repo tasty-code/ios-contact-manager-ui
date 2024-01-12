@@ -50,9 +50,10 @@ class ContactDetailViewController: UIViewController {
     }
     
     @objc func cancelButtonTapped() {
-        present(showErrorAlert(title: "정말 취소하시겠습니까?", nil, actions: [UIAlertAction(title: "예", style: .cancel, handler: { _ in
+        let alert = showErrorAlert(title: nil, "정말 취소하시겠습니까?", actions: [UIAlertAction(title: "예", style: .cancel, handler: { _ in
             self.dismiss(animated: true)
-        }), UIAlertAction(title: "아니오", style: .destructive)]), animated: true)
+        }), UIAlertAction(title: "아니오", style: .destructive)])
+        present(alert, animated: true)
     }
     
     @objc func setupButtonAction() {
@@ -62,7 +63,7 @@ class ContactDetailViewController: UIViewController {
             delegate?.add(contact: new)
             self.dismiss(animated: true)
         } catch {
-            let alert = showErrorAlert(title: nil, error, actions: [UIAlertAction(title: "확인", style: .default)])
+            let alert = showErrorAlert(title: nil, error.localizedDescription, actions: [UIAlertAction(title: "확인", style: .default)])
             present(alert, animated: true)
         }
     }
