@@ -2,10 +2,13 @@ import UIKit
 
 final class NewContactViewController: UIViewController {
     
+    var updateTableViewHandler: () -> Void
+    var addContactHandler: (_ contact: Contact) throws -> Void
+    private var alertService = AlertService()
+    
     private let nameInputView = InputView(config: InputViewConfiguration(labelText: "이름", keyboardType: .default))
     private let ageInputView = InputView(config: InputViewConfiguration(labelText: "나이", keyboardType: .decimalPad))
-    private let phoneNumberInputView = InputView(config: InputViewConfiguration(labelText: "연락처", keyboardType: .decimalPad))
-    
+    private let phoneNumberInputView = InputView(config: InputViewConfiguration(labelText: "연락처", keyboardType: .default))
     private lazy var inputForms: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [nameInputView, ageInputView, phoneNumberInputView])
         stackView.axis = .vertical
@@ -13,6 +16,18 @@ final class NewContactViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+    
+    init(updateTableViewHandler: @escaping () -> Void,
+         addContactHandler: @escaping (_ contact: Contact) throws -> Void) {
+        self.updateTableViewHandler = updateTableViewHandler
+        self.addContactHandler = addContactHandler
+        super.init(nibName: nil, bundle: nil)
+        alertService.viewController = self
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,14 +77,46 @@ extension NewContactViewController {
         ])
     }
 
-}
-
-extension NewContactViewController {
     @objc private func cancelButtonTapped() {
-        
+        alertService.alertCancelConfirmation()
     }
     
     @objc private func saveButtonTapped() {
+        let name = nameInputView.textFieldValue().trimmed()
+        let age = ageInputView.textFieldValue()
+        let phoneNumber = phoneNumberInputView.textFieldValue()
         
+        if isInputFormsValidate(name: name, age: age, phoneNumber: phoneNumber) {
+            let contact = Contact(phoneNumber: phoneNumber, name: name, age: age)
+            saveNewContact(contact)
+            updateTableViewHandler()
+        }
+    }
+    private func isInputFormsValidate(name: String, age: String, phoneNumber: String) -> Bool {
+        if !InputValidator.isValidName(name) {
+            alertService.alertInvalidInput(alertMessage: .invalidName)
+            return false
+        }
+        
+        if !InputValidator.isValidAge(age) {
+            alertService.alertInvalidInput(alertMessage: .invalidAge)
+            return false
+        }
+        
+        if !InputValidator.isValidPhoneNumber(phoneNumber) {
+            alertService.alertInvalidInput(alertMessage: .invalidPhoneNumber)
+            return false
+        }
+        
+        return true
+    }
+    
+    private func saveNewContact(_ contact: Contact) {
+        do {
+            try addContactHandler(contact)
+            presentingViewController?.dismiss(animated: true)
+        } catch {
+            alertService.alertInvalidInput(alertMessage: .invalidPhoneNumber)
+        }
     }
 }
