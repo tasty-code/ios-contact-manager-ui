@@ -9,19 +9,73 @@ import UIKit
 
 final class ContactsAdditionModalViewController: UIViewController {
     var delegate: ContactsManageable?
-
-    private let contactsAdditionModalView: ContactsAddtionModalView = ContactsAddtionModalView()
+    private var regexByTextField: Dictionary<UITextField, String>
+    private var invalidationByTextField: Dictionary<UITextField, InvalidationInput>
+    private let contactsAdditionModalView: ContactsAddtionModalView
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        regexByTextField = [:]
+        invalidationByTextField = [:]
+        contactsAdditionModalView = ContactsAddtionModalView()
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
+        setRegexByTextField()
+        setInvalidationByTextField()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view = contactsAdditionModalView
     }
+}
+
+extension ContactsAdditionModalViewController {
+    private func setRegexByTextField() {
+        regexByTextField = [
+            contactsAdditionModalView.nameTextField: #"^[^\\s]+$"#,
+            contactsAdditionModalView.ageTextField: #"^\d{1,3}$"#,
+            contactsAdditionModalView.phoneNumberTextField: #"^\d{2,}-\d{3,}-\d{4,}$"#
+        ]
+    }
     
+    private func setInvalidationByTextField() {
+        invalidationByTextField = [
+            contactsAdditionModalView.nameTextField: .name,
+            contactsAdditionModalView.ageTextField: .age,
+            contactsAdditionModalView.phoneNumberTextField: .phoneNumber
+        ]
+    }
+}
+
+extension ContactsAdditionModalViewController {
     @objc func dismissContactsAdditionModalView() {
         makeCancelAlert(message: "정말로 취소하시겠습니까?", destructiveAction: { _ in self.dismiss(animated: true) })
     }
     
     @objc func saveButtonDidTapped() {
-        makeAlert(message: "입력한 정보가 잘못되었습니다.", confirmAction: nil)
+        guard let invalidationInput = validateTextFields() else {
+            return
+        }
+        
+        makeAlert(message: invalidationInput.message, confirmAction: nil)
+    }
+}
+
+extension ContactsAdditionModalViewController {
+    private func validateTextFields() -> InvalidationInput? {
+        var invalidationInput: InvalidationInput? = nil
+        regexByTextField.forEach { (uiTextField, regex) in
+            invalidationInput = invalidationInput == nil ? validate(regex: regex, input: uiTextField) : invalidationInput
+        }
+        return invalidationInput
+    }
+    
+    private func validate(regex: String, input: UITextField) -> InvalidationInput? {
+        let regexTest = NSPredicate(format: "SELF MATCHES %@", regex)
+        return regexTest.evaluate(with: input.text) ? nil : invalidationByTextField[input]
     }
 }

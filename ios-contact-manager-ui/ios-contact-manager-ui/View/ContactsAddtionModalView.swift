@@ -97,7 +97,7 @@ final class ContactsAddtionModalView: UIView {
     }()
     let phoneNumberTextField: UITextField = {
         let phoneNumberTextField = UITextField()
-        phoneNumberTextField.keyboardType = .phonePad
+        phoneNumberTextField.keyboardType = .default
         phoneNumberTextField.borderStyle = .roundedRect
         return phoneNumberTextField
     }()
