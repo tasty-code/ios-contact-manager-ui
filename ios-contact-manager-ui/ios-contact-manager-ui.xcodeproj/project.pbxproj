@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE5EDCF82B453326001E0218 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EDCF72B453326001E0218 /* AppDelegate.swift */; };
 		CE5EDCFA2B453326001E0218 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EDCF92B453326001E0218 /* SceneDelegate.swift */; };
-		CE5EDCFC2B453326001E0218 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EDCFB2B453326001E0218 /* ViewController.swift */; };
+		CE5EDCFC2B453326001E0218 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EDCFB2B453326001E0218 /* ContactListViewController.swift */; };
 		CE5EDCFF2B453326001E0218 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5EDCFD2B453326001E0218 /* Main.storyboard */; };
 		CE5EDD012B453328001E0218 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5EDD002B453328001E0218 /* Assets.xcassets */; };
 		CE5EDD042B453328001E0218 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5EDD022B453328001E0218 /* LaunchScreen.storyboard */; };
@@ -22,7 +22,7 @@
 		CE5EDCF42B453326001E0218 /* ios-contact-manager-ui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-contact-manager-ui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5EDCF72B453326001E0218 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5EDCF92B453326001E0218 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE5EDCFB2B453326001E0218 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE5EDCFB2B453326001E0218 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		CE5EDCFE2B453326001E0218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE5EDD002B453328001E0218 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5EDD032B453328001E0218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		CE5311F52B4AB047007F6D68 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CE5EDCFB2B453326001E0218 /* ViewController.swift */,
+				CE5EDCFB2B453326001E0218 /* ContactListViewController.swift */,
 				CEC709D32B50106F00E9B5F1 /* DetailViewController.swift */,
 			);
 			path = Controller;
@@ -181,7 +181,7 @@
 			files = (
 				CEB8D4F72B4927380067B5DB /* ContactManager.swift in Sources */,
 				CEB8D4F52B49250E0067B5DB /* Person.swift in Sources */,
-				CE5EDCFC2B453326001E0218 /* ViewController.swift in Sources */,
+				CE5EDCFC2B453326001E0218 /* ContactListViewController.swift in Sources */,
 				CEC709D42B50106F00E9B5F1 /* DetailViewController.swift in Sources */,
 				CE5EDCF82B453326001E0218 /* AppDelegate.swift in Sources */,
 				CE5EDCFA2B453326001E0218 /* SceneDelegate.swift in Sources */,

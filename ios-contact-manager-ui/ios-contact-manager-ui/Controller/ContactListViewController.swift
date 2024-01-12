@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ContactListViewController: UIViewController {
     let model = ContactManager.shared
     
     @IBOutlet weak var tableView: UITableView!
@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     }
 }
     
-extension ViewController: UITableViewDataSource {
+extension ContactListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.readContacts().count
     }

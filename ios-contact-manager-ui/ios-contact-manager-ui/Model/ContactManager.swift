@@ -3,7 +3,7 @@ import UIKit
 
 class ContactManager {
     static let shared = ContactManager()
-        private init() {}
+    private init() {}
     
     private var contactList: [Person] = [
         Person(name: "Alice", age: 22, phoneNumber: "010-1234-5678"),
