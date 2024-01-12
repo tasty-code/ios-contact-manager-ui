@@ -20,7 +20,6 @@ final class ContactListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.dataSource = self
         tableView.delegate = self
         contactFileManager.loadJson()
@@ -34,12 +33,10 @@ final class ContactListViewController: UIViewController {
     }
     
     @objc func showNewContactView() {
-        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "NewContactViewController") as? NewContactViewController else {
+        guard let nextVC = storyboard?.instantiateViewController(identifier: "NewContactViewController") as? NewContactViewController else {
             return
         }
-        nextVC.modalPresentationStyle = .popover
-        nextVC.modalTransitionStyle = .coverVertical
-        self.present(nextVC, animated: true)
+        present(nextVC, animated: true)
     }
 }
 
