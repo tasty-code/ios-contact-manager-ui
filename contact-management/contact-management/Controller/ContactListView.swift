@@ -29,7 +29,7 @@ final class ContactListView: UIViewController {
     }
     @IBAction func addContact(_ sender: Any) {
         let secondViewController = storyboard?.instantiateViewController(identifier: "AddContactView") { coder in
-            return addContactView.init(coder: coder, contactListStorage: self.contactListStorage!)
+            return AddContactView.init(coder: coder, contactListStorage: self.contactListStorage!)
         }
         secondViewController?.modalTransitionStyle = .coverVertical
         secondViewController?.modalPresentationStyle = .automatic

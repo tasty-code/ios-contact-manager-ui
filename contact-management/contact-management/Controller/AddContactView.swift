@@ -7,7 +7,7 @@
 
 import UIKit
 
-class addContactView: UIViewController {
+class AddContactView: UIViewController {
     private var contactListStorage: ContactListStorage?
     
     required init?(coder: NSCoder) {
