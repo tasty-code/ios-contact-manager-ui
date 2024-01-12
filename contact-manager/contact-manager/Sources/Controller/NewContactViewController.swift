@@ -7,8 +7,8 @@ final class NewContactViewController: UIViewController {
     private var alertService = AlertService()
     
     private let nameInputView = InputView(config: InputViewConfiguration(labelText: "이름", keyboardType: .default))
-    private let ageInputView = InputView(config: InputViewConfiguration(labelText: "나이", keyboardType: .decimalPad))
-    private let phoneNumberInputView = InputView(config: InputViewConfiguration(labelText: "연락처", keyboardType: .default))
+    private let ageInputView = InputView(config: InputViewConfiguration(labelText: "나이", keyboardType: .numberPad))
+    private let phoneNumberInputView = InputView(config: InputViewConfiguration(labelText: "연락처", keyboardType: .phonePad))
     private lazy var inputForms: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [nameInputView, ageInputView, phoneNumberInputView])
         stackView.axis = .vertical
