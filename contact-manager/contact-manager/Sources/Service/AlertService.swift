@@ -5,22 +5,25 @@ struct AlertService {
 
     func alertInvalidInput(alertMessage: AlertService.Message) {
         guard let viewController else { return }
-        let alertController = AlertBuilder()
-            .addAction("확인", style: .default)
-            .addMessage(message: String(describing: alertMessage), preferredStyle: .alert)
-        viewController.present(alertController, animated: true)
+        let alert = AlertBuilder()
+            .setMessage(String(describing: alertMessage))
+            .addAction(title: "확인", style: .default, handler: nil)
+            .build()
+        viewController.present(alert, animated: true)
     }
     
     func alertCancelConfirmation() {
         guard let viewController else { return }
         let cancelConfirmationMessage = AlertService.Message.cancelConfirmation
-        let alertController = AlertBuilder()
-            .addAction("예", style: .destructive) {
+
+        let alert = AlertBuilder()
+            .setMessage(String(describing: cancelConfirmationMessage))
+            .addAction(title: "예", style: .destructive) { _ in
                 viewController.presentingViewController?.dismiss(animated: true)
             }
-            .addAction("아니오", style: .cancel)
-            .addMessage(title: String(describing: cancelConfirmationMessage), preferredStyle: .alert)
-        viewController.present(alertController, animated: true)
+            .addAction(title: "아니오", style: .cancel, handler: nil)
+            .build()
+        viewController.present(alert, animated: true)
     }
 }
 

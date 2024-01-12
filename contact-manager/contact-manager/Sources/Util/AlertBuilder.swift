@@ -1,28 +1,30 @@
 import UIKit
 
-struct AlertAction {
-    let title: String
-    let style: UIAlertAction.Style
-    let completion: (() -> Void)?
-}
-
 final class AlertBuilder {
-    private var alertActions: [AlertAction] = []
+    private var title: String?
+    private var message: String?
+    private var actions: [UIAlertAction] = []
 
-    func addAction(_ title: String, style: UIAlertAction.Style, action: (() -> Void)? = nil) -> Self {
-        let alertAction = AlertAction(title: title, style: style, completion: action)
-        alertActions.append(alertAction)
+    func setTitle(_ title: String) -> AlertBuilder {
+        self.title = title
         return self
     }
-    
-    func addMessage(title: String? = nil, message: String? = nil, preferredStyle: UIAlertController.Style) -> UIAlertController {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
-        alertActions.forEach { action in
-            let alertAction = UIAlertAction(title: action.title, style: action.style) { _ in
-                action.completion?()
-            }
-            alertController.addAction(alertAction)
-        }
-        return alertController
+
+    func setMessage(_ message: String) -> AlertBuilder {
+        self.message = message
+        return self
+    }
+
+    func addAction(title: String, style: UIAlertAction.Style, handler: ((UIAlertAction) -> Void)?) -> AlertBuilder {
+        let action = UIAlertAction(title: title, style: style, handler: handler)
+        actions.append(action)
+        return self
+    }
+
+    func build() -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        actions.forEach { alert.addAction($0) }
+        return alert
     }
 }
+
