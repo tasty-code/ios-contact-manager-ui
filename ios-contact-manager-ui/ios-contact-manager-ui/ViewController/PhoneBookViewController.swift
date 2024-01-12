@@ -90,8 +90,4 @@ extension PhoneBookViewController {
 }
 
 
-extension PhoneBookViewController: ResponderAction {
-    func fetchWeather(sender: Any?) {
-        print("werughreakughar")
-    }
-}
+

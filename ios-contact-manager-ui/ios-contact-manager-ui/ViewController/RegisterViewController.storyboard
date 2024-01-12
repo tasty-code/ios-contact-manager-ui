@@ -25,7 +25,11 @@
                                                 <action selector="cancelButtonTapped:" destination="Y6W-OH-hqX" id="Z5b-Ki-epT"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="IUQ-6f-D4S"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="IUQ-6f-D4S">
+                                            <connections>
+                                                <action selector="saveButtonTapped:" destination="Y6W-OH-hqX" id="AjE-bQ-asc"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                                 <navigationBarAppearance key="standardAppearance"/>
@@ -46,6 +50,9 @@
                                                 <rect key="frame" x="87" y="0.0" width="307" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="nameTextFieldChanged:" destination="Y6W-OH-hqX" eventType="editingChanged" id="gcG-eV-x2c"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -65,6 +72,9 @@
                                                 <rect key="frame" x="87" y="0.0" width="307" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="ageTextFieldChanged:" destination="Y6W-OH-hqX" eventType="editingChanged" id="fmm-9G-TCb"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -84,6 +94,9 @@
                                                 <rect key="frame" x="87" y="0.0" width="307" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="phoneNumberTextFieldChanged:" destination="Y6W-OH-hqX" eventType="editingChanged" id="m9c-TO-5Rp"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -92,6 +105,27 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0U4-ku-KYA">
+                                <rect key="frame" x="10" y="322" width="394" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQ0-hQ-cj1">
+                                <rect key="frame" x="10" y="361" width="394" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHj-9X-zMm">
+                                <rect key="frame" x="10" y="405" width="394" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -110,6 +144,9 @@
                         <outlet property="nameTextField" destination="Xpc-tt-hDj" id="i3i-03-d4S"/>
                         <outlet property="phoneNumberTextField" destination="UNY-5K-eGI" id="BiV-2B-o4g"/>
                         <outlet property="saveButton" destination="IUQ-6f-D4S" id="2Eq-Yf-2Wq"/>
+                        <outlet property="tempAgeErrorLabel" destination="CQ0-hQ-cj1" id="3dM-04-fnQ"/>
+                        <outlet property="tempErrorLabel" destination="0U4-ku-KYA" id="4cd-8o-FQ1"/>
+                        <outlet property="tempPhoneNumberErrorLabel" destination="PHj-9X-zMm" id="Y6z-5f-F0e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
