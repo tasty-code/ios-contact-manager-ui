@@ -8,6 +8,15 @@ final class NewContactViewController: UIViewController {
     private let addContactHandler: AddContactHandler
     private var alertService = AlertService()
     
+    private lazy var navigationBar: UINavigationBar = {
+        let navigationBar = UINavigationBar()
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+        navigationItem.leftBarButtonItem = cancelButton
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
+        configureNavigationBar(on: navigationBar, title: "새 연락처", leftButton: cancelButton, rightButton: saveButton, disableShadow: true)
+        return navigationBar
+    }()
+    
     private let nameInputView = InputView(config: InputViewConfiguration(labelText: "이름", keyboardType: .default))
     private let ageInputView = InputView(config: InputViewConfiguration(labelText: "나이", keyboardType: .numberPad))
     private let phoneNumberInputView = InputView(config: InputViewConfiguration(labelText: "연락처", keyboardType: .phonePad))
@@ -35,23 +44,6 @@ final class NewContactViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
     }
-    
-    private lazy var navigationBar: UINavigationBar = {
-        let navigationBar = UINavigationBar()
-        let navigationItem = UINavigationItem(title: "새 연락처")
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
-        navigationItem.leftBarButtonItem = cancelButton
-        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
-        navigationItem.rightBarButtonItem = saveButton
-        navigationBar.setItems([navigationItem], animated: false)
-        
-        let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.backgroundColor = .white
-        navigationBarAppearance.shadowColor = nil
-        navigationBar.standardAppearance = navigationBarAppearance
-        navigationBar.translatesAutoresizingMaskIntoConstraints = false
-        return navigationBar
-    }()
 }
 
 extension NewContactViewController {
