@@ -87,7 +87,6 @@ extension ContactsAdditionModalViewController {
         case 3, 7:
             resultText.popLast()
         case 11:
-            print(resultText)
             resultText = exchange(string: resultText, of: 6, isDelete: true)
         default:
             return text
