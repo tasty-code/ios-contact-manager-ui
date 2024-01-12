@@ -44,6 +44,10 @@ final class ContactsViewController: UIViewController {
     @objc private func addContactTapped() {
         let addContactViewController = AddContactViewController(contactManager: contactManager)
         let navigationController = UINavigationController(rootViewController: addContactViewController)
+        
+        addContactViewController.delegate = self
+        addContactViewController.title = "새 연락처"
+        
         present(navigationController, animated: true, completion: nil)
     }
 }
@@ -66,4 +70,15 @@ extension ContactsViewController: UITableViewDataSource {
         return cell
     }
     
+}
+
+extension ContactsViewController: ContactDelegate {
+    func addNewContact(newContact: Contact) {
+        contactManager.addNewContact(contact: newContact)
+        contactsView.contactsTableView.reloadData()
+    }
+    
+    func updatedContact(contactId id: Int, with selectedContact: Contact) {
+        
+    }
 }

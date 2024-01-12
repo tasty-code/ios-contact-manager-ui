@@ -12,6 +12,7 @@ final class AddContactViewController: UIViewController {
     //MARK: - Property
     private var contactManager: ContactManager
     private let addContactView = PersonalContactDetailView()
+    weak var delegate: ContactDelegate?
     
     
     //MARK: - Initializer
@@ -36,7 +37,6 @@ final class AddContactViewController: UIViewController {
     
     //MARK: - Method
     private func configureNavigationBar() {
-        title = "새 연락처"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
     }
@@ -46,6 +46,12 @@ final class AddContactViewController: UIViewController {
     }
     
     @objc private func saveTapped() {
+        guard let name = addContactView.accessNameTextField().text else { return }
+        let age = addContactView.accessAgeTextField().text
+        let contactNumber = addContactView.accessContactNumberTextField().text
+        let addNewContact = Contact(name: name, age: age, contactNumber: contactNumber)
+        
+        delegate?.addNewContact(newContact: addNewContact)
         dismiss(animated: true, completion: nil)
     }
     
