@@ -39,6 +39,8 @@ class ContactDetailViewController: UIViewController {
         navigationBar.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
         navigationBar.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive = true
         navigationBar.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor).isActive = true
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
         
         let leftButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
         let rtButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(setupButtonAction))
