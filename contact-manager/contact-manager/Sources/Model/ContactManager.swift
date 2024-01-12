@@ -10,7 +10,7 @@ final class ContactManager {
     
     func addContact(_ contact: Contact) throws {
         guard contactDictionary[contact.phoneNumber] == nil else {
-            throw ContactManager.ContactError.duplicateContact
+            throw ContactError.duplicateContact
         }
         contactDictionary[contact.phoneNumber] = contact
     }
@@ -18,7 +18,7 @@ final class ContactManager {
     @discardableResult
     func findContact(phoneNumber: String) throws -> Contact {
         guard let contact = contactDictionary[phoneNumber] else {
-            throw ContactManager.ContactError.nonExistentContact
+            throw ContactError.nonExistentContact
         }
         return contact
     }
