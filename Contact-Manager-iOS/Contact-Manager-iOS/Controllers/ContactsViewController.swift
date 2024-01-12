@@ -42,6 +42,9 @@ final class ContactsViewController: UIViewController {
     }
     
     @objc private func addContactTapped() {
+        let addContactViewController = AddContactViewController(contactManager: contactManager)
+        let navigationController = UINavigationController(rootViewController: addContactViewController)
+        present(navigationController, animated: true, completion: nil)
     }
 }
     
