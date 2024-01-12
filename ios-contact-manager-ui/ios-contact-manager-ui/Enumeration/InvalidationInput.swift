@@ -12,6 +12,17 @@ enum InvalidationInput {
     case age
     case phoneNumber
     
+    var regex: String {
+        switch self {
+        case .name:
+            return #"^[^\s]+$"#
+        case .age:
+            return #"^\d{1,3}$"#
+        case .phoneNumber:
+            return #"^\d{2,}-\d{3,}-\d{4,}$"#
+        }
+    }
+    
     var message: String {
         switch self {
         case .name:

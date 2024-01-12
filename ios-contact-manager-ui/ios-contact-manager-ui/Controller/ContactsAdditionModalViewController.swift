@@ -39,9 +39,9 @@ final class ContactsAdditionModalViewController: UIViewController {
 extension ContactsAdditionModalViewController {
     private func setRegexByTextField() {
         regexByTextField = [
-            contactsAdditionModalView.nameTextField: #"^[^\s]+$"#,
-            contactsAdditionModalView.ageTextField: #"^\d{1,3}$"#,
-            contactsAdditionModalView.phoneNumberTextField: #"^\d{2,}-\d{3,}-\d{4,}$"#
+            contactsAdditionModalView.nameTextField: InvalidationInput.name.regex,
+            contactsAdditionModalView.ageTextField: InvalidationInput.age.regex,
+            contactsAdditionModalView.phoneNumberTextField: InvalidationInput.phoneNumber.regex
         ]
     }
     
