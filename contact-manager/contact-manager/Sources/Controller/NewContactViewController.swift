@@ -2,8 +2,8 @@ import UIKit
 
 final class NewContactViewController: UIViewController {
     
-    var updateTableViewHandler: () -> Void
-    var addContactHandler: (_ contact: Contact) throws -> Void
+    private let updateTableViewHandler: () -> Void
+    private let addContactHandler: (_ contact: Contact) throws -> Void
     private var alertService = AlertService()
     
     private let nameInputView = InputView(config: InputViewConfiguration(labelText: "이름", keyboardType: .default))
