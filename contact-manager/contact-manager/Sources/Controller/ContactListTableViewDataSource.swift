@@ -22,3 +22,9 @@ final class ContactListTableViewDataSource: NSObject, UITableViewDataSource {
         return cell
     }
 }
+
+extension ContactListTableViewDataSource {
+    func updateContacts(_ newContacts: [Contact]) {
+        contacts = newContacts
+    }
+}
