@@ -38,6 +38,7 @@ final class ContactsAddtionModalView: UIView {
         let saveButton = UIButton()
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.systemBlue, for: .normal)
+        saveButton.addTarget(nil, action: #selector(ContactsAdditionModalViewController.saveButtonDidTapped), for: .touchUpInside)
         return saveButton
     }()
     

@@ -20,4 +20,8 @@ final class ContactsAdditionModalViewController: UIViewController {
     @objc func dismissContactsAdditionModalView() {
         makeCancelAlert(message: "정말로 취소하시겠습니까?", destructiveAction: { _ in self.dismiss(animated: true) })
     }
+    
+    @objc func saveButtonDidTapped() {
+        makeAlert(message: "입력한 정보가 잘못되었습니다.", confirmAction: nil)
+    }
 }
