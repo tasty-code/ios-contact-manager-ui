@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WFo-Lz-XjM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Contact List View Controller-->
+        <!--연락처-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ContactListViewController" customModule="ContactManager" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xnl-Ny-Cqv">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="6Gt-Vv-Ziq" detailTextLabel="XVz-B7-QWg" style="IBUITableViewCellStyleSubtitle" id="3IB-z9-tqf">
@@ -56,13 +56,83 @@
                             <constraint firstItem="xnl-Ny-Cqv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="sVa-Ac-lFT"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="연락처" id="Gdy-Vd-6c9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cjj-st-mxb"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="xnl-Ny-Cqv" id="ZLL-Si-rkW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="-2"/>
+            <point key="canvasLocation" x="1066.4122137404579" y="-2.1126760563380285"/>
+        </scene>
+        <!--New Contact View Controller-->
+        <scene sceneID="kgM-e5-Xex">
+            <objects>
+                <viewController storyboardIdentifier="NewContactViewController" id="di7-rB-Ffw" customClass="NewContactViewController" customModule="ContactManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GYB-U8-drh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="76" translatesAutoresizingMaskIntoConstraints="NO" id="MBh-o4-g07">
+                                <rect key="frame" x="20" y="79" width="353" height="34.333333333333343"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEp-Lo-c2B">
+                                        <rect key="frame" x="0.0" y="0.0" width="76.666666666666671" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                        <connections>
+                                            <action selector="dismissButtonTapped:" destination="di7-rB-Ffw" eventType="touchUpInside" id="Qha-Th-twX"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새 연락처" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spm-dL-EjX">
+                                        <rect key="frame" x="152.66666666666666" y="0.0" width="63.333333333333343" height="34.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9b-Ad-8nP">
+                                        <rect key="frame" x="292" y="0.0" width="61" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="di7-rB-Ffw" eventType="touchUpInside" id="fK4-Rz-uKK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nyU-ic-oX8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MBh-o4-g07" firstAttribute="leading" secondItem="nyU-ic-oX8" secondAttribute="leading" constant="20" id="TtI-V9-d00"/>
+                            <constraint firstItem="nyU-ic-oX8" firstAttribute="trailing" secondItem="MBh-o4-g07" secondAttribute="trailing" constant="20" id="mZq-sl-Kog"/>
+                            <constraint firstItem="MBh-o4-g07" firstAttribute="top" secondItem="nyU-ic-oX8" secondAttribute="top" constant="20" id="s9C-oa-yaL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IOj-hh-Hfc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2036" y="-2"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kpf-2L-VAe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WFo-Lz-XjM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RZf-E8-rP0">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="1tr-07-6cc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sFB-OR-MR3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.69465648854961" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>

@@ -16,6 +16,7 @@
 		9948A3EF2B47C24500422296 /* ContactFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9948A3EE2B47C24500422296 /* ContactFileManager.swift */; };
 		9948A3F12B47E9FA00422296 /* ContactManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9948A3F02B47E9FA00422296 /* ContactManagerError.swift */; };
 		9B07363C2B479A02004556B8 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07363B2B479A02004556B8 /* Contact.swift */; };
+		9BC446182B511B1D0066ACE0 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC446172B511B1D0066ACE0 /* NewContactViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9948A3EE2B47C24500422296 /* ContactFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFileManager.swift; sourceTree = "<group>"; };
 		9948A3F02B47E9FA00422296 /* ContactManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerError.swift; sourceTree = "<group>"; };
 		9B07363B2B479A02004556B8 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		9BC446172B511B1D0066ACE0 /* NewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				9948A3B82B4542CD00422296 /* ContactListViewController.swift */,
+				9BC446172B511B1D0066ACE0 /* NewContactViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				9948A3B92B4542CD00422296 /* ContactListViewController.swift in Sources */,
 				9948A3F12B47E9FA00422296 /* ContactManagerError.swift in Sources */,
 				9948A3B52B4542CD00422296 /* AppDelegate.swift in Sources */,
+				9BC446182B511B1D0066ACE0 /* NewContactViewController.swift in Sources */,
 				9948A3B72B4542CD00422296 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
