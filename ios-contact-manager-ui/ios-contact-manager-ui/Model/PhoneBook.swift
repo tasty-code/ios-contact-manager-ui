@@ -4,6 +4,7 @@ import Foundation
 // MARK: - PhoneBooks Init & Deinit
 final class PhoneBook {
 
+    @NotifyContactInfoChange
     var categorizedContactInfo: [User] = [
         User(userID: UUID(), name: "전종혁", phoneNumber: "010-1111-2224", age: 20),
         User(userID: UUID(), name: "강차수", phoneNumber: "010-1111-2224", age: 20),
