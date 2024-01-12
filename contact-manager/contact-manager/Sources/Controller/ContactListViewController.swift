@@ -2,30 +2,8 @@ import UIKit
 
 final class ContactListViewController: UIViewController {
     
-    private let contactManager: ContactListProvider
+    private var contactManager: ContactManager
     private let tableViewDataSource: ContactListTableViewDataSource
-    
-    init(contactManager: ContactListProvider) {
-        self.contactManager = contactManager
-        self.tableViewDataSource = ContactListTableViewDataSource(contacts: contactManager.contacts)
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupLayout()
-    }
-    
-    private func setupLayout() {
-        view.backgroundColor = .white
-        setupNavigationBar()
-        setupTableView()
-        view.bringSubviewToFront(navigationBar)
-    }
     
     private lazy var navigationBar: UINavigationBar = {
         let navigationBar = UINavigationBar()
@@ -46,9 +24,31 @@ final class ContactListViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    
+    init(contactManager: ContactManager) {
+        self.contactManager = contactManager
+        self.tableViewDataSource = ContactListTableViewDataSource(contacts: contactManager.contacts)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupLayout()
+    }
 }
 
 extension ContactListViewController {
+    private func setupLayout() {
+        view.backgroundColor = .white
+        setupNavigationBar()
+        setupTableView()
+        view.bringSubviewToFront(navigationBar)
+    }
+    
     private func setupNavigationBar() {
         view.addSubview(navigationBar)
         NSLayoutConstraint.activate([
@@ -56,11 +56,6 @@ extension ContactListViewController {
             navigationBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             navigationBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
-    }
-    
-    @objc private func addContactButtonTapped() {
-        let newContactViewController = NewContactViewController()
-        present(newContactViewController, animated: true)
     }
     
     private func setupTableView() {
@@ -73,5 +68,15 @@ extension ContactListViewController {
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
+    }
+    
+    @objc private func addContactButtonTapped() {
+        let newContactViewController = NewContactViewController(updateTableViewHandler: updateTableView, addContactHandler: contactManager.addContact)
+        present(newContactViewController, animated: true)
+    }
+    
+    private func updateTableView() {
+        tableViewDataSource.updateContacts(contactManager.contacts)
+        tableView.reloadData()
     }
 }
