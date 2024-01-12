@@ -50,56 +50,51 @@ extension ContactsAdditionModalViewController {
     
     private func numberKeyTapped(text: String, range: NSRange) -> String {
         var resultText = text
+        var rangeLocation = range.location
+        var isNumberStartedWithZero: Bool = false
         
-        switch text.starts(with: "0") {
-        case true:
-            switch range.location {
-            case 3, 7:
-                resultText += "-"
-                return resultText
-            case 12:
-                return exchange(string: text, of: 8, isDelete: false)
-            default:
-                return text
-            }
-        case false:
-            switch range.location {
-            case 2, 6:
-                resultText += "-"
-                return resultText
-            case 11:
-                return exchange(string: text, of: 7, isDelete: false)
-            default:
-                return text
-            }
+        if text.starts(with: "0") {
+            resultText.removeFirst()
+            rangeLocation -= 1
+            isNumberStartedWithZero = true
         }
+        
+        switch rangeLocation {
+        case 2, 6:
+            resultText += "-"
+        case 11:
+            resultText = exchange(string: resultText, of: 7, isDelete: false)
+        default:
+            return text
+        }
+        
+        resultText = isNumberStartedWithZero ? "0" + resultText : resultText
+        return resultText
     }
     
     private func deleteKeyTapped(text: String, range: NSRange) -> String {
         var resultText = text
+        var rangeLocation = range.location
+        var isNumberStartedWithZero: Bool = false
         
-        switch text.starts(with: "0") {
-        case true:
-            switch range.location {
-            case 4, 8:
-                resultText.popLast()
-                return resultText
-            case 12:
-                return exchange(string: text, of: 7, isDelete: true)
-            default:
-                return text
-            }
-        case false:
-            switch range.location {
-            case 3, 7:
-                resultText.popLast()
-                return resultText
-            case 11:
-                return exchange(string: text, of: 6, isDelete: true)
-            default:
-                return text
-            }
+        if text.starts(with: "0") {
+            resultText.removeFirst()
+            rangeLocation -= 1
+            isNumberStartedWithZero = true
         }
+        
+        switch rangeLocation {
+        case 3, 7:
+            resultText.popLast()
+        case 11:
+            print(resultText)
+            resultText = exchange(string: resultText, of: 6, isDelete: true)
+        default:
+            return text
+        }
+        
+        resultText = isNumberStartedWithZero ? "0" + resultText : resultText
+        return resultText
     }
     
     private func exchange(string: String, of: Int, isDelete: Bool) -> String {
