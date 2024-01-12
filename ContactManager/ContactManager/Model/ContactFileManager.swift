@@ -32,8 +32,8 @@ final class ContactFileManager {
         contacts.remove(at: index)
     }
     
-    func updateContact(_ index: Int, _ newContact: Contact) throws {
-        guard index >= 0 && index < contacts.count else {
+    func updateContact(_ id: String, _ newContact: Contact) {
+        guard let index = contacts.firstIndex(where: { $0.id == id }) else {
             print(ContactManagerError.indexNotFound.errorDescription)
             return
         }
