@@ -12,13 +12,15 @@ final class ContactsAdditionModalViewController: UIViewController {
     private var regexByTextField: Dictionary<UITextField, String>
     private var invalidationByTextField: Dictionary<UITextField, InvalidationInput>
     private let contactsAdditionModalView: ContactsAddtionModalView
+    private var sortedTextField: Array<UITextField>
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         regexByTextField = [:]
         invalidationByTextField = [:]
+        sortedTextField = []
         contactsAdditionModalView = ContactsAddtionModalView()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
+        setSortedTextField()
         setRegexByTextField()
         setInvalidationByTextField()
     }
@@ -36,7 +38,7 @@ final class ContactsAdditionModalViewController: UIViewController {
 extension ContactsAdditionModalViewController {
     private func setRegexByTextField() {
         regexByTextField = [
-            contactsAdditionModalView.nameTextField: #"^[^\\s]+$"#,
+            contactsAdditionModalView.nameTextField: #"^[^\s]+$"#,
             contactsAdditionModalView.ageTextField: #"^\d{1,3}$"#,
             contactsAdditionModalView.phoneNumberTextField: #"^\d{2,}-\d{3,}-\d{4,}$"#
         ]
@@ -47,6 +49,14 @@ extension ContactsAdditionModalViewController {
             contactsAdditionModalView.nameTextField: .name,
             contactsAdditionModalView.ageTextField: .age,
             contactsAdditionModalView.phoneNumberTextField: .phoneNumber
+        ]
+    }
+    
+    private func setSortedTextField() {
+        sortedTextField = [
+            contactsAdditionModalView.nameTextField,
+            contactsAdditionModalView.ageTextField,
+            contactsAdditionModalView.phoneNumberTextField,
         ]
     }
 }
@@ -68,14 +78,18 @@ extension ContactsAdditionModalViewController {
 extension ContactsAdditionModalViewController {
     private func validateTextFields() -> InvalidationInput? {
         var invalidationInput: InvalidationInput? = nil
-        regexByTextField.forEach { (uiTextField, regex) in
-            invalidationInput = invalidationInput == nil ? validate(regex: regex, input: uiTextField) : invalidationInput
+        sortedTextField.forEach { uiTextField in
+            invalidationInput = invalidationInput == nil ? validate(regex: regexByTextField[uiTextField], input: uiTextField) : invalidationInput
         }
         return invalidationInput
     }
     
-    private func validate(regex: String, input: UITextField) -> InvalidationInput? {
-        let regexTest = NSPredicate(format: "SELF MATCHES %@", regex)
-        return regexTest.evaluate(with: input.text) ? nil : invalidationByTextField[input]
+    private func validate(regex: String?, input: UITextField) -> InvalidationInput? {
+        guard let inputText = input.text, let regexString: String = regex else {
+            return invalidationByTextField[input]
+        }
+        
+        let regexTest = NSPredicate(format: "SELF MATCHES %@", regexString)
+        return regexTest.evaluate(with: inputText) ? nil : invalidationByTextField[input]
     }
 }
