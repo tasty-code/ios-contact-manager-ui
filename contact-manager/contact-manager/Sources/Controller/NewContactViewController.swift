@@ -2,8 +2,10 @@ import UIKit
 
 final class NewContactViewController: UIViewController {
     
+    typealias AddContactHandler = (_ contact: Contact) throws -> Void
+    
     private let updateTableViewHandler: () -> Void
-    private let addContactHandler: (_ contact: Contact) throws -> Void
+    private let addContactHandler: AddContactHandler
     private var alertService = AlertService()
     
     private let nameInputView = InputView(config: InputViewConfiguration(labelText: "이름", keyboardType: .default))
@@ -18,7 +20,7 @@ final class NewContactViewController: UIViewController {
     }()
     
     init(updateTableViewHandler: @escaping () -> Void,
-         addContactHandler: @escaping (_ contact: Contact) throws -> Void) {
+         addContactHandler: @escaping AddContactHandler) {
         self.updateTableViewHandler = updateTableViewHandler
         self.addContactHandler = addContactHandler
         super.init(nibName: nil, bundle: nil)
