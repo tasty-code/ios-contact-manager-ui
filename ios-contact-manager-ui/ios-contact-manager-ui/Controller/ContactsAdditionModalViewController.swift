@@ -40,48 +40,40 @@ final class ContactsAdditionModalViewController: UIViewController, UITextFieldDe
 
 extension ContactsAdditionModalViewController {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else {
+        guard var text = textField.text else {
             return false
         }
-
-        textField.text = string == "" ? deleteKeyTapped(text: text, range: range) : numberKeyTapped(text: text, range: range)
-        return true
-    }
-    
-    private func numberKeyTapped(text: String, range: NSRange) -> String {
-        var resultText = text
         var rangeLocation = range.location
         var isNumberStartedWithZero: Bool = false
         
         if text.starts(with: "0") {
-            resultText.removeFirst()
+            text.removeFirst()
             rangeLocation -= 1
             isNumberStartedWithZero = true
         }
         
+        text = string == "" ? deleteKeyTapped(text: text, rangeLocation: rangeLocation) : numberKeyTapped(text: text, rangeLocation: rangeLocation)
+        text = isNumberStartedWithZero ? "0" + text : text
+        textField.text = text
+        return true
+    }
+    
+    private func numberKeyTapped(text: String, rangeLocation: Int) -> String {
+        var resultText = text
+
         switch rangeLocation {
         case 2, 6:
             resultText += "-"
         case 11:
             resultText = exchange(string: resultText, of: 7, isDelete: false)
         default:
-            return text
+            break
         }
-        
-        resultText = isNumberStartedWithZero ? "0" + resultText : resultText
         return resultText
     }
     
-    private func deleteKeyTapped(text: String, range: NSRange) -> String {
+    private func deleteKeyTapped(text: String, rangeLocation: Int) -> String {
         var resultText = text
-        var rangeLocation = range.location
-        var isNumberStartedWithZero: Bool = false
-        
-        if text.starts(with: "0") {
-            resultText.removeFirst()
-            rangeLocation -= 1
-            isNumberStartedWithZero = true
-        }
         
         switch rangeLocation {
         case 3, 7:
@@ -89,10 +81,9 @@ extension ContactsAdditionModalViewController {
         case 11:
             resultText = exchange(string: resultText, of: 6, isDelete: true)
         default:
-            return text
+            break
         }
         
-        resultText = isNumberStartedWithZero ? "0" + resultText : resultText
         return resultText
     }
     
