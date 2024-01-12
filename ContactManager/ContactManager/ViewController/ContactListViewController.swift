@@ -24,6 +24,22 @@ final class ContactListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         contactFileManager.loadJson()
+        configureUI()
+    }
+    
+    func configureUI() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, 
+                                                            target: self,
+                                                            action: #selector(showNewContactView))
+    }
+    
+    @objc func showNewContactView() {
+        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "NewContactViewController") as? NewContactViewController else {
+            return
+        }
+        nextVC.modalPresentationStyle = .popover
+        nextVC.modalTransitionStyle = .coverVertical
+        self.present(nextVC, animated: true)
     }
 }
 
