@@ -109,6 +109,8 @@ extension ContactViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - ContactDelegate
+
 extension ContactViewController: ContactDelegate {
     func add(contact: Contact) {
         contactManger.add(contact: contact)

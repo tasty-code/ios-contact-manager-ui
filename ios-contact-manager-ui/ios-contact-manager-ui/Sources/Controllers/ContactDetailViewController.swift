@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactDetailViewController: UIViewController {
+final class ContactDetailViewController: UIViewController {
 
     private let detailView = DetailView()
     var contact: Contact?
@@ -30,7 +30,7 @@ class ContactDetailViewController: UIViewController {
         detailView.phoneNumberTextField.addTarget(self, action: #selector(edit), for: .editingChanged)
     }
 
-    func setupnvBar() {
+    private func setupnvBar() {
         self.view.backgroundColor = .white
         
         self.view.addSubview(navigationBar)
@@ -71,17 +71,6 @@ class ContactDetailViewController: UIViewController {
     }
 }
 
-// MARK: - Verification
-extension ContactDetailViewController: Verification {
-    func makeInfo() throws -> (String, String, String) {
-        guard let name = detailView.nameTextField.text, setName(name) else { throw ContactError.errorName }
-        guard let age = detailView.ageTextField.text, setAge(age) else { throw ContactError.errorAge }
-        guard let phone = detailView.phoneNumberTextField.text, setNumber(phone) else { throw ContactError.errorNumber }
-        
-        return (name.removeBlank, age.removeBlank, phone)
-    }
-}
-
 extension ContactDetailViewController {
     @objc func edit() {
         guard let text = detailView.phoneNumberTextField.text?.replacingOccurrences(of: "-", with: "") else {
@@ -89,5 +78,17 @@ extension ContactDetailViewController {
         }
 
         detailView.phoneNumberTextField.text = text.formmater
+    }
+}
+
+// MARK: - Verification
+
+extension ContactDetailViewController: Verification {
+    func makeInfo() throws -> (String, String, String) {
+        guard let name = detailView.nameTextField.text, setName(name) else { throw ContactError.errorName }
+        guard let age = detailView.ageTextField.text, setAge(age) else { throw ContactError.errorAge }
+        guard let phone = detailView.phoneNumberTextField.text, setNumber(phone) else { throw ContactError.errorNumber }
+        
+        return (name.removeBlank, age.removeBlank, phone)
     }
 }
