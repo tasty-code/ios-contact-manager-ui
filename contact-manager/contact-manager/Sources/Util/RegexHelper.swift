@@ -19,7 +19,7 @@ enum RegexPattern: CustomStringConvertible {
         case .onlyNumbers:
             "^\\d{1,3}$"
         case .phoneNumber:
-            "^(?=(?:\\D*\\d){9,})\\d+-\\d+-\\d+$"
+            "^(?=(?:-?\\d){9,})\\d+-\\d+-\\d+$"
         }
     }
 }
