@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zIb-ob-JcE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zIb-ob-JcE">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="1046.5648854961833" y="17.605633802816904"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Contact View-->
         <scene sceneID="Cbl-dg-Wjk">
             <objects>
-                <viewController storyboardIdentifier="AddContactView" id="juo-rO-sQn" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddContactView" id="juo-rO-sQn" customClass="AddContactView" customModule="contact_management" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zdu-WL-WeB">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,6 +92,9 @@
                                         <rect key="frame" x="64.333333333333343" y="0.0" width="308.66666666666663" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didWriteName:" destination="juo-rO-sQn" eventType="editingDidEnd" id="Hc3-X9-8dY"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -111,6 +114,9 @@
                                         <rect key="frame" x="64.333333333333343" y="0.0" width="308.66666666666663" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didWriteAge:" destination="juo-rO-sQn" eventType="editingDidEnd" id="8uO-GQ-1jE"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -130,6 +136,9 @@
                                         <rect key="frame" x="64.333333333333343" y="0.0" width="308.66666666666663" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didWritePhone:" destination="juo-rO-sQn" eventType="editingDidEnd" id="cf8-ld-7Ug"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -153,22 +162,42 @@
                     </view>
                     <navigationItem key="navigationItem" id="W6T-mD-fZi">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="SVr-Vt-DN2">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="xuB-ml-HCE">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="xuB-ml-HCE">
                                 <rect key="frame" x="16" y="5" width="87" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                <connections>
+                                    <action selector="didTappedCancel:" destination="juo-rO-sQn" eventType="touchUpInside" id="RGw-mi-eP2"/>
+                                </connections>
                             </button>
+                            <connections>
+                                <action selector="didTappedCancel:" destination="juo-rO-sQn" id="e8O-Pe-s2F"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Hok-D8-61x">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="r3l-LD-eXY">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="r3l-LD-eXY">
                                 <rect key="frame" x="290" y="4.6666666666666679" width="87" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="didTappedSave:" destination="juo-rO-sQn" eventType="touchUpInside" id="XDZ-ZX-wfe"/>
+                                </connections>
                             </button>
+                            <connections>
+                                <action selector="didTappedSave:" destination="juo-rO-sQn" id="2eY-lY-OOd"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ageLabel" destination="Y6r-99-r3G" id="ptT-LC-zkt"/>
+                        <outlet property="ageTextField" destination="gJU-RL-K9N" id="Ry0-g3-gVy"/>
+                        <outlet property="nameLabel" destination="fNu-Bq-oFE" id="7qF-9q-YCB"/>
+                        <outlet property="nameTextField" destination="fMT-og-QZu" id="GhP-Sc-nx4"/>
+                        <outlet property="phoneLabel" destination="J6Y-Od-joH" id="VtK-6V-dOv"/>
+                        <outlet property="phoneTextField" destination="m6v-7O-Rn8" id="aD3-XL-etV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W72-mq-W77" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

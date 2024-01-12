@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
-    private func 더미데이터(Storage contactListStorage: ContactListStorage) {
+    private func addDummyData(Storage contactListStorage: ContactListStorage) {
         contactListStorage.addContact(ContactList(name: "노움", phoneNumber: "010-1111-1111", age: 20))
         contactListStorage.addContact(ContactList(name: "샘", phoneNumber: "010-2222-2222", age: 21))
         contactListStorage.addContact(ContactList(name: "폴", phoneNumber: "010-3333-3333", age: 22))
@@ -19,15 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let contactListStorage = ContactListStorage()
-        더미데이터(Storage: contactListStorage)
+        let contactList: [ContactList] = [ContactList]()
+        let contactListStorage = ContactListStorage(contactList: contactList)
+        addDummyData(Storage: contactListStorage)
+        
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let firstViewController = storyBoard.instantiateViewController(identifier: "ContactListView") { coder in
             return ContactListView.init(coder: coder, contactListStorage: contactListStorage)
         }
+        
         let firstNavigationController = UINavigationController(rootViewController: firstViewController)
-        
-        
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = firstNavigationController
         window.makeKeyAndVisible()
