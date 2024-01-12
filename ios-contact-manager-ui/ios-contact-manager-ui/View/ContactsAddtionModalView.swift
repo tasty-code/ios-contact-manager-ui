@@ -30,7 +30,7 @@ final class ContactsAddtionModalView: UIView {
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = "새 연락처"
-        titleLabel.font = .preferredFont(forTextStyle: .title1)
+        titleLabel.font = .preferredFont(forTextStyle: .headline)
         titleLabel.textAlignment = .center
         return titleLabel
     }()
@@ -150,7 +150,7 @@ extension ContactsAddtionModalView {
     
     private func setupModalStackViewConstraints() {
         modalStackView.translatesAutoresizingMaskIntoConstraints = false
-        modalStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+        modalStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         modalStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
         modalStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
         modalStackView.spacing = 20
