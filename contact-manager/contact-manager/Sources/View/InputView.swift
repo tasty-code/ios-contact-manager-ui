@@ -7,13 +7,13 @@ struct InputViewConfiguration {
 
 final class InputView: UIView {
     
-    private lazy var label: UILabel = {
+    private let label: UILabel = {
         let label = LabelFactory.build(text: "", font: .systemFont(ofSize: 14.0))
         label.widthAnchor.constraint(equalToConstant: 50).isActive = true
         return label
     }()
     
-    private lazy var textField: UITextField = {
+    private let textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         return textField
