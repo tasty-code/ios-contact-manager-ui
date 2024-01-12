@@ -91,15 +91,10 @@ extension ContactViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier , for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier , for: indexPath) as? CustomCell else { return UITableViewCell() }
+        
         let item = contactManger.contacts[indexPath.row]
-        
-        var content = cell.defaultContentConfiguration()
-        
-        content.text = item.nameAndAge
-        content.secondaryText = item.phoneNumber
-        
-        cell.contentConfiguration = content
+        cell.contact = item
         cell.accessoryType = .disclosureIndicator
         
         return cell
