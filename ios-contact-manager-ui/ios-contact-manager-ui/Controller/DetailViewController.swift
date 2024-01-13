@@ -8,6 +8,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     
     let model = ContactManager.shared
+    var delegate: ContactListDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,7 @@ class DetailViewController: UIViewController {
         default:
             let personData = Person(name: name, age: Int(age) ?? 0, phoneNumber: phoneNumber)
             model.addPerson(person: personData)
+            delegate?.reloadContacts()
             
             self.dismiss(animated: true)
         }

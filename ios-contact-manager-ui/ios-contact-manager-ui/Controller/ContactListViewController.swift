@@ -1,7 +1,12 @@
 
 import UIKit
 
-class ContactListViewController: UIViewController {
+protocol ContactListDelegate: AnyObject {
+    func reloadContacts()
+}
+
+class ContactListViewController: UIViewController, ContactListDelegate {
+    
     let model = ContactManager.shared
     
     @IBOutlet weak var tableView: UITableView!
@@ -9,15 +14,21 @@ class ContactListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
-    @IBAction func addContectButton(_ sender: UIBarButtonItem) {
+    @IBAction func addContactButton(_ sender: UIBarButtonItem) {
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        detailVC.delegate = self
         present(detailVC, animated: true)
+    }
+    
+    func reloadContacts() {
+        self.tableView.reloadData()
     }
 }
     
-extension ContactListViewController: UITableViewDataSource {
+extension ContactListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.readContacts().count
     }
