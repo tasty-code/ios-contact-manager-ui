@@ -14,6 +14,7 @@
 		CE5EDD012B453328001E0218 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5EDD002B453328001E0218 /* Assets.xcassets */; };
 		CE5EDD042B453328001E0218 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5EDD022B453328001E0218 /* LaunchScreen.storyboard */; };
 		CE765AC82B515ABC00F89ED2 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765AC72B515ABC00F89ED2 /* UIViewController+.swift */; };
+		CE765ACA2B52C86A00F89ED2 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765AC92B52C86A00F89ED2 /* String+.swift */; };
 		CEB8D4F52B49250E0067B5DB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8D4F42B49250E0067B5DB /* Person.swift */; };
 		CEB8D4F72B4927380067B5DB /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8D4F62B4927380067B5DB /* ContactManager.swift */; };
 		CEC709D42B50106F00E9B5F1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC709D32B50106F00E9B5F1 /* DetailViewController.swift */; };
@@ -29,6 +30,7 @@
 		CE5EDD032B453328001E0218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5EDD052B453328001E0218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE765AC72B515ABC00F89ED2 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		CE765AC92B52C86A00F89ED2 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		CEB8D4F42B49250E0067B5DB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CEB8D4F62B4927380067B5DB /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		CEC709D32B50106F00E9B5F1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				CE765AC72B515ABC00F89ED2 /* UIViewController+.swift */,
+				CE765AC92B52C86A00F89ED2 /* String+.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			files = (
 				CE765AC82B515ABC00F89ED2 /* UIViewController+.swift in Sources */,
 				CEB8D4F72B4927380067B5DB /* ContactManager.swift in Sources */,
+				CE765ACA2B52C86A00F89ED2 /* String+.swift in Sources */,
 				CEB8D4F52B49250E0067B5DB /* Person.swift in Sources */,
 				CE5EDCFC2B453326001E0218 /* ContactListViewController.swift in Sources */,
 				CEC709D42B50106F00E9B5F1 /* DetailViewController.swift in Sources */,

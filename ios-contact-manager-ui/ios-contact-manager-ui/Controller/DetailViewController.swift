@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         keyboardSetUp()
+        targetingAddHyphen()
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
@@ -54,5 +55,13 @@ extension DetailViewController: UITextFieldDelegate {
         nameTextField.keyboardType = .default
         ageTextField.keyboardType = .numberPad
         phoneNumberTextField.keyboardType = .numberPad
+    }
+    
+    func targetingAddHyphen() {
+        phoneNumberTextField.addTarget(self, action: #selector(editingPhoneNumberText(_:)), for: .editingChanged)
+    }
+    
+    @objc func editingPhoneNumberText(_ textField: UITextField) {
+        textField.text = textField.text?.addPhoneNumberHyphen()
     }
 }
