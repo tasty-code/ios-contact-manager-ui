@@ -89,6 +89,6 @@ extension ContactDetailViewController: Verification {
         guard let age = detailView.ageTextField.text, setAge(age) else { throw ContactError.errorAge }
         guard let phone = detailView.phoneNumberTextField.text, setNumber(phone) else { throw ContactError.errorNumber }
         
-        return (name.removeBlank, age.removeBlank, phone)
+        return (name.removeBlank, age, phone)
     }
 }

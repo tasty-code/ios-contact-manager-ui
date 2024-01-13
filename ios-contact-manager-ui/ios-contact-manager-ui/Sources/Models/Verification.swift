@@ -20,9 +20,8 @@ extension Verification {
     }
     
     func setAge(_ age: String) -> Bool {
-        let setAge = age.split(separator: " ").reduce("") { $0 + $1 }
         let regex = "^([1-9]{1})?([0-9]{1,2})$"
-        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: setAge)
+        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: age)
     }
     
     func setNumber(_ number: String) -> Bool {

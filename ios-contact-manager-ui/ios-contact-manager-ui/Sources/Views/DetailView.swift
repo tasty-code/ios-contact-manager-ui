@@ -12,7 +12,7 @@ final class DetailView: UIView {
     var contact: Contact? {
         didSet {
             nameTextField.keyboardType = .default
-            ageTextField.keyboardType = .default
+            ageTextField.keyboardType = .numberPad
             phoneNumberTextField.keyboardType = .phonePad
             
             guard let contact = contact else { return }
