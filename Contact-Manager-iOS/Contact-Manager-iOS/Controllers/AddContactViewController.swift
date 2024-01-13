@@ -46,13 +46,59 @@ final class AddContactViewController: UIViewController {
     }
     
     @objc private func saveTapped() {
-        guard let name = addContactView.accessNameTextField().text else { return }
-        let age = addContactView.accessAgeTextField().text
-        let contactNumber = addContactView.accessContactNumberTextField().text
-        let addNewContact = Contact(name: name, age: age, contactNumber: contactNumber)
-        
+        guard let name = addContactView.accessNameTextField().text?.replacingOccurrences(of: " ", with: ""),
+              let ageString = addContactView.accessAgeTextField().text,
+              let age = Int(ageString),
+              let contactNumber = addContactView.accessContactNumberTextField().text,
+              isValidName(name),
+              isValidAge(age),
+              isValidContactNumber(contactNumber)
+        else {
+            if let name = addContactView.accessNameTextField().text, !isValidName(name) {
+                showAlert(message: "입력한 이름 정보가 잘못되었습니다.")
+            } else if !isValidAge(Int(addContactView.accessAgeTextField().text ?? "")) {
+                showAlert(message: "입력한 나이 정보가 잘못되었습니다.")
+            } else if let contact = addContactView.accessContactNumberTextField().text, !isValidContactNumber(contact) {
+                showAlert(message: "입력한 연락처 정보가 잘못되었습니다.")
+            }
+            return
+        }
+       
+        let addNewContact = Contact(name: name, age: ageString, contactNumber: contactNumber)
         delegate?.addNewContact(newContact: addNewContact)
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func isValidName(_ name: String) -> Bool {
+        return !name.isEmpty
+    }
+    
+    private func isValidAge(_ age: Int?) -> Bool {
+        if let ageValue = age, 0 < ageValue && ageValue <= 999 {
+            return true
+        }
+        return false
+    }
+    
+    private func isValidContactNumber(_ contact: String) -> Bool {
+        guard let phoneNumber = addContactView.accessContactNumberTextField().text?.replacingOccurrences(of: "-", with: "").trimmingCharacters(in: .whitespacesAndNewlines),
+              phoneNumber.count >= 9,
+              contact.filter({$0 == "-"}).count == 2
+        else {
+            return false
+        }
+        return true
+    }
+
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "알림",
+                                      message: message,
+                                      preferredStyle: .alert)
+
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(okAction)
+
+        present(alert, animated: true, completion: nil)
     }
     
     private func showCancelAlert() {
