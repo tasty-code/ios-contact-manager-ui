@@ -16,10 +16,14 @@ final class NewContactViewController: UIViewController {
         configureNavigationBar(on: navigationBar, title: "새 연락처", leftButton: cancelButton, rightButton: saveButton, disableShadow: true)
         return navigationBar
     }()
-    
     private let nameInputView = InputView(config: InputViewConfiguration(labelText: "이름", keyboardType: .default))
     private let ageInputView = InputView(config: InputViewConfiguration(labelText: "나이", keyboardType: .numberPad))
-    private let phoneNumberInputView = InputView(config: InputViewConfiguration(labelText: "연락처", keyboardType: .phonePad))
+    private lazy var phoneNumberInputView: InputView = {
+        let inputView = InputView(config: InputViewConfiguration(labelText: "연락처", keyboardType: .phonePad))
+        inputView.textField.addTarget(self, action: #selector(handlePhoneNumberEditingChanged), for: .editingChanged)
+        return inputView
+
+    }()
     private lazy var inputForms: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [nameInputView, ageInputView, phoneNumberInputView])
         stackView.axis = .vertical
@@ -70,7 +74,21 @@ extension NewContactViewController {
             inputForms.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
         ])
     }
-
+    
+    @objc private func handlePhoneNumberEditingChanged() {
+        guard let digits = phoneNumberInputView.textField.text?.replacingOccurrences(of: "-", with: "") else {
+            return
+        }
+                
+        let areaCode = String(digits.prefix(3))
+        
+        guard let formatter = PhoneNumberFormatter(digitCount: digits.count, areaCode: areaCode) else {
+            return
+        }
+        
+        phoneNumberInputView.textField.text = formatter.formatting(digits: digits)
+    }
+    
     @objc private func cancelButtonTapped() {
         alertService.alertCancelConfirmation()
     }
