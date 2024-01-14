@@ -8,28 +8,21 @@
 struct AddContactUseCase {
     private let repository: ContactRepository
     
+    private let factory: ContactMakable
+    
     weak var presenter: AddContactPresentable?
     
-    init(repository: ContactRepository) {
+    init(
+        repository: ContactRepository,
+        factory: ContactMakable
+    ) {
         self.repository = repository
+        self.factory = factory
     }
     
     func saveNewContact(request: AddContact.Request) {
         do {
-            #warning("validation + conversion 구현")
-//            guard let age = Int(request.age) else { 
-//                throw AgeValidationError.cannotStartWithZero
-//            }
-//            let contact = Contact(
-//                name: request.name,
-//                phoneNumber: request.phoneNumber,
-//                age: age
-//            )
-            let contact = Contact(
-                name: "Hong",
-                phoneNumber: "010-1010-1010",
-                age: 10
-            )
+            let contact = try factory.makeContact(from: request)
             try repository.addContact(contact)
             presenter?.presentAddContact(result: .success(.init()))
         } catch {

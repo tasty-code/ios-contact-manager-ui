@@ -21,12 +21,12 @@ final class AddContactViewController: UIViewController {
     }
     
     private let ageField = InputView(fieldName: "나이") { input in
-        return FormattingResult(formatted: "", validationError: AgeValidationError.cannotStartWithZero)
+        return FormattingResult(formatted: input, validationError: nil)
     }
     
     private let phoneNumberField = InputView(fieldName: "전화번호") { input in
         let minimumLength = 9
-        return FormattingResult(formatted: "", validationError: PhoneNumberValidationError.minimumLengthError(minimumLength))
+        return FormattingResult(formatted: input, validationError: nil)
     }
     
     private lazy var fieldStack: UIStackView = {

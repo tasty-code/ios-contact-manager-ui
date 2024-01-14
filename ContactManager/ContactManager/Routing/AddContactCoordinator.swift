@@ -23,7 +23,10 @@ final class AddContactCoordinator: Coordinator {
     }
     
     func start() {
-        let useCase = AddContactUseCase(repository: self.contactRepository)
+        let useCase = AddContactUseCase(
+            repository: self.contactRepository,
+            factory: ContactFactory()
+        )
         let addContactViewController = AddContactViewController(
             useCase: useCase,
             coordinator: self
