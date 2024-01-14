@@ -1,5 +1,5 @@
 extension String {
     func trimmed() -> String {
-        self.components(separatedBy: .whitespacesAndNewlines).joined()
+        self.replacing(/\s/, with: "")
     }
 }
