@@ -19,7 +19,7 @@ enum RegexPattern: CustomStringConvertible {
         case .age:
             "((1\\d)|([1-9]))?\\d"
         case .phoneNumber:
-            "^(?=(?:-?\\d){9,})\\d+-\\d+-\\d+$"
+            "^(?=(-?\\d){9,})\\d{2,3}-\\d{3,4}-\\d+$"
         }
     }
 }
