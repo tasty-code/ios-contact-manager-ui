@@ -8,20 +8,33 @@
 struct AddContactUseCase {
     private let repository: ContactRepository
     
+    weak var presenter: AddContactPresentable?
+    
     init(repository: ContactRepository) {
         self.repository = repository
     }
     
     func saveNewContact(request: AddContact.Request) {
         do {
-            #warning("구현 수정")
-            // validation
-            // conversion
-            guard let age = Int(request.age) else { throw ContactValidateError.invalidName }
-            let contact = Contact(name: request.name, phoneNumber: request.phoneNumber, age: age)
+            #warning("validation + conversion 구현")
+            guard let age = Int(request.age) else { 
+                throw AgeValidationError.cannotStartWithZero
+            }
+            
+//            let contact = Contact(
+//                name: request.name,
+//                phoneNumber: request.phoneNumber,
+//                age: age
+//            )
+            let contact = Contact(
+                name: "Hong",
+                phoneNumber: "010-1010-1010",
+                age: 10
+            )
             try repository.addContact(contact)
+            presenter?.presentAddContact(result: .success(.init()))
         } catch {
-            print(error.localizedDescription)
+            presenter?.presentAddContact(result: .failure(error))
         }
     }
 }
@@ -32,4 +45,14 @@ enum AddContact {
         let age: String
         let phoneNumber: String
     }
+    
+    struct SuccessInfo {
+        
+    }
+}
+
+import Foundation
+
+protocol AddContactPresentable: NSObjectProtocol {
+    func presentAddContact(result: Result<AddContact.SuccessInfo, Error>)
 }

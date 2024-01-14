@@ -10,6 +10,10 @@ import UIKit
 final class InputView: UIView {
     private let formatter: InputFormatter
     
+    var currentValue: String {
+        return self.textField.text ?? ""
+    }
+    
     private var state: ValidationError? {
         didSet {
             switch state {
@@ -115,19 +119,5 @@ extension InputView: UITextFieldDelegate {
         textField.text = result.formatted
         self.state = result.validationError
         return false
-    }
-}
-
-protocol InputProvidable {
-    func provideInput() -> Result<String, Error>
-}
-
-extension InputView: InputProvidable {
-    func provideInput() -> Result<String, Error> {
-        guard let text = self.textField.text else {
-            return .failure(ContactValidateError.invalidName)
-        }
-        
-        return .success(text)
     }
 }

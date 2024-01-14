@@ -8,7 +8,7 @@
 import UIKit
 
 final class AddContactViewController: UIViewController {
-    private let addContactUseCase: AddContactUseCase
+    private var addContactUseCase: AddContactUseCase
     
     private let nameField = InputView(fieldName: "이름") { input in
         guard input.contains(where: { $0 == " " }) == false else {
@@ -52,7 +52,7 @@ final class AddContactViewController: UIViewController {
     init(useCase: AddContactUseCase) {
         self.addContactUseCase = useCase
         super.init(nibName: nil, bundle: nil)
-        setupViews()
+        self.addContactUseCase.presenter = self
     }
     
     override func viewDidLoad() {
@@ -61,13 +61,11 @@ final class AddContactViewController: UIViewController {
     }
     
     func save() {
-        guard case let .success(name) = self.nameField.provideInput(),
-              case let .success(age) = self.ageField.provideInput(),
-              case let .success(phoneNumer) = self.phoneNumberField.provideInput()
-        else {
-            return
-        }
-        let request = AddContact.Request(name: name, age: age, phoneNumber: phoneNumer)
+        let request = AddContact.Request(
+            name: self.nameField.currentValue,
+            age: self.ageField.currentValue,
+            phoneNumber: self.phoneNumberField.currentValue
+        )
         self.addContactUseCase.saveNewContact(request: request)
     }
     
@@ -81,5 +79,31 @@ final class AddContactViewController: UIViewController {
             fieldStack.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             fieldStack.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
         ])
+    }
+}
+
+extension AddContactViewController: AddContactPresentable {
+    func presentAddContact(result: Result<AddContact.SuccessInfo, Error>) {
+        switch result {
+        case .success:
+            print("화면 이동")
+        case .failure(let error):
+            handleError(error)
+        }
+    }
+    
+    private func handleError(_ error: Error) {
+        if let error = error as? LocalizedError {
+            print(error.localizedDescription)
+        }
+        if let error = error as? AlertableError {
+            showErrorAlert(error: error)
+        }
+    }
+}
+
+extension AddContactViewController: ErrorAlertPresentableViewController {
+    private func showErrorAlert(error: AlertableError) {
+        self.presentErrorAlert(error: error)
     }
 }
