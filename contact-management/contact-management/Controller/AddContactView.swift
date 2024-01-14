@@ -68,7 +68,10 @@ extension AddContactView {
     }
     
     @IBAction func didTappedCancel(_ sender: Any){
-        dismiss(animated: true)
+        let cancel: AlertActionHandler = { [weak self] _ in
+            self?.dismiss(animated: true)
+        }
+        present(Alert.stopEditContact(cancel).alertController, animated: true)
     }
     
     @IBAction func didTappedSave(_ sender: Any) {
