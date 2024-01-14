@@ -25,7 +25,9 @@ enum PhoneNumberFormatter {
             }
         }
     }
-    
+}
+
+extension PhoneNumberFormatter {
     func formatting(digits: String) -> String {
         switch self {
         case .threeOrTwelveDigits, .twoOrElevenDigits:

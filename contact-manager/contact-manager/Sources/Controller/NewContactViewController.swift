@@ -104,6 +104,7 @@ extension NewContactViewController {
             updateTableViewHandler()
         }
     }
+    
     private func isInputFormsValidate(name: String, age: String, phoneNumber: String) -> Bool {
         if !InputValidator.isValidName(name) {
             alertService.alertInvalidInput(alertMessage: .invalidName)
