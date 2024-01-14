@@ -7,5 +7,5 @@
 
 protocol ContactDelegate: AnyObject {
     func addNewContact(newContact: Contact)
-    func updatedContact(contactId id: Int, with selectedContact: Contact)
+    func updatedContact(contactId id: Int, with updateContact: Contact)
 }

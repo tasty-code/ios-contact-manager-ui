@@ -35,7 +35,8 @@ final class ContactManager {
         contactList.remove(at: index)
     }
     
-    func updatedContact(at index: Int, with updateContact: Contact) {
+    func updatedContact(contactId id: Int, with updateContact: Contact) {
+        guard let index = contactList.firstIndex(where: { $0.id == id}) else { return }
         guard index >= 0 && index < contactList.count else {
             return
         }
