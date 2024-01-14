@@ -40,11 +40,17 @@ final class AddContactCoordinator: Coordinator {
 
 protocol AddContactViewControllerDelegate: AnyObject {
     func endAddContact()
+    
+    func cancelAddContact()
 }
 
 extension AddContactCoordinator: AddContactViewControllerDelegate {
     func endAddContact() {
         self.navigationController.dismiss(animated: true)
         self.parentCoordinator?.didEndAddContact(self)
+    }
+    
+    func cancelAddContact() {
+        self.navigationController.dismiss(animated: true)
     }
 }

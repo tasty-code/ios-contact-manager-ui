@@ -26,7 +26,10 @@ extension ErrorAlertPresentableViewController where Self: UIViewController {
             message: error.alertConfig.body,
             preferredStyle: .alert
         )
-        let defaultAction = UIAlertAction(title: "확인", style: .default)
+        let defaultAction = UIAlertAction(
+            title: error.alertConfig.okActionTitle,
+            style: .default
+        )
         alertController.addAction(defaultAction)
         
         if let additionalAction {

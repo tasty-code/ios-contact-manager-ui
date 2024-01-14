@@ -46,6 +46,12 @@ final class AddContactViewController: UIViewController {
         return button
     }()
     
+    private lazy var cancelButton: UIBarButtonItem = {
+        let action = UIAction { [weak self] _ in self?.cancel() }
+        let button = UIBarButtonItem(systemItem: .cancel, primaryAction: action)
+        return button
+    }()
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -66,7 +72,7 @@ final class AddContactViewController: UIViewController {
         setupViews()
     }
     
-    func save() {
+    private func save() {
         let request = AddContact.Request(
             name: self.nameField.currentValue,
             age: self.ageField.currentValue,
@@ -75,8 +81,18 @@ final class AddContactViewController: UIViewController {
         self.addContactUseCase.saveNewContact(request: request)
     }
     
+    private func cancel() {
+        let request = AddContact.Request(
+            name: self.nameField.currentValue,
+            age: self.ageField.currentValue,
+            phoneNumber: self.phoneNumberField.currentValue
+        )
+        self.addContactUseCase.confirmCancel(request: request)
+    }
+    
     private func setupViews() {
         self.view.backgroundColor = .systemBackground
+        self.navigationItem.leftBarButtonItem = cancelButton
         self.navigationItem.rightBarButtonItem = saveButton
         
         self.view.addSubview(fieldStack)
@@ -93,6 +109,21 @@ extension AddContactViewController: AddContactPresentable {
         switch result {
         case .success:
             self.coordinator?.endAddContact()
+        case .failure(let error):
+            if let addContactError = error as? AddContactError,
+               addContactError == .someFieldIsFilled {
+                let cancelAction = UIAlertAction(title: "작성 취소", style: .default) { _ in
+                    self.coordinator?.endAddContact()
+                }
+                self.presentErrorAlert(error: addContactError, additionalAction: cancelAction)
+            }
+        }
+    }
+    
+    func presentCancelConfirmation(result: Result<AddContact.SuccessInfo, Error>) {
+        switch result {
+        case .success:
+            self.coordinator?.cancelAddContact()
         case .failure(let error):
             handleError(error)
         }
