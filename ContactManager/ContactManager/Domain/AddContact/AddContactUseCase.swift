@@ -15,7 +15,9 @@ struct AddContactUseCase {
     func saveNewContact(request: AddContact.Request) {
         do {
             #warning("구현 수정")
-            guard let age = Int(request.age) else { throw ContactValidateError.some }
+            // validation
+            // conversion
+            guard let age = Int(request.age) else { throw ContactValidateError.invalidName }
             let contact = Contact(name: request.name, phoneNumber: request.phoneNumber, age: age)
             try repository.addContact(contact)
         } catch {

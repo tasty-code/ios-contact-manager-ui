@@ -10,11 +10,22 @@ import UIKit
 final class AddContactViewController: UIViewController {
     private let addContactUseCase: AddContactUseCase
     
-    private let nameField = InputView(fieldName: "이름")
+    private let nameField = InputView(fieldName: "이름") { input in
+        guard input.contains(where: { $0 == " " }) == false else {
+            let result = input.components(separatedBy: " ").reduce("") { $0 + $1 }
+            return FormattingResult(formatted: result, validationError: NameValidationError.cannotContainBlank)
+        }
+        return FormattingResult(formatted: input, validationError: nil)
+    }
     
-    private let ageField = InputView(fieldName: "나이")
+    private let ageField = InputView(fieldName: "나이") { input in
+        return FormattingResult(formatted: "", validationError: AgeValidationError.cannotStartWithZero)
+    }
     
-    private let phoneNumberField = InputView(fieldName: "전화번호")
+    private let phoneNumberField = InputView(fieldName: "전화번호") { input in
+        let minimumLength = 9
+        return FormattingResult(formatted: "", validationError: PhoneNumberValidationError.minimumLengthError(minimumLength))
+    }
     
     private lazy var fieldStack: UIStackView = {
         let stack = UIStackView()
@@ -50,10 +61,13 @@ final class AddContactViewController: UIViewController {
     }
     
     func save() {
-        guard case let .success(name) = self.nameField.provideInput() else {
+        guard case let .success(name) = self.nameField.provideInput(),
+              case let .success(age) = self.ageField.provideInput(),
+              case let .success(phoneNumer) = self.phoneNumberField.provideInput()
+        else {
             return
         }
-        let request = AddContact.Request(name: name, age: "", phoneNumber: "")
+        let request = AddContact.Request(name: name, age: age, phoneNumber: phoneNumer)
         self.addContactUseCase.saveNewContact(request: request)
     }
     

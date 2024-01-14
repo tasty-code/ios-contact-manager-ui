@@ -8,11 +8,18 @@
 import UIKit
 
 final class InputView: UIView {
-    private let fieldName: String
+    private let formatter: InputFormatter
     
-    private let content: String = ""
-    
-    private let state: String = "지원하는 형식이 아닙니다."
+    private var state: ValidationError? {
+        didSet {
+            switch state {
+            case .some(let error):
+                self.inputStatelabel.text = error.noticeMessage
+            case .none:
+                self.inputStatelabel.text = " "
+            }
+        }
+    }
     
     private let fieldNamelabel: UILabel = {
         let label = UILabel()
@@ -68,17 +75,17 @@ final class InputView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(fieldName: String) {
-        self.fieldName = fieldName
+    init(fieldName: String, formatter: @escaping InputFormatter) {
+        self.formatter = formatter
         super.init(frame: .zero)
         textField.delegate = self
-        configure()
+        configure(fieldName: fieldName)
         setupViews()
     }
     
-    private func configure() {
-        self.fieldNamelabel.text = self.fieldName
-        self.inputStatelabel.text = self.state
+    private func configure(fieldName: String) {
+        self.fieldNamelabel.text = fieldName
+        self.inputStatelabel.text = "필수 필드입니다."
     }
     
     private func setupViews() {
@@ -101,11 +108,16 @@ extension InputView: UITextFieldDelegate {
         shouldChangeCharactersIn range: NSRange,
         replacementString string: String
     ) -> Bool {
-        return true
+        guard let oldText = textField.text else { return false }
+        guard string.isEmpty == false else { return true } // 지울 때
+        let newText = NSString(string: oldText).replacingCharacters(in: range, with: string)
+        let result = self.formatter(newText)
+        textField.text = result.formatted
+        self.state = result.validationError
+        return false
     }
 }
 
-#warning("구현 이동")
 protocol InputProvidable {
     func provideInput() -> Result<String, Error>
 }
@@ -113,15 +125,9 @@ protocol InputProvidable {
 extension InputView: InputProvidable {
     func provideInput() -> Result<String, Error> {
         guard let text = self.textField.text else {
-            return .failure(ContactValidateError.some)
+            return .failure(ContactValidateError.invalidName)
         }
-        
-        // validate
         
         return .success(text)
     }
-}
-
-enum ContactValidateError: Error {
-    case some
 }
