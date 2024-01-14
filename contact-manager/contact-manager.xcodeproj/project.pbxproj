@@ -167,8 +167,8 @@
 		2A63FFFE2B44F476001CC5B9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				2A1ED9FB2B50EF35005B151C /* Extension */,
 				2A63FFFA2B44F3AC001CC5B9 /* Application */,
+				2A1ED9FB2B50EF35005B151C /* Extension */,
 				2A63000A2B4698B7001CC5B9 /* Util */,
 				2A63001D2B4FB0F7001CC5B9 /* Service */,
 				2A63FFF92B44F392001CC5B9 /* Model */,
