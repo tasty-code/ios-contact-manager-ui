@@ -7,16 +7,14 @@
 
 import UIKit
 
-final class ContactListViewController: UIViewController {
-    
+final class ContactListViewController: UIViewController, UpdateNewContact {
+    private let contactFileManager = ContactFileManager()
     @IBOutlet weak var tableView: UITableView!
     
-    private let contactFileManager: ContactFileManager
-    
-    required init?(coder: NSCoder) {
-        self.contactFileManager = ContactFileManager()
-        super.init(coder: coder)
-    }
+    //    required init?(coder: NSCoder) {
+    //        self.contactFileManager = ContactFileManager()
+    //        super.init(coder: coder)
+    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +34,7 @@ final class ContactListViewController: UIViewController {
         guard let nextVC = storyboard?.instantiateViewController(identifier: "NewContactViewController") as? NewContactViewController else {
             return
         }
+        nextVC.delegate = self
         present(nextVC, animated: true)
     }
 }
@@ -60,5 +59,9 @@ extension ContactListViewController: UITableViewDataSource, UITableViewDelegate 
             success(true)
         }
         return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    func updateNewContact() {
+        tableView.reloadData()
     }
 }
