@@ -10,6 +10,8 @@ import UIKit
 final class AddContactViewController: UIViewController {
     private var addContactUseCase: AddContactUseCase
     
+    private weak var coordinator: AddContactViewControllerDelegate?
+    
     private let nameField = InputView(fieldName: "이름") { input in
         guard input.contains(where: { $0 == " " }) == false else {
             let result = input.components(separatedBy: " ").reduce("") { $0 + $1 }
@@ -49,8 +51,12 @@ final class AddContactViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(useCase: AddContactUseCase) {
+    init(
+        useCase: AddContactUseCase,
+        coordinator: AddContactViewControllerDelegate
+    ) {
         self.addContactUseCase = useCase
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
         self.addContactUseCase.presenter = self
     }
@@ -86,7 +92,7 @@ extension AddContactViewController: AddContactPresentable {
     func presentAddContact(result: Result<AddContact.SuccessInfo, Error>) {
         switch result {
         case .success:
-            print("화면 이동")
+            self.coordinator?.endAddContact()
         case .failure(let error):
             handleError(error)
         }

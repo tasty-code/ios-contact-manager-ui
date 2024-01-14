@@ -23,7 +23,7 @@ final class ContactList {
     }
     
     func addContact(_ newContact: Contact) {
-        self.contacts.append(newContact)
+        self.contacts.insert(newContact, at: 0)
     }
     
     func deleteContact(at index: Index) throws {

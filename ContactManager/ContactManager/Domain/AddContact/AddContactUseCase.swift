@@ -17,10 +17,9 @@ struct AddContactUseCase {
     func saveNewContact(request: AddContact.Request) {
         do {
             #warning("validation + conversion 구현")
-            guard let age = Int(request.age) else { 
-                throw AgeValidationError.cannotStartWithZero
-            }
-            
+//            guard let age = Int(request.age) else { 
+//                throw AgeValidationError.cannotStartWithZero
+//            }
 //            let contact = Contact(
 //                name: request.name,
 //                phoneNumber: request.phoneNumber,

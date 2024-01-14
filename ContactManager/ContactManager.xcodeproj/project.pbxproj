@@ -39,6 +39,10 @@
 		F4B1787C2B539320005B8E78 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1787B2B539320005B8E78 /* Formatter.swift */; };
 		F4B1787E2B53A57B005B8E78 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1787D2B53A57B005B8E78 /* ValidationError.swift */; };
 		F4B178802B53A6A3005B8E78 /* ContactValidateError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1787F2B53A6A3005B8E78 /* ContactValidateError.swift */; };
+		F4B178822B53BD22005B8E78 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B178812B53BD22005B8E78 /* Coordinator.swift */; };
+		F4B178852B53BD54005B8E78 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B178842B53BD54005B8E78 /* AppCoordinator.swift */; };
+		F4B178872B53BEA4005B8E78 /* ListContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B178862B53BEA4005B8E78 /* ListContactCoordinator.swift */; };
+		F4B178892B53C095005B8E78 /* AddContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B178882B53C095005B8E78 /* AddContactCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +80,10 @@
 		F4B1787B2B539320005B8E78 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		F4B1787D2B53A57B005B8E78 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		F4B1787F2B53A6A3005B8E78 /* ContactValidateError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactValidateError.swift; sourceTree = "<group>"; };
+		F4B178812B53BD22005B8E78 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		F4B178842B53BD54005B8E78 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		F4B178862B53BEA4005B8E78 /* ListContactCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContactCoordinator.swift; sourceTree = "<group>"; };
+		F4B178882B53C095005B8E78 /* AddContactCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +215,7 @@
 				F456EA922B497FCC001BE636 /* Domain */,
 				F456EA912B497F84001BE636 /* Data */,
 				F456EAA22B4AEF18001BE636 /* Presentation */,
+				F4B178832B53BD27005B8E78 /* Routing */,
 			);
 			path = ContactManager;
 			sourceTree = "<group>";
@@ -271,6 +280,17 @@
 				F4B178732B5390FB005B8E78 /* AddContactUseCase.swift */,
 			);
 			path = AddContact;
+			sourceTree = "<group>";
+		};
+		F4B178832B53BD27005B8E78 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				F4B178812B53BD22005B8E78 /* Coordinator.swift */,
+				F4B178842B53BD54005B8E78 /* AppCoordinator.swift */,
+				F4B178862B53BEA4005B8E78 /* ListContactCoordinator.swift */,
+				F4B178882B53C095005B8E78 /* AddContactCoordinator.swift */,
+			);
+			path = Routing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,7 +366,10 @@
 			files = (
 				F485652D2B4D6A6800109448 /* ErrorAlertConfig.swift in Sources */,
 				F456EAA72B4B92F7001BE636 /* BundleResourceError.swift in Sources */,
+				F4B178822B53BD22005B8E78 /* Coordinator.swift in Sources */,
+				F4B178872B53BEA4005B8E78 /* ListContactCoordinator.swift in Sources */,
 				F456EA942B4AA235001BE636 /* ListContactViewControllerFactory.swift in Sources */,
+				F4B178852B53BD54005B8E78 /* AppCoordinator.swift in Sources */,
 				F4B178802B53A6A3005B8E78 /* ContactValidateError.swift in Sources */,
 				F4B1787C2B539320005B8E78 /* Formatter.swift in Sources */,
 				F485652B2B4D693700109448 /* ErrorAlertPresentableViewController.swift in Sources */,
@@ -368,6 +391,7 @@
 				F48564F32B4D280E00109448 /* UITableView+ReusableCell.swift in Sources */,
 				F456EAA92B4B930B001BE636 /* FileExtension.swift in Sources */,
 				F456EA902B497E16001BE636 /* ContactRepository.swift in Sources */,
+				F4B178892B53C095005B8E78 /* AddContactCoordinator.swift in Sources */,
 				F456EA8A2B495C14001BE636 /* ContactListDataSource.swift in Sources */,
 				F4B178702B529351005B8E78 /* AddContactViewController.swift in Sources */,
 				F456EA762B4951E9001BE636 /* ContactList.swift in Sources */,

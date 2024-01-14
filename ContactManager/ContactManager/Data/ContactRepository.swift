@@ -30,10 +30,14 @@ struct ContactRepositoryImpl: ContactRepository {
     
     func requestContacts() throws -> [Contact] {
         do {
-            let data = try getContactsFromBundle()
-            let contacts = try self.jsonDecoder.decode([Contact].self, from: data)
-            self.contactList.addContacts(contacts)
-            return self.contactList.getContacts()
+            var result = self.contactList.getContacts()
+            while result.isEmpty {
+                let data = try getContactsFromBundle()
+                var contacts = try self.jsonDecoder.decode([Contact].self, from: data)
+                self.contactList.addContacts(contacts)
+                result = self.contactList.getContacts()
+            }
+            return result
         } catch BundleResourceError.notFound {
             throw ContactRepositoryError.notFoundAtBundle
         } catch {

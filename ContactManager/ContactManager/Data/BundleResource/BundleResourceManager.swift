@@ -14,7 +14,7 @@ protocol FileProvidable {
 struct BundleResourceManager {
     private let targetBundle: Bundle
     
-    init(target: Bundle) {
+    init(target: Bundle = .main) {
         self.targetBundle = target
     }
 }
