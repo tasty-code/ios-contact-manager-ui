@@ -9,6 +9,8 @@ import Foundation
 
 protocol ContactRepository {
     func requestContacts() throws -> [Contact]
+    
+    func addContact(_ newContact: Contact) throws
 }
 
 struct ContactRepositoryImpl: ContactRepository {
@@ -37,6 +39,10 @@ struct ContactRepositoryImpl: ContactRepository {
         } catch {
             throw ContactRepositoryError.cannotDecode
         }
+    }
+    
+    func addContact(_ newContact: Contact) throws {
+        self.contactList.addContact(newContact)
     }
 }
 
