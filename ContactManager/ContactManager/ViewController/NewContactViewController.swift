@@ -8,10 +8,21 @@
 import UIKit
 
 class NewContactViewController: UIViewController, CustomAlert {
-
+    let contactFileManager: ContactFileManager
+    weak var delegate: UpdateNewContact?
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
+    
+    init?(coder: NSCoder, contactFileManager: ContactFileManager) {
+        self.contactFileManager = contactFileManager
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +45,14 @@ class NewContactViewController: UIViewController, CustomAlert {
     }
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
+        let name = nameTextField.text!
+        let ageString = ageTextField.text
+        let age = Int(ageString!)!
+        let phone = phoneNumberTextField.text!
+        contactFileManager.addContact(contact: Contact(name: name, age: age, phoneNumber: phone))
         let cancel = UIAlertAction(title: "아니오", style: .default)
         let ok = UIAlertAction(title: "예", style: .default) { _ in
+            self.delegate?.updateNewContact()
             self.dismiss(animated: true)
         }
         showAlert(message: "입력한 정보가 맞는지 확인하세요.", actions: [cancel, ok])
