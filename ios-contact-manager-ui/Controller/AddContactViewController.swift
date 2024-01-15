@@ -29,12 +29,14 @@ class AddContactViewController: UIViewController {
     
     func configureTextField() {
         nameTextField.keyboardType = .emailAddress
+        nameTextField.delegate = self
         ageTextField.keyboardType = .numberPad
-        phoneNumberTextField.keyboardType = .numbersAndPunctuation
+        ageTextField.delegate = self
+        phoneNumberTextField.keyboardType = .phonePad
+        phoneNumberTextField.delegate = self
     }
     
     func removeEmptySpaceCharacter(_ textField: UITextField) -> String? {
-
         return textField.text?.filter { !$0.isWhitespace }
     }
     
@@ -114,5 +116,19 @@ class AddContactViewController: UIViewController {
     
     func presentPhoneNumberAlert() {
         presentAlert(title: "\(TextFieldError.phoneNumberTextFieldError.ErrorMessage)", message: "", confirmTitle: "확인")
+    }
+}
+
+extension AddContactViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == phoneNumberTextField {
+            guard let currnetText = textField.text as NSString? else { return false }
+            let newString = currnetText.replacingCharacters(in: range, with: string)
+            let formattedPhoneNumber = newString.formatPhoneNumber()
+            textField.text = formattedPhoneNumber
+            return false
+        }
+        return true
     }
 }
