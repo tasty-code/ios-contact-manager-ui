@@ -12,7 +12,7 @@ final class NewContactViewController: UIViewController {
     // MARK: @IBOutlet
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
-    @IBOutlet weak var contactTextField: UITextField!
+    @IBOutlet weak var contactNumberTextField: UITextField!
     
     // MARK: Life Cycle
     override func viewDidLoad() {
