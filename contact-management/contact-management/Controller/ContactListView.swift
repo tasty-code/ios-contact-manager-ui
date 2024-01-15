@@ -27,6 +27,7 @@ final class ContactListView: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
+    
     @IBAction func addContact(_ sender: Any) {
         let secondViewController = storyboard?.instantiateViewController(identifier: "AddContactView") { coder in
             return AddContactView.init(coder: coder, contactListStorage: self.contactListStorage!)

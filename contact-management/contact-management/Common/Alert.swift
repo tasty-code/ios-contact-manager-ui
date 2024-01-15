@@ -31,6 +31,7 @@ enum Alert {
             return "입력된 연락처 정보가 잘못되었습니다"
         }
     }
+    
     var body: String {
         ""
     }
