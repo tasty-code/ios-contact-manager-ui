@@ -33,11 +33,10 @@ final class RegisterViewController: UIViewController {
     }
     
     @IBAction private func validateAgeTextField(_ sender: UITextField) {
+        let minCount = 1
+        let maxCount = 3
         
-        let minAge = 1
-        let maxAge = 99
-        
-        if validateCountCondition(input: sender.text ?? "", condition: (minAge, maxAge)) {
+        if validateCountCondition(input: sender.text ?? "", condition: (minCount, maxCount)) {
             changeTextBorderColor(textField: ageTextField, color: UIColor.systemBlue.cgColor)
             isRightAgeInput = true
         } else {
@@ -73,8 +72,6 @@ final class RegisterViewController: UIViewController {
     }
     
     @IBAction private func saveButtonTapped(_ sender: UIBarButtonItem) {
-//        let validation = validateTextField()
-//        guard validation == true else { return }
         validateTextField()
         print("연락처 저장됨")
         phoneBook?.categorizedContactInfo.append(User(
@@ -127,13 +124,9 @@ extension RegisterViewController {
         let phoneNumberTest = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex)
         return phoneNumberTest.evaluate(with: number)
     }
-    
-
 }
 
 private extension RegisterViewController {
-    
-    
     
     func validateCountCondition(input: String, condition: (Int,Int)) -> Bool {
         guard input.count >= condition.0 else { print("2글자 이상의 이름을 입력해 주세요."); return false }
