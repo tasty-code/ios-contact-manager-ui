@@ -11,7 +11,7 @@ final class AddContactViewController: UIViewController {
     
     //MARK: - Property
     private var contactManager: ContactManager
-    private let addContactView = PersonalContactDetailView()
+    private let addContactView = ContactDetailView()
     weak var delegate: ContactDelegate?
     
     
@@ -42,7 +42,7 @@ final class AddContactViewController: UIViewController {
     }
     
     @objc private func cancelTapped() {
-        showCancelAlert()
+        presentCancelAlert()
     }
     
     @objc private func saveTapped() {
@@ -55,11 +55,11 @@ final class AddContactViewController: UIViewController {
               isValidContactNumber(contactNumber)
         else {
             if let name = addContactView.accessNameTextField().text, !isValidName(name) {
-                showAlert(message: "입력한 이름 정보가 잘못되었습니다.")
+                presentSaveFailureAlert(message: "입력한 이름 정보가 잘못되었습니다.")
             } else if !isValidAge(Int(addContactView.accessAgeTextField().text ?? "")) {
-                showAlert(message: "입력한 나이 정보가 잘못되었습니다.")
+                presentSaveFailureAlert(message: "입력한 나이 정보가 잘못되었습니다.")
             } else if let contact = addContactView.accessContactNumberTextField().text, !isValidContactNumber(contact) {
-                showAlert(message: "입력한 연락처 정보가 잘못되었습니다.")
+                presentSaveFailureAlert(message: "입력한 연락처 정보가 잘못되었습니다.")
             }
             return
         }
@@ -90,7 +90,7 @@ final class AddContactViewController: UIViewController {
         return true
     }
 
-    private func showAlert(message: String) {
+    private func presentSaveFailureAlert(message: String) {
         let alert = UIAlertController(title: "알림",
                                       message: message,
                                       preferredStyle: .alert)
@@ -101,7 +101,7 @@ final class AddContactViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func showCancelAlert() {
+    private func presentCancelAlert() {
         let alert = UIAlertController(title: "정말로 취소하시겠습니까?",
                                       message: nil,
                                       preferredStyle: .alert)

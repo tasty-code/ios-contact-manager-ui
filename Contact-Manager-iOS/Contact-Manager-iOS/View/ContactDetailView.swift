@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PersonalContactDetailView: UIView {
+final class ContactDetailView: UIView {
 
     // MARK: - Properties
     var contact: Contact? {
@@ -26,7 +26,7 @@ final class PersonalContactDetailView: UIView {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "이름"
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = .black
         label.textAlignment = NSTextAlignment.center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +36,7 @@ final class PersonalContactDetailView: UIView {
     private let ageLabel: UILabel = {
         let label = UILabel()
         label.text = "나이"
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = .black
         label.textAlignment = NSTextAlignment.center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -46,7 +46,7 @@ final class PersonalContactDetailView: UIView {
     private let contactNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "연락처"
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = .black
         label.textAlignment = NSTextAlignment.center
         label.translatesAutoresizingMaskIntoConstraints = false
