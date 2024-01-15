@@ -6,7 +6,7 @@ enum PhoneNumberFormatter {
     
     private static let predefinedAreaCodes = ["010", "031", "032", "033", "041", "042", "043", "051", "052", "053", "054", "055", "061", "062", "063", "064"]
     
-    init?(areaCode: String) {
+    private init?(areaCode: String) {
         if PhoneNumberFormatter.predefinedAreaCodes.contains(areaCode) {
             self = .threeAreaCodeNumber
         } else {
