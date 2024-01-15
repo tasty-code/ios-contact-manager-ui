@@ -24,12 +24,12 @@ extension UIViewController {
     /// 확인 버튼 Alert
     func presentAlert(title: String,
                       message: String? = nil,
-                      okButtonTitle: String,
+                      okButtonTitle: String? = nil,
                       okAction: ((UIAlertAction) -> ())? = nil,
                       completion: (() -> ())? = nil) {
         let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: okButtonTitle, style: .destructive, handler: okAction)
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: okAction)
         alertViewController.addAction(okAction)
         
         self.present(alertViewController, animated: true, completion: completion)
