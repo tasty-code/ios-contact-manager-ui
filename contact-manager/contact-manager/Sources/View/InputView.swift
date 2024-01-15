@@ -6,6 +6,14 @@ struct InputViewConfiguration {
 }
 
 final class InputView: UIView {
+    var textFieldValue: String {
+        get {
+            textField.text ?? ""
+        }
+        set {
+            textField.text = newValue
+        }
+    }
     
     private let label: UILabel = {
         let label = LabelFactory.build(text: "", font: .systemFont(ofSize: 14.0))
@@ -13,7 +21,7 @@ final class InputView: UIView {
         return label
     }()
     
-    let textField: UITextField = {
+    private let textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         return textField
@@ -49,9 +57,5 @@ extension InputView {
             hStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             hStack.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-    }
-    
-    func textFieldValue() -> String {
-        textField.text ?? ""
     }
 }

@@ -76,11 +76,11 @@ extension NewContactViewController {
     }
     
     @objc private func handlePhoneNumberEditingChanged() {
-        let phoneNumberText = phoneNumberInputView.textField.text ?? ""
+        let phoneNumberText = phoneNumberInputView.textFieldValue
         guard let formattedPhoneNumber = PhoneNumberFormatter.format(unformatted: phoneNumberText) else {
             return
         }
-        phoneNumberInputView.textField.text = formattedPhoneNumber
+        phoneNumberInputView.textFieldValue = formattedPhoneNumber
     }
     
     @objc private func cancelButtonTapped() {
@@ -88,9 +88,9 @@ extension NewContactViewController {
     }
     
     @objc private func saveButtonTapped() {
-        let name = nameInputView.textFieldValue().trimmed()
-        let age = ageInputView.textFieldValue()
-        let phoneNumber = phoneNumberInputView.textFieldValue()
+        let name = nameInputView.textFieldValue.trimmed()
+        let age = ageInputView.textFieldValue
+        let phoneNumber = phoneNumberInputView.textFieldValue
         
         if isInputFormsValidate(name: name, age: age, phoneNumber: phoneNumber) {
             let contact = Contact(phoneNumber: phoneNumber, name: name, age: age)
