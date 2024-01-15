@@ -13,9 +13,9 @@ final class RegisterViewController: UIViewController {
     
     var phoneBook: PhoneBook?
     
-    var wrongAgeInput = false
-    var wrongNameInput = false
-    var wrongPhoneNumInput = false
+    var isRightAgeInput = false
+    var isRightNameInput = false
+    var isRightPhoneNumInput = false
         
     deinit { print("RegisterViewController has been deinit!!") }
     
@@ -23,12 +23,12 @@ final class RegisterViewController: UIViewController {
         let minCount = 2
         let maxCount = 12
         
-        if validateCountCondition(input: sender.text ?? "", condition: (minCount, maxCount)) && isValidName(sender.text ?? "") {
+        if validateCountCondition(input: sender.text ?? "", condition: (minCount, maxCount)){
             changeTextBorderColor(textField: nameTextField, color: UIColor.systemBlue.cgColor)
-            wrongNameInput = false
+            isRightNameInput = true
         } else {
             changeTextBorderColor(textField: nameTextField, color: UIColor.systemPink.cgColor)
-            wrongNameInput = true
+            isRightNameInput = false
         }
     }
     
@@ -39,10 +39,10 @@ final class RegisterViewController: UIViewController {
         
         if validateCountCondition(input: sender.text ?? "", condition: (minAge, maxAge)) {
             changeTextBorderColor(textField: ageTextField, color: UIColor.systemBlue.cgColor)
-            wrongAgeInput = true
+            isRightAgeInput = true
         } else {
             changeTextBorderColor(textField: ageTextField, color: UIColor.systemPink.cgColor)
-            wrongAgeInput = false
+            isRightAgeInput = false
         }
     }
     
@@ -60,21 +60,22 @@ final class RegisterViewController: UIViewController {
         case 4...7:
             phoneNumberTextField.text = convertDigit.prefix(3) + "-" + convertDigit.suffix(convertDigit.count-3)
             
-            wrongPhoneNumInput = true
+            isRightPhoneNumInput = true
         case 8...11:
             let startIndex = convertDigit.index(convertDigit.startIndex, offsetBy: 3)
             let endingIndex = convertDigit.index(convertDigit.startIndex, offsetBy: count-5)
             let middleNumber = convertDigit[startIndex...endingIndex]
             phoneNumberTextField.text = convertDigit.prefix(3) + "-" + middleNumber + "-" + convertDigit.suffix(4)
-            wrongPhoneNumInput = false
+            isRightPhoneNumInput = true
         default:
-            wrongPhoneNumInput = true
+            isRightPhoneNumInput = false
         }
     }
     
     @IBAction private func saveButtonTapped(_ sender: UIBarButtonItem) {
-        let validation = validateTextField()
-        guard validation == true else { return }
+//        let validation = validateTextField()
+//        guard validation == true else { return }
+        validateTextField()
         print("연락처 저장됨")
         phoneBook?.categorizedContactInfo.append(User(
                                                 userID: UUID(),
@@ -87,22 +88,22 @@ final class RegisterViewController: UIViewController {
     }
     
     
-    private func validateTextField() -> Bool {
-        if !wrongAgeInput {
+    private func validateTextField() {
+        if !isRightAgeInput {
             presentAlert(title: "입력에러", message: "나이 입력창을 확인해주세요", confirmTitle: "확인")
-            return false
+            return
         }
         
-        if !wrongNameInput {
+        if !isRightNameInput {
             presentAlert(title: "입력에러", message: "이름 입력창을 확인해주세요", confirmTitle: "확인")
-            return false
+            return
         }
         
-        if !wrongPhoneNumInput {
+        if !isRightPhoneNumInput {
             presentAlert(title: "입력에러", message: "번호 입력창을 확인해주세요", confirmTitle: "확인")
-            return false
+            return
         }
-        return true
+        return
     }
     
     
@@ -127,10 +128,7 @@ extension RegisterViewController {
         return phoneNumberTest.evaluate(with: number)
     }
     
-    func isValidName(_ name: String) -> Bool {
-        let koreanNameRegex = "^[가-힣ㄱ-ㅎㅏ-ㅣ]"
-        return true
-    }
+
 }
 
 private extension RegisterViewController {
