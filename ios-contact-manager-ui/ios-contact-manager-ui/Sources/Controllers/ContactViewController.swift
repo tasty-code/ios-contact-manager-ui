@@ -24,6 +24,7 @@ final class ContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         layout()
         parse()
         configure()
@@ -34,10 +35,10 @@ final class ContactViewController: UIViewController {
     private func layout() {
         view.addSubview(tableView)
         
-        NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-                                     tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-                                     tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-                                     tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)])
+        NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+                                     tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                                     tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+                                     tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)])
     }
     
     private func configure() {
