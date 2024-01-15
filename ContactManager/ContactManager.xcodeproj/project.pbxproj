@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1588512B2B4D011600B8ED22 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588512A2B4D011600B8ED22 /* Error.swift */; };
 		15A568542B464B1600A363DA /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A568532B464B1600A363DA /* ContactManager.swift */; };
+		15B092C62B54CABF00377F93 /* ContactCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B092C52B54CABF00377F93 /* ContactCustomCell.swift */; };
 		F3E325422B4CEBB3004AA7E0 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E325412B4CEBB3004AA7E0 /* Alert.swift */; };
 		F3E9AF6B2B4643C50003FDBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E9AF6A2B4643C50003FDBE /* AppDelegate.swift */; };
 		F3E9AF6D2B4643C50003FDBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E9AF6C2B4643C50003FDBE /* SceneDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		1588512A2B4D011600B8ED22 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		15A568532B464B1600A363DA /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
+		15B092C52B54CABF00377F93 /* ContactCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCustomCell.swift; sourceTree = "<group>"; };
 		F3E325412B4CEBB3004AA7E0 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F3E9AF672B4643C50003FDBE /* ContactManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E9AF6A2B4643C50003FDBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				F3E9AF6E2B4643C50003FDBE /* ViewController.swift */,
 				F3E325412B4CEBB3004AA7E0 /* Alert.swift */,
+				15B092C52B54CABF00377F93 /* ContactCustomCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3E325422B4CEBB3004AA7E0 /* Alert.swift in Sources */,
+				15B092C62B54CABF00377F93 /* ContactCustomCell.swift in Sources */,
 				15A568542B464B1600A363DA /* ContactManager.swift in Sources */,
 				F3E9AF7F2B46459E0003FDBE /* Contact.swift in Sources */,
 				F3E9AF6F2B4643C50003FDBE /* ViewController.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private let contactManager = ContactMananger()
-    private let cellIdentifier = "contactCell"
+    private let cellIdentifier = "ContactCustomCell"
 
     @IBOutlet weak var contactTableView: UITableView!
     
@@ -32,7 +32,9 @@ class ViewController: UIViewController {
             let dummyData = try decoder.decode([Contact].self, from: dataAssets.data)
             contactManager.initializeContact(contactData: dummyData)
         } catch {
-            print(error.localizedDescription)
+            DispatchQueue.main.async {
+                self.showAlert(title: "알림", message: "데이터불러오기실패")
+            }
         }
     }
 }
@@ -44,17 +46,19 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        guard let customCell: ContactCustomCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ContactCustomCell else { precondition(false, "셀 가져오기 실패")}
+        
         let contact = contactManager.fetchContact(index: indexPath.row)
         
         switch contact {
         case .success(let data):
-            cell.textLabel?.text = data.fetchedNameAndAge
-            cell.detailTextLabel?.text = data.fetchedPhoneNumber
+            customCell.nameLabel.text = data.fetchedName
+            customCell.ageLabel.text = data.fetchedAge
+            customCell.phoneNumberLabel.text = data.fetchedPhoneNumber
         case .failure(let error):
             showAlert(title: "알림", message: error.errorMessage)
         }
         
-        return cell
+        return customCell
     }
 }
