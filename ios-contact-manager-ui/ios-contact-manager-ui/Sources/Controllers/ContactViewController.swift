@@ -63,19 +63,16 @@ final class ContactViewController: UIViewController {
         }
     }
     
+    private func registerCell() {
+        tableView.register(ContactDetailCell.self, forCellReuseIdentifier: ContactDetailCell.identifier)
+    }
+    
     @objc func plusButtonTapped() {
         let detailVC = ContactDetailViewController()
-        detailVC.modalPresentationStyle = UIModalPresentationStyle.automatic
         
         detailVC.delegate = self
         
         self.present(detailVC, animated: true)
-    }
-}
-
-extension ContactViewController {
-    private func registerCell() {
-        tableView.register(ContactDetailCell.self, forCellReuseIdentifier: ContactDetailCell.identifier)
     }
 }
 
