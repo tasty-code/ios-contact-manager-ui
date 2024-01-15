@@ -98,7 +98,7 @@ extension ContactViewController: UITableViewDelegate {
 
 extension ContactViewController: ContactDetailDelegate {
     func add(contact: Contact) {
-        contactManger.add(contact: contact)
+        contactManger.add(contact)
         tableView.reloadData()
     }
 }

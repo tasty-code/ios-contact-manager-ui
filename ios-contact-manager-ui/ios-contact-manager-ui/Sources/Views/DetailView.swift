@@ -123,6 +123,7 @@ final class DetailView: UIView {
         backgroundColor = .white
         setupKeyboardType()
         setupStackView()
+        phoneNumberTextField.addTarget(self, action: #selector(edit), for: .editingChanged)
     }
     
     required init?(coder: NSCoder) {
@@ -159,5 +160,14 @@ final class DetailView: UIView {
             stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
         ])
     }
+}
 
+extension DetailView {
+    @objc func edit() {
+        guard let text = phoneNumberTextField.text?.replacingOccurrences(of: "-", with: "") else {
+            return
+        }
+
+        phoneNumberTextField.text = text.formmater
+    }
 }

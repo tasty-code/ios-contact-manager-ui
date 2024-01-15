@@ -31,7 +31,6 @@ final class ContactDetailViewController: UIViewController {
         super.viewDidLoad()
         setupnvBar()
         detailView.contact = contact
-        detailView.phoneNumberTextField.addTarget(self, action: #selector(edit), for: .editingChanged)
     }
 
     private func setupnvBar() {
@@ -40,11 +39,11 @@ final class ContactDetailViewController: UIViewController {
         self.view.addSubview(navigationBar)
         let safeArea = self.view.safeAreaLayoutGuide
         
-        navigationBar.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
-        navigationBar.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive = true
-        navigationBar.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor).isActive = true
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
+        NSLayoutConstraint.activate([
+            navigationBar.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            navigationBar.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            navigationBar.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
+        ])
         
         let leftButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
         let rtButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(setupButtonAction))
@@ -72,16 +71,6 @@ final class ContactDetailViewController: UIViewController {
             let alert = showErrorAlert(title: nil, error.localizedDescription, actions: [UIAlertAction(title: "확인", style: .default)])
             present(alert, animated: true)
         }
-    }
-}
-
-extension ContactDetailViewController {
-    @objc func edit() {
-        guard let text = detailView.phoneNumberTextField.text?.replacingOccurrences(of: "-", with: "") else {
-            return
-        }
-
-        detailView.phoneNumberTextField.text = text.formmater
     }
 }
 

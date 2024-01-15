@@ -10,7 +10,7 @@ import UIKit
 final class ContactManager {
     var contacts: [Contact] = []
     
-    func add(contact: Contact) {
+    func add(_ contact: Contact) {
         contacts.append(contact)
     }
     
