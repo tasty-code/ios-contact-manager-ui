@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol SendContactData {
+    func addNewContact(name: String, age: Int, phoneNumber: String)
+}
+
 class AddedContactViewController: UIViewController {
+    
+    var delegate: SendContactData?
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
@@ -18,6 +24,10 @@ class AddedContactViewController: UIViewController {
     }
     
     @IBAction func touchUpSaveButton(_ sender: UIButton) {
+        guard let name = nameTextField.text, let age = ageTextField.text, let phoneNumber = phoneNumberTextField.text else { return }
+        guard let age = Int(age) else { return }
+        delegate?.addNewContact(name: name, age: age, phoneNumber: phoneNumber)
+        self.dismiss(animated: true)
     }
     
     @IBAction func touchUpCancelButton(_ sender: UIButton) {

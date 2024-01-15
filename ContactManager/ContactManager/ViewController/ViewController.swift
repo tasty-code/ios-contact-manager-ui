@@ -39,7 +39,11 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func touchUpAddButton(_ sender: UIBarButtonItem) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let addedModalView = segue.destination as? AddedContactViewController else {
+           return precondition(false, "뷰 생성 실패")
+        }
+        addedModalView.delegate = self
     }
 }
 
@@ -64,5 +68,13 @@ extension ViewController: UITableViewDataSource {
         }
         
         return customCell
+    }
+}
+
+extension ViewController: SendContactData {
+    func addNewContact(name: String, age: Int, phoneNumber: String) {
+        contactManager.addContact(newName: name, newAge: age, newPhoneNumber: phoneNumber)
+        let indexPath = IndexPath(row: contactManager.contactCount - 1, section: 0)
+        contactTableView.insertRows(at: [indexPath], with: .automatic)
     }
 }
