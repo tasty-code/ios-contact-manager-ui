@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ContactsAdditionModalViewController: UIViewController, UITextFieldDelegate {
+final class ContactsAdditionModalViewController: UIViewController {
     weak var delegate: ContactsManageable?
     private var regexByTextField: Dictionary<UITextField, String>
     private var invalidationByTextField: Dictionary<UITextField, InvalidationInput>
@@ -38,7 +38,7 @@ final class ContactsAdditionModalViewController: UIViewController, UITextFieldDe
     }
 }
 
-extension ContactsAdditionModalViewController {
+extension ContactsAdditionModalViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard var text = textField.text else {
             return false
@@ -46,21 +46,28 @@ extension ContactsAdditionModalViewController {
         var rangeLocation = range.location
         var isNumberStartedWithZero: Bool = false
         
-        if text.starts(with: "0") {
+        var isSeoulNumber: Bool = false
+        if text.count > 1 {
+            isSeoulNumber = text.starts(with: "0") && text[text.index(after: text.startIndex)] == "2"
+        }
+        
+        if text.starts(with: "0") && !isSeoulNumber {
             text.removeFirst()
             rangeLocation -= 1
             isNumberStartedWithZero = true
         }
-        
+        print("text:",text)
+        print("string:",string)
         text = string == "" ? deleteKeyTapped(text: text, rangeLocation: rangeLocation) : numberKeyTapped(text: text, rangeLocation: rangeLocation)
         text = isNumberStartedWithZero ? "0" + text : text
+
         textField.text = text
         return true
     }
     
     private func numberKeyTapped(text: String, rangeLocation: Int) -> String {
         var resultText = text
-
+        
         switch rangeLocation {
         case 2, 6:
             resultText += "-"
