@@ -60,9 +60,7 @@ class AddContactViewController: UIViewController {
         guard let age = removeEmptySpaceCharacter(ageTextField), !age.isEmpty else { return presentAgeAlert() }
         guard let phoneNumber = removeEmptySpaceCharacter(phoneNumberTextField), !phoneNumber.isEmpty else { return presentPhoneNumberAlert() }
             
-        if !checkAgeTextField(age: age) {
-            return presentAgeAlert()
-        }
+        checkAgeTextField(age: age)
         
         if !checkPhoneNumberTextField(for: phoneNumber) {
             return presentPhoneNumberAlert()
@@ -101,12 +99,8 @@ class AddContactViewController: UIViewController {
         return false
     }
     
-    func checkAgeTextField(age: String) -> Bool {
-        if let ageNumber = Int(age) {
-            return ageNumber > 0 && ageNumber <= 999
-        }
-        
-        return false
+    func checkAgeTextField(age: String) {
+        guard let ageNumber = Int(age), 0 < ageNumber, ageNumber <= 999 else { return presentAgeAlert() }
     }
     
     //MARK: - Alert 구현
