@@ -33,7 +33,7 @@ struct ContactRepositoryImpl: ContactRepository {
             var result = self.contactList.getContacts()
             while result.isEmpty {
                 let data = try getContactsFromBundle()
-                var contacts = try self.jsonDecoder.decode([Contact].self, from: data)
+                let contacts = try self.jsonDecoder.decode([Contact].self, from: data)
                 self.contactList.addContacts(contacts)
                 result = self.contactList.getContacts()
             }
@@ -56,4 +56,3 @@ extension ContactRepositoryImpl {
         return try fileProvider.getData(from: fileName, extension: FileExtension.json)
     }
 }
-

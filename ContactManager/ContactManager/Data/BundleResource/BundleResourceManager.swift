@@ -21,8 +21,7 @@ struct BundleResourceManager {
 
 extension BundleResourceManager: FileProvidable {
     func getData(from fileName: String, extension fileExtension: FileExtension) throws -> Data {
-        let target = Bundle.main
-        guard let url = target.url(
+        guard let url = targetBundle.url(
             forResource: fileName,
             withExtension: fileExtension.rawValue
         ) else {

@@ -12,14 +12,14 @@ typealias AlertActionHandler = ((UIAlertAction) -> Void)
 protocol ErrorAlertPresentableViewController {
     func presentErrorAlert(
         error: AlertableError,
-        additionalAction: UIAlertAction?
+        additionalAction: UIAlertAction...
     )
 }
 
 extension ErrorAlertPresentableViewController where Self: UIViewController {
     func presentErrorAlert(
         error: AlertableError,
-        additionalAction: UIAlertAction? = nil
+        additionalAction: UIAlertAction...
     ) {
         let alertController = UIAlertController(
             title: error.alertConfig.title,
@@ -32,8 +32,8 @@ extension ErrorAlertPresentableViewController where Self: UIViewController {
         )
         alertController.addAction(defaultAction)
         
-        if let additionalAction {
-            alertController.addAction(additionalAction)
+        for action in additionalAction {
+            alertController.addAction(action)
         }
         
         DispatchQueue.main.async { [weak self] in
