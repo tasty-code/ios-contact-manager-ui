@@ -15,9 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windwScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windwScene)
         
-        let neviVC = UINavigationController(rootViewController: ContactViewController())
+        let naviVC = UINavigationController(rootViewController: ContactViewController())
         
-        window?.rootViewController = neviVC
+        window?.rootViewController = naviVC
         window?.makeKeyAndVisible()
     }
     

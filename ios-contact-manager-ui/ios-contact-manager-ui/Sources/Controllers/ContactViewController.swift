@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ContactDelegate: AnyObject {
+protocol ContactDetailDelegate: AnyObject {
     func add(contact: Contact)
 }
 
@@ -111,7 +111,7 @@ extension ContactViewController: UITableViewDelegate {
 
 // MARK: - ContactDelegate
 
-extension ContactViewController: ContactDelegate {
+extension ContactViewController: ContactDetailDelegate {
     func add(contact: Contact) {
         contactManger.add(contact: contact)
         tableView.reloadData()

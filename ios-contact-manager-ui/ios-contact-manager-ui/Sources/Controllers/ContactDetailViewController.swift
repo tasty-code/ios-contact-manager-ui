@@ -11,7 +11,7 @@ final class ContactDetailViewController: UIViewController {
 
     private let detailView = DetailView()
     var contact: Contact?
-    weak var delegate: ContactDelegate?
+    weak var delegate: ContactDetailDelegate?
     
     lazy var navigationBar: UINavigationBar = {
         let nvBar = UINavigationBar()
