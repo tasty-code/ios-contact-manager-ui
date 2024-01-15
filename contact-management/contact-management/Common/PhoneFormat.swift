@@ -15,10 +15,6 @@ public class PhoneFormat {
         appendCharacter = appenCharacter
     }
     
-    public func getDigitsWithouthCharacter() -> String {
-        return digits.replacingOccurrences(of: "\(appendCharacter)", with: "")
-    }
-    
     public func addCharacter(at text:String) -> String {
         digits = text
         removeCharacter()

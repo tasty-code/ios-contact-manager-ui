@@ -14,7 +14,6 @@ enum ContactValidateCheck {
         get throws {
             switch self {
             case .name(let name):
-                print(name)
                 if name.isEmpty { throw ContactListError.ContactNameIsValid }
                 else { return true }
                 
@@ -26,8 +25,6 @@ enum ContactValidateCheck {
                 
             case .phone(let phoneNumber):
                 let components = phoneNumber.components(separatedBy: "-").joined()
-                print(components.count, components.count >= 9)
-                print(components.allSatisfy({ $0.isNumber }))
                 if components.count >= 9,
                    components.allSatisfy({ $0.isNumber })
                 {

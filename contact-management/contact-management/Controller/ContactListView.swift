@@ -49,6 +49,12 @@ final class ContactListView: UIViewController {
         let secondNavigationController = UINavigationController(rootViewController: secondViewController!)
         present(secondNavigationController, animated: true)
     }
+    
+    @objc func didDismissDetailNotification(_ notification: Notification) {
+        DispatchQueue.main.async { [self] in
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension ContactListView: UITableViewDataSource {
@@ -78,14 +84,6 @@ extension ContactListView: UITableViewDataSource {
 extension ContactListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    @objc func didDismissDetailNotification(_ notification: Notification) {
-        DispatchQueue.main.async { [self] in
-            print(contactListStorage?.getContact(3))
-//            self.tableView.updateConstraints()
-            self.tableView.reloadData()
-        }
     }
 }
 

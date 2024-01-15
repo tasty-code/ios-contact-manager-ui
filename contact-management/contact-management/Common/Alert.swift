@@ -11,7 +11,6 @@ typealias AlertActionHandler = ((UIAlertAction) -> Void)
 
 enum Alert {
     case stopEditContact(AlertActionHandler)
-    // MARK: 이번 케이스에서는 "saveEditContact" 사용 x
     case isCorrectList
     case isCorrectName
     case isCorrectAge
