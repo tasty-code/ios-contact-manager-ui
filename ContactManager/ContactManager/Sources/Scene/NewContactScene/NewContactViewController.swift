@@ -21,45 +21,47 @@ final class NewContactViewController: UIViewController {
     
     // MARK: @IBAction
     @IBAction private func tapCancelButton(_ sender: UIBarButtonItem) {
-        presentAlertWithCancel(title: "정말로 취소하시겠습니까?", okButtonTitle: "예", cancelButtonTitle: "아니오", okAction: { [weak self] _ in
+        presentAlertWithCancel(title: "정말로 취소하시겠습니까?",
+                               okButtonTitle: "예",
+                               cancelButtonTitle: "아니오",
+                               okAction: { [weak self] _ in
             self?.dismiss(animated: true)
         })
     }
     
-    @IBAction func tapSaveButton(_ sender: Any) {
-       
-        let name = nameTextField.text ?? ""
-        let age = ageTextField.text ?? ""
-        let contact = contactTextField.text ?? ""
-        let checkData: ContactInfoModel = ContactInfoModel(name: name, age: Int(age) ?? 0, phoneNumber: contact)
+    @IBAction private func tapSaveButton(_ sender: UIBarButtonItem) {
+        let validationResult: [(ContactInfo, Bool)] = checkValidityOfContactData()
+        
+        for (key, result) in validationResult {
+            if !result {
+                presentAlert(title: "입력한 \(key.description) 정보가 잘못되었습니다")
+                return
+            }
+        }
         
         let result: [String: Bool] = checkValidityOfData(checkData)
         
-        if result[checkData.name] == false {
-            presentAlert(title: "입력한 이름 정보가 잘못되었습니다")
-        } else if result[String(checkData.age)] == false {
-            presentAlert(title: "입력한 나이 정보가 잘못되었습니다")
-        } else if result[checkData.phoneNumber] == false {
-            presentAlert(title: "입력한 연락처 정보가 잘못되었습니다")
+        guard let presentingViewController = presentingViewController as? ContactListViewController else {
+            return
         }
     }
     
-    /// 유효성 검사
-    func checkValidityOfData(_ data: ContactInfoModel) -> [String: Bool] {
+    // MARK: Custom Methods
+    
+    /// 연락처 정보 유효성 검사 메서드
+    private func checkValidityOfContactData() -> [(ContactInfo, Bool)] {
+        let name = nameTextField.text ?? ""
+        let age = ageTextField.text ?? ""
+        let contactNumber = contactNumberTextField.text ?? ""
+        var validationResult: (name: Bool, age: Bool, contactNumber: Bool) = (false, false, false)
         
-        let correctName = data.name.deleteWhiteSpace(data.name)
-        let isNameValid = !correctName.isEmpty
+        validationResult.name = name.isEmpty ? false : true
+        validationResult.age = age.isEmpty || age.count > 3 ? false : true
+        validationResult.contactNumber = contactNumber.isEmpty || (!contactNumber.validatePhoneNumberFormat()
+                               && !contactNumber.validateContactNumberFormat()) ? false : true
         
-        let isAgeValid = String(data.age).checkValidityAge()
-        let isContactValid = data.phoneNumber.checkValidityContact()
-            
-        let validationResults: [String: Bool] = [
-            data.name: isNameValid,
-            String(data.age): isAgeValid,
-            data.phoneNumber: isContactValid
-        ]
-        
-        return validationResults
+        return [(.name, validationResult.name), (.age, validationResult.age),
+                (.contactNumber, validationResult.contactNumber)]
     }
 }
 
