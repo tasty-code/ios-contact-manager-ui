@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77073E052B55206A002A9A6D /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77073E042B55206A002A9A6D /* ContactInfo.swift */; };
 		774781F92B479F0300B1159C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774781F82B479F0300B1159C /* UIViewController+.swift */; };
 		774781FB2B479F5B00B1159C /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774781FA2B479F5B00B1159C /* UITableViewCell+.swift */; };
 		774782062B4EAE6A00B1159C /* NewContact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 774782052B4EAE6A00B1159C /* NewContact.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		77073E042B55206A002A9A6D /* ContactInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
 		774781F82B479F0300B1159C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		774781FA2B479F5B00B1159C /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
 		774782052B4EAE6A00B1159C /* NewContact.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewContact.storyboard; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		77073E032B55205C002A9A6D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				77073E042B55206A002A9A6D /* ContactInfo.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		774781ED2B4798FE00B1159C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +82,7 @@
 		774781F02B479A1B00B1159C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				77073E032B55205C002A9A6D /* Constants */,
 				774781F72B479ED800B1159C /* Extension */,
 				774781EE2B47993E00B1159C /* Model */,
 				774781F12B479A6500B1159C /* Application */,
@@ -230,6 +241,7 @@
 				774781FB2B479F5B00B1159C /* UITableViewCell+.swift in Sources */,
 				774781F92B479F0300B1159C /* UIViewController+.swift in Sources */,
 				E461E1152B453BFA00469E94 /* ContactTableViewCell.swift in Sources */,
+				77073E052B55206A002A9A6D /* ContactInfo.swift in Sources */,
 				E4FF94E02B45648300F66AB1 /* ContactInfoModel.swift in Sources */,
 				774782082B4EAE9B00B1159C /* NewContactViewController.swift in Sources */,
 				E4C7DB392B4548E8008DC50F /* ContactListViewController.swift in Sources */,
