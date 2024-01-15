@@ -34,7 +34,7 @@ class NewContactViewController: UIViewController, CustomAlert {
         ageTextField.keyboardType = .numberPad
         phoneNumberTextField.keyboardType = .numberPad
     }
-
+    
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         let cancel = UIAlertAction(title: "아니오", style: .default)
         let ok = UIAlertAction(title: "예", style: .destructive) { _ in
@@ -45,10 +45,10 @@ class NewContactViewController: UIViewController, CustomAlert {
     }
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
-        let name = nameTextField.text!
-        let ageString = ageTextField.text
-        let age = Int(ageString!)!
-        let phone = phoneNumberTextField.text!
+        guard let name = nameTextField.text,
+               let ageString = ageTextField.text,
+               let phone = phoneNumberTextField.text else { return }
+        guard let age = Int(ageString) else { return }
         contactFileManager.addContact(contact: Contact(name: name, age: age, phoneNumber: phone))
         let cancel = UIAlertAction(title: "아니오", style: .default)
         let ok = UIAlertAction(title: "예", style: .default) { _ in
