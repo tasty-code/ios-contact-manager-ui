@@ -76,17 +76,11 @@ extension NewContactViewController {
     }
     
     @objc private func handlePhoneNumberEditingChanged() {
-        guard let digits = phoneNumberInputView.textField.text?.replacingOccurrences(of: "-", with: "") else {
+        let phoneNumberText = phoneNumberInputView.textField.text ?? ""
+        guard let formattedPhoneNumber = PhoneNumberFormatter.format(unformatted: phoneNumberText) else {
             return
         }
-                
-        let areaCode = String(digits.prefix(3))
-        
-        guard let formatter = PhoneNumberFormatter(digitCount: digits.count, areaCode: areaCode) else {
-            return
-        }
-        
-        phoneNumberInputView.textField.text = formatter.formatting(digits: digits)
+        phoneNumberInputView.textField.text = formattedPhoneNumber
     }
     
     @objc private func cancelButtonTapped() {
