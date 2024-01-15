@@ -30,7 +30,7 @@ struct ContactFactory: ContactMakable {
             throw ContactValidationError.invalidPhoneNumber
         }
         let onlyNumbers = phoneNumber.filter { ch in ch.isNumber }
-        guard (onlyNumbers.count == phoneNumber.count) && (onlyNumbers.count >= 9) else {
+        guard onlyNumbers.count >= 9 else {
             throw ContactValidationError.invalidPhoneNumber
         }
         return phoneNumber
