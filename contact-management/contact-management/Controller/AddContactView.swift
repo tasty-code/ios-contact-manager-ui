@@ -92,7 +92,6 @@ extension AddContactView {
                 NotificationCenter.default.post(name: NSNotification.Name("ModalDismissNC"), object: nil, userInfo: nil)
                 self.dismiss(animated: true)
             }
-            print(contactListStorage!.getContact(3))
         } 
         catch ContactListError.ContactNameIsValid {
             present(Alert.isCorrectName.alertController, animated: true)

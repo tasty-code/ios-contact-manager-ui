@@ -71,7 +71,6 @@ extension ContactListView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        print("tableView test")
         guard let item = getContact(forID: indexPath.row) else {
             return UITableViewCell()
         }
