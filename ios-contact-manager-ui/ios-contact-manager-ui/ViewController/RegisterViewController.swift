@@ -30,7 +30,7 @@ final class RegisterViewController: UIViewController {
             changeTextBorderColor(textField: nameTextField, color: UIColor.systemBlue.cgColor)
             wrongNameInput = false
         } else {
-            changeTextBorderColor(textField: nameTextField, color: UIColor.systemBlue.cgColor)
+            changeTextBorderColor(textField: nameTextField, color: UIColor.systemPink.cgColor)
             wrongNameInput = true
             }
     }
@@ -115,9 +115,8 @@ extension RegisterViewController {
         let phoneNumberRegex = "^(02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$|^(010)-?[0-9]{4}-?[0-9]{4}$"
         let phoneNumberTest = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex)
         return phoneNumberTest.evaluate(with: number)
-        
-        
     }
+    
     func isValidName(_ name: String) -> Bool {
         let koreanNameRegex =
         "^[가-힣ㄱ-ㅎㅏ-ㅣ]"
