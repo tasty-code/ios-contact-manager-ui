@@ -18,6 +18,7 @@
 		C779964E2B4D24FC00196BE3 /* JsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C779964D2B4D24FC00196BE3 /* JsonDecoder.swift */; };
 		C77996512B4D25EB00196BE3 /* JsonParsingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77996502B4D25EB00196BE3 /* JsonParsingError.swift */; };
 		C7A34A962B46A27200314592 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A34A952B46A27200314592 /* Contact.swift */; };
+		C7F2E0082B54CA8F00EAEBA2 /* TextFieldError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F2E0072B54CA8F00EAEBA2 /* TextFieldError.swift */; };
 		C7F8C5F12B47EEF7001FCF05 /* mockJson.json in Resources */ = {isa = PBXBuildFile; fileRef = C7F8C5F02B47EEF7001FCF05 /* mockJson.json */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		C779964D2B4D24FC00196BE3 /* JsonDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecoder.swift; sourceTree = "<group>"; };
 		C77996502B4D25EB00196BE3 /* JsonParsingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParsingError.swift; sourceTree = "<group>"; };
 		C7A34A952B46A27200314592 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		C7F2E0072B54CA8F00EAEBA2 /* TextFieldError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldError.swift; sourceTree = "<group>"; };
 		C7F8C5F02B47EEF7001FCF05 /* mockJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockJson.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				C77996502B4D25EB00196BE3 /* JsonParsingError.swift */,
+				C7F2E0072B54CA8F00EAEBA2 /* TextFieldError.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				709F65D02B45549F00EC7105 /* AppDelegate.swift in Sources */,
 				709F65D22B45549F00EC7105 /* SceneDelegate.swift in Sources */,
 				C7A34A962B46A27200314592 /* Contact.swift in Sources */,
+				C7F2E0082B54CA8F00EAEBA2 /* TextFieldError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

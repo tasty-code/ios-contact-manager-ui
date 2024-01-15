@@ -111,14 +111,14 @@ class AddContactViewController: UIViewController {
     
     //MARK: - Alert 구현
     func presentNameAlert() {
-        presentAlert(title: "입력한 이름 정보가 잘못되었습니다.", message: "", confirmTitle: "확인")
+        presentAlert(title: "\(TextFieldError.nameTextFieldError.ErrorMessage)", message: "", confirmTitle: "확인")
     }
     
     func presentAgeAlert() {
-        presentAlert(title: "입력한 나이 정보가 잘못되었습니다.", message: "", confirmTitle: "확인")
+        presentAlert(title: "\(TextFieldError.ageTextFieldError.ErrorMessage)", message: "", confirmTitle: "확인")
     }
     
     func presentPhoneNumberAlert() {
-        presentAlert(title: "입력한 연락처 정보가 잘못되었습니다.", message: "", confirmTitle: "확인")
+        presentAlert(title: "\(TextFieldError.phoneNumberTextFieldError.ErrorMessage)", message: "", confirmTitle: "확인")
     }
 }
