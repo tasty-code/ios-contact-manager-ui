@@ -1,11 +1,11 @@
 //
-//  ListContactModel.swift
+//  ListContact.swift
 //  ContactManager
 //
 //  Created by Effie on 1/6/24.
 //
 
-enum ListContactModel {
+enum ListContact {
     struct SuccessInfo {
         var contacts: [Contact]
     }
