@@ -12,7 +12,7 @@ final class AddContactViewController: UIViewController {
     
     private weak var coordinator: AddContactViewControllerDelegate?
     
-    private let nameField = InputView(fieldName: "이름") { input in
+    private let nameField = InputView(fieldName: "이름", keyboardType: .default) { input in
         guard input.contains(where: { $0 == " " }) == false else {
             let result = input.components(separatedBy: " ").reduce("") { $0 + $1 }
             return FormattingResult(formatted: result, validationError: NameValidationError.cannotContainBlank)
@@ -20,7 +20,7 @@ final class AddContactViewController: UIViewController {
         return FormattingResult(formatted: input, validationError: nil)
     }
     
-    private let ageField = InputView(fieldName: "나이") { input in
+    private let ageField = InputView(fieldName: "나이", keyboardType: .numberPad) { input in
         var formattedAge = input
         
         if input.first == "0" {
@@ -32,7 +32,7 @@ final class AddContactViewController: UIViewController {
         return FormattingResult(formatted: formattedAge, validationError: nil)
     }
     
-    private let phoneNumberField = InputView(fieldName: "전화번호") { input in
+    private let phoneNumberField = InputView(fieldName: "전화번호", keyboardType: .phonePad) { input in
         func format(with mask: String, phone: String) -> String {
             let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
             var result = ""

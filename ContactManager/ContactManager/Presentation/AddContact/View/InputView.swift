@@ -79,17 +79,22 @@ final class InputView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(fieldName: String, formatter: @escaping InputFormatter) {
+    init(
+        fieldName: String,
+        keyboardType: UIKeyboardType,
+        formatter: @escaping InputFormatter
+    ) {
         self.formatter = formatter
         super.init(frame: .zero)
         textField.delegate = self
-        configure(fieldName: fieldName)
+        configure(fieldName: fieldName, keyboardType: keyboardType)
         setupViews()
     }
     
-    private func configure(fieldName: String) {
+    private func configure(fieldName: String, keyboardType: UIKeyboardType) {
         self.fieldNamelabel.text = fieldName
         self.inputStatelabel.text = "필수 필드입니다."
+        self.textField.keyboardType = keyboardType
     }
     
     private func setupViews() {
