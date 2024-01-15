@@ -53,6 +53,12 @@ final class ContactListViewController: UIViewController {
                 storyboard.instantiateViewController(identifier: NewContactViewController.className) as? NewContactViewController else { return }
         self.present(newContactViewController, animated: true)
     }
+    
+    // MARK: Custom Methods
+    func updateContactList(_ contact: ContactInfoModel) {
+        sampleData.append(contact)
+        contactTableView.reloadData()
+    }
 }
 
 // MARK: - UITableViewDelegate

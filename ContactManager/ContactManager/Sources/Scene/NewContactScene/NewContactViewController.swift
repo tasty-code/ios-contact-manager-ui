@@ -39,11 +39,21 @@ final class NewContactViewController: UIViewController {
             }
         }
         
-        let result: [String: Bool] = checkValidityOfData(checkData)
-        
+        let name = (nameTextField.text ?? "").deleteWhiteSpace()
+        guard let ageString = ageTextField.text?.deleteWhiteSpace(),
+              let age = Int(ageString) else { return }
+        let contactNumber = contactNumberTextField.text ?? ""
+
         guard let presentingViewController = presentingViewController as? ContactListViewController else {
             return
         }
+
+        self.dismiss(animated: true, completion: {
+            presentingViewController.updateContactList(
+                ContactInfoModel(name: name,
+                                 age: age,
+                                 contactNumber: contactNumber))
+        })
     }
     
     // MARK: Custom Methods
