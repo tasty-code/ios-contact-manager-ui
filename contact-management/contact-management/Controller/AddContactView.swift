@@ -70,7 +70,7 @@ extension AddContactView {
     }
     
     @IBAction func didTappedSave(_ sender: Any) {
-        let save: AlertActionHandler = { [weak self] _ in
+        let _ : AlertActionHandler = { [weak self] _ in
             self?.dismiss(animated: true)
         }
         do {

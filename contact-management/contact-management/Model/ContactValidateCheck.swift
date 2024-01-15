@@ -5,6 +5,8 @@
 //  Created by Roh on 1/15/24.
 //
 
+import Foundation
+
 enum ContactValidateCheck {
     case name(_ name: String)
     case age(_ age: Int)
@@ -24,14 +26,23 @@ enum ContactValidateCheck {
                 return true
                 
             case .phone(let phoneNumber):
-                let components = phoneNumber.components(separatedBy: "-").joined()
-                if components.count >= 9,
-                   components.allSatisfy({ $0.isNumber })
+                let phoneNumberPattern = "^(02|0\\d{2,3})-\\d{3,4}-\\d{4}$"
+                if isMatchingPattern(phoneNumber, pattern: phoneNumberPattern)
                 {
                     return true
                 }
                 else { throw ContactListError.ContactPhoneIsValid }
             }
+        }
+    }
+    
+    private func isMatchingPattern(_ string: String, pattern: String) -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: pattern)
+            let range = NSRange(location: 0, length: string.utf16.count)
+            return regex.firstMatch(in: string, options: [], range: range) != nil
+        } catch {
+            return false
         }
     }
 }
