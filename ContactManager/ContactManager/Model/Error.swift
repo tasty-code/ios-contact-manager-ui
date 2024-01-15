@@ -19,7 +19,6 @@ enum ContactManangerError: Error {
             return "index를 확인해주세요."
         }
     }
-    
 }
 
 enum AddedContactError: Error {

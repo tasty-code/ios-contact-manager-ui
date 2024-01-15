@@ -50,20 +50,43 @@ class AddedContactViewController: UIViewController {
         else {
             throw AddedContactError.ageMistake
         }
-        
         return addedAge
+    }
+    
+    private func fetchPhoneNumber() throws -> String {
+        guard let addedPhoneNumber = phoneNumberTextField.text,
+              addedPhoneNumber.filter({ $0 == "-" }).count == 2
+        else {
+            throw AddedContactError.phoneNumberMistake
+        }
+        let lastIndex = addedPhoneNumber.index(before: addedPhoneNumber.endIndex)
+        
+        if (addedPhoneNumber[addedPhoneNumber.startIndex] == "-") ||
+            (addedPhoneNumber[lastIndex]) == "-" {
+            throw AddedContactError.phoneNumberMistake
+        }
+        
+        let integerText = addedPhoneNumber.components(separatedBy: ["-"]).joined()
+        guard integerText.allSatisfy({ $0.isNumber }),
+              integerText.filter({ $0.isNumber }).count >= 9
+        else {
+            throw AddedContactError.phoneNumberMistake
+        }
+        return addedPhoneNumber
     }
     
     func addDistinguished() {
         var name: String = String()
         var age: Int = Int()
+        var phoneNumber: String = String()
         let isAdded = Result {
             name = try fetchName()
             age = try fetchAge()
+            phoneNumber = try fetchPhoneNumber()
         }
         switch isAdded {
         case .success():
-            delegate?.addNewContact(name: name, age: age, phoneNumber: name)
+            delegate?.addNewContact(name: name, age: age, phoneNumber: phoneNumber)
             self.dismiss(animated: true)
         case .failure(let error):
             guard let error: AddedContactError = error as? AddedContactError else { return }
