@@ -75,7 +75,7 @@ final class ContactViewController: UIViewController {
 
 extension ContactViewController {
     private func registerCell() {
-        tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
+        tableView.register(ContactDetailCell.self, forCellReuseIdentifier: ContactDetailCell.identifier)
     }
 }
 
@@ -87,7 +87,7 @@ extension ContactViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier , for: indexPath) as? CustomCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailCell.identifier , for: indexPath) as? ContactDetailCell else { return UITableViewCell() }
         
         let item = contactManger.contacts[indexPath.row]
         cell.contact = item

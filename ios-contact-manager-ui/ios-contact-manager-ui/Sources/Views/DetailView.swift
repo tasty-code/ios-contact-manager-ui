@@ -8,13 +8,9 @@
 import UIKit
 
 final class DetailView: UIView {
-
+    
     var contact: Contact? {
         didSet {
-            nameTextField.keyboardType = .default
-            ageTextField.keyboardType = .numberPad
-            phoneNumberTextField.keyboardType = .phonePad
-            
             guard let contact = contact else { return }
             nameTextField.text = contact.name
             ageTextField.text = contact.age
@@ -22,7 +18,7 @@ final class DetailView: UIView {
         }
     }
     
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.text = "이름"
@@ -52,7 +48,7 @@ final class DetailView: UIView {
         return stackView
     }()
     
-    let ageLabel: UILabel = {
+    private let ageLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.text = "나이"
@@ -82,7 +78,7 @@ final class DetailView: UIView {
         return stview
     }()
     
-    let phoneNumberLabel: UILabel = {
+    private let phoneNumberLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.text = "전화번호"
@@ -125,6 +121,7 @@ final class DetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
+        setupKeyboardType()
         setupStackView()
     }
     
@@ -132,7 +129,13 @@ final class DetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupStackView() {
+    private func setupKeyboardType() {
+        nameTextField.keyboardType = .default
+        ageTextField.keyboardType = .numberPad
+        phoneNumberTextField.keyboardType = .phonePad
+    }
+    
+    private func setupStackView() {
         self.addSubview(stackView)
     }
     override func updateConstraints() {
@@ -140,7 +143,7 @@ final class DetailView: UIView {
         super.updateConstraints()
     }
     
-    func setConstraints() {
+    private func setConstraints() {
 
         NSLayoutConstraint.activate([
             nameLabel.widthAnchor.constraint(equalToConstant: 70),

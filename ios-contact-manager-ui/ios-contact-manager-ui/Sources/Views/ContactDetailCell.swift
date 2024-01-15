@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomCell: UITableViewCell {
+final class ContactDetailCell: UITableViewCell {
     static var identifier: String {
         return String(describing: self)
     }
