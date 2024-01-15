@@ -1,19 +1,6 @@
 import Foundation
 
 enum PhoneNumberFormatter {
-    case threeAreaCodeNumber
-    case twoAreaCodeNumber
-    
-    private static let predefinedAreaCodes = ["010", "031", "032", "033", "041", "042", "043", "051", "052", "053", "054", "055", "061", "062", "063", "064"]
-    
-    private init?(areaCode: String) {
-        if PhoneNumberFormatter.predefinedAreaCodes.contains(areaCode) {
-            self = .threeAreaCodeNumber
-        } else {
-            self = .twoAreaCodeNumber
-        }
-    }
-    
     static func format(unformatted phoneNumberText: String) -> String? {
         let digits = phoneNumberText.replacingOccurrences(of: "-", with: "")
         guard digits.count >= 2 else {
@@ -21,17 +8,34 @@ enum PhoneNumberFormatter {
         }
         
         let areaCode = String(digits.prefix(3))
-        guard let formatter = PhoneNumberFormatter(areaCode: areaCode) else {
+        guard let phoneNumberType = PhoneNumberType(areaCode: areaCode) else {
             return nil
         }
         
-        return formatter.formatDigits(digits)
+        return formatDigits(digits, for: phoneNumberType)
     }
 }
 
 extension PhoneNumberFormatter {
-    private func formatDigits(_ digits: String) -> String? {
-        switch self {
+    private enum PhoneNumberType {
+        case threeAreaCodeNumber
+        case twoAreaCodeNumber
+        
+        private static let threeAreaCodes = ["010", "031", "032", "033", "041", "042", "043", "051", "052", "053", "054", "055", "061", "062", "063", "064"]
+        
+        init?(areaCode: String) {
+            if PhoneNumberType.threeAreaCodes.contains(areaCode) {
+                self = .threeAreaCodeNumber
+            } else {
+                self = .twoAreaCodeNumber
+            }
+        }
+    }
+}
+
+extension PhoneNumberFormatter {
+    private static func formatDigits(_ digits: String, for phoneNumberType: PhoneNumberType) -> String? {
+        switch phoneNumberType {
         case .threeAreaCodeNumber:
             return formatForThreeAreaCodeNumber(digits: digits)
         case .twoAreaCodeNumber:
@@ -39,7 +43,7 @@ extension PhoneNumberFormatter {
         }
     }
     
-    private func formatForThreeAreaCodeNumber(digits: String) -> String? {
+    private static func formatForThreeAreaCodeNumber(digits: String) -> String? {
         switch digits.count {
         case 3, 12:
             return digits
@@ -54,7 +58,7 @@ extension PhoneNumberFormatter {
         }
     }
     
-    private func formatForTwoAreaCodeNumber(digits: String) -> String? {
+    private static func formatForTwoAreaCodeNumber(digits: String) -> String? {
         switch digits.count {
         case 2, 11:
             return digits
@@ -69,7 +73,7 @@ extension PhoneNumberFormatter {
         }
     }
     
-    private func applyFormattingPattern(_ pattern: String, toDigits digits: String, withTemplate template: String) -> String? {
+    private static func applyFormattingPattern(_ pattern: String, toDigits digits: String, withTemplate template: String) -> String? {
         let regex = try? NSRegularExpression(pattern: pattern)
         let nsRange = NSRange(location: 0, length: digits.count)
         return regex?.stringByReplacingMatches(in: digits, range: nsRange, withTemplate: template)
