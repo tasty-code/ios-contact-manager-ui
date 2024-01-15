@@ -110,13 +110,7 @@ extension AddContactViewController: AddContactPresentable {
         case .success:
             self.coordinator?.endAddContact()
         case .failure(let error):
-            if let addContactError = error as? AddContactError,
-               addContactError == .someFieldIsFilled {
-                let cancelAction = UIAlertAction(title: "작성 취소", style: .default) { _ in
-                    self.coordinator?.endAddContact()
-                }
-                self.presentErrorAlert(error: addContactError, additionalAction: cancelAction)
-            }
+            handleError(error)
         }
     }
     
@@ -125,7 +119,13 @@ extension AddContactViewController: AddContactPresentable {
         case .success:
             self.coordinator?.cancelAddContact()
         case .failure(let error):
-            handleError(error)
+            if let addContactError = error as? AddContactError,
+               addContactError == .someFieldIsFilled {
+                let cancelAction = UIAlertAction(title: "작성 취소", style: .default) { _ in
+                    self.coordinator?.endAddContact()
+                }
+                self.presentErrorAlert(error: addContactError, additionalAction: cancelAction)
+            }
         }
     }
     

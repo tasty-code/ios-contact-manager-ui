@@ -33,9 +33,9 @@ struct AddContactUseCase {
     func confirmCancel(request: AddContact.Request) {
         do {
             try confirmIfCancellable(request: request)
-            presenter?.presentAddContact(result: .success(.init()))
+            presenter?.presentCancelConfirmation(result: .success(.init()))
         } catch {
-            presenter?.presentAddContact(result: .failure(error))
+            presenter?.presentCancelConfirmation(result: .failure(error))
         }
     }
     
