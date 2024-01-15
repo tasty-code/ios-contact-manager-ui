@@ -24,7 +24,7 @@ struct AddContactUseCase {
         do {
             let contact = try factory.makeContact(from: request)
             try repository.addContact(contact)
-            presenter?.presentAddContact(result: .success(.init()))
+            presenter?.presentAddContact(result: .success(()))
         } catch {
             presenter?.presentAddContact(result: .failure(error))
         }
@@ -33,7 +33,7 @@ struct AddContactUseCase {
     func confirmCancel(request: AddContact.Request) {
         do {
             try confirmIfCancellable(request: request)
-            presenter?.presentCancelConfirmation(result: .success(.init()))
+            presenter?.presentCancelConfirmation(result: .success(()))
         } catch {
             presenter?.presentCancelConfirmation(result: .failure(error))
         }
@@ -51,6 +51,6 @@ struct AddContactUseCase {
 import Foundation
 
 protocol AddContactPresentable: NSObjectProtocol {
-    func presentAddContact(result: Result<AddContact.SuccessInfo, Error>)
-    func presentCancelConfirmation(result: Result<AddContact.SuccessInfo, Error>)
+    func presentAddContact(result: Result<Void, Error>)
+    func presentCancelConfirmation(result: Result<Void, Error>)
 }

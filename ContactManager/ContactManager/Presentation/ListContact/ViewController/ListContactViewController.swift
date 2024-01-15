@@ -68,7 +68,7 @@ extension ListContactViewController {
 }
 
 extension ListContactViewController: ListContactPresentable {
-    func presentListContact(result: Result<ListContactModel.SuccessInfo, Error>) {
+    func presentListContact(result: Result<ListContact.SuccessInfo, Error>) {
         var snapshot = ContactListSnapShot()
         snapshot.appendSections([.contact])
         switch result {

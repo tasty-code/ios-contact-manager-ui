@@ -105,7 +105,7 @@ final class AddContactViewController: UIViewController {
 }
 
 extension AddContactViewController: AddContactPresentable {
-    func presentAddContact(result: Result<AddContact.SuccessInfo, Error>) {
+    func presentAddContact(result: Result<Void, Error>) {
         switch result {
         case .success:
             self.coordinator?.endAddContact()
@@ -114,7 +114,7 @@ extension AddContactViewController: AddContactPresentable {
         }
     }
     
-    func presentCancelConfirmation(result: Result<AddContact.SuccessInfo, Error>) {
+    func presentCancelConfirmation(result: Result<Void, Error>) {
         switch result {
         case .success:
             self.coordinator?.cancelAddContact()

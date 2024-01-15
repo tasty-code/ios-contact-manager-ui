@@ -11,6 +11,4 @@ enum AddContact {
         let age: String
         let phoneNumber: String
     }
-    
-    struct SuccessInfo { }
 }
