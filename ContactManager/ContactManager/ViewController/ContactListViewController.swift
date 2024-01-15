@@ -31,11 +31,13 @@ final class ContactListViewController: UIViewController, UpdateNewContact {
     }
     
     @objc func showNewContactView() {
-        guard let nextVC = storyboard?.instantiateViewController(identifier: "NewContactViewController") as? NewContactViewController else {
+        guard let newContactViewController = storyboard?.instantiateViewController(identifier: "NewContactViewController", creator: { coder in
+            NewContactViewController(coder: coder, contactFileManager: self.contactFileManager)
+        }) as? NewContactViewController else {
             return
         }
-        nextVC.delegate = self
-        present(nextVC, animated: true)
+        newContactViewController.delegate = self
+        present(newContactViewController, animated: true)
     }
 }
 
