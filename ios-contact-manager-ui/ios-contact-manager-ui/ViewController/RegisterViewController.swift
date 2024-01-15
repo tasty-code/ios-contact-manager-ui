@@ -81,7 +81,6 @@ final class RegisterViewController: UIViewController {
                                                 phoneNumber: phoneNumberTextField.text ?? "",
                                                 age: Int(ageTextField.text ?? "") ?? 0)
         )
-        dismiss(animated: true)
     }
     
     
