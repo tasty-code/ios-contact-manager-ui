@@ -48,6 +48,7 @@ final class CustomCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         setupStackView()
+        accessoryType = .disclosureIndicator
     }
     
     func setupStackView() {

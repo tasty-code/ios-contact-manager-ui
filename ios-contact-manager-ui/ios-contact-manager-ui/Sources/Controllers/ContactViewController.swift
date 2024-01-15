@@ -91,7 +91,6 @@ extension ContactViewController: UITableViewDataSource {
         
         let item = contactManger.contacts[indexPath.row]
         cell.contact = item
-        cell.accessoryType = .disclosureIndicator
         
         return cell
     }
