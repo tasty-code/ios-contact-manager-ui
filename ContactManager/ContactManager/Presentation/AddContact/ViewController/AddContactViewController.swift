@@ -90,8 +90,11 @@ final class AddContactViewController: UIViewController {
         self.addContactUseCase.confirmCancel(request: request)
     }
     
+    private static let title = "새 연락처"
+    
     private func setupViews() {
         self.view.backgroundColor = .systemBackground
+        self.title = Self.title
         self.navigationItem.leftBarButtonItem = cancelButton
         self.navigationItem.rightBarButtonItem = saveButton
         

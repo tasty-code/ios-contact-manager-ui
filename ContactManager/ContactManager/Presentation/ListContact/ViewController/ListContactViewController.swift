@@ -43,8 +43,10 @@ final class ListContactViewController: UIViewController {
 }
 
 extension ListContactViewController {
+    private static let title = "연락처"
+    
     private func setupViews() {
-        self.title = "연락처"
+        self.title = Self.title
         self.view.backgroundColor = .systemBackground
         self.view.addSubview(contactListView)
         NSLayoutConstraint.activate([
