@@ -9,13 +9,10 @@ import Foundation
 
 extension String {
     var removeBlank: String {
-        let blanck = self
-        let name = blanck.split(separator: " ").reduce("") { $0 + $1 }
-        
-        return name
+        return self.replacingOccurrences(of: " ", with: "")
     }
     
-    public var formmater: String {
+    var formmater: String {
         var stringWithhypen: String = self
         
         if stringWithhypen.prefix(1) != "0" || stringWithhypen.prefix(2) == "02" {
