@@ -101,10 +101,10 @@
 		9B07363A2B4799DF004556B8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9BA2E9FD2B55255B003EB0F8 /* RegularExpressionCheck.swift */,
 				9B07363B2B479A02004556B8 /* Contact.swift */,
 				9948A3EE2B47C24500422296 /* ContactFileManager.swift */,
 				9948A3F02B47E9FA00422296 /* ContactManagerError.swift */,
+				9BA2E9FD2B55255B003EB0F8 /* RegularExpressionCheck.swift */,
 				9BA2E9FF2B5526DC003EB0F8 /* ValidError.swift */,
 				99EF84A02B513105002531BD /* Extensions */,
 				99EF849F2B5130FB002531BD /* Protocols */,
