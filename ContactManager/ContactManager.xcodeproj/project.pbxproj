@@ -18,6 +18,8 @@
 		99EF849E2B512A81002531BD /* Alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EF849D2B512A81002531BD /* Alert+Extension.swift */; };
 		99EF84A22B513161002531BD /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EF84A12B513161002531BD /* Protocol.swift */; };
 		9B07363C2B479A02004556B8 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07363B2B479A02004556B8 /* Contact.swift */; };
+		9BA2E9FE2B55255B003EB0F8 /* RegularExpressionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2E9FD2B55255B003EB0F8 /* RegularExpressionCheck.swift */; };
+		9BA2EA002B5526DC003EB0F8 /* ValidError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2E9FF2B5526DC003EB0F8 /* ValidError.swift */; };
 		9BC446182B511B1D0066ACE0 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC446172B511B1D0066ACE0 /* NewContactViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		99EF849D2B512A81002531BD /* Alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Extension.swift"; sourceTree = "<group>"; };
 		99EF84A12B513161002531BD /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		9B07363B2B479A02004556B8 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		9BA2E9FD2B55255B003EB0F8 /* RegularExpressionCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpressionCheck.swift; sourceTree = "<group>"; };
+		9BA2E9FF2B5526DC003EB0F8 /* ValidError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidError.swift; sourceTree = "<group>"; };
 		9BC446172B511B1D0066ACE0 /* NewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,9 +101,11 @@
 		9B07363A2B4799DF004556B8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9BA2E9FD2B55255B003EB0F8 /* RegularExpressionCheck.swift */,
 				9B07363B2B479A02004556B8 /* Contact.swift */,
 				9948A3EE2B47C24500422296 /* ContactFileManager.swift */,
 				9948A3F02B47E9FA00422296 /* ContactManagerError.swift */,
+				9BA2E9FF2B5526DC003EB0F8 /* ValidError.swift */,
 				99EF84A02B513105002531BD /* Extensions */,
 				99EF849F2B5130FB002531BD /* Protocols */,
 			);
@@ -215,6 +221,8 @@
 				9948A3EF2B47C24500422296 /* ContactFileManager.swift in Sources */,
 				9B07363C2B479A02004556B8 /* Contact.swift in Sources */,
 				9948A3B92B4542CD00422296 /* ContactListViewController.swift in Sources */,
+				9BA2EA002B5526DC003EB0F8 /* ValidError.swift in Sources */,
+				9BA2E9FE2B55255B003EB0F8 /* RegularExpressionCheck.swift in Sources */,
 				9948A3F12B47E9FA00422296 /* ContactManagerError.swift in Sources */,
 				9948A3B52B4542CD00422296 /* AppDelegate.swift in Sources */,
 				9BC446182B511B1D0066ACE0 /* NewContactViewController.swift in Sources */,
