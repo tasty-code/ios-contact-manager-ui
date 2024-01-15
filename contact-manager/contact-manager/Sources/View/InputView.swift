@@ -5,7 +5,13 @@ struct InputViewConfiguration {
     let keyboardType: UIKeyboardType
 }
 
+protocol InputViewDelegate: AnyObject {
+    func handleEditingChanged()
+}
+
 final class InputView: UIView {
+    weak var delegate: InputViewDelegate?
+    
     var textFieldValue: String {
         get {
             textField.text ?? ""
@@ -21,8 +27,9 @@ final class InputView: UIView {
         return label
     }()
     
-    private let textField: UITextField = {
+    private lazy var textField: UITextField = {
         let textField = UITextField()
+        textField.addTarget(self, action: #selector(handleEditingChanged), for: .editingChanged)
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -57,5 +64,9 @@ extension InputView {
             hStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             hStack.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+    
+    @objc private func handleEditingChanged() {
+        delegate?.handleEditingChanged()
     }
 }

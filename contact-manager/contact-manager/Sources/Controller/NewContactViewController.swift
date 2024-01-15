@@ -20,9 +20,8 @@ final class NewContactViewController: UIViewController {
     private let ageInputView = InputView(config: InputViewConfiguration(labelText: "나이", keyboardType: .numberPad))
     private lazy var phoneNumberInputView: InputView = {
         let inputView = InputView(config: InputViewConfiguration(labelText: "연락처", keyboardType: .phonePad))
-        inputView.textField.addTarget(self, action: #selector(handlePhoneNumberEditingChanged), for: .editingChanged)
+        inputView.delegate = self
         return inputView
-
     }()
     private lazy var inputForms: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [nameInputView, ageInputView, phoneNumberInputView])
@@ -74,15 +73,7 @@ extension NewContactViewController {
             inputForms.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
         ])
     }
-    
-    @objc private func handlePhoneNumberEditingChanged() {
-        let phoneNumberText = phoneNumberInputView.textFieldValue
-        guard let formattedPhoneNumber = PhoneNumberFormatter.format(unformatted: phoneNumberText) else {
-            return
-        }
-        phoneNumberInputView.textFieldValue = formattedPhoneNumber
-    }
-    
+
     @objc private func cancelButtonTapped() {
         alertService.alertCancelConfirmation()
     }
@@ -125,5 +116,15 @@ extension NewContactViewController {
         } catch {
             alertService.alertInvalidInput(alertMessage: .invalidPhoneNumber)
         }
+    }
+}
+
+extension NewContactViewController: InputViewDelegate {
+    func handleEditingChanged() {
+        let phoneNumberText = phoneNumberInputView.textFieldValue
+        guard let formattedPhoneNumber = PhoneNumberFormatter.format(unformatted: phoneNumberText) else {
+            return
+        }
+        phoneNumberInputView.textFieldValue = formattedPhoneNumber
     }
 }
