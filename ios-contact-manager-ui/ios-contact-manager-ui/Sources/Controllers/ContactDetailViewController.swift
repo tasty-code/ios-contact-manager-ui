@@ -20,6 +20,13 @@ final class ContactDetailViewController: UIViewController {
     lazy var navigationBar: UINavigationBar = {
         let nvBar = UINavigationBar()
         nvBar.translatesAutoresizingMaskIntoConstraints = false
+        let leftButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
+        let rtButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(setupButtonAction))
+        
+        let navItem = UINavigationItem(title: "새연락처")
+        navItem.leftBarButtonItem = leftButton
+        navItem.rightBarButtonItem = rtButton
+        nvBar.setItems([navItem], animated: true)
         return nvBar
     }()
     
@@ -44,14 +51,6 @@ final class ContactDetailViewController: UIViewController {
             navigationBar.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             navigationBar.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
         ])
-        
-        let leftButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
-        let rtButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(setupButtonAction))
-        
-        let navItem = UINavigationItem(title: "새연락처")
-        navItem.leftBarButtonItem = leftButton
-        navItem.rightBarButtonItem = rtButton
-        navigationBar.setItems([navItem], animated: true)
     }
     
     @objc func cancelButtonTapped() {
