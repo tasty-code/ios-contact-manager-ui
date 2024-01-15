@@ -17,17 +17,14 @@ final class ContactDetailViewController: UIViewController {
     var contact: Contact?
     weak var delegate: ContactDetailDelegate?
     
-    lazy var navigationBar: UINavigationBar = {
-        let nvBar = UINavigationBar()
-        nvBar.translatesAutoresizingMaskIntoConstraints = false
-        let leftButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
-        let rtButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(setupButtonAction))
-        
-        let navItem = UINavigationItem(title: "새연락처")
-        navItem.leftBarButtonItem = leftButton
-        navItem.rightBarButtonItem = rtButton
-        nvBar.setItems([navItem], animated: true)
-        return nvBar
+    private lazy var calcelButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+        return button
+    }()
+    
+    private lazy var saveButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(setupButtonAction))
+        return button
     }()
     
     override func loadView() {
@@ -41,16 +38,9 @@ final class ContactDetailViewController: UIViewController {
     }
 
     private func setupnvBar() {
-        self.view.backgroundColor = .white
-        
-        self.view.addSubview(navigationBar)
-        let safeArea = self.view.safeAreaLayoutGuide
-        
-        NSLayoutConstraint.activate([
-            navigationBar.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            navigationBar.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            navigationBar.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
-        ])
+        title = "새연락처"
+        self.navigationItem.leftBarButtonItem = self.calcelButton
+        self.navigationItem.rightBarButtonItem = self.saveButton
     }
     
     @objc func cancelButtonTapped() {

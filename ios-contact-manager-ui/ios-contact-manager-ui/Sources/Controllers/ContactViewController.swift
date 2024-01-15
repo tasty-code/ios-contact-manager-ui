@@ -65,7 +65,7 @@ final class ContactViewController: UIViewController {
         
         detailVC.delegate = self
         
-        self.present(detailVC, animated: true)
+        self.present(UINavigationController(rootViewController: detailVC), animated: true)
     }
 }
 
