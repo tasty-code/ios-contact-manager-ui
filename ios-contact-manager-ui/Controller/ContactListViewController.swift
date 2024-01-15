@@ -18,9 +18,6 @@ final class ContactListViewController: UIViewController {
     
     //MARK: - @IBOutlet
     @IBOutlet private weak var contactTableView: UITableView!
-    @IBOutlet private weak var addButton: UIButton!
-    @IBOutlet private weak var deleteButton: UIButton!
-    @IBOutlet private weak var editButton: UIButton!
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -28,32 +25,6 @@ final class ContactListViewController: UIViewController {
         loadData()
         configureTableView()
         configureNavigationItem()
-    }
-    
-    //MARK: - @IBAction
-    @IBAction private func addButtonTapped(_ sender: UIButton) {
-        addData(with: mockData[0])
-        scrollToBottom()
-    }
-    
-    @IBAction private func deleteButtonTapped(_ sender: UIButton) {
-        if self.contactTableView.isEditing {
-            self.deleteButton.setTitle("Delete", for: .normal)
-            self.contactTableView.setEditing(false, animated: true)
-        } else {
-            self.deleteButton.setTitle("Done", for: .normal)
-            self.contactTableView.setEditing(true, animated: true)
-        }
-    }
-    
-    @IBAction private func editButtonTapped(_ sender: UIButton) {
-        presentAlertWithTextfieldAndCancel(title: "입력한 번호의 셀을 목업으로 수정합니다.",
-                                           message: "확인을 누르면 수정됩니다.",
-                                           placeholder: "수정할 셀 번호",
-                                           confirmTitle: "확인",
-                                           cancelTitle: "취소") { [weak self] enteredText in
-            self?.modifyTableCell(of: enteredText)
-        }
     }
     
     //MARK: - Custom Methods

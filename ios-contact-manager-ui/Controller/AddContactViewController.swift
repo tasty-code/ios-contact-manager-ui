@@ -58,13 +58,13 @@ class AddContactViewController: UIViewController {
     }
     
     @objc func saveButtonTapped() {
-        guard let name = removeEmptySpaceCharacter(nameTextField), !name.isEmpty else { return presentNameAlert() }
-        guard let age = removeEmptySpaceCharacter(ageTextField), !age.isEmpty else { return presentAgeAlert() }
-        guard let phoneNumber = removeEmptySpaceCharacter(phoneNumberTextField), !phoneNumber.isEmpty else { return presentPhoneNumberAlert() }
+        guard let name = removeEmptySpaceCharacter(nameTextField), name.isEmpty == false else { return presentNameAlert() }
+        guard let age = removeEmptySpaceCharacter(ageTextField), age.isEmpty == false else { return presentAgeAlert() }
+        guard let phoneNumber = removeEmptySpaceCharacter(phoneNumberTextField), phoneNumber.isEmpty == false else { return presentPhoneNumberAlert() }
             
         checkAgeTextField(age: age)
         
-        if !checkPhoneNumberTextField(for: phoneNumber) {
+        if checkPhoneNumberTextField(for: phoneNumber) == false {
             return presentPhoneNumberAlert()
         }
         
@@ -93,10 +93,10 @@ class AddContactViewController: UIViewController {
                     return true
                 }
             } catch {
-                print("에러: 전화번호 정상 아님")
+                print("\(TextFieldError.phoneNumberTextFieldError.ErrorMessage)")
             }
         } else {
-            print("에러: 자리수가 9개 미만입니다.")
+            print("에러: \(TextFieldError.phoneNumberTextFieldError.ErrorMessage)")
         }
         return false
     }
@@ -122,6 +122,7 @@ class AddContactViewController: UIViewController {
 extension AddContactViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         if textField == phoneNumberTextField {
             guard let currnetText = textField.text as NSString? else { return false }
             let newString = currnetText.replacingCharacters(in: range, with: string)
@@ -129,6 +130,7 @@ extension AddContactViewController: UITextFieldDelegate {
             textField.text = formattedPhoneNumber
             return false
         }
+        
         return true
     }
 }
