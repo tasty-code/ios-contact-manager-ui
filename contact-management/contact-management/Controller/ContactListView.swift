@@ -26,6 +26,18 @@ final class ContactListView: UIViewController {
         self.title = "연락처"
         tableView.dataSource = self
         tableView.delegate = self
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.didDismissDetailNotification(_:)),
+            name: NSNotification.Name("ModalDismissNC"),
+            object: nil
+        )
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    
     }
     
     @IBAction func addContact(_ sender: Any) {
@@ -53,6 +65,7 @@ extension ContactListView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        print("tableView test")
         guard let item = getContact(forID: indexPath.row) else {
             return UITableViewCell()
         }
@@ -65,6 +78,14 @@ extension ContactListView: UITableViewDataSource {
 extension ContactListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    @objc func didDismissDetailNotification(_ notification: Notification) {
+        DispatchQueue.main.async { [self] in
+            print(contactListStorage?.getContact(3))
+//            self.tableView.updateConstraints()
+            self.tableView.reloadData()
+        }
     }
 }
 

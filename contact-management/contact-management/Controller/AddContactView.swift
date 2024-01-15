@@ -79,6 +79,7 @@ extension AddContactView {
                 phone: phoneContact,
                 age: ageContact
             )
+            
             let isNameValid = try ContactValidateCheck.name(unWrappedResult.name).check
             let isAgeValid = try ContactValidateCheck.age(unWrappedResult.age).check
             let isPhoneValid = try ContactValidateCheck.phone(unWrappedResult.phoneNumber).check
@@ -88,15 +89,24 @@ extension AddContactView {
                isPhoneValid
             {
                 self.contactListStorage?.addContact(unWrappedResult)
+                NotificationCenter.default.post(name: NSNotification.Name("ModalDismissNC"), object: nil, userInfo: nil)
+                self.dismiss(animated: true)
             }
             print(contactListStorage!.getContact(3))
-        } catch ContactListError.ContactNameIsValid {
-            present(Alert.inCorrectName.alertController, animated: true)
-        } catch ContactListError.ContactAgeIsValid {
-            present(Alert.inCorrectAge.alertController, animated: true)
-        } catch ContactListError.ContactPhoneIsValid {
-            present(Alert.inCorrectPhone.alertController, animated: true)
-        } catch {
+        } 
+        catch ContactListError.ContactNameIsValid {
+            present(Alert.isCorrectName.alertController, animated: true)
+        } 
+        catch ContactListError.ContactAgeIsValid {
+            present(Alert.isCorrectAge.alertController, animated: true)
+        } 
+        catch ContactListError.ContactPhoneIsValid {
+            present(Alert.isCorrectPhone.alertController, animated: true)
+        } 
+        catch ContactListError.ContactListWrongInput {
+            present(Alert.isCorrectList.alertController, animated: true)
+        } 
+        catch {
             return
         }
     }

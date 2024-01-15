@@ -12,22 +12,22 @@ typealias AlertActionHandler = ((UIAlertAction) -> Void)
 enum Alert {
     case stopEditContact(AlertActionHandler)
     // MARK: 이번 케이스에서는 "saveEditContact" 사용 x
-    case saveEditContact
-    case inCorrectName
-    case inCorrectAge
-    case inCorrectPhone
+    case isCorrectList
+    case isCorrectName
+    case isCorrectAge
+    case isCorrectPhone
     
     var title: String {
         switch self {
         case .stopEditContact:
             return "정말로 취소하시겠습니까?"
-        case .saveEditContact:
-            return ""
-        case .inCorrectName:
+        case .isCorrectList:
+            return "입력된 연락처 정보가 잘못되었습니다."
+        case .isCorrectName:
             return "입력된 이름 정보가 잘못되었습니다"
-        case .inCorrectAge:
+        case .isCorrectAge:
             return "입력된 나이 정보가 잘못되었습니다"
-        case .inCorrectPhone:
+        case .isCorrectPhone:
             return "입력된 연락처 정보가 잘못되었습니다"
         }
     }
@@ -53,22 +53,22 @@ enum Alert {
             alertController.addAction(UIAlertAction(title: "아니요", style: .cancel))
             return alertController
        
-        case .saveEditContact:
+        case .isCorrectList:
             let okAction = UIAlertAction(title: "확인", style: .default)
             alertController.addAction(okAction)
             return alertController
             
-        case .inCorrectName:
+        case .isCorrectName:
             let okAction = UIAlertAction(title: "확인", style: .default)
             alertController.addAction(okAction)
             return alertController
             
-        case .inCorrectAge:
+        case .isCorrectAge:
             let okAction = UIAlertAction(title: "확인", style: .default)
             alertController.addAction(okAction)
             return alertController
             
-        case .inCorrectPhone:
+        case .isCorrectPhone:
             let okAction = UIAlertAction(title: "확인", style: .default)
             alertController.addAction(okAction)
             return alertController
