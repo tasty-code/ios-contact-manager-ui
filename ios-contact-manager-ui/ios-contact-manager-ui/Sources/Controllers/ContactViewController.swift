@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol ContactDetailDelegate: AnyObject {
-    func add(contact: Contact)
-}
-
 final class ContactViewController: UIViewController {
     
     private let tableView: UITableView = {

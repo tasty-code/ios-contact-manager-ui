@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ContactDetailDelegate: AnyObject {
+    func add(contact: Contact)
+}
+
 final class ContactDetailViewController: UIViewController {
 
     private let detailView = DetailView()
