@@ -83,7 +83,7 @@ extension ContactsAdditionModalViewController: UITextFieldDelegate {
         
         switch rangeLocation {
         case 3, 7:
-            resultText.popLast()
+            resultText.removeLast()
         case 11:
             resultText = exchange(string: resultText, of: 6, isDelete: true)
         default:
@@ -101,7 +101,7 @@ extension ContactsAdditionModalViewController: UITextFieldDelegate {
         switch isDelete {
         case true:
             textArray[of + 1] = characterToBeExchanged
-            textArray.popLast()
+            textArray.removeLast()
         case false:
             textArray[of - 1] = characterToBeExchanged
         }
