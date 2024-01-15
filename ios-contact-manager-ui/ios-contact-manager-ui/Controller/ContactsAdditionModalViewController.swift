@@ -56,8 +56,7 @@ extension ContactsAdditionModalViewController: UITextFieldDelegate {
             rangeLocation -= 1
             isNumberStartedWithZero = true
         }
-        print("text:",text)
-        print("string:",string)
+        
         text = string == "" ? deleteKeyTapped(text: text, rangeLocation: rangeLocation) : numberKeyTapped(text: text, rangeLocation: rangeLocation)
         text = isNumberStartedWithZero ? "0" + text : text
 
