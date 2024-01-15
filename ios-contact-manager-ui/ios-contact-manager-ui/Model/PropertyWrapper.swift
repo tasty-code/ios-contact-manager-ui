@@ -10,13 +10,12 @@ struct NotifyContactInfoChange {
     var wrappedValue: [User] {
         get { value }
         set { 
-            value = newValue
             updateChange?()
+            value = newValue
         }
     }
     
     init(wrappedValue: [User]) {
         self.value = wrappedValue
-        updateChange?()
     }
 }

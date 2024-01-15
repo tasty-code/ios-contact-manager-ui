@@ -61,7 +61,6 @@ private extension PhoneBookViewController {
 
 
 // MARK: - TableView Delegate
-// MARK: - TableView Delegate
 extension PhoneBookViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,6 +85,7 @@ extension PhoneBookViewController {
         let storyboard = UIStoryboard(name: "RegisterViewController", bundle: nil)
         guard let registerViewController = storyboard.instantiateViewController(identifier: "RegisterViewController") as? RegisterViewController else {return}
         registerViewController.modalPresentationStyle = .formSheet
+        registerViewController.phoneBook = phoneBook
         self.present(registerViewController, animated: true)
     }
 }
@@ -96,6 +96,8 @@ extension PhoneBookViewController {
 // MARK: - Delegate
 extension PhoneBookViewController: updatePhoneBookDelegate {
     func onUpdate() {
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }

@@ -1,7 +1,6 @@
 
 import Foundation
 
-
 protocol updatePhoneBookDelegate: AnyObject {
     func onUpdate()
 }
@@ -30,6 +29,8 @@ final class PhoneBook {
             self?.delegate?.onUpdate()
         }
     }
+    
     deinit { print("PhoneBook has been deinit!!")}
 }
+
 

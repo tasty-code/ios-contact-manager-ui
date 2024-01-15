@@ -77,17 +77,19 @@ final class RegisterViewController: UIViewController {
         print("연락처 저장됨")
         phoneBook?.categorizedContactInfo.append(User(
                                                 userID: UUID(),
-                                                name: nameTextField.text!,
-                                                phoneNumber: phoneNumberTextField.text!,
-                                                age: Int(ageTextField.text!)!)
+                                                name: nameTextField.text ?? "테스트",
+                                                phoneNumber: phoneNumberTextField.text ?? "01012345678",
+                                                age: Int(ageTextField.text ?? "") ?? 10)
         )
         dismiss(animated: true)
     }
     
     
     private func validateTextField() {
+
+//        let alert = Alert.create(title: "입력에러", message: "\(message) 입력창을 확인해주세요", confirmTitle: "확인")
+//
 //        if !wrongAgeInput {
-//            let alert = Alert.create(title: "입력에러", message: "나이 입력창을 확인해주세요", confirmTitle: "확인")
 //            present(alert, animated: true)
 //            return
 //        }
