@@ -87,11 +87,11 @@ extension ContactDetailViewController {
 
 // MARK: - Verification
 
-extension ContactDetailViewController: Verification {
+extension ContactDetailViewController {
     func makeInfo() throws -> (String, String, String) {
-        guard let name = detailView.nameTextField.text, setName(name) else { throw ContactError.errorName }
-        guard let age = detailView.ageTextField.text, setAge(age) else { throw ContactError.errorAge }
-        guard let phone = detailView.phoneNumberTextField.text, setNumber(phone) else { throw ContactError.errorNumber }
+        guard let name = detailView.nameTextField.text, Verification.setName(name) else { throw ContactError.errorName }
+        guard let age = detailView.ageTextField.text, Verification.setAge(age) else { throw ContactError.errorAge }
+        guard let phone = detailView.phoneNumberTextField.text, Verification.setNumber(phone) else { throw ContactError.errorNumber }
         
         return (name.removeBlank, age, phone)
     }

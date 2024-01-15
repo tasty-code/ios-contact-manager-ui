@@ -8,9 +8,6 @@
 import UIKit
 
 final class ContactDetailCell: UITableViewCell {
-    static var identifier: String {
-        return String(describing: self)
-    }
     
     var contact: Contact? {
         didSet {
@@ -74,6 +71,12 @@ final class ContactDetailCell: UITableViewCell {
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
         ])
+    }
+}
+
+extension UITableViewCell {
+    static var identifier: String {
+        return String(describing: self)
     }
 }
 
