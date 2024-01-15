@@ -77,9 +77,9 @@ final class RegisterViewController: UIViewController {
         print("연락처 저장됨")
         phoneBook?.categorizedContactInfo.append(User(
                                                 userID: UUID(),
-                                                name: nameTextField.text ?? "테스트",
-                                                phoneNumber: phoneNumberTextField.text ?? "01012345678",
-                                                age: Int(ageTextField.text ?? "") ?? 10)
+                                                name: nameTextField.text ?? "",
+                                                phoneNumber: phoneNumberTextField.text ?? "",
+                                                age: Int(ageTextField.text ?? "") ?? 0)
         )
         dismiss(animated: true)
     }
@@ -87,24 +87,21 @@ final class RegisterViewController: UIViewController {
     
     private func validateTextField() {
 
-//        let alert = Alert.create(title: "입력에러", message: "\(message) 입력창을 확인해주세요", confirmTitle: "확인")
-//
-//        if !wrongAgeInput {
-//            present(alert, animated: true)
-//            return
-//        }
-//        
-//        if !wrongNameInput {
-//            let alert = Alert.create(title: "입력에러", message: "이름 입력창을 확인해주세요", confirmTitle: "확인")
-//            present(alert, animated: true)
-//            return
-//        }
-//        
-//        if !wrongPhoneNumInput {
-//            let alert = Alert.create(title: "입력에러", message: "번호 입력창을 확인해주세요", confirmTitle: "확인")
-//            present(alert, animated: true)
-//            return
-//        }
+
+        if !wrongAgeInput {
+            presentAlert(title: "입력에러", message: "나이 입력창을 확인해주세요", confirmTitle: "확인")
+            return
+        }
+        
+        if !wrongNameInput {
+            presentAlert(title: "입력에러", message: "이름 입력창을 확인해주세요", confirmTitle: "확인")
+            return
+        }
+        
+        if !wrongPhoneNumInput {
+            presentAlert(title: "입력에러", message: "번호 입력창을 확인해주세요", confirmTitle: "확인")
+            return
+        }
     }
     
     
@@ -146,11 +143,8 @@ private extension RegisterViewController {
     }
     
     
-    
     func changeTextBorderColor(textField: UITextField, color: CGColor) {
         textField.layer.borderColor = color
         textField.layer.borderWidth = 2
     }
 }
-
-
