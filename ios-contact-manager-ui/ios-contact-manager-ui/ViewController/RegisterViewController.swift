@@ -73,7 +73,8 @@ final class RegisterViewController: UIViewController {
     }
     
     @IBAction private func saveButtonTapped(_ sender: UIBarButtonItem) {
-        validateTextField()
+        let validation = validateTextField()
+        guard validation == true else { return }
         print("연락처 저장됨")
         phoneBook?.categorizedContactInfo.append(User(
                                                 userID: UUID(),
@@ -81,26 +82,27 @@ final class RegisterViewController: UIViewController {
                                                 phoneNumber: phoneNumberTextField.text ?? "",
                                                 age: Int(ageTextField.text ?? "") ?? 0)
         )
+    
+        self.dismiss(animated: true)
     }
     
     
-    private func validateTextField() {
-
-
+    private func validateTextField() -> Bool {
         if !wrongAgeInput {
             presentAlert(title: "입력에러", message: "나이 입력창을 확인해주세요", confirmTitle: "확인")
-            return
+            return false
         }
         
         if !wrongNameInput {
             presentAlert(title: "입력에러", message: "이름 입력창을 확인해주세요", confirmTitle: "확인")
-            return
+            return false
         }
         
         if !wrongPhoneNumInput {
             presentAlert(title: "입력에러", message: "번호 입력창을 확인해주세요", confirmTitle: "확인")
-            return
+            return false
         }
+        return true
     }
     
     
