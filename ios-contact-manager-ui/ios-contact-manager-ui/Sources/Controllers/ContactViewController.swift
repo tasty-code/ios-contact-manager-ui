@@ -9,13 +9,17 @@ import UIKit
 
 final class ContactViewController: UIViewController {
     
-    private let tableView: UITableView = {
-        let view = UITableView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        self.view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ContactDetailCell.self, forCellReuseIdentifier: ContactDetailCell.identifier)
+        return tableView
     }()
     
-    lazy var plusButton: UIBarButtonItem = {
+    private lazy var plusButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plusButtonTapped))
         return button
     }()
@@ -27,23 +31,15 @@ final class ContactViewController: UIViewController {
         view.backgroundColor = .white
         layout()
         parse()
-        configure()
-        registerCell()
         setUpNaviBar()
     }
     
     private func layout() {
-        view.addSubview(tableView)
         
         NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
                                      tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
                                      tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
                                      tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)])
-    }
-    
-    private func configure() {
-        tableView.dataSource = self
-        tableView.delegate = self
     }
     
     private func setUpNaviBar() {
@@ -62,10 +58,6 @@ final class ContactViewController: UIViewController {
             let alert = showErrorAlert(title: nil, error.localizedDescription, actions: [UIAlertAction(title: "취소", style: .default)])
             present(alert, animated: true)
         }
-    }
-    
-    private func registerCell() {
-        tableView.register(ContactDetailCell.self, forCellReuseIdentifier: ContactDetailCell.identifier)
     }
     
     @objc func plusButtonTapped() {
