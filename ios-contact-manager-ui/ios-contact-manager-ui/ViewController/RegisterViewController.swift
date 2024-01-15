@@ -3,9 +3,6 @@ import UIKit
 
 // MARK: - init & deinit
 final class RegisterViewController: UIViewController {
-    var wrongAgeInput = false
-    var wrongNameInput = false
-    var wrongPhoneNumInput = false
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
@@ -14,87 +11,100 @@ final class RegisterViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
-    @IBOutlet weak var tempErrorLabel: UILabel!
-    @IBOutlet weak var tempAgeErrorLabel: UILabel!
-    @IBOutlet weak var tempPhoneNumberErrorLabel: UILabel!
+    var phoneBook: PhoneBook?
     
+    var wrongAgeInput = false
+    var wrongNameInput = false
+    var wrongPhoneNumInput = false
+        
     deinit { print("RegisterViewController has been deinit!!") }
-
+    
     @IBAction private func validateNameTextField(_ sender: UITextField) {
-        let userInput = nameTextField.text ?? " "
         let minCount = 2
         let maxCount = 12
-        if validateMaximumNameCondition(input: userInput, condition: maxCount) &&
-            validateMinimumNameCondition(input: userInput, condition: minCount) {
-            tempErrorLabel.text = ""
+        
+        if validateCountCondition(input: sender.text ?? "", condition: (minCount, maxCount)) && isValidName(sender.text ?? "") {
             changeTextBorderColor(textField: nameTextField, color: UIColor.systemBlue.cgColor)
             wrongNameInput = false
         } else {
             changeTextBorderColor(textField: nameTextField, color: UIColor.systemPink.cgColor)
             wrongNameInput = true
-            }
+        }
     }
-
     
     @IBAction private func validateAgeTextField(_ sender: UITextField) {
-        print("나이 입력 변화")
-        let userInput = Int(ageTextField.text ?? String()) ?? Int()
-        print(userInput)
+        
         let minAge = 1
         let maxAge = 99
-        if validateMaximumAgeCondition(input: userInput, condition: maxAge) && 
-            validateMinimumAgeCondition(input: userInput, condition: minAge) {
-            tempAgeErrorLabel.text = ""
+        
+        if validateCountCondition(input: sender.text ?? "", condition: (minAge, maxAge)) {
             changeTextBorderColor(textField: ageTextField, color: UIColor.systemBlue.cgColor)
-            wrongAgeInput = false
+            wrongAgeInput = true
         } else {
             changeTextBorderColor(textField: ageTextField, color: UIColor.systemPink.cgColor)
-            wrongAgeInput = true
+            wrongAgeInput = false
         }
     }
     
     @IBAction private func phoneNumberTextFieldChanged(_ sender: UITextField) {
         print("연락처 입력 변화")
         
-        let convertDigit = phoneNumberTextField.text!.replacingOccurrences(of: #"\D"#, with: "", options: .regularExpression)
+        let convertDigit = sender.text!.replacingOccurrences(of: #"\D"#, with: "", options: .regularExpression)
         
         let count = convertDigit.count
         switch count {
         case 0:
-            tempPhoneNumberErrorLabel.text = "휴대폰 번호를 입력해 주세요."
             phoneNumberTextField.text = convertDigit
         case 1...3:
             phoneNumberTextField.text = convertDigit
         case 4...7:
             phoneNumberTextField.text = convertDigit.prefix(3) + "-" + convertDigit.suffix(convertDigit.count-3)
-            tempPhoneNumberErrorLabel.text = "올바르지 않은 휴대폰 번호입니다."
+            
             wrongPhoneNumInput = true
         case 8...11:
             let startIndex = convertDigit.index(convertDigit.startIndex, offsetBy: 3)
             let endingIndex = convertDigit.index(convertDigit.startIndex, offsetBy: count-5)
             let middleNumber = convertDigit[startIndex...endingIndex]
             phoneNumberTextField.text = convertDigit.prefix(3) + "-" + middleNumber + "-" + convertDigit.suffix(4)
-            tempPhoneNumberErrorLabel.text = "올바른 휴대폰 번호입니다."
             wrongPhoneNumInput = false
-            
         default:
             wrongPhoneNumInput = true
-            tempPhoneNumberErrorLabel.text = "올바르지 않은 휴대폰 번호입니다."
-            
         }
     }
     
     @IBAction private func saveButtonTapped(_ sender: UIBarButtonItem) {
-        if wrongAgeInput == false &&
-            wrongNameInput == false &&
-            wrongPhoneNumInput == false {
-            print("연락처 저장됨")
-            dismiss(animated: true)
-        } else {
-            print(wrongNameInput,wrongAgeInput,wrongPhoneNumInput)
-            print("Alert")
-        }
+        validateTextField()
+        print("연락처 저장됨")
+        phoneBook?.categorizedContactInfo.append(User(
+                                                userID: UUID(),
+                                                name: nameTextField.text!,
+                                                phoneNumber: phoneNumberTextField.text!,
+                                                age: Int(ageTextField.text!)!)
+        )
+        dismiss(animated: true)
     }
+    
+    
+    private func validateTextField() {
+//        if !wrongAgeInput {
+//            let alert = Alert.create(title: "입력에러", message: "나이 입력창을 확인해주세요", confirmTitle: "확인")
+//            present(alert, animated: true)
+//            return
+//        }
+//        
+//        if !wrongNameInput {
+//            let alert = Alert.create(title: "입력에러", message: "이름 입력창을 확인해주세요", confirmTitle: "확인")
+//            present(alert, animated: true)
+//            return
+//        }
+//        
+//        if !wrongPhoneNumInput {
+//            let alert = Alert.create(title: "입력에러", message: "번호 입력창을 확인해주세요", confirmTitle: "확인")
+//            present(alert, animated: true)
+//            return
+//        }
+    }
+    
     
     @IBAction private func cancelButtonTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
@@ -118,52 +128,27 @@ extension RegisterViewController {
     }
     
     func isValidName(_ name: String) -> Bool {
-        let koreanNameRegex =
-        "^[가-힣ㄱ-ㅎㅏ-ㅣ]"
-        
+        let koreanNameRegex = "^[가-힣ㄱ-ㅎㅏ-ㅣ]"
         return true
     }
 }
 
 private extension RegisterViewController {
-    func validateMinimumNameCondition(input: String, condition: Int) -> Bool {
-        if input.count >= condition {
-            return true
-        } else {
-            tempErrorLabel.text = "2글자 이상의 이름을 입력해 주세요."
-            return false
-        }
+    
+    
+    
+    func validateCountCondition(input: String, condition: (Int,Int)) -> Bool {
+        guard input.count >= condition.0 else { print("2글자 이상의 이름을 입력해 주세요."); return false }
+        guard input.count < condition.1 else { print("1~99의 숫자를 입력해 주세요."); return false }
+        return true
     }
     
-    func validateMaximumNameCondition(input: String, condition: Int) -> Bool {
-        if input.count < condition {
-            return true
-        } else {
-            tempErrorLabel.text = "12글자 이하의 이름을 입력해 주세요."
-            return false
-        }
-    }
     
-    func validateMinimumAgeCondition(input: Int, condition: Int) -> Bool {
-        if input >= condition {
-            return true
-        } else {
-            tempAgeErrorLabel.text = "1~99의 숫자를 입력해 주세요."
-            return false
-        }
-    }
-    
-    func validateMaximumAgeCondition(input: Int, condition: Int) -> Bool {
-        if input < condition {
-            return true
-        } else {
-            tempAgeErrorLabel.text = "1~99의 숫자를 입력해 주세요."
-            return false
-        }
-    }
     
     func changeTextBorderColor(textField: UITextField, color: CGColor) {
         textField.layer.borderColor = color
         textField.layer.borderWidth = 2
     }
 }
+
+

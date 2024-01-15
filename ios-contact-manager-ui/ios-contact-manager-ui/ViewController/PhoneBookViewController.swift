@@ -14,6 +14,7 @@ final class PhoneBookViewController: UIViewController {
 extension PhoneBookViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        phoneBook?.delegate = self 
         setupTableView()
         setupUI()
     }
@@ -91,3 +92,10 @@ extension PhoneBookViewController {
 
 
 
+
+// MARK: - Delegate
+extension PhoneBookViewController: updatePhoneBookDelegate {
+    func onUpdate() {
+        tableView.reloadData()
+    }
+}

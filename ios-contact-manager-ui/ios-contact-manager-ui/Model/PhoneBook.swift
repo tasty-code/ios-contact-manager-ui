@@ -1,9 +1,16 @@
 
 import Foundation
 
+
+protocol updatePhoneBookDelegate: AnyObject {
+    func onUpdate()
+}
+
 // MARK: - PhoneBooks Init & Deinit
 final class PhoneBook {
-
+    
+    weak var delegate: updatePhoneBookDelegate?
+    
     @NotifyContactInfoChange
     var categorizedContactInfo: [User] = [
         User(userID: UUID(), name: "전종혁", phoneNumber: "010-1111-2224", age: 20),
@@ -17,18 +24,12 @@ final class PhoneBook {
         User(userID: UUID(), name: "증철수", phoneNumber: "010-1113-2224", age: 20),
         User(userID: UUID(), name: "하철수", phoneNumber: "010-1112-2243", age: 3),
     ]
-
+    
+    init() {
+        _categorizedContactInfo.updateChange = { [weak self] in
+            self?.delegate?.onUpdate()
+        }
+    }
     deinit { print("PhoneBook has been deinit!!")}
 }
 
-// MARK: - PhoneBook Method
-extension PhoneBook {
-    
-    func add(user: User) {
-        
-    }
-    
-    func remove(user: User) {
-        
-    }
-}
