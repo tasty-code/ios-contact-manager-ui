@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
     private let contactManager = ContactMananger()
     private let cellIdentifier = "ContactCustomCell"
 
@@ -33,9 +34,12 @@ class ViewController: UIViewController {
             contactManager.initializeContact(contactData: dummyData)
         } catch {
             DispatchQueue.main.async {
-                self.showAlert(title: "알림", message: "데이터불러오기실패")
+                self.showAlert(title: "알림", message: "데이터 불러오기 실패")
             }
         }
+    }
+    
+    @IBAction func touchUpAddButton(_ sender: UIBarButtonItem) {
     }
 }
 
