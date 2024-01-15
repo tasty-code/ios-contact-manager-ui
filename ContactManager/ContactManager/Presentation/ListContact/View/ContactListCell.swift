@@ -29,8 +29,9 @@ final class ContactListCell: UITableViewCell {
         return stack
     }()
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

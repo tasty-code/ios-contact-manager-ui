@@ -5,7 +5,9 @@
 //  Created by Effie on 1/7/24.
 //
 
-struct ListContactViewControllerFactory {
+import Foundation
+
+enum ListContactViewControllerFactory {
     static func make() -> ListContactViewController {
         let useCase = Self.makeUseCase()
         return ListContactViewController(useCase: useCase)
@@ -17,6 +19,17 @@ struct ListContactViewControllerFactory {
     }
     
     private static func makeRepository() -> ContactRepository {
-        return ContactRepositoryImpl()
+        let contactList = makeContactList()
+        let fileProvider = makeFileProvider()
+        return ContactRepositoryImpl(contactList: contactList, fileProvider: fileProvider)
+    }
+    
+    private static func makeFileProvider() -> FileProvidable {
+        let targetBundle = Bundle.main
+        return BundleResourceManager(target: targetBundle)
+    }
+    
+    private static func makeContactList() -> ContactList {
+        return ContactList()
     }
 }
