@@ -21,12 +21,41 @@ final class AddContactViewController: UIViewController {
     }
     
     private let ageField = InputView(fieldName: "나이") { input in
-        return FormattingResult(formatted: input, validationError: nil)
+        var formattedAge = input
+        
+        if input.first == "0" {
+            formattedAge = ""
+        } else if input.count >= 2 {
+            formattedAge = String(input.prefix(2))
+        }
+        
+        return FormattingResult(formatted: formattedAge, validationError: nil)
     }
     
     private let phoneNumberField = InputView(fieldName: "전화번호") { input in
+        func format(with mask: String, phone: String) -> String {
+            let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+            var result = ""
+            var index = numbers.startIndex
+            for ch in mask where index < numbers.endIndex {
+                if ch == "X" {
+                    result.append(numbers[index])
+                    index = numbers.index(after: index)
+                } else {
+                    result.append(ch)
+                }
+            }
+            return result
+        }
+        
+        let formattedText: String
+        if input.first != "0" {
+            formattedText = format(with: "XX-XXX-XXXX", phone: input)
+        } else {
+            formattedText = format(with: "XXX-XXXX-XXXX", phone: input)
+        }
         let minimumLength = 9
-        return FormattingResult(formatted: input, validationError: nil)
+        return FormattingResult(formatted: formattedText, validationError: nil)
     }
     
     private lazy var fieldStack: UIStackView = {
