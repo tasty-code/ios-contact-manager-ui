@@ -10,12 +10,10 @@ import UIKit
 final class ContactsViewController: UIViewController {
 
     private let contactsTableView: ContactsView
-    private var contacts: Array<Contact>
-    var delegate: ContactsApproachable?
+    var dataSource: ContactsApproachable?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         contactsTableView = ContactsView()
-        contacts = []
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -25,7 +23,6 @@ final class ContactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        contacts = delegate?.sorted() ?? []
         view = contactsTableView
         contactsTableView.tableView.dataSource = self
     }
@@ -34,9 +31,8 @@ final class ContactsViewController: UIViewController {
 extension ContactsViewController {
     @objc func presentContactsAdditionModalView() {
         let contactsAdditionModalViewController = ContactsAdditionModalViewController()
-        contactsAdditionModalViewController.delegate = delegate as? any ContactsManageable
+        contactsAdditionModalViewController.delegate = dataSource as? any ContactsManageable
         contactsAdditionModalViewController.reloadData = { [weak self] in
-            self?.contacts = self?.delegate?.sorted() ?? []
             self?.contactsTableView.tableView.reloadData()
         }
         present(contactsAdditionModalViewController, animated: true)
@@ -46,12 +42,14 @@ extension ContactsViewController {
 extension ContactsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contacts.count
+        return dataSource?.sorted().count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
-        let contact: Contact = contacts[indexPath.row]
+        guard let contact: Contact = dataSource?.sorted()[indexPath.row] else {
+            return cell
+        }
         var content = cell.defaultContentConfiguration()
         
         content.text = "\(contact.name)(\(contact.age))"
