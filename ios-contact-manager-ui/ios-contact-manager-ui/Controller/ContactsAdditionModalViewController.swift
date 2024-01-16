@@ -54,40 +54,40 @@ extension ContactsAdditionModalViewController: UITextFieldDelegate {
             isNumberStartedWithZero = true
         }
         
-        text = string == "" ? deleteKeyTapped(text: text, rangeLocation: rangeLocation) : numberKeyTapped(text: text, rangeLocation: rangeLocation)
+        text = string == "" ? deleteText(text, range: rangeLocation) : appendText(text, range: rangeLocation)
         text = isNumberStartedWithZero ? "0" + text : text
 
         textField.text = text
         return true
     }
     
-    private func numberKeyTapped(text: String, rangeLocation: Int) -> String {
-        var resultText = text
+    private func appendText(_ text: String, range: Int) -> String {
+        var replacementText = text
         
-        switch rangeLocation {
+        switch range {
         case 2, 6:
-            resultText += "-"
+            replacementText += "-"
         case 11:
-            resultText = exchange(string: resultText, at: 7, isDelete: false)
+            replacementText = exchange(string: replacementText, at: 7, isDelete: false)
         default:
             break
         }
-        return resultText
+        return replacementText
     }
     
-    private func deleteKeyTapped(text: String, rangeLocation: Int) -> String {
-        var resultText = text
+    private func deleteText(_ text: String, range: Int) -> String {
+        var replacementText = text
         
-        switch rangeLocation {
+        switch range {
         case 3, 7:
-            resultText.removeLast()
+            replacementText.removeLast()
         case 11:
-            resultText = exchange(string: resultText, at: 6, isDelete: true)
+            replacementText = exchange(string: replacementText, at: 6, isDelete: true)
         default:
             break
         }
         
-        return resultText
+        return replacementText
     }
     
     private func exchange(string: String, at index: Int, isDelete: Bool) -> String {
