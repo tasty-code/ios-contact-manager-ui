@@ -46,12 +46,9 @@ extension ContactsAdditionModalViewController: UITextFieldDelegate {
         var rangeLocation = range.location
         var isNumberStartedWithZero: Bool = false
         
-        var isSeoulNumber: Bool = false
-        if text.count > 1 {
-            isSeoulNumber = text.starts(with: "0") && text[text.index(after: text.startIndex)] == "2"
-        }
+        let seoulNumber: String = "02"
         
-        if text.starts(with: "0") && !isSeoulNumber {
+        if text.starts(with: "0") && !text.starts(with: seoulNumber) {
             text.removeFirst()
             rangeLocation -= 1
             isNumberStartedWithZero = true
