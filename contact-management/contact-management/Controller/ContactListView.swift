@@ -78,6 +78,15 @@ extension ContactListView: UITableViewDataSource {
         cell.detailTextLabel?.text = item.phoneNumber
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            contactListStorage?.deleteContact(indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            
+        }
+    }
 }
 
 extension ContactListView: UITableViewDelegate {
