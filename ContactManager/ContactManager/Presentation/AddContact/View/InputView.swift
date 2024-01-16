@@ -14,17 +14,6 @@ final class InputView: UIView {
         return self.textField.text ?? ""
     }
     
-    private var state: ValidationError? {
-        didSet {
-            switch state {
-            case .some(let error):
-                self.inputStatelabel.text = error.noticeMessage
-            case .none:
-                self.inputStatelabel.text = " "
-            }
-        }
-    }
-    
     private let fieldNamelabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -36,13 +25,6 @@ final class InputView: UIView {
         field.borderStyle = .roundedRect
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
-    }()
-    
-    private let inputStatelabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .caption2)
-        return label
     }()
     
     private lazy var nameStack: UIStackView = {
@@ -58,7 +40,6 @@ final class InputView: UIView {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.addArrangedSubview(self.textField)
-        stack.addArrangedSubview(self.inputStatelabel)
         stack.spacing = 4
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
@@ -93,7 +74,6 @@ final class InputView: UIView {
     
     private func configure(fieldName: String, keyboardType: UIKeyboardType) {
         self.fieldNamelabel.text = fieldName
-        self.inputStatelabel.text = "필수 필드입니다."
         self.textField.keyboardType = keyboardType
     }
     
@@ -120,9 +100,7 @@ extension InputView: UITextFieldDelegate {
         guard let oldText = textField.text else { return false }
         guard string.isEmpty == false else { return true } // 지울 때
         let newText = NSString(string: oldText).replacingCharacters(in: range, with: string)
-        let result = self.formatter(newText)
-        textField.text = result.formatted
-        self.state = result.validationError
+        textField.text = self.formatter(newText)
         return false
     }
 }

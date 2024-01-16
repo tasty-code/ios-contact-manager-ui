@@ -13,28 +13,28 @@ final class AddContactViewController: UIViewController {
     private weak var coordinator: AddContactViewControllerDelegate?
     
     private let nameField = InputView(fieldName: "이름", keyboardType: .default) { input in
-        guard input.contains(where: { $0 == " " }) == false else {
-            let result = input.components(separatedBy: " ").reduce("") { $0 + $1 }
-            return FormattingResult(formatted: result, validationError: NameValidationError.cannotContainBlank)
+        var formattedName = input
+        if input.contains(where: { $0 == " " }) {
+            formattedName = input.components(separatedBy: " ").reduce("") { $0 + $1 }
         }
-        return FormattingResult(formatted: input, validationError: nil)
+        return formattedName
     }
     
     private let ageField = InputView(fieldName: "나이", keyboardType: .numberPad) { input in
         var formattedAge = input
         
         if input.first == "0" {
-            formattedAge = ""
+            formattedAge = String(input.dropFirst())
         } else if input.count >= 2 {
             formattedAge = String(input.prefix(2))
         }
         
-        return FormattingResult(formatted: formattedAge, validationError: nil)
+        return formattedAge
     }
     
     private let phoneNumberField = InputView(fieldName: "전화번호", keyboardType: .phonePad) { input in
         func format(with mask: String, phone: String) -> String {
-            let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+            let numbers = phone.filter { ch in ch.isNumber }
             var result = ""
             var index = numbers.startIndex
             for ch in mask where index < numbers.endIndex {
@@ -54,8 +54,7 @@ final class AddContactViewController: UIViewController {
         } else {
             formattedText = format(with: "XXX-XXXX-XXXX", phone: input)
         }
-        let minimumLength = 9
-        return FormattingResult(formatted: formattedText, validationError: nil)
+        return formattedText
     }
     
     private lazy var fieldStack: UIStackView = {
