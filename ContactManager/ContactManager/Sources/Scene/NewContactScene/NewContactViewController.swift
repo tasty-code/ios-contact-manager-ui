@@ -60,16 +60,20 @@ final class NewContactViewController: UIViewController {
     
     /// 연락처 정보 유효성 검사 메서드
     private func checkValidityOfContactData() -> [(ContactInfo, Bool)] {
-        let name = nameTextField.text ?? ""
-        let age = ageTextField.text ?? ""
-        let contactNumber = contactNumberTextField.text ?? ""
+        let name: String = nameTextField.text ?? ""
+        let age: Int? = Int(ageTextField.text ?? "")
+        let contactNumber: String = contactNumberTextField.text ?? ""
         var validationResult: (name: Bool, age: Bool, contactNumber: Bool) = (false, false, false)
         
         validationResult.name = name.isEmpty ? false : true
-        validationResult.age = age.isEmpty || age.count > 3 ? false : true
+        if let age {
+            validationResult.age = age < 0 || age > 999 ? false : true
+        } else {
+            validationResult.age = false
+        }
         validationResult.contactNumber = contactNumber.isEmpty || (!contactNumber.validatePhoneNumberFormat()
                                && !contactNumber.validateContactNumberFormat()) ? false : true
-        
+
         return [(.name, validationResult.name), (.age, validationResult.age),
                 (.contactNumber, validationResult.contactNumber)]
     }
