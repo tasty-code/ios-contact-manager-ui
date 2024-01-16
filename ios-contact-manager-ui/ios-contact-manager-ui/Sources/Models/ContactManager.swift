@@ -8,7 +8,7 @@
 import UIKit
 
 final class ContactManager {
-    var contacts: [Contact] = []
+    private(set) var contacts: [Contact] = []
     
     func add(_ contact: Contact) {
         contacts.append(contact)
@@ -22,6 +22,14 @@ final class ContactManager {
         guard let targetIndex = contacts.firstIndex(where: { $0.id == contact.id }) else { return }
         
         contacts[targetIndex] = contact
+    }
+    
+    func parse() throws {
+        do {
+            contacts = try AssetDecoder<[Contact]>().parse(assetName: "MOCK_DAT")
+        } catch {
+            throw error
+        }
     }
 }
 

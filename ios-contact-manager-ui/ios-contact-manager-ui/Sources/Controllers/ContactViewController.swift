@@ -53,13 +53,12 @@ final class ContactViewController: UIViewController {
     
     private func parse() {
         do {
-            contactManger.contacts = try AssetDecoder<[Contact]>().parse(assetName: "MOCK_DATA")
+            try contactManger.parse()
         } catch {
             let alert = showErrorAlert(title: nil, error.localizedDescription, actions: [UIAlertAction(title: "취소", style: .default)])
             present(alert, animated: true)
         }
     }
-    
     @objc func plusButtonTapped() {
         let detailVC = ContactDetailViewController()
         
