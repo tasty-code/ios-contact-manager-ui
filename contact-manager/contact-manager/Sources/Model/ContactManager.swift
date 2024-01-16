@@ -1,11 +1,7 @@
 final class ContactManager {
-    private var contactDictionary: [String: Contact]
+    private var contactDictionary = [String: Contact]()
     var contacts: [Contact] {
         return Array(contactDictionary.values)
-    }
-    
-    init(contactDictionary: [String : Contact] = [String: Contact]()) {
-        self.contactDictionary = contactDictionary
     }
     
     @discardableResult
