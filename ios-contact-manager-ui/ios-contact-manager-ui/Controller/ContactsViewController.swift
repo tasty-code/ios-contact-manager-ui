@@ -35,9 +35,9 @@ extension ContactsViewController {
     @objc func presentContactsAdditionModalView() {
         let contactsAdditionModalViewController = ContactsAdditionModalViewController()
         contactsAdditionModalViewController.delegate = delegate as? any ContactsManageable
-        contactsAdditionModalViewController.reloadData = {
-            self.contacts = self.delegate?.sorted() ?? []
-            self.contactsTableView.tableView.reloadData()
+        contactsAdditionModalViewController.reloadData = { [weak self] in
+            self?.contacts = self?.delegate?.sorted() ?? []
+            self?.contactsTableView.tableView.reloadData()
         }
         present(contactsAdditionModalViewController, animated: true)
     }
