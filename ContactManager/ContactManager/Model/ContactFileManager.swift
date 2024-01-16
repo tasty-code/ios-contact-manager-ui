@@ -8,7 +8,6 @@
 import UIKit
 
 final class ContactFileManager {
-    
     var contacts: [Contact] = []
     
     func loadJson() {
