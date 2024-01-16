@@ -7,13 +7,17 @@
 
 import UIKit
 
-extension CustomAlert where Self: UIViewController { 
-    func showAlert(message: String, actions: [UIAlertAction]) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        for action in actions {
-            alert.addAction(action)
-        }
-        self.present(alert, animated: true)
+extension UIViewController { 
+    func showAlertWithConfirmation(message: String, isDestructive: Bool, confirmationAction: ((UIAlertAction) -> Void)? = nil) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "예", style: isDestructive ? .destructive : .default, handler: confirmationAction))
+        alert.addAction(UIAlertAction(title: "아니요", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alert, animated: true)
     }
 }
