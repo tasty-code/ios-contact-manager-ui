@@ -7,7 +7,20 @@
 
 import UIKit
 
-//MARK: - Alert 재사용 method 구현 
+
+// MARK: - 스토리보드 Identifier 오타 방지 코드
+extension UIViewController {
+    
+    static var className: String {
+        NSStringFromClass(self.classForCoder()).components(separatedBy: ".").last!
+    }
+    
+    var className: String {
+        NSStringFromClass(self.classForCoder).components(separatedBy: ".").last!
+    }
+}
+
+//MARK: - Alert 재사용 method 구현
 extension UIViewController {
     /// 확인버튼 하나만 있는 Alert 메서드
     func presentAlert(title: String,

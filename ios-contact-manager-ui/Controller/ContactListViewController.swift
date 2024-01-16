@@ -31,8 +31,8 @@ final class ContactListViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addContactButtonTapped(_:)))
     }
     
-    @objc func addContactButtonTapped(_ sender: UIButton) {
-        guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddContactViewController") as? AddContactViewController else { return }
+    @objc private func addContactButtonTapped(_ sender: UIButton) {
+        guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: AddContactViewController.className) as? AddContactViewController else { return }
         
         nextViewController.delegate = self
         
@@ -110,7 +110,7 @@ extension ContactListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = contactTableView.dequeueReusableCell(withIdentifier: "ContactListCell", for: indexPath)
+        let cell: UITableViewCell = contactTableView.dequeueReusableCell(withIdentifier: "contactListCell", for: indexPath)
         
         cell.textLabel?.text = String("\(contactList[indexPath.row].name)" + "(\(contactList[indexPath.row].age))")
         cell.detailTextLabel?.text = contactList[indexPath.row].phoneNumber

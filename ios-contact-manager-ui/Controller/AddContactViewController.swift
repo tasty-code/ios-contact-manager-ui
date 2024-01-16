@@ -7,34 +7,39 @@
 
 import UIKit
 
+// MARK: - Delegate Pattern
 protocol SendDataDelegate: AnyObject {
     func updateContactList(with contact: Contact)
 }
 
-class AddContactViewController: UIViewController {
-    
-    var addedContactList: [Contact] = []
+final class AddContactViewController: UIViewController {
+        
+    // MARK: - Properties
+    private var addedContactList: [Contact] = []
     weak var delegate: SendDataDelegate?
-
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
     
+    //MARK: - @IBOutlet
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var ageTextField: UITextField!
+    @IBOutlet private weak var phoneNumberTextField: UITextField!
+    
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationItem()
         configureTextField()
     }
     
-    @objc func cancelButtonTapped() {
+    //MARK: - Custom Methods(Button)
+    @objc private func cancelButtonTapped() {
         presentAlertWithCancel(title: "정말로 취소하시겠습니까?", message: "", cancelTitle: "아니오", confirmTitle: "예") { [weak self] _ in self?.dismissModal() }
     }
     
-    @objc func saveButtonTapped() {
+    @objc private func saveButtonTapped() {
         guard let name = removeEmptySpaceCharacter(nameTextField), name.isEmpty == false else { return presentNameAlert() }
         guard let age = removeEmptySpaceCharacter(ageTextField), age.isEmpty == false else { return presentAgeAlert() }
         guard let phoneNumber = removeEmptySpaceCharacter(phoneNumberTextField), phoneNumber.isEmpty == false else { return presentPhoneNumberAlert() }
-            
+        
         guard checkAgeTextField(age: age) else { return  presentAgeAlert() }
         guard checkPhoneNumberTextField(for: phoneNumber) else { return presentPhoneNumberAlert() }
         
@@ -44,7 +49,8 @@ class AddContactViewController: UIViewController {
         dismissModal()
     }
     
-    func configureNavigationItem() {
+    //MARK: - Custom Methods
+    private func configureNavigationItem() {
         let dismissButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
         let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
         
@@ -53,7 +59,7 @@ class AddContactViewController: UIViewController {
         navigationItem.title = "새 연락처"
     }
     
-    func configureTextField() {
+    private func configureTextField() {
         nameTextField.keyboardType = .emailAddress
         nameTextField.delegate = self
         ageTextField.keyboardType = .numberPad
@@ -62,14 +68,14 @@ class AddContactViewController: UIViewController {
         phoneNumberTextField.delegate = self
     }
     
-    func checkAgeTextField(age: String) -> Bool {
+    private func checkAgeTextField(age: String) -> Bool {
         guard let ageNumber = Int(age), 0 < ageNumber, ageNumber <= 999 else {
             return false
         }
         return true
     }
     
-    func checkPhoneNumberTextField(for phoneNumber: String) -> Bool {
+    private func checkPhoneNumberTextField(for phoneNumber: String) -> Bool {
         let onlyNumber = phoneNumber.extractNumbersFromStrings()
         let regexPattern = "^[0-9]+-[0-9]+-[0-9]+$"
         
@@ -92,7 +98,7 @@ class AddContactViewController: UIViewController {
         }
     }
     
-    func checkDigitsOver(number: Int, for phoneNumber: String) -> Bool {
+    private func checkDigitsOver(number: Int, for phoneNumber: String) -> Bool {
         if phoneNumber.count < number {
             return false
         } else {
@@ -100,24 +106,24 @@ class AddContactViewController: UIViewController {
         }
     }
     
-    func removeEmptySpaceCharacter(_ textField: UITextField) -> String? {
+    private func removeEmptySpaceCharacter(_ textField: UITextField) -> String? {
         return textField.text?.filter { $0.isWhitespace == false }
     }
-
-    func dismissModal() {
+    
+    private func dismissModal() {
         self.dismiss(animated: true)
     }
     
     //MARK: - Alert 구현
-    func presentNameAlert() {
+    private func presentNameAlert() {
         presentAlert(title: "\(TextFieldError.nameTextFieldError.ErrorMessage)", message: "", confirmTitle: "확인")
     }
     
-    func presentAgeAlert() {
+    private func presentAgeAlert() {
         presentAlert(title: "\(TextFieldError.ageTextFieldError.ErrorMessage)", message: "", confirmTitle: "확인")
     }
     
-    func presentPhoneNumberAlert() {
+    private func presentPhoneNumberAlert() {
         presentAlert(title: "\(TextFieldError.phoneNumberTextFieldError.ErrorMessage)", message: "", confirmTitle: "확인")
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - String Extention(연락처 유효성 검증)
 extension String {
     
     func extractNumbersFromStrings() -> String {
