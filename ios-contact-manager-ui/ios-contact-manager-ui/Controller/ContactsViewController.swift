@@ -9,11 +9,11 @@ import UIKit
 
 final class ContactsViewController: UIViewController {
 
-    private let contactsTableView: ContactsView
+    private let contactsView: ContactsView
     var dataSource: ContactsApproachable?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        contactsTableView = ContactsView()
+        contactsView = ContactsView()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -23,8 +23,8 @@ final class ContactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view = contactsTableView
-        contactsTableView.tableView.dataSource = self
+        view = contactsView
+        contactsView.tableView.dataSource = self
     }
 }
 
@@ -33,7 +33,7 @@ extension ContactsViewController {
         let contactsAdditionModalViewController = ContactsAdditionModalViewController()
         contactsAdditionModalViewController.delegate = dataSource as? any ContactsManageable
         contactsAdditionModalViewController.reloadData = { [weak self] in
-            self?.contactsTableView.tableView.reloadData()
+            self?.contactsView.tableView.reloadData()
         }
         present(contactsAdditionModalViewController, animated: true)
     }
@@ -65,10 +65,10 @@ extension ContactsViewController: UITableViewDataSource {
 
 extension ContactsViewController {
     private func setupContactsTableViewConstraints() {
-        contactsTableView.translatesAutoresizingMaskIntoConstraints = false
+        contactsView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            contactsTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            contactsTableView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
+            contactsView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            contactsView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
         ])
     }
 }
