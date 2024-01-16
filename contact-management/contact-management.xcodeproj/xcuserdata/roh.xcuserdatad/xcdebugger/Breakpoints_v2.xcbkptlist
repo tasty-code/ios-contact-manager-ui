@@ -3,4 +3,84 @@
    uuid = "9A9B99CF-3EE4-45E7-8367-BA7D4C2F8EC1"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6F749A91-0B6A-48AC-ADA2-C6E7618E0429"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "contact-management/Controller/AddContactView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "9"
+            endingLineNumber = "9"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "6F749A91-0B6A-48AC-ADA2-C6E7618E0429 - db12f50b58eb1ae"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "contact_management.AddContactView.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; contact_management.AddContactView"
+                  moduleName = "contact-management"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roh/noam/ios-contact-manager-ui/contact-management/contact-management/Controller/AddContactView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "6F749A91-0B6A-48AC-ADA2-C6E7618E0429 - 251c8ae8ce4f85ad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "contact_management.AddContactView.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; contact_management.AddContactView"
+                  moduleName = "contact-management"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roh/noam/ios-contact-manager-ui/contact-management/contact-management/Controller/AddContactView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "10"
+                  endingLineNumber = "10"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "6F749A91-0B6A-48AC-ADA2-C6E7618E0429 - a4ea0bfc7cd3e915"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "contact_management.AddContactView.__deallocating_deinit"
+                  moduleName = "contact-management"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roh/noam/ios-contact-manager-ui/contact-management/contact-management/Controller/AddContactView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "6F749A91-0B6A-48AC-ADA2-C6E7618E0429 - a4ea0bfc7cd3e915"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "contact_management.AddContactView.__deallocating_deinit"
+                  moduleName = "contact-management"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roh/noam/ios-contact-manager-ui/contact-management/contact-management/Controller/AddContactView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
