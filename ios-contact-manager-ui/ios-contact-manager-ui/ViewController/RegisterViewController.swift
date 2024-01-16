@@ -53,16 +53,21 @@ final class RegisterViewController: UIViewController {
         switch convertDigit.count {
         case 0...3:
             phoneNumberTextField.text = convertDigit
+            changeTextBorderColor(textField: phoneNumberTextField, color: UIColor.systemPink.cgColor)
+            isRightPhoneNumInput = false
         case 4...7:
             phoneNumberTextField.text = convertDigit.prefix(3) + "-" + convertDigit.suffix(convertDigit.count-3)
-            isRightPhoneNumInput = true
+            changeTextBorderColor(textField: phoneNumberTextField, color: UIColor.systemPink.cgColor)
+            isRightPhoneNumInput = false
         case 8...11:
             let startIndex = convertDigit.index(convertDigit.startIndex, offsetBy: 3)
             let endingIndex = convertDigit.index(convertDigit.startIndex, offsetBy: convertDigit.count-5)
             let middleNumber = convertDigit[startIndex...endingIndex]
             phoneNumberTextField.text = convertDigit.prefix(3) + "-" + middleNumber + "-" + convertDigit.suffix(4)
+            changeTextBorderColor(textField: phoneNumberTextField, color: UIColor.systemBlue.cgColor)
             isRightPhoneNumInput = true
         default:
+            changeTextBorderColor(textField: phoneNumberTextField, color: UIColor.systemPink.cgColor)
             isRightPhoneNumInput = false
         }
     }
