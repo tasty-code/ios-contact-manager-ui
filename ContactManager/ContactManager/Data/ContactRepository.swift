@@ -9,6 +9,8 @@ import Foundation
 
 protocol ContactRepository {
     func requestContacts() throws -> [Contact]
+    
+    func addContact(_ newContact: Contact) throws
 }
 
 struct ContactRepositoryImpl: ContactRepository {
@@ -27,16 +29,11 @@ struct ContactRepositoryImpl: ContactRepository {
     }
     
     func requestContacts() throws -> [Contact] {
-        do {
-            let data = try getContactsFromBundle()
-            let contacts = try self.jsonDecoder.decode([Contact].self, from: data)
-            self.contactList.addContacts(contacts)
-            return self.contactList.getContacts()
-        } catch BundleResourceError.notFound {
-            throw ContactRepositoryError.notFoundAtBundle
-        } catch {
-            throw ContactRepositoryError.cannotDecode
-        }
+        return self.contactList.getContacts()
+    }
+    
+    func addContact(_ newContact: Contact) throws {
+        self.contactList.addContact(newContact)
     }
 }
 
@@ -46,4 +43,3 @@ extension ContactRepositoryImpl {
         return try fileProvider.getData(from: fileName, extension: FileExtension.json)
     }
 }
-

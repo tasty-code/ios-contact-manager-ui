@@ -10,6 +10,8 @@ import UIKit
 final class ListContactViewController: UIViewController {
     private var listContactUseCase: ListContactUseCase?
     
+    private weak var coordinator: ListContactViewControllerDelegate?
+    
     private let contactListView: ContactListTableView = {
         let tableView = ContactListTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,8 +25,12 @@ final class ListContactViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(useCase: ListContactUseCase) {
+    init(
+        useCase: ListContactUseCase,
+        coordinator: ListContactViewControllerDelegate
+    ) {
         self.listContactUseCase = useCase
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
         self.listContactUseCase?.presenter = self
     }
@@ -37,7 +43,10 @@ final class ListContactViewController: UIViewController {
 }
 
 extension ListContactViewController {
+    private static let title = "연락처"
+    
     private func setupViews() {
+        self.title = Self.title
         self.view.backgroundColor = .systemBackground
         self.view.addSubview(contactListView)
         NSLayoutConstraint.activate([
@@ -46,16 +55,27 @@ extension ListContactViewController {
             contactListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             contactListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+        setButtons()
+    }
+    
+    private func setButtons() {
+        let action = UIAction { [weak self] _ in self?.startCreating() }
+        let button = UIBarButtonItem(systemItem: .add, primaryAction: action)
+        self.navigationItem.rightBarButtonItem = button
+    }
+    
+    private func startCreating() {
+        self.coordinator?.startAddContact()
     }
 }
 
 extension ListContactViewController: ListContactPresentable {
-    func presentListContact(result: Result<ListContactModel.SuccessInfo, Error>) {
+    func presentListContact(result: Result<ListContact.SuccessInfo, Error>) {
         var snapshot = ContactListSnapShot()
         snapshot.appendSections([.contact])
         switch result {
         case .success(let successInfo):
-            let contacts = successInfo.contacts.map(ContactListItem.contact)    
+            let contacts = successInfo.contacts.map(ContactListItem.contact)  
             snapshot.appendItems(contacts, toSection: .contact)
         case .failure(let error):
             if let error = error as? LocalizedError {
@@ -82,5 +102,11 @@ extension ListContactViewController: ErrorAlertPresentableViewController {
         default:
             return
         }
+    }
+}
+
+extension ListContactViewController: ModalViewControllerDismissingHandlable {
+    func viewControllerWillAppear() {
+        self.listContactUseCase?.fetchAllContacts()
     }
 }
