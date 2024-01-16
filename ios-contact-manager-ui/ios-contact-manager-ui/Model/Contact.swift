@@ -12,9 +12,9 @@ struct Contact: Decodable, Hashable {
     var phoneNumber: String
     var age: Int
     
-    init(name: String, contact: String, age: Int) {
+    init(name: String, phoneNumber: String, age: Int) {
         self.name = name
-        self.phoneNumber = contact
+        self.phoneNumber = phoneNumber
         self.age = age
     }
 }

@@ -132,7 +132,7 @@ extension ContactsAdditionModalViewController {
               let phoneNumber = contactsAdditionModalView.phoneNumberTextField.text else {
             return nil
         }
-        return Contact(name: name, contact: phoneNumber, age: age)
+        return Contact(name: name, phoneNumber: phoneNumber, age: age)
     }
 }
 
