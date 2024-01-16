@@ -21,7 +21,7 @@ enum Alert {
         case .stopEditContact:
             return "정말로 취소하시겠습니까?"
         case .isCorrectList:
-            return "입력된 연락처 정보가 잘못되었습니다."
+            return "유효한 입력값이 아닙니다."
         case .isCorrectName:
             return "입력된 이름 정보가 잘못되었습니다"
         case .isCorrectAge:
