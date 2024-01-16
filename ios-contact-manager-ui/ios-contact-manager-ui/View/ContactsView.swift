@@ -1,5 +1,5 @@
 //
-//  ContactsTableView.swift
+//  ContactsView.swift
 //  ios-contact-manager-ui
 //
 //  Created by Kim EenSung on 1/8/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ContactsTableView: UIView {
+final class ContactsView: UIView {
 
     let tableView: UITableView
     private let navigationBar: ContactsNavigationBar
@@ -29,7 +29,7 @@ final class ContactsTableView: UIView {
     }
 }
 
-extension ContactsTableView {
+extension ContactsView {
     private func setupView() {
         backgroundColor = .white
     }

@@ -9,12 +9,12 @@ import UIKit
 
 final class ContactsViewController: UIViewController {
 
-    private let contactsTableView: ContactsTableView
+    private let contactsTableView: ContactsView
     private var contacts: Array<Contact>
     var delegate: ContactsApproachable?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        contactsTableView = ContactsTableView()
+        contactsTableView = ContactsView()
         contacts = []
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
