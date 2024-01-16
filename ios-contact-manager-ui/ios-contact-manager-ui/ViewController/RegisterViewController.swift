@@ -17,8 +17,6 @@ final class RegisterViewController: UIViewController {
     var isRightNameInput = false
     var isRightPhoneNumInput = false
         
-    deinit { print("RegisterViewController has been deinit!!") }
-    
     @IBAction private func validateNameTextField(_ sender: UITextField) {
         let minCount = 2
         let maxCount = 12
@@ -56,7 +54,7 @@ final class RegisterViewController: UIViewController {
         case 4...7:
             phoneNumberTextField.text = convertDigit.prefix(3) + "-" + convertDigit.suffix(convertDigit.count-3)
             isRightPhoneNumInput = true
-        case 4...11:
+        case 8...11:
             let startIndex = convertDigit.index(convertDigit.startIndex, offsetBy: 3)
             let endingIndex = convertDigit.index(convertDigit.startIndex, offsetBy: convertDigit.count-5)
             let middleNumber = convertDigit[startIndex...endingIndex]
@@ -79,19 +77,32 @@ final class RegisterViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
+    @IBAction private func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
     
-    private func validateTextField() -> Bool {
-        
+    deinit { print("RegisterViewController has been deinit!!") }
+}
+
+// MARK: - LifeCycle
+extension RegisterViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
+// MARK: - Validate Method
+private extension RegisterViewController {
+    
+    func validateTextField() -> Bool {
         if !isRightNameInput {
             presentAlert(title: "입력에러", message: "이름 입력창을 확인해주세요", confirmTitle: "확인")
             return false
         }
-
         if !isRightAgeInput {
             presentAlert(title: "입력에러", message: "나이 입력창을 확인해주세요", confirmTitle: "확인")
             return false
         }
-        
         if !isRightPhoneNumInput {
             presentAlert(title: "입력에러", message: "번호 입력창을 확인해주세요", confirmTitle: "확인")
             return false
@@ -99,36 +110,16 @@ final class RegisterViewController: UIViewController {
         return true
     }
     
-    
-    @IBAction private func cancelButtonTapped(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
-    }
-}
-
-// MARK: - LifeCycle
-extension RegisterViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-}
-
-// MARK: - Extension
-extension RegisterViewController {
-    func isValidPhoneNumber(_ number: String) -> Bool {
-        let phoneNumberRegex = "^(02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$|^(010)-?[0-9]{4}-?[0-9]{4}$"
-        let phoneNumberTest = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex)
-        return phoneNumberTest.evaluate(with: number)
-    }
-}
-
-private extension RegisterViewController {
     func validateCountCondition(input: String, condition: (Int,Int)) -> Bool {
         guard input.count >= condition.0 else { print("2글자 이상의 이름을 입력해 주세요."); return false }
         guard input.count < condition.1 else { print("1~99의 숫자를 입력해 주세요."); return false }
         return true
     }
+}
     
+
+// MARK: - UI 관련 로직
+private extension RegisterViewController {
     
     func changeTextBorderColor(textField: UITextField, color: CGColor) {
         textField.layer.borderColor = color
