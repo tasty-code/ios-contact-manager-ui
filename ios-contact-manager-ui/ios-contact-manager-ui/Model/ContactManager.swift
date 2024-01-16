@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ContactManager {
+final class ContactManager {
     static let shared = ContactManager()
     private init() {}
     

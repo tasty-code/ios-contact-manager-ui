@@ -5,9 +5,9 @@ protocol ContactListDelegate: AnyObject {
     func reloadContacts()
 }
 
-class ContactListViewController: UIViewController, ContactListDelegate {
+final class ContactListViewController: UIViewController, ContactListDelegate {
     
-    let model = ContactManager.shared
+    private let model = ContactManager.shared
     
     @IBOutlet weak var tableView: UITableView!
     

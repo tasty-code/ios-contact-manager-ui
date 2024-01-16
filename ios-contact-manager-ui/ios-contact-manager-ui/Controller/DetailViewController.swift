@@ -1,13 +1,13 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     
-    let model = ContactManager.shared
+    private let model = ContactManager.shared
     var delegate: ContactListDelegate?
     
     override func viewDidLoad() {
@@ -53,17 +53,18 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: UITextFieldDelegate {
-    func keyboardSetUp() {
+    private func keyboardSetUp() {
         nameTextField.keyboardType = .default
         ageTextField.keyboardType = .numberPad
         phoneNumberTextField.keyboardType = .numberPad
     }
     
-    func targetingAddHyphen() {
+    private func targetingAddHyphen() {
         phoneNumberTextField.addTarget(self, action: #selector(editingPhoneNumberText(_:)), for: .editingChanged)
     }
     
-    @objc func editingPhoneNumberText(_ textField: UITextField) {
+    @objc
+    private func editingPhoneNumberText(_ textField: UITextField) {
         textField.text = textField.text?.addPhoneNumberHyphen()
     }
 }
