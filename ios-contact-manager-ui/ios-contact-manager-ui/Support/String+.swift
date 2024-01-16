@@ -2,7 +2,6 @@
 import UIKit
 
 extension String {
-    
     func addPhoneNumberHyphen() -> String {
         var formatText = self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
 

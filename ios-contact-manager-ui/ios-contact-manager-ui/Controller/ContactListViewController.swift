@@ -6,7 +6,6 @@ protocol ContactListDelegate: AnyObject {
 }
 
 final class ContactListViewController: UIViewController, ContactListDelegate {
-    
     private let model = ContactManager.shared
     
     @IBOutlet weak var tableView: UITableView!
