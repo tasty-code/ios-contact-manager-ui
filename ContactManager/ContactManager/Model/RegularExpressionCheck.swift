@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum isRegularExpressionCheck {
+enum RegularExpressionCheck {
     case name, age, phoneNumber
     
     var regex: String {
@@ -21,7 +21,7 @@ enum isRegularExpressionCheck {
         }
     }
     
-    static func isValidString(_ string: String, forPattern pattern: isRegularExpressionCheck) -> Bool {
+    static func isValidString(string: String, forPattern pattern: RegularExpressionCheck) -> Bool {
         do {
             let regex = try NSRegularExpression(pattern: pattern.regex)
             let range = NSRange(location: 0, length: string.utf16.count)
