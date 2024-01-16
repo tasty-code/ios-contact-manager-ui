@@ -25,6 +25,7 @@ final class ContactsViewController: UIViewController {
         super.viewDidLoad()
         view = contactsView
         contactsView.tableView.dataSource = self
+        contactsView.searchBar.delegate = self
     }
 }
 
@@ -36,6 +37,12 @@ extension ContactsViewController {
             self?.contactsView.tableView.reloadData()
         }
         present(contactsAdditionModalViewController, animated: true)
+    }
+}
+
+extension ContactsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        return true
     }
 }
 

@@ -10,17 +10,21 @@ import UIKit
 final class ContactsView: UIView {
 
     let tableView: UITableView
+    let searchBar: UISearchBar
     private let navigationBar: ContactsNavigationBar
     
     override init(frame: CGRect) {
         self.tableView = UITableView()
         navigationBar = ContactsNavigationBar()
+        searchBar = UISearchBar()
         super.init(frame: frame)
         setupView()
         setupTableView()
         addSubview(navigationBar)
+        addSubview(searchBar)
         addSubview(tableView)
         setupNavigationBarConstraints()
+        setupSearchBarConstraints()
         setupTableViewConstraints()
     }
     
@@ -41,13 +45,20 @@ extension ContactsView {
         navigationBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
     
+    private func setupSearchBarConstraints() {
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.topAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
+        searchBar.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        searchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+    }
+    
     private func setupTableView() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ContactCell")
     }
     
     private func setupTableViewConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
