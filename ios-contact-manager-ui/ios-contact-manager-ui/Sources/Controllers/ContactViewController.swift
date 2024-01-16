@@ -24,7 +24,7 @@ final class ContactViewController: UIViewController {
         return button
     }()
     
-    private let contactManger = ContactManager()
+    private let contactManager = ContactManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ final class ContactViewController: UIViewController {
     
     private func parse() {
         do {
-            try contactManger.parse()
+            try contactManager.parse()
         } catch {
             let alert = showErrorAlert(title: nil, error.localizedDescription, actions: [UIAlertAction(title: "취소", style: .default)])
             present(alert, animated: true)
@@ -72,13 +72,13 @@ final class ContactViewController: UIViewController {
 
 extension ContactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactManger.contacts.count
+        return contactManager.contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailCell.identifier , for: indexPath) as? ContactDetailCell else { return UITableViewCell() }
         
-        let item = contactManger.contacts[indexPath.row]
+        let item = contactManager.contacts[indexPath.row]
         cell.contact = item
         
         return cell
@@ -97,7 +97,7 @@ extension ContactViewController: UITableViewDelegate {
 
 extension ContactViewController: ContactDetailDelegate {
     func add(contact: Contact) {
-        contactManger.add(contact)
+        contactManager.add(contact)
         tableView.reloadData()
     }
 }

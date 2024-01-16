@@ -26,7 +26,7 @@ final class ContactManager {
     
     func parse() throws {
         do {
-            contacts = try AssetDecoder<[Contact]>().parse(assetName: "MOCK_DAT")
+            contacts = try AssetDecoder<[Contact]>().parse(assetName: "MOCK_DATA")
         } catch {
             throw error
         }

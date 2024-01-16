@@ -152,9 +152,8 @@ final class DetailView: UIView {
             phoneNumberLabel.widthAnchor.constraint(equalToConstant: 70)
         ])
         
-        
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 60),
+            stackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 15),
             stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
         ])
