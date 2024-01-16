@@ -9,6 +9,7 @@ import UIKit
 
 final class ContactListViewController: UIViewController, UpdateNewContact {
     private let contactFileManager = ContactFileManager()
+    
     @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {

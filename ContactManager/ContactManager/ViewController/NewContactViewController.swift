@@ -52,8 +52,7 @@ final class NewContactViewController: UIViewController {
     }
 }
 
-extension NewContactViewController{
-    
+extension NewContactViewController {
     private func changeKeyboardType() {
         nameTextField.keyboardType = .default
         ageTextField.keyboardType = .numberPad
@@ -75,7 +74,6 @@ extension NewContactViewController{
 
 extension NewContactViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         guard var text = textField.text else { return false }
         let prefixValidationCheck = text.hasPrefix("02") || !text.hasPrefix("0")
         
