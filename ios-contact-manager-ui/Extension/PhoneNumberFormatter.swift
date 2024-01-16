@@ -9,8 +9,12 @@ import Foundation
 
 extension String {
     
+    func extractNumbersFromStrings() -> String {
+        return self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+    }
+    
     func formatPhoneNumber() -> String {
-        let phoneNumberText = self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let phoneNumberText = self.extractNumbersFromStrings()
         var formattedText = phoneNumberText
         let symbol:Character = "-"
         

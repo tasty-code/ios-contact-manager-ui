@@ -11,7 +11,6 @@ final class ContactListViewController: UIViewController {
     
     //MARK: - Properties
     private var contactList: [Contact] = []
-    private var mockData: [Contact] = [ Contact(name: "목업", age: "99", phoneNumber: "010-9999-9999") ]
     private var numberOfLastRow: Int {
         contactTableView.numberOfRows(inSection: 0)
     }
@@ -28,16 +27,18 @@ final class ContactListViewController: UIViewController {
     }
     
     //MARK: - Custom Methods
-    
     private func configureNavigationItem() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addContactButtonTapped(_:)))
     }
     
     @objc func addContactButtonTapped(_ sender: UIButton) {
         guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddContactViewController") as? AddContactViewController else { return }
+        
         nextViewController.delegate = self
+        
         let navigationViewController = UINavigationController(rootViewController: nextViewController)
         navigationViewController.modalPresentationStyle = .automatic
+        
         self.present(navigationViewController, animated: true)
     }
     
@@ -76,16 +77,19 @@ final class ContactListViewController: UIViewController {
         do {
             contactList = try JsonDecoder<[Contact]>().loadData(from: "mockJson", of: "json")
         } catch {
-            print("loadData() 에러가 발생했습니다.")
+            print("\(JsonParsingError.fileLoadError.ErrorMessage)")
         }
     }
     
     private func modifyTableCell(of selectedCell: String) {
-        guard let selectedCellNumber = Int(selectedCell) else { return }
         let selectedCellIndex: Int
+        
+        guard let selectedCellNumber = Int(selectedCell) else { return }
+        
         guard selectedCellNumber >= 0 && selectedCellNumber < numberOfLastRow else { return }
         selectedCellIndex = selectedCellNumber - 1
-        contactList[selectedCellIndex] = mockData[0]
+        
+        //contactList[selectedCellIndex] = mockData[0]
         contactTableView.reloadRows(at: [IndexPath(row: selectedCellIndex, section: 0)], with: .fade)
         scrollToBottom()
     }
@@ -107,8 +111,10 @@ extension ContactListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = contactTableView.dequeueReusableCell(withIdentifier: "ContactListCell", for: indexPath)
+        
         cell.textLabel?.text = String("\(contactList[indexPath.row].name)" + "(\(contactList[indexPath.row].age))")
         cell.detailTextLabel?.text = contactList[indexPath.row].phoneNumber
+        
         return cell
     }
     

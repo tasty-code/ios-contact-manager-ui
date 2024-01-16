@@ -22,5 +22,4 @@ enum TextFieldError: Error {
             "입력한 연락처 정보가 잘못되었습니다."
         }
     }
-    
 }
