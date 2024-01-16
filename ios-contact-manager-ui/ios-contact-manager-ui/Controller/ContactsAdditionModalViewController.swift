@@ -71,7 +71,7 @@ extension ContactsAdditionModalViewController: UITextFieldDelegate {
         case 2, 6:
             resultText += "-"
         case 11:
-            resultText = exchange(string: resultText, of: 7, isDelete: false)
+            resultText = exchange(string: resultText, at: 7, isDelete: false)
         default:
             break
         }
@@ -85,7 +85,7 @@ extension ContactsAdditionModalViewController: UITextFieldDelegate {
         case 3, 7:
             resultText.removeLast()
         case 11:
-            resultText = exchange(string: resultText, of: 6, isDelete: true)
+            resultText = exchange(string: resultText, at: 6, isDelete: true)
         default:
             break
         }
@@ -93,17 +93,17 @@ extension ContactsAdditionModalViewController: UITextFieldDelegate {
         return resultText
     }
     
-    private func exchange(string: String, of: Int, isDelete: Bool) -> String {
+    private func exchange(string: String, at index: Int, isDelete: Bool) -> String {
         var textArray: Array<Character> = Array(string)
-        let characterToBeExchanged: Character = textArray[of]
-        textArray[of] = "-"
+        let characterToBeExchanged: Character = textArray[index]
+        textArray[index] = "-"
         
         switch isDelete {
         case true:
-            textArray[of + 1] = characterToBeExchanged
+            textArray[index + 1] = characterToBeExchanged
             textArray.removeLast()
         case false:
-            textArray[of - 1] = characterToBeExchanged
+            textArray[index - 1] = characterToBeExchanged
         }
         
         return String(textArray)
