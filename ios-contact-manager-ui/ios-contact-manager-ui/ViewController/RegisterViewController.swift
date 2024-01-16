@@ -50,19 +50,15 @@ final class RegisterViewController: UIViewController {
         
         let convertDigit = sender.text!.replacingOccurrences(of: #"\D"#, with: "", options: .regularExpression)
         
-        let count = convertDigit.count
-        switch count {
-        case 0:
-            phoneNumberTextField.text = convertDigit
-        case 1...3:
+        switch convertDigit.count {
+        case 0...3:
             phoneNumberTextField.text = convertDigit
         case 4...7:
             phoneNumberTextField.text = convertDigit.prefix(3) + "-" + convertDigit.suffix(convertDigit.count-3)
-            
             isRightPhoneNumInput = true
-        case 8...11:
+        case 4...11:
             let startIndex = convertDigit.index(convertDigit.startIndex, offsetBy: 3)
-            let endingIndex = convertDigit.index(convertDigit.startIndex, offsetBy: count-5)
+            let endingIndex = convertDigit.index(convertDigit.startIndex, offsetBy: convertDigit.count-5)
             let middleNumber = convertDigit[startIndex...endingIndex]
             phoneNumberTextField.text = convertDigit.prefix(3) + "-" + middleNumber + "-" + convertDigit.suffix(4)
             isRightPhoneNumInput = true
@@ -72,7 +68,7 @@ final class RegisterViewController: UIViewController {
     }
     
     @IBAction private func saveButtonTapped(_ sender: UIBarButtonItem) {
-        validateTextField()
+        guard validateTextField() == true else { return }
         print("연락처 저장됨")
         phoneBook?.categorizedContactInfo.append(User(
                                                 userID: UUID(),
@@ -80,27 +76,27 @@ final class RegisterViewController: UIViewController {
                                                 phoneNumber: phoneNumberTextField.text ?? "",
                                                 age: Int(ageTextField.text ?? "") ?? 0)
         )
-    
         self.dismiss(animated: true)
     }
     
     
-    private func validateTextField() {
-        if !isRightAgeInput {
-            presentAlert(title: "입력에러", message: "나이 입력창을 확인해주세요", confirmTitle: "확인")
-            return
-        }
+    private func validateTextField() -> Bool {
         
         if !isRightNameInput {
             presentAlert(title: "입력에러", message: "이름 입력창을 확인해주세요", confirmTitle: "확인")
-            return
+            return false
+        }
+
+        if !isRightAgeInput {
+            presentAlert(title: "입력에러", message: "나이 입력창을 확인해주세요", confirmTitle: "확인")
+            return false
         }
         
         if !isRightPhoneNumInput {
             presentAlert(title: "입력에러", message: "번호 입력창을 확인해주세요", confirmTitle: "확인")
-            return
+            return false
         }
-        return
+        return true
     }
     
     
@@ -127,7 +123,6 @@ extension RegisterViewController {
 }
 
 private extension RegisterViewController {
-    
     func validateCountCondition(input: String, condition: (Int,Int)) -> Bool {
         guard input.count >= condition.0 else { print("2글자 이상의 이름을 입력해 주세요."); return false }
         guard input.count < condition.1 else { print("1~99의 숫자를 입력해 주세요."); return false }
