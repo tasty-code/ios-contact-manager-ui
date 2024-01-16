@@ -65,11 +65,11 @@ extension ContactListViewController {
     }
     
     @objc private func addContactButtonTapped() {
-        let newContactViewController = NewContactViewController(contactManager: contactManager, updateTableViewHandler: updateTableView)
+        let newContactViewController = NewContactViewController(contactManager: contactManager, onDismiss: reloadContactList)
         present(newContactViewController, animated: true)
     }
     
-    private func updateTableView() {
+    private func reloadContactList() {
         tableViewDataSource.updateContacts(contactManager.contacts)
         tableView.reloadData()
     }

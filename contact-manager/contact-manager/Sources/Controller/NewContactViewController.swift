@@ -2,8 +2,8 @@ import UIKit
 
 final class NewContactViewController: UIViewController {
         
-    private let updateTableViewHandler: () -> Void
     private let contactManager: ContactAdding
+    private let onDismiss: () -> Void
     private var alertService = AlertService()
     
     private lazy var navigationBar: UINavigationBar = {
@@ -29,9 +29,9 @@ final class NewContactViewController: UIViewController {
         return stackView
     }()
     
-    init(contactManager: ContactAdding, updateTableViewHandler: @escaping () -> Void) {
+    init(contactManager: ContactAdding, onDismiss: @escaping () -> Void) {
         self.contactManager = contactManager
-        self.updateTableViewHandler = updateTableViewHandler
+        self.onDismiss = onDismiss
         super.init(nibName: nil, bundle: nil)
         alertService.viewController = self
     }
@@ -43,6 +43,11 @@ final class NewContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        onDismiss()
     }
 }
 
@@ -83,7 +88,6 @@ extension NewContactViewController {
         if isInputFormsValidate(name: name, age: age, phoneNumber: phoneNumber) {
             let contact = Contact(phoneNumber: phoneNumber, name: name, age: age)
             saveNewContact(contact)
-            updateTableViewHandler()
         }
     }
     
