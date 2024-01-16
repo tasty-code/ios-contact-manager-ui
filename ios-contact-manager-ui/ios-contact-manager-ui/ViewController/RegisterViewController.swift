@@ -12,6 +12,7 @@ final class RegisterViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     var phoneBook: PhoneBook?
+    weak var coordinator: MainCoordinator?
     
     var isRightAgeInput = false
     var isRightNameInput = false
@@ -43,11 +44,12 @@ final class RegisterViewController: UIViewController {
         }
     }
     
+    // Textfield Delegate
     @IBAction private func phoneNumberTextFieldChanged(_ sender: UITextField) {
         print("연락처 입력 변화")
-        
+
         let convertDigit = sender.text!.replacingOccurrences(of: #"\D"#, with: "", options: .regularExpression)
-        
+
         switch convertDigit.count {
         case 0...3:
             phoneNumberTextField.text = convertDigit
@@ -64,6 +66,7 @@ final class RegisterViewController: UIViewController {
             isRightPhoneNumInput = false
         }
     }
+
     
     @IBAction private func saveButtonTapped(_ sender: UIBarButtonItem) {
         guard validateTextField() == true else { return }
@@ -94,6 +97,7 @@ extension RegisterViewController {
 // MARK: - Validate Method
 private extension RegisterViewController {
     
+    // Alert
     func validateTextField() -> Bool {
         if !isRightNameInput {
             presentAlert(title: "입력에러", message: "이름 입력창을 확인해주세요", confirmTitle: "확인")
@@ -110,6 +114,7 @@ private extension RegisterViewController {
         return true
     }
     
+    // TextCount
     func validateCountCondition(input: String, condition: (Int,Int)) -> Bool {
         guard input.count >= condition.0 else { print("2글자 이상의 이름을 입력해 주세요."); return false }
         guard input.count < condition.1 else { print("1~99의 숫자를 입력해 주세요."); return false }

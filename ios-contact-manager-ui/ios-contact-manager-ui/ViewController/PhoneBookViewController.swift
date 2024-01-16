@@ -6,6 +6,7 @@ final class PhoneBookViewController: UIViewController {
     
     let tableView = UITableView()
     var phoneBook: PhoneBook? = nil
+    weak var coordinator: MainCoordinator?
     
     deinit {print("PhoneBookViewController has been deinit!!")}
 }
@@ -82,11 +83,9 @@ extension PhoneBookViewController: UITableViewDataSource {
 // MARK: - View Transition
 extension PhoneBookViewController {
     @objc func addButtonTapped() {
-        let storyboard = UIStoryboard(name: "RegisterViewController", bundle: nil)
-        guard let registerViewController = storyboard.instantiateViewController(identifier: "RegisterViewController") as? RegisterViewController else {return}
-        registerViewController.modalPresentationStyle = .formSheet
-        registerViewController.phoneBook = phoneBook
-        self.present(registerViewController, animated: true)
+        DispatchQueue.main.async {
+            self.coordinator?.goToRegisterViewController()
+        }
     }
 }
 
