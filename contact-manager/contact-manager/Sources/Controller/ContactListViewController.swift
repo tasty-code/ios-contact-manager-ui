@@ -65,7 +65,7 @@ extension ContactListViewController {
     }
     
     @objc private func addContactButtonTapped() {
-        let newContactViewController = NewContactViewController(updateTableViewHandler: updateTableView, addContactHandler: contactManager.addContact)
+        let newContactViewController = NewContactViewController(contactManager: contactManager, updateTableViewHandler: updateTableView)
         present(newContactViewController, animated: true)
     }
     

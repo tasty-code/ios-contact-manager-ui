@@ -1,11 +1,9 @@
 import UIKit
 
 final class NewContactViewController: UIViewController {
-    
-    typealias AddContactHandler = (_ contact: Contact) throws -> Void
-    
+        
     private let updateTableViewHandler: () -> Void
-    private let addContactHandler: AddContactHandler
+    private let contactManager: ContactAdding
     private var alertService = AlertService()
     
     private lazy var navigationBar: UINavigationBar = {
@@ -31,10 +29,9 @@ final class NewContactViewController: UIViewController {
         return stackView
     }()
     
-    init(updateTableViewHandler: @escaping () -> Void,
-         addContactHandler: @escaping AddContactHandler) {
+    init(contactManager: ContactAdding, updateTableViewHandler: @escaping () -> Void) {
+        self.contactManager = contactManager
         self.updateTableViewHandler = updateTableViewHandler
-        self.addContactHandler = addContactHandler
         super.init(nibName: nil, bundle: nil)
         alertService.viewController = self
     }
@@ -111,7 +108,7 @@ extension NewContactViewController {
     
     private func saveNewContact(_ contact: Contact) {
         do {
-            try addContactHandler(contact)
+            try contactManager.addContact(contact)
             presentingViewController?.dismiss(animated: true)
         } catch {
             alertService.alertInvalidInput(alertMessage: .invalidPhoneNumber)
