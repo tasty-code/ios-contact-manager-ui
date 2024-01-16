@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ContactInfoModel: Hashable {
+struct ContactInfoModel {
     
     var name: String
     var age: Int
