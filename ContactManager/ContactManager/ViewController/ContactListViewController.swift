@@ -9,12 +9,7 @@ import UIKit
 
 final class ContactListViewController: UIViewController, UpdateNewContact {
     private let contactFileManager = ContactFileManager()
-    @IBOutlet weak var tableView: UITableView!
-    
-    //    required init?(coder: NSCoder) {
-    //        self.contactFileManager = ContactFileManager()
-    //        super.init(coder: coder)
-    //    }
+    @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +19,13 @@ final class ContactListViewController: UIViewController, UpdateNewContact {
         configureUI()
     }
     
-    func configureUI() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, 
+    private func configureUI() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(showNewContactView))
     }
     
-    @objc func showNewContactView() {
+    @objc private func showNewContactView() {
         guard let newContactViewController = storyboard?.instantiateViewController(identifier: "NewContactViewController", creator: { coder in
             NewContactViewController(coder: coder, contactFileManager: self.contactFileManager)
         }) as? NewContactViewController else {
