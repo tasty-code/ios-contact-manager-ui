@@ -5,7 +5,7 @@ import UIKit
 final class PhoneBookViewController: UIViewController {
     
     let tableView = UITableView()
-    var phoneBook: PhoneBook? = nil
+    var phoneBook: PhoneBook? 
     weak var coordinator: MainCoordinator?
     
     deinit {print("PhoneBookViewController has been deinit!!")}
