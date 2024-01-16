@@ -1,5 +1,5 @@
 //
-//  InvalidationInput.swift
+//  TextField.swift
 //  ios-contact-manager-ui
 //
 //  Created by Kim EenSung on 1/12/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum InvalidationInput {
+enum TextField: CaseIterable {
     case name
     case age
     case phoneNumber

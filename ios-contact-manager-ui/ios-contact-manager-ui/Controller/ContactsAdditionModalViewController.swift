@@ -9,23 +9,23 @@ import UIKit
 
 final class ContactsAdditionModalViewController: UIViewController {
     weak var delegate: ContactsManageable?
-    private var regexByTextField: Dictionary<UITextField, String>
-    private var invalidationByTextField: Dictionary<UITextField, InvalidationInput>
     private let contactsAdditionModalView: ContactsAddtionModalView
-    private var sortedTextField: Array<UITextField>
+    private var sortedTextField: Dictionary<TextField, UITextField> {
+        get {
+            return [
+                .name : contactsAdditionModalView.nameTextField,
+                .age : contactsAdditionModalView.ageTextField,
+                .phoneNumber : contactsAdditionModalView.phoneNumberTextField
+            ]
+        }
+    }
     var reloadData: (() -> Void)?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        regexByTextField = [:]
-        invalidationByTextField = [:]
-        sortedTextField = []
         contactsAdditionModalView = ContactsAddtionModalView()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         contactsAdditionModalView.phoneNumberTextField.delegate = self
-        setSortedTextField()
-        setRegexByTextField()
-        setInvalidationByTextField()
     }
     
     required init?(coder: NSCoder) {
@@ -108,39 +108,13 @@ extension ContactsAdditionModalViewController: UITextFieldDelegate {
 }
 
 extension ContactsAdditionModalViewController {
-    private func setRegexByTextField() {
-        regexByTextField = [
-            contactsAdditionModalView.nameTextField: InvalidationInput.name.regex,
-            contactsAdditionModalView.ageTextField: InvalidationInput.age.regex,
-            contactsAdditionModalView.phoneNumberTextField: InvalidationInput.phoneNumber.regex
-        ]
-    }
-    
-    private func setInvalidationByTextField() {
-        invalidationByTextField = [
-            contactsAdditionModalView.nameTextField: .name,
-            contactsAdditionModalView.ageTextField: .age,
-            contactsAdditionModalView.phoneNumberTextField: .phoneNumber
-        ]
-    }
-    
-    private func setSortedTextField() {
-        sortedTextField = [
-            contactsAdditionModalView.nameTextField,
-            contactsAdditionModalView.ageTextField,
-            contactsAdditionModalView.phoneNumberTextField,
-        ]
-    }
-}
-
-extension ContactsAdditionModalViewController {
     @objc func dismissContactsAdditionModalView() {
         makeCancelAlert(message: "정말로 취소하시겠습니까?", destructiveAction: { _ in self.dismiss(animated: true) })
     }
     
     @objc func saveButtonDidTapped() {
-        if let invalidationInput = validateTextFields() {
-            makeAlert(message: invalidationInput.message, confirmAction: nil)
+        if let invalidationMessage = validateTextFields() {
+            makeAlert(message: invalidationMessage, confirmAction: nil)
             return
         }
         guard let contact = newContact() else {
@@ -163,20 +137,17 @@ extension ContactsAdditionModalViewController {
 }
 
 extension ContactsAdditionModalViewController {
-    private func validateTextFields() -> InvalidationInput? {
-        var invalidationInput: InvalidationInput? = nil
-        sortedTextField.forEach { uiTextField in
-            invalidationInput = invalidationInput == nil ? validate(regex: regexByTextField[uiTextField], input: uiTextField) : invalidationInput
-        }
-        return invalidationInput
-    }
-    
-    private func validate(regex: String?, input: UITextField) -> InvalidationInput? {
-        guard let inputText = input.text, let regexString: String = regex else {
-            return invalidationByTextField[input]
+    private func validateTextFields() -> String? {
+        var message: String? = nil
+        
+        for field in TextField.allCases {
+            guard let input = sortedTextField[field] else {
+                return nil
+            }
+            let regexTest = NSPredicate(format: "SELF MATCHES %@", field.regex)
+            message = message == nil && !regexTest.evaluate(with: input.text) ? field.message : message
         }
         
-        let regexTest = NSPredicate(format: "SELF MATCHES %@", regexString)
-        return regexTest.evaluate(with: inputText) ? nil : invalidationByTextField[input]
+        return message
     }
 }

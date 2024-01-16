@@ -19,7 +19,7 @@
 		8A5AA5C22B44EF0C0097410E /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5C12B44EF0C0097410E /* Contact.swift */; };
 		8A5AA5C42B44F10E0097410E /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AA5C32B44F10E0097410E /* Contacts.swift */; };
 		8A6AE6F02B4BCA0100EE88EF /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6AE6EF2B4BCA0100EE88EF /* ContactsView.swift */; };
-		8A6CBCFE2B50CDE200C6F325 /* InvalidationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6CBCFD2B50CDE200C6F325 /* InvalidationInput.swift */; };
+		8A6CBCFE2B50CDE200C6F325 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6CBCFD2B50CDE200C6F325 /* TextField.swift */; };
 		8A7F879C2B46462E00EABB4A /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F879B2B46462E00EABB4A /* ContactsViewController.swift */; };
 		8A8072342B4CD09200BE1ACD /* ContactsAddtionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8072332B4CD09200BE1ACD /* ContactsAddtionModalView.swift */; };
 		8A8072362B4CE56500BE1ACD /* ContactsAdditionModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8072352B4CE56500BE1ACD /* ContactsAdditionModalViewController.swift */; };
@@ -63,7 +63,7 @@
 		8A5AA5C12B44EF0C0097410E /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		8A5AA5C32B44F10E0097410E /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		8A6AE6EF2B4BCA0100EE88EF /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
-		8A6CBCFD2B50CDE200C6F325 /* InvalidationInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvalidationInput.swift; sourceTree = "<group>"; };
+		8A6CBCFD2B50CDE200C6F325 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		8A7F879B2B46462E00EABB4A /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		8A8072332B4CD09200BE1ACD /* ContactsAddtionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsAddtionModalView.swift; sourceTree = "<group>"; };
 		8A8072352B4CE56500BE1ACD /* ContactsAdditionModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsAdditionModalViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		8A6CBCFC2B50CD7000C6F325 /* Enumeration */ = {
 			isa = PBXGroup;
 			children = (
-				8A6CBCFD2B50CDE200C6F325 /* InvalidationInput.swift */,
+				8A6CBCFD2B50CDE200C6F325 /* TextField.swift */,
 			);
 			path = Enumeration;
 			sourceTree = "<group>";
@@ -335,7 +335,7 @@
 				8A8A3BEF2B4FC1030026A27C /* UIViewControllerExtension.swift in Sources */,
 				BDBCCFE62B4671BE00F8665A /* ViewController.swift in Sources */,
 				8A5AA5C42B44F10E0097410E /* Contacts.swift in Sources */,
-				8A6CBCFE2B50CDE200C6F325 /* InvalidationInput.swift in Sources */,
+				8A6CBCFE2B50CDE200C6F325 /* TextField.swift in Sources */,
 				8A7F879C2B46462E00EABB4A /* ContactsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
