@@ -31,7 +31,7 @@ final class ContactViewController: UIViewController {
         view.backgroundColor = .white
         layout()
         parse()
-        setUpNaviBar()
+        setupNaviBar()
     }
     
     private func layout() {
@@ -42,7 +42,7 @@ final class ContactViewController: UIViewController {
                                      tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)])
     }
     
-    private func setUpNaviBar() {
+    private func setupNaviBar() {
         title = "연락처"
         
         navigationController?.navigationBar.backgroundColor = .white
