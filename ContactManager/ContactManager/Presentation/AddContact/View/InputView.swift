@@ -27,29 +27,11 @@ final class InputView: UIView {
         return field
     }()
     
-    private lazy var nameStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.addArrangedSubview(self.fieldNamelabel)
-        stack.addArrangedSubview(UIView())
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    private lazy var contentStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.addArrangedSubview(self.textField)
-        stack.spacing = 4
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
     private lazy var hStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.addArrangedSubview(self.nameStack)
-        stack.addArrangedSubview(self.contentStack)
+        stack.addArrangedSubview(self.fieldNamelabel)
+        stack.addArrangedSubview(self.textField)
         stack.spacing = 4
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack

@@ -38,7 +38,6 @@
 		F4B178742B5390FB005B8E78 /* AddContactUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B178732B5390FB005B8E78 /* AddContactUseCase.swift */; };
 		F4B178762B53919C005B8E78 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B178752B53919C005B8E78 /* InputView.swift */; };
 		F4B1787C2B539320005B8E78 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1787B2B539320005B8E78 /* Formatter.swift */; };
-		F4B1787E2B53A57B005B8E78 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1787D2B53A57B005B8E78 /* ValidationError.swift */; };
 		F4B178822B53BD22005B8E78 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B178812B53BD22005B8E78 /* Coordinator.swift */; };
 		F4B178852B53BD54005B8E78 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B178842B53BD54005B8E78 /* AppCoordinator.swift */; };
 		F4B178872B53BEA4005B8E78 /* ListContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B178862B53BEA4005B8E78 /* ListContactCoordinator.swift */; };
@@ -80,7 +79,6 @@
 		F4B178732B5390FB005B8E78 /* AddContactUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactUseCase.swift; sourceTree = "<group>"; };
 		F4B178752B53919C005B8E78 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		F4B1787B2B539320005B8E78 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
-		F4B1787D2B53A57B005B8E78 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		F4B178812B53BD22005B8E78 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F4B178842B53BD54005B8E78 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		F4B178862B53BEA4005B8E78 /* ListContactCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContactCoordinator.swift; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				F485652E2B4D6A8300109448 /* AlertableError.swift */,
 				F456EAA82B4B930B001BE636 /* FileExtension.swift */,
 				F4B1787B2B539320005B8E78 /* Formatter.swift */,
-				F4B1787D2B53A57B005B8E78 /* ValidationError.swift */,
 				F4B1788A2B53F0B1005B8E78 /* ContactMakable.swift */,
 				F42BF4762B54CA9C0067C8E8 /* ContactValidationError.swift */,
 			);
@@ -380,7 +377,6 @@
 				F42BF47B2B54CC620067C8E8 /* AddContact.swift in Sources */,
 				F456EAA12B4AEEE1001BE636 /* ContactListError.swift in Sources */,
 				F456EA812B4957B7001BE636 /* ContactListTableView.swift in Sources */,
-				F4B1787E2B53A57B005B8E78 /* ValidationError.swift in Sources */,
 				F456EA732B49511C001BE636 /* Contact.swift in Sources */,
 				F456EA7C2B495604001BE636 /* ListContact.swift in Sources */,
 				F48AB7312B47C96100A07C9D /* AppDelegate.swift in Sources */,
