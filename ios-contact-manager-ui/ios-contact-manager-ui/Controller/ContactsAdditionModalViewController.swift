@@ -36,6 +36,7 @@ final class ContactsAdditionModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = contactsAdditionModalView
+        contactsAdditionModalView.setDelegate(delegate: self)
     }
 }
 
