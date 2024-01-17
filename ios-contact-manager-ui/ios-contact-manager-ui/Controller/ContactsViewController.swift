@@ -10,11 +10,12 @@ import UIKit
 final class ContactsViewController: UIViewController {
 
     private let contactsView: ContactsView
-    var dataSource: ContactsApproachable?
+    private var dataSource: ContactsApproachable?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init( dataSource: ContactsApproachable?) {
         contactsView = ContactsView()
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.dataSource = dataSource
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -30,8 +31,7 @@ final class ContactsViewController: UIViewController {
 
 extension ContactsViewController {
     @objc func presentContactsAdditionModalView() {
-        let contactsAdditionModalViewController = ContactsAdditionModalViewController()
-        contactsAdditionModalViewController.delegate = dataSource as? any ContactsManageable
+        let contactsAdditionModalViewController = ContactsAdditionModalViewController(delegate: dataSource as? any ContactsManageable)
         contactsAdditionModalViewController.reloadData = { [weak self] in
             self?.contactsView.tableView.reloadData()
         }

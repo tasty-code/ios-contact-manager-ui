@@ -8,7 +8,7 @@
 import UIKit
 
 final class ContactsAdditionModalViewController: UIViewController {
-    weak var delegate: ContactsManageable?
+    private weak var delegate: ContactsManageable?
     private let contactsAdditionModalView: ContactsAddtionModalView
     private var sortedTextField: Dictionary<TextField, UITextField> {
         get {
@@ -21,9 +21,10 @@ final class ContactsAdditionModalViewController: UIViewController {
     }
     var reloadData: (() -> Void)?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(delegate: ContactsManageable?) {
         contactsAdditionModalView = ContactsAddtionModalView()
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
         
         contactsAdditionModalView.phoneNumberTextField.delegate = self
     }
