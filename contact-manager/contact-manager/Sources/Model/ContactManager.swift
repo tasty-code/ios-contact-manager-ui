@@ -1,27 +1,23 @@
-struct ContactManager {
-    private(set) var contactDictionary = [String: Contact]()
-    
-    mutating func addContact(_ contact: Contact) throws {
-        guard contactDictionary[contact.phoneNumber] == nil else {
-            throw ContactManagerError.duplicateContact
-        }
-        contactDictionary[contact.phoneNumber] = contact
+final class ContactManager {
+    private var contactDictionary = [String: Contact]()
+    var contacts: [Contact] {
+        return Array(contactDictionary.values)
     }
     
     @discardableResult
     func findContact(phoneNumber: String) throws -> Contact {
         guard let contact = contactDictionary[phoneNumber] else {
-            throw ContactManagerError.nonExistentContact
+            throw ContactError.nonExistentContact
         }
         return contact
     }
     
-    mutating func deleteContact(phoneNumber: String) throws {
+    func deleteContact(phoneNumber: String) throws {
         try findContact(phoneNumber: phoneNumber)
         contactDictionary.removeValue(forKey: phoneNumber)
     }
     
-    mutating func updateContact(existingPhoneNumber: String, _ newContact: Contact) throws {
+    func updateContact(existingPhoneNumber: String, _ newContact: Contact) throws {
         try findContact(phoneNumber: existingPhoneNumber)
         
         if (existingPhoneNumber == newContact.phoneNumber) {
@@ -33,7 +29,22 @@ struct ContactManager {
     }
 }
 
-enum ContactManagerError: Error {
-    case nonExistentContact
-    case duplicateContact
+extension ContactManager {
+    enum ContactError: Error {
+        case nonExistentContact
+        case duplicateContact
+    }
+}
+
+extension ContactManager: ContactAdding {
+    func addContact(_ contact: Contact) throws {
+        guard contactDictionary[contact.phoneNumber] == nil else {
+            throw ContactError.duplicateContact
+        }
+        contactDictionary[contact.phoneNumber] = contact
+    }
+}
+
+protocol ContactAdding {
+    func addContact(_ contact: Contact) throws
 }
