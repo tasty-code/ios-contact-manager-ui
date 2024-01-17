@@ -13,6 +13,7 @@
 		774782082B4EAE9B00B1159C /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774782072B4EAE9B00B1159C /* NewContactViewController.swift */; };
 		7747820A2B4FD61E00B1159C /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774782092B4FD61E00B1159C /* String+.swift */; };
 		77B8BBB12B57B39600CFB781 /* ContactManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8BBB02B57B39600CFB781 /* ContactManagerError.swift */; };
+		77B8BBB32B57C43700CFB781 /* ContactListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8BBB22B57C43700CFB781 /* ContactListManager.swift */; };
 		77F23FF02B57AF3700C2021A /* NewContact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77F23FEF2B57AF3700C2021A /* NewContact.storyboard */; };
 		77F23FF22B57B04100C2021A /* NewContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F23FF12B57B04100C2021A /* NewContactManager.swift */; };
 		E461E0F92B44037200469E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461E0F82B44037200469E94 /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 		774782072B4EAE9B00B1159C /* NewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
 		774782092B4FD61E00B1159C /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		77B8BBB02B57B39600CFB781 /* ContactManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagerError.swift; sourceTree = "<group>"; };
+		77B8BBB22B57C43700CFB781 /* ContactListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListManager.swift; sourceTree = "<group>"; };
 		77F23FEF2B57AF3700C2021A /* NewContact.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewContact.storyboard; sourceTree = "<group>"; };
 		77F23FF12B57B04100C2021A /* NewContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactManager.swift; sourceTree = "<group>"; };
 		E461E0F52B44037200469E94 /* ContactManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +181,7 @@
 		77F23FEC2B57AEBD00C2021A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				77B8BBB22B57C43700CFB781 /* ContactListManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			files = (
 				E461E0F92B44037200469E94 /* AppDelegate.swift in Sources */,
 				7747820A2B4FD61E00B1159C /* String+.swift in Sources */,
+				77B8BBB32B57C43700CFB781 /* ContactListManager.swift in Sources */,
 				E461E0FB2B44037200469E94 /* SceneDelegate.swift in Sources */,
 				774781FB2B479F5B00B1159C /* UITableViewCell+.swift in Sources */,
 				77F23FF22B57B04100C2021A /* NewContactManager.swift in Sources */,

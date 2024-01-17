@@ -10,29 +10,18 @@ import UIKit
 final class ContactListViewController: UIViewController {
     
     // MARK: Properties
-    var sampleData: [ContactInfoModel] = [
-        ContactInfoModel(name: "james", age: 30, contactNumber: "05-343-2234"),
-        ContactInfoModel(name: "steven", age: 100, contactNumber: "047-221-3432"),
-        ContactInfoModel(name: "hajin", age: 33, contactNumber: "010-333-23122"),
-        ContactInfoModel(name: "tom", age: 23, contactNumber: "2313-23-232"),
-        ContactInfoModel(name: "tomi", age: 23, contactNumber: "123-123-123"),
-        ContactInfoModel(name: "jane", age: 99, contactNumber: "6988-768-788"),
-        ContactInfoModel(name: "july", age: 32, contactNumber: "05-2222-3234"),
-        ContactInfoModel(name: "eren", age: 220, contactNumber: "123-13-423"),
-        ContactInfoModel(name: "gom", age: 53, contactNumber: "010-222-36722"),
-        ContactInfoModel(name: "jin", age: 73, contactNumber: "683-2543-233432"),
-        ContactInfoModel(name: "saejun", age: 42, contactNumber: "1889-793-677"),
-        ContactInfoModel(name: "jinyoung", age: 19, contactNumber: "111-2222-33333-444"),
-        ContactInfoModel(name: "mike", age: 60, contactNumber: "05-343-2256564"),
-        ContactInfoModel(name: "nero", age: 90, contactNumber: "45457-2221-3432"),
-        ContactInfoModel(name: "easy", age: 13, contactNumber: "0220-333-65122"),
-        ContactInfoModel(name: "matthew", age: 63, contactNumber: "22133-23-23446452"),
-        ContactInfoModel(name: "sidi", age: 72, contactNumber: "968763-123-123"),
-        ContactInfoModel(name: "den", age: 09, contactNumber: "0293-233-1111")
-    ]
+    private let model: ContactListManager
+    private var contactList: [ContactInfoModel]
     
     // MARK: @IBOutlet
     @IBOutlet private weak var contactTableView: UITableView!
+    
+    // MARK: Initializer
+    required init?(coder aDecoder: NSCoder) {
+        self.model = ContactListManager()
+        self.contactList = model.fetchContactListData()
+        super.init(coder: aDecoder)
+    }
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -56,7 +45,7 @@ final class ContactListViewController: UIViewController {
     
     // MARK: Custom Methods
     func updateContactList(_ contact: ContactInfoModel) {
-        sampleData.append(contact)
+        contactList = model.createContactData(contact)
         contactTableView.reloadData()
     }
 }
@@ -73,14 +62,14 @@ extension ContactListViewController: UITableViewDelegate {
 extension ContactListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sampleData.count
+        return contactList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.className, for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
         
         cell.configureUI()
-        cell.setUpData(data: sampleData[indexPath.row])
+        cell.setUpData(data: contactList[indexPath.row])
 
         return cell
     }
