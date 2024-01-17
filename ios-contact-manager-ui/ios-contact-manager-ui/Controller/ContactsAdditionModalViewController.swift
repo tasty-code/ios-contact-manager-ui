@@ -11,13 +11,11 @@ final class ContactsAdditionModalViewController: UIViewController {
     private weak var delegate: ContactsManageable?
     private let contactsAdditionModalView: ContactsAddtionModalView
     private var sortedTextField: Dictionary<TextField, UITextField> {
-        get {
-            return [
-                .name : contactsAdditionModalView.nameTextField,
-                .age : contactsAdditionModalView.ageTextField,
-                .phoneNumber : contactsAdditionModalView.phoneNumberTextField
-            ]
-        }
+        [
+            .name : contactsAdditionModalView.nameTextField,
+            .age : contactsAdditionModalView.ageTextField,
+            .phoneNumber : contactsAdditionModalView.phoneNumberTextField
+        ]
     }
     private var reloadData: (() -> Void)?
     
