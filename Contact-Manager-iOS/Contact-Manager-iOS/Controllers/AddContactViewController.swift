@@ -74,17 +74,16 @@ final class AddContactViewController: UIViewController {
     }
     
     private func isValidAge(_ age: Int?) -> Bool {
-        if let ageValue = age, 0 < ageValue && ageValue <= 999 {
-            return true
+        guard let age, 0 < age && age <= 999 else {
+            return false
         }
-        return false
+        return true
     }
     
     private func isValidContactNumber(_ contact: String) -> Bool {
         guard let phoneNumber = addContactView.accessContactNumberTextField().text?.replacingOccurrences(of: "-", with: "").trimmingCharacters(in: .whitespacesAndNewlines),
               phoneNumber.count >= 9,
-              contact.filter({$0 == "-"}).count == 2
-        else {
+              contact.filter({$0 == "-"}).count == 2 else {
             return false
         }
         return true
