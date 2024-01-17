@@ -14,7 +14,7 @@ enum JsonParsingError: Error {
     case decodingError
     case fileLoadError
     
-    var ErrorMessage: String {
+    var errorMessage: String {
         switch self {
         case .pathError:
             "파일의 경로를 읽어오지 못했습니다."

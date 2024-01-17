@@ -77,7 +77,7 @@ final class ContactListViewController: UIViewController {
         do {
             contactList = try JsonDecoder<[Contact]>().loadData(from: "mockJson", of: "json")
         } catch {
-            print("\(JsonParsingError.fileLoadError.ErrorMessage)")
+            print("\(JsonParsingError.fileLoadError.errorMessage)")
             print("\(JsonParsingError.fileLoadError.localizedDescription)")
         }
     }

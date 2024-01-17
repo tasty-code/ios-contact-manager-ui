@@ -13,7 +13,7 @@ struct JsonDecoder<Element: Codable> {
             print("\(JsonParsingError.pathError.ErrorMessage)")
             throw JsonParsingError.pathError }
     
-        guard let content = try? String(contentsOfFile: filePath) else {
+        guard let content = try? String(contentsOfFile: "filePath") else {
             print("\(JsonParsingError.stringConversionError.ErrorMessage)")
             throw JsonParsingError.stringConversionError }
         
