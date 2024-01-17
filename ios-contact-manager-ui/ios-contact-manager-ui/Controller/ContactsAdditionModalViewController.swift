@@ -117,7 +117,7 @@ extension ContactsAdditionModalViewController {
         makeCancelAlert(message: "정말로 취소하시겠습니까?", destructiveAction: { _ in self.dismiss(animated: true) })
     }
     
-    @objc func savingButtonDidTapped() {
+    @objc func handleSaveButtonTap() {
         if let invalidationMessage = validateTextFields() {
             makeAlert(message: invalidationMessage, confirmAction: nil)
             return
