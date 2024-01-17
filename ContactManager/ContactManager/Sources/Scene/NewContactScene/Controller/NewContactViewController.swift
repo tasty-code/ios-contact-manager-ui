@@ -9,12 +9,13 @@ import UIKit
 
 final class NewContactViewController: UIViewController {
     
-    // MARK: @IBOutlet
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
-    @IBOutlet weak var contactNumberTextField: UITextField!
-    
+    // MARK: Properties
     private let model: NewContactManager
+    
+    // MARK: @IBOutlet
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var ageTextField: UITextField!
+    @IBOutlet private weak var contactNumberTextField: UITextField!
     
     // MARK: Initializer
     required init?(coder aDecoder: NSCoder) {
