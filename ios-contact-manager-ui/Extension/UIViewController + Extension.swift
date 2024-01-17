@@ -7,7 +7,20 @@
 
 import UIKit
 
-//MARK: - Alert 재사용 method 구현 
+
+// MARK: - 스토리보드 Identifier 오타 방지 코드
+extension UIViewController {
+    
+    static var className: String {
+        NSStringFromClass(self.classForCoder()).components(separatedBy: ".").last!
+    }
+    
+    var className: String {
+        NSStringFromClass(self.classForCoder).components(separatedBy: ".").last!
+    }
+}
+
+//MARK: - Alert 재사용 method 구현
 extension UIViewController {
     /// 확인버튼 하나만 있는 Alert 메서드
     func presentAlert(title: String,
@@ -26,18 +39,18 @@ extension UIViewController {
     /// 확인, 취소 버튼이 있는 Alert 메서드
     func presentAlertWithCancel(title: String,
                                 message: String,
-                                confirmTitle: String,
                                 cancelTitle: String,
+                                confirmTitle: String,
                                 confirmAction: ((UIAlertAction) -> Void)? = nil,
                                 cancelAction: ((UIAlertAction) -> Void)? = nil,
                                 completion: (() -> Void)? = nil) {
         let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let confirmAction = UIAlertAction(title: confirmTitle, style: .default, handler: confirmAction)
-        alertViewController.addAction(confirmAction)
-        
         let cancelAction = UIAlertAction(title: cancelTitle, style: .default, handler: cancelAction)
         alertViewController.addAction(cancelAction)
+        
+        let confirmAction = UIAlertAction(title: confirmTitle, style: .destructive, handler: confirmAction)
+        alertViewController.addAction(confirmAction)
         
         self.present(alertViewController, animated: true, completion: completion)
     }
