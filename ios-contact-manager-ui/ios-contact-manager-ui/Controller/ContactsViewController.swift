@@ -25,7 +25,7 @@ final class ContactsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = contactsView
-        contactsView.tableView.dataSource = self
+        contactsView.setDataSource(dataSource: self)
     }
 }
 
@@ -33,7 +33,11 @@ extension ContactsViewController {
     @objc func presentContactsAdditionModalView() {
         let contactsAdditionModalViewController = ContactsAdditionModalViewController(delegate: dataSource as? any ContactsManageable)
         contactsAdditionModalViewController.setReloadData(reloadData: { [weak self] in
-            self?.contactsView.tableView.reloadData()
+            guard let contactsView = self?.contactsView else {
+                return
+            }
+            let tableView = contactsView.tableView
+            tableView.reloadData()
         })
         present(contactsAdditionModalViewController, animated: true)
     }
