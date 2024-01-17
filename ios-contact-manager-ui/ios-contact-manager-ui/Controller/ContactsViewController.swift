@@ -32,9 +32,9 @@ final class ContactsViewController: UIViewController {
 extension ContactsViewController {
     @objc func presentContactsAdditionModalView() {
         let contactsAdditionModalViewController = ContactsAdditionModalViewController(delegate: dataSource as? any ContactsManageable)
-        contactsAdditionModalViewController.reloadData = { [weak self] in
+        contactsAdditionModalViewController.setReloadData(reloadData: { [weak self] in
             self?.contactsView.tableView.reloadData()
-        }
+        })
         present(contactsAdditionModalViewController, animated: true)
     }
 }

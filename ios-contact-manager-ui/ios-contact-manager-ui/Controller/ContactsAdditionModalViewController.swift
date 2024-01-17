@@ -19,7 +19,7 @@ final class ContactsAdditionModalViewController: UIViewController {
             ]
         }
     }
-    var reloadData: (() -> Void)?
+    private var reloadData: (() -> Void)?
     
     init(delegate: ContactsManageable?) {
         contactsAdditionModalView = ContactsAddtionModalView()
@@ -109,6 +109,10 @@ extension ContactsAdditionModalViewController: UITextFieldDelegate {
 }
 
 extension ContactsAdditionModalViewController {
+    public func setReloadData(reloadData: (() -> Void)?) {
+        self.reloadData = reloadData
+    }
+    
     @objc func dismissContactsAdditionModalView() {
         makeCancelAlert(message: "정말로 취소하시겠습니까?", destructiveAction: { _ in self.dismiss(animated: true) })
     }
