@@ -9,11 +9,7 @@ import Foundation
 
 struct Contact: Decodable {
     var id = UUID()
-    let name: String
-    let phoneNumber: String
-    let age: String
-    
-    var nameAndAge: String {
-        return "\(name)(\(age))"
-    }
+    var name: String
+    var phoneNumber: String
+    var age: String
 }

@@ -19,8 +19,10 @@ final class ContactManager {
     }
     
     func update(_ contact: Contact) {
-        guard let targetIndex = contacts.firstIndex(where: { $0.id == contact.id }) else { return }
-        
+        guard let targetIndex = contacts.firstIndex(where: { $0.id == contact.id }) else {
+            print("[ContactManager] can not find index")
+            return
+        }
         contacts[targetIndex] = contact
     }
     

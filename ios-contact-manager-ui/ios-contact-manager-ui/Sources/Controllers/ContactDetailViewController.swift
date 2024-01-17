@@ -2,7 +2,7 @@
 //  ContactDetailViewController.swift
 //  ios-contact-manager-ui
 //
-//  Created by Lee minyeol on 1/11/24.
+//  Created by 미르, 루피 on 1/11/24.
 //
 
 import UIKit
@@ -18,7 +18,7 @@ final class ContactDetailViewController: UIViewController {
     var contact: Contact?
     weak var delegate: ContactDetailDelegate?
     
-    private lazy var calcelButton: UIBarButtonItem = {
+    private lazy var cancelButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
         return button
     }()
@@ -41,11 +41,11 @@ final class ContactDetailViewController: UIViewController {
     private func setupnvBar() {
         if contact == nil {
             title = "새연락처"
-            self.navigationItem.leftBarButtonItem = self.calcelButton
+            self.navigationItem.leftBarButtonItem = self.cancelButton
             self.navigationItem.rightBarButtonItem = self.saveButton
         } else {
             title = "기존연락처"
-            self.navigationItem.leftBarButtonItem = self.calcelButton
+            self.navigationItem.leftBarButtonItem = self.cancelButton
             self.navigationItem.rightBarButtonItem = self.saveButton
         }
     }
@@ -60,12 +60,16 @@ final class ContactDetailViewController: UIViewController {
     @objc func setupButtonAction() {
         do {
             let (name, age, phone) = try makeInfo()
-            let new = Contact(name: name, phoneNumber: phone, age: age)
-            if contact == nil {
-                delegate?.add(contact: new)
+            
+            var new = contact == nil ? Contact(name: name, phoneNumber: phone, age: age) : contact!
+            
+               if contact != nil {
+                    new.phoneNumber = phone
+                    new.age = age
+                    new.name = name
+                    delegate?.update(contact: new)
             } else {
-                delegate?.update(contact: new)
-                detailView.contact = contact
+                delegate?.add(contact: new)
             }
             self.dismiss(animated: true)
         } catch {

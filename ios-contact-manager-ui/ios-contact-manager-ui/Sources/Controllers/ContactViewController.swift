@@ -110,21 +110,19 @@ extension ContactViewController: UITableViewDataSource {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        let detailVC = ContactDetailViewController()
-        detailVC.delegate = self
-        detailVC.contact = contactManager.contacts[indexPath.row]
-        present(UINavigationController(rootViewController: detailVC), animated: true)
-    }
 }
 
 // MARK: - UITableViewDelegate
 
 extension ContactViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let detailVC = ContactDetailViewController()
+        detailVC.contact = contactManager.contacts[indexPath.row]
+        detailVC.delegate = self
+        present(UINavigationController(rootViewController: detailVC), animated: true)
+    }
 }
 
 // MARK: - ContactDelegate
