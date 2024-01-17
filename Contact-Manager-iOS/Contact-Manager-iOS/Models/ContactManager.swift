@@ -28,18 +28,15 @@ final class ContactManager {
         contactList.append(contact)
     }
     
-    func deleteContact(at index: Int) {
-        guard index >= 0 && index < contactList.count else {
-            return
+    func deleteContact(contactId id: Int) {
+        if let index = contactList.firstIndex(where: { $0.id == id }) {
+            contactList.remove(at: index)
         }
-        contactList.remove(at: index)
     }
     
     func updatedContact(contactId id: Int, with updateContact: Contact) {
-        guard let index = contactList.firstIndex(where: { $0.id == id}) else { return }
-        guard index >= 0 && index < contactList.count else {
-            return
+        if let index = contactList.firstIndex(where: { $0.id == id }) {
+            contactList[index] = updateContact
         }
-        contactList[index] = updateContact
     }
 }
