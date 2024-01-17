@@ -10,14 +10,19 @@ import UIKit
 final class ContactListView: UIViewController {
     private var contactListStorage: ContactListStorage?
     @IBOutlet weak var tableView: UITableView!
+//    @IBOutlet weak var searchBar: UISearchBar!
+    var filteredDataSource: [ContactList] = []
+    private var searchController: UISearchController?
     
     required init?(coder: NSCoder) {
         self.contactListStorage = nil
+        self.searchController = nil
         super.init(coder: coder)
     }
     
-    init?(coder: NSCoder, contactListStorage: ContactListStorage) {
+    init?(coder: NSCoder, contactListStorage: ContactListStorage, searchController: UISearchController) {
         self.contactListStorage = contactListStorage
+        self.searchController = searchController
         super.init(coder: coder)
     }
 
@@ -26,6 +31,13 @@ final class ContactListView: UIViewController {
         self.title = "연락처"
         tableView.dataSource = self
         tableView.delegate = self
+//        searchBar.delegate = self
+//        searchBar.placeholder = "검색창"
+        
+        searchController?.searchResultsUpdater = self
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         
         NotificationCenter.default.addObserver(
             self,
@@ -74,6 +86,7 @@ extension ContactListView: UITableViewDataSource {
         guard let item = getContact(forID: indexPath.row) else {
             return UITableViewCell()
         }
+        print("tableView")
         cell.textLabel?.text = "\(item.name) (\(item.age))"
         cell.detailTextLabel?.text = item.phoneNumber
         return cell
@@ -83,8 +96,6 @@ extension ContactListView: UITableViewDataSource {
         if editingStyle == .delete {
             contactListStorage?.deleteContact(indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            
         }
     }
 }
@@ -95,3 +106,33 @@ extension ContactListView: UITableViewDelegate {
     }
 }
 
+extension ContactListView: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        contactListStorage?.getContact(<#T##pos: Int##Int#>)
+        print("test1", searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("test2")
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("test3")
+    }
+    
+    func searchList() {
+        self.tableView.reloadData()
+        print("reload tableView")
+    }
+}
+
+extension ContactListView: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        filteredDataSource = (contactListStorage?.getContactList().filter { list in
+            list.name.contains(text)
+        })!
+        print("filteredDataSource", filteredDataSource)
+        tableView.reloadData()
+    }
+}

@@ -18,6 +18,10 @@ final class ContactListStorage {
         self.contactList[pos]
     }
     
+    func getContactList() -> [ContactList] {
+        self.contactList
+    }
+    
     func addContact(_ contacts: ContactList) {
         self.contactList.append(contacts)
     }
