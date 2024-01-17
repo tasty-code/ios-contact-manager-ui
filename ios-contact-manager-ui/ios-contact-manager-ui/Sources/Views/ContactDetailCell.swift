@@ -12,14 +12,30 @@ final class ContactDetailCell: UITableViewCell {
     var contact: Contact? {
         didSet {
             guard let contact = contact else { return }
-            contactNameLabel.text = contact.nameAndAge
-            contactPhoneNumberLabel.text = contact.phoneNumber
+            contactNameLabel.text = "   이름 : \(contact.name)"
+            contactAgeLabel.text = "   나이 : \(contact.age)"
+            contactPhoneNumberLabel.text = "연락처 : \(contact.phoneNumber)"
+            
+            contactNameLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+            contactAgeLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+            contactPhoneNumberLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+            contactNameLabel.adjustsFontForContentSizeCategory = true
+            contactAgeLabel.adjustsFontForContentSizeCategory = true
+            contactPhoneNumberLabel.adjustsFontForContentSizeCategory = true
         }
     }
     
     let contactNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let contactAgeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -45,6 +61,7 @@ final class ContactDetailCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         setupStackView()
+        setConstraint()
         accessoryType = .disclosureIndicator
     }
     
@@ -52,6 +69,7 @@ final class ContactDetailCell: UITableViewCell {
         self.addSubview(stackView)
         
         stackView.addArrangedSubview(contactNameLabel)
+        stackView.addArrangedSubview(contactAgeLabel)
         stackView.addArrangedSubview(contactPhoneNumberLabel)
     }
     
@@ -59,17 +77,17 @@ final class ContactDetailCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func updateConstraints() {
-        setConstraint()
-        super.updateConstraints()
-    }
-    
     func setConstraint() {
         NSLayoutConstraint.activate([
-            contactNameLabel.heightAnchor.constraint(equalToConstant: 30)])
+            contactNameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
+            contactAgeLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
+            contactPhoneNumberLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
+        ])
         
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
+            stackView.topAnchor.constraint(equalTo: self.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
 }

@@ -20,19 +20,22 @@ final class DetailView: UIView {
     
     private let nameLabel: UILabel = {
        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = UIFont.preferredFont(forTextStyle: .callout)
         label.text = "이름"
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let nameTextField: UITextField = {
        let textField = UITextField()
+        textField.font = UIFont.preferredFont(forTextStyle: .callout)
         textField.frame.size.height = 15
         textField.borderStyle = .roundedRect
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
+        textField.adjustsFontForContentSizeCategory = true
         textField.clearsOnBeginEditing = false
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -50,19 +53,22 @@ final class DetailView: UIView {
     
     private let ageLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.preferredFont(forTextStyle: .callout)
         label.text = "나이"
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let ageTextField: UITextField = {
         let tf = UITextField()
+        tf.font = UIFont.preferredFont(forTextStyle: .callout)
         tf.frame.size.height = 20
         tf.borderStyle = .roundedRect
         tf.autocapitalizationType = .none
         tf.autocorrectionType = .no
         tf.spellCheckingType = .no
+        tf.adjustsFontForContentSizeCategory = true
         tf.clearsOnBeginEditing = false
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
@@ -80,19 +86,22 @@ final class DetailView: UIView {
     
     private let phoneNumberLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.preferredFont(forTextStyle: .callout)
         label.text = "전화번호"
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let phoneNumberTextField: UITextField = {
         let tf = UITextField()
+        tf.font = UIFont.preferredFont(forTextStyle: .callout)
         tf.frame.size.height = 20
         tf.borderStyle = .roundedRect
         tf.autocapitalizationType = .none
         tf.autocorrectionType = .no
         tf.spellCheckingType = .no
+        tf.adjustsFontForContentSizeCategory = true
         tf.clearsOnBeginEditing = false
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
