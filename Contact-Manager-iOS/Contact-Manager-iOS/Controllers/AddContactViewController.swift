@@ -106,13 +106,14 @@ final class AddContactViewController: UIViewController {
                                       message: nil,
                                       preferredStyle: .alert)
         
-        let confirm = UIAlertAction(title: "예", style: .default) { [weak self] _ in
+        let confirm = UIAlertAction(title: "예", style: .destructive) { [weak self] _ in
             self?.dismiss(animated: true, completion: nil)
         }
-        let close = UIAlertAction(title: "아니요", style: .destructive)
+        let close = UIAlertAction(title: "아니요", style: .default)
         
-        alert.addAction(confirm)
         alert.addAction(close)
+        alert.addAction(confirm)
+        
         present(alert, animated: true, completion: nil)
     }
     
