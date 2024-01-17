@@ -48,22 +48,21 @@ final class AddContactViewController: UIViewController {
     @objc private func saveTapped() {
         guard let name = addContactView.nameTextField.text?.replacingOccurrences(of: " ", with: ""),
               let ageString = addContactView.ageTextField.text,
-              let age = Int(ageString),
               let contactNumber = addContactView.contactNumberTextField.text,
               isValidName(name),
-              isValidAge(age),
+              isValidAge(ageString),
               isValidContactNumber(contactNumber)
         else {
             if let name = addContactView.nameTextField.text, !isValidName(name) {
                 presentSaveFailureAlert(message: "입력한 이름 정보가 잘못되었습니다.")
-            } else if !isValidAge(Int(addContactView.ageTextField.text ?? "")) {
+            } else if let ageString = addContactView.ageTextField.text, !isValidAge(ageString) {
                 presentSaveFailureAlert(message: "입력한 나이 정보가 잘못되었습니다.")
             } else if let contact = addContactView.contactNumberTextField.text, !isValidContactNumber(contact) {
                 presentSaveFailureAlert(message: "입력한 연락처 정보가 잘못되었습니다.")
             }
             return
         }
-       
+        
         let addNewContact = Contact(name: name, age: ageString, contactNumber: contactNumber)
         delegate?.addNewContact(newContact: addNewContact)
         dismiss(animated: true, completion: nil)
@@ -73,8 +72,9 @@ final class AddContactViewController: UIViewController {
         return !name.isEmpty
     }
     
-    private func isValidAge(_ age: Int?) -> Bool {
-        guard let age, 0 < age && age <= 999 else {
+    private func isValidAge(_ ageString: String) -> Bool {
+        guard let age = Int(ageString), 0 < age && age <= 999,
+              String(age) == ageString else {
             return false
         }
         return true
