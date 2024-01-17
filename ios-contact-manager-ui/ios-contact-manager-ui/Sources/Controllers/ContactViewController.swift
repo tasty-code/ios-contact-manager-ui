@@ -28,8 +28,10 @@ final class ContactViewController: UIViewController {
         let search = UISearchController()
         navigationItem.searchController = search
         navigationItem.searchController?.searchBar.delegate = self
+        search.hidesNavigationBarDuringPresentation = false
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationController?.navigationBar.addSubview(search.searchBar)
+        search.searchBar.setShowsCancelButton(false, animated: false)
         return search
     }()
     
