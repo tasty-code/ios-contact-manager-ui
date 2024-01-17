@@ -21,8 +21,9 @@ final class ContactsView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
-        configureContactsTableView()
+        self.backgroundColor = UIColor.systemBackground
+        configureTableView()
+        configureConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -31,9 +32,14 @@ final class ContactsView: UIView {
     
     
     //MARK: - Method
-    private func configureContactsTableView() {
+    private func configureTableView() {
         self.addSubview(contactsTableView)
-        
+        contactsTableView.rowHeight = 80
+    }
+    
+    
+    //MARK: - AutoLayout Setting
+    private func configureConstraints() {
         NSLayoutConstraint.activate([
             contactsTableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 0),
             contactsTableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: 0),

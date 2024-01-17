@@ -24,6 +24,7 @@ final class ContactsViewController: UIViewController {
         
         configureTableView()
         contactManager.makeMockContactListData()
+        configureNavigationBar()
     }
     
     
@@ -33,6 +34,22 @@ final class ContactsViewController: UIViewController {
         contactsView.contactsTableView.register(ContactTableViewCell.self, forCellReuseIdentifier: ContactTableViewCell.reuseIdentifier)
     }
     
+    private func configureNavigationBar() {
+        title = "연락처"
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addContactTapped))
+        navigationItem.rightBarButtonItem = addButton
+    }
+    
+    @objc private func addContactTapped() {
+        let addContactViewController = AddContactViewController(contactManager: contactManager)
+        let navigationController = UINavigationController(rootViewController: addContactViewController)
+        
+        addContactViewController.delegate = self
+        addContactViewController.title = "새 연락처"
+        
+        present(navigationController, animated: true, completion: nil)
+    }
 }
     
 
@@ -53,4 +70,15 @@ extension ContactsViewController: UITableViewDataSource {
         return cell
     }
     
+}
+
+extension ContactsViewController: ContactDelegate {
+    func addNewContact(newContact: Contact) {
+        contactManager.addNewContact(contact: newContact)
+        contactsView.contactsTableView.reloadData()
+    }
+    
+    func updatedContact(contactId id: Int, with selectedContact: Contact) {
+        
+    }
 }
