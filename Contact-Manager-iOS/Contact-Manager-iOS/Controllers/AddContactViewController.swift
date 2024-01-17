@@ -46,19 +46,19 @@ final class AddContactViewController: UIViewController {
     }
     
     @objc private func saveTapped() {
-        guard let name = addContactView.accessNameTextField().text?.replacingOccurrences(of: " ", with: ""),
-              let ageString = addContactView.accessAgeTextField().text,
+        guard let name = addContactView.nameTextField.text?.replacingOccurrences(of: " ", with: ""),
+              let ageString = addContactView.ageTextField.text,
               let age = Int(ageString),
-              let contactNumber = addContactView.accessContactNumberTextField().text,
+              let contactNumber = addContactView.contactNumberTextField.text,
               isValidName(name),
               isValidAge(age),
               isValidContactNumber(contactNumber)
         else {
-            if let name = addContactView.accessNameTextField().text, !isValidName(name) {
+            if let name = addContactView.nameTextField.text, !isValidName(name) {
                 presentSaveFailureAlert(message: "입력한 이름 정보가 잘못되었습니다.")
-            } else if !isValidAge(Int(addContactView.accessAgeTextField().text ?? "")) {
+            } else if !isValidAge(Int(addContactView.ageTextField.text ?? "")) {
                 presentSaveFailureAlert(message: "입력한 나이 정보가 잘못되었습니다.")
-            } else if let contact = addContactView.accessContactNumberTextField().text, !isValidContactNumber(contact) {
+            } else if let contact = addContactView.contactNumberTextField.text, !isValidContactNumber(contact) {
                 presentSaveFailureAlert(message: "입력한 연락처 정보가 잘못되었습니다.")
             }
             return
@@ -81,7 +81,7 @@ final class AddContactViewController: UIViewController {
     }
     
     private func isValidContactNumber(_ contact: String) -> Bool {
-        guard let phoneNumber = addContactView.accessContactNumberTextField().text?.replacingOccurrences(of: "-", with: "").trimmingCharacters(in: .whitespacesAndNewlines),
+        guard let phoneNumber = addContactView.contactNumberTextField.text?.replacingOccurrences(of: "-", with: "").trimmingCharacters(in: .whitespacesAndNewlines),
               phoneNumber.count >= 9,
               contact.filter({$0 == "-"}).count == 2 else {
             return false
