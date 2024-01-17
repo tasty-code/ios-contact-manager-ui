@@ -14,7 +14,7 @@ final class InputView: UIView {
         return self.textField.text ?? ""
     }
     
-    private let fieldNamelabel: UILabel = {
+    private let fieldNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -30,7 +30,7 @@ final class InputView: UIView {
     private lazy var hStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.addArrangedSubview(self.fieldNamelabel)
+        stack.addArrangedSubview(self.fieldNameLabel)
         stack.addArrangedSubview(self.textField)
         stack.spacing = 4
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +55,7 @@ final class InputView: UIView {
     }
     
     private func configure(fieldName: String, keyboardType: UIKeyboardType) {
-        self.fieldNamelabel.text = fieldName
+        self.fieldNameLabel.text = fieldName
         self.textField.keyboardType = keyboardType
     }
     
@@ -67,7 +67,7 @@ final class InputView: UIView {
             self.hStack.topAnchor.constraint(equalTo: self.topAnchor),
             self.hStack.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            self.fieldNamelabel.heightAnchor.constraint(equalTo: self.textField.heightAnchor),
+            self.fieldNameLabel.heightAnchor.constraint(equalTo: self.textField.heightAnchor),
             self.textField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
         ])
     }
@@ -80,7 +80,7 @@ extension InputView: UITextFieldDelegate {
         replacementString string: String
     ) -> Bool {
         guard let oldText = textField.text else { return false }
-        guard string.isEmpty == false else { return true } // 지울 때
+        guard string.isEmpty == false else { return true }
         let newText = NSString(string: oldText).replacingCharacters(in: range, with: string)
         textField.text = self.formatter(newText)
         return false

@@ -59,12 +59,12 @@ extension ListContactViewController {
     }
     
     private func setButtons() {
-        let action = UIAction { [weak self] _ in self?.startCreating() }
+        let action = UIAction { [weak self] _ in self?.didTapCreateButton() }
         let button = UIBarButtonItem(systemItem: .add, primaryAction: action)
         self.navigationItem.rightBarButtonItem = button
     }
     
-    private func startCreating() {
+    private func didTapCreateButton() {
         self.coordinator?.startAddContact()
     }
 }
