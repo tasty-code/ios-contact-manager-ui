@@ -80,7 +80,7 @@ final class AddContactViewController: UIViewController {
         let regexPattern = "^[0-9]+-[0-9]+-[0-9]+$"
         
         guard checkDigitsOver(number: 9, for: onlyNumber) else {
-            print("\(TextFieldError.phoneNumberTextFieldError.ErrorMessage)")
+            print("\(TextFieldError.phoneNumberTextFieldError.errorMessage)")
             presentPhoneNumberAlert()
             return false
         }
@@ -88,12 +88,12 @@ final class AddContactViewController: UIViewController {
         do {
             let regex = try NSRegularExpression(pattern: regexPattern)
             guard regex.firstMatch(in: phoneNumber, options: [], range: NSRange(location: 0, length: phoneNumber.count)) != nil else {
-                print("\(TextFieldError.phoneNumberTextFieldError.ErrorMessage)")
+                print("\(TextFieldError.phoneNumberTextFieldError.errorMessage)")
                 return false
             }
             return true
         } catch {
-            print("\(TextFieldError.phoneNumberTextFieldError.ErrorMessage)")
+            print("\(TextFieldError.phoneNumberTextFieldError.errorMessage)")
             return false
         }
     }
@@ -116,15 +116,15 @@ final class AddContactViewController: UIViewController {
     
     //MARK: - Alert 구현
     private func presentNameAlert() {
-        presentAlert(title: "\(TextFieldError.nameTextFieldError.ErrorMessage)", message: "", confirmTitle: "확인")
+        presentAlert(title: "\(TextFieldError.nameTextFieldError.errorMessage)", message: "", confirmTitle: "확인")
     }
     
     private func presentAgeAlert() {
-        presentAlert(title: "\(TextFieldError.ageTextFieldError.ErrorMessage)", message: "", confirmTitle: "확인")
+        presentAlert(title: "\(TextFieldError.ageTextFieldError.errorMessage)", message: "", confirmTitle: "확인")
     }
     
     private func presentPhoneNumberAlert() {
-        presentAlert(title: "\(TextFieldError.phoneNumberTextFieldError.ErrorMessage)", message: "", confirmTitle: "확인")
+        presentAlert(title: "\(TextFieldError.phoneNumberTextFieldError.errorMessage)", message: "", confirmTitle: "확인")
     }
 }
 
