@@ -78,6 +78,7 @@ final class ContactListViewController: UIViewController {
             contactList = try JsonDecoder<[Contact]>().loadData(from: "mockJson", of: "json")
         } catch {
             print("\(JsonParsingError.fileLoadError.ErrorMessage)")
+            print("\(JsonParsingError.fileLoadError.localizedDescription)")
         }
     }
     
@@ -95,7 +96,7 @@ final class ContactListViewController: UIViewController {
     }
 }
 
-extension ContactListViewController: SendDataDelegate {
+extension ContactListViewController: AddContactDelegate {
     
     func updateContactList(with contact: Contact) {
         addData(with: contact)

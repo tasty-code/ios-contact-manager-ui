@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - Delegate Pattern
-protocol SendDataDelegate: AnyObject {
+protocol AddContactDelegate: AnyObject {
     func updateContactList(with contact: Contact)
 }
 
@@ -16,7 +16,7 @@ final class AddContactViewController: UIViewController {
         
     // MARK: - Properties
     private var addedContactList: [Contact] = []
-    weak var delegate: SendDataDelegate?
+    weak var delegate: AddContactDelegate?
     
     //MARK: - @IBOutlet
     @IBOutlet private weak var nameTextField: UITextField!
