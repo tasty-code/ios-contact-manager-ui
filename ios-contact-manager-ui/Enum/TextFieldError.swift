@@ -12,7 +12,7 @@ enum TextFieldError: Error {
     case nameTextFieldError
     case phoneNumberTextFieldError
     
-    var ErrorMessage: String {
+    var errorMessage: String {
         switch self {
         case .ageTextFieldError:
             "입력한 나이 정보가 잘못되었습니다."
