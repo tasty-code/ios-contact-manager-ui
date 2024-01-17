@@ -9,6 +9,7 @@ import UIKit
 
 protocol ContactDetailDelegate: AnyObject {
     func add(contact: Contact)
+    func update(contact: Contact)
 }
 
 final class ContactDetailViewController: UIViewController {
@@ -38,9 +39,15 @@ final class ContactDetailViewController: UIViewController {
     }
 
     private func setupnvBar() {
-        title = "새연락처"
-        self.navigationItem.leftBarButtonItem = self.calcelButton
-        self.navigationItem.rightBarButtonItem = self.saveButton
+        if contact == nil {
+            title = "새연락처"
+            self.navigationItem.leftBarButtonItem = self.calcelButton
+            self.navigationItem.rightBarButtonItem = self.saveButton
+        } else {
+            title = "기존연락처"
+            self.navigationItem.leftBarButtonItem = self.calcelButton
+            self.navigationItem.rightBarButtonItem = self.saveButton
+        }
     }
     
     @objc func cancelButtonTapped() {
@@ -54,7 +61,12 @@ final class ContactDetailViewController: UIViewController {
         do {
             let (name, age, phone) = try makeInfo()
             let new = Contact(name: name, phoneNumber: phone, age: age)
-            delegate?.add(contact: new)
+            if contact == nil {
+                delegate?.add(contact: new)
+            } else {
+                delegate?.update(contact: new)
+                detailView.contact = contact
+            }
             self.dismiss(animated: true)
         } catch {
             let alert = showErrorAlert(title: nil, error.localizedDescription, actions: [UIAlertAction(title: "확인", style: .default)])

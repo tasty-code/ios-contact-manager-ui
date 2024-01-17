@@ -18,7 +18,7 @@ final class ContactManager {
         contacts.remove(at: index.row)
     }
     
-    func update(contact: Contact) {
+    func update(_ contact: Contact) {
         guard let targetIndex = contacts.firstIndex(where: { $0.id == contact.id }) else { return }
         
         contacts[targetIndex] = contact
