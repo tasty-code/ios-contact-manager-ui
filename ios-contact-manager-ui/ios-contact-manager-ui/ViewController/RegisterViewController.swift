@@ -121,8 +121,14 @@ private extension RegisterViewController {
     
     // TextCount
     func validateCountCondition(input: String, condition: (Int,Int)) -> Bool {
-        guard input.count >= condition.0 else { print("2글자 이상의 이름을 입력해 주세요."); return false }
-        guard input.count < condition.1 else { print("1~99의 숫자를 입력해 주세요."); return false }
+        guard input.count >= condition.0 else {
+            print("2글자 이상의 이름을 입력해 주세요.")
+            return false
+        }
+        guard input.count < condition.1 else {
+            print("1~99의 숫자를 입력해 주세요.")
+            return false
+        }
         return true
     }
 }
@@ -131,7 +137,7 @@ private extension RegisterViewController {
 // MARK: - UI 관련 로직
 private extension RegisterViewController {
     
-    func changeTextBorderColor(textField: UITextField, color: CGColor) {
+    private func changeTextBorderColor(textField: UITextField, color: CGColor) {
         textField.layer.borderColor = color
         textField.layer.borderWidth = 2
     }

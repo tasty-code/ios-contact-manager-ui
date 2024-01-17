@@ -19,3 +19,4 @@ struct NotifyContactInfoChange {
         self.value = wrappedValue
     }
 }
+

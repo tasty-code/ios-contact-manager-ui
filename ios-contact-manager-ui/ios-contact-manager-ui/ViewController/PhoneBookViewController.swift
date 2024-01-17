@@ -92,7 +92,7 @@ extension PhoneBookViewController {
 
 
 // MARK: - Delegate
-extension PhoneBookViewController: updatePhoneBookDelegate {
+extension PhoneBookViewController: UpdatePhoneBookDelegate {
     func onUpdate() {
         DispatchQueue.main.async {
             self.tableView.reloadData()

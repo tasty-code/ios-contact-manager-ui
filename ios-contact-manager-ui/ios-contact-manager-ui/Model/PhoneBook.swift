@@ -1,14 +1,14 @@
 
 import Foundation
 
-protocol updatePhoneBookDelegate: AnyObject {
+protocol UpdatePhoneBookDelegate: AnyObject {
     func onUpdate()
 }
 
 // MARK: - PhoneBooks Init & Deinit
 final class PhoneBook {
     
-    weak var delegate: updatePhoneBookDelegate?
+    weak var delegate: UpdatePhoneBookDelegate?
     
     @NotifyContactInfoChange
     var categorizedContactInfo: [User] = [

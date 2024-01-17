@@ -1,17 +1,17 @@
 
 import UIKit
 
-protocol Coorninator {
-    var childCoordninators: [Coorninator] { get set }
+protocol Coordinator {
+    var childCoordninators: [Coordinator] { get set }
     var navigationController: UINavigationController { get set }
     
     func start()
     func goToRegisterViewController()
 }
 
-final class MainCoordinator: Coorninator {
+final class MainCoordinator: Coordinator {
         
-    var childCoordninators = [Coorninator]()
+    var childCoordninators = [Coordinator]()
     var navigationController: UINavigationController
     private let phoneBook = PhoneBook()
     
@@ -37,3 +37,4 @@ final class MainCoordinator: Coorninator {
         navigationController.present(registerViewController, animated: true)
     }
 }
+
