@@ -171,9 +171,13 @@ final class DetailView: UIView {
 
 extension DetailView {
     @objc func edit() {
-        guard let text = phoneNumberTextField.text?.replacingOccurrences(of: "-", with: "") else {
+        guard let edit = phoneNumberTextField.text?.replacingOccurrences(of: "-", with: "") else {
             return
         }
+        
+        var text = edit.replacingOccurrences(of: " ", with: "")
+        text = text.replacingOccurrences(of: "(", with: "")
+        text = text.replacingOccurrences(of: ")", with: "")
 
         phoneNumberTextField.text = text.formmater
     }
