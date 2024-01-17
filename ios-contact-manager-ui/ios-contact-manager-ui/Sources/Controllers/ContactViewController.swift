@@ -24,6 +24,15 @@ final class ContactViewController: UIViewController {
         return button
     }()
     
+    private lazy var search: UISearchController = {
+        let search = UISearchController()
+        navigationItem.searchController = search
+        navigationItem.searchController?.searchBar.delegate = self
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationController?.navigationBar.addSubview(search.searchBar)
+        return search
+    }()
+    
     private let contactManager = ContactManager()
     
     override func viewDidLoad() {
@@ -72,7 +81,11 @@ final class ContactViewController: UIViewController {
 
 extension ContactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactManager.contacts.count
+        if let name = search.searchBar.text, !name.isEmpty {
+            return contactManager.contacts.filter { $0.name.contains(name) }.count
+        } else {
+            return contactManager.contacts.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,6 +93,13 @@ extension ContactViewController: UITableViewDataSource {
         
         let item = contactManager.contacts[indexPath.row]
         cell.contact = item
+        
+        if let name = search.searchBar.text, !name.isEmpty {
+            let contact = contactManager.contacts.filter { $0.name.contains(name) }
+            cell.contact = contact[indexPath.row]
+        } else {
+            cell.contact = contactManager.contacts[indexPath.row]
+        }
         
         return cell
     }
@@ -105,6 +125,14 @@ extension ContactViewController: UITableViewDelegate {
 extension ContactViewController: ContactDetailDelegate {
     func add(contact: Contact) {
         contactManager.add(contact)
+        tableView.reloadData()
+    }
+}
+
+// MARK: - UISearchBarDelegate
+
+extension ContactViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         tableView.reloadData()
     }
 }
