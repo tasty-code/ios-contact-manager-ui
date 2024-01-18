@@ -12,7 +12,6 @@ final class MainCoordinator: Coordinator {
     
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
-    private let phoneBook = PhoneBook()
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController

@@ -71,16 +71,17 @@ final class RegisterViewController: UIViewController {
             isRightPhoneNumInput = false
         }
     }
-
     
     @IBAction private func saveButtonTapped(_ sender: UIBarButtonItem) {
         guard validateTextField() == true else { return }
         print("연락처 저장됨")
-        phoneBook?.categorizedContactInfo.append(User(
-                                                userID: UUID(),
-                                                name: nameTextField.text ?? "",
-                                                phoneNumber: phoneNumberTextField.text ?? "",
-                                                age: Int(ageTextField.text ?? "") ?? 0)
+        phoneBook?.categorizedContactInfo.append(
+            User(
+                userID: UUID(),
+                name: nameTextField.text ?? "",
+                phoneNumber: phoneNumberTextField.text ?? "",
+                age: Int(ageTextField.text ?? "") ?? 0
+            )
         )
         self.dismiss(animated: true)
     }
@@ -132,7 +133,7 @@ private extension RegisterViewController {
         return true
     }
 }
-    
+
 
 // MARK: - UI 관련 로직
 private extension RegisterViewController {

@@ -10,6 +10,7 @@ final class PhoneBookCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
+    //Set Dependency
     let phoneBook = PhoneBook()
     
     init(navigationController: UINavigationController) {
@@ -18,13 +19,15 @@ final class PhoneBookCoordinator: Coordinator {
     
     func start() {
         let phoneBookViewController = PhoneBookViewController()
-        phoneBookViewController.phoneBook = phoneBook
         phoneBookViewController.coordinator = self
+        phoneBookViewController.userData = phoneBook.categorizedContactInfo //시작값 셋팅
+        phoneBook.setDelegate(with: phoneBookViewController)
         navigationController.pushViewController(phoneBookViewController, animated: true)
     }
 }
 
 extension PhoneBookCoordinator: RegisterUserInfoDelegate {
+    
     func goToRegisterViewController() {
         let storyboard = UIStoryboard(name: "RegisterViewController", bundle: nil)
         let registerViewController = storyboard.instantiateViewController(identifier: "RegisterViewController") as! RegisterViewController
