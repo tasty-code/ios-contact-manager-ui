@@ -25,13 +25,11 @@ final class ContactListViewController: UIViewController {
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         loadData()
         configureTableView()
         configureNavigationItem()
         configureSearchBar()
-        filteredContacts = contactList
     }
     
     //MARK: - Custom Methods
@@ -49,7 +47,9 @@ final class ContactListViewController: UIViewController {
     
     private func configureNavigationItem() {
         self.navigationItem.title = "연락처"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addContactButtonTapped(_:)))
+        lazy var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addContactButtonTapped(_:)))
+        
+        self.navigationItem.rightBarButtonItem = addButton
     }
     
     @objc private func addContactButtonTapped(_ sender: UIButton) {
@@ -98,6 +98,7 @@ final class ContactListViewController: UIViewController {
     private func loadData() {
         do {
             contactList = try JsonDecoder<[Contact]>().loadData(from: "mockJson", of: "json")
+            filteredContacts = contactList
         } catch {
             print("\(JsonParsingError.fileLoadError.errorMessage)")
             print("\(JsonParsingError.fileLoadError.localizedDescription)")
@@ -143,9 +144,7 @@ extension ContactListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if isSearchActive {
-            contactList.removeAll {
-                $0 == filteredContacts[indexPath.row]
-            }
+            contactList.removeAll { $0 == filteredContacts[indexPath.row] }
             self.filteredContacts.remove(at: indexPath.row)
         } else {
             self.contactList.remove(at: indexPath.row)
