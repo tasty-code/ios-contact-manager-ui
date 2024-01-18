@@ -8,5 +8,5 @@
 import Foundation
 
 enum ContactManagerError: Error {
-case invalidInput(input: ContactInfo)
+    case invalidInput(input: ContactInfo)
 }
