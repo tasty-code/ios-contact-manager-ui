@@ -13,7 +13,7 @@ protocol ContactDetailDelegate: AnyObject {
 }
 
 final class ContactDetailViewController: UIViewController {
-
+    
     private let detailView = DetailView()
     var contact: Contact?
     weak var delegate: ContactDetailDelegate?
@@ -37,7 +37,7 @@ final class ContactDetailViewController: UIViewController {
         setupnvBar()
         detailView.contact = contact
     }
-
+    
     private func setupnvBar() {
         if contact == nil {
             title = "새연락처"
@@ -61,15 +61,14 @@ final class ContactDetailViewController: UIViewController {
         do {
             let (name, age, phone) = try makeInfo()
             
-            var new = contact == nil ? Contact(name: name, phoneNumber: phone, age: age) : contact!
-            
-               if contact != nil {
-                    new.phoneNumber = phone
-                    new.age = age
-                    new.name = name
-                    delegate?.update(contact: new)
+            if var newEdit = contact {
+                newEdit.phoneNumber = phone
+                newEdit.age = age
+                newEdit.name = name
+                delegate?.update(contact: newEdit)
             } else {
-                delegate?.add(contact: new)
+                let newAdd = Contact(name: name, phoneNumber: phone, age: age)
+                delegate?.add(contact: newAdd)
             }
             self.dismiss(animated: true)
         } catch {

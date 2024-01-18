@@ -2,7 +2,7 @@
 //  String+.swift
 //  ios-contact-manager-ui
 //
-//  Created by Lee minyeol on 1/11/24.
+//  Created by 미르, 루피  on 1/11/24.
 //
 
 import Foundation
