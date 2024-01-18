@@ -38,6 +38,7 @@ final class DetailContctViewController: UIViewController {
         
         configureContactData()
         configureNavigationBar()
+        contactDetailView.contactNumberTextField.addTarget(self, action: #selector(contactNumberTextFieldEditingChanged), for: .editingChanged)
     }
     
     
@@ -75,33 +76,6 @@ final class DetailContctViewController: UIViewController {
         let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
-    }
-    
-    func toggleIsPresentedModally() {
-        isPresentedModally = !isPresentedModally
-    }
-    
-    //MARK: - Slector
-    @objc private func cancelTapped() {
-        presentCancelAlert()
-    }
-    
-    @objc private func saveTapped() {
-        do {
-            let currentContactInpt: ContactInput = contactDetailView.fetchCurrentContactInput()
-            try validateInput()
-            if contact == nil{
-                addNewContact(name: currentContactInpt.name, age: currentContactInpt.age, contactNumber: currentContactInpt.contactNumber)
-            } else {
-                updateContact(name: currentContactInpt.name, age: currentContactInpt.age, contactNumber: currentContactInpt.contactNumber)
-            }
-        } catch let error as ContactInputError {
-            presentSaveFailureAlert(message: error.errorMessage)
-        } catch {
-            print("예상치못한 에러")
-        }
-        
-        moveToContactsViewScreen()
     }
     
     private func validateInput() throws {
@@ -149,5 +123,60 @@ final class DetailContctViewController: UIViewController {
         guard phoneNumber.count >= 9, contact.filter({$0 == "-"}).count == 2 else {
             throw ContactInputError.isValidContactNumber
         }
+    }
+    
+    func toggleIsPresentedModally() {
+        isPresentedModally = !isPresentedModally
+    }
+    
+    
+    //MARK: - Slector
+    @objc private func cancelTapped() {
+        presentCancelAlert()
+    }
+    
+    @objc private func saveTapped() {
+        do {
+            let currentContactInpt: ContactInput = contactDetailView.fetchCurrentContactInput()
+            try validateInput()
+            if contact == nil{
+                addNewContact(name: currentContactInpt.name, age: currentContactInpt.age, contactNumber: currentContactInpt.contactNumber)
+            } else {
+                updateContact(name: currentContactInpt.name, age: currentContactInpt.age, contactNumber: currentContactInpt.contactNumber)
+            }
+        } catch let error as ContactInputError {
+            presentSaveFailureAlert(message: error.errorMessage)
+        } catch {
+            print("예상치못한 에러")
+        }
+        
+        moveToContactsViewScreen()
+    }
+    
+    @objc private func contactNumberTextFieldEditingChanged(_ textField: UITextField) {
+        guard textField == contactDetailView.contactNumberTextField else {
+            return
+        }
+
+        var formattedNumber = textField.text?.replacingOccurrences(of: "-", with: "").replacingOccurrences(of: " ", with: "") ?? ""
+
+        if formattedNumber.count >= 3 && formattedNumber.count <= 5 {
+            let insertIndex = formattedNumber.hasPrefix("0") && formattedNumber.prefix(2) != "02" ? 3 : 2
+            formattedNumber.insert("-", at: formattedNumber.index(formattedNumber.startIndex, offsetBy: insertIndex))
+        } else if formattedNumber.count >= 6 && formattedNumber.count <= 10 {
+            let insertIndex = formattedNumber.hasPrefix("0") && formattedNumber.prefix(2) != "02" ? 3 : 2
+            formattedNumber.insert("-", at: formattedNumber.index(formattedNumber.startIndex, offsetBy: insertIndex))
+            formattedNumber.insert("-", at: formattedNumber.index(formattedNumber.startIndex, offsetBy: insertIndex + 4))
+        } else if formattedNumber.count > 10 && formattedNumber.count < 12 {
+            let insertIndex = formattedNumber.hasPrefix("0") && formattedNumber.prefix(2) != "02" ? 3 : 2
+            formattedNumber.insert("-", at: formattedNumber.index(formattedNumber.startIndex, offsetBy: insertIndex))
+            formattedNumber.insert("-", at: formattedNumber.index(formattedNumber.startIndex, offsetBy: insertIndex + 5))
+        }
+
+        if let lastChar = formattedNumber.last, lastChar == "-" {
+            formattedNumber.removeLast()
+        }
+
+        textField.text = formattedNumber
     }
 }

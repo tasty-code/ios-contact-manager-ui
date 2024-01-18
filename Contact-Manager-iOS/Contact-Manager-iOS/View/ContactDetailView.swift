@@ -85,7 +85,7 @@ final class ContactDetailView: UIView {
         return textField
     }()
     
-    private let contactNumberTextField: UITextField = {
+    let contactNumberTextField: UITextField = {
         let textField = UITextField()
         textField.frame.size.height = 20
         textField.backgroundColor = UIColor.clear
