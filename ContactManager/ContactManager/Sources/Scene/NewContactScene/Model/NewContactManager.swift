@@ -27,11 +27,11 @@ final class NewContactManager {
     func checkValidityOfContactData(nameInput: String?,
                                             ageInput: String?,
                                             contactNumberInput: String?) throws -> ContactInfoModel {
-        guard let name = nameInput else {
+        guard let name = nameInput?.deleteWhiteSpace() else {
             throw ContactManagerError.invalidInput(input: .name)
         }
         guard let ageInput,
-              let age = Int(ageInput), age > 0 && age < 1000 else {
+              let age = Int(ageInput.deleteWhiteSpace()), age > 0 && age < 1000 else {
             throw ContactManagerError.invalidInput(input: .age)
         }
         guard let contactNumber = contactNumberInput,
