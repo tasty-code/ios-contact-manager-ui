@@ -8,10 +8,10 @@
 import UIKit
 
 protocol addedContactDelegate {
-    func addNewContact(name: String, age: Int, phoneNumber: String)
+     func addNewContact(name: String, age: Int, phoneNumber: String)
 }
 
-class AddedContactViewController: UIViewController {
+final class AddedContactViewController: UIViewController {
     
     var delegate: addedContactDelegate?
 
@@ -34,7 +34,7 @@ class AddedContactViewController: UIViewController {
         
     }
     
-    func fetchName() throws -> String {
+    private func fetchName() throws -> String {
         let addedName = nameTextField.text
         guard let name = addedName?.components(separatedBy: [" "]).joined(), String(name).count != 0 else {
             throw AddedContactError.nameMistake
@@ -42,7 +42,7 @@ class AddedContactViewController: UIViewController {
         return name
     }
     
-    func fetchAge() throws -> Int {
+    private func fetchAge() throws -> Int {
         guard let ageText = ageTextField.text,
                 ageText.allSatisfy({ $0.isNumber }),
                 String(ageText).count <= 3,
@@ -75,7 +75,7 @@ class AddedContactViewController: UIViewController {
         return addedPhoneNumber
     }
     
-    func addDistinguished() {
+    private func addDistinguished() {
         var name: String = String()
         var age: Int = Int()
         var phoneNumber: String = String()
