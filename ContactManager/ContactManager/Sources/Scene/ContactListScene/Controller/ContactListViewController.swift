@@ -10,7 +10,7 @@ import UIKit
 final class ContactListViewController: UIViewController {
     
     // MARK: Properties
-    private let model: ContactListManager
+    private let contactListManager: ContactListManager
     private var contactList: [ContactInfoModel]
     
     // MARK: @IBOutlet
@@ -18,8 +18,8 @@ final class ContactListViewController: UIViewController {
     
     // MARK: Initializer
     required init?(coder aDecoder: NSCoder) {
-        self.model = ContactListManager()
-        self.contactList = model.fetchContactListData()
+        self.contactListManager = ContactListManager()
+        self.contactList = contactListManager.fetchContactListData()
         super.init(coder: aDecoder)
     }
     
@@ -45,7 +45,7 @@ final class ContactListViewController: UIViewController {
     
     // MARK: Custom Methods
     func updateContactList(_ contact: ContactInfoModel) {
-        contactList = model.createContactData(contact)
+        contactList = contactListManager.createContactData(contact)
         contactTableView.reloadData()
     }
 }

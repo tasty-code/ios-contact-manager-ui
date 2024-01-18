@@ -10,7 +10,7 @@ import UIKit
 final class NewContactViewController: UIViewController {
     
     // MARK: Properties
-    private let model: NewContactManager
+    private let newContactManager: NewContactManager
     
     // MARK: @IBOutlet
     @IBOutlet private weak var nameTextField: UITextField!
@@ -19,7 +19,7 @@ final class NewContactViewController: UIViewController {
     
     // MARK: Initializer
     required init?(coder aDecoder: NSCoder) {
-        self.model = NewContactManager()
+        self.newContactManager = NewContactManager()
         super.init(coder: aDecoder)
     }
     
@@ -40,7 +40,7 @@ final class NewContactViewController: UIViewController {
     
     @IBAction private func tapSaveButton(_ sender: UIBarButtonItem) {
         do {
-            let result = try model.checkValidityOfContactData(nameInput: nameTextField.text,
+            let result = try newContactManager.checkValidityOfContactData(nameInput: nameTextField.text,
                                                               ageInput: ageTextField.text,
                                                               contactNumberInput: contactNumberTextField.text)
             guard let presentingViewController = presentingViewController as? ContactListViewController else { return }
