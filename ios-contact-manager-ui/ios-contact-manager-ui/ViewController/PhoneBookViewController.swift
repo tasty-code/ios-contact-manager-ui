@@ -76,7 +76,7 @@ extension PhoneBookViewController: UITableViewDataSource {
     }
 }
 // MARK: - View Transition
-extension PhoneBookViewController {
+private extension PhoneBookViewController {
     @objc func addButtonTapped() {
         DispatchQueue.main.async { [weak self] in
             self?.coordinator?.goToRegisterViewController()

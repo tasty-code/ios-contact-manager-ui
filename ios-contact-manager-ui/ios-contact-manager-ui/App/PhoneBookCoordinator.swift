@@ -11,7 +11,7 @@ final class PhoneBookCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     //Set Dependency
-    let phoneBook = PhoneBook()
+    private let phoneBook = PhoneBook()
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
