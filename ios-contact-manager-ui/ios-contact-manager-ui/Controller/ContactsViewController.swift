@@ -58,23 +58,13 @@ extension ContactsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ContactsTableViewCell.className, for: indexPath) as? ContactsTableViewCell
-        
-        guard let contact: Contact = dataSource?.contacts()[indexPath.row] else {
-            return cell ?? UITableViewCell()
+        guard let cell: ContactsTableViewCell = tableView.dequeueReusableCell(withIdentifier: ContactsTableViewCell.className, for: indexPath) as? ContactsTableViewCell,
+                let contact: Contact = dataSource?.contacts()[indexPath.row] else {
+            return UITableViewCell()
         }
         
-        cell?.setContactLabelText(contact: contact)
-//        var content = cell.defaultContentConfiguration()
-//        
-//        content.text = "\(contact.name)(\(contact.age))"
-//        content.secondaryText = contact.phoneNumber
-//        content.secondaryTextProperties.font = .preferredFont(forTextStyle: .body)
-//        
-//        cell.contentConfiguration = content
-//        cell.accessoryType = .disclosureIndicator
-
-        return cell ?? UITableViewCell()
+        cell.setContactLabelText(contact: contact)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
