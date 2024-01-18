@@ -10,23 +10,11 @@ import UIKit
 final class DetailContctViewController: UIViewController {
     
     //MARK: - Property
-    private var contactManager: ContactManager
     private let contactDetailView: ContactDetailView = ContactDetailView()
     private var isPresentedModally: Bool = false
     var contact: Contact?
     weak var delegate: ContactDelegate?
    
-    
-    //MARK: - Initializer
-    init(contactManager: ContactManager) {
-        self.contactManager = contactManager
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     
     //MARK: - Life Cycle
     override func loadView() {
@@ -130,7 +118,7 @@ final class DetailContctViewController: UIViewController {
     }
     
     
-    //MARK: - Slector
+    //MARK: - Selector
     @objc private func cancelTapped() {
         presentCancelAlert()
     }

@@ -54,7 +54,7 @@ final class ContactsViewController: UIViewController {
     }
     
     @objc private func plusButtonTapped() {
-        let detailContactViewController = DetailContctViewController(contactManager: contactManager)
+        let detailContactViewController = DetailContctViewController()
         let detailContactNavigationViewController = UINavigationController(rootViewController: detailContactViewController)
         
         detailContactViewController.delegate = self
@@ -93,7 +93,7 @@ extension ContactsViewController: UITableViewDataSource {
     
 extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailContactViewController: DetailContctViewController = DetailContctViewController(contactManager: contactManager)
+        let detailContactViewController: DetailContctViewController = DetailContctViewController()
         
         detailContactViewController.delegate = self
         detailContactViewController.title = "기존 연락처 수정"
