@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ContactViewController: UIViewController {
     
     
     private let contactManager = ContactMananger()
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension ContactViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactManager.contactCount
@@ -71,7 +71,7 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: addedContactDelegate {
+extension ContactViewController: addedContactDelegate {
     
     func addNewContact(name: String, age: Int, phoneNumber: String) {
         contactManager.addContact(newName: name, newAge: age, newPhoneNumber: phoneNumber)

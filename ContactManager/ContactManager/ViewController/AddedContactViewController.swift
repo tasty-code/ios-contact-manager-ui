@@ -75,22 +75,24 @@ final class AddedContactViewController: UIViewController {
         return addedPhoneNumber
     }
     
-    private func addDistinguished() {
-        var name: String = String()
-        var age: Int = Int()
-        var phoneNumber: String = String()
+    private func validateContant() {
         let isAdded = Result {
-            name = try fetchName()
-            age = try fetchAge()
-            phoneNumber = try fetchPhoneNumber()
+            let name = try fetchName()
+            let age = try fetchAge()
+            let phoneNumber = try fetchPhoneNumber()
+            return (name, age, phoneNumber)
         }
         switch isAdded {
-        case .success():
-            delegate?.addNewContact(name: name, age: age, phoneNumber: phoneNumber)
-            self.dismiss(animated: true)
+        case .success(let (name, age, phoneNumber)):
+            addConditionSucceed(name: name, age: age, phoneNumber: phoneNumber)
         case .failure(let error):
             guard let error: AddedContactError = error as? AddedContactError else { return }
             showAlert(title: "", message: error.errorMessage)
         }
+    }
+    
+    private func addConditionSucceed(name: String, age: Int, phoneNumber: String) {
+        delegate?.addNewContact(name: name, age: age, phoneNumber: phoneNumber)
+        self.dismiss(animated: true)
     }
 }
