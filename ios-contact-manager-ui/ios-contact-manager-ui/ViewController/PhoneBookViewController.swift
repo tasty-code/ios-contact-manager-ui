@@ -6,7 +6,7 @@ final class PhoneBookViewController: UIViewController {
     
     let tableView = UITableView()
     var phoneBook: PhoneBook? 
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: RegisterUserInfoDelegate?
     
     deinit {print("PhoneBookViewController has been deinit!!")}
 }
@@ -83,12 +83,11 @@ extension PhoneBookViewController: UITableViewDataSource {
 // MARK: - View Transition
 extension PhoneBookViewController {
     @objc func addButtonTapped() {
-        DispatchQueue.main.async {
-            self.coordinator?.goToRegisterViewController()
+        DispatchQueue.main.async { [weak self] in
+            self?.coordinator?.goToRegisterViewController()
         }
     }
 }
-
 
 
 // MARK: - Delegate

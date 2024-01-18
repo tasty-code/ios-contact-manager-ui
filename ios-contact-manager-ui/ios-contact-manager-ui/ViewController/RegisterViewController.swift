@@ -12,7 +12,7 @@ final class RegisterViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     var phoneBook: PhoneBook?
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: RegisterUserInfoDelegate?
     
     var isRightAgeInput = false
     var isRightNameInput = false
