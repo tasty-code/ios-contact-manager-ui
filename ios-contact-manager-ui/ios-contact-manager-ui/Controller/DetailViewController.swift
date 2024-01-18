@@ -7,7 +7,7 @@ final class DetailViewController: UIViewController {
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     
-    private let model = ContactManager.shared
+    private let model: ContactManager? = nil
     var delegate: ContactListDelegate?
     
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ final class DetailViewController: UIViewController {
             self.showMessageAlert(message: "입력한 연락처 정보가 잘못되었습니다")
         default:
             let personData = Person(name: name, age: Int(age) ?? 0, phoneNumber: phoneNumber)
-            model.addPerson(person: personData)
+            model?.addPerson(person: personData)
             delegate?.reloadContacts()
             
             self.dismiss(animated: true)
