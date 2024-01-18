@@ -34,7 +34,8 @@ struct ListContactUseCase {
     }
     
     func searchContact(with query: String) {
-        let queries = query.components(separatedBy: .whitespacesAndNewlines)
+        let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        let queries = trimmedQuery.components(separatedBy: .whitespacesAndNewlines)
         do {
             let matchingContacts = try repository.searchContact(with: queries)
             let successInfo = ListContact.SuccessInfo(contacts: matchingContacts)

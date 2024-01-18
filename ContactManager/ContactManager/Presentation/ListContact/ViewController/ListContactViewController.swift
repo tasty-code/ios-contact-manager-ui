@@ -8,6 +8,12 @@
 import UIKit
 
 final class ListContactViewController: UIViewController {
+    enum ListState {
+        case noContacts
+        case noSearchingResults
+        case noProblem
+    }
+    
     private var listContactUseCase: ListContactUseCase?
     
     private weak var coordinator: ListContactViewControllerDelegate?
@@ -20,19 +26,13 @@ final class ListContactViewController: UIViewController {
     
     private lazy var contactListDataSource: ContactListDataSource = ContactListDataSource(self.contactListView)
     
-    private var listIsEmpty: Bool = true {
+    private var searchController: UISearchController?
+    
+    private var listIsEmpty: ListState = .noProblem {
         didSet {
             setNeedsUpdateContentUnavailableConfiguration()
         }
     }
-    
-    private let noContacts: UIContentUnavailableConfiguration = {
-        var emptyConfig = UIContentUnavailableConfiguration.empty()
-        emptyConfig.image = UIImage(systemName: "person.crop.circle")
-        emptyConfig.text = "저장된 연락처 없음"
-        emptyConfig.secondaryText = "저장된 연락처 목록이 여기 표시됩니다."
-        return emptyConfig
-    }()
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
@@ -59,7 +59,14 @@ final class ListContactViewController: UIViewController {
     override func updateContentUnavailableConfiguration(using state: UIContentUnavailableConfigurationState) {
         UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self else { return }
-            self.contentUnavailableConfiguration = self.listIsEmpty ? self.noContacts : nil
+            switch self.listIsEmpty {
+            case .noContacts:
+                self.contentUnavailableConfiguration = ContactUnavailableConfiguration.noContacts
+            case .noSearchingResults:
+                self.contentUnavailableConfiguration = ContactUnavailableConfiguration.noSearchingResults
+            case .noProblem:
+                self.contentUnavailableConfiguration = nil
+            }
         }
     }
 }
@@ -78,6 +85,7 @@ extension ListContactViewController {
             contactListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
         setButtons()
+        setSearchController()
     }
     
     private func setButtons() {
@@ -86,12 +94,27 @@ extension ListContactViewController {
         self.navigationItem.rightBarButtonItem = button
     }
     
+    private func setSearchController() {
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController?.searchResultsUpdater = self
+        navigationItem.searchController = searchController
+    }
+    
     private func didTapCreateButton() {
         self.coordinator?.startAddContact()
     }
     
     private func didTapDeleteSwipeAction(index: Int) {
         self.listContactUseCase?.deleteContact(at: index)
+    }
+    
+    private func handle(error: Error) {
+        if let error = error as? LocalizedError {
+            print(error.localizedDescription)
+        }
+        if let error = error as? AlertableError {
+            showErrorAlert(error: error)
+        }
     }
 }
 
@@ -109,24 +132,17 @@ extension ListContactViewController: UITableViewDelegate {
 
 extension ListContactViewController: ListContactPresentable {
     func presentListContact(result: Result<ListContact.SuccessInfo, Error>) {
-        let isEmpty: Bool
         var snapshot = ContactListSnapShot()
         snapshot.appendSections([.contact])
         switch result {
         case .success(let successInfo):
-            let contacts = successInfo.contacts.map(ContactListItem.contact)  
+            self.listIsEmpty = .noProblem
+            let contacts = successInfo.contacts.map(ContactListItem.contact)
             snapshot.appendItems(contacts, toSection: .contact)
-            isEmpty = contacts.isEmpty
         case .failure(let error):
-            isEmpty = true
-            if let error = error as? LocalizedError {
-                print(error.localizedDescription)
-            }
-            if let error = error as? AlertableError {
-                showErrorAlert(error: error)
-            }
+            self.listIsEmpty = .noContacts
+            handle(error: error)
         }
-        self.listIsEmpty = isEmpty
         self.contactListDataSource.apply(snapshot)
     }
     
@@ -135,22 +151,23 @@ extension ListContactViewController: ListContactPresentable {
         case .success:
             self.listContactUseCase?.fetchAllContacts()
         case .failure(let error):
-            if let error = error as? LocalizedError {
-                print(error.localizedDescription)
-            }
-            if let error = error as? AlertableError {
-                showErrorAlert(error: error)
-            }
+            handle(error: error)
         }
     }
     
     func presentSearchContact(result: Result<ListContact.SuccessInfo, Error>) {
+        var snapshot = ContactListSnapShot()
+        snapshot.appendSections([.contact])
         switch result {
-        case .success(let success):
-            return
-        case .failure(let failure):
-            return
+        case .success(let successInfo):
+            self.listIsEmpty = .noProblem
+            let contacts = successInfo.contacts.map(ContactListItem.contact)
+            snapshot.appendItems(contacts, toSection: .contact)
+        case .failure(let error):
+            self.listIsEmpty = .noSearchingResults
+            handle(error: error)
         }
+        self.contactListDataSource.apply(snapshot)
     }
 }
 
@@ -173,5 +190,15 @@ extension ListContactViewController: ErrorAlertPresentableViewController {
 extension ListContactViewController: ModalViewControllerDismissingHandlable {
     func viewControllerWillAppear() {
         self.listContactUseCase?.fetchAllContacts()
+    }
+}
+
+extension ListContactViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let query = searchController.searchBar.text, query.isEmpty == false else {
+            self.listContactUseCase?.fetchAllContacts()
+            return
+        }
+        self.listContactUseCase?.searchContact(with: query)
     }
 }
