@@ -32,10 +32,30 @@ final class Contacts: ContactsManageable, ContactsApproachable {
     }
     
     public func filter(by condition: String) {
+        sortedContacts = sorted()
         if condition.count == 0 {
-            sortedContacts = sorted()
             return
         }
+        
+        let unicodeScalars = condition.decomposedStringWithCompatibilityMapping.unicodeScalars
+        
+        if condition.count == unicodeScalars.count {
+            sortedContacts = sortedContacts.filter { contact in
+                let nameArray = Array(contact.name)
+                let initial: String = nameArray.reduce(into: "") { (characters, character) in
+                    guard let unicodeFirst = String(character).decomposedStringWithCompatibilityMapping.unicodeScalars.first else {
+                        return
+                    }
+                    characters += String(unicodeFirst) + " "
+                }
+                let unicodeScalarsString: String = unicodeScalars.reduce(into: "") { (characters, character) in
+                    characters += String(character) + " "
+                }
+                return initial.contains(unicodeScalarsString)
+            }
+            return
+        }
+        
         sortedContacts = sortedContacts.filter { contact in
             return contact.name.contains(condition)
         }
