@@ -41,13 +41,14 @@ final class ContactsViewController: UIViewController {
     }
     
     @objc private func plusButtonTapped() {
-        let addContactViewController = AddContactViewController(contactManager: contactManager)
-        let navigationController = UINavigationController(rootViewController: addContactViewController)
+        let detailContactViewController = DetailContctViewController(contactManager: contactManager)
+        let detailContactNavigationViewController = UINavigationController(rootViewController: detailContactViewController)
         
-        addContactViewController.delegate = self
-        addContactViewController.title = "새 연락처"
+        detailContactViewController.delegate = self
+        detailContactViewController.title = "새 연락처"
+        detailContactViewController.toggleIsPresentedModally()
         
-        present(navigationController, animated: true, completion: nil)
+        present(detailContactNavigationViewController, animated: true, completion: nil)
     }
 }
     
@@ -79,7 +80,13 @@ extension ContactsViewController: UITableViewDataSource {
     
 extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailContactViewController: DetailContctViewController = DetailContctViewController(contactManager: contactManager)
         
+        detailContactViewController.delegate = self
+        detailContactViewController.title = "기존 연락처 수정"
+        detailContactViewController.contact = contactManager.fetchAllContacts()[indexPath.row]
+        
+        navigationController?.pushViewController(detailContactViewController, animated: true)
     }
 }
 
