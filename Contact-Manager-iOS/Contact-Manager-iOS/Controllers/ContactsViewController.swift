@@ -29,19 +29,18 @@ final class ContactsViewController: UIViewController {
     
     
     //MARK: - Method
-    private func configureTableView() {
-        contactsView.contactsTableView.dataSource = self
-        contactsView.contactsTableView.register(ContactTableViewCell.self, forCellReuseIdentifier: ContactTableViewCell.reuseIdentifier)
-    }
-    
     private func configureNavigationBar() {
         title = "연락처"
-        
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addContactTapped))
-        navigationItem.rightBarButtonItem = addButton
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plusButtonTapped))
     }
     
-    @objc private func addContactTapped() {
+    private func configureTableView() {
+        contactsView.contactsTableView.dataSource = self
+        contactsView.contactsTableView.delegate = self
+        contactsView.contactsTableView.register(ContactCustomTableViewCell.self, forCellReuseIdentifier: "ContactCustomTableViewCell")
+    }
+    
+    @objc private func plusButtonTapped() {
         let addContactViewController = AddContactViewController(contactManager: contactManager)
         let navigationController = UINavigationController(rootViewController: addContactViewController)
         
@@ -60,16 +59,28 @@ extension ContactsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.reuseIdentifier, for: indexPath) as? ContactTableViewCell else {
+        guard let reusableCell = tableView.dequeueReusableCell(withIdentifier: "ContactCustomTableViewCell", for: indexPath) as? ContactCustomTableViewCell else {
             fatalError("cell is not an instance of TableViewCell")
         }
 
-        let contact = contactManager.fetchAllContacts()[indexPath.row]
-        cell.configure(with: contact)
+        reusableCell.contact = contactManager.fetchAllContacts()[indexPath.row]
 
-        return cell
+        return reusableCell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            let id = contactManager.fetchAllContacts()[indexPath.row].id
+            contactManager.deleteContact(contactId: id)
+            contactsView.contactsTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+        }
+    }
+}
+    
+extension ContactsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }
 
 extension ContactsViewController: ContactDelegate {
@@ -79,6 +90,7 @@ extension ContactsViewController: ContactDelegate {
     }
     
     func updatedContact(contactId id: Int, with selectedContact: Contact) {
-        
+        contactManager.updatedContact(contactId: id, with: selectedContact)
+        contactsView.contactsTableView.reloadData()
     }
 }
