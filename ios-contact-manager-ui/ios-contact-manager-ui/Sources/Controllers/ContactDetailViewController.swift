@@ -19,12 +19,28 @@ final class ContactDetailViewController: UIViewController {
     weak var delegate: ContactDetailDelegate?
     
     private lazy var cancelButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+        let customBtton = UIButton(type: .system)
+        customBtton.setTitle("Cancel", for: .normal)
+        customBtton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        
+        let buttonSize = CGSize(width: 15, height: 15)
+        customBtton.frame = CGRect(origin: .zero, size: buttonSize)
+        
+        let button = UIBarButtonItem(customView: customBtton)
+        
         return button
     }()
     
-    private lazy var saveButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(setupButtonAction))
+    lazy var saveButton: UIBarButtonItem = {
+        let customBtton = UIButton(type: .system)
+        customBtton.setTitle("Save", for: .normal)
+        customBtton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        
+        let buttonSize = CGSize(width: 15, height: 15)
+        customBtton.frame = CGRect(origin: .zero, size: buttonSize)
+        
+        let button = UIBarButtonItem(customView: customBtton)
+        
         return button
     }()
     
@@ -39,6 +55,7 @@ final class ContactDetailViewController: UIViewController {
     }
     
     private func setupnvBar() {
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)]
         if contact == nil {
             title = "새연락처"
             self.navigationItem.leftBarButtonItem = self.cancelButton
@@ -57,7 +74,7 @@ final class ContactDetailViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    @objc func setupButtonAction() {
+    @objc func saveButtonTapped() {
         do {
             let (name, age, phone) = try makeInfo()
             

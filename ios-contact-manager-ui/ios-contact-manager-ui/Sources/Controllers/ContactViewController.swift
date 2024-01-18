@@ -19,8 +19,16 @@ final class ContactViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var plusButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plusButtonTapped))
+    lazy var plusButton: UIBarButtonItem = {
+        let customBtton = UIButton(type: .system)
+        customBtton.setImage(UIImage(systemName: "plus"), for: .normal)
+        customBtton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
+        
+        let buttonSize = CGSize(width: 15, height: 15)
+        customBtton.frame = CGRect(origin: .zero, size: buttonSize)
+        
+        let button = UIBarButtonItem(customView: customBtton)
+        
         return button
     }()
     
@@ -55,7 +63,7 @@ final class ContactViewController: UIViewController {
     
     private func setupNaviBar() {
         title = "연락처"
-        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)]
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -72,9 +80,7 @@ final class ContactViewController: UIViewController {
     }
     @objc func plusButtonTapped() {
         let detailVC = ContactDetailViewController()
-        
         detailVC.delegate = self
-        
         self.present(UINavigationController(rootViewController: detailVC), animated: true)
     }
 }
