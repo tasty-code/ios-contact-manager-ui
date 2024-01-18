@@ -26,6 +26,13 @@ final class NewContactViewController: UIViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addTarget()
+    }
+    
+    // MARK: Custom Methods
+    private func addTarget() {
+        contactNumberTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     // MARK: @IBAction
@@ -55,3 +62,12 @@ final class NewContactViewController: UIViewController {
     }
 }
 
+// MARK: - TextField
+extension NewContactViewController {
+    
+    @objc
+    func textFieldDidChange(_ sender: UITextField) {
+        guard let text = sender.text else { return }
+        sender.text = newContactManager.addHypen(at: text)
+    }
+}
