@@ -51,14 +51,13 @@ extension ContactsViewController: UISearchBarDelegate {
 }
 
 extension ContactsViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.sorted().count ?? 0
+        return dataSource?.contacts().count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
-        guard let contact: Contact = dataSource?.sorted()[indexPath.row] else {
+        guard let contact: Contact = dataSource?.contacts()[indexPath.row] else {
             return cell
         }
         var content = cell.defaultContentConfiguration()
