@@ -18,10 +18,12 @@ final class ContactsAdditionModalViewController: UIViewController {
         ]
     }
     private var reloadData: (() -> Void)?
+    private var previousContact: Contact?
     
     init(delegate: ContactsManageable?) {
         contactsAdditionModalView = ContactsAddtionModalView()
         self.delegate = delegate
+        self.previousContact = nil
         super.init(nibName: nil, bundle: nil)
         
         contactsAdditionModalView.phoneNumberTextField.delegate = self
@@ -112,6 +114,17 @@ extension ContactsAdditionModalViewController {
         self.reloadData = reloadData
     }
     
+    public func setPreviousContact(_ previousContact: Contact?) {
+        self.previousContact = previousContact
+        guard let age = previousContact?.age else {
+            return
+        }
+        contactsAdditionModalView.nameTextField.text = previousContact?.name
+        contactsAdditionModalView.ageTextField.text = String(age)
+        contactsAdditionModalView.phoneNumberTextField.text = previousContact?.phoneNumber
+        
+    }
+    
     @objc func dismissContactsAdditionModalView() {
         makeCancelAlert(message: "정말로 취소하시겠습니까?", destructiveAction: { _ in self.dismiss(animated: true) })
     }
@@ -124,7 +137,21 @@ extension ContactsAdditionModalViewController {
         guard let contact = newContact() else {
             return
         }
-        delegate?.create(contact)
+        
+        if self.previousContact == nil {
+            delegate?.create(contact)
+        } else {
+            guard let hashValue = previousContact?.hashValue else {
+                return
+            }
+            previousContact?.name = contact.name
+            previousContact?.age = contact.age
+            previousContact?.phoneNumber = contact.phoneNumber
+            
+            delegate?.delete(hashValue)
+            delegate?.update(previousContact)
+        }
+        
         reloadData?()
         self.dismiss(animated: true)
     }

@@ -13,6 +13,11 @@ final class ContactsView: UIView {
             self.tableView.dataSource = self.dataSource
         }
     }
+    private weak var delegate: UITableViewDelegate? {
+        didSet {
+            self.tableView.delegate = self.delegate
+        }
+    }
     let tableView: UITableView
     let searchBar: UISearchBar
     private let navigationBar: ContactsNavigationBar
@@ -40,6 +45,10 @@ final class ContactsView: UIView {
 extension ContactsView {
     public func setDataSource(dataSource: UITableViewDataSource?) {
         self.dataSource = dataSource
+    }
+    
+    public func setDelegate(delegate: UITableViewDelegate?) {
+        self.delegate = delegate
     }
 }
 

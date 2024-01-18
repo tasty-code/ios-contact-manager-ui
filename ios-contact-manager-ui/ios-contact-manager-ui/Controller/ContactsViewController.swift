@@ -27,6 +27,7 @@ final class ContactsViewController: UIViewController {
         view = contactsView
         contactsView.searchBar.delegate = self
         contactsView.setDataSource(dataSource: self)
+        contactsView.setDelegate(delegate: self)
     }
 }
 
@@ -72,10 +73,26 @@ extension ContactsViewController: UITableViewDataSource {
             guard let contact = dataSource?.contacts()[indexPath.row] else {
                 return
             }
-            dataSource?.delete(contact)
+            dataSource?.delete(contact.hashValue)
             let tableView = contactsView.tableView
             tableView.reloadData()
         }
+    }
+}
+
+extension ContactsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contactsAdditionModalViewController = ContactsAdditionModalViewController(delegate: dataSource)
+        contactsAdditionModalViewController.setReloadData(reloadData: { [weak self] in
+            guard let contactsView = self?.contactsView else {
+                return
+            }
+            let tableView = contactsView.tableView
+            tableView.reloadData()
+        })
+        
+        contactsAdditionModalViewController.setPreviousContact(dataSource?.contacts()[indexPath.row])
+        present(contactsAdditionModalViewController, animated: true)
     }
 }
 

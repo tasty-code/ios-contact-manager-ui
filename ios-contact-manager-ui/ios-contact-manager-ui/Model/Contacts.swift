@@ -65,11 +65,11 @@ final class Contacts: ContactsManageable, ContactsApproachable {
         contactsRepository[contact.hashValue] = contact
     }
     
-    public func delete(_ contact: Contact) {
-        contactsRepository.removeValue(forKey: contact.hashValue)
+    public func delete(_ hashValue: Int) {
+        contactsRepository.removeValue(forKey: hashValue)
     }
     
-    public func update(_ contact: Contact) {
+    public func update(_ contact: Contact?) {
         contactsRepository[contact.hashValue] = contact
     }
     

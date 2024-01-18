@@ -9,8 +9,8 @@ import Foundation
 
 protocol ContactsManageable: AnyObject {
     func create(_ contact: Contact)
-    func update(_ contact: Contact)
-    func delete(_ contact: Contact)
+    func update(_ contact: Contact?)
+    func delete(_ hashValue: Int)
 }
 
 protocol ContactsApproachable: AnyObject {
