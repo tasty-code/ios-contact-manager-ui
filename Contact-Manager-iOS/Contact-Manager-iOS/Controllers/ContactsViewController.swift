@@ -12,6 +12,8 @@ final class ContactsViewController: UIViewController {
     //MARK: - Property
     private let contactManager: ContactManager = ContactManager()
     private let contactsView: ContactsView = ContactsView()
+    private var filteredContacts: [Contact] = []
+    private let searchController = UISearchController(searchResultsController: nil)
     
     
     //MARK: - Life Cycle
@@ -25,6 +27,7 @@ final class ContactsViewController: UIViewController {
         configureTableView()
         contactManager.makeMockContactListData()
         configureNavigationBar()
+        configureSearchBar()
     }
     
     
@@ -32,6 +35,16 @@ final class ContactsViewController: UIViewController {
     private func configureNavigationBar() {
         title = "연락처"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plusButtonTapped))
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    
+    private func configureSearchBar() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "연락처 검색"
+        searchController.searchBar.showsCancelButton = true
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     private func configureTableView() {
@@ -56,7 +69,7 @@ final class ContactsViewController: UIViewController {
 //MARK: - Extension
 extension ContactsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactManager.fetchAllContacts().count
+        return isFiltering ? filteredContacts.count : contactManager.fetchAllContacts().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,7 +77,7 @@ extension ContactsViewController: UITableViewDataSource {
             fatalError("cell is not an instance of TableViewCell")
         }
 
-        reusableCell.contact = contactManager.fetchAllContacts()[indexPath.row]
+        reusableCell.contact = isFiltering ? filteredContacts[indexPath.row] : contactManager.fetchAllContacts()[indexPath.row]
 
         return reusableCell
     }
@@ -99,5 +112,29 @@ extension ContactsViewController: ContactDelegate {
     func updatedContact(contactId id: Int, with selectedContact: Contact) {
         contactManager.updatedContact(contactId: id, with: selectedContact)
         contactsView.contactsTableView.reloadData()
+    }
+}
+
+extension ContactsViewController: UISearchResultsUpdating {
+
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
+
+    private func filterContentForSearchText(_ searchText: String) {
+        filteredContacts = contactManager.fetchAllContacts().filter { contact in
+            return contact.name.lowercased().contains(searchText.lowercased())
+        }
+
+        contactsView.contactsTableView.reloadData()
+    }
+
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+
+    var isFiltering: Bool {
+        return searchController.isActive && !isSearchBarEmpty
     }
 }
