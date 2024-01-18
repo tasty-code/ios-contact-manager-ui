@@ -33,6 +33,10 @@ final class ContactsViewController: UIViewController {
 
 extension ContactsViewController {
     @objc func presentContactsAdditionModalView() {
+        present(contactsAdditionModalViewController(), animated: true)
+    }
+    
+    private func contactsAdditionModalViewController() -> ContactsAdditionModalViewController {
         let contactsAdditionModalViewController = ContactsAdditionModalViewController(delegate: dataSource)
         contactsAdditionModalViewController.setReloadData(reloadData: { [weak self] in
             guard let contactsView = self?.contactsView else {
@@ -41,7 +45,7 @@ extension ContactsViewController {
             let tableView = contactsView.tableView
             tableView.reloadData()
         })
-        present(contactsAdditionModalViewController, animated: true)
+        return contactsAdditionModalViewController
     }
 }
 
@@ -82,15 +86,7 @@ extension ContactsViewController: UITableViewDataSource {
 
 extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let contactsAdditionModalViewController = ContactsAdditionModalViewController(delegate: dataSource)
-        contactsAdditionModalViewController.setReloadData(reloadData: { [weak self] in
-            guard let contactsView = self?.contactsView else {
-                return
-            }
-            let tableView = contactsView.tableView
-            tableView.reloadData()
-        })
-        
+        let contactsAdditionModalViewController = contactsAdditionModalViewController()
         contactsAdditionModalViewController.setPreviousContact(dataSource?.contacts()[indexPath.row])
         present(contactsAdditionModalViewController, animated: true)
     }
