@@ -27,7 +27,7 @@ final class ContactListViewController: UIViewController, ContactListDelegate {
     }
 }
     
-extension ContactListViewController: UITableViewDataSource, UITableViewDelegate {
+extension ContactListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.readContacts().count
     }
@@ -45,5 +45,20 @@ extension ContactListViewController: UITableViewDataSource, UITableViewDelegate 
         cell.selectionStyle = .none
         
         return cell
+    }
+}
+
+extension ContactListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let list = model.readContacts()
+        let data = list[indexPath.row]
+        
+        let action = UIContextualAction(style: .destructive, title: "delete", 
+                                        handler: {[weak self] (action, view, completionHandler) in
+            self?.model.deletePerson(inputUuid: data.uuid)
+            self?.tableView.reloadData()
+            completionHandler(true)
+        })
+        return UISwipeActionsConfiguration(actions: [action])
     }
 }
