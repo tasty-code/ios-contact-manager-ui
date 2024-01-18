@@ -63,7 +63,7 @@ extension ContactsView {
     }
     
     private func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ContactCell")
+        tableView.register(ContactsTableViewCell.self, forCellReuseIdentifier: ContactsTableViewCell.className)
     }
     
     private func setupTableViewConstraints() {

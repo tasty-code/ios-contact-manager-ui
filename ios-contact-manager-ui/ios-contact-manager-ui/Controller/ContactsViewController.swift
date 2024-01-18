@@ -10,9 +10,9 @@ import UIKit
 final class ContactsViewController: UIViewController {
 
     private let contactsView: ContactsView
-    private var dataSource: ContactsApproachable?
+    private var dataSource: ContactsDelegate?
     
-    init( dataSource: ContactsApproachable?) {
+    init( dataSource: ContactsDelegate?) {
         contactsView = ContactsView()
         self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
@@ -32,7 +32,7 @@ final class ContactsViewController: UIViewController {
 
 extension ContactsViewController {
     @objc func presentContactsAdditionModalView() {
-        let contactsAdditionModalViewController = ContactsAdditionModalViewController(delegate: dataSource as? any ContactsManageable)
+        let contactsAdditionModalViewController = ContactsAdditionModalViewController(delegate: dataSource)
         contactsAdditionModalViewController.setReloadData(reloadData: { [weak self] in
             guard let contactsView = self?.contactsView else {
                 return
@@ -58,20 +58,34 @@ extension ContactsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ContactsTableViewCell.className, for: indexPath) as? ContactsTableViewCell
+        
         guard let contact: Contact = dataSource?.contacts()[indexPath.row] else {
-            return cell
+            return cell ?? UITableViewCell()
         }
-        var content = cell.defaultContentConfiguration()
         
-        content.text = "\(contact.name)(\(contact.age))"
-        content.secondaryText = contact.phoneNumber
-        content.secondaryTextProperties.font = .preferredFont(forTextStyle: .body)
-        
-        cell.contentConfiguration = content
-        cell.accessoryType = .disclosureIndicator
+        cell?.setContactLabelText(contact: contact)
+//        var content = cell.defaultContentConfiguration()
+//        
+//        content.text = "\(contact.name)(\(contact.age))"
+//        content.secondaryText = contact.phoneNumber
+//        content.secondaryTextProperties.font = .preferredFont(forTextStyle: .body)
+//        
+//        cell.contentConfiguration = content
+//        cell.accessoryType = .disclosureIndicator
 
-        return cell
+        return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let contact = dataSource?.contacts()[indexPath.row] else {
+                return
+            }
+            dataSource?.delete(contact)
+            let tableView = contactsView.tableView
+            tableView.reloadData()
+        }
     }
 }
 

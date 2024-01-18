@@ -17,3 +17,5 @@ protocol ContactsApproachable: AnyObject {
     func contacts() -> Array<Contact>
     func filter(by condition: String)
 }
+
+typealias ContactsDelegate = ContactsManageable & ContactsApproachable
