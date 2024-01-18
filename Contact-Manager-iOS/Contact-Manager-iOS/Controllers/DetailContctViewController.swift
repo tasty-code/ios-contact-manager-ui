@@ -15,6 +15,7 @@ final class DetailContctViewController: UIViewController {
     private var isPresentedModally: Bool = false
     var contact: Contact?
     weak var delegate: ContactDelegate?
+    private lazy var currentContactInpt: ContactInput = contactDetailView.fetchCurrentContactInput()
     
     
     //MARK: - Initializer
@@ -87,68 +88,68 @@ final class DetailContctViewController: UIViewController {
     }
     
     @objc private func saveTapped() {
-        let currentContactInpt: ContactInput = contactDetailView.fetchCurrentContactInput()
-        if contact == nil {
-            let newContact = Contact(name: currentContactInpt.name, age: currentContactInpt.age, contactNumber: currentContactInpt.contactNumber)
-            
-            delegate?.addNewContact(newContact: newContact)
-        } else {
-            if var contact = contact {
-                contact.name = currentContactInpt.name
-                contact.age = currentContactInpt.age
-                contact.contactNumber = currentContactInpt.contactNumber
-                
-                contactDetailView.contact = contact
-                
-                delegate?.updatedContact(contactId: contact.id, with: contact)
+        do {
+            try validateInput()
+            if contact == nil{
+                addNewContact(name: currentContactInpt.name, age: currentContactInpt.age, contactNumber: currentContactInpt.contactNumber)
+            } else {
+                updateContact(name: currentContactInpt.name, age: currentContactInpt.age, contactNumber: currentContactInpt.contactNumber)
             }
+        } catch {
+            print("예상치못한 에러")
         }
+        
         moveToContactsViewScreen()
     }
+    
+    private func validateInput() throws -> Bool {
+        let name = currentContactInpt.name.replacingOccurrences(of: " ", with: "")
+        let ageString = currentContactInpt.age
+        let contactNumber = currentContactInpt.contactNumber
         
-//        var name = currentContactInpt.name.replacingOccurrences(of: " ", with: "")
-//        isValidName(name)
-//        var ageString = currentContactInpt.age
-//        isValidAge(ageString)
-//        var contactNumber = currentContactInpt.contactNumber
-//        isValidContactNumber(contactNumber)
-//        
-//        
-//        if let name = addContactView.nameTextField.text, !isValidName(name) {
-//                presentSaveFailureAlert(message: "입력한 이름 정보가 잘못되었습니다.")
-//            } else if let ageString = addContactView.ageTextField.text, !isValidAge(ageString) {
-//                presentSaveFailureAlert(message: "입력한 나이 정보가 잘못되었습니다.")
-//            } else if let contact = addContactView.contactNumberTextField.text, !isValidContactNumber(contact) {
-//                presentSaveFailureAlert(message: "입력한 연락처 정보가 잘못되었습니다.")
-//            }
-//            return
-//        }
-//        
-//        let addNewContact = Contact(name: name, age: ageString, contactNumber: contactNumber)
-//        delegate?.addNewContact(newContact: addNewContact)
-//        dismiss(animated: true, completion: nil)
-//    }
+        try isValidName(name)
+        try isValidAge(ageString)
+        try isValidContactNumber(contactNumber)
+        
+        return true
+    }
+    
+    private func updateContact(name: String, age: String, contactNumber: String){
+        if var contact = contact {
+            contact.name = name
+            contact.age = age
+            contact.contactNumber = contactNumber
+            
+            contactDetailView.contact = contact
+            
+            delegate?.updatedContact(contactId: contact.id, with: contact)
+        }
+    }
+    
+    private func addNewContact(name: String, age: String, contactNumber: String){
+        let newContact = Contact(name: name, age: age, contactNumber: contactNumber)
+        
+        delegate?.addNewContact(newContact: newContact)
+        
+    }
     
     private func isValidName(_ name: String) -> Bool {
         return !name.isEmpty
     }
     
     private func isValidAge(_ ageString: String) -> Bool {
-        guard let age = Int(ageString), 0 < age && age <= 999,
+        guard let age = Int(ageString), 0 < age && age <= 999, ageString != "",
               String(age) == ageString else {
             return false
         }
         return true
     }
     
-//    private func isValidContactNumber(_ contact: String) -> Bool {
-//        guard let phoneNumber = addContactView.contactNumberTextField.text?.replacingOccurrences(of: "-", with: "").trimmingCharacters(in: .whitespacesAndNewlines),
-//              phoneNumber.count >= 9,
-//              contact.filter({$0 == "-"}).count == 2 else {
-//            return false
-//        }
-//        return true
-//    }
-    
-    
+    private func isValidContactNumber(_ contact: String) -> Bool {
+        let phoneNumber = contact.replacingOccurrences(of: "-", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
+        guard phoneNumber.count >= 9, contact.filter({$0 == "-"}).count == 2 else {
+            return false
+        }
+        return true
+    }
 }
