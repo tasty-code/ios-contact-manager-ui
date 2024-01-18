@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7F09D6FB2B47BC67002C1F39 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F09D6FA2B47BC67002C1F39 /* Contact.swift */; };
 		7F09D6FE2B47C839002C1F39 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F09D6FD2B47C839002C1F39 /* ContactsView.swift */; };
+		7F224E7E2B58BF1500D79C10 /* ContactInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F224E7D2B58BF1500D79C10 /* ContactInput.swift */; };
 		7F3890FD2B5012DA0052469D /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3890FC2B5012D90052469D /* ContactDetailView.swift */; };
 		7F3890FF2B5122500052469D /* ContactDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3890FE2B5122500052469D /* ContactDelegate.swift */; };
 		7FA930E52B451BAF003B9CC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA930E42B451BAF003B9CC3 /* AppDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		7F09D6FA2B47BC67002C1F39 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = "Contact-Manager-iOS/Contact.swift"; sourceTree = SOURCE_ROOT; };
 		7F09D6FD2B47C839002C1F39 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
+		7F224E7D2B58BF1500D79C10 /* ContactInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInput.swift; sourceTree = "<group>"; };
 		7F3890FC2B5012D90052469D /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
 		7F3890FE2B5122500052469D /* ContactDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDelegate.swift; sourceTree = "<group>"; };
 		7FA930E12B451BAF003B9CC3 /* Contact-Manager-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact-Manager-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,8 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				7F09D6FA2B47BC67002C1F39 /* Contact.swift */,
-				9549D9932B47C02E00E9403D /* ContactManager.swift */,
+				7F224E7D2B58BF1500D79C10 /* ContactInput.swift */,
 				7F3890FE2B5122500052469D /* ContactDelegate.swift */,
+				9549D9932B47C02E00E9403D /* ContactManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				7F09D6FE2B47C839002C1F39 /* ContactsView.swift in Sources */,
 				7F3890FD2B5012DA0052469D /* ContactDetailView.swift in Sources */,
 				95FE51202B47FBA600137031 /* ContactTableViewCell.swift in Sources */,
+				7F224E7E2B58BF1500D79C10 /* ContactInput.swift in Sources */,
 				7FA930E72B451BAF003B9CC3 /* SceneDelegate.swift in Sources */,
 				9549D9922B479FB100E9403D /* ContactsViewController.swift in Sources */,
 			);
