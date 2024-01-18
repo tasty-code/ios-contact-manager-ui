@@ -26,6 +26,7 @@ final class ContactListViewController: UIViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpTableView()
     }
     
