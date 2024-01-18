@@ -45,8 +45,10 @@ extension ContactsViewController {
 }
 
 extension ContactsViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        return true
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        dataSource?.filter(by: searchText)
+        let tableView = contactsView.tableView
+        tableView.reloadData()
     }
 }
 

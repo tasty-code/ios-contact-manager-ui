@@ -15,4 +15,5 @@ protocol ContactsManageable: AnyObject {
 
 protocol ContactsApproachable: AnyObject {
     func contacts() -> Array<Contact>
+    func filter(by condition: String)
 }

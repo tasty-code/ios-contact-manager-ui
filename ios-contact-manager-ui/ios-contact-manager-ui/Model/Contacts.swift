@@ -27,12 +27,18 @@ final class Contacts: ContactsManageable, ContactsApproachable {
         sortedContacts = sorted()
     }
     
-    private func sorted() -> Array<Contact> {
-        return contactsRepository.sorted(by: { $0.value.name.uppercased() < $1.value.name.uppercased() }).map { $0.value }
-    }
-    
     public func contacts() -> Array<Contact> {
         return sortedContacts
+    }
+    
+    public func filter(by condition: String) {
+        if condition.count == 0 {
+            sortedContacts = sorted()
+            return
+        }
+        sortedContacts = sortedContacts.filter { contact in
+            return contact.name.contains(condition)
+        }
     }
     
     public func create(_ contact: Contact) {
@@ -47,6 +53,10 @@ final class Contacts: ContactsManageable, ContactsApproachable {
         contactsRepository[contact.hashValue] = contact
     }
     
+    private func sorted() -> Array<Contact> {
+        return contactsRepository.sorted(by: { $0.value.name.uppercased() < $1.value.name.uppercased() }).map { $0.value }
+    }
+
     private func loadContactsJson() -> Array<Contact>? {
         guard let fileLocation = Bundle.main.url(forResource: "contacts", withExtension: "json") else {
             return nil
