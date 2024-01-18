@@ -28,6 +28,7 @@ final class ContactDetailCell: UITableViewCell {
     let contactNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
+        label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -35,7 +36,7 @@ final class ContactDetailCell: UITableViewCell {
     let contactAgeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
-        label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -43,7 +44,7 @@ final class ContactDetailCell: UITableViewCell {
     let contactPhoneNumberLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
-        label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -81,12 +82,16 @@ final class ContactDetailCell: UITableViewCell {
         NSLayoutConstraint.activate([
             contactNameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
             contactAgeLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
-            contactPhoneNumberLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
+            contactPhoneNumberLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
+            contactNameLabel.trailingAnchor.constraint(greaterThanOrEqualTo: stackView.trailingAnchor, constant: -20),
+            contactAgeLabel.trailingAnchor.constraint(greaterThanOrEqualTo: stackView.trailingAnchor, constant: -20),
+            contactPhoneNumberLabel.trailingAnchor.constraint(greaterThanOrEqualTo: stackView.trailingAnchor, constant: -20)
         ])
         
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: self.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }

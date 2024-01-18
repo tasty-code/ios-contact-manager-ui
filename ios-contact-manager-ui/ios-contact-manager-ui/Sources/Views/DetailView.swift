@@ -22,6 +22,7 @@ final class DetailView: UIView {
        let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .callout)
         label.text = "이름"
+        label.adjustsFontSizeToFitWidth = true
         label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -36,6 +37,7 @@ final class DetailView: UIView {
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
         textField.adjustsFontForContentSizeCategory = true
+        textField.adjustsFontSizeToFitWidth = true
         textField.clearsOnBeginEditing = false
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -55,7 +57,8 @@ final class DetailView: UIView {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .callout)
         label.text = "나이"
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -68,6 +71,7 @@ final class DetailView: UIView {
         tf.autocapitalizationType = .none
         tf.autocorrectionType = .no
         tf.spellCheckingType = .no
+        tf.adjustsFontSizeToFitWidth = true
         tf.adjustsFontForContentSizeCategory = true
         tf.clearsOnBeginEditing = false
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +92,7 @@ final class DetailView: UIView {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .callout)
         label.text = "전화번호"
+        label.adjustsFontSizeToFitWidth = true
         label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -101,6 +106,7 @@ final class DetailView: UIView {
         tf.autocapitalizationType = .none
         tf.autocorrectionType = .no
         tf.spellCheckingType = .no
+        tf.adjustsFontSizeToFitWidth = true
         tf.adjustsFontForContentSizeCategory = true
         tf.clearsOnBeginEditing = false
         tf.translatesAutoresizingMaskIntoConstraints = false
