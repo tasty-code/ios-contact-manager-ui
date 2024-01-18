@@ -12,6 +12,7 @@
 		15B092C62B54CABF00377F93 /* ContactCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B092C52B54CABF00377F93 /* ContactCustomCell.swift */; };
 		F3DF394E2B54D3B600087F00 /* AddedContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF394D2B54D3B600087F00 /* AddedContactViewController.swift */; };
 		F3DF39762B58E43C00087F00 /* AddedViewNameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF39752B58E43C00087F00 /* AddedViewNameSpace.swift */; };
+		F3DF39782B58F61B00087F00 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF39772B58F61B00087F00 /* ExtensionString.swift */; };
 		F3E325422B4CEBB3004AA7E0 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E325412B4CEBB3004AA7E0 /* Alert.swift */; };
 		F3E9AF6B2B4643C50003FDBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E9AF6A2B4643C50003FDBE /* AppDelegate.swift */; };
 		F3E9AF6D2B4643C50003FDBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E9AF6C2B4643C50003FDBE /* SceneDelegate.swift */; };
@@ -28,6 +29,7 @@
 		15B092C52B54CABF00377F93 /* ContactCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCustomCell.swift; sourceTree = "<group>"; };
 		F3DF394D2B54D3B600087F00 /* AddedContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddedContactViewController.swift; path = ContactManager/ViewController/AddedContactViewController.swift; sourceTree = SOURCE_ROOT; };
 		F3DF39752B58E43C00087F00 /* AddedViewNameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedViewNameSpace.swift; sourceTree = "<group>"; };
+		F3DF39772B58F61B00087F00 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		F3E325412B4CEBB3004AA7E0 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F3E9AF672B4643C50003FDBE /* ContactManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E9AF6A2B4643C50003FDBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 				F3DF39752B58E43C00087F00 /* AddedViewNameSpace.swift */,
 			);
 			path = NameSpace;
+			sourceTree = "<group>";
+		};
+		F3DF39792B58F62C00087F00 /* Etc */ = {
+			isa = PBXGroup;
+			children = (
+				F3DF39772B58F61B00087F00 /* ExtensionString.swift */,
+			);
+			path = Etc;
 			sourceTree = "<group>";
 		};
 		F3E3251A2B47DED3004AA7E0 /* Model */ = {
@@ -109,6 +119,7 @@
 			children = (
 				F3E9AF6A2B4643C50003FDBE /* AppDelegate.swift */,
 				F3E9AF6C2B4643C50003FDBE /* SceneDelegate.swift */,
+				F3DF39792B58F62C00087F00 /* Etc */,
 				F3DF39742B58E3D100087F00 /* NameSpace */,
 				F3E3251A2B47DED3004AA7E0 /* Model */,
 				F3E3251B2B47DEF3004AA7E0 /* ViewController */,
@@ -192,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3E325422B4CEBB3004AA7E0 /* Alert.swift in Sources */,
+				F3DF39782B58F61B00087F00 /* ExtensionString.swift in Sources */,
 				F3DF394E2B54D3B600087F00 /* AddedContactViewController.swift in Sources */,
 				15B092C62B54CABF00377F93 /* ContactCustomCell.swift in Sources */,
 				15A568542B464B1600A363DA /* ContactManager.swift in Sources */,
@@ -353,7 +365,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XF4QP82U89;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ContactManager/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -383,7 +395,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XF4QP82U89;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ContactManager/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -21,10 +21,11 @@ final class AddedContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configure()
     }
     
     @IBAction func touchUpSaveButton(_ sender: UIButton) {
-        addDistinguished()
+        validateContant()
     }
     
     @IBAction func touchUpCancelButton(_ sender: UIButton) {
@@ -32,6 +33,12 @@ final class AddedContactViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
         
+    }
+    
+    private func configure() {
+        self.phoneNumberTextField.delegate = self
+        self.ageTextField.delegate = self
+        self.phoneNumberTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     private func fetchName() throws -> String {
@@ -54,18 +61,9 @@ final class AddedContactViewController: UIViewController {
     }
     
     private func fetchPhoneNumber() throws -> String {
-        guard let addedPhoneNumber = phoneNumberTextField.text,
-              addedPhoneNumber.filter({ $0 == "-" }).count == NumberNameSpace.hyphenRule
-        else {
+        guard let addedPhoneNumber = phoneNumberTextField.text else {
             throw AddedContactError.phoneNumberMistake
         }
-        let lastIndex = addedPhoneNumber.index(before: addedPhoneNumber.endIndex)
-        
-        if (addedPhoneNumber[addedPhoneNumber.startIndex] == "-") ||
-            (addedPhoneNumber[lastIndex]) == "-" {
-            throw AddedContactError.phoneNumberMistake
-        }
-        
         let integerText = addedPhoneNumber.components(separatedBy: ["-"]).joined()
         guard integerText.allSatisfy({ $0.isNumber }),
               integerText.filter({ $0.isNumber }).count >= NumberNameSpace.phoneNumberMin
@@ -96,3 +94,40 @@ final class AddedContactViewController: UIViewController {
         self.dismiss(animated: true)
     }
 }
+
+extension AddedContactViewController: UITextFieldDelegate {
+    
+    @objc func textFieldDidChange(_ sender: Any?) {
+        guard let phoneNumber = phoneNumberTextField.text?.components(separatedBy: ["-"]).joined() else { return }
+        phoneNumberTextField.text = phoneNumber.formatConversionPhoneNumber()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let char = string.cString(using: String.Encoding.utf8) {
+            let isBackSpace = strcmp(char, "\\b")
+            if isBackSpace == -92 {
+                return true
+            }
+        }
+        guard let regex = distinguishRegularExpression(textField: textField) else { return false }
+        guard let _ = string.range(of: regex, options: .regularExpression) else { return false }
+        return true
+    }
+    
+    func distinguishRegularExpression(textField: UITextField) -> String? {
+        
+        switch textField.tag {
+        case TextFieldTagNameSpace.age:
+            guard let count = textField.text?.count,
+                  count < NumberNameSpace.ageDigitLimit else {
+                return nil
+            }
+            return RegexNameSpace.age
+        case TextFieldTagNameSpace.phoneNumber:
+            return RegexNameSpace.phoneNumber
+        default:
+            return nil
+        }
+    }
+}
+
