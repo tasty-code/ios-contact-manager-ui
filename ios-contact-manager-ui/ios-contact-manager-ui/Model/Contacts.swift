@@ -9,9 +9,7 @@ import Foundation
 
 final class Contacts: ContactsManageable, ContactsApproachable {
     private var contactsRepository: Dictionary<Int, Contact> {
-        didSet {
-            sortedContacts = sorted()
-        }
+        didSet { sortedContacts = sorted() }
     }
     private var sortedContacts: Array<Contact>
     
@@ -19,8 +17,7 @@ final class Contacts: ContactsManageable, ContactsApproachable {
         self.contactsRepository = [:]
         self.sortedContacts = []
         if let loadedContacts = loadContactsJson() {
-            contactsRepository = loadedContacts.reduce(into: [:]) {
-                partialResult, contact in
+            contactsRepository = loadedContacts.reduce(into: [:]) { partialResult, contact in
                 partialResult[contact.hashValue] = contact
             }
         }
@@ -65,12 +62,12 @@ final class Contacts: ContactsManageable, ContactsApproachable {
         contactsRepository[contact.hashValue] = contact
     }
     
-    public func delete(_ hashValue: Int) {
-        contactsRepository.removeValue(forKey: hashValue)
-    }
-    
     public func update(_ contact: Contact?) {
         contactsRepository[contact.hashValue] = contact
+    }
+    
+    public func delete(_ hashValue: Int) {
+        contactsRepository.removeValue(forKey: hashValue)
     }
     
     private func sorted() -> Array<Contact> {
@@ -81,6 +78,7 @@ final class Contacts: ContactsManageable, ContactsApproachable {
         guard let fileLocation = Bundle.main.url(forResource: "contacts", withExtension: "json") else {
             return nil
         }
+        
         do {
             let jsonData = try Data(contentsOf: fileLocation)
             let decoder = JSONDecoder()

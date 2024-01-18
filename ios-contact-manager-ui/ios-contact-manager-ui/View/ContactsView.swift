@@ -9,17 +9,16 @@ import UIKit
 
 final class ContactsView: UIView {
     private weak var dataSource: UITableViewDataSource? {
-        didSet {
-            self.tableView.dataSource = self.dataSource
-        }
+        didSet { self.tableView.dataSource = self.dataSource }
     }
     private weak var delegate: UITableViewDelegate? {
-        didSet {
-            self.tableView.delegate = self.delegate
-        }
+        didSet { self.tableView.delegate = self.delegate }
     }
-    let tableView: UITableView
-    let searchBar: UISearchBar
+    private weak var searchBarDelegate: UISearchBarDelegate? {
+        didSet { self.searchBar.delegate = self.searchBarDelegate }
+    }
+    private let tableView: UITableView
+    private let searchBar: UISearchBar
     private let navigationBar: ContactsNavigationBar
     
     override init(frame: CGRect) {
@@ -27,6 +26,7 @@ final class ContactsView: UIView {
         navigationBar = ContactsNavigationBar()
         searchBar = UISearchBar()
         super.init(frame: frame)
+        
         setupView()
         setupTableView()
         addSubview(navigationBar)
@@ -43,12 +43,20 @@ final class ContactsView: UIView {
 }
 
 extension ContactsView {
+    public func getTableView() -> UITableView {
+        return tableView
+    }
+    
     public func setDataSource(dataSource: UITableViewDataSource?) {
         self.dataSource = dataSource
     }
     
     public func setDelegate(delegate: UITableViewDelegate?) {
         self.delegate = delegate
+    }
+    
+    public func setSearchBarDelegate(delegate: UISearchBarDelegate?) {
+        self.searchBarDelegate = delegate
     }
 }
 

@@ -8,7 +8,6 @@
 import UIKit
 
 final class ContactsAddtionModalView: UIView {
-    
     private weak var delegate: UITextFieldDelegate? {
         didSet { self.phoneNumberTextField.delegate = self.delegate }
     }
@@ -113,6 +112,7 @@ final class ContactsAddtionModalView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         backgroundColor = .white
         setupStackViews()
         setupConstraints()
@@ -209,5 +209,3 @@ extension ContactsAddtionModalView {
         phoneNumberLabel.setContentHuggingPriority(UILayoutPriority(1000), for: .horizontal)
     }
 }
-
-

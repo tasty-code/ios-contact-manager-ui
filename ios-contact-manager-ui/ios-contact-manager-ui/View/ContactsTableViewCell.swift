@@ -7,8 +7,7 @@
 
 import UIKit
 
-class ContactsTableViewCell: UITableViewCell {
-    
+final class ContactsTableViewCell: UITableViewCell {
     static var className: String {
         NSStringFromClass(self.classForCoder()).components(separatedBy: ".").last!
     }
@@ -75,6 +74,7 @@ class ContactsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         setupStackView()
         setupStackViewConstraints()
         setupContentViewConstraints()

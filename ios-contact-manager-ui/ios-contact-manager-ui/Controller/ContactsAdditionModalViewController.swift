@@ -35,13 +35,14 @@ final class ContactsAdditionModalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view = contactsAdditionModalView
         contactsAdditionModalView.setDelegate(delegate: self)
     }
 }
 
 extension ContactsAdditionModalViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard var text = textField.text else {
             return false
         }
@@ -126,11 +127,11 @@ extension ContactsAdditionModalViewController {
         contactsAdditionModalView.getTextField(type: .phoneNumber).text = previousContact?.phoneNumber
     }
     
-    @objc func dismissContactsAdditionModalView() {
+    @objc public func dismissContactsAdditionModalView() {
         makeCancelAlert(message: "정말로 취소하시겠습니까?", destructiveAction: { _ in self.dismiss(animated: true) })
     }
     
-    @objc func handleSaveButtonTap() {
+    @objc public func handleSaveButtonTap() {
         if let invalidationMessage = validateTextFields() {
             makeAlert(message: invalidationMessage, confirmAction: nil)
             return

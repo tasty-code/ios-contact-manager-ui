@@ -24,8 +24,9 @@ final class ContactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view = contactsView
-        contactsView.searchBar.delegate = self
+        contactsView.setSearchBarDelegate(delegate: self)
         contactsView.setDataSource(dataSource: self)
         contactsView.setDelegate(delegate: self)
     }
@@ -42,7 +43,7 @@ extension ContactsViewController {
             guard let contactsView = self?.contactsView else {
                 return
             }
-            let tableView = contactsView.tableView
+            let tableView = contactsView.getTableView()
             tableView.reloadData()
         })
         return contactsAdditionModalViewController
@@ -52,17 +53,17 @@ extension ContactsViewController {
 extension ContactsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         dataSource?.filter(by: searchText)
-        let tableView = contactsView.tableView
+        let tableView = contactsView.getTableView()
         tableView.reloadData()
     }
 }
 
 extension ContactsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.contacts().count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell: ContactsTableViewCell = tableView.dequeueReusableCell(withIdentifier: ContactsTableViewCell.className, for: indexPath) as? ContactsTableViewCell,
                 let contact: Contact = dataSource?.contacts()[indexPath.row] else {
             return UITableViewCell()
@@ -72,20 +73,20 @@ extension ContactsViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             guard let contact = dataSource?.contacts()[indexPath.row] else {
                 return
             }
             dataSource?.delete(contact.hashValue)
-            let tableView = contactsView.tableView
+            let tableView = contactsView.getTableView()
             tableView.reloadData()
         }
     }
 }
 
 extension ContactsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contactsAdditionModalViewController = contactsAdditionModalViewController()
         contactsAdditionModalViewController.setPreviousContact(dataSource?.contacts()[indexPath.row])
         present(contactsAdditionModalViewController, animated: true)
