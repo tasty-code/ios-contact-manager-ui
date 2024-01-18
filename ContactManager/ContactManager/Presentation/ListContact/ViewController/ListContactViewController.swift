@@ -33,6 +33,7 @@ final class ListContactViewController: UIViewController {
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
         self.listContactUseCase?.presenter = self
+        self.contactListView.delegate = self
     }
     
     override func viewDidLoad() {
@@ -66,6 +67,22 @@ extension ListContactViewController {
     
     private func didTapCreateButton() {
         self.coordinator?.startAddContact()
+    }
+}
+
+extension ListContactViewController: UITableViewDelegate {
+    func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+            self.didTapDeleteSwipeAction()
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    private func didTapDeleteSwipeAction() {
+        
     }
 }
 
