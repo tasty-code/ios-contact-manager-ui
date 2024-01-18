@@ -17,10 +17,10 @@ final class ContactListViewController: UIViewController, UpdateNewContact {
         tableView.dataSource = self
         tableView.delegate = self
         contactFileManager.loadJson()
-        configureUI()
+        AddContactButtonTapped()
     }
     
-    private func configureUI() {
+    private func AddContactButtonTapped() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(showNewContactView))
@@ -28,11 +28,10 @@ final class ContactListViewController: UIViewController, UpdateNewContact {
     
     @objc private func showNewContactView() {
         guard let newContactViewController = storyboard?.instantiateViewController(identifier: "NewContactViewController", creator: { coder in
-            NewContactViewController(coder: coder, contactFileManager: self.contactFileManager)
+            NewContactViewController(coder: coder, contactFileManager: self.contactFileManager, delegate: self)
         }) as? NewContactViewController else {
             return
         }
-        newContactViewController.delegate = self
         present(newContactViewController, animated: true)
     }
 }
