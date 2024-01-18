@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol addedContactDelegate {
+protocol addedContactDelegate: AnyObject {
      func addNewContact(name: String, age: Int, phoneNumber: String)
 }
 
 final class AddedContactViewController: UIViewController {
     
-    var delegate: addedContactDelegate?
+    weak var delegate: addedContactDelegate?
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!

@@ -33,8 +33,8 @@ class ViewController: UIViewController {
             let dummyData = try decoder.decode([Contact].self, from: dataAssets.data)
             contactManager.initializeContact(contactData: dummyData)
         } catch {
-            DispatchQueue.main.async {
-                self.showAlert(title: "알림", message: "데이터 불러오기 실패")
+            DispatchQueue.main.async { [weak self] in
+                self?.showAlert(title: "알림", message: "데이터 불러오기 실패")
             }
         }
     }
