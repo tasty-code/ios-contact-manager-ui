@@ -19,7 +19,7 @@ struct Verification {
     }
     
     static func setNumber(_ number: String) -> Bool {
-        let regex = "^\\+[0-9]{2} \\(?([0-9]{1})?\\)? ?([0-9]{2,3})-?([0-9]{3,4})-?([0-9]{4})$"
+        let regex = #"(\+[0-9]{2,3}\s?)?(\(0\))?\s?0?([0-9]{1,2})-([0-9]{3,4})-([0-9]{4})$"#
         return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: number)
     }
 }
