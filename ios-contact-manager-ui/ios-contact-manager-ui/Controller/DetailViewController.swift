@@ -1,13 +1,17 @@
 
 import UIKit
 
+protocol ContactListDelegate {
+    func reloadContactList()
+}
+
 final class DetailViewController: UIViewController {
+    var model: ContactManager? = nil
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     
-    private let model: ContactManager? = nil
     var delegate: ContactListDelegate?
     
     override func viewDidLoad() {
@@ -16,6 +20,12 @@ final class DetailViewController: UIViewController {
         targetingAddHyphen()
     }
     
+    func updateContactdata() {
+        delegate?.reloadContactList()
+    }
+}
+
+extension DetailViewController {
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
         self.sureCancelAlert(message: "정말 취소하시겠습니까?") { [weak self] _ in
             self?.dismiss(animated: true) //okAction
@@ -45,8 +55,8 @@ final class DetailViewController: UIViewController {
         default:
             let personData = Person(name: name, age: Int(age) ?? 0, phoneNumber: phoneNumber)
             model?.addPerson(person: personData)
-            delegate?.reloadContacts()
             
+            updateContactdata()
             self.dismiss(animated: true)
         }
     }

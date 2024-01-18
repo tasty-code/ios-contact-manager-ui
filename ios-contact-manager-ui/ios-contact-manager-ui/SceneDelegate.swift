@@ -10,7 +10,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let contactListViewController = storyboard.instantiateViewController(identifier: "ContactListViewController") as! ContactListViewController
-
+        
         let contactManager = ContactManager()
         
         contactManager.contactList = makeStubData()

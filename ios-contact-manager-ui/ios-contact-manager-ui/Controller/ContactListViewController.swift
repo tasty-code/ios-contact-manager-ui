@@ -1,10 +1,6 @@
 
 import UIKit
 
-protocol ContactListDelegate: AnyObject {
-    func reloadContacts()
-}
-
 final class ContactListViewController: UIViewController, ContactListDelegate {
     var model: ContactManager? = nil
     
@@ -18,15 +14,17 @@ final class ContactListViewController: UIViewController, ContactListDelegate {
     
     @IBAction func addContactButton(_ sender: UIBarButtonItem) {
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        detailVC.model = self.model
         detailVC.delegate = self
         present(detailVC, animated: true)
     }
-    
-    func reloadContacts() {
+
+    func reloadContactList() {
+        self.model?.readContacts()
         self.tableView.reloadData()
     }
 }
-    
+
 extension ContactListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model?.readContacts().count ?? 0
@@ -53,10 +51,10 @@ extension ContactListViewController: UITableViewDelegate {
         let list = model?.readContacts()
         let data = list?[indexPath.row]
         
-        let action = UIContextualAction(style: .destructive, title: "delete", 
+        let action = UIContextualAction(style: .destructive, title: "delete",
                                         handler: {[weak self] (action, view, completionHandler) in
             self?.model?.deletePerson(inputUuid: data?.uuid ?? "")
-            self?.tableView.reloadData()
+            self?.reloadContactList()
             completionHandler(true)
         })
         return UISwipeActionsConfiguration(actions: [action])
