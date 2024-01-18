@@ -15,8 +15,7 @@ final class DetailContctViewController: UIViewController {
     private var isPresentedModally: Bool = false
     var contact: Contact?
     weak var delegate: ContactDelegate?
-    private lazy var currentContactInpt: ContactInput = contactDetailView.fetchCurrentContactInput()
-    
+   
     
     //MARK: - Initializer
     init(contactManager: ContactManager) {
@@ -89,12 +88,15 @@ final class DetailContctViewController: UIViewController {
     
     @objc private func saveTapped() {
         do {
+            let currentContactInpt: ContactInput = contactDetailView.fetchCurrentContactInput()
             try validateInput()
             if contact == nil{
                 addNewContact(name: currentContactInpt.name, age: currentContactInpt.age, contactNumber: currentContactInpt.contactNumber)
             } else {
                 updateContact(name: currentContactInpt.name, age: currentContactInpt.age, contactNumber: currentContactInpt.contactNumber)
             }
+        } catch let error as ContactInputError {
+            presentSaveFailureAlert(message: error.errorMessage)
         } catch {
             print("예상치못한 에러")
         }
@@ -102,7 +104,8 @@ final class DetailContctViewController: UIViewController {
         moveToContactsViewScreen()
     }
     
-    private func validateInput() throws -> Bool {
+    private func validateInput() throws {
+        let currentContactInpt: ContactInput = contactDetailView.fetchCurrentContactInput()
         let name = currentContactInpt.name.replacingOccurrences(of: " ", with: "")
         let ageString = currentContactInpt.age
         let contactNumber = currentContactInpt.contactNumber
@@ -110,8 +113,6 @@ final class DetailContctViewController: UIViewController {
         try isValidName(name)
         try isValidAge(ageString)
         try isValidContactNumber(contactNumber)
-        
-        return true
     }
     
     private func updateContact(name: String, age: String, contactNumber: String){
@@ -121,35 +122,32 @@ final class DetailContctViewController: UIViewController {
             contact.contactNumber = contactNumber
             
             contactDetailView.contact = contact
-            
             delegate?.updatedContact(contactId: contact.id, with: contact)
         }
     }
     
     private func addNewContact(name: String, age: String, contactNumber: String){
         let newContact = Contact(name: name, age: age, contactNumber: contactNumber)
-        
         delegate?.addNewContact(newContact: newContact)
-        
     }
     
-    private func isValidName(_ name: String) -> Bool {
-        return !name.isEmpty
+    private func isValidName(_ name: String) throws {
+        guard name != "" else {
+            throw ContactInputError.isValidName
+        }
     }
     
-    private func isValidAge(_ ageString: String) -> Bool {
+    private func isValidAge(_ ageString: String) throws {
         guard let age = Int(ageString), 0 < age && age <= 999, ageString != "",
               String(age) == ageString else {
-            return false
+            throw ContactInputError.isValidAge
         }
-        return true
     }
     
-    private func isValidContactNumber(_ contact: String) -> Bool {
+    private func isValidContactNumber(_ contact: String) throws {
         let phoneNumber = contact.replacingOccurrences(of: "-", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
         guard phoneNumber.count >= 9, contact.filter({$0 == "-"}).count == 2 else {
-            return false
+            throw ContactInputError.isValidContactNumber
         }
-        return true
     }
 }
