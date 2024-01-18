@@ -44,9 +44,9 @@ final class AddedContactViewController: UIViewController {
     
     private func fetchAge() throws -> Int {
         guard let ageText = ageTextField.text,
-                ageText.allSatisfy({ $0.isNumber }),
-                String(ageText).count <= 3,
-                let addedAge = Int(ageText)
+              ageText.allSatisfy({ $0.isNumber }),
+              String(ageText).count <= NumberNameSpace.ageDigitLimit,
+              let addedAge = Int(ageText)
         else {
             throw AddedContactError.ageMistake
         }
@@ -55,7 +55,7 @@ final class AddedContactViewController: UIViewController {
     
     private func fetchPhoneNumber() throws -> String {
         guard let addedPhoneNumber = phoneNumberTextField.text,
-              addedPhoneNumber.filter({ $0 == "-" }).count == 2
+              addedPhoneNumber.filter({ $0 == "-" }).count == NumberNameSpace.hyphenRule
         else {
             throw AddedContactError.phoneNumberMistake
         }
@@ -68,7 +68,7 @@ final class AddedContactViewController: UIViewController {
         
         let integerText = addedPhoneNumber.components(separatedBy: ["-"]).joined()
         guard integerText.allSatisfy({ $0.isNumber }),
-              integerText.filter({ $0.isNumber }).count >= 9
+              integerText.filter({ $0.isNumber }).count >= NumberNameSpace.phoneNumberMin
         else {
             throw AddedContactError.phoneNumberMistake
         }

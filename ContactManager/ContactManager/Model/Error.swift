@@ -5,8 +5,6 @@
 //  Created by MAC2020 on 2024/01/09.
 //
 
-import Foundation
-
 enum ContactManangerError: Error {
     case contactEmpty
     case contactExist
