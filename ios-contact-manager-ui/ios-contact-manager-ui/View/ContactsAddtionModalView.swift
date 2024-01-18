@@ -26,6 +26,7 @@ final class ContactsAddtionModalView: UIView {
     }()
     let cancelButton: UIButton = {
         let cancelButton = UIButton()
+        cancelButton.titleLabel?.font = .preferredFont(forTextStyle: .body)
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.setTitleColor(.systemBlue, for: .normal)
         cancelButton.addTarget(nil, action: #selector(ContactsAdditionModalViewController.dismissContactsAdditionModalView), for: .touchUpInside)
@@ -40,6 +41,7 @@ final class ContactsAddtionModalView: UIView {
     }()
     let saveButton: UIButton = {
         let saveButton = UIButton()
+        saveButton.titleLabel?.font = .preferredFont(forTextStyle: .body)
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.systemBlue, for: .normal)
         saveButton.addTarget(nil, action: #selector(ContactsAdditionModalViewController.handleSaveButtonTap), for: .touchUpInside)
@@ -61,6 +63,7 @@ final class ContactsAddtionModalView: UIView {
         let nameLabel = UILabel()
         nameLabel.text = "이름"
         nameLabel.textAlignment = .center
+        nameLabel.font = .preferredFont(forTextStyle: .body)
         return nameLabel
     }()
     let nameTextField: UITextField = {
@@ -79,6 +82,7 @@ final class ContactsAddtionModalView: UIView {
         let ageLabel = UILabel()
         ageLabel.text = "나이"
         ageLabel.textAlignment = .center
+        ageLabel.font = .preferredFont(forTextStyle: .body)
         return ageLabel
     }()
     let ageTextField: UITextField = {
@@ -97,6 +101,7 @@ final class ContactsAddtionModalView: UIView {
         let phoneNumberLabel = UILabel()
         phoneNumberLabel.text = "연락처"
         phoneNumberLabel.textAlignment = .center
+        phoneNumberLabel.font = .preferredFont(forTextStyle: .body)
         return phoneNumberLabel
     }()
     let phoneNumberTextField: UITextField = {

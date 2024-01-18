@@ -30,18 +30,22 @@ class ContactsTableViewCell: UITableViewCell {
         let nameLabel = UILabel()
         nameLabel.text = "이름 :"
         nameLabel.textAlignment = .right
+        nameLabel.font = .preferredFont(forTextStyle: .body)
         return nameLabel
     }()
     private let ageLabel: UILabel = {
         let ageLabel = UILabel()
         ageLabel.text = "나이 :"
         ageLabel.textAlignment = .right
+        ageLabel.font = .preferredFont(forTextStyle: .body)
+
         return ageLabel
     }()
     private let phoneNumberLabel: UILabel = {
         let phoneNumberLabel = UILabel()
         phoneNumberLabel.text = "연락처 :"
         phoneNumberLabel.textAlignment = .right
+        phoneNumberLabel.font = .preferredFont(forTextStyle: .body)
         return phoneNumberLabel
     }()
     
@@ -53,16 +57,19 @@ class ContactsTableViewCell: UITableViewCell {
     private let contactNameLabel: UILabel = {
         let contactNameLabel = UILabel()
         contactNameLabel.textAlignment = .left
+        contactNameLabel.font = .preferredFont(forTextStyle: .body)
         return contactNameLabel
     }()
     private let contactAgeLabel: UILabel = {
         let contactAgeLabel = UILabel()
         contactAgeLabel.textAlignment = .left
+        contactAgeLabel.font = .preferredFont(forTextStyle: .body)
         return contactAgeLabel
     }()
     private let contactPhoneNumberLabel: UILabel = {
         let contactPhoneNumberLabel = UILabel()
         contactPhoneNumberLabel.textAlignment = .left
+        contactPhoneNumberLabel.font = .preferredFont(forTextStyle: .body)
         return contactPhoneNumberLabel
     }()
     
