@@ -8,15 +8,16 @@
 import UIKit
 
 final class NewContactViewController: UIViewController {
-    private let contactFileManager: ContactFileManager
-    weak var delegate: UpdateNewContact?
+    var contactFileManager: ContactFileManager
+    weak var delegate: UpdateNewContact? 
     
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var ageTextField: UITextField!
     @IBOutlet private weak var phoneNumberTextField: UITextField!
     
-    init?(coder: NSCoder, contactFileManager: ContactFileManager) {
+    init?(coder: NSCoder, contactFileManager: ContactFileManager, delegate: UpdateNewContact?) {
         self.contactFileManager = contactFileManager
+        self.delegate = delegate
         super.init(coder: coder)
     }
     
@@ -48,7 +49,6 @@ final class NewContactViewController: UIViewController {
             self.delegate?.updateNewContact()
             self.dismiss(animated: true)
         }
-        
     }
 }
 
@@ -74,30 +74,33 @@ extension NewContactViewController {
 
 extension NewContactViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard var text = textField.text else { return false }
+
+        let textStr = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+        var text = textStr.replacingOccurrences(of: "-", with: "")
+        
         let prefixValidationCheck = text.hasPrefix("02") || !text.hasPrefix("0")
         
-        switch (prefixValidationCheck, text.count, string.isEmpty) {
-        case (true, 2, false), (true, 6, false):
-            text += "-"
-        case (false, 3, false), (false, 7, false):
-            text += "-"
-        case (true, 4, true), (true, 8,true):
-            text.removeLast()
-        case (false, 5,true), (false, 9,true):
-            text.removeLast()
-        case (true, 11, false), (false, 12, false):
-            if let lastHyphenIndex = text.lastIndex(of: "-") {
-                text.remove(at: lastHyphenIndex)
-                let indexToAddHyphen = text.index(text.endIndex, offsetBy: -3)
-                text.insert("-", at: indexToAddHyphen)
-            }
-        case (true, 12..., false), (false, 13..., false):
-            text = text.replacingOccurrences(of: "-", with: "")
+        switch (prefixValidationCheck, text.count) {
+        case (true, 3...5):
+            text.insert("-", at: text.index(text.startIndex, offsetBy: 2))
+        case (true, 6...9):
+            text.insert("-", at: text.index(text.startIndex, offsetBy: 2))
+            text.insert("-", at: text.index(text.endIndex, offsetBy: 6 - text.count))
+        case (true, 10):
+            text.insert("-", at: text.index(text.startIndex, offsetBy: 2))
+            text.insert("-", at: text.index(text.endIndex, offsetBy: 7 - text.count))
+        case (false, 4...6):
+            text.insert("-", at: text.index(text.startIndex, offsetBy: 3))
+        case (false, 7...10):
+            text.insert("-", at: text.index(text.startIndex, offsetBy: 3))
+            text.insert("-", at: text.index(text.endIndex, offsetBy: 7 - text.count))
+        case (false, 11):
+            text.insert("-", at: text.index(text.startIndex, offsetBy: 3))
+            text.insert("-", at: text.index(text.endIndex, offsetBy: 8 - text.count))
         default:
             break
         }
         textField.text = text
-        return true
+        return false
     }
 }
