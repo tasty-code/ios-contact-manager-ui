@@ -12,9 +12,9 @@ final class ContactsAdditionModalViewController: UIViewController {
     private let contactsAdditionModalView: ContactsAddtionModalView
     private var sortedTextField: Dictionary<TextField, UITextField> {
         [
-            .name : contactsAdditionModalView.nameTextField,
-            .age : contactsAdditionModalView.ageTextField,
-            .phoneNumber : contactsAdditionModalView.phoneNumberTextField
+            .name : contactsAdditionModalView.getTextField(type: .name),
+            .age : contactsAdditionModalView.getTextField(type: .age),
+            .phoneNumber : contactsAdditionModalView.getTextField(type: .phoneNumber)
         ]
     }
     private var reloadData: (() -> Void)?
@@ -26,7 +26,7 @@ final class ContactsAdditionModalViewController: UIViewController {
         self.previousContact = nil
         super.init(nibName: nil, bundle: nil)
         
-        contactsAdditionModalView.phoneNumberTextField.delegate = self
+        contactsAdditionModalView.setDelegate(delegate: self)
     }
     
     required init?(coder: NSCoder) {
@@ -120,10 +120,10 @@ extension ContactsAdditionModalViewController {
             return
         }
         
-        contactsAdditionModalView.titleLabel.text = "기존 연락처"
-        contactsAdditionModalView.nameTextField.text = previousContact?.name
-        contactsAdditionModalView.ageTextField.text = String(age)
-        contactsAdditionModalView.phoneNumberTextField.text = previousContact?.phoneNumber
+        contactsAdditionModalView.getTitleLabel().text = "기존 연락처"
+        contactsAdditionModalView.getTextField(type: .name).text = previousContact?.name
+        contactsAdditionModalView.getTextField(type: .age).text = String(age)
+        contactsAdditionModalView.getTextField(type: .phoneNumber).text = previousContact?.phoneNumber
     }
     
     @objc func dismissContactsAdditionModalView() {
@@ -158,10 +158,10 @@ extension ContactsAdditionModalViewController {
     }
     
     private func newContact() -> Contact? {
-        guard let name = contactsAdditionModalView.nameTextField.text,
-              let ageString = contactsAdditionModalView.ageTextField.text,
+        guard let name = contactsAdditionModalView.getTextField(type: .name).text,
+              let ageString = contactsAdditionModalView.getTextField(type: .age).text,
               let age = Int(ageString),
-              let phoneNumber = contactsAdditionModalView.phoneNumberTextField.text else {
+              let phoneNumber = contactsAdditionModalView.getTextField(type: .phoneNumber).text else {
             return nil
         }
         return Contact(name: name, phoneNumber: phoneNumber, age: age)
