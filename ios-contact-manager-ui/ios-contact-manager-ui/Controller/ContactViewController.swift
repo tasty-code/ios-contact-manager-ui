@@ -10,23 +10,18 @@ import UIKit
 final class ContactViewController: UIViewController {
     
     private let tableView: UITableView = {
-        let view = UITableView()
+      let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private var contacts: [Contact] = [] {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
+    private var contacts: [Contact] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
         parse()
         configure()
-        registerCell()
     }
     
     private func layout() {
@@ -41,21 +36,16 @@ final class ContactViewController: UIViewController {
     private func configure() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
     }
     
     private func parse() {
         do {
             contacts = try AssetDecoder<[Contact]>().parse(assetName: "MOCK_DATA")
         } catch {
-            let alert = showErrorAlert(title: nil, error, actions: [UIAlertAction(title: "취소", style: .default), UIAlertAction(title: "재시도", style: .default)])
-            present(alert, animated: true)
+             showErrorAlert(error)
+            
         }
-    }
-}
-
-extension ContactViewController {
-    private func registerCell() {
-        tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
     }
 }
 

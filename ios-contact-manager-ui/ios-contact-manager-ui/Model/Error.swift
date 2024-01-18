@@ -7,16 +7,7 @@
 
 import Foundation
 
-enum DecoderError: Error, CustomStringConvertible {
+enum DecoderError: Error {
     case assetName
     case jsonData
-    
-    var description: String {
-        switch self {
-        case .assetName:
-            return "에셋네임을 알수 없습니다."
-        case .jsonData:
-            return "데이터를 알수 없습니다."
-        }
-    }
 }
