@@ -9,6 +9,10 @@ import UIKit
 
 final class ContactsAddtionModalView: UIView {
     
+    private weak var delegate: UITextFieldDelegate? {
+        didSet { self.phoneNumberTextField.delegate = self.delegate }
+    }
+    
     let modalStackView: UIStackView = {
         let modalStackView = UIStackView()
         modalStackView.axis = .vertical
@@ -38,7 +42,7 @@ final class ContactsAddtionModalView: UIView {
         let saveButton = UIButton()
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.systemBlue, for: .normal)
-        saveButton.addTarget(nil, action: #selector(ContactsAdditionModalViewController.savingButtonDidTapped), for: .touchUpInside)
+        saveButton.addTarget(nil, action: #selector(ContactsAdditionModalViewController.handleSaveButtonTap), for: .touchUpInside)
         return saveButton
     }()
     
@@ -111,6 +115,12 @@ final class ContactsAddtionModalView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension ContactsAddtionModalView {
+    public func setDelegate(delegate: UITextFieldDelegate?) {
+        self.delegate = delegate
     }
 }
 

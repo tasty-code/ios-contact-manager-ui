@@ -10,11 +10,12 @@ import UIKit
 final class ContactsViewController: UIViewController {
 
     private let contactsView: ContactsView
-    var dataSource: ContactsApproachable?
+    private var dataSource: ContactsApproachable?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init( dataSource: ContactsApproachable?) {
         contactsView = ContactsView()
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.dataSource = dataSource
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -24,18 +25,21 @@ final class ContactsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = contactsView
-        contactsView.tableView.dataSource = self
         contactsView.searchBar.delegate = self
+        contactsView.setDataSource(dataSource: self)
     }
 }
 
 extension ContactsViewController {
     @objc func presentContactsAdditionModalView() {
-        let contactsAdditionModalViewController = ContactsAdditionModalViewController()
-        contactsAdditionModalViewController.delegate = dataSource as? any ContactsManageable
-        contactsAdditionModalViewController.reloadData = { [weak self] in
-            self?.contactsView.tableView.reloadData()
-        }
+        let contactsAdditionModalViewController = ContactsAdditionModalViewController(delegate: dataSource as? any ContactsManageable)
+        contactsAdditionModalViewController.setReloadData(reloadData: { [weak self] in
+            guard let contactsView = self?.contactsView else {
+                return
+            }
+            let tableView = contactsView.tableView
+            tableView.reloadData()
+        })
         present(contactsAdditionModalViewController, animated: true)
     }
 }

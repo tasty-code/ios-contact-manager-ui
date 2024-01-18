@@ -8,7 +8,11 @@
 import UIKit
 
 final class ContactsView: UIView {
-
+    private weak var dataSource: UITableViewDataSource? {
+        didSet {
+            self.tableView.dataSource = self.dataSource
+        }
+    }
     let tableView: UITableView
     let searchBar: UISearchBar
     private let navigationBar: ContactsNavigationBar
@@ -30,6 +34,12 @@ final class ContactsView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension ContactsView {
+    public func setDataSource(dataSource: UITableViewDataSource?) {
+        self.dataSource = dataSource
     }
 }
 

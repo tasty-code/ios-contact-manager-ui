@@ -8,22 +8,21 @@
 import UIKit
 
 final class ContactsAdditionModalViewController: UIViewController {
-    weak var delegate: ContactsManageable?
+    private weak var delegate: ContactsManageable?
     private let contactsAdditionModalView: ContactsAddtionModalView
     private var sortedTextField: Dictionary<TextField, UITextField> {
-        get {
-            return [
-                .name : contactsAdditionModalView.nameTextField,
-                .age : contactsAdditionModalView.ageTextField,
-                .phoneNumber : contactsAdditionModalView.phoneNumberTextField
-            ]
-        }
+        [
+            .name : contactsAdditionModalView.nameTextField,
+            .age : contactsAdditionModalView.ageTextField,
+            .phoneNumber : contactsAdditionModalView.phoneNumberTextField
+        ]
     }
-    var reloadData: (() -> Void)?
+    private var reloadData: (() -> Void)?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(delegate: ContactsManageable?) {
         contactsAdditionModalView = ContactsAddtionModalView()
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
         
         contactsAdditionModalView.phoneNumberTextField.delegate = self
     }
@@ -35,6 +34,7 @@ final class ContactsAdditionModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = contactsAdditionModalView
+        contactsAdditionModalView.setDelegate(delegate: self)
     }
 }
 
@@ -108,11 +108,15 @@ extension ContactsAdditionModalViewController: UITextFieldDelegate {
 }
 
 extension ContactsAdditionModalViewController {
+    public func setReloadData(reloadData: (() -> Void)?) {
+        self.reloadData = reloadData
+    }
+    
     @objc func dismissContactsAdditionModalView() {
         makeCancelAlert(message: "정말로 취소하시겠습니까?", destructiveAction: { _ in self.dismiss(animated: true) })
     }
     
-    @objc func savingButtonDidTapped() {
+    @objc func handleSaveButtonTap() {
         if let invalidationMessage = validateTextFields() {
             makeAlert(message: invalidationMessage, confirmAction: nil)
             return
