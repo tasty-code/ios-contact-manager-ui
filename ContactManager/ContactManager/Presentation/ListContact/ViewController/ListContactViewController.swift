@@ -20,6 +20,20 @@ final class ListContactViewController: UIViewController {
     
     private lazy var contactListDataSource: ContactListDataSource = ContactListDataSource(self.contactListView)
     
+    private var listIsEmpty: Bool = true {
+        didSet {
+            setNeedsUpdateContentUnavailableConfiguration()
+        }
+    }
+    
+    private let noContacts: UIContentUnavailableConfiguration = {
+        var emptyConfig = UIContentUnavailableConfiguration.empty()
+        emptyConfig.image = UIImage(systemName: "person.crop.circle")
+        emptyConfig.text = "저장된 연락처 없음"
+        emptyConfig.secondaryText = "저장된 연락처 목록이 여기 표시됩니다."
+        return emptyConfig
+    }()
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -40,6 +54,13 @@ final class ListContactViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         self.listContactUseCase?.fetchAllContacts()
+    }
+    
+    override func updateContentUnavailableConfiguration(using state: UIContentUnavailableConfigurationState) {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self else { return }
+            self.contentUnavailableConfiguration = self.listIsEmpty ? self.noContacts : nil
+        }
     }
 }
 
@@ -68,6 +89,10 @@ extension ListContactViewController {
     private func didTapCreateButton() {
         self.coordinator?.startAddContact()
     }
+    
+    private func didTapDeleteSwipeAction(index: Int) {
+        self.listContactUseCase?.deleteContact(at: index)
+    }
 }
 
 extension ListContactViewController: UITableViewDelegate {
@@ -80,21 +105,20 @@ extension ListContactViewController: UITableViewDelegate {
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-    
-    private func didTapDeleteSwipeAction(index: Int) {
-        self.listContactUseCase?.deleteContact(at: index)
-    }
 }
 
 extension ListContactViewController: ListContactPresentable {
     func presentListContact(result: Result<ListContact.SuccessInfo, Error>) {
+        let isEmpty: Bool
         var snapshot = ContactListSnapShot()
         snapshot.appendSections([.contact])
         switch result {
         case .success(let successInfo):
             let contacts = successInfo.contacts.map(ContactListItem.contact)  
             snapshot.appendItems(contacts, toSection: .contact)
+            isEmpty = contacts.isEmpty
         case .failure(let error):
+            isEmpty = true
             if let error = error as? LocalizedError {
                 print(error.localizedDescription)
             }
@@ -102,6 +126,7 @@ extension ListContactViewController: ListContactPresentable {
                 showErrorAlert(error: error)
             }
         }
+        self.listIsEmpty = isEmpty
         self.contactListDataSource.apply(snapshot)
     }
     
@@ -116,6 +141,15 @@ extension ListContactViewController: ListContactPresentable {
             if let error = error as? AlertableError {
                 showErrorAlert(error: error)
             }
+        }
+    }
+    
+    func presentSearchContact(result: Result<ListContact.SuccessInfo, Error>) {
+        switch result {
+        case .success(let success):
+            return
+        case .failure(let failure):
+            return
         }
     }
 }

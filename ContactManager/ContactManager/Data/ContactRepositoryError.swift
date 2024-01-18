@@ -11,7 +11,9 @@ enum ContactRepositoryError: LocalizedError {
     case notFoundAtBundle
     case cannotDecode
     
+    case noContacts
     case cannotRemove
+    case noSearchingResult
     
     var errorDescription: String? {
         var description: String = "\(String(describing: Self.self)).\(String(describing: self)): "
@@ -22,6 +24,10 @@ enum ContactRepositoryError: LocalizedError {
             description += "요청된 타입으로 디코딩 실패"
         case .cannotRemove:
             description += "인덱스 문제로 삭제 실패"
+        case .noContacts:
+            description += "연락처 데이터 없음"
+        case .noSearchingResult:
+            description += "조건에 맞는 연락처 없음"
         }
         return description
     }
@@ -36,6 +42,10 @@ extension ContactRepositoryError: AlertableError {
             return .init(body: "데이터를 알맞은 형태로 바꿔줄 수 없어요.")
         case .cannotRemove:
             return .init(body: "선택한 연락처를 삭제할 수 없어요.")
+        case .noContacts:
+            return .init(body: "저장된 연락처가 없어요.")
+        case .noSearchingResult:
+            return .init(body: "검색 결과가 없어요.")
         }
     }
 }
