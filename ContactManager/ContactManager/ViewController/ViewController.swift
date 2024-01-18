@@ -71,7 +71,7 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: SendContactData {
+extension ViewController: addedContactDelegate {
     
     func addNewContact(name: String, age: Int, phoneNumber: String) {
         contactManager.addContact(newName: name, newAge: age, newPhoneNumber: phoneNumber)

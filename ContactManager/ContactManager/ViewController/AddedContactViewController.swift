@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol SendContactData {
+protocol addedContactDelegate {
     func addNewContact(name: String, age: Int, phoneNumber: String)
 }
 
 class AddedContactViewController: UIViewController {
     
-    var delegate: SendContactData?
+    var delegate: addedContactDelegate?
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
