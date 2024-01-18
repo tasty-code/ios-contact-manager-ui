@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol CustomAlert {
-    func showAlert(message: String, actions: [UIAlertAction])
-}
-
 protocol UpdateNewContact: AnyObject {
     func updateNewContact()
 }
