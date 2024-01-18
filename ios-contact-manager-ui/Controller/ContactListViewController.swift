@@ -16,7 +16,6 @@ final class ContactListViewController: UIViewController {
     private var isSearchActive: Bool {
         return searchController.isActive && !(searchController.searchBar.text?.isEmpty ?? true)
     }
-    
     private var numberOfLastRow: Int {
         contactTableView.numberOfRows(inSection: 0)
     }
@@ -26,11 +25,13 @@ final class ContactListViewController: UIViewController {
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         loadData()
         configureTableView()
         configureNavigationItem()
         configureSearchBar()
+        filteredContacts = contactList
     }
     
     //MARK: - Custom Methods
@@ -47,6 +48,7 @@ final class ContactListViewController: UIViewController {
     }
     
     private func configureNavigationItem() {
+        self.navigationItem.title = "연락처"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addContactButtonTapped(_:)))
     }
     
@@ -72,26 +74,26 @@ final class ContactListViewController: UIViewController {
         self.contactTableView.insertRows(at: [IndexPath(row: numberOfLastRow, section: 0)], with: .automatic)
     }
     
-    private func scrollToBottom() {
-        let lastRowOfIndexPath: Int?
-        
-        if numberOfLastRow <= 0 {
-            lastRowOfIndexPath = NSNotFound
-        } else {
-            lastRowOfIndexPath = numberOfLastRow - 1
-        }
-        
-        guard let lastRow = lastRowOfIndexPath else { return }
-
-        if lastRow != NSNotFound {
-            DispatchQueue.main.async {
-                let indexPath = IndexPath(row: lastRow, section: 0)
-                self.contactTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-            }
-        } else {
-            print("indexPath가 유효하지 않습니다.")
-        }
-    }
+//    private func scrollToBottom() {
+//        let lastRowOfIndexPath: Int?
+//        
+//        if numberOfLastRow <= 0 {
+//            lastRowOfIndexPath = NSNotFound
+//        } else {
+//            lastRowOfIndexPath = numberOfLastRow - 1
+//        }
+//        
+//        guard let lastRow = lastRowOfIndexPath else { return }
+//        
+//        if lastRow != NSNotFound {
+//            DispatchQueue.main.async {
+//                let indexPath = IndexPath(row: lastRow, section: 0)
+//                self.contactTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+//            }
+//        } else {
+//            print("indexPath가 유효하지 않습니다.")
+//        }
+//    }
     
     private func loadData() {
         do {
@@ -102,18 +104,18 @@ final class ContactListViewController: UIViewController {
         }
     }
     
-    private func modifyTableCell(of selectedCell: String) {
-        let selectedCellIndex: Int
-        
-        guard let selectedCellNumber = Int(selectedCell) else { return }
-        
-        guard selectedCellNumber >= 0 && selectedCellNumber < numberOfLastRow else { return }
-        selectedCellIndex = selectedCellNumber - 1
-        
-        //contactList[selectedCellIndex] = mockData[0]
-        contactTableView.reloadRows(at: [IndexPath(row: selectedCellIndex, section: 0)], with: .fade)
-        scrollToBottom()
-    }
+//    private func modifyTableCell(of selectedCell: String) {
+//        let selectedCellIndex: Int
+//
+//        guard let selectedCellNumber = Int(selectedCell) else { return }
+//
+//        guard selectedCellNumber >= 0 && selectedCellNumber < numberOfLastRow else { return }
+//        selectedCellIndex = selectedCellNumber - 1
+//
+//        //contactList[selectedCellIndex] = mockData[0]
+//        contactTableView.reloadRows(at: [IndexPath(row: selectedCellIndex, section: 0)], with: .fade)
+//        scrollToBottom()
+//    }
 }
 
 extension ContactListViewController: AddContactDelegate {
@@ -140,7 +142,14 @@ extension ContactListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        self.contactList.remove(at: indexPath.row)
+        if isSearchActive {
+            contactList.removeAll {
+                $0 == filteredContacts[indexPath.row]
+            }
+            self.filteredContacts.remove(at: indexPath.row)
+        } else {
+            self.contactList.remove(at: indexPath.row)
+        }
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }
@@ -161,13 +170,14 @@ extension ContactListViewController: UISearchResultsUpdating {
             contactTableView.reloadData()
             return
         }
-        filteredContacts = contactList.filter { contact in
-            let searchTextLowercased = searchText.lowercased()
-            let nameMatches = contact.name.lowercased().contains(searchTextLowercased)
-            let ageMatches = contact.age.contains(searchText)
-            let phoneNumberMatches = contact.phoneNumber.extractNumbersFromStrings().contains(searchText)
-            return nameMatches || ageMatches || phoneNumberMatches
+        
+        filteredContacts = contactList.filter {
+            $0.name.lowercased().contains(searchText.lowercased()) ||
+            $0.age.contains(searchText) ||
+            $0.phoneNumber.contains(searchText) ||
+            $0.phoneNumber.extractNumbersFromStrings().contains(searchText)
         }
+        
         contactTableView.reloadData()
     }
 }

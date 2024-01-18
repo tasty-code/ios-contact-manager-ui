@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Contact: Codable {
+struct Contact: Codable, Equatable {
     var name: String
     var age: String
     var phoneNumber: String
