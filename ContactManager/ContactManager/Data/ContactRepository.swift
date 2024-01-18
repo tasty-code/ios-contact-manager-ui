@@ -11,6 +11,8 @@ protocol ContactRepository {
     func requestContacts() throws -> [Contact]
     
     func addContact(_ newContact: Contact) throws
+    
+    func removeContact(at index: Int) throws
 }
 
 struct ContactRepositoryImpl: ContactRepository {
@@ -34,6 +36,16 @@ struct ContactRepositoryImpl: ContactRepository {
     
     func addContact(_ newContact: Contact) throws {
         self.contactList.addContact(newContact)
+    }
+    
+    func removeContact(at index: Int) throws {
+        do {
+            try self.contactList.deleteContact(at: index)
+        } catch ContactListError.invalidIndex {
+            throw ContactRepositoryError.cannotRemove
+        } catch {
+            throw error
+        }
     }
 }
 
