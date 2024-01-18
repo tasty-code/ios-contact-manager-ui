@@ -119,10 +119,11 @@ extension ContactsAdditionModalViewController {
         guard let age = previousContact?.age else {
             return
         }
+        
+        contactsAdditionModalView.titleLabel.text = "기존 연락처"
         contactsAdditionModalView.nameTextField.text = previousContact?.name
         contactsAdditionModalView.ageTextField.text = String(age)
         contactsAdditionModalView.phoneNumberTextField.text = previousContact?.phoneNumber
-        
     }
     
     @objc func dismissContactsAdditionModalView() {
