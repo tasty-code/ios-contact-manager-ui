@@ -41,7 +41,7 @@ class ContactViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let addedModalView = segue.destination as? AddedContactViewController else {
-           return precondition(false, "뷰 생성 실패")
+           return showAlert(title: "", message: "뷰 생성 실패")
         }
         addedModalView.delegate = self
     }
@@ -54,7 +54,9 @@ extension ContactViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let customCell: ContactCustomCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ContactCustomCell else { precondition(false, "셀 가져오기 실패")}
+        guard let customCell: ContactCustomCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ContactCustomCell else {
+            return ContactCustomCell()
+        }
         
         let contact = contactManager.fetchContact(index: indexPath.row)
         
