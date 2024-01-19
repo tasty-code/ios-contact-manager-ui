@@ -132,7 +132,7 @@ extension ContactViewController: UITableViewDelegate {
         let detailVC = ContactDetailViewController()
         detailVC.contact = contactManager.contacts[indexPath.row]
         detailVC.delegate = self
-        present(UINavigationController(rootViewController: detailVC), animated: true)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
