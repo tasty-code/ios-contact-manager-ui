@@ -10,9 +10,9 @@ import UIKit
 final class ContactsViewController: UIViewController {
 
     private let contactsView: ContactsView
-    private var dataSource: ContactsDelegate?
+    private var dataSource: ContactsModel?
     
-    init( dataSource: ContactsDelegate?) {
+    init( dataSource: ContactsModel?) {
         contactsView = ContactsView()
         self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
