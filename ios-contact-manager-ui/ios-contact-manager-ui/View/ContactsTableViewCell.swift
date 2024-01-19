@@ -8,9 +8,7 @@
 import UIKit
 
 final class ContactsTableViewCell: UITableViewCell {
-    static var className: String {
-        NSStringFromClass(self.classForCoder()).components(separatedBy: ".").last!
-    }
+    static var className: String { String(describing: self) }
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
