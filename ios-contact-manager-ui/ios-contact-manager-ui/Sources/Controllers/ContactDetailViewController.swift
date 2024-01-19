@@ -40,6 +40,7 @@ final class ContactDetailViewController: UIViewController {
         customBtton.frame = CGRect(origin: .zero, size: buttonSize)
         
         let button = UIBarButtonItem(customView: customBtton)
+        button.isEnabled = false
         
         return button
     }()
@@ -51,7 +52,14 @@ final class ContactDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupnvBar()
+        viewTextField()
         detailView.contact = contact
+    }
+    
+    private func viewTextField() {
+        detailView.nameTextField.delegate = self
+        detailView.ageTextField.delegate = self
+        detailView.phoneNumberTextField.delegate = self
     }
     
     private func setupnvBar() {
@@ -106,3 +114,17 @@ extension ContactDetailViewController {
         return (name.removeBlank, age, phone)
     }
 }
+
+extension ContactDetailViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let contact = self.contact else { return saveButton.isEnabled = true }
+            
+            if detailView.nameTextField.text == contact.name &&
+                detailView.ageTextField.text == contact.age &&
+                detailView.phoneNumberTextField.text == contact.phoneNumber {
+                saveButton.isEnabled = false
+            } else {
+                saveButton.isEnabled = true
+            }
+        }
+    }
