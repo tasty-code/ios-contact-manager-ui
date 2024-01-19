@@ -9,15 +9,35 @@ import UIKit
 
 final class ContactListViewController: UIViewController, UpdateNewContact {
     private let contactFileManager = ContactFileManager()
+    var filteredDataSource: [Contact] = []
     
     @IBOutlet private weak var tableView: UITableView!
     
+    private var isFiltering: Bool {
+        let searchController = navigationItem.searchController
+        let isActive = searchController?.isActive ?? false
+        let isSearchBarHasText = searchController?.searchBar.text?.isEmpty == false
+        return isActive && isSearchBarHasText
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
         tableView.dataSource = self
         tableView.delegate = self
         contactFileManager.loadJson()
+    }
+    
+    private func configureUI() {
+        setUpSearchBar()
         AddContactButtonTapped()
+    }
+    
+    private func setUpSearchBar() {
+        let searchBarController = UISearchController(searchResultsController: nil)
+        searchBarController.hidesNavigationBarDuringPresentation = false
+        self.navigationItem.searchController = searchBarController
+        searchBarController.searchResultsUpdater = self
     }
     
     private func AddContactButtonTapped() {
@@ -38,12 +58,12 @@ final class ContactListViewController: UIViewController, UpdateNewContact {
 
 extension ContactListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactFileManager.contacts.count
+        return isFiltering ? filteredDataSource.count : contactFileManager.contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let contact = contactFileManager.contacts[indexPath.row]
+        let contact = isFiltering ? filteredDataSource[indexPath.row] : contactFileManager.contacts[indexPath.row]
         cell.textLabel?.text = contact.nameAndAge
         cell.detailTextLabel?.text = contact.phoneNumber
         return cell
@@ -59,6 +79,16 @@ extension ContactListViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func updateNewContact() {
+        tableView.reloadData()
+    }
+}
+
+extension ContactListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        filteredDataSource = contactFileManager.contacts.filter { contact in
+            return contact.nameAndAge.localizedStandardContains(text) || contact.phoneNumber.localizedStandardContains(text)
+        }
         tableView.reloadData()
     }
 }
