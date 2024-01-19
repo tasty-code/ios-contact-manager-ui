@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zIb-ob-JcE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zIb-ob-JcE">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,6 +11,10 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="ContactListView" id="BYZ-38-t0r" customClass="ContactListViewController" customModule="contact_management" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oOZ-VM-xXo"/>
+                        <viewControllerLayoutGuide type="bottom" id="daC-uR-3TI"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,13 +50,12 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="n48-yX-xpN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0RW-71-bAs"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n48-yX-xpN" secondAttribute="trailing" id="G27-zE-T69"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="n48-yX-xpN" secondAttribute="bottom" id="UfL-h8-8qj"/>
-                            <constraint firstItem="n48-yX-xpN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bFI-4f-Td4"/>
+                            <constraint firstItem="n48-yX-xpN" firstAttribute="top" secondItem="oOZ-VM-xXo" secondAttribute="bottom" id="0RW-71-bAs"/>
+                            <constraint firstAttribute="trailing" secondItem="n48-yX-xpN" secondAttribute="trailing" id="G27-zE-T69"/>
+                            <constraint firstItem="daC-uR-3TI" firstAttribute="top" secondItem="n48-yX-xpN" secondAttribute="bottom" id="UfL-h8-8qj"/>
+                            <constraint firstItem="n48-yX-xpN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bFI-4f-Td4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mN8-Fo-1c8">
@@ -75,6 +77,10 @@
         <scene sceneID="Cbl-dg-Wjk">
             <objects>
                 <viewController storyboardIdentifier="AddContactView" id="juo-rO-sQn" customClass="AddContactViewController" customModule="contact_management" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BsJ-7b-U09"/>
+                        <viewControllerLayoutGuide type="bottom" id="lu5-in-HcS"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zdu-WL-WeB">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,17 +143,16 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="JAI-iZ-eYj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="AKi-4Y-fxB" firstAttribute="top" secondItem="6dn-26-W2K" secondAttribute="bottom" constant="8" id="CGR-IL-tlv"/>
-                            <constraint firstItem="6dn-26-W2K" firstAttribute="leading" secondItem="JAI-iZ-eYj" secondAttribute="leading" constant="10" id="TFe-IJ-6iO"/>
-                            <constraint firstItem="JAI-iZ-eYj" firstAttribute="trailing" secondItem="Zue-ej-hsG" secondAttribute="trailing" constant="10" id="Uln-mb-nwS"/>
-                            <constraint firstItem="AKi-4Y-fxB" firstAttribute="leading" secondItem="JAI-iZ-eYj" secondAttribute="leading" constant="10" id="Wd9-O1-a13"/>
-                            <constraint firstItem="Zue-ej-hsG" firstAttribute="leading" secondItem="JAI-iZ-eYj" secondAttribute="leading" constant="10" id="ghb-Lz-S1d"/>
-                            <constraint firstItem="6dn-26-W2K" firstAttribute="top" secondItem="JAI-iZ-eYj" secondAttribute="top" constant="20" id="i0N-9s-YhK"/>
-                            <constraint firstItem="JAI-iZ-eYj" firstAttribute="trailing" secondItem="AKi-4Y-fxB" secondAttribute="trailing" constant="10" id="kZ3-eX-ZLM"/>
-                            <constraint firstItem="JAI-iZ-eYj" firstAttribute="trailing" secondItem="6dn-26-W2K" secondAttribute="trailing" constant="10" id="njX-ks-pAR"/>
+                            <constraint firstItem="6dn-26-W2K" firstAttribute="leading" secondItem="zdu-WL-WeB" secondAttribute="leading" constant="10" id="TFe-IJ-6iO"/>
+                            <constraint firstAttribute="trailing" secondItem="Zue-ej-hsG" secondAttribute="trailing" constant="10" id="Uln-mb-nwS"/>
+                            <constraint firstItem="AKi-4Y-fxB" firstAttribute="leading" secondItem="zdu-WL-WeB" secondAttribute="leading" constant="10" id="Wd9-O1-a13"/>
+                            <constraint firstItem="Zue-ej-hsG" firstAttribute="leading" secondItem="zdu-WL-WeB" secondAttribute="leading" constant="10" id="ghb-Lz-S1d"/>
+                            <constraint firstItem="6dn-26-W2K" firstAttribute="top" secondItem="BsJ-7b-U09" secondAttribute="bottom" constant="20" id="i0N-9s-YhK"/>
+                            <constraint firstAttribute="trailing" secondItem="AKi-4Y-fxB" secondAttribute="trailing" constant="10" id="kZ3-eX-ZLM"/>
+                            <constraint firstAttribute="trailing" secondItem="6dn-26-W2K" secondAttribute="trailing" constant="10" id="njX-ks-pAR"/>
                             <constraint firstItem="Zue-ej-hsG" firstAttribute="top" secondItem="AKi-4Y-fxB" secondAttribute="bottom" constant="8" id="z5z-5M-Jqe"/>
                         </constraints>
                     </view>

@@ -8,9 +8,9 @@
 import UIKit
 
 final class ContactListViewController: UIViewController {
-    private var contactListStorage: ContactListStorage?
+    var contactListStorage: ContactListStorage?
     @IBOutlet weak var tableView: UITableView!
-//    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!
     var filteredDataSource: [ContactList] = []
     private var searchController: UISearchController?
     
@@ -31,10 +31,9 @@ final class ContactListViewController: UIViewController {
         self.title = "연락처"
         tableView.dataSource = self
         tableView.delegate = self
-//        searchBar.delegate = self
-//        searchBar.placeholder = "검색창"
-        
+    
         searchController?.searchResultsUpdater = self
+        filteredDataSource = (contactListStorage?.getContactList())!
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -47,9 +46,11 @@ final class ContactListViewController: UIViewController {
         )
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    
+    private func getContact(index: Int) -> ContactList? {
+        guard let result = self.contactListStorage else {
+            return nil
+        }
+        return result.getContact(index)
     }
     
     @IBAction func addContact(_ sender: Any) {
@@ -69,72 +70,4 @@ final class ContactListViewController: UIViewController {
     }
 }
 
-extension ContactListViewController: UITableViewDataSource {
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactListStorage!.countContactList()
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        guard let item = getContact(index: indexPath.row) else {
-            return UITableViewCell()
-        }
-        
-        cell.textLabel?.text = "\(item.name) (\(item.age))"
-        cell.detailTextLabel?.text = item.phoneNumber
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            contactListStorage?.deleteContact(indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-}
 
-extension ContactListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-
-extension ContactListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        contactListStorage?.getContact(<#T##pos: Int##Int#>)
-        print("test1", searchText)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("test2")
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("test3")
-    }
-    
-    func searchList() {
-        self.tableView.reloadData()
-        print("reload tableView")
-    }
-}
-
-extension ContactListViewController: UISearchResultsUpdating {
-    private func getContact(index: Int) -> ContactList? {
-        guard let result = self.contactListStorage else {
-            return nil
-        }
-        return result.getContact(index)
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else { return }
-        filteredDataSource = (contactListStorage?.getContactList().filter { list in
-            list.name.contains(text)
-        })!
-        print("filteredDataSource", filteredDataSource)
-        tableView.reloadData()
-    }
-}
