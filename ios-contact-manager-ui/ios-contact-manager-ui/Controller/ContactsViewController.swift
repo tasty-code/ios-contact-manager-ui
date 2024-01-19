@@ -43,8 +43,7 @@ extension ContactsViewController {
             guard let contactsView = self?.contactsView else {
                 return
             }
-            let tableView = contactsView.getTableView()
-            tableView.reloadData()
+            contactsView.reloadTableViewData()
         })
         return contactsAdditionModalViewController
     }
@@ -53,8 +52,7 @@ extension ContactsViewController {
 extension ContactsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         dataSource?.filter(by: searchText)
-        let tableView = contactsView.getTableView()
-        tableView.reloadData()
+        contactsView.reloadTableViewData()
     }
 }
 
@@ -79,8 +77,7 @@ extension ContactsViewController: UITableViewDataSource {
                 return
             }
             dataSource?.delete(contact.hashValue)
-            let tableView = contactsView.getTableView()
-            tableView.reloadData()
+            contactsView.reloadTableViewData()
         }
     }
 }

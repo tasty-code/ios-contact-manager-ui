@@ -43,8 +43,8 @@ final class ContactsView: UIView {
 }
 
 extension ContactsView {
-    public func getTableView() -> UITableView {
-        return tableView
+    public func reloadTableViewData() {
+        tableView.reloadData()
     }
     
     public func setDataSource(dataSource: UITableViewDataSource?) {
