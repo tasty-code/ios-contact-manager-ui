@@ -128,14 +128,25 @@ extension ContactsAddtionModalView {
         self.delegate = delegate
     }
     
-    public func getTextField(type: TextField) -> UITextField {
-        switch type {
+    public func getText(from textField: TextField) -> String? {
+        switch textField {
         case .name:
-            return nameTextField
+            return nameTextField.text ?? nil
         case .age:
-            return ageTextField
+            return ageTextField.text ?? nil
         case .phoneNumber:
-            return phoneNumberTextField
+            return phoneNumberTextField.text ?? nil
+        }
+    }
+    
+    public func setText(_ string: String, to textField: TextField) {
+        switch textField {
+        case .name:
+            nameTextField.text = string
+        case .age:
+            ageTextField.text = string
+        case .phoneNumber:
+            phoneNumberTextField.text = string
         }
     }
     
