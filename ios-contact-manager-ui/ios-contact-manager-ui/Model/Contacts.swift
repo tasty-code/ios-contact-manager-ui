@@ -9,7 +9,7 @@ import Foundation
 
 final class Contacts: ContactsManageable, ContactsApproachable {
     private var contactsRepository: Dictionary<Int, Contact> {
-        didSet { sortedContacts = sorted() }
+        didSet { sorted() }
     }
     private var sortedContacts: Array<Contact>
     
@@ -21,7 +21,7 @@ final class Contacts: ContactsManageable, ContactsApproachable {
                 partialResult[contact.hashValue] = contact
             }
         }
-        sortedContacts = sorted()
+        sorted()
     }
     
     public func contacts() -> Array<Contact> {
@@ -29,7 +29,7 @@ final class Contacts: ContactsManageable, ContactsApproachable {
     }
     
     public func filter(by condition: String) {
-        sortedContacts = sorted()
+        sorted()
         if condition.count == 0 {
             return
         }
@@ -80,8 +80,8 @@ final class Contacts: ContactsManageable, ContactsApproachable {
         contactsRepository.removeValue(forKey: hashValue)
     }
     
-    private func sorted() -> Array<Contact> {
-        return contactsRepository.sorted(by: { $0.value.name.uppercased() < $1.value.name.uppercased() }).map { $0.value }
+    private func sorted() {
+        sortedContacts = contactsRepository.sorted(by: { $0.value.name.uppercased() < $1.value.name.uppercased() }).map { $0.value }
     }
 
     private func loadContactsJson() -> Array<Contact>? {
