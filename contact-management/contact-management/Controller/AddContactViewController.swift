@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AddContactView: UIViewController {
+final class AddContactViewController: UIViewController {
     private var contactListStorage: ContactListStorage?
     private var nameContact: String?
     private var phoneContact: String?
@@ -61,7 +61,7 @@ final class AddContactView: UIViewController {
     }
 }
 
-extension AddContactView {
+extension AddContactViewController {
     @IBAction func didTappedCancel(_ sender: Any){
         let cancel: AlertActionHandler = { [weak self] _ in
             self?.dismiss(animated: true)
@@ -111,7 +111,7 @@ extension AddContactView {
     }
 }
 
-extension AddContactView {
+extension AddContactViewController {
     @objc func nameFieldDidChange(_ nameField: UITextField) {
         nameContact = nameField.text
     }

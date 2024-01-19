@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3026E92B4FA57B00BF59E2 /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3026E82B4FA57B00BF59E2 /* AddContactView.swift */; };
+		1D3026E92B4FA57B00BF59E2 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3026E82B4FA57B00BF59E2 /* AddContactViewController.swift */; };
 		CCADE2FE2B43A91C00E4EE30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE2FD2B43A91C00E4EE30 /* AppDelegate.swift */; };
 		CCADE3002B43A91C00E4EE30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE2FF2B43A91C00E4EE30 /* SceneDelegate.swift */; };
-		CCADE3022B43A91C00E4EE30 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE3012B43A91C00E4EE30 /* ContactListView.swift */; };
+		CCADE3022B43A91C00E4EE30 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE3012B43A91C00E4EE30 /* ContactListViewController.swift */; };
 		CCADE3052B43A91C00E4EE30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCADE3032B43A91C00E4EE30 /* Main.storyboard */; };
 		CCADE3072B43A91D00E4EE30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCADE3062B43A91D00E4EE30 /* Assets.xcassets */; };
 		CCADE30A2B43A91D00E4EE30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCADE3082B43A91D00E4EE30 /* LaunchScreen.storyboard */; };
@@ -43,11 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1D3026E82B4FA57B00BF59E2 /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
+		1D3026E82B4FA57B00BF59E2 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		CCADE2FA2B43A91C00E4EE30 /* contact-management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "contact-management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCADE2FD2B43A91C00E4EE30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCADE2FF2B43A91C00E4EE30 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CCADE3012B43A91C00E4EE30 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
+		CCADE3012B43A91C00E4EE30 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		CCADE3042B43A91C00E4EE30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CCADE3062B43A91D00E4EE30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCADE3092B43A91D00E4EE30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -161,8 +161,8 @@
 		CCD4C8CD2B44ECFB00B69E9F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CCADE3012B43A91C00E4EE30 /* ContactListView.swift */,
-				1D3026E82B4FA57B00BF59E2 /* AddContactView.swift */,
+				CCADE3012B43A91C00E4EE30 /* ContactListViewController.swift */,
+				1D3026E82B4FA57B00BF59E2 /* AddContactViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -321,10 +321,10 @@
 			files = (
 				CCD4C8D12B44EF3300B69E9F /* ContactList.swift in Sources */,
 				CCCF6B802B55024E0090FAB3 /* ContactValidateCheck.swift in Sources */,
-				1D3026E92B4FA57B00BF59E2 /* AddContactView.swift in Sources */,
+				1D3026E92B4FA57B00BF59E2 /* AddContactViewController.swift in Sources */,
 				CCE27A912B4502060051FFA8 /* ContactListError.swift in Sources */,
 				CCE27A8F2B44F2140051FFA8 /* ContactListStorage.swift in Sources */,
-				CCADE3022B43A91C00E4EE30 /* ContactListView.swift in Sources */,
+				CCADE3022B43A91C00E4EE30 /* ContactListViewController.swift in Sources */,
 				CCADE2FE2B43A91C00E4EE30 /* AppDelegate.swift in Sources */,
 				CCCF11252B535C5B00AD1F66 /* Alert.swift in Sources */,
 				CCCF6B7C2B54C5C10090FAB3 /* PhoneFormat.swift in Sources */,

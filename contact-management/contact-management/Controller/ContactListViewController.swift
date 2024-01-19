@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ContactListView: UIViewController {
+final class ContactListViewController: UIViewController {
     private var contactListStorage: ContactListStorage?
     @IBOutlet weak var tableView: UITableView!
 //    @IBOutlet weak var searchBar: UISearchBar!
@@ -20,9 +20,9 @@ final class ContactListView: UIViewController {
         super.init(coder: coder)
     }
     
-    init?(coder: NSCoder, contactListStorage: ContactListStorage, searchController: UISearchController) {
+    init?(coder: NSCoder, contactListStorage: ContactListStorage) {
         self.contactListStorage = contactListStorage
-        self.searchController = searchController
+        self.searchController = UISearchController()
         super.init(coder: coder)
     }
 
@@ -54,7 +54,7 @@ final class ContactListView: UIViewController {
     
     @IBAction func addContact(_ sender: Any) {
         let secondViewController = storyboard?.instantiateViewController(identifier: "AddContactView") { coder in
-            return AddContactView.init(coder: coder, contactListStorage: self.contactListStorage!)
+            return AddContactViewController.init(coder: coder, contactListStorage: self.contactListStorage!)
         }
         secondViewController?.modalTransitionStyle = .coverVertical
         secondViewController?.modalPresentationStyle = .automatic
@@ -69,13 +69,8 @@ final class ContactListView: UIViewController {
     }
 }
 
-extension ContactListView: UITableViewDataSource {
-    private func getContact(forID id: Int) -> ContactList? {
-        guard let result = self.contactListStorage else {
-            return nil
-        }
-        return result.getContact(id)
-    }
+extension ContactListViewController: UITableViewDataSource {
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactListStorage!.countContactList()
@@ -83,10 +78,10 @@ extension ContactListView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        guard let item = getContact(forID: indexPath.row) else {
+        guard let item = getContact(index: indexPath.row) else {
             return UITableViewCell()
         }
-        print("tableView")
+        
         cell.textLabel?.text = "\(item.name) (\(item.age))"
         cell.detailTextLabel?.text = item.phoneNumber
         return cell
@@ -100,13 +95,13 @@ extension ContactListView: UITableViewDataSource {
     }
 }
 
-extension ContactListView: UITableViewDelegate {
+extension ContactListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
-extension ContactListView: UISearchBarDelegate {
+extension ContactListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 //        contactListStorage?.getContact(<#T##pos: Int##Int#>)
         print("test1", searchText)
@@ -126,7 +121,14 @@ extension ContactListView: UISearchBarDelegate {
     }
 }
 
-extension ContactListView: UISearchResultsUpdating {
+extension ContactListViewController: UISearchResultsUpdating {
+    private func getContact(index: Int) -> ContactList? {
+        guard let result = self.contactListStorage else {
+            return nil
+        }
+        return result.getContact(index)
+    }
+    
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
         filteredDataSource = (contactListStorage?.getContactList().filter { list in

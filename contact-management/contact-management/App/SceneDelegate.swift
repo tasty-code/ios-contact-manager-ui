@@ -22,12 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let contactList: [ContactList] = [ContactList]()
         let contactListStorage = ContactListStorage(contactList: contactList)
-        let searchController = UISearchController()
         addDummyData(Storage: contactListStorage)
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let firstViewController = storyBoard.instantiateViewController(identifier: "ContactListView") { coder in
-            return ContactListView.init(coder: coder, contactListStorage: contactListStorage, searchController: searchController)
+            return ContactListViewController.init(coder: coder, contactListStorage: contactListStorage)
         }
         
         let window = UIWindow(windowScene: windowScene)

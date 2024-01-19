@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Contact List View-->
+        <!--Contact List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ContactListView" id="BYZ-38-t0r" customClass="ContactListView" customModule="contact_management" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactListView" id="BYZ-38-t0r" customClass="ContactListViewController" customModule="contact_management" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="1046.5648854961833" y="17.605633802816904"/>
         </scene>
-        <!--Add Contact View-->
+        <!--Add Contact View Controller-->
         <scene sceneID="Cbl-dg-Wjk">
             <objects>
-                <viewController storyboardIdentifier="AddContactView" id="juo-rO-sQn" customClass="AddContactView" customModule="contact_management" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddContactView" id="juo-rO-sQn" customClass="AddContactViewController" customModule="contact_management" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zdu-WL-WeB">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
