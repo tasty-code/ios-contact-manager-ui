@@ -43,10 +43,10 @@ final class Contacts: ContactsManageable, ContactsApproachable {
                     guard let unicodeFirst = String(character).decomposedStringWithCompatibilityMapping.unicodeScalars.first else {
                         return
                     }
-                    characters += String(unicodeFirst) + " "
+                    characters += String(unicodeFirst).lowercased() + " "
                 }
                 let unicodeScalarsString: String = unicodeScalars.reduce(into: "") { (characters, character) in
-                    characters += String(character) + " "
+                    characters += String(character).lowercased() + " "
                 }
                 return initial.contains(unicodeScalarsString)
             }
@@ -54,7 +54,17 @@ final class Contacts: ContactsManageable, ContactsApproachable {
         }
         
         sortedContacts = sortedContacts.filter { contact in
-            return contact.name.contains(condition)
+            let nameArray = Array(contact.name)
+            let nameScalarString: String = nameArray.reduce(into: "") { (characters, character) in
+                let unicodeScalars = String(character).decomposedStringWithCompatibilityMapping.unicodeScalars
+                unicodeScalars.forEach {
+                    characters += String($0) + " "
+                }
+            }
+            let unicodeScalarsString: String = unicodeScalars.reduce(into: "") { (characters, character) in
+                characters += String(character) + " "
+            }
+            return nameScalarString.contains(unicodeScalarsString)
         }
     }
     
