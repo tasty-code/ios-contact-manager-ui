@@ -10,7 +10,8 @@ import Foundation
 struct Verification {
     static func setName(_ name: String) -> Bool {
         let setName = name.split(separator: " ").reduce("") { $0 + $1 }
-        return !setName.isEmpty
+        let regex = #"^[a-zA-Z]{1,10}\s?([a-zA-Z]{2,10})?$"#
+        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: setName)
     }
     
     static func setAge(_ age: String) -> Bool {

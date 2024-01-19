@@ -106,6 +106,7 @@ final class ContactDetailViewController: UIViewController {
 
 extension ContactDetailViewController {
     func makeInfo() throws -> (String, String, String) {
+        guard Verification.setName(detailView.nameTextField.text ?? "") || Verification.setAge(detailView.ageTextField.text ?? "") || Verification.setNumber(detailView.phoneNumberTextField.text ?? "") else { throw ContactError.errorAll }
         guard let name = detailView.nameTextField.text, Verification.setName(name) else { throw ContactError.errorName }
         guard let age = detailView.ageTextField.text, Verification.setAge(age) else { throw ContactError.errorAge }
         guard let phone = detailView.phoneNumberTextField.text, Verification.setNumber(phone) else { throw ContactError.errorNumber }
@@ -117,13 +118,13 @@ extension ContactDetailViewController {
 extension ContactDetailViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let contact = self.contact else { return saveButton.isEnabled = true }
-            
-            if detailView.nameTextField.text == contact.name &&
-                detailView.ageTextField.text == contact.age &&
-                detailView.phoneNumberTextField.text == contact.phoneNumber {
-                saveButton.isEnabled = false
-            } else {
-                saveButton.isEnabled = true
-            }
+        
+        if detailView.nameTextField.text == contact.name &&
+            detailView.ageTextField.text == contact.age &&
+            detailView.phoneNumberTextField.text == contact.phoneNumber {
+            saveButton.isEnabled = false
+        } else {
+            saveButton.isEnabled = true
         }
     }
+}

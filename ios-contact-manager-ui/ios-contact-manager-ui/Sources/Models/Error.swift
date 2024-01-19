@@ -13,6 +13,7 @@ enum ContactError: LocalizedError {
     case errorName
     case errorAge
     case errorNumber
+    case errorAll
     case systemError
     
     var errorDescription: String? {
@@ -27,6 +28,8 @@ enum ContactError: LocalizedError {
             return "입력한 나이정보가 잘못되었습니다."
         case .errorNumber:
             return "입력한 연락처 정보가 잘못되었습니다."
+        case .errorAll:
+            return "입력한 정보 모두 올바르지 않습니다."
         case .systemError:
             return "시스템오류"
         }
