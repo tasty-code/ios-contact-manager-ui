@@ -47,10 +47,14 @@ final class ContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        viewBackground()
         layout()
         parse()
         setupNaviBar()
+    }
+    
+    private func viewBackground() {
+        view.backgroundColor = .white
     }
     
     private func layout() {
