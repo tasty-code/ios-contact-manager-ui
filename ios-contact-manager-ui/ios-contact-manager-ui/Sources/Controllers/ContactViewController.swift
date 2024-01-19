@@ -45,7 +45,7 @@ final class ContactViewController: UIViewController {
     
     private let contactManager = ContactManager()
     
-    var filteredContacts: [Contact] {
+    private var filteredContacts: [Contact] {
         return contactManager.contacts.filter { $0.name.contains(search.searchBar.text ?? "") }
     }
     
@@ -97,8 +97,12 @@ final class ContactViewController: UIViewController {
 // MARK: - UITableViewDataSource
 
 extension ContactViewController: UITableViewDataSource {
+    private func isNotEmpty(_ name: String) -> Bool {
+        return name.isEmpty == false
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let name = search.searchBar.text, !name.isEmpty {
+        if let name = search.searchBar.text, isNotEmpty(name) {
             return filteredContacts.count
         } else {
             return contactManager.contacts.count
@@ -111,7 +115,7 @@ extension ContactViewController: UITableViewDataSource {
         let item = contactManager.contacts[indexPath.row]
         cell.contact = item
         
-        if let name = search.searchBar.text, !name.isEmpty {
+        if let name = search.searchBar.text, isNotEmpty(name) {
             cell.contact = filteredContacts[indexPath.row]
         } else {
             cell.contact = contactManager.contacts[indexPath.row]
