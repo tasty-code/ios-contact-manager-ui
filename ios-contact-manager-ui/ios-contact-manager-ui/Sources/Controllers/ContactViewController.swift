@@ -45,6 +45,10 @@ final class ContactViewController: UIViewController {
     
     private let contactManager = ContactManager()
     
+    var filteredContacts: [Contact] {
+        return contactManager.contacts.filter { $0.name.contains(search.searchBar.text ?? "") }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewBackground()
@@ -95,7 +99,7 @@ final class ContactViewController: UIViewController {
 extension ContactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let name = search.searchBar.text, !name.isEmpty {
-            return contactManager.contacts.filter { $0.name.contains(name) }.count
+            return filteredContacts.count
         } else {
             return contactManager.contacts.count
         }
@@ -108,8 +112,7 @@ extension ContactViewController: UITableViewDataSource {
         cell.contact = item
         
         if let name = search.searchBar.text, !name.isEmpty {
-            let contact = contactManager.contacts.filter { $0.name.contains(name) }
-            cell.contact = contact[indexPath.row]
+            cell.contact = filteredContacts[indexPath.row]
         } else {
             cell.contact = contactManager.contacts[indexPath.row]
         }
