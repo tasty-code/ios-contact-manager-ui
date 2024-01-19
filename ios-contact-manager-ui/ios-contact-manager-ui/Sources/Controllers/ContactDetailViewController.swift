@@ -86,14 +86,12 @@ final class ContactDetailViewController: UIViewController {
         do {
             let (name, age, phone) = try makeInfo()
             
-            if var newEdit = contact {
-                newEdit.phoneNumber = phone
-                newEdit.age = age
-                newEdit.name = name
-                delegate?.update(contact: newEdit)
+            if let id = contact?.id {
+                let editContact = Contact(id: id, name: name, phoneNumber: phone, age: age)
+                delegate?.update(contact: editContact)
             } else {
-                let newAdd = Contact(name: name, phoneNumber: phone, age: age)
-                delegate?.add(contact: newAdd)
+                let newContact = Contact(name: name, phoneNumber: phone, age: age)
+                delegate?.add(contact: newContact)
             }
             self.dismiss(animated: true)
         } catch {

@@ -18,19 +18,15 @@ extension String {
         if stringWithhypen.prefix(4) == "+820" {
             switch stringWithhypen.count {
             case 4...6:
-                print("4~6 \(stringWithhypen.count)")
                 stringWithhypen.insert(" ", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 3))
             case 7...9:
-                print("7~9 \(stringWithhypen.count)")
                 stringWithhypen.insert(" ", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 3))
                 stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.endIndex, offsetBy: 6 - count))
             case 10...12:
-                print("10~13 \(stringWithhypen.count)")
                 stringWithhypen.insert(" ", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 3))
                 stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 7))
                 stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.endIndex, offsetBy: 9 - count))
             case 13...14:
-                print("14~15 \(stringWithhypen.count)")
                 stringWithhypen.insert(" ", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 3))
                 stringWithhypen.insert("(", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 4))
                 stringWithhypen.insert(")", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 6))
@@ -45,10 +41,8 @@ extension String {
         else if stringWithhypen.prefix(3) == "+82" {
             switch stringWithhypen.count {
             case 4...5:
-                print("4~5 \(stringWithhypen.count)")
                 stringWithhypen.insert(" ", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 3))
             case 6...8:
-                print("6~9 \(stringWithhypen.count)")
                 stringWithhypen.insert(" ", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 3))
                 stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 6))
             case 9...11:
@@ -56,7 +50,6 @@ extension String {
                 stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 6))
                 stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.endIndex, offsetBy: 8 - count))
             case 12...13:
-                print("10~13 \(stringWithhypen.count)")
                 stringWithhypen.insert(" ", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 3))
                 stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.startIndex, offsetBy: 6))
                 stringWithhypen.insert("-", at: stringWithhypen.index(stringWithhypen.endIndex, offsetBy: -4))
