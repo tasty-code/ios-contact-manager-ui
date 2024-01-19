@@ -59,10 +59,11 @@ final class ContactViewController: UIViewController {
     
     private func layout() {
         
-        NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-                                     tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-                                     tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-                                     tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)])
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)])
     }
     
     private func setupNaviBar() {
@@ -71,7 +72,7 @@ final class ContactViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        self.navigationItem.rightBarButtonItem = self.plusButton
+        navigationItem.rightBarButtonItem = plusButton
     }
     
     private func parse() {
@@ -85,7 +86,7 @@ final class ContactViewController: UIViewController {
     @objc func plusButtonTapped() {
         let detailVC = ContactDetailViewController()
         detailVC.delegate = self
-        self.present(UINavigationController(rootViewController: detailVC), animated: true)
+        present(UINavigationController(rootViewController: detailVC), animated: true)
     }
 }
 

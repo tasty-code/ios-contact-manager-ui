@@ -58,12 +58,12 @@ final class ContactDetailViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)]
         if contact == nil {
             title = "새연락처"
-            self.navigationItem.leftBarButtonItem = self.cancelButton
-            self.navigationItem.rightBarButtonItem = self.saveButton
+            navigationItem.leftBarButtonItem = cancelButton
+            navigationItem.rightBarButtonItem = saveButton
         } else {
             title = "기존연락처"
-            self.navigationItem.leftBarButtonItem = self.cancelButton
-            self.navigationItem.rightBarButtonItem = self.saveButton
+            navigationItem.leftBarButtonItem = cancelButton
+            navigationItem.rightBarButtonItem = saveButton
         }
     }
     
