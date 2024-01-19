@@ -80,7 +80,7 @@ extension NewContactViewController: UITextFieldDelegate {
         text2 = text2.replacingOccurrences(of: "(", with: "")
         text2 = text2.replacingOccurrences(of: ")", with: "")
         text2 = text2.replacingOccurrences(of: "-", with: "")
-        let prefixValidationCheck = text2.hasPrefix("02") || !text2.hasPrefix("0")
+        let prefixValidationCheck = text2.hasPrefix("02") || !text2.hasPrefix("0") && !text2.hasPrefix("+")
         
         if text2.hasPrefix("+8202") {
             switch text2.count {
