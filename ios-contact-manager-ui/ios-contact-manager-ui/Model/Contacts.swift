@@ -38,33 +38,13 @@ final class Contacts: ContactsManageable, ContactsApproachable {
         
         if condition.count == unicodeScalars.count {
             sortedContacts = sortedContacts.filter { contact in
-                let nameArray = Array(contact.name)
-                let initial: String = nameArray.reduce(into: "") { (characters, character) in
-                    guard let unicodeFirst = String(character).decomposedStringWithCompatibilityMapping.unicodeScalars.first else {
-                        return
-                    }
-                    characters += String(unicodeFirst).lowercased() + " "
-                }
-                let unicodeScalarsString: String = unicodeScalars.reduce(into: "") { (characters, character) in
-                    characters += String(character).lowercased() + " "
-                }
-                return initial.contains(unicodeScalarsString)
+                return contact.name.contains(initial: unicodeScalars)
             }
             return
         }
         
         sortedContacts = sortedContacts.filter { contact in
-            let nameArray = Array(contact.name)
-            let nameScalarString: String = nameArray.reduce(into: "") { (characters, character) in
-                let unicodeScalars = String(character).decomposedStringWithCompatibilityMapping.unicodeScalars
-                unicodeScalars.forEach {
-                    characters += String($0) + " "
-                }
-            }
-            let unicodeScalarsString: String = unicodeScalars.reduce(into: "") { (characters, character) in
-                characters += String(character) + " "
-            }
-            return nameScalarString.contains(unicodeScalarsString)
+            return contact.name.contains(subCharacter: unicodeScalars)
         }
     }
     
