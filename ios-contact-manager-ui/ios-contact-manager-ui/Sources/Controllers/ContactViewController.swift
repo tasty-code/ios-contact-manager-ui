@@ -19,7 +19,7 @@ final class ContactViewController: UIViewController {
         return tableView
     }()
     
-    lazy var plusButton: UIBarButtonItem = {
+    private lazy var plusButton: UIBarButtonItem = {
         let customBtton = UIButton(type: .system)
         customBtton.setImage(UIImage(systemName: "plus"), for: .normal)
         customBtton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
@@ -83,7 +83,7 @@ final class ContactViewController: UIViewController {
             present(alert, animated: true)
         }
     }
-    @objc func plusButtonTapped() {
+    @objc private func plusButtonTapped() {
         let detailVC = ContactDetailViewController()
         detailVC.delegate = self
         present(UINavigationController(rootViewController: detailVC), animated: true)

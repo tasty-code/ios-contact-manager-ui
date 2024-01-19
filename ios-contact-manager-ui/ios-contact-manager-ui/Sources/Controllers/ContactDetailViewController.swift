@@ -31,7 +31,7 @@ final class ContactDetailViewController: UIViewController {
         return button
     }()
     
-    lazy var saveButton: UIBarButtonItem = {
+    private lazy var saveButton: UIBarButtonItem = {
         let customBtton = UIButton(type: .system)
         customBtton.setTitle("Save", for: .normal)
         customBtton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
@@ -67,14 +67,14 @@ final class ContactDetailViewController: UIViewController {
         }
     }
     
-    @objc func cancelButtonTapped() {
+    @objc private func cancelButtonTapped() {
         let alert = showErrorAlert(title: nil, "정말 취소하시겠습니까?", actions: [UIAlertAction(title: "예", style: .cancel, handler: { _ in
             self.dismiss(animated: true)
         }), UIAlertAction(title: "아니오", style: .destructive)])
         present(alert, animated: true)
     }
     
-    @objc func saveButtonTapped() {
+    @objc private func saveButtonTapped() {
         do {
             let (name, age, phone) = try makeInfo()
             
