@@ -63,8 +63,8 @@ final class ContactListView: UIViewController {
     }
     
     @objc func didDismissDetailNotification(_ notification: Notification) {
-        DispatchQueue.main.async { [self] in
-            self.tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
         }
     }
 }
