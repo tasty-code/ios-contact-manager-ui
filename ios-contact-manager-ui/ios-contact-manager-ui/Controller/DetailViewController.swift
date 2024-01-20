@@ -16,7 +16,7 @@ final class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        keyboardSetUp()
+        keyboardSetup()
         targetingAddHyphen()
     }
     
@@ -76,7 +76,7 @@ extension DetailViewController {
 
 
 extension DetailViewController: UITextFieldDelegate {
-    private func keyboardSetUp() {
+    private func keyboardSetup() {
         nameTextField.keyboardType = .default
         ageTextField.keyboardType = .numberPad
         phoneNumberTextField.keyboardType = .numberPad
