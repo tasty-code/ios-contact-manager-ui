@@ -19,6 +19,7 @@
 		CCADE3212B43A91D00E4EE30 /* contact_managementUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE3202B43A91D00E4EE30 /* contact_managementUITestsLaunchTests.swift */; };
 		CCC3BB672B5A8B8700560A14 /* ContactListViewController+SearchBar .swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC3BB662B5A8B8700560A14 /* ContactListViewController+SearchBar .swift */; };
 		CCC3BB692B5A996D00560A14 /* ContactListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC3BB682B5A996D00560A14 /* ContactListViewController+TableView.swift */; };
+		CCC3BB6B2B5BE7EA00560A14 /* AddContactViewController+TextFieldListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC3BB6A2B5BE7EA00560A14 /* AddContactViewController+TextFieldListener.swift */; };
 		CCCF11252B535C5B00AD1F66 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCF11242B535C5B00AD1F66 /* Alert.swift */; };
 		CCCF6B7C2B54C5C10090FAB3 /* PhoneFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCF6B7B2B54C5C10090FAB3 /* PhoneFormat.swift */; };
 		CCCF6B802B55024E0090FAB3 /* ContactValidateCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCF6B7F2B55024E0090FAB3 /* ContactValidateCheck.swift */; };
@@ -61,6 +62,7 @@
 		CCADE3202B43A91D00E4EE30 /* contact_managementUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contact_managementUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CCC3BB662B5A8B8700560A14 /* ContactListViewController+SearchBar .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactListViewController+SearchBar .swift"; sourceTree = "<group>"; };
 		CCC3BB682B5A996D00560A14 /* ContactListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactListViewController+TableView.swift"; sourceTree = "<group>"; };
+		CCC3BB6A2B5BE7EA00560A14 /* AddContactViewController+TextFieldListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddContactViewController+TextFieldListener.swift"; sourceTree = "<group>"; };
 		CCCF11242B535C5B00AD1F66 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		CCCF6B7B2B54C5C10090FAB3 /* PhoneFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormat.swift; sourceTree = "<group>"; };
 		CCCF6B7F2B55024E0090FAB3 /* ContactValidateCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactValidateCheck.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				CCC3BB662B5A8B8700560A14 /* ContactListViewController+SearchBar .swift */,
 				CCC3BB682B5A996D00560A14 /* ContactListViewController+TableView.swift */,
 				1D3026E82B4FA57B00BF59E2 /* AddContactViewController.swift */,
+				CCC3BB6A2B5BE7EA00560A14 /* AddContactViewController+TextFieldListener.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				CCD4C8D12B44EF3300B69E9F /* ContactList.swift in Sources */,
 				CCCF6B802B55024E0090FAB3 /* ContactValidateCheck.swift in Sources */,
 				1D3026E92B4FA57B00BF59E2 /* AddContactViewController.swift in Sources */,
+				CCC3BB6B2B5BE7EA00560A14 /* AddContactViewController+TextFieldListener.swift in Sources */,
 				CCE27A912B4502060051FFA8 /* ContactListError.swift in Sources */,
 				CCE27A8F2B44F2140051FFA8 /* ContactListStorage.swift in Sources */,
 				CCADE3022B43A91C00E4EE30 /* ContactListViewController.swift in Sources */,

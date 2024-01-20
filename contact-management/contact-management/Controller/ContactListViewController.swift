@@ -29,15 +29,36 @@ final class ContactListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "연락처"
+        
         tableView.dataSource = self
         tableView.delegate = self
-    
         searchController?.searchResultsUpdater = self
-        filteredDataSource = (contactListStorage?.getContactList())!
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         
+        setNotification()
+        filteredDataSource = (contactListStorage?.getContactList())!
+    }
+    
+    @IBAction func addContact(_ sender: Any) {
+        moveAddContactView(transitionStyle: UIModalTransitionStyle.coverVertical, presentationStyle: UIModalPresentationStyle.automatic)
+    }
+}
+
+extension ContactListViewController {
+    func moveAddContactView(transitionStyle: UIModalTransitionStyle, presentationStyle: UIModalPresentationStyle) {
+        let secondViewController = storyboard?.instantiateViewController(identifier: "AddContactView") { coder in
+            return AddContactViewController.init(coder: coder, contactListStorage: self.contactListStorage!)
+        }
+        secondViewController?.modalTransitionStyle = transitionStyle
+        secondViewController?.modalPresentationStyle = presentationStyle
+        
+        let secondNavigationController = UINavigationController(rootViewController: secondViewController!)
+        present(secondNavigationController, animated: true)
+    }
+    
+    func setNotification() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.didDismissDetailNotification(_:)),
@@ -46,28 +67,10 @@ final class ContactListViewController: UIViewController {
         )
     }
     
-    private func getContact(index: Int) -> ContactList? {
-        guard let result = self.contactListStorage else {
-            return nil
-        }
-        return result.getContact(index)
-    }
-    
-    @IBAction func addContact(_ sender: Any) {
-        let secondViewController = storyboard?.instantiateViewController(identifier: "AddContactView") { coder in
-            return AddContactViewController.init(coder: coder, contactListStorage: self.contactListStorage!)
-        }
-        secondViewController?.modalTransitionStyle = .coverVertical
-        secondViewController?.modalPresentationStyle = .automatic
-        let secondNavigationController = UINavigationController(rootViewController: secondViewController!)
-        present(secondNavigationController, animated: true)
-    }
-    
     @objc func didDismissDetailNotification(_ notification: Notification) {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
+            print("Test")
         }
     }
 }
-
-

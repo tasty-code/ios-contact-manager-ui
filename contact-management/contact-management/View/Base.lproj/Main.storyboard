@@ -86,7 +86,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6dn-26-W2K">
-                                <rect key="frame" x="10" y="123" width="373" height="34"/>
+                                <rect key="frame" x="10" y="79" width="373" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-Bq-oFE">
                                         <rect key="frame" x="0.0" y="0.0" width="49.333333333333336" height="34"/>
@@ -105,7 +105,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="AKi-4Y-fxB">
-                                <rect key="frame" x="10" y="165" width="373" height="34"/>
+                                <rect key="frame" x="10" y="121" width="373" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나이" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6r-99-r3G">
                                         <rect key="frame" x="0.0" y="0.0" width="49.333333333333336" height="34"/>
@@ -124,7 +124,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Zue-ej-hsG">
-                                <rect key="frame" x="10" y="207" width="373" height="34"/>
+                                <rect key="frame" x="10" y="163" width="373" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연락처" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6Y-Od-joH">
                                         <rect key="frame" x="0.0" y="0.0" width="49.333333333333336" height="34"/>
@@ -197,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W72-mq-W77" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3707.6335877862593" y="25.35211267605634"/>
+            <point key="canvasLocation" x="2247" y="18"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GQ0-8q-1h3">
@@ -216,24 +216,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3R-x1-cgJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="119.84732824427481" y="17.605633802816904"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Jr3-vb-tu8">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9U2-hS-FZU" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P5J-h2-cC3">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="juo-rO-sQn" kind="relationship" relationship="rootViewController" id="0L1-FF-QYy"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m27-TH-bMi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2780.9160305343512" y="25.35211267605634"/>
         </scene>
     </scenes>
     <resources>

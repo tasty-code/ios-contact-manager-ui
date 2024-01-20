@@ -14,7 +14,6 @@ extension ContactListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        
         let item = filteredDataSource[indexPath.row]
         cell.textLabel?.text = "\(item.name) (\(item.age))"
         cell.detailTextLabel?.text = item.phoneNumber
@@ -32,6 +31,8 @@ extension ContactListViewController: UITableViewDataSource {
 extension ContactListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        moveAddContactView(transitionStyle: UIModalTransitionStyle.crossDissolve, presentationStyle: UIModalPresentationStyle.fullScreen)
     }
 }
 

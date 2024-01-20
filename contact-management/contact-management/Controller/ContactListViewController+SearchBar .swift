@@ -12,6 +12,7 @@ extension ContactListViewController: UISearchResultsUpdating {
         guard let text = searchController.searchBar.text else {
             return
         }
+
         if(searchController.isActive) {
             filteredDataSource = (contactListStorage?.getContactList().filter { list in
                 list.name.contains(text)
