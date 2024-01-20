@@ -9,22 +9,31 @@ import UIKit
 
 final class ContactsView: UIView {
     private weak var dataSource: UITableViewDataSource? {
-        didSet {
-            self.tableView.dataSource = self.dataSource
-        }
+        didSet { self.tableView.dataSource = self.dataSource }
     }
-    let tableView: UITableView
+    private weak var delegate: UITableViewDelegate? {
+        didSet { self.tableView.delegate = self.delegate }
+    }
+    private weak var searchBarDelegate: UISearchBarDelegate? {
+        didSet { self.searchBar.delegate = self.searchBarDelegate }
+    }
+    private let tableView: UITableView
+    private let searchBar: UISearchBar
     private let navigationBar: ContactsNavigationBar
     
     override init(frame: CGRect) {
         self.tableView = UITableView()
         navigationBar = ContactsNavigationBar()
+        searchBar = UISearchBar()
         super.init(frame: frame)
+        
         setupView()
         setupTableView()
         addSubview(navigationBar)
+        addSubview(searchBar)
         addSubview(tableView)
         setupNavigationBarConstraints()
+        setupSearchBarConstraints()
         setupTableViewConstraints()
     }
     
@@ -34,8 +43,20 @@ final class ContactsView: UIView {
 }
 
 extension ContactsView {
+    public func reloadTableViewData() {
+        tableView.reloadData()
+    }
+    
     public func setDataSource(dataSource: UITableViewDataSource?) {
         self.dataSource = dataSource
+    }
+    
+    public func setDelegate(delegate: UITableViewDelegate?) {
+        self.delegate = delegate
+    }
+    
+    public func setSearchBarDelegate(delegate: UISearchBarDelegate?) {
+        self.searchBarDelegate = delegate
     }
 }
 
@@ -51,13 +72,20 @@ extension ContactsView {
         navigationBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
     
+    private func setupSearchBarConstraints() {
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.topAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
+        searchBar.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        searchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+    }
+    
     private func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ContactCell")
+        tableView.register(ContactsTableViewCell.self, forCellReuseIdentifier: ContactsTableViewCell.className)
     }
     
     private func setupTableViewConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true

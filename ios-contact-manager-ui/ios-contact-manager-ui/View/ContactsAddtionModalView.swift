@@ -8,98 +8,102 @@
 import UIKit
 
 final class ContactsAddtionModalView: UIView {
-    
     private weak var delegate: UITextFieldDelegate? {
         didSet { self.phoneNumberTextField.delegate = self.delegate }
     }
     
-    let modalStackView: UIStackView = {
+    private let modalStackView: UIStackView = {
         let modalStackView = UIStackView()
         modalStackView.axis = .vertical
         return modalStackView
     }()
     
-    let titleStackView: UIStackView = {
+    private let titleStackView: UIStackView = {
         let titleStackView = UIStackView()
         titleStackView.axis = .horizontal
         return titleStackView
     }()
-    let cancelButton: UIButton = {
+    private let cancelButton: UIButton = {
         let cancelButton = UIButton()
+        cancelButton.titleLabel?.font = .preferredFont(forTextStyle: .body)
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.setTitleColor(.systemBlue, for: .normal)
         cancelButton.addTarget(nil, action: #selector(ContactsAdditionModalViewController.dismissContactsAdditionModalView), for: .touchUpInside)
         return cancelButton
     }()
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = "새 연락처"
         titleLabel.font = .preferredFont(forTextStyle: .headline)
         titleLabel.textAlignment = .center
         return titleLabel
     }()
-    let saveButton: UIButton = {
+    private let saveButton: UIButton = {
         let saveButton = UIButton()
+        saveButton.titleLabel?.font = .preferredFont(forTextStyle: .body)
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.systemBlue, for: .normal)
         saveButton.addTarget(nil, action: #selector(ContactsAdditionModalViewController.handleSaveButtonTap), for: .touchUpInside)
         return saveButton
     }()
     
-    let contentsStackView: UIStackView = {
+    private let contentsStackView: UIStackView = {
         let contentsStackView = UIStackView()
         contentsStackView.axis = .vertical
         return contentsStackView
     }()
 
-    let nameStackView: UIStackView = {
+    private let nameStackView: UIStackView = {
         let nameStackView = UIStackView()
         nameStackView.axis = .horizontal
         return nameStackView
     }()
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.text = "이름"
         nameLabel.textAlignment = .center
+        nameLabel.font = .preferredFont(forTextStyle: .body)
         return nameLabel
     }()
-    let nameTextField: UITextField = {
+    private let nameTextField: UITextField = {
         let nameTextField = UITextField()
         nameTextField.keyboardType = .default
         nameTextField.borderStyle = .roundedRect
         return nameTextField
     }()
     
-    let ageStackView: UIStackView = {
+    private let ageStackView: UIStackView = {
         let ageStackView = UIStackView()
         ageStackView.axis = .horizontal
         return ageStackView
     }()
-    let ageLabel: UILabel = {
+    private let ageLabel: UILabel = {
         let ageLabel = UILabel()
         ageLabel.text = "나이"
         ageLabel.textAlignment = .center
+        ageLabel.font = .preferredFont(forTextStyle: .body)
         return ageLabel
     }()
-    let ageTextField: UITextField = {
+    private let ageTextField: UITextField = {
         let ageTextField = UITextField()
         ageTextField.keyboardType = .numberPad
         ageTextField.borderStyle = .roundedRect
         return ageTextField
     }()
     
-    let phoneNumberStackView: UIStackView = {
+    private let phoneNumberStackView: UIStackView = {
         let phoneNumberStackView = UIStackView()
         phoneNumberStackView.axis = .horizontal
         return phoneNumberStackView
     }()
-    let phoneNumberLabel: UILabel = {
+    private let phoneNumberLabel: UILabel = {
         let phoneNumberLabel = UILabel()
         phoneNumberLabel.text = "연락처"
         phoneNumberLabel.textAlignment = .center
+        phoneNumberLabel.font = .preferredFont(forTextStyle: .body)
         return phoneNumberLabel
     }()
-    let phoneNumberTextField: UITextField = {
+    private let phoneNumberTextField: UITextField = {
         let phoneNumberTextField = UITextField()
         phoneNumberTextField.keyboardType = .phonePad
         phoneNumberTextField.borderStyle = .roundedRect
@@ -108,6 +112,7 @@ final class ContactsAddtionModalView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         backgroundColor = .white
         setupStackViews()
         setupConstraints()
@@ -121,6 +126,32 @@ final class ContactsAddtionModalView: UIView {
 extension ContactsAddtionModalView {
     public func setDelegate(delegate: UITextFieldDelegate?) {
         self.delegate = delegate
+    }
+    
+    public func getText(from textField: TextField) -> String? {
+        switch textField {
+        case .name:
+            return nameTextField.text ?? nil
+        case .age:
+            return ageTextField.text ?? nil
+        case .phoneNumber:
+            return phoneNumberTextField.text ?? nil
+        }
+    }
+    
+    public func setText(_ string: String, to textField: TextField) {
+        switch textField {
+        case .name:
+            nameTextField.text = string
+        case .age:
+            ageTextField.text = string
+        case .phoneNumber:
+            phoneNumberTextField.text = string
+        }
+    }
+    
+    public func getTitleLabel() -> UILabel {
+        return titleLabel
     }
 }
 
@@ -189,5 +220,3 @@ extension ContactsAddtionModalView {
         phoneNumberLabel.setContentHuggingPriority(UILayoutPriority(1000), for: .horizontal)
     }
 }
-
-

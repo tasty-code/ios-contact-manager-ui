@@ -10,9 +10,9 @@ import UIKit
 final class ContactsViewController: UIViewController {
 
     private let contactsView: ContactsView
-    private var dataSource: ContactsApproachable?
+    private var dataSource: ContactsModel?
     
-    init( dataSource: ContactsApproachable?) {
+    init( dataSource: ContactsModel?) {
         contactsView = ContactsView()
         self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
@@ -24,46 +24,69 @@ final class ContactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view = contactsView
+        contactsView.setSearchBarDelegate(delegate: self)
         contactsView.setDataSource(dataSource: self)
+        contactsView.setDelegate(delegate: self)
     }
 }
 
 extension ContactsViewController {
     @objc func presentContactsAdditionModalView() {
-        let contactsAdditionModalViewController = ContactsAdditionModalViewController(delegate: dataSource as? any ContactsManageable)
+        present(contactsAdditionModalViewController(), animated: true)
+    }
+    
+    private func contactsAdditionModalViewController() -> ContactsAdditionModalViewController {
+        let contactsAdditionModalViewController = ContactsAdditionModalViewController(delegate: dataSource)
         contactsAdditionModalViewController.setReloadData(reloadData: { [weak self] in
             guard let contactsView = self?.contactsView else {
                 return
             }
-            let tableView = contactsView.tableView
-            tableView.reloadData()
+            contactsView.reloadTableViewData()
         })
-        present(contactsAdditionModalViewController, animated: true)
+        return contactsAdditionModalViewController
+    }
+}
+
+extension ContactsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        dataSource?.filter(by: searchText)
+        contactsView.reloadTableViewData()
     }
 }
 
 extension ContactsViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.sorted().count ?? 0
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource?.contacts().count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
-        guard let contact: Contact = dataSource?.sorted()[indexPath.row] else {
-            return cell
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell: ContactsTableViewCell = tableView.dequeueReusableCell(withIdentifier: ContactsTableViewCell.className, for: indexPath) as? ContactsTableViewCell,
+                let contact: Contact = dataSource?.contacts()[indexPath.row] else {
+            return UITableViewCell()
         }
-        var content = cell.defaultContentConfiguration()
         
-        content.text = "\(contact.name)(\(contact.age))"
-        content.secondaryText = contact.phoneNumber
-        content.secondaryTextProperties.font = .preferredFont(forTextStyle: .body)
-        
-        cell.contentConfiguration = content
-        cell.accessoryType = .disclosureIndicator
-
+        cell.setContactLabelText(contact: contact)
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let contact = dataSource?.contacts()[indexPath.row] else {
+                return
+            }
+            dataSource?.delete(contact.hashValue)
+            contactsView.reloadTableViewData()
+        }
+    }
+}
+
+extension ContactsViewController: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contactsAdditionModalViewController = contactsAdditionModalViewController()
+        contactsAdditionModalViewController.setPreviousContact(dataSource?.contacts()[indexPath.row])
+        present(contactsAdditionModalViewController, animated: true)
     }
 }
 
