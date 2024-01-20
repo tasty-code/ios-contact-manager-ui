@@ -1,9 +1,9 @@
-import UIKit
+import Foundation
 
-class ContactManager {
+final class ContactManager {
     
-    static let shared = ContactManager()
-    
+    static let shared: ContactManager = ContactManager()
+    private init() {}
     private var contactArray: [Contact] = [
         Contact(name: "Alice", age: 22, phoneNumber: "010-1234-5678"),
         Contact(name: "Bob", age: 28, phoneNumber: "010-9876-5432"),
@@ -23,8 +23,11 @@ class ContactManager {
         Contact(name: "Peter", age: 34, phoneNumber: "010-5678-9012"),
         Contact(name: "Quinn", age: 27, phoneNumber: "010-1234-5678"),
         Contact(name: "Rachel", age: 29, phoneNumber: "010-7890-0123"),
-        Contact(name: "Samuel", age: 33, phoneNumber: "010-2345-6789"),
+        Contact(name: "Samuel", age: 33, phoneNumber: "010-2345-6789")
     ]
+}
+
+extension ContactManager {
     
     func createContact(name: String, age: Int, number: String) {
         contactArray.append(Contact(name: name, age: age, phoneNumber: number))
@@ -34,16 +37,16 @@ class ContactManager {
         return contactArray
     }
     
-    func updateContact(name: String, age: Int, number: String) {
-        let contact = Contact(name: name, age: age, phoneNumber: number)
+    func updateContact(cid: Int, name: String, age: Int, number: String) {
+        let contact: Contact = Contact(name: name, age: age, phoneNumber: number)
         
-        if let result = contactArray.firstIndex(where: { $0.name == name }) {
+        if let result = contactArray.firstIndex(where: { $0.cid == cid }) {
             contactArray[result] = contact
         }
     }
     
-    func deleteContact(name: String) {
-        if let index = contactArray.firstIndex(where: { $0.name == name}) {
+    func deleteContact(cid: Int) {
+        if let index = contactArray.firstIndex(where: { $0.cid == cid}) {
             contactArray.remove(at: index)
         }
     }

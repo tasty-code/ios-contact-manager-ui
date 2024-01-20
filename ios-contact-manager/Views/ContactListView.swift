@@ -1,24 +1,27 @@
 import UIKit
+import SwiftUI
 
-class ContectManagerListView: UIView {
+final class ContactListView: UIView {
     
     let tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView: UITableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "contactCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: CustomViewControllerString.cellNameText.description)
         return tableView
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupUI()
+        fatalError(CustomViewControllerString.fatalErrorText.description)
     }
+}
 
+extension ContactListView {
+    
     private func setupUI() {
         backgroundColor = .white
         addSubview(tableView)
