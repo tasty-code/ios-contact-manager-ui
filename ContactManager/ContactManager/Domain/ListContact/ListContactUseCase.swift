@@ -24,9 +24,9 @@ struct ListContactUseCase {
         }
     }
     
-    func deleteContact(at index: Int) {
+    func deleteContact(contactID: Int) {
         do {
-            try repository.removeContact(at: index)
+            try repository.removeContact(contactID: contactID)
             presenter?.presentDeleteContact(result: .success(()))
         } catch {
             presenter?.presentDeleteContact(result: .failure(error))

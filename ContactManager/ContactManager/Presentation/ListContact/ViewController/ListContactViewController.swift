@@ -104,10 +104,6 @@ extension ListContactViewController {
         self.coordinator?.startAddContact()
     }
     
-    private func didTapDeleteSwipeAction(index: Int) {
-        self.listContactUseCase?.deleteContact(at: index)
-    }
-    
     private func handle(error: Error) {
         if let error = error as? LocalizedError {
             print(error.localizedDescription)
@@ -123,10 +119,14 @@ extension ListContactViewController: UITableViewDelegate {
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
-            self.didTapDeleteSwipeAction(index: indexPath.row)
+        guard let listItem = contactListDataSource.itemIdentifier(for: indexPath) else { return nil }
+        switch listItem {
+        case .contact(let contact):
+            let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+                self.listContactUseCase?.deleteContact(contactID: contact.id)
+            }
+            return UISwipeActionsConfiguration(actions: [deleteAction])
         }
-        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
