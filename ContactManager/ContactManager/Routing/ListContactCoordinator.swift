@@ -33,13 +33,27 @@ final class ListContactCoordinator: Coordinator {
 
 protocol ListContactViewControllerDelegate: AnyObject {
     func startAddContact()
+    
+    func startUpdateContact(contactID: Int)
 }
 
 extension ListContactCoordinator: ListContactViewControllerDelegate {
     func startAddContact() {
         let coordinator = AddContactCoordinator(
             navigationController: self.navigationController,
-            contactRepository: self.contactRepository
+            contactRepository: self.contactRepository,
+            contactID: nil
+        )
+        coordinator.parentCoordinator = self
+        coordinator.start()
+        self.childCoordinators.append(coordinator)
+    }
+    
+    func startUpdateContact(contactID: Int) {
+        let coordinator = AddContactCoordinator(
+            navigationController: self.navigationController,
+            contactRepository: self.contactRepository,
+            contactID: contactID
         )
         coordinator.parentCoordinator = self
         coordinator.start()

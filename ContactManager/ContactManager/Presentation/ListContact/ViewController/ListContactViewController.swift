@@ -128,6 +128,15 @@ extension ListContactViewController: UITableViewDelegate {
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let listItem = contactListDataSource.itemIdentifier(for: indexPath) else { return }
+        switch listItem {
+        case .contact(let contact):
+            self.coordinator?.startUpdateContact(contactID: contact.id)
+        }
+    }
 }
 
 extension ListContactViewController: ListContactPresentable {
