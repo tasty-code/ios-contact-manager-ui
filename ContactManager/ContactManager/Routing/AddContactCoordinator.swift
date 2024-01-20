@@ -50,7 +50,6 @@ final class AddContactCoordinator: Coordinator {
 
 protocol AddContactViewControllerDelegate: AnyObject {
     func endAddContact()
-    
     func cancelAddContact()
 }
 

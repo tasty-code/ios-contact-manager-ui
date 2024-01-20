@@ -40,6 +40,16 @@ struct AddContactUseCase {
         }
     }
     
+    func updateNewContact(request: AddContact.UpdateContact.Request) {
+        do {
+            let contact = try factory.makeExistingContact(from: request)
+            try repository.updateContact(with: contact)
+            presenter?.presentUpdateContact(result: .success(()))
+        } catch {
+            presenter?.presentUpdateContact(result: .failure(error))
+        }
+    }
+    
     func confirmCancel(request: AddContact.CreatContact.Request) {
         do {
             try confirmIfCancellable(request: request)
@@ -64,4 +74,5 @@ protocol AddContactPresentable: NSObjectProtocol {
     func presentFetchContact(result: Result<Contact, Error>)
     func presentAddContact(result: Result<Void, Error>)
     func presentCancelConfirmation(result: Result<Void, Error>)
+    func presentUpdateContact(result: Result<Void, Error>)
 }

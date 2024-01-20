@@ -108,12 +108,22 @@ final class AddContactViewController: UIViewController {
     }
     
     private func didTapSaveButton() {
-        let request = AddContact.CreatContact.Request(
-            name: self.nameField.currentValue,
-            age: self.ageField.currentValue,
-            phoneNumber: self.phoneNumberField.currentValue
-        )
-        self.addContactUseCase.saveNewContact(request: request)
+        if let id = self.contactId {
+            let request = AddContact.UpdateContact.Request(
+                id: id,
+                name: self.nameField.currentValue,
+                age: self.ageField.currentValue,
+                phoneNumber: self.phoneNumberField.currentValue
+            )
+            self.addContactUseCase.updateNewContact(request: request)
+        } else {
+            let request = AddContact.CreatContact.Request(
+                name: self.nameField.currentValue,
+                age: self.ageField.currentValue,
+                phoneNumber: self.phoneNumberField.currentValue
+            )
+            self.addContactUseCase.saveNewContact(request: request)
+        }
     }
     
     private func didTapCancelButton() {
@@ -159,6 +169,15 @@ extension AddContactViewController: AddContactPresentable {
     }
     
     func presentAddContact(result: Result<Void, Error>) {
+        switch result {
+        case .success:
+            self.coordinator?.endAddContact()
+        case .failure(let error):
+            handleError(error)
+        }
+    }
+    
+    func presentUpdateContact(result: Result<Void, Error>) {
         switch result {
         case .success:
             self.coordinator?.endAddContact()

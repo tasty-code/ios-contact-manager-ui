@@ -17,6 +17,8 @@ protocol ContactRepository {
     func removeContact(at index: Int) throws
     
     func searchContact(with queries: [String]) throws -> [Contact]
+    
+    func updateContact(with updatedContact: Contact) throws
 }
 
 struct ContactRepositoryImpl: ContactRepository {
@@ -70,6 +72,14 @@ struct ContactRepositoryImpl: ContactRepository {
         }
         guard matches.isEmpty == false else { throw ContactRepositoryError.noSearchingResult }
         return matches
+    }
+    
+    func updateContact(with updatedContact: Contact) throws {
+        do {
+            try self.contactList.updateContact(with: updatedContact)
+        } catch {
+            throw ContactRepositoryError.cannotUpdate
+        }
     }
     
     private func match(_ query: String, to contact: Contact) -> Bool {

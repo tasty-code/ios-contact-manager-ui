@@ -19,4 +19,13 @@ enum AddContact {
             let id: Int
         }
     }
+    
+    enum UpdateContact {
+        struct Request {
+            let id: Int
+            let name: String
+            let age: String
+            let phoneNumber: String
+        }
+    }
 }

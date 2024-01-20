@@ -7,6 +7,7 @@
 
 protocol ContactMakable {
     func makeContact(from request: AddContact.CreatContact.Request) throws -> Contact
+    func makeExistingContact(from request: AddContact.UpdateContact.Request) throws -> Contact
 }
 
 import Foundation
@@ -14,6 +15,14 @@ import Foundation
 struct ContactFactory: ContactMakable {
     func makeContact(from request: AddContact.CreatContact.Request) throws -> Contact {
         let id = makeID()
+        let name = try validateName(request.name)
+        let age = try validateAge(request.age)
+        let phoneNumber = try validatePhoneNumber(request.phoneNumber)
+        return Contact(id: id, name: name, phoneNumber: phoneNumber, age: age)
+    }
+    
+    func makeExistingContact(from request: AddContact.UpdateContact.Request) throws -> Contact {
+        let id = request.id
         let name = try validateName(request.name)
         let age = try validateAge(request.age)
         let phoneNumber = try validatePhoneNumber(request.phoneNumber)

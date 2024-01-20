@@ -38,8 +38,8 @@ final class ContactList {
         self.contacts.remove(at: index)
     }
     
-    func updateContact(at index: Index, with newContact: Contact) throws {
-        guard validateIndex(index) else { throw ContactListError.invalidIndex }
+    func updateContact(with newContact: Contact) throws {
+        let index = try getIndexofContact(id: newContact.id)
         self.contacts[index] = newContact
     }
 }
@@ -47,5 +47,12 @@ final class ContactList {
 extension ContactList {
     private func validateIndex(_ index: Index) -> Bool {
         return self.contacts.indices.contains(index)
+    }
+    
+    private func getIndexofContact(id: Int) throws -> Index {
+        guard let index = self.contacts.firstIndex(where: { contact in contact.id == id }) else {
+            throw ContactListError.invalidID
+        }
+        return index
     }
 }
