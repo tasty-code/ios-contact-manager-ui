@@ -8,13 +8,11 @@
 import UIKit
 
 extension AddContactViewController {
-    
     func addTextField() {
         nameTextField.addTarget(self, action: #selector(nameFieldDidChange(_:)), for: .editingChanged)
         ageTextField.addTarget(self, action: #selector(ageFieldDidChange(_:)), for: .editingChanged)
         phoneTextField.addTarget(self, action: #selector(phoneFieldDidChange(_:)), for: .editingChanged)
     }
-    
     
     @objc func nameFieldDidChange(_ nameField: UITextField) {
         nameContact = nameField.text

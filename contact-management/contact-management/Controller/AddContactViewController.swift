@@ -60,7 +60,7 @@ final class AddContactViewController: UIViewController {
         return ContactList(name: name, phoneNumber: phone, age: age)
     }
     
-    func isClickedTableCell() {
+    private func isClickedTableCell() {
         let isNavigation = navigationController != nil
         if isNavigation {
             guard let unWrappedIndex = tableCellIndex else {
