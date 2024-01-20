@@ -53,7 +53,7 @@ extension ContactListViewController: UITableViewDelegate {
         
         let action = UIContextualAction(style: .destructive, title: "delete",
                                         handler: {[weak self] (action, view, completionHandler) in
-            self?.model?.deletePerson(inputUuid: data?.uuid ?? "")
+            self?.model?.deletePerson(inputUUID: data?.UUID ?? "")
             self?.reloadContactList()
             completionHandler(true)
         })
