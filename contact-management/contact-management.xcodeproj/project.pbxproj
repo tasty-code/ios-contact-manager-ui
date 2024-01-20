@@ -7,16 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3026E92B4FA57B00BF59E2 /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3026E82B4FA57B00BF59E2 /* AddContactView.swift */; };
+		1D3026E92B4FA57B00BF59E2 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3026E82B4FA57B00BF59E2 /* AddContactViewController.swift */; };
 		CCADE2FE2B43A91C00E4EE30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE2FD2B43A91C00E4EE30 /* AppDelegate.swift */; };
 		CCADE3002B43A91C00E4EE30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE2FF2B43A91C00E4EE30 /* SceneDelegate.swift */; };
-		CCADE3022B43A91C00E4EE30 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE3012B43A91C00E4EE30 /* ContactListView.swift */; };
+		CCADE3022B43A91C00E4EE30 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE3012B43A91C00E4EE30 /* ContactListViewController.swift */; };
 		CCADE3052B43A91C00E4EE30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCADE3032B43A91C00E4EE30 /* Main.storyboard */; };
 		CCADE3072B43A91D00E4EE30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCADE3062B43A91D00E4EE30 /* Assets.xcassets */; };
 		CCADE30A2B43A91D00E4EE30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCADE3082B43A91D00E4EE30 /* LaunchScreen.storyboard */; };
 		CCADE3152B43A91D00E4EE30 /* contact_managementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE3142B43A91D00E4EE30 /* contact_managementTests.swift */; };
 		CCADE31F2B43A91D00E4EE30 /* contact_managementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE31E2B43A91D00E4EE30 /* contact_managementUITests.swift */; };
 		CCADE3212B43A91D00E4EE30 /* contact_managementUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADE3202B43A91D00E4EE30 /* contact_managementUITestsLaunchTests.swift */; };
+		CCC3BB672B5A8B8700560A14 /* ContactListViewController+SearchBar .swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC3BB662B5A8B8700560A14 /* ContactListViewController+SearchBar .swift */; };
+		CCC3BB692B5A996D00560A14 /* ContactListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC3BB682B5A996D00560A14 /* ContactListViewController+TableView.swift */; };
+		CCC3BB6B2B5BE7EA00560A14 /* AddContactViewController+TextFieldListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC3BB6A2B5BE7EA00560A14 /* AddContactViewController+TextFieldListener.swift */; };
 		CCCF11252B535C5B00AD1F66 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCF11242B535C5B00AD1F66 /* Alert.swift */; };
 		CCCF6B7C2B54C5C10090FAB3 /* PhoneFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCF6B7B2B54C5C10090FAB3 /* PhoneFormat.swift */; };
 		CCCF6B802B55024E0090FAB3 /* ContactValidateCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCF6B7F2B55024E0090FAB3 /* ContactValidateCheck.swift */; };
@@ -43,11 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1D3026E82B4FA57B00BF59E2 /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
+		1D3026E82B4FA57B00BF59E2 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		CCADE2FA2B43A91C00E4EE30 /* contact-management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "contact-management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCADE2FD2B43A91C00E4EE30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCADE2FF2B43A91C00E4EE30 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CCADE3012B43A91C00E4EE30 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
+		CCADE3012B43A91C00E4EE30 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		CCADE3042B43A91C00E4EE30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CCADE3062B43A91D00E4EE30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCADE3092B43A91D00E4EE30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +60,9 @@
 		CCADE31A2B43A91D00E4EE30 /* contact-managementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "contact-managementUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCADE31E2B43A91D00E4EE30 /* contact_managementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contact_managementUITests.swift; sourceTree = "<group>"; };
 		CCADE3202B43A91D00E4EE30 /* contact_managementUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contact_managementUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CCC3BB662B5A8B8700560A14 /* ContactListViewController+SearchBar .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactListViewController+SearchBar .swift"; sourceTree = "<group>"; };
+		CCC3BB682B5A996D00560A14 /* ContactListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactListViewController+TableView.swift"; sourceTree = "<group>"; };
+		CCC3BB6A2B5BE7EA00560A14 /* AddContactViewController+TextFieldListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddContactViewController+TextFieldListener.swift"; sourceTree = "<group>"; };
 		CCCF11242B535C5B00AD1F66 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		CCCF6B7B2B54C5C10090FAB3 /* PhoneFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormat.swift; sourceTree = "<group>"; };
 		CCCF6B7F2B55024E0090FAB3 /* ContactValidateCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactValidateCheck.swift; sourceTree = "<group>"; };
@@ -161,8 +167,11 @@
 		CCD4C8CD2B44ECFB00B69E9F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CCADE3012B43A91C00E4EE30 /* ContactListView.swift */,
-				1D3026E82B4FA57B00BF59E2 /* AddContactView.swift */,
+				CCADE3012B43A91C00E4EE30 /* ContactListViewController.swift */,
+				CCC3BB662B5A8B8700560A14 /* ContactListViewController+SearchBar .swift */,
+				CCC3BB682B5A996D00560A14 /* ContactListViewController+TableView.swift */,
+				1D3026E82B4FA57B00BF59E2 /* AddContactViewController.swift */,
+				CCC3BB6A2B5BE7EA00560A14 /* AddContactViewController+TextFieldListener.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -319,12 +328,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCC3BB672B5A8B8700560A14 /* ContactListViewController+SearchBar .swift in Sources */,
+				CCC3BB692B5A996D00560A14 /* ContactListViewController+TableView.swift in Sources */,
 				CCD4C8D12B44EF3300B69E9F /* ContactList.swift in Sources */,
 				CCCF6B802B55024E0090FAB3 /* ContactValidateCheck.swift in Sources */,
-				1D3026E92B4FA57B00BF59E2 /* AddContactView.swift in Sources */,
+				1D3026E92B4FA57B00BF59E2 /* AddContactViewController.swift in Sources */,
+				CCC3BB6B2B5BE7EA00560A14 /* AddContactViewController+TextFieldListener.swift in Sources */,
 				CCE27A912B4502060051FFA8 /* ContactListError.swift in Sources */,
 				CCE27A8F2B44F2140051FFA8 /* ContactListStorage.swift in Sources */,
-				CCADE3022B43A91C00E4EE30 /* ContactListView.swift in Sources */,
+				CCADE3022B43A91C00E4EE30 /* ContactListViewController.swift in Sources */,
 				CCADE2FE2B43A91C00E4EE30 /* AppDelegate.swift in Sources */,
 				CCCF11252B535C5B00AD1F66 /* Alert.swift in Sources */,
 				CCCF6B7C2B54C5C10090FAB3 /* PhoneFormat.swift in Sources */,
@@ -436,7 +448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -493,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -508,6 +520,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HGC446G538;
@@ -526,6 +539,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "roh.contact-management";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -540,6 +554,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HGC446G538;
@@ -558,6 +573,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "roh.contact-management";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

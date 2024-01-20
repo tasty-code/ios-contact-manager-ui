@@ -7,11 +7,10 @@
 
 import UIKit
 
-final class AddContactView: UIViewController {
-    private var contactListStorage: ContactListStorage?
-    private var nameContact: String?
-    private var phoneContact: String?
-    private var ageContact: Int?
+final class AddContactViewController: UIViewController {
+    var nameContact: String?
+    var phoneContact: String?
+    var ageContact: Int?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
@@ -21,11 +20,14 @@ final class AddContactView: UIViewController {
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     
-    private var phoneFormat: PhoneFormat?
+    private var contactListStorage: ContactListStorage?
+    var phoneFormat: PhoneFormat?
+    var tableCellIndex: Int?
     
     required init?(coder: NSCoder) {
         self.contactListStorage = nil
         phoneFormat = nil
+        tableCellIndex = nil
         super.init(coder: coder)
     }
     
@@ -37,6 +39,8 @@ final class AddContactView: UIViewController {
     
     override func viewDidLoad() {
         setView()
+        addTextField()
+        isClickedTableCell()
     }
     
     private func setView() {
@@ -44,10 +48,6 @@ final class AddContactView: UIViewController {
         nameLabel.text = "이름"
         ageLabel.text = "나이"
         phoneLabel.text = "연락처"
-        
-        nameTextField.addTarget(self, action: #selector(nameFieldDidChange(_:)), for: .editingChanged)
-        ageTextField.addTarget(self, action: #selector(ageFieldDidChange(_:)), for: .editingChanged)
-        phoneTextField.addTarget(self, action: #selector(phoneFieldDidChange(_:)), for: .editingChanged)
     }
     
     private func unWrappedSender(name: String?, phone: String?, age: Int?) throws -> ContactList {
@@ -59,20 +59,37 @@ final class AddContactView: UIViewController {
         }
         return ContactList(name: name, phoneNumber: phone, age: age)
     }
+    
+    private func isClickedTableCell() {
+        let isNavigation = navigationController != nil
+        if isNavigation {
+            guard let unWrappedIndex = tableCellIndex else {
+                return
+            }
+            nameTextField.text = contactListStorage?.getContact(unWrappedIndex).name
+            ageTextField.text = contactListStorage?.getContact(unWrappedIndex).age.codingKey.stringValue
+            phoneTextField.text = contactListStorage?.getContact(unWrappedIndex).phoneNumber
+        }
+    }
 }
 
-extension AddContactView {
+extension AddContactViewController {
     @IBAction func didTappedCancel(_ sender: Any){
-        let cancel: AlertActionHandler = { [weak self] _ in
-            self?.dismiss(animated: true)
+        let isPresented = presentingViewController != nil
+        let cancel: AlertActionHandler
+        if isPresented {
+            cancel = { [weak self] _ in
+                self?.dismiss(animated: true)
+            }
+        } else {
+            cancel = { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            }
         }
         present(Alert.stopEditContact(cancel).alertController, animated: true)
     }
     
     @IBAction func didTappedSave(_ sender: Any) {
-        let _ : AlertActionHandler = { [weak self] _ in
-            self?.dismiss(animated: true)
-        }
         do {
             let unWrappedResult = try unWrappedSender(
                 name: nameContact,
@@ -111,22 +128,4 @@ extension AddContactView {
     }
 }
 
-extension AddContactView {
-    @objc func nameFieldDidChange(_ nameField: UITextField) {
-        nameContact = nameField.text
-    }
-    
-    @objc func ageFieldDidChange(_ ageField: UITextField) {
-        guard let age = ageField.text else {
-            return
-        }
-        ageContact = Int(age)
-    }
-    
-    @objc func phoneFieldDidChange(_ phoneField: UITextField) {
-        guard let phone = phoneField.text else { return }
-        phoneField.text = phoneFormat?.addCharacter(at: phone)
-        phoneContact = phoneField.text
-    }
-}
 
