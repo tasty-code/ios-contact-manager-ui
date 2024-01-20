@@ -27,16 +27,24 @@ final class DetailViewController: UIViewController {
 
 extension DetailViewController {
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
-        self.sureCancelAlert(message: "정말 취소하시겠습니까?") { [weak self] _ in
-            self?.dismiss(animated: true) //okAction
+        let yesAction = UIAlertAction(title: "예", style: .destructive) { [weak self] _ in
+            self?.dismiss(animated: true)
         }
-    }
+        let noAction = UIAlertAction(title: "아니오", style: .default)
+        
+        self.showMessageAlert(message: "정말 취소하시겠습니까?", actionList: [noAction, yesAction])
+        }
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        let name = nameTextField.text ?? ""
+        let name = nameTextField.text?.replacingOccurrences(of: " ", with: "") ?? ""
         let age = ageTextField.text ?? ""
         let phoneNumber = phoneNumberTextField.text ?? ""
         
+        let isValidList = isInputTextValid(name: name, age: age, phoneNumber: phoneNumber)
+        isValidCheck(result: isValidList, personData: [name, age, phoneNumber])
+    }
+    
+    func isInputTextValid(name: String, age: String, phoneNumber: String) -> [String: Bool] {
         let namePattern = "^[a-zA-Z가-힣]*$"
         let agePattern = "^[0-9]{1,3}$"
         let phoneNumberPattern = "^\\d{2,3}-\\d{3,4}-\\d{4}$"
@@ -45,22 +53,27 @@ extension DetailViewController {
         let isAgeValid = NSPredicate(format: "SELF MATCHES %@", agePattern).evaluate(with: age)
         let isPhoneNumberValid = NSPredicate(format: "SELF MATCHES %@", phoneNumberPattern).evaluate(with: phoneNumber)
         
-        switch true {
-        case !isNameValid:
-            self.showMessageAlert(message: "입력한 이름 정보가 잘못되었습니다")
-        case !isAgeValid:
-            self.showMessageAlert(message: "입력한 나이 정보가 잘못되었습니다")
-        case !isPhoneNumberValid:
-            self.showMessageAlert(message: "입력한 연락처 정보가 잘못되었습니다")
-        default:
-            let personData = Person(name: name, age: Int(age) ?? 0, phoneNumber: phoneNumber)
+        return ["name": isNameValid, "age": isAgeValid, "phoneNumber": isPhoneNumberValid]
+    }
+    
+    func isValidCheck(result: [String: Bool], personData: [String]) {
+        let okAction = UIAlertAction(title: "확인", style: .default)
+        let personData = Person(name: personData[0], age: Int(personData[1]) ?? 0, phoneNumber: personData[2])
+        
+        if result["name"] == false {
+            self.showMessageAlert(message: "입력한 이름 정보가 잘못되었습니다", actionList: [okAction])
+        } else if result["age"] == false {
+            self.showMessageAlert(message: "입력한 나이 정보가 잘못되었습니다", actionList: [okAction])
+        } else if result["phoneNumber"] == false {
+            self.showMessageAlert(message: "입력한 연락처 정보가 잘못되었습니다", actionList: [okAction])
+        } else {
             model?.addPerson(person: personData)
-            
             updateContactdata()
             self.dismiss(animated: true)
         }
     }
 }
+
 
 extension DetailViewController: UITextFieldDelegate {
     private func keyboardSetUp() {
