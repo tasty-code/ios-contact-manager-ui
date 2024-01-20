@@ -5,6 +5,7 @@ final class ContactManager {
     var contactList = [Person]()
     
     // MARK: 모델 기능
+    @discardableResult
     func readContacts() -> [Person] {
         return contactList
     }
