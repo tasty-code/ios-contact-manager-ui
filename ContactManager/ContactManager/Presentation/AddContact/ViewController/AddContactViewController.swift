@@ -8,6 +8,8 @@
 import UIKit
 
 final class AddContactViewController: UIViewController {
+    private static let title = "새 연락처"
+    
     private var addContactUseCase: AddContactUseCase
     
     private weak var coordinator: AddContactViewControllerDelegate?
@@ -69,13 +71,13 @@ final class AddContactViewController: UIViewController {
     }()
     
     private lazy var saveButton: UIBarButtonItem = {
-        let action = UIAction { [weak self] _ in self?.save() }
+        let action = UIAction { [weak self] _ in self?.didTapSaveButton() }
         let button = UIBarButtonItem(systemItem: .save, primaryAction: action)
         return button
     }()
     
     private lazy var cancelButton: UIBarButtonItem = {
-        let action = UIAction { [weak self] _ in self?.cancel() }
+        let action = UIAction { [weak self] _ in self?.didTapCancelButton() }
         let button = UIBarButtonItem(systemItem: .cancel, primaryAction: action)
         return button
     }()
@@ -100,7 +102,7 @@ final class AddContactViewController: UIViewController {
         setupViews()
     }
     
-    private func save() {
+    private func didTapSaveButton() {
         let request = AddContact.Request(
             name: self.nameField.currentValue,
             age: self.ageField.currentValue,
@@ -109,7 +111,7 @@ final class AddContactViewController: UIViewController {
         self.addContactUseCase.saveNewContact(request: request)
     }
     
-    private func cancel() {
+    private func didTapCancelButton() {
         let request = AddContact.Request(
             name: self.nameField.currentValue,
             age: self.ageField.currentValue,
@@ -117,8 +119,6 @@ final class AddContactViewController: UIViewController {
         )
         self.addContactUseCase.confirmCancel(request: request)
     }
-    
-    private static let title = "새 연락처"
     
     private func setupViews() {
         self.view.backgroundColor = .systemBackground
@@ -152,7 +152,7 @@ extension AddContactViewController: AddContactPresentable {
         case .failure(let error):
             if let addContactError = error as? AddContactError,
                addContactError == .someFieldIsFilled {
-                let cancelAction = UIAlertAction(title: "작성 취소", style: .default) { _ in
+                let cancelAction = UIAlertAction(title: "작성 취소", style: .destructive) { _ in
                     self.coordinator?.endAddContact()
                 }
                 self.presentErrorAlert(error: addContactError, additionalAction: cancelAction)
