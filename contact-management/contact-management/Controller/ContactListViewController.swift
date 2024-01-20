@@ -42,20 +42,39 @@ final class ContactListViewController: UIViewController {
     }
     
     @IBAction func addContact(_ sender: Any) {
-        moveAddContactView(transitionStyle: UIModalTransitionStyle.coverVertical, presentationStyle: UIModalPresentationStyle.automatic)
+        moveAddContactView(touch: "버튼")
     }
 }
 
 extension ContactListViewController {
-    func moveAddContactView(transitionStyle: UIModalTransitionStyle, presentationStyle: UIModalPresentationStyle) {
+    func moveAddContactView(touch: String, rowIndex: Int? = nil) {
         let secondViewController = storyboard?.instantiateViewController(identifier: "AddContactView") { coder in
             return AddContactViewController.init(coder: coder, contactListStorage: self.contactListStorage!)
         }
-        secondViewController?.modalTransitionStyle = transitionStyle
-        secondViewController?.modalPresentationStyle = presentationStyle
-        
+        if touch == "버튼" {
+            moveAddContactViewWithPresent(to: secondViewController)
+        }
+        else if touch == "테이블 셀" {
+            moveAddContactViewWithPush(to: secondViewController, with: rowIndex)
+        }
+        else {
+            return
+        }
+    }
+    
+    func moveAddContactViewWithPresent(to secondViewController: AddContactViewController?) {
+        secondViewController?.modalTransitionStyle = .coverVertical
+        secondViewController?.modalPresentationStyle = .automatic
         let secondNavigationController = UINavigationController(rootViewController: secondViewController!)
         present(secondNavigationController, animated: true)
+    }
+    
+    func moveAddContactViewWithPush(to secondViewController: AddContactViewController?, with rowIndex: Int?) {
+        guard let isValidIndex = rowIndex else {
+            return
+        }
+        secondViewController?.tableCellIndex = isValidIndex
+        navigationController?.pushViewController(secondViewController!, animated: true)
     }
     
     func setNotification() {

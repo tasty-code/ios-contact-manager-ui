@@ -22,10 +22,12 @@ final class AddContactViewController: UIViewController {
     
     private var contactListStorage: ContactListStorage?
     var phoneFormat: PhoneFormat?
+    var tableCellIndex: Int?
     
     required init?(coder: NSCoder) {
         self.contactListStorage = nil
         phoneFormat = nil
+        tableCellIndex = nil
         super.init(coder: coder)
     }
     
@@ -38,6 +40,7 @@ final class AddContactViewController: UIViewController {
     override func viewDidLoad() {
         setView()
         addTextField()
+        isClickedTableCell()
     }
     
     private func setView() {
@@ -56,12 +59,32 @@ final class AddContactViewController: UIViewController {
         }
         return ContactList(name: name, phoneNumber: phone, age: age)
     }
+    
+    func isClickedTableCell() {
+        let isNavigation = navigationController != nil
+        if isNavigation {
+            guard let unWrappedIndex = tableCellIndex else {
+                return
+            }
+            nameTextField.text = contactListStorage?.getContact(unWrappedIndex).name
+            ageTextField.text = contactListStorage?.getContact(unWrappedIndex).age.codingKey.stringValue
+            phoneTextField.text = contactListStorage?.getContact(unWrappedIndex).phoneNumber
+        }
+    }
 }
 
 extension AddContactViewController {
     @IBAction func didTappedCancel(_ sender: Any){
-        let cancel: AlertActionHandler = { [weak self] _ in
-            self?.dismiss(animated: true)
+        let isPresented = presentingViewController != nil
+        let cancel: AlertActionHandler
+        if isPresented {
+            cancel = { [weak self] _ in
+                self?.dismiss(animated: true)
+            }
+        } else {
+            cancel = { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            }
         }
         present(Alert.stopEditContact(cancel).alertController, animated: true)
     }

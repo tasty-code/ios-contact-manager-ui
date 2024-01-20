@@ -31,8 +31,7 @@ extension ContactListViewController: UITableViewDataSource {
 extension ContactListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        moveAddContactView(transitionStyle: UIModalTransitionStyle.crossDissolve, presentationStyle: UIModalPresentationStyle.fullScreen)
+        moveAddContactView(touch: "테이블 셀", rowIndex: indexPath.row)
     }
 }
 
