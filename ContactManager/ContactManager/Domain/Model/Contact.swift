@@ -6,6 +6,8 @@
 //
 
 struct Contact: Hashable, Decodable {
+    let id: Int
+    
     let name: String
     
     let phoneNumber: String

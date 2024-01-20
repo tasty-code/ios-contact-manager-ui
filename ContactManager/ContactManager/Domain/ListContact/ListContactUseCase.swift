@@ -24,9 +24,9 @@ struct ListContactUseCase {
         }
     }
     
-    func deleteContact(at index: Int) {
+    func deleteContact(contactID: Int) {
         do {
-            try repository.removeContact(at: index)
+            try repository.removeContact(contactID: contactID)
             presenter?.presentDeleteContact(result: .success(()))
         } catch {
             presenter?.presentDeleteContact(result: .failure(error))
@@ -34,7 +34,8 @@ struct ListContactUseCase {
     }
     
     func searchContact(with query: String) {
-        let queries = query.components(separatedBy: .whitespacesAndNewlines)
+        let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        let queries = trimmedQuery.components(separatedBy: .whitespacesAndNewlines)
         do {
             let matchingContacts = try repository.searchContact(with: queries)
             let successInfo = ListContact.SuccessInfo(contacts: matchingContacts)

@@ -8,13 +8,17 @@
 import Foundation
 
 protocol ContactRepository {
+    func requestContact(id: Int) throws -> Contact
+    
     func requestContacts() throws -> [Contact]
     
     func addContact(_ newContact: Contact) throws
     
-    func removeContact(at index: Int) throws
+    func removeContact(contactID: Int) throws
     
     func searchContact(with queries: [String]) throws -> [Contact]
+    
+    func updateContact(with updatedContact: Contact) throws
 }
 
 struct ContactRepositoryImpl: ContactRepository {
@@ -32,6 +36,14 @@ struct ContactRepositoryImpl: ContactRepository {
         self.fileProvider = fileProvider
     }
     
+    func requestContact(id: Int) throws -> Contact {
+        do {
+            return try self.contactList.getContact(id: id)
+        } catch ContactListError.invalidID {
+            throw ContactRepositoryError.notFound
+        }
+    }
+    
     func requestContacts() throws -> [Contact] {
         let contacts = self.contactList.getContacts()
         guard contacts.isEmpty == false else { throw ContactRepositoryError.noContacts }
@@ -42,9 +54,9 @@ struct ContactRepositoryImpl: ContactRepository {
         self.contactList.addContact(newContact)
     }
     
-    func removeContact(at index: Int) throws {
+    func removeContact(contactID: Int) throws {
         do {
-            try self.contactList.deleteContact(at: index)
+            try self.contactList.deleteContact(contactID: contactID)
         } catch ContactListError.invalidIndex {
             throw ContactRepositoryError.cannotRemove
         } catch {
@@ -60,6 +72,14 @@ struct ContactRepositoryImpl: ContactRepository {
         }
         guard matches.isEmpty == false else { throw ContactRepositoryError.noSearchingResult }
         return matches
+    }
+    
+    func updateContact(with updatedContact: Contact) throws {
+        do {
+            try self.contactList.updateContact(with: updatedContact)
+        } catch {
+            throw ContactRepositoryError.cannotUpdate
+        }
     }
     
     private func match(_ query: String, to contact: Contact) -> Bool {
