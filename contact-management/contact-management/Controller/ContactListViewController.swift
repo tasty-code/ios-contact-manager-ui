@@ -89,7 +89,6 @@ extension ContactListViewController {
     @objc func didDismissDetailNotification(_ notification: Notification) {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
-            print("Test")
         }
     }
 }
