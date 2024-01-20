@@ -25,7 +25,7 @@ final class DetailViewController: UIViewController {
     }
 }
 
-extension DetailViewController {
+private extension DetailViewController {
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
         let yesAction = UIAlertAction(title: "예", style: .destructive) { [weak self] _ in
             self?.dismiss(animated: true)
