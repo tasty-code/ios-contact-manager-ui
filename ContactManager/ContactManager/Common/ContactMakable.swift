@@ -9,12 +9,19 @@ protocol ContactMakable {
     func makeContact(from request: AddContact.Request) throws -> Contact
 }
 
+import Foundation
+
 struct ContactFactory: ContactMakable {
     func makeContact(from request: AddContact.Request) throws -> Contact {
+        let id = makeID()
         let name = try validateName(request.name)
         let age = try validateAge(request.age)
         let phoneNumber = try validatePhoneNumber(request.phoneNumber)
-        return Contact(name: name, phoneNumber: phoneNumber, age: age)
+        return Contact(id: id, name: name, phoneNumber: phoneNumber, age: age)
+    }
+    
+    private func makeID() -> Int {
+        return UUID().hashValue
     }
     
     private func validateName(_ name: String) throws -> String {
