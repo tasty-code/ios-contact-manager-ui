@@ -13,10 +13,11 @@ final class ContactListViewController: UIViewController, ContactListDelegate {
     }
     
     @IBAction func addContactButton(_ sender: UIBarButtonItem) {
-        let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        detailVC.model = self.model
-        detailVC.delegate = self
-        present(detailVC, animated: true)
+        if let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            detailVC.model = self.model
+            detailVC.delegate = self
+            present(detailVC, animated: true)
+        }
     }
 
     func reloadContactList() {
