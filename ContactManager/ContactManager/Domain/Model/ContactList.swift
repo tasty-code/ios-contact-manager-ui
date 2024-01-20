@@ -14,6 +14,13 @@ final class ContactList {
         self.contacts = contacts
     }
     
+    func getContact(id: Int) throws -> Contact {
+        guard let contact = self.contacts.first(where: { contact in contact.id == id }) else {
+            throw ContactListError.invalidID
+        }
+        return contact
+    }
+    
     func getContacts() -> [Contact] {
         return self.contacts
     }

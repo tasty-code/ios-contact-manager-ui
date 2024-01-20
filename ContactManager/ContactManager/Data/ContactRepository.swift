@@ -8,6 +8,8 @@
 import Foundation
 
 protocol ContactRepository {
+    func requestContact(id: Int) throws -> Contact
+    
     func requestContacts() throws -> [Contact]
     
     func addContact(_ newContact: Contact) throws
@@ -30,6 +32,14 @@ struct ContactRepositoryImpl: ContactRepository {
     ) {
         self.contactList = contactList
         self.fileProvider = fileProvider
+    }
+    
+    func requestContact(id: Int) throws -> Contact {
+        do {
+            return try self.contactList.getContact(id: id)
+        } catch ContactListError.invalidID {
+            throw ContactRepositoryError.notFound
+        }
     }
     
     func requestContacts() throws -> [Contact] {

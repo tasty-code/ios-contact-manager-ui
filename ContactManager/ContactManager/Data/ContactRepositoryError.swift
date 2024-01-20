@@ -14,6 +14,7 @@ enum ContactRepositoryError: LocalizedError {
     case noContacts
     case cannotRemove
     case noSearchingResult
+    case notFound
     
     var errorDescription: String? {
         var description: String = "\(String(describing: Self.self)).\(String(describing: self)): "
@@ -28,6 +29,8 @@ enum ContactRepositoryError: LocalizedError {
             description += "연락처 데이터 없음"
         case .noSearchingResult:
             description += "조건에 맞는 연락처 없음"
+        case .notFound:
+            description += "전달한 ID의 연락처 없음"
         }
         return description
     }
@@ -46,6 +49,8 @@ extension ContactRepositoryError: AlertableError {
             return .init(body: "저장된 연락처가 없어요.")
         case .noSearchingResult:
             return .init(body: "검색 결과가 없어요.")
+        case .notFound:
+            return .init(body: "선택한 연락처를 찾을 수 없어요.")
         }
     }
 }

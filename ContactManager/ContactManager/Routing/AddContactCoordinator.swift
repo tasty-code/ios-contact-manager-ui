@@ -28,6 +28,7 @@ final class AddContactCoordinator: Coordinator {
             factory: ContactFactory()
         )
         let addContactViewController = AddContactViewController(
+            contactId: nil,
             useCase: useCase,
             coordinator: self
         )

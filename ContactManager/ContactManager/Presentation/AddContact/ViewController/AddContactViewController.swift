@@ -14,6 +14,8 @@ final class AddContactViewController: UIViewController {
     
     private weak var coordinator: AddContactViewControllerDelegate?
     
+    private let contactId: Int?
+    
     private let nameField = InputView(fieldName: "이름", keyboardType: .default) { input in
         var formattedName = input
         if input.contains(where: { $0 == " " }) {
@@ -88,9 +90,11 @@ final class AddContactViewController: UIViewController {
     }
     
     init(
+        contactId: Int?,
         useCase: AddContactUseCase,
         coordinator: AddContactViewControllerDelegate
     ) {
+        self.contactId = contactId
         self.addContactUseCase = useCase
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -100,10 +104,11 @@ final class AddContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setUpFields()
     }
     
     private func didTapSaveButton() {
-        let request = AddContact.Request(
+        let request = AddContact.CreatContact.Request(
             name: self.nameField.currentValue,
             age: self.ageField.currentValue,
             phoneNumber: self.phoneNumberField.currentValue
@@ -112,7 +117,7 @@ final class AddContactViewController: UIViewController {
     }
     
     private func didTapCancelButton() {
-        let request = AddContact.Request(
+        let request = AddContact.CreatContact.Request(
             name: self.nameField.currentValue,
             age: self.ageField.currentValue,
             phoneNumber: self.phoneNumberField.currentValue
@@ -133,9 +138,26 @@ final class AddContactViewController: UIViewController {
             fieldStack.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
         ])
     }
+    
+    private func setUpFields() {
+        guard let id = self.contactId else { return }
+        let request = AddContact.FetchContact.Request(id: id)
+        self.addContactUseCase.fetchContact(request: request)
+    }
 }
 
 extension AddContactViewController: AddContactPresentable {
+    func presentFetchContact(result: Result<Contact, Error>) {
+        switch result {
+        case .success(let contact):
+            self.nameField.configure(with: contact.name)
+            self.ageField.configure(with: "\(contact.age)")
+            self.phoneNumberField.configure(with: contact.phoneNumber)
+        case .failure(let error):
+            handleError(error)
+        }
+    }
+    
     func presentAddContact(result: Result<Void, Error>) {
         switch result {
         case .success:

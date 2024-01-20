@@ -20,7 +20,17 @@ struct AddContactUseCase {
         self.factory = factory
     }
     
-    func saveNewContact(request: AddContact.Request) {
+    func fetchContact(request: AddContact.FetchContact.Request) {
+        do {
+            let id = request.id
+            let contact = try self.repository.requestContact(id: id)
+            presenter?.presentFetchContact(result: .success(contact))
+        } catch {
+            presenter?.presentFetchContact(result: .failure(error))
+        }
+    }
+    
+    func saveNewContact(request: AddContact.CreatContact.Request) {
         do {
             let contact = try factory.makeContact(from: request)
             try repository.addContact(contact)
@@ -30,7 +40,7 @@ struct AddContactUseCase {
         }
     }
     
-    func confirmCancel(request: AddContact.Request) {
+    func confirmCancel(request: AddContact.CreatContact.Request) {
         do {
             try confirmIfCancellable(request: request)
             presenter?.presentCancelConfirmation(result: .success(()))
@@ -39,7 +49,7 @@ struct AddContactUseCase {
         }
     }
     
-    private func confirmIfCancellable(request: AddContact.Request) throws {
+    private func confirmIfCancellable(request: AddContact.CreatContact.Request) throws {
         guard request.name.isEmpty,
               request.age.isEmpty,
               request.phoneNumber.isEmpty else {
@@ -51,6 +61,7 @@ struct AddContactUseCase {
 import Foundation
 
 protocol AddContactPresentable: NSObjectProtocol {
+    func presentFetchContact(result: Result<Contact, Error>)
     func presentAddContact(result: Result<Void, Error>)
     func presentCancelConfirmation(result: Result<Void, Error>)
 }

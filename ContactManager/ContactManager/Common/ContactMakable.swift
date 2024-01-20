@@ -6,13 +6,13 @@
 //
 
 protocol ContactMakable {
-    func makeContact(from request: AddContact.Request) throws -> Contact
+    func makeContact(from request: AddContact.CreatContact.Request) throws -> Contact
 }
 
 import Foundation
 
 struct ContactFactory: ContactMakable {
-    func makeContact(from request: AddContact.Request) throws -> Contact {
+    func makeContact(from request: AddContact.CreatContact.Request) throws -> Contact {
         let id = makeID()
         let name = try validateName(request.name)
         let age = try validateAge(request.age)
