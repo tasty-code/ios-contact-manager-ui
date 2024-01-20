@@ -11,15 +11,19 @@ final class AddContactCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var parentCoordinator: AddContactCoordinatorDelegate?
     
+    private let contactID: Int?
+    
     private let navigationController: UINavigationController
     private let contactRepository: ContactRepository
     
     init(
         navigationController: UINavigationController,
-        contactRepository: ContactRepository
+        contactRepository: ContactRepository,
+        contactID: Int?
     ) {
         self.navigationController = navigationController
         self.contactRepository = contactRepository
+        self.contactID = contactID
     }
     
     func start() {
@@ -28,11 +32,17 @@ final class AddContactCoordinator: Coordinator {
             factory: ContactFactory()
         )
         let addContactViewController = AddContactViewController(
+            contactId: self.contactID,
             useCase: useCase,
             coordinator: self
         )
-        let destinationViewController = UINavigationController(rootViewController: addContactViewController)
-        self.navigationController.present(destinationViewController, animated: true)
+        
+        if let contactID {
+            self.navigationController.pushViewController(addContactViewController, animated: true)
+        } else {
+            let destinationViewController = UINavigationController(rootViewController: addContactViewController)
+            self.navigationController.present(destinationViewController, animated: true)
+        }
     }
 }
 
@@ -40,17 +50,24 @@ final class AddContactCoordinator: Coordinator {
 
 protocol AddContactViewControllerDelegate: AnyObject {
     func endAddContact()
-    
     func cancelAddContact()
 }
 
 extension AddContactCoordinator: AddContactViewControllerDelegate {
     func endAddContact() {
-        self.navigationController.dismiss(animated: true)
+        if self.contactID == nil {
+            self.navigationController.dismiss(animated: true)
+        } else {
+            self.navigationController.popViewController(animated: true)
+        }
         self.parentCoordinator?.didEndAddContact(self)
     }
     
     func cancelAddContact() {
-        self.navigationController.dismiss(animated: true)
+        if self.contactID == nil {
+            self.navigationController.dismiss(animated: true)
+        } else {
+            self.navigationController.popViewController(animated: true)
+        }
     }
 }

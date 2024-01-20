@@ -7,4 +7,5 @@
 
 enum ContactListError: Error {
     case invalidIndex
+    case invalidID
 }
