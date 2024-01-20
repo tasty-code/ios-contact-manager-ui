@@ -15,7 +15,7 @@ final class ContactViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ContactDetailCell.self, forCellReuseIdentifier: ContactDetailCell.identifier)
+        tableView.registerCell(ContactDetailCell.self)
         return tableView
     }()
     
@@ -110,7 +110,7 @@ extension ContactViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailCell.identifier , for: indexPath) as? ContactDetailCell else { return UITableViewCell() }
+        let cell = tableView.dequeueCell(ContactDetailCell.self, indexPath: indexPath)
         
         let item = contactManager.contacts[indexPath.row]
         cell.contact = item
@@ -162,5 +162,20 @@ extension ContactViewController: ContactDetailDelegate {
 extension ContactViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         tableView.reloadData()
+    }
+}
+
+extension UITableView {
+    func registerCell<T: UITableViewCell>(_ cellType: T.Type) {
+        let indentifier = String(describing: cellType)
+        register(cellType, forCellReuseIdentifier: indentifier)
+    }
+    
+    func dequeueCell<T: UITableViewCell>(_ cellType: T.Type, indexPath: IndexPath) -> T {
+        let indentifier = String(describing: cellType)
+        guard let cell = dequeueReusableCell(withIdentifier: indentifier, for: indexPath) as? T else {
+            return T()
+        }
+        return cell
     }
 }
