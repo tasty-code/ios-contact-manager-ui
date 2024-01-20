@@ -4,6 +4,10 @@ import Foundation
 final class ContactManager {
     var contactList = [Person]()
     
+    init() {
+        contactList = Person.makeStubData()
+    }
+    
     // MARK: 모델 기능
     @discardableResult
     func readContacts() -> [Person] {
