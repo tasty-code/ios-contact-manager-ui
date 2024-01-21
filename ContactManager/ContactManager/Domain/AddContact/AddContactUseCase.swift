@@ -68,9 +68,7 @@ struct AddContactUseCase {
     }
 }
 
-import Foundation
-
-protocol AddContactPresentable: NSObjectProtocol {
+protocol AddContactPresentable: AnyObject {
     func presentFetchContact(result: Result<Contact, Error>)
     func presentAddContact(result: Result<Void, Error>)
     func presentCancelConfirmation(result: Result<Void, Error>)

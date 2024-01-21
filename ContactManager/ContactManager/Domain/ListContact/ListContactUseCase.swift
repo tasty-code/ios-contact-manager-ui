@@ -46,9 +46,7 @@ struct ListContactUseCase {
     }
 }
 
-import Foundation
-
-protocol ListContactPresentable: NSObjectProtocol {
+protocol ListContactPresentable: AnyObject {
     func presentListContact(result: Result<ListContact.SuccessInfo, Error>)
     func presentDeleteContact(result: Result<Void, Error>)
     func presentSearchContact(result: Result<ListContact.SuccessInfo, Error>)
