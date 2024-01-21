@@ -10,14 +10,16 @@ import UIKit
 final class NewContactViewController: UIViewController {
     var contactFileManager: ContactFileManager
     weak var delegate: UpdateNewContact?
+    var selectedContact: Contact?
     
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var ageTextField: UITextField!
     @IBOutlet private weak var phoneNumberTextField: UITextField!
     
-    init?(coder: NSCoder, contactFileManager: ContactFileManager, delegate: UpdateNewContact?) {
+    init?(coder: NSCoder, contactFileManager: ContactFileManager, delegate: UpdateNewContact?, selectedContact: Contact?) {
         self.contactFileManager = contactFileManager
         self.delegate = delegate
+        self.selectedContact = selectedContact
         super.init(coder: coder)
     }
     
@@ -25,10 +27,18 @@ final class NewContactViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func bindContactData() {
+        guard let selectedContact = selectedContact else { return }
+        nameTextField.text = selectedContact.name
+        ageTextField.text = "\(selectedContact.age)"
+        phoneNumberTextField.text = selectedContact.phoneNumber
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         changeKeyboardType()
         phoneNumberTextField.delegate = self
+        bindContactData()
     }
     
     @IBAction private func dismissButtonTapped(_ sender: UIButton) {
