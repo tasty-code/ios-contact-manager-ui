@@ -47,8 +47,12 @@ final class ContactListViewController: UIViewController, UpdateNewContact {
     }
     
     @objc private func showNewContactView() {
+        var selectedContact: Contact?
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            selectedContact = contactFileManager.contacts[selectedIndexPath.row]
+        }
         guard let newContactViewController = storyboard?.instantiateViewController(identifier: "NewContactViewController", creator: { coder in
-            NewContactViewController(coder: coder, contactFileManager: self.contactFileManager, delegate: self)
+            NewContactViewController(coder: coder, contactFileManager: self.contactFileManager, delegate: self, selectedContact: selectedContact)
         }) as? NewContactViewController else {
             return
         }
@@ -76,6 +80,10 @@ extension ContactListViewController: UITableViewDataSource, UITableViewDelegate 
             success(true)
         }
         return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        showNewContactView()
     }
     
     func updateNewContact() {
