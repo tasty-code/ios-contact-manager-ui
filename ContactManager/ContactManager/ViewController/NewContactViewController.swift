@@ -9,8 +9,8 @@ import UIKit
 
 final class NewContactViewController: UIViewController {
     var contactFileManager: ContactFileManager
-    weak var delegate: UpdateNewContact?
     var selectedContact: Contact?
+    weak var delegate: UpdateNewContact?
     
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var ageTextField: UITextField!
@@ -27,18 +27,18 @@ final class NewContactViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bindContactData() {
-        guard let selectedContact = selectedContact else { return }
-        nameTextField.text = selectedContact.name
-        ageTextField.text = "\(selectedContact.age)"
-        phoneNumberTextField.text = selectedContact.phoneNumber
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         changeKeyboardType()
         phoneNumberTextField.delegate = self
         bindContactData()
+    }
+    
+    private func bindContactData() {
+        guard let selectedContact = selectedContact else { return }
+        nameTextField.text = selectedContact.name
+        ageTextField.text = "\(selectedContact.age)"
+        phoneNumberTextField.text = selectedContact.phoneNumber
     }
     
     @IBAction private func dismissButtonTapped(_ sender: UIButton) {
@@ -54,7 +54,12 @@ final class NewContactViewController: UIViewController {
               isInputValidated(name: name, age: ageString, phone: phone) else { return }
         
         guard let age = Int(ageString) else { return }
-        contactFileManager.addContact(contact: Contact(name: name, age: age, phoneNumber: phone))
+        
+        if let selectedContact = selectedContact {
+            contactFileManager.updateContact(selectedContact.id, Contact(name: name, age: age, phoneNumber: phone))
+        } else {
+            contactFileManager.addContact(contact: Contact(name: name, age: age, phoneNumber: phone))
+        }
         showAlertWithConfirmation(message: "저장하시겠습니까?", isDestructive: false) { _ in
             self.delegate?.updateNewContact()
             self.dismiss(animated: true)
@@ -62,11 +67,12 @@ final class NewContactViewController: UIViewController {
     }
 }
 
+// MARK: - KeyboardType and Validation Methods
 extension NewContactViewController {
     private func changeKeyboardType() {
         nameTextField.keyboardType = .default
         ageTextField.keyboardType = .numberPad
-        phoneNumberTextField.keyboardType = .numberPad
+        phoneNumberTextField.keyboardType = .phonePad
     }
     
     private func isInputValidated(name: String, age: String, phone: String) -> Bool {
@@ -82,9 +88,9 @@ extension NewContactViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate Methods
 extension NewContactViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         let textStr = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
         var text2 = textStr.replacingOccurrences(of: " ", with: "")
         text2 = text2.replacingOccurrences(of: "(", with: "")
@@ -121,7 +127,6 @@ extension NewContactViewController: UITextFieldDelegate {
             default:
                 break
             }
-            
         } else if text2.hasPrefix("+820") {
             switch text2.count {
             case 4...6:

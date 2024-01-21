@@ -33,13 +33,6 @@ final class ContactListViewController: UIViewController, UpdateNewContact {
         AddContactButtonTapped()
     }
     
-    private func setUpSearchBar() {
-        let searchBarController = UISearchController(searchResultsController: nil)
-        searchBarController.hidesNavigationBarDuringPresentation = false
-        self.navigationItem.searchController = searchBarController
-        searchBarController.searchResultsUpdater = self
-    }
-    
     private func AddContactButtonTapped() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
