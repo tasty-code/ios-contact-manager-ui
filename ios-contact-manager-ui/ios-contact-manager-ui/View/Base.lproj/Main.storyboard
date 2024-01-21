@@ -23,7 +23,7 @@
                                     <navigationItem title="연락처" id="DUq-gO-XkZ">
                                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="K6a-kG-TOv">
                                             <connections>
-                                                <action selector="addContectButton:" destination="BYZ-38-t0r" id="OIt-Jh-vSB"/>
+                                                <action selector="addContactButton:" destination="BYZ-38-t0r" id="Llg-hF-bXn"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

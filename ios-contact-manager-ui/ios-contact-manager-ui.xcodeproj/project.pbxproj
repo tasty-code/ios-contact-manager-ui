@@ -13,6 +13,8 @@
 		CE5EDCFF2B453326001E0218 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5EDCFD2B453326001E0218 /* Main.storyboard */; };
 		CE5EDD012B453328001E0218 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5EDD002B453328001E0218 /* Assets.xcassets */; };
 		CE5EDD042B453328001E0218 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5EDD022B453328001E0218 /* LaunchScreen.storyboard */; };
+		CE765AC82B515ABC00F89ED2 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765AC72B515ABC00F89ED2 /* UIViewController+.swift */; };
+		CE765ACA2B52C86A00F89ED2 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765AC92B52C86A00F89ED2 /* String+.swift */; };
 		CEB8D4F52B49250E0067B5DB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8D4F42B49250E0067B5DB /* Person.swift */; };
 		CEB8D4F72B4927380067B5DB /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8D4F62B4927380067B5DB /* ContactManager.swift */; };
 		CEC709D42B50106F00E9B5F1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC709D32B50106F00E9B5F1 /* DetailViewController.swift */; };
@@ -27,6 +29,8 @@
 		CE5EDD002B453328001E0218 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5EDD032B453328001E0218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5EDD052B453328001E0218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE765AC72B515ABC00F89ED2 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		CE765AC92B52C86A00F89ED2 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		CEB8D4F42B49250E0067B5DB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CEB8D4F62B4927380067B5DB /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		CEC709D32B50106F00E9B5F1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 			children = (
 				CE5EDCF72B453326001E0218 /* AppDelegate.swift */,
 				CE5EDCF92B453326001E0218 /* SceneDelegate.swift */,
+				CE765AC62B515A5E00F89ED2 /* Support */,
 				CE5311F22B4AAF2C007F6D68 /* Model */,
 				CE5311F32B4AAFB3007F6D68 /* View */,
 				CE5311F52B4AB047007F6D68 /* Controller */,
@@ -106,6 +111,15 @@
 				CE5EDD052B453328001E0218 /* Info.plist */,
 			);
 			path = "ios-contact-manager-ui";
+			sourceTree = "<group>";
+		};
+		CE765AC62B515A5E00F89ED2 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				CE765AC72B515ABC00F89ED2 /* UIViewController+.swift */,
+				CE765AC92B52C86A00F89ED2 /* String+.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,7 +193,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE765AC82B515ABC00F89ED2 /* UIViewController+.swift in Sources */,
 				CEB8D4F72B4927380067B5DB /* ContactManager.swift in Sources */,
+				CE765ACA2B52C86A00F89ED2 /* String+.swift in Sources */,
 				CEB8D4F52B49250E0067B5DB /* Person.swift in Sources */,
 				CE5EDCFC2B453326001E0218 /* ContactListViewController.swift in Sources */,
 				CEC709D42B50106F00E9B5F1 /* DetailViewController.swift in Sources */,
@@ -340,7 +356,6 @@
 				INFOPLIST_FILE = "ios-contact-manager-ui/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -371,7 +386,6 @@
 				INFOPLIST_FILE = "ios-contact-manager-ui/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
