@@ -10,11 +10,9 @@ extension String {
             return ""
         }
         
-        if text.hasPrefix("02") {
-            text = addHyphenSeoulNumber(text, hyphen)
-        } else {
-            text = addHyphenNumber(text, hyphen)
-        }
+        text = text.hasPrefix("02") ?
+        addHyphenSeoulNumber(text, hyphen) : addHyphenNumber(text, hyphen)
+        
         return text
     }
     
