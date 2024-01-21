@@ -71,6 +71,10 @@ final class InputView: UIView {
             self.textField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
         ])
     }
+    
+    func configure(with content: String) {
+        self.textField.text = content
+    }
 }
 
 extension InputView: UITextFieldDelegate {

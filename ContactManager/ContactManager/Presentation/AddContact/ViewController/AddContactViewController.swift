@@ -8,11 +8,11 @@
 import UIKit
 
 final class AddContactViewController: UIViewController {
-    private static let title = "새 연락처"
-    
     private var addContactUseCase: AddContactUseCase
     
     private weak var coordinator: AddContactViewControllerDelegate?
+    
+    private let contactId: Int?
     
     private let nameField = InputView(fieldName: "이름", keyboardType: .default) { input in
         var formattedName = input
@@ -88,9 +88,11 @@ final class AddContactViewController: UIViewController {
     }
     
     init(
+        contactId: Int?,
         useCase: AddContactUseCase,
         coordinator: AddContactViewControllerDelegate
     ) {
+        self.contactId = contactId
         self.addContactUseCase = useCase
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -100,19 +102,30 @@ final class AddContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setUpFields()
     }
     
     private func didTapSaveButton() {
-        let request = AddContact.Request(
-            name: self.nameField.currentValue,
-            age: self.ageField.currentValue,
-            phoneNumber: self.phoneNumberField.currentValue
-        )
-        self.addContactUseCase.saveNewContact(request: request)
+        if let id = self.contactId {
+            let request = AddContact.UpdateContact.Request(
+                id: id,
+                name: self.nameField.currentValue,
+                age: self.ageField.currentValue,
+                phoneNumber: self.phoneNumberField.currentValue
+            )
+            self.addContactUseCase.updateNewContact(request: request)
+        } else {
+            let request = AddContact.CreatContact.Request(
+                name: self.nameField.currentValue,
+                age: self.ageField.currentValue,
+                phoneNumber: self.phoneNumberField.currentValue
+            )
+            self.addContactUseCase.saveNewContact(request: request)
+        }
     }
     
     private func didTapCancelButton() {
-        let request = AddContact.Request(
+        let request = AddContact.CreatContact.Request(
             name: self.nameField.currentValue,
             age: self.ageField.currentValue,
             phoneNumber: self.phoneNumberField.currentValue
@@ -122,7 +135,7 @@ final class AddContactViewController: UIViewController {
     
     private func setupViews() {
         self.view.backgroundColor = .systemBackground
-        self.title = Self.title
+        self.title = (contactId == nil) ? "새 연락처" : "연락처 편집"
         self.navigationItem.leftBarButtonItem = cancelButton
         self.navigationItem.rightBarButtonItem = saveButton
         
@@ -133,10 +146,36 @@ final class AddContactViewController: UIViewController {
             fieldStack.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
         ])
     }
+    
+    private func setUpFields() {
+        guard let id = self.contactId else { return }
+        let request = AddContact.FetchContact.Request(id: id)
+        self.addContactUseCase.fetchContact(request: request)
+    }
 }
 
 extension AddContactViewController: AddContactPresentable {
+    func presentFetchContact(result: Result<Contact, Error>) {
+        switch result {
+        case .success(let contact):
+            self.nameField.configure(with: contact.name)
+            self.ageField.configure(with: "\(contact.age)")
+            self.phoneNumberField.configure(with: contact.phoneNumber)
+        case .failure(let error):
+            handleError(error)
+        }
+    }
+    
     func presentAddContact(result: Result<Void, Error>) {
+        switch result {
+        case .success:
+            self.coordinator?.endAddContact()
+        case .failure(let error):
+            handleError(error)
+        }
+    }
+    
+    func presentUpdateContact(result: Result<Void, Error>) {
         switch result {
         case .success:
             self.coordinator?.endAddContact()
