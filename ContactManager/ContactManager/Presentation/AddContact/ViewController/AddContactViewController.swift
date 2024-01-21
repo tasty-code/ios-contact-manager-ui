@@ -8,8 +8,6 @@
 import UIKit
 
 final class AddContactViewController: UIViewController {
-    private static let title = "새 연락처"
-    
     private var addContactUseCase: AddContactUseCase
     
     private weak var coordinator: AddContactViewControllerDelegate?
@@ -137,7 +135,7 @@ final class AddContactViewController: UIViewController {
     
     private func setupViews() {
         self.view.backgroundColor = .systemBackground
-        self.title = Self.title
+        self.title = (contactId == nil) ? "새 연락처" : "연락처 편집"
         self.navigationItem.leftBarButtonItem = cancelButton
         self.navigationItem.rightBarButtonItem = saveButton
         
