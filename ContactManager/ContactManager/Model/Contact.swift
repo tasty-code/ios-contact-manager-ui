@@ -13,8 +13,12 @@ struct Contact: Codable {
     private var age: Int
     private var phoneNumber: String
     
-    var fetchedNameAndAge: String {
-        return name + "(\(age))"
+    var fetchedName: String {
+        return name
+    }
+    
+    var fetchedAge: String {
+        return "(\(age))"
     }
     
     var fetchedPhoneNumber: String {
