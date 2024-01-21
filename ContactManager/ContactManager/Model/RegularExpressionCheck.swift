@@ -17,7 +17,7 @@ enum RegularExpressionCheck {
         case .age:
             return "^[0-9]{1,3}$"
         case .phoneNumber:
-            return "^[+0-9]]{1,3} [0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}$"
+            return #"(\+[0-9]{2,3}\s?)?(\(0\))?\s?[01]?[0-9]-?([0-9]{3,4})-?([0-9]{4})$"#
         }
     }
     
