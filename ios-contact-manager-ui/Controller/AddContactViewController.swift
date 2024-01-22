@@ -51,8 +51,8 @@ final class AddContactViewController: UIViewController {
     
     //MARK: - Custom Methods
     private func configureNavigationItem() {
-        let dismissButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
-        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
+        lazy var dismissButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
+        lazy var saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
         
         navigationItem.leftBarButtonItem = dismissButton
         navigationItem.rightBarButtonItem = saveButton
