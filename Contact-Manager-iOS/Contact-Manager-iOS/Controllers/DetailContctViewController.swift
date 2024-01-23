@@ -36,8 +36,8 @@ final class DetailContctViewController: UIViewController {
     }
     
     private func configureNavigationBar() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
     }
     
     private func presentCancelAlert() {
@@ -119,11 +119,11 @@ final class DetailContctViewController: UIViewController {
     
     
     //MARK: - Selector
-    @objc private func cancelTapped() {
+    @objc private func cancelButtonTapped() {
         presentCancelAlert()
     }
     
-    @objc private func saveTapped() {
+    @objc private func saveButtonTapped() {
         do {
             let currentContactInpt: ContactInput = contactDetailView.fetchCurrentContactInput()
             try validateInput()
