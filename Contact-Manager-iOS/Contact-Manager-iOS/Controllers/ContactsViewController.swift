@@ -50,7 +50,7 @@ final class ContactsViewController: UIViewController {
     private func configureTableView() {
         contactsView.contactsTableView.dataSource = self
         contactsView.contactsTableView.delegate = self
-        contactsView.contactsTableView.register(ContactCustomTableViewCell.self, forCellReuseIdentifier: "ContactCustomTableViewCell")
+        contactsView.contactsTableView.register(ContactCustomTableViewCell.self, forCellReuseIdentifier: ContactCustomTableViewCell.reuseIdentifier)
     }
     
     @objc private func plusButtonTapped() {
@@ -73,7 +73,7 @@ extension ContactsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let reusableCell = tableView.dequeueReusableCell(withIdentifier: "ContactCustomTableViewCell", for: indexPath) as? ContactCustomTableViewCell else {
+        guard let reusableCell = tableView.dequeueReusableCell(withIdentifier: ContactCustomTableViewCell.reuseIdentifier, for: indexPath) as? ContactCustomTableViewCell else {
             fatalError("cell is not an instance of TableViewCell")
         }
 

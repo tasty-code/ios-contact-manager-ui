@@ -19,6 +19,8 @@ final class ContactCustomTableViewCell: UITableViewCell {
         }
     }
     
+    static let reuseIdentifier = "ContactTableViewCell"
+    
     private let contactNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
@@ -56,7 +58,7 @@ final class ContactCustomTableViewCell: UITableViewCell {
     
     // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: "PersonalContactTableViewCell")
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         
         configureStackView()
         configureCellDetail()
