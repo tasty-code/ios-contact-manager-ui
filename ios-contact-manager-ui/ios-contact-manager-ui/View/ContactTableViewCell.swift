@@ -7,14 +7,13 @@
 
 import UIKit
 
-final class ContactTableViewCell: UITableViewCell {
+final class ContactTableViewCell: UITableViewCell, TypeIdentifiable {
     
-    static var identifier: String {
-        return String(describing: self)
-    }
+    // MARK: - Properties
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var subtitleLabel: UILabel!
     
+    // MARK: - Helper
     func setUpCell(with: Contact) {
         titleLabel.text = with.nameAndAge
         subtitleLabel.text = with.phoneNumber

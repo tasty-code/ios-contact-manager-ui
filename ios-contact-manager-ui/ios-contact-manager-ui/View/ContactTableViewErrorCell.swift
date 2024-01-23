@@ -2,13 +2,11 @@
 //  ContactTableViewErrorCell.swift
 //  ios-contact-manager-ui
 //
-//  Created by 강창현 on 1/11/24.
+//  Created by 강창현 on 1/12/24.
 //
 
 import UIKit
 
-class ContactTableViewErrorCell: UITableViewCell {
-    static var identifier: String {
-        return String(describing: self)
-    }
+final class ContactTableViewErrorCell: UITableViewCell, TypeIdentifiable {
+
 }
