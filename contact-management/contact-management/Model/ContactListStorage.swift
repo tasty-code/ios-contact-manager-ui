@@ -8,7 +8,11 @@
 import Foundation
 
 final class ContactListStorage {
-    private var contactList: [ContactList] = [ContactList]()
+    private var contactList: [ContactList]
+    
+    init(contactList: [ContactList]) {
+        self.contactList = contactList
+    }
     
     func getContact(_ pos: Int) -> ContactList {
         self.contactList[pos]
