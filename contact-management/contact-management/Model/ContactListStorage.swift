@@ -14,20 +14,24 @@ final class ContactListStorage {
         self.contactList = contactList
     }
     
-    func getContact(_ pos: Int) -> ContactList {
-        self.contactList[pos]
+    func getContact(_ index: Int) -> ContactList {
+        self.contactList[index]
+    }
+    
+    func getContactList() -> [ContactList] {
+        self.contactList
     }
     
     func addContact(_ contacts: ContactList) {
         self.contactList.append(contacts)
     }
     
-    func deleteContact(_ pos: Int) {
-        self.contactList.remove(at: pos)
+    func deleteContact(_ index: Int) {
+        self.contactList.remove(at: index)
     }
     
-    func changeContact(_ pos: Int, _ contacts: ContactList) {
-        self.contactList[pos] = contacts
+    func changeContact(_ index: Int, _ contacts: ContactList) {
+        self.contactList[index] = contacts
     }
     
     func countContactList() -> Int {
