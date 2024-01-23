@@ -11,7 +11,7 @@ final class DetailContctViewController: UIViewController {
     
     //MARK: - Property
     private let contactDetailView: ContactDetailView = ContactDetailView()
-    private var isPresentedModally: Bool = false
+    var isPresentedModally: Bool = false
     var contact: Contact?
     weak var delegate: ContactDelegate?
    
@@ -113,9 +113,9 @@ final class DetailContctViewController: UIViewController {
         }
     }
     
-    func toggleIsPresentedModally() {
-        isPresentedModally = !isPresentedModally
-    }
+//    func toggleIsPresentedModally() {
+//        isPresentedModally = !isPresentedModally
+//    }
     
     
     //MARK: - Selector

@@ -59,7 +59,7 @@ final class ContactsViewController: UIViewController {
         
         detailContactViewController.delegate = self
         detailContactViewController.title = "새 연락처"
-        detailContactViewController.toggleIsPresentedModally()
+        detailContactViewController.isPresentedModally.toggle()
         
         present(detailContactNavigationViewController, animated: true, completion: nil)
     }
