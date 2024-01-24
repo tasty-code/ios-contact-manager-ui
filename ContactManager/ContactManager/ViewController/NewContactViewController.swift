@@ -9,15 +9,17 @@ import UIKit
 
 final class NewContactViewController: UIViewController {
     var contactFileManager: ContactFileManager
-    weak var delegate: UpdateNewContact? 
+    var selectedContact: Contact?
+    weak var delegate: UpdateNewContact?
     
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var ageTextField: UITextField!
     @IBOutlet private weak var phoneNumberTextField: UITextField!
     
-    init?(coder: NSCoder, contactFileManager: ContactFileManager, delegate: UpdateNewContact?) {
+    init?(coder: NSCoder, contactFileManager: ContactFileManager, delegate: UpdateNewContact?, selectedContact: Contact?) {
         self.contactFileManager = contactFileManager
         self.delegate = delegate
+        self.selectedContact = selectedContact
         super.init(coder: coder)
     }
     
@@ -29,6 +31,14 @@ final class NewContactViewController: UIViewController {
         super.viewDidLoad()
         changeKeyboardType()
         phoneNumberTextField.delegate = self
+        bindContactData()
+    }
+    
+    private func bindContactData() {
+        guard let selectedContact = selectedContact else { return }
+        nameTextField.text = selectedContact.name
+        ageTextField.text = "\(selectedContact.age)"
+        phoneNumberTextField.text = selectedContact.phoneNumber
     }
     
     @IBAction private func dismissButtonTapped(_ sender: UIButton) {
@@ -44,7 +54,12 @@ final class NewContactViewController: UIViewController {
               isInputValidated(name: name, age: ageString, phone: phone) else { return }
         
         guard let age = Int(ageString) else { return }
-        contactFileManager.addContact(contact: Contact(name: name, age: age, phoneNumber: phone))
+        
+        if let selectedContact = selectedContact {
+            contactFileManager.updateContact(selectedContact.id, Contact(name: name, age: age, phoneNumber: phone))
+        } else {
+            contactFileManager.addContact(contact: Contact(name: name, age: age, phoneNumber: phone))
+        }
         showAlertWithConfirmation(message: "저장하시겠습니까?", isDestructive: false) { _ in
             self.delegate?.updateNewContact()
             self.dismiss(animated: true)
@@ -52,11 +67,12 @@ final class NewContactViewController: UIViewController {
     }
 }
 
+// MARK: - KeyboardType and Validation Methods
 extension NewContactViewController {
     private func changeKeyboardType() {
         nameTextField.keyboardType = .default
         ageTextField.keyboardType = .numberPad
-        phoneNumberTextField.keyboardType = .numberPad
+        phoneNumberTextField.keyboardType = .phonePad
     }
     
     private func isInputValidated(name: String, age: String, phone: String) -> Bool {
@@ -72,35 +88,102 @@ extension NewContactViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate Methods
 extension NewContactViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
         let textStr = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
-        var text = textStr.replacingOccurrences(of: "-", with: "")
+        var text2 = textStr.replacingOccurrences(of: " ", with: "")
+        text2 = text2.replacingOccurrences(of: "(", with: "")
+        text2 = text2.replacingOccurrences(of: ")", with: "")
+        text2 = text2.replacingOccurrences(of: "-", with: "")
+        let prefixValidationCheck = text2.hasPrefix("02") || !text2.hasPrefix("0") && !text2.hasPrefix("+")
         
-        let prefixValidationCheck = text.hasPrefix("02") || !text.hasPrefix("0")
-        
-        switch (prefixValidationCheck, text.count) {
-        case (true, 3...5):
-            text.insert("-", at: text.index(text.startIndex, offsetBy: 2))
-        case (true, 6...9):
-            text.insert("-", at: text.index(text.startIndex, offsetBy: 2))
-            text.insert("-", at: text.index(text.endIndex, offsetBy: 6 - text.count))
-        case (true, 10):
-            text.insert("-", at: text.index(text.startIndex, offsetBy: 2))
-            text.insert("-", at: text.index(text.endIndex, offsetBy: 7 - text.count))
-        case (false, 4...6):
-            text.insert("-", at: text.index(text.startIndex, offsetBy: 3))
-        case (false, 7...10):
-            text.insert("-", at: text.index(text.startIndex, offsetBy: 3))
-            text.insert("-", at: text.index(text.endIndex, offsetBy: 7 - text.count))
-        case (false, 11):
-            text.insert("-", at: text.index(text.startIndex, offsetBy: 3))
-            text.insert("-", at: text.index(text.endIndex, offsetBy: 8 - text.count))
-        default:
-            break
+        if text2.hasPrefix("+8202") {
+            switch text2.count {
+            case 4...5:
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 3))
+            case 6...8:
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 6 - text2.count))
+            case 9...12:
+                text2.insert("(", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert(")", at: text2.index(text2.startIndex, offsetBy: 5))
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 7))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 9 - text2.count))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 13 - text2.count))
+            case 13:
+                text2.insert("(", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert(")", at: text2.index(text2.startIndex, offsetBy: 5))
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 7))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 9 - text2.count))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 14 - text2.count))
+            case 14...:
+                text2.insert("(", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert(")", at: text2.index(text2.startIndex, offsetBy: 5))
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 7))
+            default:
+                break
+            }
+        } else if text2.hasPrefix("+820") {
+            switch text2.count {
+            case 4...6:
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 3))
+            case 7...9:
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 7 - text2.count))
+            case 10...13:
+                text2.insert("(", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert(")", at: text2.index(text2.startIndex, offsetBy: 5))
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 7))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 10 - text2.count))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 14 - text2.count))
+            case 14:
+                text2.insert("(", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert(")", at: text2.index(text2.startIndex, offsetBy: 5))
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 7))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 10 - text2.count))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 15 - text2.count))
+            case 15...:
+                text2.insert("(", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert(")", at: text2.index(text2.startIndex, offsetBy: 5))
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert(" ", at: text2.index(text2.startIndex, offsetBy: 7))
+            default:
+                break
+            }
+        } else if (prefixValidationCheck) {
+            switch (prefixValidationCheck, text2.count) {
+            case (true, 3...5):
+                text2.insert("-", at: text2.index(text2.startIndex, offsetBy: 2))
+            case (true, 6...9):
+                text2.insert("-", at: text2.index(text2.startIndex, offsetBy: 2))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 6 - text2.count))
+            case (true, 10):
+                text2.insert("-", at: text2.index(text2.startIndex, offsetBy: 2))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 7 - text2.count))
+            default:
+                break
+            }
+        } else {
+            switch text2.count {
+            case  4...6:
+                text2.insert("-", at: text2.index(text2.startIndex, offsetBy: 3))
+            case 7...10:
+                text2.insert("-", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 7 - text2.count))
+            case 11:
+                text2.insert("-", at: text2.index(text2.startIndex, offsetBy: 3))
+                text2.insert("-", at: text2.index(text2.endIndex, offsetBy: 8 - text2.count))
+            default:
+                break
+            }
         }
-        textField.text = text
+        textField.text = text2
         return false
     }
 }
