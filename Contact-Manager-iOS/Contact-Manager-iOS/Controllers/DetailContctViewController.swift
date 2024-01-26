@@ -95,21 +95,21 @@ final class DetailContctViewController: UIViewController {
     
     private func isValidName(_ name: String) throws {
         guard name != "" else {
-            throw ContactInputError.isValidName
+            throw ContactInputError.invalidNameError
         }
     }
     
     private func isValidAge(_ ageString: String) throws {
         guard let age = Int(ageString), 0 < age && age <= 999, ageString != "",
               String(age) == ageString else {
-            throw ContactInputError.isValidAge
+            throw ContactInputError.invalidAgeError
         }
     }
     
     private func isValidContactNumber(_ contact: String) throws {
         let phoneNumber = contact.replacingOccurrences(of: "-", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
         guard phoneNumber.count >= 9, contact.filter({$0 == "-"}).count == 2 else {
-            throw ContactInputError.isValidContactNumber
+            throw ContactInputError.invalidContactNumberError
         }
     }
     
@@ -133,7 +133,7 @@ final class DetailContctViewController: UIViewController {
                 updateContact(name: currentContactInpt.name, age: currentContactInpt.age, contactNumber: currentContactInpt.contactNumber)
             }
         } catch let error as ContactInputError {
-            presentSaveFailureAlert(message: error.errorMessage)
+            presentSaveFailureAlert(message: error.errorDescription)
         } catch {
             print("예상치못한 에러")
         }

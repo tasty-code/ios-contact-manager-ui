@@ -7,17 +7,17 @@
 
 
 enum ContactInputError: Error {
-    case isValidName
-    case isValidAge
-    case isValidContactNumber
+    case invalidNameError
+    case invalidAgeError
+    case invalidContactNumberError
     
-    var errorMessage: String {
+    var errorDescription: String {
         switch self {
-        case .isValidName:
+        case .invalidNameError:
             return "입력한 이름 정보가 잘못되었습니다."
-        case .isValidAge:
+        case .invalidAgeError:
             return "입력한 나이 정보가 잘못되었습니다."
-        case .isValidContactNumber:
+        case .invalidContactNumberError:
             return "입력한 연락처 정보가 잘못되었습니다."
         }
     }
