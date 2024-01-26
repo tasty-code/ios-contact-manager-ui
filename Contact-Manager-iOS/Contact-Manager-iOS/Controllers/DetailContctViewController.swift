@@ -72,9 +72,9 @@ final class DetailContctViewController: UIViewController {
         let ageString = currentContactInpt.age
         let contactNumber = currentContactInpt.contactNumber
         
-        try isValidName(name)
-        try isValidAge(ageString)
-        try isValidContactNumber(contactNumber)
+        try validateName(name)
+        try validateAge(ageString)
+        try validateContactNumber(contactNumber)
     }
     
     private func updateContact(name: String, age: String, contactNumber: String){
@@ -84,7 +84,7 @@ final class DetailContctViewController: UIViewController {
             contact.contactNumber = contactNumber
             
             contactDetailView.contact = contact
-            delegate?.updatedContact(contactId: contact.id, with: contact)
+            delegate?.updateContact(contactId: contact.id, with: contact)
         }
     }
     
@@ -93,20 +93,20 @@ final class DetailContctViewController: UIViewController {
         delegate?.addNewContact(newContact: newContact)
     }
     
-    private func isValidName(_ name: String) throws {
+    private func validateName(_ name: String) throws {
         guard name != "" else {
             throw ContactInputError.invalidNameError
         }
     }
     
-    private func isValidAge(_ ageString: String) throws {
+    private func validateAge(_ ageString: String) throws {
         guard let age = Int(ageString), 0 < age && age <= 999, ageString != "",
               String(age) == ageString else {
             throw ContactInputError.invalidAgeError
         }
     }
     
-    private func isValidContactNumber(_ contact: String) throws {
+    private func validateContactNumber(_ contact: String) throws {
         let phoneNumber = contact.replacingOccurrences(of: "-", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
         guard phoneNumber.count >= 9, contact.filter({$0 == "-"}).count == 2 else {
             throw ContactInputError.invalidContactNumberError
@@ -125,12 +125,12 @@ final class DetailContctViewController: UIViewController {
     
     @objc private func saveButtonTapped() {
         do {
-            let currentContactInpt: ContactInput = contactDetailView.fetchCurrentContactInput()
+            let currentContactInput: ContactInput = contactDetailView.fetchCurrentContactInput()
             try validateInput()
             if contact == nil{
-                addNewContact(name: currentContactInpt.name, age: currentContactInpt.age, contactNumber: currentContactInpt.contactNumber)
+                addNewContact(name: currentContactInput.name, age: currentContactInput.age, contactNumber: currentContactInput.contactNumber)
             } else {
-                updateContact(name: currentContactInpt.name, age: currentContactInpt.age, contactNumber: currentContactInpt.contactNumber)
+                updateContact(name: currentContactInput.name, age: currentContactInput.age, contactNumber: currentContactInput.contactNumber)
             }
         } catch let error as ContactInputError {
             presentSaveFailureAlert(message: error.errorDescription)
