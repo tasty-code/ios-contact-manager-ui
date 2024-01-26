@@ -125,8 +125,9 @@ final class DetailContctViewController: UIViewController {
     
     @objc private func saveButtonTapped() {
         do {
-            let currentContactInput: ContactInput = contactDetailView.fetchCurrentContactInput()
             try validateInput()
+            let currentContactInput: ContactInput = contactDetailView.fetchCurrentContactInput()
+
             if contact == nil{
                 addNewContact(name: currentContactInput.name, age: currentContactInput.age, contactNumber: currentContactInput.contactNumber)
             } else {
@@ -135,7 +136,7 @@ final class DetailContctViewController: UIViewController {
         } catch let error as ContactInputError {
             presentSaveFailureAlert(message: error.errorDescription)
         } catch {
-            print("예상치못한 에러")
+            presentSaveFailureAlert(message: "알 수 없는 에러가 발생했습니다.")
         }
         
         moveToContactsViewScreen()

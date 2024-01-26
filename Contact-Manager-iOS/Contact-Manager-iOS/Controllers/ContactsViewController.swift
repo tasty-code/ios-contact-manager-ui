@@ -40,7 +40,7 @@ final class ContactsViewController: UIViewController {
     
     private func configureSearchBar() {
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = true
         searchController.searchBar.placeholder = "연락처 검색"
         searchController.searchBar.showsCancelButton = true
         navigationItem.searchController = searchController
