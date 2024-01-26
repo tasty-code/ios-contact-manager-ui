@@ -130,11 +130,11 @@ extension ContactsViewController: UISearchResultsUpdating {
         contactsView.contactsTableView.reloadData()
     }
 
-    var isSearchBarEmpty: Bool {
+    private var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
 
-    var isFiltering: Bool {
+    private var isFiltering: Bool {
         return searchController.isActive && !isSearchBarEmpty
     }
 }
