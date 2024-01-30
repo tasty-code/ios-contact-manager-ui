@@ -44,14 +44,14 @@ final class DetailContctViewController: UIViewController {
         let alert = UIAlertController(title: "정말로 취소하시겠습니까?", message: nil, preferredStyle: .alert)
         let noAction = UIAlertAction(title: "아니오", style: .default)
         let okAction = UIAlertAction(title: "예", style: .destructive) { [weak self] _ in
-            self?.moveToContactsViewScreen()
+            self?.moveToPreviousScreen()
         }
         alert.addAction(noAction)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
     
-    private func moveToContactsViewScreen() {
+    private func moveToPreviousScreen() {
         if isPresentedModally {
             self.dismiss(animated: true, completion: nil)
         } else {
@@ -139,7 +139,7 @@ final class DetailContctViewController: UIViewController {
             presentSaveFailureAlert(message: "알 수 없는 에러가 발생했습니다.")
         }
         
-        moveToContactsViewScreen()
+        moveToPreviousScreen()
     }
     
     @objc private func contactNumberTextFieldEditingChanged(_ textField: UITextField) {
