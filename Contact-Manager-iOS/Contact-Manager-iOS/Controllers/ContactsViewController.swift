@@ -110,7 +110,7 @@ extension ContactsViewController: ContactDelegate {
     }
     
     func updateContact(contactId id: Int, with selectedContact: Contact) {
-        contactManager.updatedContact(contactId: id, with: selectedContact)
+        contactManager.updateContact(contactId: id, with: selectedContact)
         contactsView.contactsTableView.reloadData()
     }
 }

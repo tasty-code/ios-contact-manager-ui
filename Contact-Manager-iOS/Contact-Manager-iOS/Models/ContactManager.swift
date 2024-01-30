@@ -34,7 +34,7 @@ final class ContactManager {
         }
     }
     
-    func updatedContact(contactId id: Int, with updateContact: Contact) {
+    func updateContact(contactId id: Int, with updateContact: Contact) {
         if let index = contactList.firstIndex(where: { $0.id == id }) {
             contactList[index] = updateContact
         }
