@@ -77,19 +77,19 @@ final class DetailContctViewController: UIViewController {
         try validateContactNumber(contactNumber)
     }
     
-    private func updateContact(name: String, age: String, contactNumber: String){
+    private func updateContact(with: ContactInput){
         if var contact = contact {
-            contact.name = name
-            contact.age = age
-            contact.contactNumber = contactNumber
+            contact.name = with.name
+            contact.age = with.age
+            contact.contactNumber = with.contactNumber
             
             contactDetailView.contact = contact
             delegate?.updateContact(contactId: contact.id, with: contact)
         }
     }
     
-    private func addNewContact(name: String, age: String, contactNumber: String){
-        let newContact = Contact(name: name, age: age, contactNumber: contactNumber)
+    private func addNewContact(using: ContactInput){
+        let newContact = Contact(name: using.name, age: using.age, contactNumber: using.contactNumber)
         delegate?.addNewContact(newContact: newContact)
     }
     
@@ -129,9 +129,9 @@ final class DetailContctViewController: UIViewController {
             let currentContactInput: ContactInput = contactDetailView.fetchCurrentContactInput()
 
             if contact == nil{
-                addNewContact(name: currentContactInput.name, age: currentContactInput.age, contactNumber: currentContactInput.contactNumber)
+                addNewContact(using: currentContactInput)
             } else {
-                updateContact(name: currentContactInput.name, age: currentContactInput.age, contactNumber: currentContactInput.contactNumber)
+                updateContact(with: currentContactInput)
             }
         } catch let error as ContactInputError {
             presentSaveFailureAlert(message: error.errorDescription)
