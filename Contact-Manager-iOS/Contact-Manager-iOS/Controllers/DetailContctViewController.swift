@@ -66,9 +66,13 @@ final class DetailContctViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    private func processName(_ name: String) -> String {
+        return name.replacingOccurrences(of: " ", with: "")
+    }
+    
     private func validateInput() throws {
         let currentContactInpt: ContactInput = contactDetailView.fetchCurrentContactInput()
-        let name = currentContactInpt.name.replacingOccurrences(of: " ", with: "")
+        let name = processName(currentContactInpt.name)
         let ageString = currentContactInpt.age
         let contactNumber = currentContactInpt.contactNumber
         
