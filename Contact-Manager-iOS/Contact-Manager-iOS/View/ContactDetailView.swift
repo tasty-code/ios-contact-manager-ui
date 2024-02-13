@@ -8,7 +8,7 @@
 import UIKit
 
 final class ContactDetailView: UIView {
-
+    
     // MARK: - Properties
     var contact: Contact? {
         didSet {
@@ -53,7 +53,7 @@ final class ContactDetailView: UIView {
         return label
     }()
     
-    let nameTextField: UITextField = {
+    private let nameTextField: UITextField = {
         let textField = UITextField()
         textField.frame.size.height = 20
         textField.backgroundColor = UIColor.clear
@@ -69,7 +69,7 @@ final class ContactDetailView: UIView {
         return textField
     }()
     
-    let ageTextField: UITextField = {
+    private let ageTextField: UITextField = {
         let textField = UITextField()
         textField.frame.size.height = 20
         textField.backgroundColor = UIColor.clear
@@ -149,6 +149,14 @@ final class ContactDetailView: UIView {
     // MARK: - Methods
     private func configureStackView() {
         self.addSubview(allStackView)
+    }
+    
+    func fetchCurrentContactInput() -> ContactInput {
+        let nameInput: String = nameTextField.text ?? ""
+        let ageInput: String = ageTextField.text ?? ""
+        let contactNumberInput: String = contactNumberTextField.text ?? ""
+        let contactInput = ContactInput(name: nameInput, age: ageInput, contactNumber: contactNumberInput)
+        return contactInput
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
